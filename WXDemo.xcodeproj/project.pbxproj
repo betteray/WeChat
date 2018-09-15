@@ -32,6 +32,7 @@
 		712C7155214BF8A900603022 /* CgiWrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7154214BF8A900603022 /* CgiWrap.m */; };
 		712C7158214BFB1600603022 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7157214BFB1600603022 /* Task.m */; };
 		712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C715E214CDB6C00603022 /* NSData+PackUtil.m */; };
+		712C7166214D2BFD00603022 /* ECDHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7165214D2BFD00603022 /* ECDHUtil.m */; };
 		8A6B7E6AD0B44DCDF3A4DADB /* libPods-WXDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD18BBDEB2F4000E11CEB5B0 /* libPods-WXDemoTests.a */; };
 		A171A24009C24E78AD226EE0 /* libPods-WXDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB43DD6C2AA522C9401323 /* libPods-WXDemoUITests.a */; };
 /* End PBXBuildFile section */
@@ -186,6 +187,8 @@
 		712C7157214BFB1600603022 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		712C715D214CDB6C00603022 /* NSData+PackUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+PackUtil.h"; sourceTree = "<group>"; };
 		712C715E214CDB6C00603022 /* NSData+PackUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+PackUtil.m"; sourceTree = "<group>"; };
+		712C7164214D2BFD00603022 /* ECDHUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECDHUtil.h; sourceTree = "<group>"; };
+		712C7165214D2BFD00603022 /* ECDHUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECDHUtil.m; sourceTree = "<group>"; };
 		B48B9EB914A530ED64A2B165 /* Pods-WXDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemoTests/Pods-WXDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD18BBDEB2F4000E11CEB5B0 /* libPods-WXDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D659E578DD4B1C7D6C568C19 /* Pods-WXDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemo/Pods-WXDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -272,6 +275,7 @@
 		712C6E5D214A145600603022 /* WXDemo */ = {
 			isa = PBXGroup;
 			children = (
+				712C7160214D231C00603022 /* ecdh */,
 				712C7159214CDA9100603022 /* Others */,
 				712C7146214BA35700603022 /* model */,
 				712C70E9214B5A4B00603022 /* openssl */,
@@ -467,6 +471,15 @@
 				712C6E6C214A145700603022 /* Info.plist */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		712C7160214D231C00603022 /* ecdh */ = {
+			isa = PBXGroup;
+			children = (
+				712C7164214D2BFD00603022 /* ECDHUtil.h */,
+				712C7165214D2BFD00603022 /* ECDHUtil.m */,
+			);
+			path = ecdh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -668,6 +681,7 @@
 				712C7158214BFB1600603022 /* Task.m in Sources */,
 				712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */,
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
+				712C7166214D2BFD00603022 /* ECDHUtil.m in Sources */,
 				712C714F214BABA500603022 /* Package.m in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
 				712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */,

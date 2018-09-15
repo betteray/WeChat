@@ -15,6 +15,7 @@
 #import "CgiWrap.h"
 #import "NSData+PackUtil.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ECDHUtil.h"
 
 #define TICK_INTERVAL 1.5
 
@@ -111,7 +112,19 @@
                 [self.qrcodeCheckTimer invalidate];
                 self.qrcodeCheckTimer = nil;
                 
+                int nid = 713;
+                char  priKey[2048];
+                char  pubKey[2048];
                 
+                int priLen = 0;
+                int pubLen = 0;
+                //    BOOL ret = GenEcdh(nid, priKey, sizeof(priKey), pubKey, sizeof(pubKey));
+                
+                BOOL ret = [ECDHUtil GenEcdh:nid szPriKey:priKey pLenPri:&priLen szPubKey:pubKey pLenPub:&pubLen];
+                NSData *priData = [[NSData alloc] initWithBytes:priKey length:priLen];
+                NSData *pubData = [[NSData alloc] initWithBytes:pubKey length:pubLen];
+                
+                NSLog(@"pridata: %@, pubdata: %@", priData, pubData);
             }
             
             if (msg.state == 0 || msg.state == 1) {
@@ -131,6 +144,22 @@
     } else {
         self.qrcodeTimerLabel.text = [NSString stringWithFormat:@"%d", (int)remainTime];
     }
+}
+
+- (IBAction)test {
+    int nid = 713;
+    char  priKey[2048];
+    char  pubKey[2048];
+    
+    int priLen = 0;
+    int pubLen = 0;
+//    BOOL ret = GenEcdh(nid, priKey, sizeof(priKey), pubKey, sizeof(pubKey));
+
+    BOOL ret = [ECDHUtil GenEcdh:nid szPriKey:priKey pLenPri:&priLen szPubKey:pubKey pLenPub:&pubLen];
+    NSData *priData = [[NSData alloc] initWithBytes:priKey length:priLen];
+    NSData *pubData = [[NSData alloc] initWithBytes:pubKey length:pubLen];
+    
+    NSLog(@"pridata: %@, pubdata: %@", priData, pubData);
 }
 
 @end
