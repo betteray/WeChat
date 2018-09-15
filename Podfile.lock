@@ -1,20 +1,26 @@
 PODS:
   - CocoaAsyncSocket (7.6.3)
   - Protobuf (3.6.1)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
 
 DEPENDENCIES:
   - CocoaAsyncSocket
   - Protobuf
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CocoaAsyncSocket
     - Protobuf
+    - SDWebImage
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: d8f72aaef88d565e7a861fb6cecb21e7864b3e4d
+PODFILE CHECKSUM: 754c1b3d97c6b1fa96c59ba17da9238019b95434
 
 COCOAPODS: 1.5.3

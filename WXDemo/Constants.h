@@ -16,7 +16,7 @@
 
 // iMac 的 deviceID
 #define DEVICE_ID @"6DA4F05364426532A45CF83AFB2B208D"
-#define DEVICE_TYPE @"Mac18,2 OSX OSX 10.13.6 build(17G65)"
+#define DEVICE_TYPE @"iMac18,2 OSX OSX 10.13.6 build(17G65)"
 #define DEVICEN_NAME @"ray的iMac"
 
 // iMac 2.3.18 (11423) = 302191122

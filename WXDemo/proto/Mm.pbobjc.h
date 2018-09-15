@@ -29,7 +29,6 @@ CF_EXTERN_C_BEGIN
 
 @class BaseRequest;
 @class CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg;
-@class ClientCheckData_Test;
 @class LoginInfo;
 @class ManualAuthAccountRequest_AesKey;
 @class ManualAuthAccountRequest_Ecdh;
@@ -117,43 +116,6 @@ NS_ASSUME_NONNULL_BEGIN
  * this file and all files that it depends on.
  **/
 @interface MmRoot : GPBRootObject
-@end
-
-#pragma mark - ClientCheckData
-
-typedef GPB_ENUM(ClientCheckData_FieldNumber) {
-  ClientCheckData_FieldNumber_T = 1,
-  ClientCheckData_FieldNumber_E = 2,
-  ClientCheckData_FieldNumber_Data_p = 3,
-};
-
-@interface ClientCheckData : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) ClientCheckData_Test *t;
-/** Test to see if @c t has been set. */
-@property(nonatomic, readwrite) BOOL hasT;
-
-@property(nonatomic, readwrite) int32_t e;
-
-@property(nonatomic, readwrite) BOOL hasE;
-@property(nonatomic, readwrite, copy, null_resettable) NSData *data_p;
-/** Test to see if @c data_p has been set. */
-@property(nonatomic, readwrite) BOOL hasData_p;
-
-@end
-
-#pragma mark - ClientCheckData_Test
-
-typedef GPB_ENUM(ClientCheckData_Test_FieldNumber) {
-  ClientCheckData_Test_FieldNumber_TagArray = 6,
-};
-
-@interface ClientCheckData_Test : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) GPBInt32Array *tagArray;
-/** The number of items in @c tagArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger tagArray_Count;
-
 @end
 
 #pragma mark - mmStr
@@ -3552,10 +3514,9 @@ typedef GPB_ENUM(GetLoginQRCodeRequest_FieldNumber) {
 /** Test to see if @c userName has been set. */
 @property(nonatomic, readwrite) BOOL hasUserName;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *hardwareExtra;
-/** Test to see if @c hardwareExtra has been set. */
-@property(nonatomic, readwrite) BOOL hasHardwareExtra;
+@property(nonatomic, readwrite) int32_t hardwareExtra;
 
+@property(nonatomic, readwrite) BOOL hasHardwareExtra;
 @property(nonatomic, readwrite, copy, null_resettable) NSString *softType;
 /** Test to see if @c softType has been set. */
 @property(nonatomic, readwrite) BOOL hasSoftType;
@@ -3684,6 +3645,61 @@ typedef GPB_ENUM(CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg_FieldNumber) {
 @property(nonatomic, readwrite) int32_t opcode;
 
 @property(nonatomic, readwrite) BOOL hasOpcode;
+@end
+
+#pragma mark - NotifyMsg
+
+typedef GPB_ENUM(NotifyMsg_FieldNumber) {
+  NotifyMsg_FieldNumber_Uuid = 1,
+  NotifyMsg_FieldNumber_State = 2,
+  NotifyMsg_FieldNumber_Wxid = 3,
+  NotifyMsg_FieldNumber_Wxnewpass = 4,
+  NotifyMsg_FieldNumber_Avatar = 5,
+  NotifyMsg_FieldNumber_PushLoginURLExpiredTime = 6,
+  NotifyMsg_FieldNumber_NickName = 7,
+  NotifyMsg_FieldNumber_EffectiveTime = 8,
+  NotifyMsg_FieldNumber_T10 = 10,
+  NotifyMsg_FieldNumber_Devices = 11,
+};
+
+@interface NotifyMsg : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *uuid;
+/** Test to see if @c uuid has been set. */
+@property(nonatomic, readwrite) BOOL hasUuid;
+
+@property(nonatomic, readwrite) int32_t state;
+
+@property(nonatomic, readwrite) BOOL hasState;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *wxid;
+/** Test to see if @c wxid has been set. */
+@property(nonatomic, readwrite) BOOL hasWxid;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *wxnewpass;
+/** Test to see if @c wxnewpass has been set. */
+@property(nonatomic, readwrite) BOOL hasWxnewpass;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *avatar;
+/** Test to see if @c avatar has been set. */
+@property(nonatomic, readwrite) BOOL hasAvatar;
+
+@property(nonatomic, readwrite) int32_t pushLoginURLExpiredTime;
+
+@property(nonatomic, readwrite) BOOL hasPushLoginURLExpiredTime;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *nickName;
+/** Test to see if @c nickName has been set. */
+@property(nonatomic, readwrite) BOOL hasNickName;
+
+@property(nonatomic, readwrite) int32_t effectiveTime;
+
+@property(nonatomic, readwrite) BOOL hasEffectiveTime;
+@property(nonatomic, readwrite) int32_t t10;
+
+@property(nonatomic, readwrite) BOOL hasT10;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *devices;
+/** Test to see if @c devices has been set. */
+@property(nonatomic, readwrite) BOOL hasDevices;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -6,6 +6,7 @@ target 'WXDemo' do
   # use_frameworks!
   pod 'CocoaAsyncSocket'  
   pod 'Protobuf'
+  pod 'SDWebImage'
 
   # Pods for WXDemo
 

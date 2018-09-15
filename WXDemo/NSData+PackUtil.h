@@ -10,7 +10,7 @@
 
 @interface NSData (PackUtil)
 
-- (NSData *)aesDecrypt;
+- (NSData *)aesDecryptWithKey:(NSData *)key;
 
 - (NSData *)aesDecrypt_then_decompress;
 

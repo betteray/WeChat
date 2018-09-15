@@ -33,9 +33,9 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余: 0秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpt-DE-qMy">
-                                <rect key="frame" x="151.5" y="496" width="71.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="156" y="420" width="63.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -44,7 +44,7 @@
                             <constraint firstItem="XYp-E8-z3G" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="P6o-hD-SFb"/>
                             <constraint firstItem="zpt-DE-qMy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZkI-5R-qWL"/>
                             <constraint firstItem="FKq-3M-YNZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="ctR-Rk-UXg"/>
-                            <constraint firstItem="XYp-E8-z3G" firstAttribute="top" secondItem="zpt-DE-qMy" secondAttribute="bottom" constant="30" id="lC7-w4-9gQ"/>
+                            <constraint firstItem="zpt-DE-qMy" firstAttribute="top" secondItem="FKq-3M-YNZ" secondAttribute="bottom" constant="60" id="qBj-nX-OYa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XYp-E8-z3G" secondAttribute="bottom" constant="90" id="vLh-Ff-BSN"/>
                             <constraint firstItem="FKq-3M-YNZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xUH-cI-CDE"/>
                         </constraints>

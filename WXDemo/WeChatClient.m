@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 @property (nonatomic, assign) int seq;    //封包编号。
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
 
-@property (nonatomic, strong) NSData * aesKey;
+@property (nonatomic, strong) NSData * clientAesKey;
 @property (nonatomic, assign) int uin;
 @property (nonatomic, strong) NSData *cookie;
 
@@ -83,7 +83,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         _uin = 0;
         _tasks = [NSMutableArray array];
         _recvedData = [NSMutableData data];
-        _aesKey = [FSOpenSSL random128BitAESKey];
+        _clientAesKey = [FSOpenSSL random128BitAESKey];
         
         _heartbeatTimer = [NSTimer timerWithTimeInterval:30 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
@@ -133,12 +133,15 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [base setScene:0];
     [base setClientVersion:CLIENT_VERSION];
     [base setDeviceType:DEVICE_TYPE];
-    [base setSessionKey:_aesKey];
+    [base setSessionKey:_clientAesKey];
     [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
     
     [[cgiWrap request] performSelector:@selector(setBase:) withObject:base];
     
     NSData *serilizedData = [[cgiWrap request] data];
+    
+//    _clientAesKey = [NSData dataWithHexString:@"AE884C193D7BC6A2498B178000DF5A33"];
+//    serilizedData = [NSData dataWithHexString:[@"0A550A10 DEE9A4E4 F43AF60A 7DA3A255 8EB1EB5F 10001A10 6DA4F053 64426532 A45CF83A FB2B208D 2092A48C 90012A25 694D6163 31382C32 204F5358 204F5358 2031302E 31332E36 20627569 6C642831 37473635 29300012 14081012 10DEE9A4 E4F43AF6 0A7DA3A2 558EB1EB 5F180022 0A726179 E79A8469 4D616330 00" stringByReplacingOccurrencesOfString:@" " withString:@""]];
     
     NSLog(@"protobuf: %@", serilizedData);
     
@@ -150,14 +153,14 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     task.cgiWrap = cgiWrap;
     
     [_tasks addObject:task];
-    [_socket writeData:sendData withTimeout:3 tag:[cgiWrap cmdId]];
+    [_socket writeData:sendData withTimeout:3 tag:[cgiWrap cgi]];
 }
 
 - (Task *)getTaskWithTag:(NSInteger)tag {
     Task *result = nil;
     for (int i=0; i<[_tasks count]; i++) {
         Task *task = [_tasks objectAtIndex:i];
-        if (task.cgiWrap.cmdId == tag) {
+        if (task.cgiWrap.cgi == tag) {
             result = task;
         }
     }
@@ -247,9 +250,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
             } else {
                 Package *package = [self UnPackLongLinkBody:longLinkPackage.body];
                 
-                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecrypt];
-                Task *task = [self getTaskWithTag:tag];
+                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:_clientAesKey];
+                Task *task = [self getTaskWithTag:package.header.cgi];
                 id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
+                NSLog(@"WeChatClient Response: %@", response);
                 if (task.sucBlock) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         ((SuccessBlock)task.sucBlock)(response);
@@ -526,6 +530,7 @@ completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler {
     
     int cgi = 0;
     int dwLen = [self decode:&cgi bytes:[body subdataWithRange:NSMakeRange(index, 5)] off:0];
+    header.cgi = cgi;
     index += dwLen;
     
     int protobufLen = 0;

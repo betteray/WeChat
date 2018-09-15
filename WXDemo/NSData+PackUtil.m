@@ -13,12 +13,12 @@
 
 @implementation NSData (PackUtil)
 
-- (NSData *)aesDecrypt {
-    return [FSOpenSSL aesDecryptData:self key:[WeChatClient sharedClient].aesKey];
+- (NSData *)aesDecryptWithKey:(NSData *)key {
+    return [FSOpenSSL aesDecryptData:self key:key];
 }
 
 - (NSData *)aesDecrypt_then_decompress {
-    NSData *decryptedData = [FSOpenSSL aesDecryptData:self key:[WeChatClient sharedClient].aesKey];
+    NSData *decryptedData = [FSOpenSSL aesDecryptData:self key:[WeChatClient sharedClient].clientAesKey];
     return [decryptedData decompress];
 }
 
