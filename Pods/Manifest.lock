@@ -1,0 +1,20 @@
+PODS:
+  - CocoaAsyncSocket (7.6.3)
+  - Protobuf (3.6.1)
+
+DEPENDENCIES:
+  - CocoaAsyncSocket
+  - Protobuf
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CocoaAsyncSocket
+    - Protobuf
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+
+PODFILE CHECKSUM: d8f72aaef88d565e7a861fb6cecb21e7864b3e4d
+
+COCOAPODS: 1.5.3

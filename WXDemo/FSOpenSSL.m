@@ -33,6 +33,13 @@
 
 @implementation FSOpenSSL
 
++ (NSData *)random128BitAESKey {
+    unsigned char buf[16];
+    arc4random_buf(buf, sizeof(buf));
+    return [NSData dataWithBytes:buf length:sizeof(buf)];
+}
+
+
 + (NSString *)md5FromString:(NSString *)string {
     unsigned char *inStrg = (unsigned char *) [[string dataUsingEncoding:NSASCIIStringEncoding] bytes];
     unsigned long lngth = [string length];

@@ -10,14 +10,17 @@
 #import "WeChatClient.h"
 #import "Mm.pbobjc.h"
 #import "Constants.h"
-#import "AES.h"
 #import "NSData+Util.h"
 #import "FSOpenSSL.h"
 #import "CgiWrap.h"
 
+#define TICK_INTERVAL 5
+
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *qrcodeImageView;
+@property (nonatomic, strong) NSTimer *qrcodeCheckTimer;
+@property (weak, nonatomic) IBOutlet UILabel *qrcodeTimerLabel;
 
 @end
 
@@ -28,22 +31,11 @@
 }
 
 - (IBAction)getQRCode {
-    
-    NSData *aesKey = [AES random128BitAESKey];
-    BaseRequest *base = [BaseRequest new];
-    [base setUin:0];
-    [base setScene:0];
-    [base setClientVersion:CLIENT_VERSION];
-    [base setDeviceType:DEVICE_TYPE];
-    [base setSessionKey:aesKey];
-    [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
-
     GetLoginQRCodeRequest *request = [GetLoginQRCodeRequest new];
-    [request setBase:base];
 
     sKBuiltinBufferT *buffer = [sKBuiltinBufferT new];
     [buffer setIlen:16];
-    [buffer setBuffer:aesKey];
+    [buffer setBuffer:[WeChatClient sharedClient].aesKey];
     [request setRandomEncryKey:buffer];
 
     [request setDeviceName:DEVICEN_NAME];
@@ -57,16 +49,55 @@
     cgiWrap.cgi = 502;
     cgiWrap.cmdId = 232;
     cgiWrap.request = request;
+    cgiWrap.responseClass = [GetLoginQRCodeResponse class];
     
-    [[WeChatClient sharedClient] setAesKey:aesKey];
-
-    [[WeChatClient sharedClient] startRequest:cgiWrap success:^(GPBMessage * _Nullable response) {
-        GetLoginQRCodeResponse *resp = (GetLoginQRCodeResponse *)response;
+    [WeChatClient startRequest:cgiWrap success:^(GPBMessage * _Nullable response) {
         NSLog(@"%@", response);
+        GetLoginQRCodeResponse *resp = (GetLoginQRCodeResponse *)response;
+        
         self.qrcodeImageView.image = [UIImage imageWithData:[[resp qrcode] buffer]];
+        self.qrcodeTimerLabel.text = [NSString stringWithFormat:@"%d", resp.expiredTime];
+        self.qrcodeCheckTimer = [NSTimer scheduledTimerWithTimeInterval:TICK_INTERVAL target:self selector:@selector(tick:) userInfo:resp repeats:YES];
+        
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
+}
+
+- (void)tick:(NSTimer *)timer {
+    [self updateUI];
+    
+    CheckLoginQRCodeRequest *request = [CheckLoginQRCodeRequest new];
+    
+    sKBuiltinBufferT *buffer = [sKBuiltinBufferT new];
+    [buffer setIlen:16];
+    [buffer setBuffer:[WeChatClient sharedClient].aesKey];
+    [request setRandomEncryKey:buffer];
+
+    request.uuid = ((GetLoginQRCodeResponse *)[timer userInfo]).uuid;
+    request.timeStamp = [[NSDate date] timeIntervalSince1970];
+    request.opcode = 0;
+    
+    CgiWrap *cgiWrap = [CgiWrap new];
+    cgiWrap.cgi = 503;
+    cgiWrap.cmdId = 233;
+    cgiWrap.request = request;
+    cgiWrap.responseClass = [CheckLoginQRCodeResponse class];
+    
+    [WeChatClient startRequest:cgiWrap success:^(GPBMessage * _Nullable response) {
+        NSLog(@"%@", response);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+- (void)updateUI {
+    NSInteger remainTime = [_qrcodeTimerLabel.text integerValue] - TICK_INTERVAL;
+    if (remainTime <= 0) {
+        self.qrcodeTimerLabel.text = @"二维码已过期";
+    } else {
+        self.qrcodeTimerLabel.text = [NSString stringWithFormat:@"%d", (int)remainTime];
+    }
 }
 
 @end

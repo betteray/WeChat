@@ -16,5 +16,6 @@
 @property (nonatomic, assign) int cmdId;
 @property (nonatomic, assign) int cgi;
 @property (nonatomic, copy) NSString *cgiName;
+@property (nonatomic, strong) Class responseClass;
 
 @end

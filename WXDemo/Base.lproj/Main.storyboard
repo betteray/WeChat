@@ -32,11 +32,19 @@
                                     <constraint firstAttribute="width" constant="240" id="vrW-yl-hog"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余: 0秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpt-DE-qMy">
+                                <rect key="frame" x="151.5" y="496" width="71.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XYp-E8-z3G" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="P6o-hD-SFb"/>
+                            <constraint firstItem="zpt-DE-qMy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZkI-5R-qWL"/>
                             <constraint firstItem="FKq-3M-YNZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="ctR-Rk-UXg"/>
+                            <constraint firstItem="XYp-E8-z3G" firstAttribute="top" secondItem="zpt-DE-qMy" secondAttribute="bottom" constant="30" id="lC7-w4-9gQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XYp-E8-z3G" secondAttribute="bottom" constant="90" id="vLh-Ff-BSN"/>
                             <constraint firstItem="FKq-3M-YNZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xUH-cI-CDE"/>
                         </constraints>
@@ -44,6 +52,7 @@
                     </view>
                     <connections>
                         <outlet property="qrcodeImageView" destination="FKq-3M-YNZ" id="JRZ-z7-NC2"/>
+                        <outlet property="qrcodeTimerLabel" destination="zpt-DE-qMy" id="h4p-Ej-OLz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

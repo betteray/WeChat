@@ -15,6 +15,8 @@ typedef void (^FailureBlock)(NSError *error);
 
 @interface WeChatClient : NSObject
 
+@property (nonatomic, strong, readonly) NSData * aesKey;
+
 + (instancetype)sharedClient;
 - (void)start;
 
@@ -22,6 +24,8 @@ typedef void (^FailureBlock)(NSError *error);
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock;
 
-@property (nonatomic, strong) NSData *aesKey;
++ (void)startRequest:(CgiWrap *)request
+             success:(SuccessBlock)successBlock
+             failure:(FailureBlock)failureBlock;
 
 @end

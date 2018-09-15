@@ -20,6 +20,9 @@
 #import <Foundation/Foundation.h>
 
 @interface FSOpenSSL : NSObject
+
++ (NSData *)random128BitAESKey;
+
 + (NSString *)md5FromString:(NSString *)string;
 
 + (NSString *)sha256FromString:(NSString *)string;

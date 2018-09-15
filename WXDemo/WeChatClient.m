@@ -17,6 +17,7 @@
 #import "Mm.pbobjc.h"
 #import "CgiWrap.h"
 #import "Task.h"
+#import "NSData+PackUtil.h"
 
 //#心跳
 #define CMDID_NOOP_REQ 6
@@ -56,6 +57,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 @property (nonatomic, assign) int seq;    //封包编号。
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
 
+@property (nonatomic, strong) NSData * aesKey;
 @property (nonatomic, assign) int uin;
 @property (nonatomic, strong) NSData *cookie;
 
@@ -81,6 +83,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         _uin = 0;
         _tasks = [NSMutableArray array];
         _recvedData = [NSMutableData data];
+        _aesKey = [FSOpenSSL random128BitAESKey];
         
         _heartbeatTimer = [NSTimer timerWithTimeInterval:30 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
@@ -115,10 +118,30 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [_socket writeData:data withTimeout:HEARTBEAT_TIMEOUT tag:CMDID_NOOP_REQ];
 }
 
++ (void)startRequest:(CgiWrap *)request
+             success:(SuccessBlock)successBlock
+             failure:(FailureBlock)failureBlock {
+    [[self sharedClient] startRequest:request success:successBlock failure:failureBlock];
+}
+
 - (void)startRequest:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock {
+    
+    BaseRequest *base = [BaseRequest new];
+    [base setUin:0];
+    [base setScene:0];
+    [base setClientVersion:CLIENT_VERSION];
+    [base setDeviceType:DEVICE_TYPE];
+    [base setSessionKey:_aesKey];
+    [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
+    
+    [[cgiWrap request] performSelector:@selector(setBase:) withObject:base];
+    
     NSData *serilizedData = [[cgiWrap request] data];
+    
+    NSLog(@"protobuf: %@", serilizedData);
+    
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:1];
     
     Task *task = [Task new];
@@ -222,20 +245,16 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                         break;
                 }
             } else {
-                Package *package = [Package new];
-                [self UnPackLongLinkBody:longLinkPackage.body toPackage:package];
-                if (package.header.compressed) {
-                    NSData *decompressData = [FSOpenSSL aesDecryptData:package.body key:_aesKey];
-                    NSData *protobuf = [decompressData decompress];
-                    GetLoginQRCodeResponse *response = [[GetLoginQRCodeResponse alloc] initWithData:protobuf error:nil];
-                    
-                    Task *task = [self getTaskWithTag:tag];
-                    if (task.sucBlock) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            ((SuccessBlock)task.sucBlock)(response);
-                        });
-                        [_tasks removeObject:task];
-                    }
+                Package *package = [self UnPackLongLinkBody:longLinkPackage.body];
+                
+                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecrypt];
+                Task *task = [self getTaskWithTag:tag];
+                id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
+                if (task.sucBlock) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        ((SuccessBlock)task.sucBlock)(response);
+                    });
+                    [_tasks removeObject:task];
                 }
             }
         }
@@ -473,10 +492,11 @@ completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler {
     return num;
 }
 
-- (void)UnPackLongLinkBody:(NSData *)body toPackage:(Package *)package {
+- (Package *)UnPackLongLinkBody:(NSData *)body {
+    Package *package = [Package new];
     Header *header = [Header new];
     package.header = header;
-    if ([body length] < 0x20) return ;
+    if ([body length] < 0x20) return nil;
     
     NSInteger index = 0;
     int mark = (int)[body toInt8ofRange:index];
@@ -501,7 +521,7 @@ completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler {
         NSLog(@"Cookie: %@", cookieString);
         index += cookieLen;
     } else if (cookieLen > 0xf) {
-        return ;
+        return nil;
     }
     
     int cgi = 0;
@@ -522,7 +542,7 @@ completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler {
         package.body = [body subdataWithRange:NSMakeRange(headLength, [body length] - headLength)];
     }
     
-    return;
+    return package;
 }
 
 - (NSData *)make_header:(int)cgi encryptMethod:(EncryptMethod)encryptMethod bodyDataLen:(int)bodyDataLen compressedBodyDataLen:(int)compressedBodyDataLen needCookie:(BOOL)needCookie {
@@ -561,7 +581,7 @@ completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler {
 }
 
 bool need_login_rsa_verison(int cgi) {
-    return cgi == 502 || cgi == 701;
+    return cgi == 502 || cgi == 503 || cgi == 701;
 }
 
 @end
