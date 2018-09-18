@@ -30,12 +30,12 @@ CF_EXTERN_C_BEGIN
 @class BaseRequest;
 @class CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg;
 @class LoginInfo;
+@class ManualAuthAccountRequest;
 @class ManualAuthAccountRequest_AesKey;
 @class ManualAuthAccountRequest_Ecdh;
 @class ManualAuthAccountRequest_Ecdh_EcdhKey;
-@class ManualAuthDeviceRequest__Tag2;
-@class ManualAuthDeviceRequest__Tag2_TAG3;
-@class ManualAuthDeviceRequest__Tag2___Tag2;
+@class ManualAuthDeviceRequest;
+@class ManualAuthDeviceRequest_BaseReqInfo;
 @class ManualAuthResponse_AccountInfo;
 @class ManualAuthResponse_AuthParam;
 @class ManualAuthResponse_AuthParam_Ecdh;
@@ -50,6 +50,7 @@ CF_EXTERN_C_BEGIN
 @class ManualAuthResponse_dns_info_redirect_info;
 @class ManualAuthResponse_dns_info_redirect_info_real_host_info;
 @class Msg_RawContent;
+@class SKBuiltinBuffer;
 @class SyncKey_MsgKey;
 @class SyncKey_MsgKey_Key;
 @class Wxid;
@@ -95,7 +96,6 @@ CF_EXTERN_C_BEGIN
 @class oplog_resp_result;
 @class qry_detail_wxhb_resp_TAG1;
 @class receive_wxhb_resp_TAG1;
-@class sKBuiltinBufferT;
 @class send_emoji_req_emoji_info;
 @class send_emoji_req_emoji_info_TAG4;
 @class send_emoji_resp_result;
@@ -795,669 +795,6 @@ typedef GPB_ENUM(contact_info_GroupMemberList_MemberInfo_FieldNumber) {
 @property(nonatomic, readwrite) int32_t tag8;
 
 @property(nonatomic, readwrite) BOOL hasTag8;
-@end
-
-#pragma mark - ManualAuthAccountRequest
-
-typedef GPB_ENUM(ManualAuthAccountRequest_FieldNumber) {
-  ManualAuthAccountRequest_FieldNumber_Aes = 1,
-  ManualAuthAccountRequest_FieldNumber_Ecdh = 2,
-  ManualAuthAccountRequest_FieldNumber_UserName = 3,
-  ManualAuthAccountRequest_FieldNumber_Password1 = 4,
-  ManualAuthAccountRequest_FieldNumber_Password2 = 5,
-};
-
-/**
- * 登录请求--账号信息
- **/
-@interface ManualAuthAccountRequest : GPBMessage
-
-/** 仅用于本次登录请求,后续通讯使用的aeskey根据服务器返回的数据做ECDH生成 */
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthAccountRequest_AesKey *aes;
-/** Test to see if @c aes has been set. */
-@property(nonatomic, readwrite) BOOL hasAes;
-
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthAccountRequest_Ecdh *ecdh;
-/** Test to see if @c ecdh has been set. */
-@property(nonatomic, readwrite) BOOL hasEcdh;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *userName;
-/** Test to see if @c userName has been set. */
-@property(nonatomic, readwrite) BOOL hasUserName;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *password1;
-/** Test to see if @c password1 has been set. */
-@property(nonatomic, readwrite) BOOL hasPassword1;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *password2;
-/** Test to see if @c password2 has been set. */
-@property(nonatomic, readwrite) BOOL hasPassword2;
-
-@end
-
-#pragma mark - ManualAuthAccountRequest_AesKey
-
-typedef GPB_ENUM(ManualAuthAccountRequest_AesKey_FieldNumber) {
-  ManualAuthAccountRequest_AesKey_FieldNumber_Len = 1,
-  ManualAuthAccountRequest_AesKey_FieldNumber_Key = 2,
-};
-
-@interface ManualAuthAccountRequest_AesKey : GPBMessage
-
-@property(nonatomic, readwrite) int32_t len;
-
-@property(nonatomic, readwrite) BOOL hasLen;
-@property(nonatomic, readwrite, copy, null_resettable) NSData *key;
-/** Test to see if @c key has been set. */
-@property(nonatomic, readwrite) BOOL hasKey;
-
-@end
-
-#pragma mark - ManualAuthAccountRequest_Ecdh
-
-typedef GPB_ENUM(ManualAuthAccountRequest_Ecdh_FieldNumber) {
-  ManualAuthAccountRequest_Ecdh_FieldNumber_Nid = 1,
-  ManualAuthAccountRequest_Ecdh_FieldNumber_EcdhKey = 2,
-};
-
-@interface ManualAuthAccountRequest_Ecdh : GPBMessage
-
-/** 椭圆曲线类型 */
-@property(nonatomic, readwrite) int32_t nid;
-
-@property(nonatomic, readwrite) BOOL hasNid;
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthAccountRequest_Ecdh_EcdhKey *ecdhKey;
-/** Test to see if @c ecdhKey has been set. */
-@property(nonatomic, readwrite) BOOL hasEcdhKey;
-
-@end
-
-#pragma mark - ManualAuthAccountRequest_Ecdh_EcdhKey
-
-typedef GPB_ENUM(ManualAuthAccountRequest_Ecdh_EcdhKey_FieldNumber) {
-  ManualAuthAccountRequest_Ecdh_EcdhKey_FieldNumber_Len = 1,
-  ManualAuthAccountRequest_Ecdh_EcdhKey_FieldNumber_Key = 2,
-};
-
-@interface ManualAuthAccountRequest_Ecdh_EcdhKey : GPBMessage
-
-@property(nonatomic, readwrite) int32_t len;
-
-@property(nonatomic, readwrite) BOOL hasLen;
-/** 椭圆曲线client pubkey */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *key;
-/** Test to see if @c key has been set. */
-@property(nonatomic, readwrite) BOOL hasKey;
-
-@end
-
-#pragma mark - ManualAuthDeviceRequest
-
-typedef GPB_ENUM(ManualAuthDeviceRequest_FieldNumber) {
-  ManualAuthDeviceRequest_FieldNumber_Login = 1,
-  ManualAuthDeviceRequest_FieldNumber_Tag2 = 2,
-  ManualAuthDeviceRequest_FieldNumber_Imei = 3,
-  ManualAuthDeviceRequest_FieldNumber_SoftInfoXml = 4,
-  ManualAuthDeviceRequest_FieldNumber_Unknown5 = 5,
-  ManualAuthDeviceRequest_FieldNumber_ClientSeqId = 6,
-  ManualAuthDeviceRequest_FieldNumber_ClientSeqIdSign = 7,
-  ManualAuthDeviceRequest_FieldNumber_LoginDeviceName = 8,
-  ManualAuthDeviceRequest_FieldNumber_DeviceInfoXml = 9,
-  ManualAuthDeviceRequest_FieldNumber_Language = 10,
-  ManualAuthDeviceRequest_FieldNumber_TimeZone = 11,
-  ManualAuthDeviceRequest_FieldNumber_Unknown13 = 13,
-  ManualAuthDeviceRequest_FieldNumber_Unknown14 = 14,
-  ManualAuthDeviceRequest_FieldNumber_DeviceBrand = 15,
-  ManualAuthDeviceRequest_FieldNumber_DeviceModel = 16,
-  ManualAuthDeviceRequest_FieldNumber_OsType = 17,
-  ManualAuthDeviceRequest_FieldNumber_RealCountry = 18,
-  ManualAuthDeviceRequest_FieldNumber_Unknown22 = 22,
-};
-
-/**
- * 登录请求--设备信息
- **/
-@interface ManualAuthDeviceRequest : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) LoginInfo *login;
-/** Test to see if @c login has been set. */
-@property(nonatomic, readwrite) BOOL hasLogin;
-
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthDeviceRequest__Tag2 *tag2;
-/** Test to see if @c tag2 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag2;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *imei;
-/** Test to see if @c imei has been set. */
-@property(nonatomic, readwrite) BOOL hasImei;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *softInfoXml;
-/** Test to see if @c softInfoXml has been set. */
-@property(nonatomic, readwrite) BOOL hasSoftInfoXml;
-
-@property(nonatomic, readwrite) int32_t unknown5;
-
-@property(nonatomic, readwrite) BOOL hasUnknown5;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *clientSeqId;
-/** Test to see if @c clientSeqId has been set. */
-@property(nonatomic, readwrite) BOOL hasClientSeqId;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *clientSeqIdSign;
-/** Test to see if @c clientSeqIdSign has been set. */
-@property(nonatomic, readwrite) BOOL hasClientSeqIdSign;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *loginDeviceName;
-/** Test to see if @c loginDeviceName has been set. */
-@property(nonatomic, readwrite) BOOL hasLoginDeviceName;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceInfoXml;
-/** Test to see if @c deviceInfoXml has been set. */
-@property(nonatomic, readwrite) BOOL hasDeviceInfoXml;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *language;
-/** Test to see if @c language has been set. */
-@property(nonatomic, readwrite) BOOL hasLanguage;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *timeZone;
-/** Test to see if @c timeZone has been set. */
-@property(nonatomic, readwrite) BOOL hasTimeZone;
-
-@property(nonatomic, readwrite) int32_t unknown13;
-
-@property(nonatomic, readwrite) BOOL hasUnknown13;
-@property(nonatomic, readwrite) int32_t unknown14;
-
-@property(nonatomic, readwrite) BOOL hasUnknown14;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceBrand;
-/** Test to see if @c deviceBrand has been set. */
-@property(nonatomic, readwrite) BOOL hasDeviceBrand;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceModel;
-/** Test to see if @c deviceModel has been set. */
-@property(nonatomic, readwrite) BOOL hasDeviceModel;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *osType;
-/** Test to see if @c osType has been set. */
-@property(nonatomic, readwrite) BOOL hasOsType;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *realCountry;
-/** Test to see if @c realCountry has been set. */
-@property(nonatomic, readwrite) BOOL hasRealCountry;
-
-@property(nonatomic, readwrite) int32_t unknown22;
-
-@property(nonatomic, readwrite) BOOL hasUnknown22;
-@end
-
-#pragma mark - ManualAuthDeviceRequest__Tag2
-
-typedef GPB_ENUM(ManualAuthDeviceRequest__Tag2_FieldNumber) {
-  ManualAuthDeviceRequest__Tag2_FieldNumber_Tag1 = 1,
-  ManualAuthDeviceRequest__Tag2_FieldNumber_Tag2 = 2,
-  ManualAuthDeviceRequest__Tag2_FieldNumber_Tag3 = 3,
-  ManualAuthDeviceRequest__Tag2_FieldNumber_Tag4 = 4,
-  ManualAuthDeviceRequest__Tag2_FieldNumber_Tag5 = 5,
-  ManualAuthDeviceRequest__Tag2_FieldNumber_Tag6 = 6,
-};
-
-@interface ManualAuthDeviceRequest__Tag2 : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) mmStr *tag1;
-/** Test to see if @c tag1 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag1;
-
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthDeviceRequest__Tag2___Tag2 *tag2;
-/** Test to see if @c tag2 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag2;
-
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthDeviceRequest__Tag2_TAG3 *tag3;
-/** Test to see if @c tag3 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag3;
-
-@property(nonatomic, readwrite, strong, null_resettable) mmStr *tag4;
-/** Test to see if @c tag4 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag4;
-
-@property(nonatomic, readwrite, strong, null_resettable) mmStr *tag5;
-/** Test to see if @c tag5 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag5;
-
-@property(nonatomic, readwrite) int32_t tag6;
-
-@property(nonatomic, readwrite) BOOL hasTag6;
-@end
-
-#pragma mark - ManualAuthDeviceRequest__Tag2___Tag2
-
-typedef GPB_ENUM(ManualAuthDeviceRequest__Tag2___Tag2_FieldNumber) {
-  ManualAuthDeviceRequest__Tag2___Tag2_FieldNumber_Tag1 = 1,
-  ManualAuthDeviceRequest__Tag2___Tag2_FieldNumber_Tag2 = 2,
-  ManualAuthDeviceRequest__Tag2___Tag2_FieldNumber_Tag3 = 3,
-  ManualAuthDeviceRequest__Tag2___Tag2_FieldNumber_Tag4 = 4,
-};
-
-@interface ManualAuthDeviceRequest__Tag2___Tag2 : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag1;
-/** Test to see if @c tag1 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag1;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag2;
-/** Test to see if @c tag2 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag2;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag3;
-/** Test to see if @c tag3 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag3;
-
-@property(nonatomic, readwrite, strong, null_resettable) mmStr *tag4;
-/** Test to see if @c tag4 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag4;
-
-@end
-
-#pragma mark - ManualAuthDeviceRequest__Tag2_TAG3
-
-typedef GPB_ENUM(ManualAuthDeviceRequest__Tag2_TAG3_FieldNumber) {
-  ManualAuthDeviceRequest__Tag2_TAG3_FieldNumber_Tag1 = 1,
-  ManualAuthDeviceRequest__Tag2_TAG3_FieldNumber_Tag2 = 2,
-};
-
-@interface ManualAuthDeviceRequest__Tag2_TAG3 : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag1;
-/** Test to see if @c tag1 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag1;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag2;
-/** Test to see if @c tag2 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag2;
-
-@end
-
-#pragma mark - ManualAuthResponse
-
-typedef GPB_ENUM(ManualAuthResponse_FieldNumber) {
-  ManualAuthResponse_FieldNumber_Result = 1,
-  ManualAuthResponse_FieldNumber_UnifyFlag = 2,
-  ManualAuthResponse_FieldNumber_AuthParam = 3,
-  ManualAuthResponse_FieldNumber_AccountInfo = 4,
-  ManualAuthResponse_FieldNumber_Dns = 5,
-};
-
-/**
- * 登录结果
- **/
-@interface ManualAuthResponse : GPBMessage
-
-/** 登录结果 */
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthResult *result;
-/** Test to see if @c result has been set. */
-@property(nonatomic, readwrite) BOOL hasResult;
-
-@property(nonatomic, readwrite) int32_t unifyFlag;
-
-@property(nonatomic, readwrite) BOOL hasUnifyFlag;
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthParam *authParam;
-/** Test to see if @c authParam has been set. */
-@property(nonatomic, readwrite) BOOL hasAuthParam;
-
-/** 登录成功后返回账号信息 */
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AccountInfo *accountInfo;
-/** Test to see if @c accountInfo has been set. */
-@property(nonatomic, readwrite) BOOL hasAccountInfo;
-
-/** dns信息 */
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_dns_info *dns;
-/** Test to see if @c dns has been set. */
-@property(nonatomic, readwrite) BOOL hasDns;
-
-@end
-
-#pragma mark - ManualAuthResponse_AuthResult
-
-typedef GPB_ENUM(ManualAuthResponse_AuthResult_FieldNumber) {
-  ManualAuthResponse_AuthResult_FieldNumber_Code = 1,
-  ManualAuthResponse_AuthResult_FieldNumber_ErrMsg = 2,
-};
-
-@interface ManualAuthResponse_AuthResult : GPBMessage
-
-/** 登录错误码 */
-@property(nonatomic, readwrite) int32_t code;
-
-@property(nonatomic, readwrite) BOOL hasCode;
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthResult_ErrMsg *errMsg;
-/** Test to see if @c errMsg has been set. */
-@property(nonatomic, readwrite) BOOL hasErrMsg;
-
-@end
-
-#pragma mark - ManualAuthResponse_AuthResult_ErrMsg
-
-typedef GPB_ENUM(ManualAuthResponse_AuthResult_ErrMsg_FieldNumber) {
-  ManualAuthResponse_AuthResult_ErrMsg_FieldNumber_Msg = 1,
-};
-
-@interface ManualAuthResponse_AuthResult_ErrMsg : GPBMessage
-
-/** 错误信息 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *msg;
-/** Test to see if @c msg has been set. */
-@property(nonatomic, readwrite) BOOL hasMsg;
-
-@end
-
-#pragma mark - ManualAuthResponse_AuthParam
-
-typedef GPB_ENUM(ManualAuthResponse_AuthParam_FieldNumber) {
-  ManualAuthResponse_AuthParam_FieldNumber_Uin = 1,
-  ManualAuthResponse_AuthParam_FieldNumber_Ecdh = 2,
-  ManualAuthResponse_AuthParam_FieldNumber_Session = 3,
-  ManualAuthResponse_AuthParam_FieldNumber_SmsTicket = 16,
-  ManualAuthResponse_AuthParam_FieldNumber_BindMailLoginURL = 20,
-  ManualAuthResponse_AuthParam_FieldNumber_ServerTime = 22,
-};
-
-@interface ManualAuthResponse_AuthParam : GPBMessage
-
-@property(nonatomic, readwrite) int32_t uin;
-
-@property(nonatomic, readwrite) BOOL hasUin;
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthParam_Ecdh *ecdh;
-/** Test to see if @c ecdh has been set. */
-@property(nonatomic, readwrite) BOOL hasEcdh;
-
-/** 加密的sessionKey 需要使用ECDH握手后的密钥做AES解密得到最终长16字节的aeskey */
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthParam_SessionKey *session;
-/** Test to see if @c session has been set. */
-@property(nonatomic, readwrite) BOOL hasSession;
-
-/** 需要短信授权时的ticket,用于后续请求验证码以及发送验证码 */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *smsTicket;
-/** Test to see if @c smsTicket has been set. */
-@property(nonatomic, readwrite) BOOL hasSmsTicket;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *bindMailLoginURL;
-/** Test to see if @c bindMailLoginURL has been set. */
-@property(nonatomic, readwrite) BOOL hasBindMailLoginURL;
-
-@property(nonatomic, readwrite) int32_t serverTime;
-
-@property(nonatomic, readwrite) BOOL hasServerTime;
-@end
-
-#pragma mark - ManualAuthResponse_AuthParam_Ecdh
-
-typedef GPB_ENUM(ManualAuthResponse_AuthParam_Ecdh_FieldNumber) {
-  ManualAuthResponse_AuthParam_Ecdh_FieldNumber_Nid = 1,
-  ManualAuthResponse_AuthParam_Ecdh_FieldNumber_EcdhKey = 2,
-};
-
-@interface ManualAuthResponse_AuthParam_Ecdh : GPBMessage
-
-@property(nonatomic, readwrite) int32_t nid;
-
-@property(nonatomic, readwrite) BOOL hasNid;
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthParam_Ecdh_EcdhKey *ecdhKey;
-/** Test to see if @c ecdhKey has been set. */
-@property(nonatomic, readwrite) BOOL hasEcdhKey;
-
-@end
-
-#pragma mark - ManualAuthResponse_AuthParam_Ecdh_EcdhKey
-
-typedef GPB_ENUM(ManualAuthResponse_AuthParam_Ecdh_EcdhKey_FieldNumber) {
-  ManualAuthResponse_AuthParam_Ecdh_EcdhKey_FieldNumber_Len = 1,
-  ManualAuthResponse_AuthParam_Ecdh_EcdhKey_FieldNumber_Key = 2,
-};
-
-@interface ManualAuthResponse_AuthParam_Ecdh_EcdhKey : GPBMessage
-
-@property(nonatomic, readwrite) int32_t len;
-
-@property(nonatomic, readwrite) BOOL hasLen;
-/** 椭圆曲线server pubkey */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *key;
-/** Test to see if @c key has been set. */
-@property(nonatomic, readwrite) BOOL hasKey;
-
-@end
-
-#pragma mark - ManualAuthResponse_AuthParam_SessionKey
-
-typedef GPB_ENUM(ManualAuthResponse_AuthParam_SessionKey_FieldNumber) {
-  ManualAuthResponse_AuthParam_SessionKey_FieldNumber_Len = 1,
-  ManualAuthResponse_AuthParam_SessionKey_FieldNumber_Key = 2,
-};
-
-@interface ManualAuthResponse_AuthParam_SessionKey : GPBMessage
-
-@property(nonatomic, readwrite) int32_t len;
-
-@property(nonatomic, readwrite) BOOL hasLen;
-@property(nonatomic, readwrite, copy, null_resettable) NSData *key;
-/** Test to see if @c key has been set. */
-@property(nonatomic, readwrite) BOOL hasKey;
-
-@end
-
-#pragma mark - ManualAuthResponse_AccountInfo
-
-typedef GPB_ENUM(ManualAuthResponse_AccountInfo_FieldNumber) {
-  ManualAuthResponse_AccountInfo_FieldNumber_WxId = 1,
-  ManualAuthResponse_AccountInfo_FieldNumber_NickName = 2,
-  ManualAuthResponse_AccountInfo_FieldNumber_Tag3 = 3,
-  ManualAuthResponse_AccountInfo_FieldNumber_BindMail = 4,
-  ManualAuthResponse_AccountInfo_FieldNumber_BindMobile = 5,
-  ManualAuthResponse_AccountInfo_FieldNumber_Alias = 6,
-  ManualAuthResponse_AccountInfo_FieldNumber_Tag7 = 7,
-  ManualAuthResponse_AccountInfo_FieldNumber_Status = 8,
-  ManualAuthResponse_AccountInfo_FieldNumber_PluginFlag = 9,
-  ManualAuthResponse_AccountInfo_FieldNumber_RegisterType = 10,
-  ManualAuthResponse_AccountInfo_FieldNumber_Tag11 = 11,
-  ManualAuthResponse_AccountInfo_FieldNumber_SafeDevice = 12,
-  ManualAuthResponse_AccountInfo_FieldNumber_OfficialNamePinyin = 13,
-  ManualAuthResponse_AccountInfo_FieldNumber_OfficialNameZh = 14,
-  ManualAuthResponse_AccountInfo_FieldNumber_Tag15 = 15,
-  ManualAuthResponse_AccountInfo_FieldNumber_FsURL = 16,
-};
-
-@interface ManualAuthResponse_AccountInfo : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *wxId;
-/** Test to see if @c wxId has been set. */
-@property(nonatomic, readwrite) BOOL hasWxId;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *nickName;
-/** Test to see if @c nickName has been set. */
-@property(nonatomic, readwrite) BOOL hasNickName;
-
-@property(nonatomic, readwrite) int32_t tag3;
-
-@property(nonatomic, readwrite) BOOL hasTag3;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *bindMail;
-/** Test to see if @c bindMail has been set. */
-@property(nonatomic, readwrite) BOOL hasBindMail;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *bindMobile;
-/** Test to see if @c bindMobile has been set. */
-@property(nonatomic, readwrite) BOOL hasBindMobile;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *alias;
-/** Test to see if @c alias has been set. */
-@property(nonatomic, readwrite) BOOL hasAlias;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag7;
-/** Test to see if @c tag7 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag7;
-
-@property(nonatomic, readwrite) int32_t status;
-
-@property(nonatomic, readwrite) BOOL hasStatus;
-@property(nonatomic, readwrite) int32_t pluginFlag;
-
-@property(nonatomic, readwrite) BOOL hasPluginFlag;
-@property(nonatomic, readwrite) int32_t registerType;
-
-@property(nonatomic, readwrite) BOOL hasRegisterType;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag11;
-/** Test to see if @c tag11 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag11;
-
-@property(nonatomic, readwrite) int32_t safeDevice;
-
-@property(nonatomic, readwrite) BOOL hasSafeDevice;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *officialNamePinyin;
-/** Test to see if @c officialNamePinyin has been set. */
-@property(nonatomic, readwrite) BOOL hasOfficialNamePinyin;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *officialNameZh;
-/** Test to see if @c officialNameZh has been set. */
-@property(nonatomic, readwrite) BOOL hasOfficialNameZh;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag15;
-/** Test to see if @c tag15 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag15;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *fsURL;
-/** Test to see if @c fsURL has been set. */
-@property(nonatomic, readwrite) BOOL hasFsURL;
-
-@end
-
-#pragma mark - ManualAuthResponse_dns_info
-
-typedef GPB_ENUM(ManualAuthResponse_dns_info_FieldNumber) {
-  ManualAuthResponse_dns_info_FieldNumber_Redirect = 1,
-  ManualAuthResponse_dns_info_FieldNumber_Ip = 3,
-};
-
-@interface ManualAuthResponse_dns_info : GPBMessage
-
-/** 域名重定向信息 */
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_dns_info_redirect_info *redirect;
-/** Test to see if @c redirect has been set. */
-@property(nonatomic, readwrite) BOOL hasRedirect;
-
-/** 长短链接ip */
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_dns_info_ip_info *ip;
-/** Test to see if @c ip has been set. */
-@property(nonatomic, readwrite) BOOL hasIp;
-
-@end
-
-#pragma mark - ManualAuthResponse_dns_info_redirect_info
-
-typedef GPB_ENUM(ManualAuthResponse_dns_info_redirect_info_FieldNumber) {
-  ManualAuthResponse_dns_info_redirect_info_FieldNumber_Cnt = 1,
-  ManualAuthResponse_dns_info_redirect_info_FieldNumber_RealHostArray = 2,
-};
-
-@interface ManualAuthResponse_dns_info_redirect_info : GPBMessage
-
-/** host cnt */
-@property(nonatomic, readwrite) int32_t cnt;
-
-@property(nonatomic, readwrite) BOOL hasCnt;
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ManualAuthResponse_dns_info_redirect_info_real_host_info*> *realHostArray;
-/** The number of items in @c realHostArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger realHostArray_Count;
-
-@end
-
-#pragma mark - ManualAuthResponse_dns_info_redirect_info_real_host_info
-
-typedef GPB_ENUM(ManualAuthResponse_dns_info_redirect_info_real_host_info_FieldNumber) {
-  ManualAuthResponse_dns_info_redirect_info_real_host_info_FieldNumber_Host = 1,
-  ManualAuthResponse_dns_info_redirect_info_real_host_info_FieldNumber_Redirect = 2,
-};
-
-@interface ManualAuthResponse_dns_info_redirect_info_real_host_info : GPBMessage
-
-/** host */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *host;
-/** Test to see if @c host has been set. */
-@property(nonatomic, readwrite) BOOL hasHost;
-
-/** redirect_host */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *redirect;
-/** Test to see if @c redirect has been set. */
-@property(nonatomic, readwrite) BOOL hasRedirect;
-
-@end
-
-#pragma mark - ManualAuthResponse_dns_info_ip_info
-
-typedef GPB_ENUM(ManualAuthResponse_dns_info_ip_info_FieldNumber) {
-  ManualAuthResponse_dns_info_ip_info_FieldNumber_LonglinkIpCnt = 1,
-  ManualAuthResponse_dns_info_ip_info_FieldNumber_ShortlinkIpCnt = 2,
-  ManualAuthResponse_dns_info_ip_info_FieldNumber_LonglinkArray = 3,
-  ManualAuthResponse_dns_info_ip_info_FieldNumber_ShortlinkArray = 4,
-};
-
-@interface ManualAuthResponse_dns_info_ip_info : GPBMessage
-
-/** 长链接ip池数量 */
-@property(nonatomic, readwrite) int32_t longlinkIpCnt;
-
-@property(nonatomic, readwrite) BOOL hasLonglinkIpCnt;
-/** 短链接ip池数量 */
-@property(nonatomic, readwrite) int32_t shortlinkIpCnt;
-
-@property(nonatomic, readwrite) BOOL hasShortlinkIpCnt;
-/** 长链接ip池 */
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ManualAuthResponse_dns_info_ip_info_longlink_ip_info*> *longlinkArray;
-/** The number of items in @c longlinkArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger longlinkArray_Count;
-
-/** 短链接ip池 */
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ManualAuthResponse_dns_info_ip_info_shortlink_ip_info*> *shortlinkArray;
-/** The number of items in @c shortlinkArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger shortlinkArray_Count;
-
-@end
-
-#pragma mark - ManualAuthResponse_dns_info_ip_info_longlink_ip_info
-
-typedef GPB_ENUM(ManualAuthResponse_dns_info_ip_info_longlink_ip_info_FieldNumber) {
-  ManualAuthResponse_dns_info_ip_info_longlink_ip_info_FieldNumber_Ip = 3,
-  ManualAuthResponse_dns_info_ip_info_longlink_ip_info_FieldNumber_Host = 4,
-};
-
-@interface ManualAuthResponse_dns_info_ip_info_longlink_ip_info : GPBMessage
-
-/** ip */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *ip;
-/** Test to see if @c ip has been set. */
-@property(nonatomic, readwrite) BOOL hasIp;
-
-/** host */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *host;
-/** Test to see if @c host has been set. */
-@property(nonatomic, readwrite) BOOL hasHost;
-
-@end
-
-#pragma mark - ManualAuthResponse_dns_info_ip_info_shortlink_ip_info
-
-typedef GPB_ENUM(ManualAuthResponse_dns_info_ip_info_shortlink_ip_info_FieldNumber) {
-  ManualAuthResponse_dns_info_ip_info_shortlink_ip_info_FieldNumber_Ip = 3,
-  ManualAuthResponse_dns_info_ip_info_shortlink_ip_info_FieldNumber_Host = 4,
-};
-
-@interface ManualAuthResponse_dns_info_ip_info_shortlink_ip_info : GPBMessage
-
-/** ip */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *ip;
-/** Test to see if @c ip has been set. */
-@property(nonatomic, readwrite) BOOL hasIp;
-
-/** host */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *host;
-/** Test to see if @c host has been set. */
-@property(nonatomic, readwrite) BOOL hasHost;
-
 @end
 
 #pragma mark - NewInitRequest
@@ -3421,18 +2758,18 @@ typedef GPB_ENUM(revoke_msg_resp_FieldNumber) {
 
 @end
 
-#pragma mark - sKBuiltinBufferT
+#pragma mark - SKBuiltinBuffer
 
-typedef GPB_ENUM(sKBuiltinBufferT_FieldNumber) {
-  sKBuiltinBufferT_FieldNumber_Ilen = 1,
-  sKBuiltinBufferT_FieldNumber_Buffer = 2,
+typedef GPB_ENUM(SKBuiltinBuffer_FieldNumber) {
+  SKBuiltinBuffer_FieldNumber_ILen = 1,
+  SKBuiltinBuffer_FieldNumber_Buffer = 2,
 };
 
-@interface sKBuiltinBufferT : GPBMessage
+@interface SKBuiltinBuffer : GPBMessage
 
-@property(nonatomic, readwrite) int32_t ilen;
+@property(nonatomic, readwrite) int32_t iLen;
 
-@property(nonatomic, readwrite) BOOL hasIlen;
+@property(nonatomic, readwrite) BOOL hasILen;
 @property(nonatomic, readwrite, copy, null_resettable) NSData *buffer;
 /** Test to see if @c buffer has been set. */
 @property(nonatomic, readwrite) BOOL hasBuffer;
@@ -3499,7 +2836,7 @@ typedef GPB_ENUM(GetLoginQRCodeRequest_FieldNumber) {
 /** Test to see if @c base has been set. */
 @property(nonatomic, readwrite) BOOL hasBase;
 
-@property(nonatomic, readwrite, strong, null_resettable) sKBuiltinBufferT *randomEncryKey;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *randomEncryKey;
 /** Test to see if @c randomEncryKey has been set. */
 @property(nonatomic, readwrite) BOOL hasRandomEncryKey;
 
@@ -3546,7 +2883,7 @@ typedef GPB_ENUM(GetLoginQRCodeResponse_FieldNumber) {
 /** Test to see if @c base has been set. */
 @property(nonatomic, readwrite) BOOL hasBase;
 
-@property(nonatomic, readwrite, strong, null_resettable) sKBuiltinBufferT *qrcode;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *qrcode;
 /** Test to see if @c qrcode has been set. */
 @property(nonatomic, readwrite) BOOL hasQrcode;
 
@@ -3557,7 +2894,7 @@ typedef GPB_ENUM(GetLoginQRCodeResponse_FieldNumber) {
 @property(nonatomic, readwrite) int32_t checkTime;
 
 @property(nonatomic, readwrite) BOOL hasCheckTime;
-@property(nonatomic, readwrite, strong, null_resettable) sKBuiltinBufferT *notifyKey;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *notifyKey;
 /** Test to see if @c notifyKey has been set. */
 @property(nonatomic, readwrite) BOOL hasNotifyKey;
 
@@ -3568,7 +2905,7 @@ typedef GPB_ENUM(GetLoginQRCodeResponse_FieldNumber) {
 /** Test to see if @c blueToothBroadCastUuid has been set. */
 @property(nonatomic, readwrite) BOOL hasBlueToothBroadCastUuid;
 
-@property(nonatomic, readwrite, strong, null_resettable) sKBuiltinBufferT *blueToothBroadCastContent;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *blueToothBroadCastContent;
 /** Test to see if @c blueToothBroadCastContent has been set. */
 @property(nonatomic, readwrite) BOOL hasBlueToothBroadCastContent;
 
@@ -3593,7 +2930,7 @@ typedef GPB_ENUM(CheckLoginQRCodeRequest_FieldNumber) {
 /** Test to see if @c base has been set. */
 @property(nonatomic, readwrite) BOOL hasBase;
 
-@property(nonatomic, readwrite, strong, null_resettable) sKBuiltinBufferT *randomEncryKey;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *randomEncryKey;
 /** Test to see if @c randomEncryKey has been set. */
 @property(nonatomic, readwrite) BOOL hasRandomEncryKey;
 
@@ -3638,7 +2975,7 @@ typedef GPB_ENUM(CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg_FieldNumber) {
 @interface CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg : GPBMessage
 
 /** 是bytes,需notifykey不解压aes解密一次,解密后再序列化成下面的对象 */
-@property(nonatomic, readwrite, strong, null_resettable) sKBuiltinBufferT *notifyData;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *notifyData;
 /** Test to see if @c notifyData has been set. */
 @property(nonatomic, readwrite) BOOL hasNotifyData;
 
@@ -3699,6 +3036,636 @@ typedef GPB_ENUM(NotifyMsg_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *devices;
 /** Test to see if @c devices has been set. */
 @property(nonatomic, readwrite) BOOL hasDevices;
+
+@end
+
+#pragma mark - ManualAuthAccountRequest
+
+typedef GPB_ENUM(ManualAuthAccountRequest_FieldNumber) {
+  ManualAuthAccountRequest_FieldNumber_Aes = 1,
+  ManualAuthAccountRequest_FieldNumber_Ecdh = 2,
+  ManualAuthAccountRequest_FieldNumber_UserName = 3,
+  ManualAuthAccountRequest_FieldNumber_Pwd = 4,
+  ManualAuthAccountRequest_FieldNumber_Pwd2 = 5,
+};
+
+/**
+ * 登录请求--账号信息
+ **/
+@interface ManualAuthAccountRequest : GPBMessage
+
+/** 仅用于本次登录请求,后续通讯使用的aeskey根据服务器返回的数据做ECDH生成 */
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthAccountRequest_AesKey *aes;
+/** Test to see if @c aes has been set. */
+@property(nonatomic, readwrite) BOOL hasAes;
+
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthAccountRequest_Ecdh *ecdh;
+/** Test to see if @c ecdh has been set. */
+@property(nonatomic, readwrite) BOOL hasEcdh;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *userName;
+/** Test to see if @c userName has been set. */
+@property(nonatomic, readwrite) BOOL hasUserName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *pwd;
+/** Test to see if @c pwd has been set. */
+@property(nonatomic, readwrite) BOOL hasPwd;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *pwd2;
+/** Test to see if @c pwd2 has been set. */
+@property(nonatomic, readwrite) BOOL hasPwd2;
+
+@end
+
+#pragma mark - ManualAuthAccountRequest_AesKey
+
+typedef GPB_ENUM(ManualAuthAccountRequest_AesKey_FieldNumber) {
+  ManualAuthAccountRequest_AesKey_FieldNumber_Len = 1,
+  ManualAuthAccountRequest_AesKey_FieldNumber_Key = 2,
+};
+
+@interface ManualAuthAccountRequest_AesKey : GPBMessage
+
+@property(nonatomic, readwrite) int32_t len;
+
+@property(nonatomic, readwrite) BOOL hasLen;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *key;
+/** Test to see if @c key has been set. */
+@property(nonatomic, readwrite) BOOL hasKey;
+
+@end
+
+#pragma mark - ManualAuthAccountRequest_Ecdh
+
+typedef GPB_ENUM(ManualAuthAccountRequest_Ecdh_FieldNumber) {
+  ManualAuthAccountRequest_Ecdh_FieldNumber_Nid = 1,
+  ManualAuthAccountRequest_Ecdh_FieldNumber_EcdhKey = 2,
+};
+
+@interface ManualAuthAccountRequest_Ecdh : GPBMessage
+
+/** 椭圆曲线类型 */
+@property(nonatomic, readwrite) int32_t nid;
+
+@property(nonatomic, readwrite) BOOL hasNid;
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthAccountRequest_Ecdh_EcdhKey *ecdhKey;
+/** Test to see if @c ecdhKey has been set. */
+@property(nonatomic, readwrite) BOOL hasEcdhKey;
+
+@end
+
+#pragma mark - ManualAuthAccountRequest_Ecdh_EcdhKey
+
+typedef GPB_ENUM(ManualAuthAccountRequest_Ecdh_EcdhKey_FieldNumber) {
+  ManualAuthAccountRequest_Ecdh_EcdhKey_FieldNumber_Len = 1,
+  ManualAuthAccountRequest_Ecdh_EcdhKey_FieldNumber_Key = 2,
+};
+
+@interface ManualAuthAccountRequest_Ecdh_EcdhKey : GPBMessage
+
+@property(nonatomic, readwrite) int32_t len;
+
+@property(nonatomic, readwrite) BOOL hasLen;
+/** 椭圆曲线client pubkey */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *key;
+/** Test to see if @c key has been set. */
+@property(nonatomic, readwrite) BOOL hasKey;
+
+@end
+
+#pragma mark - ManualAuthDeviceRequest
+
+typedef GPB_ENUM(ManualAuthDeviceRequest_FieldNumber) {
+  ManualAuthDeviceRequest_FieldNumber_BaseRequest = 1,
+  ManualAuthDeviceRequest_FieldNumber_BaseReqInfo = 2,
+  ManualAuthDeviceRequest_FieldNumber_Imei = 3,
+  ManualAuthDeviceRequest_FieldNumber_SoftType = 4,
+  ManualAuthDeviceRequest_FieldNumber_BuiltinIpseq = 5,
+  ManualAuthDeviceRequest_FieldNumber_ClientSeqId = 6,
+  ManualAuthDeviceRequest_FieldNumber_DeviceName = 8,
+  ManualAuthDeviceRequest_FieldNumber_DeviceType = 9,
+  ManualAuthDeviceRequest_FieldNumber_Language = 10,
+  ManualAuthDeviceRequest_FieldNumber_TimeZone = 11,
+  ManualAuthDeviceRequest_FieldNumber_Channel = 13,
+  ManualAuthDeviceRequest_FieldNumber_TimeStamp = 14,
+  ManualAuthDeviceRequest_FieldNumber_DeviceBrand = 15,
+  ManualAuthDeviceRequest_FieldNumber_RealCountry = 18,
+  ManualAuthDeviceRequest_FieldNumber_BundleId = 19,
+  ManualAuthDeviceRequest_FieldNumber_AdSource = 20,
+  ManualAuthDeviceRequest_FieldNumber_IphoneVer = 21,
+  ManualAuthDeviceRequest_FieldNumber_InputType = 22,
+  ManualAuthDeviceRequest_FieldNumber_ClientCheckData = 23,
+};
+
+/**
+ * 登录请求--设备信息
+ **/
+@interface ManualAuthDeviceRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthDeviceRequest_BaseReqInfo *baseReqInfo;
+/** Test to see if @c baseReqInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseReqInfo;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *imei;
+/** Test to see if @c imei has been set. */
+@property(nonatomic, readwrite) BOOL hasImei;
+
+/** iPad: <softtype><k3>11.4.1</k3><k9>iPad</k9></softtype> ，iMac不需要此字段 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *softType;
+/** Test to see if @c softType has been set. */
+@property(nonatomic, readwrite) BOOL hasSoftType;
+
+/** 0 */
+@property(nonatomic, readwrite) int32_t builtinIpseq;
+
+@property(nonatomic, readwrite) BOOL hasBuiltinIpseq;
+/** iPad: dd09ae95fe48164451be954cd1871cb7-1537165222, iMac: "" */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *clientSeqId;
+/** Test to see if @c clientSeqId has been set. */
+@property(nonatomic, readwrite) BOOL hasClientSeqId;
+
+/** iPad:ccc iPad, iMac: ray的iMac */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceName;
+/** Test to see if @c deviceName has been set. */
+@property(nonatomic, readwrite) BOOL hasDeviceName;
+
+/** iPad iMac18,2 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceType;
+/** Test to see if @c deviceType has been set. */
+@property(nonatomic, readwrite) BOOL hasDeviceType;
+
+/** zh_CN */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *language;
+/** Test to see if @c language has been set. */
+@property(nonatomic, readwrite) BOOL hasLanguage;
+
+/** 8.00 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *timeZone;
+/** Test to see if @c timeZone has been set. */
+@property(nonatomic, readwrite) BOOL hasTimeZone;
+
+/** iPad:3d  iMac:0 */
+@property(nonatomic, readwrite) int32_t channel;
+
+@property(nonatomic, readwrite) BOOL hasChannel;
+/** 1537178341 */
+@property(nonatomic, readwrite) int32_t timeStamp;
+
+@property(nonatomic, readwrite) BOOL hasTimeStamp;
+/** Apple */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceBrand;
+/** Test to see if @c deviceBrand has been set. */
+@property(nonatomic, readwrite) BOOL hasDeviceBrand;
+
+/** CN */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *realCountry;
+/** Test to see if @c realCountry has been set. */
+@property(nonatomic, readwrite) BOOL hasRealCountry;
+
+/** iPad:com.tencent.xin , iMac:com.tencent.xinWeChat */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *bundleId;
+/** Test to see if @c bundleId has been set. */
+@property(nonatomic, readwrite) BOOL hasBundleId;
+
+/** iPad:"AAA7AE28-7620-431D-8B4C-7FB4F67AA45E", iMad: "" */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *adSource;
+/** Test to see if @c adSource has been set. */
+@property(nonatomic, readwrite) BOOL hasAdSource;
+
+/** iPad:iPad4,4 , iMac:iMac18,2 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *iphoneVer;
+/** Test to see if @c iphoneVer has been set. */
+@property(nonatomic, readwrite) BOOL hasIphoneVer;
+
+/** 2 */
+@property(nonatomic, readwrite) int32_t inputType;
+
+@property(nonatomic, readwrite) BOOL hasInputType;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *clientCheckData;
+/** Test to see if @c clientCheckData has been set. */
+@property(nonatomic, readwrite) BOOL hasClientCheckData;
+
+@end
+
+#pragma mark - ManualAuthDeviceRequest_BaseReqInfo
+
+typedef GPB_ENUM(ManualAuthDeviceRequest_BaseReqInfo_FieldNumber) {
+  ManualAuthDeviceRequest_BaseReqInfo_FieldNumber_AuthReqFlag = 7,
+};
+
+@interface ManualAuthDeviceRequest_BaseReqInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *authReqFlag;
+/** Test to see if @c authReqFlag has been set. */
+@property(nonatomic, readwrite) BOOL hasAuthReqFlag;
+
+@end
+
+#pragma mark - ManualAuthRequest
+
+typedef GPB_ENUM(ManualAuthRequest_FieldNumber) {
+  ManualAuthRequest_FieldNumber_RsaReqData = 1,
+  ManualAuthRequest_FieldNumber_AesReqData = 2,
+};
+
+@interface ManualAuthRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthAccountRequest *rsaReqData;
+/** Test to see if @c rsaReqData has been set. */
+@property(nonatomic, readwrite) BOOL hasRsaReqData;
+
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthDeviceRequest *aesReqData;
+/** Test to see if @c aesReqData has been set. */
+@property(nonatomic, readwrite) BOOL hasAesReqData;
+
+@end
+
+#pragma mark - ManualAuthResponse
+
+typedef GPB_ENUM(ManualAuthResponse_FieldNumber) {
+  ManualAuthResponse_FieldNumber_Result = 1,
+  ManualAuthResponse_FieldNumber_UnifyFlag = 2,
+  ManualAuthResponse_FieldNumber_AuthParam = 3,
+  ManualAuthResponse_FieldNumber_AccountInfo = 4,
+  ManualAuthResponse_FieldNumber_Dns = 5,
+};
+
+/**
+ * 登录结果
+ **/
+@interface ManualAuthResponse : GPBMessage
+
+/** 登录结果 */
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthResult *result;
+/** Test to see if @c result has been set. */
+@property(nonatomic, readwrite) BOOL hasResult;
+
+@property(nonatomic, readwrite) int32_t unifyFlag;
+
+@property(nonatomic, readwrite) BOOL hasUnifyFlag;
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthParam *authParam;
+/** Test to see if @c authParam has been set. */
+@property(nonatomic, readwrite) BOOL hasAuthParam;
+
+/** 登录成功后返回账号信息 */
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AccountInfo *accountInfo;
+/** Test to see if @c accountInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasAccountInfo;
+
+/** dns信息 */
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_dns_info *dns;
+/** Test to see if @c dns has been set. */
+@property(nonatomic, readwrite) BOOL hasDns;
+
+@end
+
+#pragma mark - ManualAuthResponse_AuthResult
+
+typedef GPB_ENUM(ManualAuthResponse_AuthResult_FieldNumber) {
+  ManualAuthResponse_AuthResult_FieldNumber_Code = 1,
+  ManualAuthResponse_AuthResult_FieldNumber_ErrMsg = 2,
+};
+
+@interface ManualAuthResponse_AuthResult : GPBMessage
+
+/** 登录错误码 */
+@property(nonatomic, readwrite) int32_t code;
+
+@property(nonatomic, readwrite) BOOL hasCode;
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthResult_ErrMsg *errMsg;
+/** Test to see if @c errMsg has been set. */
+@property(nonatomic, readwrite) BOOL hasErrMsg;
+
+@end
+
+#pragma mark - ManualAuthResponse_AuthResult_ErrMsg
+
+typedef GPB_ENUM(ManualAuthResponse_AuthResult_ErrMsg_FieldNumber) {
+  ManualAuthResponse_AuthResult_ErrMsg_FieldNumber_Msg = 1,
+};
+
+@interface ManualAuthResponse_AuthResult_ErrMsg : GPBMessage
+
+/** 错误信息 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *msg;
+/** Test to see if @c msg has been set. */
+@property(nonatomic, readwrite) BOOL hasMsg;
+
+@end
+
+#pragma mark - ManualAuthResponse_AuthParam
+
+typedef GPB_ENUM(ManualAuthResponse_AuthParam_FieldNumber) {
+  ManualAuthResponse_AuthParam_FieldNumber_Uin = 1,
+  ManualAuthResponse_AuthParam_FieldNumber_Ecdh = 2,
+  ManualAuthResponse_AuthParam_FieldNumber_Session = 3,
+  ManualAuthResponse_AuthParam_FieldNumber_SmsTicket = 16,
+  ManualAuthResponse_AuthParam_FieldNumber_BindMailLoginURL = 20,
+  ManualAuthResponse_AuthParam_FieldNumber_ServerTime = 22,
+};
+
+@interface ManualAuthResponse_AuthParam : GPBMessage
+
+@property(nonatomic, readwrite) int32_t uin;
+
+@property(nonatomic, readwrite) BOOL hasUin;
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthParam_Ecdh *ecdh;
+/** Test to see if @c ecdh has been set. */
+@property(nonatomic, readwrite) BOOL hasEcdh;
+
+/** 加密的sessionKey 需要使用ECDH握手后的密钥做AES解密得到最终长16字节的aeskey */
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthParam_SessionKey *session;
+/** Test to see if @c session has been set. */
+@property(nonatomic, readwrite) BOOL hasSession;
+
+/** 需要短信授权时的ticket,用于后续请求验证码以及发送验证码 */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *smsTicket;
+/** Test to see if @c smsTicket has been set. */
+@property(nonatomic, readwrite) BOOL hasSmsTicket;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *bindMailLoginURL;
+/** Test to see if @c bindMailLoginURL has been set. */
+@property(nonatomic, readwrite) BOOL hasBindMailLoginURL;
+
+@property(nonatomic, readwrite) int32_t serverTime;
+
+@property(nonatomic, readwrite) BOOL hasServerTime;
+@end
+
+#pragma mark - ManualAuthResponse_AuthParam_Ecdh
+
+typedef GPB_ENUM(ManualAuthResponse_AuthParam_Ecdh_FieldNumber) {
+  ManualAuthResponse_AuthParam_Ecdh_FieldNumber_Nid = 1,
+  ManualAuthResponse_AuthParam_Ecdh_FieldNumber_EcdhKey = 2,
+};
+
+@interface ManualAuthResponse_AuthParam_Ecdh : GPBMessage
+
+@property(nonatomic, readwrite) int32_t nid;
+
+@property(nonatomic, readwrite) BOOL hasNid;
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_AuthParam_Ecdh_EcdhKey *ecdhKey;
+/** Test to see if @c ecdhKey has been set. */
+@property(nonatomic, readwrite) BOOL hasEcdhKey;
+
+@end
+
+#pragma mark - ManualAuthResponse_AuthParam_Ecdh_EcdhKey
+
+typedef GPB_ENUM(ManualAuthResponse_AuthParam_Ecdh_EcdhKey_FieldNumber) {
+  ManualAuthResponse_AuthParam_Ecdh_EcdhKey_FieldNumber_Len = 1,
+  ManualAuthResponse_AuthParam_Ecdh_EcdhKey_FieldNumber_Key = 2,
+};
+
+@interface ManualAuthResponse_AuthParam_Ecdh_EcdhKey : GPBMessage
+
+@property(nonatomic, readwrite) int32_t len;
+
+@property(nonatomic, readwrite) BOOL hasLen;
+/** 椭圆曲线server pubkey */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *key;
+/** Test to see if @c key has been set. */
+@property(nonatomic, readwrite) BOOL hasKey;
+
+@end
+
+#pragma mark - ManualAuthResponse_AuthParam_SessionKey
+
+typedef GPB_ENUM(ManualAuthResponse_AuthParam_SessionKey_FieldNumber) {
+  ManualAuthResponse_AuthParam_SessionKey_FieldNumber_Len = 1,
+  ManualAuthResponse_AuthParam_SessionKey_FieldNumber_Key = 2,
+};
+
+@interface ManualAuthResponse_AuthParam_SessionKey : GPBMessage
+
+@property(nonatomic, readwrite) int32_t len;
+
+@property(nonatomic, readwrite) BOOL hasLen;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *key;
+/** Test to see if @c key has been set. */
+@property(nonatomic, readwrite) BOOL hasKey;
+
+@end
+
+#pragma mark - ManualAuthResponse_AccountInfo
+
+typedef GPB_ENUM(ManualAuthResponse_AccountInfo_FieldNumber) {
+  ManualAuthResponse_AccountInfo_FieldNumber_WxId = 1,
+  ManualAuthResponse_AccountInfo_FieldNumber_NickName = 2,
+  ManualAuthResponse_AccountInfo_FieldNumber_Tag3 = 3,
+  ManualAuthResponse_AccountInfo_FieldNumber_BindMail = 4,
+  ManualAuthResponse_AccountInfo_FieldNumber_BindMobile = 5,
+  ManualAuthResponse_AccountInfo_FieldNumber_Alias = 6,
+  ManualAuthResponse_AccountInfo_FieldNumber_Tag7 = 7,
+  ManualAuthResponse_AccountInfo_FieldNumber_Status = 8,
+  ManualAuthResponse_AccountInfo_FieldNumber_PluginFlag = 9,
+  ManualAuthResponse_AccountInfo_FieldNumber_RegisterType = 10,
+  ManualAuthResponse_AccountInfo_FieldNumber_Tag11 = 11,
+  ManualAuthResponse_AccountInfo_FieldNumber_SafeDevice = 12,
+  ManualAuthResponse_AccountInfo_FieldNumber_OfficialNamePinyin = 13,
+  ManualAuthResponse_AccountInfo_FieldNumber_OfficialNameZh = 14,
+  ManualAuthResponse_AccountInfo_FieldNumber_Tag15 = 15,
+  ManualAuthResponse_AccountInfo_FieldNumber_FsURL = 16,
+};
+
+@interface ManualAuthResponse_AccountInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *wxId;
+/** Test to see if @c wxId has been set. */
+@property(nonatomic, readwrite) BOOL hasWxId;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *nickName;
+/** Test to see if @c nickName has been set. */
+@property(nonatomic, readwrite) BOOL hasNickName;
+
+@property(nonatomic, readwrite) int32_t tag3;
+
+@property(nonatomic, readwrite) BOOL hasTag3;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *bindMail;
+/** Test to see if @c bindMail has been set. */
+@property(nonatomic, readwrite) BOOL hasBindMail;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *bindMobile;
+/** Test to see if @c bindMobile has been set. */
+@property(nonatomic, readwrite) BOOL hasBindMobile;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *alias;
+/** Test to see if @c alias has been set. */
+@property(nonatomic, readwrite) BOOL hasAlias;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *tag7;
+/** Test to see if @c tag7 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag7;
+
+@property(nonatomic, readwrite) int32_t status;
+
+@property(nonatomic, readwrite) BOOL hasStatus;
+@property(nonatomic, readwrite) int32_t pluginFlag;
+
+@property(nonatomic, readwrite) BOOL hasPluginFlag;
+@property(nonatomic, readwrite) int32_t registerType;
+
+@property(nonatomic, readwrite) BOOL hasRegisterType;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *tag11;
+/** Test to see if @c tag11 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag11;
+
+@property(nonatomic, readwrite) int32_t safeDevice;
+
+@property(nonatomic, readwrite) BOOL hasSafeDevice;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *officialNamePinyin;
+/** Test to see if @c officialNamePinyin has been set. */
+@property(nonatomic, readwrite) BOOL hasOfficialNamePinyin;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *officialNameZh;
+/** Test to see if @c officialNameZh has been set. */
+@property(nonatomic, readwrite) BOOL hasOfficialNameZh;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *tag15;
+/** Test to see if @c tag15 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag15;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *fsURL;
+/** Test to see if @c fsURL has been set. */
+@property(nonatomic, readwrite) BOOL hasFsURL;
+
+@end
+
+#pragma mark - ManualAuthResponse_dns_info
+
+typedef GPB_ENUM(ManualAuthResponse_dns_info_FieldNumber) {
+  ManualAuthResponse_dns_info_FieldNumber_Redirect = 1,
+  ManualAuthResponse_dns_info_FieldNumber_Ip = 3,
+};
+
+@interface ManualAuthResponse_dns_info : GPBMessage
+
+/** 域名重定向信息 */
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_dns_info_redirect_info *redirect;
+/** Test to see if @c redirect has been set. */
+@property(nonatomic, readwrite) BOOL hasRedirect;
+
+/** 长短链接ip */
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthResponse_dns_info_ip_info *ip;
+/** Test to see if @c ip has been set. */
+@property(nonatomic, readwrite) BOOL hasIp;
+
+@end
+
+#pragma mark - ManualAuthResponse_dns_info_redirect_info
+
+typedef GPB_ENUM(ManualAuthResponse_dns_info_redirect_info_FieldNumber) {
+  ManualAuthResponse_dns_info_redirect_info_FieldNumber_Cnt = 1,
+  ManualAuthResponse_dns_info_redirect_info_FieldNumber_RealHostArray = 2,
+};
+
+@interface ManualAuthResponse_dns_info_redirect_info : GPBMessage
+
+/** host cnt */
+@property(nonatomic, readwrite) int32_t cnt;
+
+@property(nonatomic, readwrite) BOOL hasCnt;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ManualAuthResponse_dns_info_redirect_info_real_host_info*> *realHostArray;
+/** The number of items in @c realHostArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger realHostArray_Count;
+
+@end
+
+#pragma mark - ManualAuthResponse_dns_info_redirect_info_real_host_info
+
+typedef GPB_ENUM(ManualAuthResponse_dns_info_redirect_info_real_host_info_FieldNumber) {
+  ManualAuthResponse_dns_info_redirect_info_real_host_info_FieldNumber_Host = 1,
+  ManualAuthResponse_dns_info_redirect_info_real_host_info_FieldNumber_Redirect = 2,
+};
+
+@interface ManualAuthResponse_dns_info_redirect_info_real_host_info : GPBMessage
+
+/** host */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *host;
+/** Test to see if @c host has been set. */
+@property(nonatomic, readwrite) BOOL hasHost;
+
+/** redirect_host */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *redirect;
+/** Test to see if @c redirect has been set. */
+@property(nonatomic, readwrite) BOOL hasRedirect;
+
+@end
+
+#pragma mark - ManualAuthResponse_dns_info_ip_info
+
+typedef GPB_ENUM(ManualAuthResponse_dns_info_ip_info_FieldNumber) {
+  ManualAuthResponse_dns_info_ip_info_FieldNumber_LonglinkIpCnt = 1,
+  ManualAuthResponse_dns_info_ip_info_FieldNumber_ShortlinkIpCnt = 2,
+  ManualAuthResponse_dns_info_ip_info_FieldNumber_LonglinkArray = 3,
+  ManualAuthResponse_dns_info_ip_info_FieldNumber_ShortlinkArray = 4,
+};
+
+@interface ManualAuthResponse_dns_info_ip_info : GPBMessage
+
+/** 长链接ip池数量 */
+@property(nonatomic, readwrite) int32_t longlinkIpCnt;
+
+@property(nonatomic, readwrite) BOOL hasLonglinkIpCnt;
+/** 短链接ip池数量 */
+@property(nonatomic, readwrite) int32_t shortlinkIpCnt;
+
+@property(nonatomic, readwrite) BOOL hasShortlinkIpCnt;
+/** 长链接ip池 */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ManualAuthResponse_dns_info_ip_info_longlink_ip_info*> *longlinkArray;
+/** The number of items in @c longlinkArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger longlinkArray_Count;
+
+/** 短链接ip池 */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ManualAuthResponse_dns_info_ip_info_shortlink_ip_info*> *shortlinkArray;
+/** The number of items in @c shortlinkArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger shortlinkArray_Count;
+
+@end
+
+#pragma mark - ManualAuthResponse_dns_info_ip_info_longlink_ip_info
+
+typedef GPB_ENUM(ManualAuthResponse_dns_info_ip_info_longlink_ip_info_FieldNumber) {
+  ManualAuthResponse_dns_info_ip_info_longlink_ip_info_FieldNumber_Ip = 3,
+  ManualAuthResponse_dns_info_ip_info_longlink_ip_info_FieldNumber_Host = 4,
+};
+
+@interface ManualAuthResponse_dns_info_ip_info_longlink_ip_info : GPBMessage
+
+/** ip */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *ip;
+/** Test to see if @c ip has been set. */
+@property(nonatomic, readwrite) BOOL hasIp;
+
+/** host */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *host;
+/** Test to see if @c host has been set. */
+@property(nonatomic, readwrite) BOOL hasHost;
+
+@end
+
+#pragma mark - ManualAuthResponse_dns_info_ip_info_shortlink_ip_info
+
+typedef GPB_ENUM(ManualAuthResponse_dns_info_ip_info_shortlink_ip_info_FieldNumber) {
+  ManualAuthResponse_dns_info_ip_info_shortlink_ip_info_FieldNumber_Ip = 3,
+  ManualAuthResponse_dns_info_ip_info_shortlink_ip_info_FieldNumber_Host = 4,
+};
+
+@interface ManualAuthResponse_dns_info_ip_info_shortlink_ip_info : GPBMessage
+
+/** ip */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *ip;
+/** Test to see if @c ip has been set. */
+@property(nonatomic, readwrite) BOOL hasIp;
+
+/** host */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *host;
+/** Test to see if @c host has been set. */
+@property(nonatomic, readwrite) BOOL hasHost;
 
 @end
 

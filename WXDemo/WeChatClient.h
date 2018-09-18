@@ -18,14 +18,19 @@ typedef void (^FailureBlock)(NSError *error);
 @property (nonatomic, strong, readonly) NSData * clientAesKey;
 
 + (instancetype)sharedClient;
+
 - (void)start;
+- (void)restartUsingIpAddress:(NSString *)IpAddress;
 
-- (void)startRequest:(CgiWrap *)request
+- (void)startRequest:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock;
 
-+ (void)startRequest:(CgiWrap *)request
++ (void)startRequest:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock;
 
+- (void)manualAuth:(CgiWrap *)cgiWrap
+             success:(SuccessBlock)successBlock
+             failure:(FailureBlock)failureBlock;
 @end

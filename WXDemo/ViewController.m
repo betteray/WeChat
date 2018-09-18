@@ -15,7 +15,7 @@
 #import "CgiWrap.h"
 #import "NSData+PackUtil.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "ECDHUtil.h"
+#import "ECDH.h"
 
 #define TICK_INTERVAL 1.5
 
@@ -33,7 +33,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.qrcodeImageView sd_setImageWithURL:[NSURL URLWithString:@"http://wx.qlogo.cn/mmhead/ver_1/BbicZbKzbDbI6ZkYJzcBsKssqAmmVialdvCj7gNib6e155RaiaDdgW6hDuqxH6dkx386DFdDxp9AjuTferkE48267yib0odQNev96sLsxJm4croY/0"]];;
 }
 
 - (IBAction)getQRCode {
@@ -43,8 +42,8 @@
     
     GetLoginQRCodeRequest *request = [GetLoginQRCodeRequest new];
 
-    sKBuiltinBufferT *buffer = [sKBuiltinBufferT new];
-    [buffer setIlen:16];
+    SKBuiltinBuffer *buffer = [SKBuiltinBuffer new];
+    [buffer setILen:16];
     [buffer setBuffer:[WeChatClient sharedClient].clientAesKey];
     [request setRandomEncryKey:buffer];
 
@@ -82,8 +81,8 @@
     
     CheckLoginQRCodeRequest *request = [CheckLoginQRCodeRequest new];
     
-    sKBuiltinBufferT *buffer = [sKBuiltinBufferT new];
-    [buffer setIlen:16];
+    SKBuiltinBuffer *buffer = [SKBuiltinBuffer new];
+    [buffer setILen:16];
     [buffer setBuffer:[WeChatClient sharedClient].clientAesKey];
     [request setRandomEncryKey:buffer];
 
@@ -109,22 +108,8 @@
             }
             
             if (![msg.wxnewpass isEqualToString:@""]) {//ManualAuth
-                [self.qrcodeCheckTimer invalidate];
-                self.qrcodeCheckTimer = nil;
                 
-                int nid = 713;
-                char  priKey[2048];
-                char  pubKey[2048];
-                
-                int priLen = 0;
-                int pubLen = 0;
-                //    BOOL ret = GenEcdh(nid, priKey, sizeof(priKey), pubKey, sizeof(pubKey));
-                
-                BOOL ret = [ECDHUtil GenEcdh:nid szPriKey:priKey pLenPri:&priLen szPubKey:pubKey pLenPub:&pubLen];
-                NSData *priData = [[NSData alloc] initWithBytes:priKey length:priLen];
-                NSData *pubData = [[NSData alloc] initWithBytes:pubKey length:pubLen];
-                
-                NSLog(@"pridata: %@, pubdata: %@", priData, pubData);
+                [self mannualAtuhLoginWithWxid:msg.wxid newPassword:msg.wxnewpass];
             }
             
             if (msg.state == 0 || msg.state == 1) {
@@ -147,19 +132,89 @@
 }
 
 - (IBAction)test {
-    int nid = 713;
-    char  priKey[2048];
-    char  pubKey[2048];
-    
-    int priLen = 0;
-    int pubLen = 0;
-//    BOOL ret = GenEcdh(nid, priKey, sizeof(priKey), pubKey, sizeof(pubKey));
 
-    BOOL ret = [ECDHUtil GenEcdh:nid szPriKey:priKey pLenPri:&priLen szPubKey:pubKey pLenPub:&pubLen];
-    NSData *priData = [[NSData alloc] initWithBytes:priKey length:priLen];
-    NSData *pubData = [[NSData alloc] initWithBytes:pubKey length:pubLen];
+}
+
+- (void)mannualAtuhLoginWithWxid:(NSString *)wxid newPassword:(NSString *)password {
+    NSData *priKeyData = nil;
+    NSData *pubKeyData = nil;
+    BOOL ret = [ECDH GenEcdh:&priKeyData pubKeyData:&pubKeyData];
+    if (ret) {
+//        NSLog(@"+[ECDH GenEcdh:pubKeyData:] %@, PubKey: %@.", priKeyData, pubKeyData);
+    }
     
-    NSLog(@"pridata: %@, pubdata: %@", priData, pubData);
+    ManualAuthAccountRequest_AesKey *aesKey = [ManualAuthAccountRequest_AesKey new];
+    aesKey.len = (int32_t)[[WeChatClient sharedClient].clientAesKey length];
+    aesKey.key = [WeChatClient sharedClient].clientAesKey;
+
+    ManualAuthAccountRequest_Ecdh_EcdhKey *ecdhKey = [ManualAuthAccountRequest_Ecdh_EcdhKey new];
+    ecdhKey.len = (int32_t)[pubKeyData length];
+    ecdhKey.key = pubKeyData;
+
+    ManualAuthAccountRequest_Ecdh *ecdh = [ManualAuthAccountRequest_Ecdh new];
+    ecdh.nid = 713;
+    ecdh.ecdhKey = ecdhKey;
+
+    ManualAuthAccountRequest *accountReqeust = [ManualAuthAccountRequest new];
+    accountReqeust.aes = aesKey;
+    accountReqeust.ecdh = ecdh;
+    accountReqeust.pwd = password;
+    accountReqeust.userName = wxid;
+
+    ManualAuthDeviceRequest_BaseReqInfo *baseReqInfo = [ManualAuthDeviceRequest_BaseReqInfo new];
+    baseReqInfo.authReqFlag = @"";
+    
+    ManualAuthDeviceRequest *deviceRequest = [ManualAuthDeviceRequest new];
+    deviceRequest.baseReqInfo = baseReqInfo;
+    deviceRequest.imei = @"dd09ae95fe48164451be954cd1871cb7";
+    deviceRequest.softType = @"<softtype><k3>11.4.1</k3><k9>iPad</k9><k10>2</k10><k19>68ADE338-AA19-433E-BA2A-3D6DF3C787D5</k19><k20>AAA7AE28-7620-431D-8B4C-7FB4F67AA45E</k20><k22>(null)</k22><k33>微信</k33><k47>1</k47><k50>0</k50><k51>com.tencent.xin</k51><k54>iPad4,4</k54><k61>2</k61></softtype>";
+    deviceRequest.builtinIpseq = 0;
+    deviceRequest.clientSeqId = @""; //[NSString stringWithFormat:@"%@-%d", @"dd09ae95fe48164451be954cd1871cb7", (int)[[NSDate date] timeIntervalSince1970]];
+    deviceRequest.deviceName = @"ray的iMac";
+    deviceRequest.deviceType = @"iMac18,2";
+    deviceRequest.language = @"zh_CN";
+    deviceRequest.timeZone = @"8.00";
+    deviceRequest.channel = 0; 
+    deviceRequest.timeStamp = [[NSDate date] timeIntervalSince1970];
+    deviceRequest.deviceBrand = @"Apple";
+    deviceRequest.realCountry = @"CN";
+    deviceRequest.bundleId = @"com.tencent.xinWeChat";
+    deviceRequest.adSource = @"";
+    deviceRequest.iphoneVer = @"iMac18,2";
+    deviceRequest.inputType = 2;
+
+    SKBuiltinBuffer *clientCheckData = [SKBuiltinBuffer new];
+    clientCheckData.iLen = 0;
+    clientCheckData.buffer = [NSData data];
+    deviceRequest.clientCheckData = clientCheckData;
+    
+    ManualAuthRequest *authRequest = [ManualAuthRequest new];
+    authRequest.aesReqData = deviceRequest;
+    authRequest.rsaReqData = accountReqeust;
+    
+    NSLog(@"ManualAuthRequest: %@", authRequest);
+    
+    CgiWrap *cgiWrap = [CgiWrap new];
+    cgiWrap.cgi = 701;
+    cgiWrap.cmdId = 253;
+    cgiWrap.request = authRequest;
+    cgiWrap.responseClass = [ManualAuthResponse class];
+    
+    [[WeChatClient sharedClient] manualAuth:cgiWrap success:^(GPBMessage * _Nullable response) {
+        ManualAuthResponse *resp = (ManualAuthResponse *)response;
+        
+        if (resp.result.code == -301) {
+            if (resp.dns.ip.longlinkIpCnt > 0) {
+                NSString *longlinkIp = [[resp.dns.ip.longlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
+                [[WeChatClient sharedClient] restartUsingIpAddress:longlinkIp];
+            }
+        } else {
+            [self.qrcodeCheckTimer invalidate];
+            self.qrcodeCheckTimer = nil;
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 @end

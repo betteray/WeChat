@@ -31,6 +31,180 @@
 
 #import <CommonCrypto/CommonCryptor.h>
 
+
+//========================= RSA Start =========================
+
+int rsa_public_encrypt(const unsigned char* pInput, unsigned int uiInputLen
+                       , unsigned char** ppOutput, unsigned int* uiOutputLen
+                       , NSData* modules, NSData* exponent)
+{
+    RSA* encrypt_rsa;
+    int finalLen = 0;
+    int i = 0;
+    int ret;
+    int rsa_len;
+    if(pInput == NULL || uiOutputLen == NULL
+       || modules == NULL || exponent == NULL
+       || uiInputLen == 0 || ppOutput == NULL)
+        return CRYPT_ERR_INVALID_PARAM;
+    
+    // assume the byte strings are sent over the network
+    encrypt_rsa = RSA_new();
+    if(encrypt_rsa == NULL) {
+        return CRYPT_ERR_NO_MEMORY;
+    }
+    
+    ret = CRYPT_OK;
+    
+    BIGNUM *bne, *bnn;//rsa算法中的 e和N
+    
+    bnn = BN_new();
+    bne = BN_new();
+    
+    //看到网上有人用BN_hex2bn这个函数来转化的，但我用这个转化总是失败，最后选择了BN_bin2bn
+    encrypt_rsa->e = BN_bin2bn([exponent bytes], (int)[exponent length], bne);
+    encrypt_rsa->n = BN_bin2bn([modules bytes], (int)[modules length], bnn);
+    
+    // alloc encrypt_string
+    
+    rsa_len = RSA_size(encrypt_rsa);
+    if((int)uiInputLen >= rsa_len - 12) {
+        int blockCnt = (uiInputLen / (rsa_len - 12)) + (((uiInputLen % (rsa_len - 12)) == 0) ? 0 : 1);
+        finalLen = blockCnt * rsa_len;
+        *ppOutput = (unsigned char*)calloc(finalLen, sizeof(unsigned char));
+        if(*ppOutput == NULL) {
+            ret = CRYPT_ERR_NO_MEMORY;
+            goto END;
+        }
+        
+        
+        for(; i < blockCnt; ++i) {
+            int blockSize = rsa_len - 12;
+            if(i == blockCnt - 1) blockSize = uiInputLen - i * blockSize;
+            
+            if(RSA_public_encrypt(blockSize, (pInput + i * (rsa_len - 12)), (*ppOutput + i * rsa_len), encrypt_rsa, RSA_PKCS1_PADDING) < 0) {
+                ret = CRYPT_ERR_ENCRYPT_WITH_RSA_PUBKEY;
+                goto END;
+            }
+        }
+        *uiOutputLen = finalLen;
+    } else {
+        *ppOutput = (unsigned char*)calloc(rsa_len, sizeof(unsigned char));
+        if (*ppOutput == NULL) {
+            ret = CRYPT_ERR_NO_MEMORY;
+            goto END;
+        }
+        
+        // encrypt (return the size of the encrypted data)
+        // note that if RSA_PKCS1_OAEP_PADDING is used,
+        // flen must be < RSA_size - 41
+        if(RSA_public_encrypt(uiInputLen,
+                              pInput, *ppOutput, encrypt_rsa, RSA_PKCS1_PADDING) < 0) {
+            ret = CRYPT_ERR_ENCRYPT_WITH_RSA_PUBKEY;
+            goto END;
+        }
+        *uiOutputLen = rsa_len;
+    }
+    
+END:
+    if(CRYPT_OK != ret) {
+        if(*ppOutput != NULL) {
+            free(*ppOutput);
+            ppOutput = NULL;
+        }
+    }
+    RSA_free(encrypt_rsa);
+    return ret;
+}
+
+int rsa_public_decrypt(const unsigned char* pInput, unsigned int uiInputLen
+                       , unsigned char** ppOutput, unsigned int* uiOutputLen
+                       , const char* pPublicKeyN, const char* pPublicKeyE)
+{
+    RSA* decrypt_rsa;
+    int i = 0;
+    int ret = 0;
+    int ret_size = 0;
+    int iKeySize = 0;
+    int iPlainSize = 0;
+    unsigned char *pcPlainBuf = NULL;
+    if(pInput == NULL || uiOutputLen == NULL
+       || pPublicKeyN == NULL || pPublicKeyE == NULL
+       || uiInputLen == 0 || ppOutput == NULL)
+        return CRYPT_ERR_INVALID_PARAM;
+    
+    // assume the byte strings are sent over the network
+    decrypt_rsa = RSA_new();
+    if(decrypt_rsa == NULL) {
+        return CRYPT_ERR_NO_MEMORY;
+    }
+    
+    ret = CRYPT_OK;
+    if(BN_hex2bn(&decrypt_rsa->n, pPublicKeyN) == 0)
+    {
+        ret = CRYPT_ERR_INVALID_KEY_N;
+        goto END;
+    }
+    if(BN_hex2bn(&decrypt_rsa->e, pPublicKeyE) == 0)
+    {
+        ret = CRYPT_ERR_INVALID_KEY_E;
+        goto END;
+    }
+    
+    // alloc encrypt_string
+    iKeySize = RSA_size(decrypt_rsa);
+    
+    // decrypt
+    pcPlainBuf = (unsigned char *)OPENSSL_malloc( uiInputLen );
+    
+    if (uiInputLen > (unsigned int)iKeySize)
+    {
+        int iBlockCnt = uiInputLen / iKeySize;
+        int iPos = 0;
+        
+        for (i = 0; i < iBlockCnt; ++i)
+        {
+            ret_size = RSA_public_decrypt( iKeySize, pInput + i * iKeySize, pcPlainBuf + iPos, decrypt_rsa, RSA_PKCS1_PADDING );
+            if (ret_size < 1)
+            {
+                ret =  CRYPT_ERR_DECRYPT_WITH_RSA_PRIVKEY;
+                goto END;
+            }
+            iPos += ret_size;
+        }
+        
+        iPlainSize = iPos;
+    }
+    else
+    {
+        ret_size = RSA_public_decrypt( iKeySize, pInput, pcPlainBuf, decrypt_rsa, RSA_PKCS1_PADDING);
+        
+        if (ret_size < 1)
+        {
+            ret = CRYPT_ERR_DECRYPT_WITH_RSA_PRIVKEY;
+            goto END;
+        }
+        
+        iPlainSize = ret_size;
+    }
+    
+END:
+    RSA_free(decrypt_rsa);
+    
+    if(CRYPT_OK != ret)
+    {
+        OPENSSL_free(pcPlainBuf);
+    }
+    else
+    {
+        *ppOutput = pcPlainBuf;
+        *uiOutputLen = iPlainSize;
+    }
+    
+    return ret;
+}
+
+
 @implementation FSOpenSSL
 
 + (NSData *)random128BitAESKey {
@@ -119,43 +293,17 @@
     return base64String;
 }
 
-+ (NSData *)RSAEncryptString:(NSData *)data modulus:(NSData *)modules exponent:(NSData *)exponent
++ (NSData *)RSAEncryptData:(NSData *)data modulus:(NSData *)modules exponent:(NSData *)exponent
 {
-    RSA *r;
-    BIGNUM *bne, *bnn;//rsa算法中的 e和N
-    int blockLen;//每次最大加密字节数
-    unsigned char *encodeData;//加密后的数据
-    
-    bnn = BN_new();
-    bne = BN_new();
-    
-    r = RSA_new();
-    //看到网上有人用BN_hex2bn这个函数来转化的，但我用这个转化总是失败，最后选择了BN_bin2bn
-    r->e = BN_bin2bn([exponent bytes], (int)[exponent length], bne);
-    r->n = BN_bin2bn([modules bytes], (int)[modules length], bnn);
-    
-    blockLen = RSA_size(r) - 11;// 公钥长度/8 - 11
-    encodeData = (unsigned char *)malloc(blockLen);
-    bzero(encodeData, blockLen);
-    //由于需要加密的内容都在最大加密长度内，所以我没有分块，如果你的文本内容长度超过了blockLen，请分块处理，然后拼接起来
-    int ret = RSA_public_encrypt((int)[data length], (unsigned char *)[data bytes], encodeData, r, RSA_PKCS1_PADDING);
-    //这里的 RSA_PKCS1_PADDING选择的不同，对应的最大加密长度就不一样，当时在网上看到过，现在找不到了，你们自己上网找找吧
-    
-    RSA_free(r);
-    if(ret < 0)
-    {
-        NSLog(@"encrypt failed !");
-        return nil;
+    unsigned char * output;
+    unsigned int outputLen;
+    int ret = rsa_public_encrypt([data bytes], (unsigned int)[data length], &output, &outputLen, modules, exponent);
+    if (ret == CRYPT_OK) {
+        return [NSData dataWithBytes:output length:outputLen];
     }
-    else
-    {
-        NSData *result = [NSData dataWithBytes: encodeData   length:ret];
-        free(encodeData);
-        return result;
-        
-    }
+    
+    return nil;
 }
-
 
 
 size_t const kKeySize = kCCKeySizeAES128;

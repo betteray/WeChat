@@ -130,29 +130,11 @@
 // zlib
 enum { compressed_signature = 'zdat' };
 
-- (NSData*) compress
-{
-    uLong sourceLen = [self length];
-    uLongf destLen = compressBound(sourceLen);
-    NSMutableData* data = [NSMutableData dataWithLength:destLen + 8];
-    
-    if (Z_OK == compress([data mutableBytes], &destLen, [self bytes], sourceLen)) {
-        [data setLength:destLen + 8];
-        Ptr ptr = [data mutableBytes];
-        *(uint32_t*)(ptr + destLen) = CFSwapInt32HostToLittle(sourceLen);
-        *(uint32_t*)(ptr + destLen + 4) = CFSwapInt32HostToLittle(compressed_signature);
-    } else {
-        return nil;
-    }
-    
-    return data;
-}
-
-- (NSData*) decompress
+- (NSData*)decompress
 {
     if ([self length] == 0) return self;
-    unsigned full_length = [self length];
-    unsigned half_length = [self length] / 2;
+    unsigned full_length = (uint)[self length];
+    unsigned half_length = (uint)([self length] / 2);
     NSMutableData *decompressed = [NSMutableData dataWithLength: full_length + half_length];
     
     BOOL done = NO;
@@ -160,7 +142,7 @@ enum { compressed_signature = 'zdat' };
     z_stream strm;
 
     strm.next_in = (Bytef *)[self bytes];
-    strm.avail_in = [self length];
+    strm.avail_in = (uint)[self length];
     strm.total_out = 0;
     strm.zalloc = Z_NULL;
     strm.zfree = Z_NULL;
@@ -174,7 +156,7 @@ enum { compressed_signature = 'zdat' };
         }
         
         strm.next_out = [decompressed mutableBytes] + strm.total_out;
-        strm.avail_out = [decompressed length] - strm.total_out;
+        strm.avail_out = (uint)([decompressed length] - strm.total_out);
         
         // Inflate another chunk.
         
@@ -196,6 +178,47 @@ enum { compressed_signature = 'zdat' };
     } else {
         return nil;
     }
+}
+
+- (NSData *)compress
+{
+    if ([self length] == 0) return self;
+    
+    z_stream strm;
+    
+    strm.zalloc = Z_NULL;
+    strm.zfree = Z_NULL;
+    strm.opaque = Z_NULL;
+    strm.total_out = 0;
+    strm.next_in=(Bytef *)[self bytes];
+    strm.avail_in = (uInt)[self length];
+    
+    // Compresssion Levels:
+    //   Z_NO_COMPRESSION
+    //   Z_BEST_SPEED
+    //   Z_BEST_COMPRESSION
+    //   Z_DEFAULT_COMPRESSION
+    
+    if (deflateInit2(&strm, Z_DEFAULT_COMPRESSION, Z_DEFLATED, (15+16), 8, Z_DEFAULT_STRATEGY) != Z_OK) return nil;
+    
+    NSMutableData *compressed = [NSMutableData dataWithLength:16384];  // 16K chunks for expansion
+    
+    do {
+        
+        if (strm.total_out >= [compressed length])
+            [compressed increaseLengthBy: 16384];
+        
+        strm.next_out = [compressed mutableBytes] + strm.total_out;
+        strm.avail_out = (uInt)([compressed length] - strm.total_out);
+        
+        deflate(&strm, Z_FINISH);
+        
+    } while (strm.avail_out == 0);
+    
+    deflateEnd(&strm);
+    
+    [compressed setLength: strm.total_out];
+    return [NSData dataWithData:compressed];
 }
 
 @end

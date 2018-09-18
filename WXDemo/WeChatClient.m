@@ -18,6 +18,8 @@
 #import "CgiWrap.h"
 #import "Task.h"
 #import "NSData+PackUtil.h"
+#import "MarsOpenSSL.h"
+#import "NSData+CompressAndEncypt.h"
 
 //#心跳
 #define CMDID_NOOP_REQ 6
@@ -83,7 +85,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         _uin = 0;
         _tasks = [NSMutableArray array];
         _recvedData = [NSMutableData data];
-        _clientAesKey = [FSOpenSSL random128BitAESKey];
+        _clientAesKey = [FSOpenSSL random128BitAESKey]; //[NSData dataWithHexString:@"B927F42DA834364D3E12334D74244B6B"];//
         
         _heartbeatTimer = [NSTimer timerWithTimeInterval:30 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
@@ -101,11 +103,21 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSError *error;
     [_socket connectToHost:@"long.weixin.qq.com" onPort:80 error:&error];
     if (error) {
-        NSLog(@"%@", [error localizedDescription]);
+        NSLog(@"Socks Start Error: %@", [error localizedDescription]);
     }
     [self heartBeat];
+}
+
+- (void)restartUsingIpAddress:(NSString *)IpAddress {
+    [_socket disconnect];
     
-    [self test];
+    NSError *error;
+    [_socket connectToHost:IpAddress onPort:80 error:&error];
+    if (error) {
+        NSLog(@"Socks ReStart Error: %@", [error localizedDescription]);
+        return ;
+    }
+    [self heartBeat];
 }
 
 - (void)test {
@@ -118,10 +130,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [_socket writeData:data withTimeout:HEARTBEAT_TIMEOUT tag:CMDID_NOOP_REQ];
 }
 
-+ (void)startRequest:(CgiWrap *)request
++ (void)startRequest:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock {
-    [[self sharedClient] startRequest:request success:successBlock failure:failureBlock];
+    [[self sharedClient] startRequest:cgiWrap success:successBlock failure:failureBlock];
 }
 
 - (void)startRequest:(CgiWrap *)cgiWrap
@@ -139,20 +151,62 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [[cgiWrap request] performSelector:@selector(setBase:) withObject:base];
     
     NSData *serilizedData = [[cgiWrap request] data];
-    
-//    _clientAesKey = [NSData dataWithHexString:@"AE884C193D7BC6A2498B178000DF5A33"];
-//    serilizedData = [NSData dataWithHexString:[@"0A550A10 DEE9A4E4 F43AF60A 7DA3A255 8EB1EB5F 10001A10 6DA4F053 64426532 A45CF83A FB2B208D 2092A48C 90012A25 694D6163 31382C32 204F5358 204F5358 2031302E 31332E36 20627569 6C642831 37473635 29300012 14081012 10DEE9A4 E4F43AF6 0A7DA3A2 558EB1EB 5F180022 0A726179 E79A8469 4D616330 00" stringByReplacingOccurrencesOfString:@" " withString:@""]];
-    
-    NSLog(@"protobuf: %@", serilizedData);
-    
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:1];
     
     Task *task = [Task new];
     task.sucBlock = successBlock;
     task.failBlock = failureBlock;
     task.cgiWrap = cgiWrap;
-    
     [_tasks addObject:task];
+    
+    [_socket writeData:sendData withTimeout:3 tag:[cgiWrap cgi]];
+}
+
+- (void)manualAuth:(CgiWrap *)cgiWrap
+           success:(SuccessBlock)successBlock
+           failure:(FailureBlock)failureBlock {
+    ManualAuthRequest *request = (ManualAuthRequest *)[cgiWrap request];
+    ManualAuthAccountRequest *accountRequest = [request rsaReqData];
+    ManualAuthDeviceRequest *deviceRequest = [request aesReqData];
+
+    BaseRequest *base = [BaseRequest new];
+    [base setUin:0];
+    [base setScene:0];
+    [base setClientVersion:CLIENT_VERSION];
+    [base setDeviceType:DEVICE_TYPE];
+    [base setSessionKey:_clientAesKey];
+    [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
+    
+    [deviceRequest setBaseRequest:base];
+    
+    NSData *accountSerializedData = [accountRequest data];
+    NSData *deviceSerializedData = [deviceRequest data];
+    
+    NSData *reqAccount = [accountSerializedData Compress_And_RSA];
+    NSData *reqDevice = [deviceSerializedData Compress_And_AES];
+    
+    NSMutableData *subHeader = [NSMutableData data];
+    [subHeader appendData:[NSData packInt32:(int32_t)[accountSerializedData length] flip:YES]];
+    [subHeader appendData:[NSData packInt32:(int32_t)[deviceSerializedData length] flip:YES]];
+    [subHeader appendData:[NSData packInt32:(int32_t)[reqAccount length] flip:YES]];
+    
+    NSMutableData *body = [NSMutableData dataWithData:subHeader];
+    [body appendData:reqAccount];
+    [body appendData:reqDevice];
+    
+    NSData *head = [self make_header:cgiWrap.cgi encryptMethod:RSA bodyDataLen:(int)[body length] compressedBodyDataLen:(int)[body length] needCookie:NO];
+    
+    NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
+    [longlinkBody appendData:body];
+    
+    NSData *sendData = [self longlink_packWithSeq:self.seq++ cmdId:cgiWrap.cmdId buffer:longlinkBody];
+    
+    Task *task = [Task new];
+    task.sucBlock = successBlock;
+    task.failBlock = failureBlock;
+    task.cgiWrap = cgiWrap;
+    [_tasks addObject:task];
+    
     [_socket writeData:sendData withTimeout:3 tag:[cgiWrap cgi]];
 }
 
@@ -171,47 +225,11 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 #pragma mark - Delegate
 
 /**
-* This method is called immediately prior to socket:didAcceptNewSocket:.
-* It optionally allows a listening socket to specify the socketQueue for a new accepted socket.
-* If this method is not implemented, or returns NULL, the new accepted socket will create its own default queue.
-*
-* Since you cannot autorelease a dispatch_queue,
-* this method uses the "new" prefix in its name to specify that the returned queue has been retained.
-*
-* Thus you could do something like this in the implementation:
-* return dispatch_queue_create("MyQueue", NULL);
-*
-* If you are placing multiple sockets on the same queue,
-* then care should be taken to increment the retain count each time this method is invoked.
-*
-* For example, your implementation might look something like this:
-* dispatch_retain(myExistingQueue);
-* return myExistingQueue;
-**/
-//- (nullable dispatch_queue_t)newSocketQueueForConnectionFromAddress:(NSData *)address onSocket:(GCDAsyncSocket *)sock {
-//
-//}
-
-/**
- * Called when a socket accepts a connection.
- * Another socket is automatically spawned to handle it.
- *
- * You must retain the newSocket if you wish to handle the connection.
- * Otherwise the newSocket instance will be released and the spawned connection will be closed.
- *
- * By default the new socket will have the same delegate and delegateQueue.
- * You may, of course, change this at any time.
- **/
-- (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket {
-    
-}
-
-/**
  * Called when a socket connects and is ready for reading and writing.
  * The host parameter will be an IP address, not a DNS name.
  **/
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port {
-    NSLog(@"comnect %@:%d", host, port);
+    NSLog(@"didConnectToHost %@:%d", host, port);
 }
 
 /**
@@ -219,7 +237,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
  * The host parameter will be an IP address, not a DNS name.
  **/
 - (void)socket:(GCDAsyncSocket *)sock didConnectToUrl:(NSURL *)url {
-    
+    NSLog(@"didConnectToUrl %@", url);
 }
 
 /**
@@ -236,20 +254,18 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     
     switch (result) {
         case UnPack_Success: {
+            NSLog(@">>> LongLinkPackage Head CmdId: %d", longLinkPackage.header.cmdId);
             [_recvedData setData:[NSData new]];//清空数据。
             
             if (longLinkPackage.header.bodyLength < 0x20) {
                 switch (longLinkPackage.header.cmdId) {
                     case 1:
-                        
                         break;
-                        
                     default:
                         break;
                 }
             } else {
                 Package *package = [self UnPackLongLinkBody:longLinkPackage.body];
-                
                 NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:_clientAesKey];
                 Task *task = [self getTaskWithTag:package.header.cgi];
                 id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
@@ -286,7 +302,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
  * Called when a socket has completed writing the requested data. Not called if there is an error.
  **/
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
-    NSLog(@"didWriteDataWithTag: %ld", tag);
+//    NSLog(@"didWriteDataWithTag: %ld", tag);
     [_socket readDataWithTimeout:3 tag:tag];
 }
 
@@ -298,112 +314,11 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     
 }
 
-/**
- * Called if a read operation has reached its timeout without completing.
- * This method allows you to optionally extend the timeout.
- * If you return a positive time interval (> 0) the read's timeout will be extended by the given amount.
- * If you don't implement this method, or return a non-positive time interval (<= 0) the read will timeout as usual.
- *
- * The elapsed parameter is the sum of the original timeout, plus any additions previously added via this method.
- * The length parameter is the number of bytes that have been read so far for the read operation.
- *
- * Note that this method may be called multiple times for a single read if you return positive numbers.
- **/
-//- (NSTimeInterval)socket:(GCDAsyncSocket *)sock shouldTimeoutReadWithTag:(long)tag
-//                 elapsed:(NSTimeInterval)elapsed
-//               bytesDone:(NSUInteger)length {
-//
-//}
-
-/**
- * Called if a write operation has reached its timeout without completing.
- * This method allows you to optionally extend the timeout.
- * If you return a positive time interval (> 0) the write's timeout will be extended by the given amount.
- * If you don't implement this method, or return a non-positive time interval (<= 0) the write will timeout as usual.
- *
- * The elapsed parameter is the sum of the original timeout, plus any additions previously added via this method.
- * The length parameter is the number of bytes that have been written so far for the write operation.
- *
- * Note that this method may be called multiple times for a single write if you return positive numbers.
- **/
-//- (NSTimeInterval)socket:(GCDAsyncSocket *)sock shouldTimeoutWriteWithTag:(long)tag
-//                 elapsed:(NSTimeInterval)elapsed
-//               bytesDone:(NSUInteger)length {
-//
-//}
-
-/**
- * Conditionally called if the read stream closes, but the write stream may still be writeable.
- *
- * This delegate method is only called if autoDisconnectOnClosedReadStream has been set to NO.
- * See the discussion on the autoDisconnectOnClosedReadStream method for more information.
- **/
-- (void)socketDidCloseReadStream:(GCDAsyncSocket *)sock {
-    
-}
-
-/**
- * Called when a socket disconnects with or without error.
- *
- * If you call the disconnect method, and the socket wasn't already disconnected,
- * then an invocation of this delegate method will be enqueued on the delegateQueue
- * before the disconnect method returns.
- *
- * Note: If the GCDAsyncSocket instance is deallocated while it is still connected,
- * and the delegate is not also deallocated, then this method will be invoked,
- * but the sock parameter will be nil. (It must necessarily be nil since it is no longer available.)
- * This is a generally rare, but is possible if one writes code like this:
- *
- * asyncSocket = nil; // I'm implicitly disconnecting the socket
- *
- * In this case it may preferrable to nil the delegate beforehand, like this:
- *
- * asyncSocket.delegate = nil; // Don't invoke my delegate method
- * asyncSocket = nil; // I'm implicitly disconnecting the socket
- *
- * Of course, this depends on how your state machine is configured.
- **/
-- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(nullable NSError *)err {
-    
-}
-
-/**
- * Called after the socket has successfully completed SSL/TLS negotiation.
- * This method is not called unless you use the provided startTLS method.
- *
- * If a SSL/TLS negotiation fails (invalid certificate, etc) then the socket will immediately close,
- * and the socketDidDisconnect:withError: delegate method will be called with the specific SSL error code.
- **/
-- (void)socketDidSecure:(GCDAsyncSocket *)sock {
-    
-}
-
-/**
- * Allows a socket delegate to hook into the TLS handshake and manually validate the peer it's connecting to.
- *
- * This is only called if startTLS is invoked with options that include:
- * - GCDAsyncSocketManuallyEvaluateTrust == YES
- *
- * Typically the delegate will use SecTrustEvaluate (and related functions) to properly validate the peer.
- *
- * Note from Apple's documentation:
- *   Because [SecTrustEvaluate] might look on the network for certificates in the certificate chain,
- *   [it] might block while attempting network access. You should never call it from your main thread;
- *   call it only from within a function running on a dispatch queue or on a separate thread.
- *
- * Thus this method uses a completionHandler block rather than a normal return value.
- * The completionHandler block is thread-safe, and may be invoked from a background queue/thread.
- * It is safe to invoke the completionHandler block even if the socket has been closed.
- **/
-- (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust
-completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler {
-    
-}
-
 #pragma mark - Pack
 
 - (UnPackResult)unPackLongLink:(NSData *)recvdRawData toLongLingPackage:(LongLinkPackage *)longLinkPackage {
     if ([recvdRawData length] < 16) {// 包头不完整。
+        NSLog(@"Should Contine Read Data: 包头不完整");
         return UnPack_Continue;
     }
     
@@ -416,7 +331,7 @@ completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler {
     header.seq = [recvdRawData toInt32ofRange:NSMakeRange(12, 4) SwapBigToHost:YES];
     if (header.bodyLength > [recvdRawData length]) {
         //包未收完。
-        NSLog(@"Should Contine Read Data");
+        NSLog(@"Should Contine Read Data: 包未收完。");
         return UnPack_Continue;
     }
     
@@ -435,13 +350,12 @@ completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler {
             break;
         case 1: {
             NSData *head = [self make_header:cgi encryptMethod:NONE bodyDataLen:(int)[serilizedData length] compressedBodyDataLen:(int)[serilizedData length] needCookie:NO];
-            NSData *modules = [NSData dataWithHexString:LOGIN_RSA_VER172_KEY_N];
-            NSData *expoent = [NSData dataWithHexString:LOGIN_RSA_VER172_KEY_E];
-            NSData *body = [FSOpenSSL RSAEncryptString:serilizedData modulus:modules exponent:expoent];
-            NSMutableData *d = [[NSMutableData alloc] init];
-            [d appendData:head];
-            [d appendData:body];
-            sendData = [self longlink_packWithSeq:self.seq++ cmdId:cmdId buffer:[d copy]];
+            NSData *body = [MarsOpenSSL RSA_PUB_EncryptData:serilizedData modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
+            
+            NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
+            [longlinkBody appendData:body];
+            
+            sendData = [self longlink_packWithSeq:self.seq++ cmdId:cmdId buffer:[longlinkBody copy]];
         }
             break;
         default:

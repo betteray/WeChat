@@ -32,7 +32,10 @@
 		712C7155214BF8A900603022 /* CgiWrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7154214BF8A900603022 /* CgiWrap.m */; };
 		712C7158214BFB1600603022 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7157214BFB1600603022 /* Task.m */; };
 		712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C715E214CDB6C00603022 /* NSData+PackUtil.m */; };
-		712C7166214D2BFD00603022 /* ECDHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7165214D2BFD00603022 /* ECDHUtil.m */; };
+		712C7166214D2BFD00603022 /* ECDH.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7165214D2BFD00603022 /* ECDH.m */; };
+		712C7169214F4B8700603022 /* MarsOpenSSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7168214F4B8700603022 /* MarsOpenSSL.m */; };
+		716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */; };
+		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		8A6B7E6AD0B44DCDF3A4DADB /* libPods-WXDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD18BBDEB2F4000E11CEB5B0 /* libPods-WXDemoTests.a */; };
 		A171A24009C24E78AD226EE0 /* libPods-WXDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB43DD6C2AA522C9401323 /* libPods-WXDemoUITests.a */; };
 /* End PBXBuildFile section */
@@ -187,8 +190,14 @@
 		712C7157214BFB1600603022 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		712C715D214CDB6C00603022 /* NSData+PackUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+PackUtil.h"; sourceTree = "<group>"; };
 		712C715E214CDB6C00603022 /* NSData+PackUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+PackUtil.m"; sourceTree = "<group>"; };
-		712C7164214D2BFD00603022 /* ECDHUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECDHUtil.h; sourceTree = "<group>"; };
-		712C7165214D2BFD00603022 /* ECDHUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECDHUtil.m; sourceTree = "<group>"; };
+		712C7164214D2BFD00603022 /* ECDH.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECDH.h; sourceTree = "<group>"; };
+		712C7165214D2BFD00603022 /* ECDH.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECDH.m; sourceTree = "<group>"; };
+		712C7167214F4B8700603022 /* MarsOpenSSL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarsOpenSSL.h; sourceTree = "<group>"; };
+		712C7168214F4B8700603022 /* MarsOpenSSL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarsOpenSSL.m; sourceTree = "<group>"; };
+		716AAE4D214FC8C5006BCFB2 /* NSData+CompressAndEncypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CompressAndEncypt.h"; sourceTree = "<group>"; };
+		716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CompressAndEncypt.m"; sourceTree = "<group>"; };
+		71848F252150CABD00DB669E /* NSData+Compression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Compression.h"; sourceTree = "<group>"; };
+		71848F262150CABD00DB669E /* NSData+Compression.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Compression.m"; sourceTree = "<group>"; };
 		B48B9EB914A530ED64A2B165 /* Pods-WXDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemoTests/Pods-WXDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD18BBDEB2F4000E11CEB5B0 /* libPods-WXDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D659E578DD4B1C7D6C568C19 /* Pods-WXDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemo/Pods-WXDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -292,6 +301,12 @@
 				712C7065214A9A8B00603022 /* Constants.h */,
 				712C715D214CDB6C00603022 /* NSData+PackUtil.h */,
 				712C715E214CDB6C00603022 /* NSData+PackUtil.m */,
+				712C7167214F4B8700603022 /* MarsOpenSSL.h */,
+				712C7168214F4B8700603022 /* MarsOpenSSL.m */,
+				716AAE4D214FC8C5006BCFB2 /* NSData+CompressAndEncypt.h */,
+				716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */,
+				71848F252150CABD00DB669E /* NSData+Compression.h */,
+				71848F262150CABD00DB669E /* NSData+Compression.m */,
 			);
 			path = WXDemo;
 			sourceTree = "<group>";
@@ -476,8 +491,8 @@
 		712C7160214D231C00603022 /* ecdh */ = {
 			isa = PBXGroup;
 			children = (
-				712C7164214D2BFD00603022 /* ECDHUtil.h */,
-				712C7165214D2BFD00603022 /* ECDHUtil.m */,
+				712C7164214D2BFD00603022 /* ECDH.h */,
+				712C7165214D2BFD00603022 /* ECDH.m */,
 			);
 			path = ecdh;
 			sourceTree = "<group>";
@@ -677,18 +692,21 @@
 				712C6E93214A1E8900603022 /* WeChatClient.m in Sources */,
 				712C6E63214A145600603022 /* ViewController.m in Sources */,
 				712C7152214BAD8900603022 /* Header.m in Sources */,
+				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,
 				712C6E6E214A145700603022 /* main.m in Sources */,
 				712C7158214BFB1600603022 /* Task.m in Sources */,
 				712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */,
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
-				712C7166214D2BFD00603022 /* ECDHUtil.m in Sources */,
+				712C7166214D2BFD00603022 /* ECDH.m in Sources */,
 				712C714F214BABA500603022 /* Package.m in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
 				712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */,
 				712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */,
 				712C7149214BA38900603022 /* LongLinkHeader.m in Sources */,
 				712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */,
+				71848F272150CABD00DB669E /* NSData+Compression.m in Sources */,
 				712C714C214BA49300603022 /* LongLinkPackage.m in Sources */,
+				712C7169214F4B8700603022 /* MarsOpenSSL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

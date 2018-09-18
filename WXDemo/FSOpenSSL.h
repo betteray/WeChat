@@ -19,6 +19,20 @@
 
 #import <Foundation/Foundation.h>
 
+enum
+{
+    CRYPT_OK = 0,
+    CRYPT_ERR_INVALID_KEY_N = 1,
+    CRYPT_ERR_INVALID_KEY_E = 2,
+    CRYPT_ERR_ENCRYPT_WITH_RSA_PUBKEY = 3,
+    CRYPT_ERR_DECRYPT_WITH_RSA_PRIVKEY = 4,
+    CRYPT_ERR_NO_MEMORY = 5,
+    CRYPT_ERR_ENCRYPT_WITH_DES_KEY = 6,
+    CRYPT_ERR_DECRYPT_WITH_DES_KEY = 7,
+    CRYPT_ERR_INVALID_PARAM = 8,
+    CRYPT_ERR_LOAD_RSA_PRIVATE_KEY = 9,
+};
+
 @interface FSOpenSSL : NSObject
 
 + (NSData *)random128BitAESKey;
@@ -29,7 +43,7 @@
 
 + (NSString *)base64FromString:(NSString *)string encodeWithNewlines:(BOOL)encodeWithNewlines;
 
-+ (NSData *)RSAEncryptString:(NSData *)data modulus:(NSData *)modules exponent:(NSData *)exponent;
++ (NSData *)RSAEncryptData:(NSData *)data modulus:(NSData *)modules exponent:(NSData *)exponent;
 
 + (NSData *) aesEncryptData:(NSData *)contentData key:(NSData *)keyData;
 + (NSData *) aesDecryptData:(NSData *)contentData key:( NSData *)keyData;
