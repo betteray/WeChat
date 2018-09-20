@@ -15,7 +15,9 @@ typedef void (^FailureBlock)(NSError *error);
 
 @interface WeChatClient : NSObject
 
-@property (nonatomic, strong, readonly) NSData * clientAesKey;
+@property (nonatomic, strong) NSData * sessionKey;
+@property (nonatomic, strong) NSData * checkEcdhKey;
+@property (nonatomic, assign) int32_t uin;
 
 + (instancetype)sharedClient;
 
@@ -33,4 +35,8 @@ typedef void (^FailureBlock)(NSError *error);
 - (void)manualAuth:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock;
+
+- (void)sendMsg:(CgiWrap *)cgiWrap
+           success:(SuccessBlock)successBlock
+           failure:(FailureBlock)failureBlock;
 @end

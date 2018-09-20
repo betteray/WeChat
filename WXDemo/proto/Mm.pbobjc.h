@@ -28,7 +28,9 @@
 CF_EXTERN_C_BEGIN
 
 @class BaseRequest;
+@class BaseResponse;
 @class CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg;
+@class ClientChcekData_Tag;
 @class LoginInfo;
 @class ManualAuthAccountRequest;
 @class ManualAuthAccountRequest_AesKey;
@@ -49,8 +51,11 @@ CF_EXTERN_C_BEGIN
 @class ManualAuthResponse_dns_info_ip_info_shortlink_ip_info;
 @class ManualAuthResponse_dns_info_redirect_info;
 @class ManualAuthResponse_dns_info_redirect_info_real_host_info;
+@class MicroMsgRequestNew;
+@class MicroMsgResponseNew;
 @class Msg_RawContent;
 @class SKBuiltinBuffer;
+@class SKBuiltinString_t;
 @class SyncKey_MsgKey;
 @class SyncKey_MsgKey_Key;
 @class Wxid;
@@ -84,8 +89,6 @@ CF_EXTERN_C_BEGIN
 @class mm_facing_create_chatroom_resp_result;
 @class mm_facing_create_chatroom_resp_result_err_msg;
 @class new_send_app_msg_req_appmsg_info;
-@class new_send_msg_req_msg_info;
-@class new_send_msg_resp_result;
 @class new_sync_req_continue_flag;
 @class new_sync_resp_new_msg;
 @class open_wxhb_resp_TAG1;
@@ -299,7 +302,7 @@ typedef GPB_ENUM(common_msg_Data_FieldNumber) {
 #pragma mark - Wxid
 
 typedef GPB_ENUM(Wxid_FieldNumber) {
-  Wxid_FieldNumber_Id_p = 1,
+  Wxid_FieldNumber_Wxid = 1,
 };
 
 /**
@@ -307,9 +310,9 @@ typedef GPB_ENUM(Wxid_FieldNumber) {
  **/
 @interface Wxid : GPBMessage
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *id_p;
-/** Test to see if @c id_p has been set. */
-@property(nonatomic, readwrite) BOOL hasId_p;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *wxid;
+/** Test to see if @c wxid has been set. */
+@property(nonatomic, readwrite) BOOL hasWxid;
 
 @end
 
@@ -1001,127 +1004,6 @@ typedef GPB_ENUM(new_sync_resp_new_msg_FieldNumber) {
 /** The number of items in @c tag2Array without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger tag2Array_Count;
 
-@end
-
-#pragma mark - new_send_msg_req
-
-typedef GPB_ENUM(new_send_msg_req_FieldNumber) {
-  new_send_msg_req_FieldNumber_Cnt = 1,
-  new_send_msg_req_FieldNumber_Msg = 2,
-};
-
-/**
- * 发送消息请求
- **/
-@interface new_send_msg_req : GPBMessage
-
-/** 本次发送的消息数量 */
-@property(nonatomic, readwrite) int32_t cnt;
-
-@property(nonatomic, readwrite) BOOL hasCnt;
-/** 这里可以是repeated,允许一次发送多条消息 */
-@property(nonatomic, readwrite, strong, null_resettable) new_send_msg_req_msg_info *msg;
-/** Test to see if @c msg has been set. */
-@property(nonatomic, readwrite) BOOL hasMsg;
-
-@end
-
-#pragma mark - new_send_msg_req_msg_info
-
-typedef GPB_ENUM(new_send_msg_req_msg_info_FieldNumber) {
-  new_send_msg_req_msg_info_FieldNumber_To = 1,
-  new_send_msg_req_msg_info_FieldNumber_Content = 2,
-  new_send_msg_req_msg_info_FieldNumber_Type = 3,
-  new_send_msg_req_msg_info_FieldNumber_Utc = 4,
-  new_send_msg_req_msg_info_FieldNumber_ClientId = 5,
-  new_send_msg_req_msg_info_FieldNumber_AtList = 6,
-};
-
-@interface new_send_msg_req_msg_info : GPBMessage
-
-/** to wxid */
-@property(nonatomic, readwrite, strong, null_resettable) Wxid *to;
-/** Test to see if @c to has been set. */
-@property(nonatomic, readwrite) BOOL hasTo;
-
-/** 消息内容 */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *content;
-/** Test to see if @c content has been set. */
-@property(nonatomic, readwrite) BOOL hasContent;
-
-/** 消息类型: 文字消息=>1,名片=>42， */
-@property(nonatomic, readwrite) int32_t type;
-
-@property(nonatomic, readwrite) BOOL hasType;
-@property(nonatomic, readwrite) int32_t utc;
-
-@property(nonatomic, readwrite) BOOL hasUtc;
-/** 不同消息的utc与client_id必须至少有1个不相同 */
-@property(nonatomic, readwrite) int32_t clientId;
-
-@property(nonatomic, readwrite) BOOL hasClientId;
-/** 群聊at功能 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *atList;
-/** Test to see if @c atList has been set. */
-@property(nonatomic, readwrite) BOOL hasAtList;
-
-@end
-
-#pragma mark - new_send_msg_resp
-
-typedef GPB_ENUM(new_send_msg_resp_FieldNumber) {
-  new_send_msg_resp_FieldNumber_Tag1 = 1,
-  new_send_msg_resp_FieldNumber_Cnt = 2,
-  new_send_msg_resp_FieldNumber_Res = 3,
-};
-
-/**
- * 发送消息响应
- **/
-@interface new_send_msg_resp : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) mmStr *tag1;
-/** Test to see if @c tag1 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag1;
-
-@property(nonatomic, readwrite) int32_t cnt;
-
-@property(nonatomic, readwrite) BOOL hasCnt;
-/** 发送结果 */
-@property(nonatomic, readwrite, strong, null_resettable) new_send_msg_resp_result *res;
-/** Test to see if @c res has been set. */
-@property(nonatomic, readwrite) BOOL hasRes;
-
-@end
-
-#pragma mark - new_send_msg_resp_result
-
-typedef GPB_ENUM(new_send_msg_resp_result_FieldNumber) {
-  new_send_msg_resp_result_FieldNumber_Code = 1,
-  new_send_msg_resp_result_FieldNumber_To = 2,
-  new_send_msg_resp_result_FieldNumber_Type = 7,
-  new_send_msg_resp_result_FieldNumber_Svrid = 8,
-};
-
-@interface new_send_msg_resp_result : GPBMessage
-
-/** 错误码 0=>发送成功,-44=>对方开启了朋友验证(被删好友),-22=>消息已发出,但被对方拒收了(被拉黑) */
-@property(nonatomic, readwrite) int32_t code;
-
-@property(nonatomic, readwrite) BOOL hasCode;
-/** to wxid */
-@property(nonatomic, readwrite, strong, null_resettable) Wxid *to;
-/** Test to see if @c to has been set. */
-@property(nonatomic, readwrite) BOOL hasTo;
-
-/** 消息类型 */
-@property(nonatomic, readwrite) int32_t type;
-
-@property(nonatomic, readwrite) BOOL hasType;
-/** 消息唯一id */
-@property(nonatomic, readwrite) int64_t svrid;
-
-@property(nonatomic, readwrite) BOOL hasSvrid;
 @end
 
 #pragma mark - new_send_app_msg_req
@@ -2814,10 +2696,30 @@ typedef GPB_ENUM(BaseRequest_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasScene;
 @end
 
+#pragma mark - BaseResponse
+
+typedef GPB_ENUM(BaseResponse_FieldNumber) {
+  BaseResponse_FieldNumber_Ret = 1,
+  BaseResponse_FieldNumber_ErrMsg = 2,
+};
+
+@interface BaseResponse : GPBMessage
+
+/** 错误码 */
+@property(nonatomic, readwrite) int32_t ret;
+
+@property(nonatomic, readwrite) BOOL hasRet;
+/** 错误信息 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *errMsg;
+/** Test to see if @c errMsg has been set. */
+@property(nonatomic, readwrite) BOOL hasErrMsg;
+
+@end
+
 #pragma mark - GetLoginQRCodeRequest
 
 typedef GPB_ENUM(GetLoginQRCodeRequest_FieldNumber) {
-  GetLoginQRCodeRequest_FieldNumber_Base = 1,
+  GetLoginQRCodeRequest_FieldNumber_BaseRequest = 1,
   GetLoginQRCodeRequest_FieldNumber_RandomEncryKey = 2,
   GetLoginQRCodeRequest_FieldNumber_Opcode = 3,
   GetLoginQRCodeRequest_FieldNumber_DeviceName = 4,
@@ -2825,6 +2727,7 @@ typedef GPB_ENUM(GetLoginQRCodeRequest_FieldNumber) {
   GetLoginQRCodeRequest_FieldNumber_HardwareExtra = 6,
   GetLoginQRCodeRequest_FieldNumber_SoftType = 7,
   GetLoginQRCodeRequest_FieldNumber_ExtDevLoginType = 8,
+  GetLoginQRCodeRequest_FieldNumber_MsgContextPubKey = 9,
 };
 
 /**
@@ -2832,17 +2735,20 @@ typedef GPB_ENUM(GetLoginQRCodeRequest_FieldNumber) {
  **/
 @interface GetLoginQRCodeRequest : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *base;
-/** Test to see if @c base has been set. */
-@property(nonatomic, readwrite) BOOL hasBase;
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
 
+/** iPad 16位 iMac 184位 */
 @property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *randomEncryKey;
 /** Test to see if @c randomEncryKey has been set. */
 @property(nonatomic, readwrite) BOOL hasRandomEncryKey;
 
+/** 0 */
 @property(nonatomic, readwrite) int32_t opcode;
 
 @property(nonatomic, readwrite) BOOL hasOpcode;
+/** iMac "iMac" */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *deviceName;
 /** Test to see if @c deviceName has been set. */
 @property(nonatomic, readwrite) BOOL hasDeviceName;
@@ -2851,6 +2757,7 @@ typedef GPB_ENUM(GetLoginQRCodeRequest_FieldNumber) {
 /** Test to see if @c userName has been set. */
 @property(nonatomic, readwrite) BOOL hasUserName;
 
+/** iMac 0, */
 @property(nonatomic, readwrite) int32_t hardwareExtra;
 
 @property(nonatomic, readwrite) BOOL hasHardwareExtra;
@@ -2862,12 +2769,17 @@ typedef GPB_ENUM(GetLoginQRCodeRequest_FieldNumber) {
 @property(nonatomic, readwrite) int32_t extDevLoginType;
 
 @property(nonatomic, readwrite) BOOL hasExtDevLoginType;
+/** iMac */
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *msgContextPubKey;
+/** Test to see if @c msgContextPubKey has been set. */
+@property(nonatomic, readwrite) BOOL hasMsgContextPubKey;
+
 @end
 
 #pragma mark - GetLoginQRCodeResponse
 
 typedef GPB_ENUM(GetLoginQRCodeResponse_FieldNumber) {
-  GetLoginQRCodeResponse_FieldNumber_Base = 1,
+  GetLoginQRCodeResponse_FieldNumber_BaseResponse = 1,
   GetLoginQRCodeResponse_FieldNumber_Qrcode = 2,
   GetLoginQRCodeResponse_FieldNumber_Uuid = 3,
   GetLoginQRCodeResponse_FieldNumber_CheckTime = 4,
@@ -2879,9 +2791,9 @@ typedef GPB_ENUM(GetLoginQRCodeResponse_FieldNumber) {
 
 @interface GetLoginQRCodeResponse : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) mmRes *base;
-/** Test to see if @c base has been set. */
-@property(nonatomic, readwrite) BOOL hasBase;
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
 
 @property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *qrcode;
 /** Test to see if @c qrcode has been set. */
@@ -2914,7 +2826,7 @@ typedef GPB_ENUM(GetLoginQRCodeResponse_FieldNumber) {
 #pragma mark - CheckLoginQRCodeRequest
 
 typedef GPB_ENUM(CheckLoginQRCodeRequest_FieldNumber) {
-  CheckLoginQRCodeRequest_FieldNumber_Base = 1,
+  CheckLoginQRCodeRequest_FieldNumber_BaseRequest = 1,
   CheckLoginQRCodeRequest_FieldNumber_RandomEncryKey = 2,
   CheckLoginQRCodeRequest_FieldNumber_Uuid = 3,
   CheckLoginQRCodeRequest_FieldNumber_TimeStamp = 4,
@@ -2926,9 +2838,9 @@ typedef GPB_ENUM(CheckLoginQRCodeRequest_FieldNumber) {
  **/
 @interface CheckLoginQRCodeRequest : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) LoginInfo *base;
-/** Test to see if @c base has been set. */
-@property(nonatomic, readwrite) BOOL hasBase;
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
 
 @property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *randomEncryKey;
 /** Test to see if @c randomEncryKey has been set. */
@@ -2949,15 +2861,15 @@ typedef GPB_ENUM(CheckLoginQRCodeRequest_FieldNumber) {
 #pragma mark - CheckLoginQRCodeResponse
 
 typedef GPB_ENUM(CheckLoginQRCodeResponse_FieldNumber) {
-  CheckLoginQRCodeResponse_FieldNumber_Base = 1,
+  CheckLoginQRCodeResponse_FieldNumber_BaseResponse = 1,
   CheckLoginQRCodeResponse_FieldNumber_NotifyPkg = 3,
 };
 
 @interface CheckLoginQRCodeResponse : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) mmRes *base;
-/** Test to see if @c base has been set. */
-@property(nonatomic, readwrite) BOOL hasBase;
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
 
 @property(nonatomic, readwrite, strong, null_resettable) CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg *notifyPkg;
 /** Test to see if @c notifyPkg has been set. */
@@ -3666,6 +3578,196 @@ typedef GPB_ENUM(ManualAuthResponse_dns_info_ip_info_shortlink_ip_info_FieldNumb
 @property(nonatomic, readwrite, copy, null_resettable) NSString *host;
 /** Test to see if @c host has been set. */
 @property(nonatomic, readwrite) BOOL hasHost;
+
+@end
+
+#pragma mark - SKBuiltinString_t
+
+typedef GPB_ENUM(SKBuiltinString_t_FieldNumber) {
+  SKBuiltinString_t_FieldNumber_String = 1,
+};
+
+@interface SKBuiltinString_t : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *string;
+/** Test to see if @c string has been set. */
+@property(nonatomic, readwrite) BOOL hasString;
+
+@end
+
+#pragma mark - MicroMsgRequestNew
+
+typedef GPB_ENUM(MicroMsgRequestNew_FieldNumber) {
+  MicroMsgRequestNew_FieldNumber_ToUserName = 1,
+  MicroMsgRequestNew_FieldNumber_Content = 2,
+  MicroMsgRequestNew_FieldNumber_Type = 3,
+  MicroMsgRequestNew_FieldNumber_CreateTime = 4,
+  MicroMsgRequestNew_FieldNumber_ClientMsgId = 5,
+  MicroMsgRequestNew_FieldNumber_AtList = 6,
+};
+
+@interface MicroMsgRequestNew : GPBMessage
+
+/** to wxid */
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *toUserName;
+/** Test to see if @c toUserName has been set. */
+@property(nonatomic, readwrite) BOOL hasToUserName;
+
+/** 消息内容 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *content;
+/** Test to see if @c content has been set. */
+@property(nonatomic, readwrite) BOOL hasContent;
+
+/** 消息类型: 文字消息=>1,名片=>42， */
+@property(nonatomic, readwrite) int32_t type;
+
+@property(nonatomic, readwrite) BOOL hasType;
+/** 1537268848 */
+@property(nonatomic, readwrite) int32_t createTime;
+
+@property(nonatomic, readwrite) BOOL hasCreateTime;
+/** 不同消息的utc与client_id必须至少有1个不相同 4287068409 */
+@property(nonatomic, readwrite) int64_t clientMsgId;
+
+@property(nonatomic, readwrite) BOOL hasClientMsgId;
+/** 群聊at功能 iMac: "<msgsource></msgsource>" */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *atList;
+/** Test to see if @c atList has been set. */
+@property(nonatomic, readwrite) BOOL hasAtList;
+
+@end
+
+#pragma mark - SendMsgRequestNew
+
+typedef GPB_ENUM(SendMsgRequestNew_FieldNumber) {
+  SendMsgRequestNew_FieldNumber_Count = 1,
+  SendMsgRequestNew_FieldNumber_ListArray = 2,
+};
+
+/**
+ * 发送消息请求
+ **/
+@interface SendMsgRequestNew : GPBMessage
+
+/** 本次发送的消息数量 */
+@property(nonatomic, readwrite) int32_t count;
+
+@property(nonatomic, readwrite) BOOL hasCount;
+/** 这里可以是repeated,允许一次发送多条消息 */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<MicroMsgRequestNew*> *listArray;
+/** The number of items in @c listArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger listArray_Count;
+
+@end
+
+#pragma mark - MicroMsgResponseNew
+
+typedef GPB_ENUM(MicroMsgResponseNew_FieldNumber) {
+  MicroMsgResponseNew_FieldNumber_Ret = 1,
+  MicroMsgResponseNew_FieldNumber_ToUserName = 2,
+  MicroMsgResponseNew_FieldNumber_MsgId = 3,
+  MicroMsgResponseNew_FieldNumber_ClientMsgId = 4,
+  MicroMsgResponseNew_FieldNumber_CreateTime = 5,
+  MicroMsgResponseNew_FieldNumber_ServerTime = 6,
+  MicroMsgResponseNew_FieldNumber_Type = 7,
+  MicroMsgResponseNew_FieldNumber_NewMsgId = 8,
+};
+
+@interface MicroMsgResponseNew : GPBMessage
+
+/** 错误码 0=>发送成功,-44=>对方开启了朋友验证(被删好友),-22=>消息已发出,但被对方拒收了(被拉黑) */
+@property(nonatomic, readwrite) int32_t ret;
+
+@property(nonatomic, readwrite) BOOL hasRet;
+/** to wxid */
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *toUserName;
+/** Test to see if @c toUserName has been set. */
+@property(nonatomic, readwrite) BOOL hasToUserName;
+
+@property(nonatomic, readwrite) int32_t msgId;
+
+@property(nonatomic, readwrite) BOOL hasMsgId;
+@property(nonatomic, readwrite) int32_t clientMsgId;
+
+@property(nonatomic, readwrite) BOOL hasClientMsgId;
+@property(nonatomic, readwrite) int32_t createTime;
+
+@property(nonatomic, readwrite) BOOL hasCreateTime;
+@property(nonatomic, readwrite) int32_t serverTime;
+
+@property(nonatomic, readwrite) BOOL hasServerTime;
+/** 消息类型 */
+@property(nonatomic, readwrite) int32_t type;
+
+@property(nonatomic, readwrite) BOOL hasType;
+/** 消息唯一id */
+@property(nonatomic, readwrite) int64_t newMsgId;
+
+@property(nonatomic, readwrite) BOOL hasNewMsgId;
+@end
+
+#pragma mark - SendMsgResponseNew
+
+typedef GPB_ENUM(SendMsgResponseNew_FieldNumber) {
+  SendMsgResponseNew_FieldNumber_BaseResponse = 1,
+  SendMsgResponseNew_FieldNumber_Count = 2,
+  SendMsgResponseNew_FieldNumber_List = 3,
+};
+
+/**
+ * 发送消息响应
+ **/
+@interface SendMsgResponseNew : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
+
+@property(nonatomic, readwrite) int32_t count;
+
+@property(nonatomic, readwrite) BOOL hasCount;
+/** 发送结果 */
+@property(nonatomic, readwrite, strong, null_resettable) MicroMsgResponseNew *list;
+/** Test to see if @c list has been set. */
+@property(nonatomic, readwrite) BOOL hasList;
+
+@end
+
+#pragma mark - ClientChcekData
+
+typedef GPB_ENUM(ClientChcekData_FieldNumber) {
+  ClientChcekData_FieldNumber_Field1 = 1,
+  ClientChcekData_FieldNumber_Field2 = 2,
+  ClientChcekData_FieldNumber_Clientcheckdata = 3,
+};
+
+@interface ClientChcekData : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) ClientChcekData_Tag *field1;
+/** Test to see if @c field1 has been set. */
+@property(nonatomic, readwrite) BOOL hasField1;
+
+@property(nonatomic, readwrite) int32_t field2;
+
+@property(nonatomic, readwrite) BOOL hasField2;
+/** 发送结果 */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *clientcheckdata;
+/** Test to see if @c clientcheckdata has been set. */
+@property(nonatomic, readwrite) BOOL hasClientcheckdata;
+
+@end
+
+#pragma mark - ClientChcekData_Tag
+
+typedef GPB_ENUM(ClientChcekData_Tag_FieldNumber) {
+  ClientChcekData_Tag_FieldNumber_CountArray = 6,
+};
+
+@interface ClientChcekData_Tag : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBInt32Array *countArray;
+/** The number of items in @c countArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger countArray_Count;
 
 @end
 

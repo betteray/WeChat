@@ -38,10 +38,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LN-r1-bzx">
-                                <rect key="frame" x="42" y="30" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="test"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LN-r1-bzx">
+                                <rect key="frame" x="155" y="589" width="64" height="30"/>
+                                <state key="normal" title="Say Hello"/>
                                 <connections>
                                     <action selector="test" destination="BYZ-38-t0r" eventType="touchUpInside" id="WHy-aJ-rjp"/>
                                 </connections>
@@ -50,7 +49,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XYp-E8-z3G" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="P6o-hD-SFb"/>
+                            <constraint firstItem="8LN-r1-bzx" firstAttribute="top" secondItem="XYp-E8-z3G" secondAttribute="bottom" constant="12" id="UcD-u7-vGA"/>
                             <constraint firstItem="zpt-DE-qMy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZkI-5R-qWL"/>
+                            <constraint firstItem="8LN-r1-bzx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cmr-H3-qjS"/>
                             <constraint firstItem="FKq-3M-YNZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="ctR-Rk-UXg"/>
                             <constraint firstItem="zpt-DE-qMy" firstAttribute="top" secondItem="FKq-3M-YNZ" secondAttribute="bottom" constant="60" id="qBj-nX-OYa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XYp-E8-z3G" secondAttribute="bottom" constant="90" id="vLh-Ff-BSN"/>

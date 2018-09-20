@@ -19,7 +19,7 @@
 szServerPubKey:(unsigned char *)szServerPubKey
  nLenServerPub:(int)nLenServerPub
  szLocalPriKey:(unsigned char *)szLocalPriKey
-  nLenLocalPri:(int) nLenLocalPri
+  nLenLocalPri:(int)nLenLocalPri
     szShareKey:(unsigned char *)szShareKey
   pLenShareKey:(int *)pLenShareKey;
 

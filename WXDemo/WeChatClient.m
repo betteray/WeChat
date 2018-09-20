@@ -20,6 +20,7 @@
 #import "NSData+PackUtil.h"
 #import "MarsOpenSSL.h"
 #import "NSData+CompressAndEncypt.h"
+#import "NSData+Compression.h"
 
 //#心跳
 #define CMDID_NOOP_REQ 6
@@ -59,8 +60,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 @property (nonatomic, assign) int seq;    //封包编号。
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
 
-@property (nonatomic, strong) NSData * clientAesKey;
-@property (nonatomic, assign) int uin;
 @property (nonatomic, strong) NSData *cookie;
 
 @property (nonatomic, strong) NSMutableArray *tasks;
@@ -85,7 +84,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         _uin = 0;
         _tasks = [NSMutableArray array];
         _recvedData = [NSMutableData data];
-        _clientAesKey = [FSOpenSSL random128BitAESKey]; //[NSData dataWithHexString:@"B927F42DA834364D3E12334D74244B6B"];//
+        _sessionKey = [FSOpenSSL random128BitAESKey]; //[NSData dataWithHexString:@"B927F42DA834364D3E12334D74244B6B"];//
         
         _heartbeatTimer = [NSTimer timerWithTimeInterval:30 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
@@ -121,8 +120,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 }
 
 - (void)test {
-    NSData *header = [self make_header:502 encryptMethod:NONE bodyDataLen:125 compressedBodyDataLen:125 needCookie:false];
-    NSLog(@"header: %@", header);
+//    NSData *header = [self make_header:502 encryptMethod:NONE bodyData:125 compressedBodyData:125 needCookie:false];
+//    NSLog(@"header: %@", header);
 }
 
 - (void)heartBeat {
@@ -145,10 +144,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [base setScene:0];
     [base setClientVersion:CLIENT_VERSION];
     [base setDeviceType:DEVICE_TYPE];
-    [base setSessionKey:_clientAesKey];
+    [base setSessionKey:_sessionKey];
     [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
     
-    [[cgiWrap request] performSelector:@selector(setBase:) withObject:base];
+    [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
     
     NSData *serilizedData = [[cgiWrap request] data];
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:1];
@@ -174,7 +173,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [base setScene:0];
     [base setClientVersion:CLIENT_VERSION];
     [base setDeviceType:DEVICE_TYPE];
-    [base setSessionKey:_clientAesKey];
+    [base setSessionKey:_sessionKey];
     [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
     
     [deviceRequest setBaseRequest:base];
@@ -194,7 +193,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [body appendData:reqAccount];
     [body appendData:reqDevice];
     
-    NSData *head = [self make_header:cgiWrap.cgi encryptMethod:RSA bodyDataLen:(int)[body length] compressedBodyDataLen:(int)[body length] needCookie:NO];
+    NSData *head = [self make_header:cgiWrap.cgi encryptMethod:RSA bodyData:body compressedBodyData:body needCookie:NO];
     
     NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
     [longlinkBody appendData:body];
@@ -208,6 +207,26 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [_tasks addObject:task];
     
     [_socket writeData:sendData withTimeout:3 tag:[cgiWrap cgi]];
+}
+
+- (void)sendMsg:(CgiWrap *)cgiWrap
+        success:(SuccessBlock)successBlock
+        failure:(FailureBlock)failureBlock {
+    
+    id request = cgiWrap.request;
+    
+    NSLog(@"sendMsg: %@", request);
+    
+    NSData *serializedData = [request data];
+    NSData *sendData = [self pack:cgiWrap.cmdId cgi:cgiWrap.cgi serilizedData:serializedData type:5];
+    
+    Task *task = [Task new];
+    task.sucBlock = successBlock;
+    task.failBlock = failureBlock;
+    task.cgiWrap = cgiWrap;
+    [_tasks addObject:task];
+    
+    [_socket writeData:sendData withTimeout:3 tag:cgiWrap.cgi];
 }
 
 - (Task *)getTaskWithTag:(NSInteger)tag {
@@ -245,7 +264,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
  * Not called if there is an error.
  **/
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSLog(@"didReadData: %@, cgi: %ld",data, tag);
+    NSLog(@">>> didReadData: %@, cgi: %ld",data, tag);
     
     [_recvedData appendData:data];
     
@@ -266,7 +285,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                 }
             } else {
                 Package *package = [self UnPackLongLinkBody:longLinkPackage.body];
-                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:_clientAesKey];
+                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:_sessionKey];
                 Task *task = [self getTaskWithTag:package.header.cgi];
                 id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
                 NSLog(@"WeChatClient Response: %@", response);
@@ -290,28 +309,11 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 }
 
 /**
- * Called when a socket has read in data, but has not yet completed the read.
- * This would occur if using readToData: or readToLength: methods.
- * It may be used to for things such as updating progress bars.
- **/
-- (void)socket:(GCDAsyncSocket *)sock didReadPartialDataOfLength:(NSUInteger)partialLength tag:(long)tag {
-
-}
-
-/**
  * Called when a socket has completed writing the requested data. Not called if there is an error.
  **/
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
-//    NSLog(@"didWriteDataWithTag: %ld", tag);
+    NSLog(@"<<< didWriteDataWithTag: %ld", tag);
     [_socket readDataWithTimeout:3 tag:tag];
-}
-
-/**
- * Called when a socket has written some data, but has not yet completed the entire write.
- * It may be used to for things such as updating progress bars.
- **/
-- (void)socket:(GCDAsyncSocket *)sock didWritePartialDataOfLength:(NSUInteger)partialLength tag:(long)tag {
-    
 }
 
 #pragma mark - Pack
@@ -349,12 +351,18 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         }
             break;
         case 1: {
-            NSData *head = [self make_header:cgi encryptMethod:NONE bodyDataLen:(int)[serilizedData length] compressedBodyDataLen:(int)[serilizedData length] needCookie:NO];
+            NSData *head = [self make_header:cgi encryptMethod:NONE bodyData:serilizedData compressedBodyData:serilizedData needCookie:NO];
             NSData *body = [MarsOpenSSL RSA_PUB_EncryptData:serilizedData modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
-            
             NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
             [longlinkBody appendData:body];
-            
+            sendData = [self longlink_packWithSeq:self.seq++ cmdId:cmdId buffer:[longlinkBody copy]];
+        }
+            break;
+        case 5: {
+            NSData *head = [self make_header:cgi encryptMethod:AES bodyData:serilizedData compressedBodyData:serilizedData needCookie:YES];
+            NSData *body = [serilizedData AES];
+            NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
+            [longlinkBody appendData:body];
             sendData = [self longlink_packWithSeq:self.seq++ cmdId:cmdId buffer:[longlinkBody copy]];
         }
             break;
@@ -435,9 +443,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     
     if (cookieLen > 0 && cookieLen <=0xf) {
         NSData *cookie = [body subdataWithRange:NSMakeRange(index, cookieLen)];
-        NSString *cookieString = [[NSString alloc] initWithData:cookie encoding:NSUTF8StringEncoding];
-        NSLog(@"Cookie: %@", cookieString);
+        NSLog(@"Cookie: %@", cookie);
         index += cookieLen;
+        _cookie = cookie;
     } else if (cookieLen > 0xf) {
         return nil;
     }
@@ -464,7 +472,11 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     return package;
 }
 
-- (NSData *)make_header:(int)cgi encryptMethod:(EncryptMethod)encryptMethod bodyDataLen:(int)bodyDataLen compressedBodyDataLen:(int)compressedBodyDataLen needCookie:(BOOL)needCookie {
+- (NSData *)make_header:(int)cgi encryptMethod:(EncryptMethod)encryptMethod bodyData:(NSData *)bodyData compressedBodyData:(NSData *)compressedBodyData needCookie:(BOOL)needCookie {
+    
+    int bodyDataLen = (int)[bodyData length];
+    int compressedBodyDataLen = (int)[compressedBodyData length];
+
     NSMutableData *header = [NSMutableData data];
     
     [header appendData:[NSData dataWithHexString:@"BF"]];//
@@ -486,17 +498,26 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [header appendData:[NSData varintBytes:bodyDataLen]];
     [header appendData:[NSData varintBytes:compressedBodyDataLen]];
     
+    if (_checkEcdhKey.length > 0) {
+        [header appendData:[self ecdhCheck:bodyData]];
+    }
+    
     if (need_login_rsa_verison(cgi)) {
         [header appendData:[NSData varintBytes:LOGIN_RSA_VER_172]];
         [header appendData:[NSData dataWithHexString:@"0D00"]];
         [header appendData:[NSData packInt16:9 flip:NO]];
     } else {
         [header appendData:[NSData dataWithHexString:@"000D"]];
-        [header appendData:[NSData packInt16:9 flip:NO]];   //need fix
+        [header appendData:[NSData packInt16:(9 * (1 & encryptMethod)) flip:NO]];   //need fix
     }
     
     [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[[NSData varintBytes:(int)(([header length] << 2) + 0x2)] bytes]];
     return [header copy];
+}
+
+- (NSData *)ecdhCheck:(NSData *)buff {
+    NSData *data = [buff dataByDeflating];
+    return [FSOpenSSL aesEncryptData:data key:_checkEcdhKey];
 }
 
 bool need_login_rsa_verison(int cgi) {

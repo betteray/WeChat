@@ -55,7 +55,7 @@ message common_msg
 //wxid
 message Wxid
 {
-	optional string id = 1;
+	optional string wxid = 1;
 }
 
 //服务器返回消息(newinit/newsync)
@@ -238,36 +238,6 @@ message new_sync_resp
 	optional int32  utc 				= 7;
 }
 
-//发送消息请求
-message new_send_msg_req
-{
-	optional int32  cnt  				= 1;						//本次发送的消息数量
-	message msg_info
-	{
-		optional Wxid  to  			= 1;							//to wxid
-		optional bytes content 		= 2;							//消息内容
-		optional int32 type 		= 3;							//消息类型: 文字消息=>1,名片=>42，
-		optional int32 utc 			= 4;
-		optional int32 client_id 	= 5;							//不同消息的utc与client_id必须至少有1个不相同
-		optional string at_list		= 6;							//群聊at功能
-	}
-	optional msg_info msg 				= 2;						//这里可以是repeated,允许一次发送多条消息
-}
-
-//发送消息响应
-message new_send_msg_resp
-{
-	optional mmStr tag1					= 1;
-	optional int32 cnt 					= 2;
-	message result
-	{
-		optional int32 code		= 1;								//错误码 0=>发送成功,-44=>对方开启了朋友验证(被删好友),-22=>消息已发出,但被对方拒收了(被拉黑)
-		optional Wxid  to   	= 2;								//to wxid
-		optional int32 type 	= 7;								//消息类型
-		optional int64 svrid 	= 8;								//消息唯一id
-	}
-	optional result res					= 3;						//发送结果
-}
 
 //分享链接请求(也可以分享app链接)
 message new_send_app_msg_req
@@ -712,54 +682,63 @@ message SKBuiltinBuffer
 
 message BaseRequest
 {
-	optional bytes  sessionKey 		= 1;	//解密服务器返回封包时使用的aeskey
-	optional int32 	uin 		    = 2;
-	optional bytes deviceId 		= 3;	//手机guid长度16,这里取前15字节,以'\0'结尾
-	optional int32  clientVersion 	= 4;
-	optional string deviceType 	    = 5;
-	optional int32  scene 		    = 6;
+	optional bytes      sessionKey 		= 1;	//解密服务器返回封包时使用的aeskey
+	optional int32 	    uin 		    = 2;
+	optional bytes      deviceId 		= 3;	//手机guid长度16,这里取前15字节,以'\0'结尾
+	optional int32      clientVersion 	= 4;
+	optional string     deviceType 	    = 5;
+	optional int32      scene 		    = 6;
+}
+
+message BaseResponse
+{
+    optional int32      ret         = 1;    //错误码
+    optional string     errMsg      = 2;    //错误信息
 }
 
 //QRCode获取
-message GetLoginQRCodeRequest {
-	required BaseRequest        base = 1;
-	required SKBuiltinBuffer    randomEncryKey = 2;
-	required int32              opcode = 3;
-	optional string             deviceName = 4;
-	optional string             userName = 5;
-	optional int32              hardwareExtra = 6;
-	optional string             softType = 7;
-	optional int32              extDevLoginType = 8;        //0
+message GetLoginQRCodeRequest
+{
+	required BaseRequest        baseRequest                 = 1;
+	required SKBuiltinBuffer    randomEncryKey              = 2; //iPad 16位 iMac 184位
+	required int32              opcode                      = 3; //0
+	optional string             deviceName                  = 4; //iMac "iMac"
+	optional string             userName                    = 5;
+	optional int32              hardwareExtra               = 6; //iMac 0,
+	optional string             softType                    = 7;
+	optional int32              extDevLoginType             = 8; //0
+    optional SKBuiltinBuffer    msgContextPubKey            = 9; //iMac 
 }
 
-message GetLoginQRCodeResponse {
-	required mmRes Base =1;
-	required SKBuiltinBuffer    QRCode = 2;
-	required string UUID = 3;
-	required int32 CheckTime = 4;
-	optional SKBuiltinBuffer NotifyKey = 5;
-	optional int32 ExpiredTime = 6;
-	optional string BlueToothBroadCastUuid = 7;
-	optional SKBuiltinBuffer BlueToothBroadCastContent = 8;
+message GetLoginQRCodeResponse
+{
+	required BaseResponse               baseResponse =1;
+	required SKBuiltinBuffer            qrcode = 2;
+	required string                     uuid = 3;
+	required int32                      checkTime = 4;
+	optional SKBuiltinBuffer            notifyKey = 5;
+	optional int32                      expiredTime = 6;
+	optional string                     blueToothBroadCastUuid = 7;
+	optional SKBuiltinBuffer            blueToothBroadCastContent = 8;
 }
 
 //QRCode Check
-message CheckLoginQRCodeRequest{
-	required LoginInfo base = 1;
-	required SKBuiltinBuffer randomEncryKey = 2;
-	required string uuid = 3;
-	required int32 timeStamp = 4;
-	required int32 opcode = 5;
+message CheckLoginQRCodeRequest
+{
+	required BaseRequest        baseRequest = 1;
+	required SKBuiltinBuffer    randomEncryKey = 2;
+	required string             uuid = 3;
+	required int32              timeStamp = 4;
+	required int32              opcode = 5;
 }
 
 message CheckLoginQRCodeResponse {
-	required mmRes base = 1;
+	required BaseResponse baseResponse = 1;
 
     message LoginQRCodeNotifyPkg
 	{
-	 optional SKBuiltinBuffer 	NotifyData = 1;  //是bytes,需notifykey不解压aes解密一次,解密后再序列化成下面的对象
-	 optional int32  Opcode = 2;
-
+         optional SKBuiltinBuffer 	NotifyData = 1;  //是bytes,需notifykey不解压aes解密一次,解密后再序列化成下面的对象
+         optional int32  Opcode = 2;
 	}
 	optional LoginQRCodeNotifyPkg notifyPkg = 3;
 }
@@ -847,14 +826,14 @@ message ManualAuthResponse
 {
     message AuthResult
     {
-        required int32  code          = 1;            //登录错误码
+        required int32  code          = 1; //登录错误码
         message ErrMsg
         {
-            optional string msg     = 1;            //错误信息
+            optional string msg     = 1; //错误信息
         }
         required ErrMsg err_msg =2;
     }
-    required AuthResult result = 1;                    //登录结果
+    required AuthResult result = 1; //登录结果
     required int32  unifyFlag  = 2;
     message AuthParam
     {
@@ -866,7 +845,7 @@ message ManualAuthResponse
             message EcdhKey
             {
                 required int32  len  = 1;
-                optional bytes key  = 2;           //椭圆曲线server pubkey
+                optional bytes key  = 2; //椭圆曲线server pubkey
             }
             optional EcdhKey ecdhKey  = 2;
         }
@@ -903,40 +882,95 @@ message ManualAuthResponse
         optional string tag15               = 15;
         optional string fsUrl               = 16;
     }
-    optional AccountInfo accountInfo = 4;                   //登录成功后返回账号信息
+    optional AccountInfo accountInfo = 4; //登录成功后返回账号信息
 
     message dns_info
     {
         message redirect_info
         {
-            optional int32 cnt                = 1;                //host cnt
+            optional int32 cnt                = 1; //host cnt
             message real_host_info
             {
-                optional string host          = 1;                //host
-                optional string redirect      = 2;                //redirect_host
+                optional string host          = 1; //host
+                optional string redirect      = 2; //redirect_host
             }
             repeated real_host_info real_host = 2;
         }
-        optional redirect_info redirect                = 1;        //域名重定向信息
+        optional redirect_info redirect                = 1; //域名重定向信息
         message ip_info
         {
-            optional int32 longlink_ip_cnt    = 1;                //长链接ip池数量
-            optional int32 shortlink_ip_cnt    = 2;                //短链接ip池数量
+            optional int32 longlink_ip_cnt    = 1; //长链接ip池数量
+            optional int32 shortlink_ip_cnt    = 2; //短链接ip池数量
             message longlink_ip_info
             {
-                optional string ip      = 3;                    //ip
-                optional string host      = 4;                    //host
+                optional string ip      = 3; //ip
+                optional string host      = 4; //host
             }
-            repeated longlink_ip_info longlink = 3;                //长链接ip池
+            repeated longlink_ip_info longlink = 3; //长链接ip池
             message shortlink_ip_info
             {
-                optional string ip      = 3;                    //ip
-                optional string host      = 4;                    //host
+                optional string ip      = 3; //ip
+                optional string host      = 4; //host
             }
-            repeated shortlink_ip_info shortlink = 4;            //短链接ip池
+            repeated shortlink_ip_info shortlink = 4; //短链接ip池
         }
-        optional ip_info ip                            = 3;        //长短链接ip
+        optional ip_info ip                            = 3; //长短链接ip
     }
-    optional dns_info dns                    = 5;                //dns信息
+    optional dns_info dns                    = 5; //dns信息
 }
-//==================================== iMac =======================================
+
+message SKBuiltinString_t
+{
+    optional string  string                  = 1;
+}
+
+message MicroMsgRequestNew
+{
+    optional SKBuiltinString_t  toUserName          = 1; //to wxid
+    optional string content                         = 2; //消息内容
+    optional int32 type                             = 3; //消息类型: 文字消息=>1,名片=>42，
+    optional int32 createTime                       = 4; //1537268848
+    optional int64 clientMsgId                      = 5; //不同消息的utc与client_id必须至少有1个不相同 4287068409
+    optional string at_list                         = 6; //群聊at功能 iMac: "<msgsource></msgsource>"
+}
+
+//发送消息请求
+message SendMsgRequestNew
+{
+    optional int32  count                               = 1; //本次发送的消息数量
+    repeated MicroMsgRequestNew list                    = 2; //这里可以是repeated,允许一次发送多条消息
+}
+
+message MicroMsgResponseNew
+{
+    optional int32 ret                          = 1; //错误码 0=>发送成功,-44=>对方开启了朋友验证(被删好友),-22=>消息已发出,但被对方拒收了(被拉黑)
+    optional SKBuiltinString_t toUserName       = 2; //to wxid
+    optional int32 msgId                        = 3;
+    optional int32 clientMsgId                  = 4;
+    optional int32 createTime                   = 5;
+    optional int32 serverTime                   = 6;
+    optional int32 type                         = 7; //消息类型
+    optional int64 newMsgId                     = 8; //消息唯一id
+}
+
+//发送消息响应
+message SendMsgResponseNew
+{
+    optional BaseResponse baseResponse              = 1;
+    optional int32 count                            = 2;
+    optional MicroMsgResponseNew list               = 3; //发送结果
+}
+
+
+//Test
+
+message ClientChcekData
+{
+    message Tag
+    {
+        repeated int32 count                            = 6;
+    }
+    optional Tag field1              = 1;
+    optional int32 field2                            = 2;
+    optional bytes clientcheckdata               = 3; //发送结果
+}

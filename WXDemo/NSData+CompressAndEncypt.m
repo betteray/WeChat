@@ -29,21 +29,21 @@
 
 - (NSData *)Compress_And_AES {
     NSData *compressedData = [self dataByDeflating];
-    return [FSOpenSSL aesEncryptData:compressedData key:[WeChatClient sharedClient].clientAesKey];
+    return [FSOpenSSL aesEncryptData:compressedData key:[WeChatClient sharedClient].sessionKey];
 }
 
 - (NSData *)AES {
-    return [FSOpenSSL aesEncryptData:self key:[WeChatClient sharedClient].clientAesKey];
+    return [FSOpenSSL aesEncryptData:self key:[WeChatClient sharedClient].sessionKey];
 }
 
 //Receive
 - (NSData *)decompress_and_aesDecrypt {
     NSData *deCompressedData = [self decompress];
-    return [FSOpenSSL aesDecryptData:deCompressedData key:[WeChatClient sharedClient].clientAesKey];
+    return [FSOpenSSL aesDecryptData:deCompressedData key:[WeChatClient sharedClient].sessionKey];
 }
 
 - (NSData *)aesDecrypt {
-    return [FSOpenSSL aesDecryptData:self key:[WeChatClient sharedClient].clientAesKey];
+    return [FSOpenSSL aesDecryptData:self key:[WeChatClient sharedClient].sessionKey];
 }
 
 @end

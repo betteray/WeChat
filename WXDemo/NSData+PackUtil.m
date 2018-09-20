@@ -18,7 +18,7 @@
 }
 
 - (NSData *)aesDecrypt_then_decompress {
-    NSData *decryptedData = [FSOpenSSL aesDecryptData:self key:[WeChatClient sharedClient].clientAesKey];
+    NSData *decryptedData = [FSOpenSSL aesDecryptData:self key:[WeChatClient sharedClient].sessionKey];
     return [decryptedData decompress];
 }
 

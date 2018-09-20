@@ -150,7 +150,14 @@ static bool DoEcdh(int nid, unsigned char * szServerPubKey, int nLenServerPub, u
 }
 
 
-+ (bool)DoEcdh:(int)nid szServerPubKey:(unsigned char *)szServerPubKey nLenServerPub:(int) nLenServerPub szLocalPriKey:(unsigned char *)szLocalPriKey nLenLocalPri:(int) nLenLocalPri szShareKey:(unsigned char *)szShareKey:(int *)pLenShareKey {
++ (bool)DoEcdh:(int)nid
+szServerPubKey:(unsigned char *)szServerPubKey
+ nLenServerPub:(int)nLenServerPub
+ szLocalPriKey:(unsigned char *)szLocalPriKey
+  nLenLocalPri:(int)nLenLocalPri
+    szShareKey:(unsigned char *)szShareKey
+  pLenShareKey:(int *)pLenShareKey
+{
     const unsigned char *public_material = (const unsigned char *)szServerPubKey;
     const unsigned char *private_material = (const unsigned char *)szLocalPriKey;
     
