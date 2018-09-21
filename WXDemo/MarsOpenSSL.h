@@ -11,5 +11,6 @@
 @interface MarsOpenSSL : NSObject
 
 + (NSData *)RSA_PUB_EncryptData:(NSData *)data modulus:(NSString *)modules exponent:(NSString *)exponent;
++ (BOOL)genRSAKeyPairPubKey:(NSString **)rsaPubKey priKey:(NSString **)rsaPriKey;
 
 @end
