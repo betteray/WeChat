@@ -38,6 +38,7 @@
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6521549A6200DB669E /* NSString+GenRandomString.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6421549A6200DB669E /* NSString+GenRandomString.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
+		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
 		8A6B7E6AD0B44DCDF3A4DADB /* libPods-WXDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD18BBDEB2F4000E11CEB5B0 /* libPods-WXDemoTests.a */; };
 		A171A24009C24E78AD226EE0 /* libPods-WXDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB43DD6C2AA522C9401323 /* libPods-WXDemoUITests.a */; };
 /* End PBXBuildFile section */
@@ -204,6 +205,8 @@
 		71848F6421549A6200DB669E /* NSString+GenRandomString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+GenRandomString.m"; sourceTree = "<group>"; };
 		71848F6621549C8100DB669E /* NSData+GenRandomData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+GenRandomData.h"; sourceTree = "<group>"; };
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
+		71D592FF2155247C00DFEBC8 /* NSData+AES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
+		71D593002155247C00DFEBC8 /* NSData+AES.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
 		B48B9EB914A530ED64A2B165 /* Pods-WXDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemoTests/Pods-WXDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD18BBDEB2F4000E11CEB5B0 /* libPods-WXDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D659E578DD4B1C7D6C568C19 /* Pods-WXDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemo/Pods-WXDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -511,6 +514,8 @@
 				71848F6421549A6200DB669E /* NSString+GenRandomString.m */,
 				71848F6621549C8100DB669E /* NSData+GenRandomData.h */,
 				71848F6721549C8100DB669E /* NSData+GenRandomData.m */,
+				71D592FF2155247C00DFEBC8 /* NSData+AES.h */,
+				71D593002155247C00DFEBC8 /* NSData+AES.m */,
 			);
 			path = Catag;
 			sourceTree = "<group>";
@@ -714,6 +719,7 @@
 				712C6E6E214A145700603022 /* main.m in Sources */,
 				712C7158214BFB1600603022 /* Task.m in Sources */,
 				712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */,
+				71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */,
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
 				712C7166214D2BFD00603022 /* ECDH.m in Sources */,
 				712C714F214BABA500603022 /* Package.m in Sources */,

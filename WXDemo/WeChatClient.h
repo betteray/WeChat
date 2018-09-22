@@ -19,6 +19,9 @@ typedef void (^FailureBlock)(NSError *error);
 @property (nonatomic, strong) NSData * checkEcdhKey;
 @property (nonatomic, assign) int32_t uin;
 
+@property (nonatomic, strong) NSData *pubKey;
+@property (nonatomic, strong) NSData *priKey;
+
 + (instancetype)sharedClient;
 
 - (void)start;

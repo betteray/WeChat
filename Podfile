@@ -7,7 +7,8 @@ target 'WXDemo' do
   pod 'CocoaAsyncSocket'  
   pod 'Protobuf'
   pod 'SDWebImage'
-
+  pod 'YYModel', '~> 1.0.4'
+  
   # Pods for WXDemo
 
   target 'WXDemoTests' do

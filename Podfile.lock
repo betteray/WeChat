@@ -4,23 +4,27 @@ PODS:
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
+  - YYModel (1.0.4)
 
 DEPENDENCIES:
   - CocoaAsyncSocket
   - Protobuf
   - SDWebImage
+  - YYModel (~> 1.0.4)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CocoaAsyncSocket
     - Protobuf
     - SDWebImage
+    - YYModel
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 754c1b3d97c6b1fa96c59ba17da9238019b95434
+PODFILE CHECKSUM: 9986ebe8db768e130ff552ee53aa4a2cb362fafc
 
 COCOAPODS: 1.5.3

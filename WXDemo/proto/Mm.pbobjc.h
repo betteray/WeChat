@@ -37,7 +37,7 @@ CF_EXTERN_C_BEGIN
 @class ManualAuthAccountRequest_Ecdh;
 @class ManualAuthAccountRequest_Ecdh_EcdhKey;
 @class ManualAuthDeviceRequest;
-@class ManualAuthDeviceRequest_BaseReqInfo;
+@class ManualAuthDeviceRequest_BaseAuthReqInfo;
 @class ManualAuthResponse_AccountInfo;
 @class ManualAuthResponse_AuthParam;
 @class ManualAuthResponse_AuthParam_Ecdh;
@@ -3061,6 +3061,7 @@ typedef GPB_ENUM(ManualAuthDeviceRequest_FieldNumber) {
   ManualAuthDeviceRequest_FieldNumber_Channel = 13,
   ManualAuthDeviceRequest_FieldNumber_TimeStamp = 14,
   ManualAuthDeviceRequest_FieldNumber_DeviceBrand = 15,
+  ManualAuthDeviceRequest_FieldNumber_Ostype = 17,
   ManualAuthDeviceRequest_FieldNumber_RealCountry = 18,
   ManualAuthDeviceRequest_FieldNumber_BundleId = 19,
   ManualAuthDeviceRequest_FieldNumber_AdSource = 20,
@@ -3078,7 +3079,7 @@ typedef GPB_ENUM(ManualAuthDeviceRequest_FieldNumber) {
 /** Test to see if @c baseRequest has been set. */
 @property(nonatomic, readwrite) BOOL hasBaseRequest;
 
-@property(nonatomic, readwrite, strong, null_resettable) ManualAuthDeviceRequest_BaseReqInfo *baseReqInfo;
+@property(nonatomic, readwrite, strong, null_resettable) ManualAuthDeviceRequest_BaseAuthReqInfo *baseReqInfo;
 /** Test to see if @c baseReqInfo has been set. */
 @property(nonatomic, readwrite) BOOL hasBaseReqInfo;
 
@@ -3133,6 +3134,11 @@ typedef GPB_ENUM(ManualAuthDeviceRequest_FieldNumber) {
 /** Test to see if @c deviceBrand has been set. */
 @property(nonatomic, readwrite) BOOL hasDeviceBrand;
 
+/** iMac "Version 10.13.6 (Build 17G65)" */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *ostype;
+/** Test to see if @c ostype has been set. */
+@property(nonatomic, readwrite) BOOL hasOstype;
+
 /** CN */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *realCountry;
 /** Test to see if @c realCountry has been set. */
@@ -3163,14 +3169,21 @@ typedef GPB_ENUM(ManualAuthDeviceRequest_FieldNumber) {
 
 @end
 
-#pragma mark - ManualAuthDeviceRequest_BaseReqInfo
+#pragma mark - ManualAuthDeviceRequest_BaseAuthReqInfo
 
-typedef GPB_ENUM(ManualAuthDeviceRequest_BaseReqInfo_FieldNumber) {
-  ManualAuthDeviceRequest_BaseReqInfo_FieldNumber_AuthReqFlag = 7,
+typedef GPB_ENUM(ManualAuthDeviceRequest_BaseAuthReqInfo_FieldNumber) {
+  ManualAuthDeviceRequest_BaseAuthReqInfo_FieldNumber_CliDbencryptInfo = 5,
+  ManualAuthDeviceRequest_BaseAuthReqInfo_FieldNumber_AuthReqFlag = 7,
 };
 
-@interface ManualAuthDeviceRequest_BaseReqInfo : GPBMessage
+@interface ManualAuthDeviceRequest_BaseAuthReqInfo : GPBMessage
 
+/** iMac 第一次登陆没有数据，后续登陆会取一个数据。 */
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *cliDbencryptInfo;
+/** Test to see if @c cliDbencryptInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasCliDbencryptInfo;
+
+/** iPad "" iMac 不需要 */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *authReqFlag;
 /** Test to see if @c authReqFlag has been set. */
 @property(nonatomic, readwrite) BOOL hasAuthReqFlag;

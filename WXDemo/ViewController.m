@@ -16,6 +16,8 @@
 #import "NSData+PackUtil.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ECDH.h"
+#import "MarsOpenSSL.h"
+#import "NSData+AES.h"
 
 #define TICK_INTERVAL 1
 
@@ -33,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 }
 
 - (IBAction)getQRCode {
@@ -43,7 +46,7 @@
     GetLoginQRCodeRequest *request = [GetLoginQRCodeRequest new];
 
     SKBuiltinBuffer *buffer = [SKBuiltinBuffer new];
-    [buffer setILen:16];
+    [buffer setILen:(int32_t)[[WeChatClient sharedClient].sessionKey length]];
     [buffer setBuffer:[WeChatClient sharedClient].sessionKey];
     [request setRandomEncryKey:buffer];
 
@@ -53,6 +56,10 @@
     [request setHardwareExtra:0];
     [request setUserName:nil];
     [request setSoftType:nil];
+    SKBuiltinBuffer * pubKey = [SKBuiltinBuffer new];
+    pubKey.buffer = [WeChatClient sharedClient].pubKey;
+    [pubKey setILen:(int32_t)[[WeChatClient sharedClient].pubKey length]];
+    [request setMsgContextPubKey:pubKey];
 
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cgi = 502;
@@ -187,8 +194,11 @@
     accountReqeust.pwd = password;
     accountReqeust.userName = wxid;
 
-    ManualAuthDeviceRequest_BaseReqInfo *baseReqInfo = [ManualAuthDeviceRequest_BaseReqInfo new];
-    baseReqInfo.authReqFlag = @"";
+    ManualAuthDeviceRequest_BaseAuthReqInfo *baseReqInfo = [ManualAuthDeviceRequest_BaseAuthReqInfo new];
+     //TODO: ?第一次登陆没有数据，后续登陆会取一个数据。
+//    baseReqInfo.cliDbencryptInfo = [NSData data];
+//    baseReqInfo.authReqFlag = @"";
+    
     
     ManualAuthDeviceRequest *deviceRequest = [ManualAuthDeviceRequest new];
     deviceRequest.baseReqInfo = baseReqInfo;
@@ -196,7 +206,7 @@
 //    deviceRequest.softType = @"<softtype><k3>11.4.1</k3><k9>iPad</k9><k10>2</k10><k19>68ADE338-AA19-433E-BA2A-3D6DF3C787D5</k19><k20>AAA7AE28-7620-431D-8B4C-7FB4F67AA45E</k20><k22>(null)</k22><k33>微信</k33><k47>1</k47><k50>0</k50><k51>com.tencent.xin</k51><k54>iPad4,4</k54><k61>2</k61></softtype>";
     deviceRequest.builtinIpseq = 0;
     deviceRequest.clientSeqId = @""; //[NSString stringWithFormat:@"%@-%d", @"dd09ae95fe48164451be954cd1871cb7", (int)[[NSDate date] timeIntervalSince1970]];
-    deviceRequest.deviceName = @"ray的iMac";
+    deviceRequest.deviceName = DEVICEN_NAME;
     deviceRequest.deviceType = @"iMac18,2";
     deviceRequest.language = @"zh_CN";
     deviceRequest.timeZone = @"8.00";
@@ -205,14 +215,16 @@
     deviceRequest.deviceBrand = @"Apple";
     deviceRequest.realCountry = @"CN";
     deviceRequest.bundleId = @"com.tencent.xinWeChat";
-    deviceRequest.adSource = @"";
+//    deviceRequest.adSource = @""; //iMac 不需要
     deviceRequest.iphoneVer = @"iMac18,2";
     deviceRequest.inputType = 2;
+    deviceRequest.ostype = @"Version 10.13.6 (Build 17G65)";
 
-    SKBuiltinBuffer *clientCheckData = [SKBuiltinBuffer new];
-    clientCheckData.iLen = 0;
-    clientCheckData.buffer = [NSData data];
-    deviceRequest.clientCheckData = clientCheckData;
+        //iMac 暂时不需要
+//    SKBuiltinBuffer *clientCheckData = [SKBuiltinBuffer new];
+//    clientCheckData.iLen = 0;
+//    clientCheckData.buffer = [NSData data];
+//    deviceRequest.clientCheckData = clientCheckData;
     
     ManualAuthRequest *authRequest = [ManualAuthRequest new];
     authRequest.aesReqData = deviceRequest;

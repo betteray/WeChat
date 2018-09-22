@@ -14,6 +14,7 @@
 #import "WeChatClient.h"
 #import "FSOpenSSL.h"
 #import "NSData+Compression.h"
+#import "NSData+AES.h"
 
 @implementation NSData (CompressAndEncypt)
 
@@ -29,7 +30,7 @@
 
 - (NSData *)Compress_And_AES {
     NSData *compressedData = [self dataByDeflating];
-    return [FSOpenSSL aesEncryptData:compressedData key:[WeChatClient sharedClient].sessionKey];
+    return [compressedData AES_CBC_encryptWithKey:[WeChatClient sharedClient].sessionKey];
 }
 
 - (NSData *)AES {

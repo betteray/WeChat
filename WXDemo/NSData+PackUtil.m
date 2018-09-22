@@ -8,17 +8,17 @@
 
 #import "NSData+PackUtil.h"
 #import "WeChatClient.h"
-#import "FSOpenSSL.h"
 #import "NSData+Util.h"
+#import "NSData+AES.h"
 
 @implementation NSData (PackUtil)
 
 - (NSData *)aesDecryptWithKey:(NSData *)key {
-    return [FSOpenSSL aesDecryptData:self key:key];
+    return [self AES_CBC_decryptWithKey:key];
 }
 
 - (NSData *)aesDecrypt_then_decompress {
-    NSData *decryptedData = [FSOpenSSL aesDecryptData:self key:[WeChatClient sharedClient].sessionKey];
+    NSData *decryptedData = [self AES_CBC_decryptWithKey:[WeChatClient sharedClient].sessionKey];
     return [decryptedData decompress];
 }
 

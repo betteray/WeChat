@@ -21,6 +21,8 @@
 #import "MarsOpenSSL.h"
 #import "NSData+CompressAndEncypt.h"
 #import "NSData+Compression.h"
+#import "NSData+GenRandomData.h"
+#import <YYModel/YYModel.h>
 
 //#心跳
 #define CMDID_NOOP_REQ 6
@@ -84,7 +86,17 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         _uin = 0;
         _tasks = [NSMutableArray array];
         _recvedData = [NSMutableData data];
-        _sessionKey = [FSOpenSSL random128BitAESKey]; //[NSData dataWithHexString:@"B927F42DA834364D3E12334D74244B6B"];//
+//        _sessionKey = [FSOpenSSL random128BitAESKey]; // iPad
+        _sessionKey = [NSData GenRandomDataWithSize:184]; //iMac
+
+        NSString *priKey = nil;
+        NSString *pubKey = nil;
+        if ([MarsOpenSSL genRSAKeyPairPubKey:&pubKey priKey:&priKey]) {
+            _priKey = [priKey dataUsingEncoding:NSUTF8StringEncoding];
+            _pubKey = [pubKey dataUsingEncoding:NSUTF8StringEncoding];
+        } else {
+            NSLog(@" ** Gen RSA KeyPair Fail. ** ");
+        }
         
         _heartbeatTimer = [NSTimer timerWithTimeInterval:30 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
@@ -140,11 +152,12 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
              failure:(FailureBlock)failureBlock {
     
     BaseRequest *base = [BaseRequest new];
+    [base setSessionKey:[NSData data]];
     [base setUin:0];
-    [base setScene:0];
+    [base setScene:1]; // iMac 1
     [base setClientVersion:CLIENT_VERSION];
     [base setDeviceType:DEVICE_TYPE];
-    [base setSessionKey:_sessionKey];
+    [base setSessionKey:[NSData data]];
     [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
     
     [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
@@ -173,10 +186,12 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [base setScene:0];
     [base setClientVersion:CLIENT_VERSION];
     [base setDeviceType:DEVICE_TYPE];
-    [base setSessionKey:_sessionKey];
+    [base setSessionKey:[NSData data]];
     [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
     
     [deviceRequest setBaseRequest:base];
+    
+    NSLog(@"%@", [[cgiWrap request] yy_modelToJSONString]);
     
     NSData *accountSerializedData = [accountRequest data];
     NSData *deviceSerializedData = [deviceRequest data];

@@ -790,11 +790,12 @@ message ManualAuthAccountRequest
 message ManualAuthDeviceRequest
 {
     optional BaseRequest baseRequest                      = 1;
-    message BaseReqInfo
+    message BaseAuthReqInfo
     {
-        optional string authReqFlag   = 7;
+        optional SKBuiltinBuffer cliDbencryptInfo  = 5; // iMac 第一次登陆没有数据，后续登陆会取一个数据。
+        optional string authReqFlag                = 7; // iPad "" iMac 不需要
     }
-    optional BaseReqInfo baseReqInfo                    = 2;
+    optional BaseAuthReqInfo baseReqInfo                    = 2;
     required string imei                                = 3;
     optional string softType                            = 4;    // iPad: <softtype><k3>11.4.1</k3><k9>iPad</k9></softtype> ，iMac不需要此字段
     required int32  builtinIpseq                        = 5;    // 0
@@ -806,9 +807,10 @@ message ManualAuthDeviceRequest
     required int32  channel                             = 13;   // iPad:3d  iMac:0
     required int32  timeStamp                           = 14;   // 1537178341
     optional string deviceBrand                         = 15;   // Apple
+    optional string ostype                              = 17;   // iMac "Version 10.13.6 (Build 17G65)"
     required string realCountry                         = 18;   // CN
     required string bundleId                            = 19;   // iPad:com.tencent.xin , iMac:com.tencent.xinWeChat
-    required string adSource                            = 20;   // iPad:"AAA7AE28-7620-431D-8B4C-7FB4F67AA45E", iMad: ""
+    optional string adSource                            = 20;   // iPad:"AAA7AE28-7620-431D-8B4C-7FB4F67AA45E", iMad: ""
     required string iphoneVer                           = 21;   // iPad:iPad4,4 , iMac:iMac18,2
     required int32  inputType                           = 22;   // 2
     optional SKBuiltinBuffer  clientCheckData           = 23;
