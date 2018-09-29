@@ -7286,7 +7286,7 @@ typedef struct ManualAuthAccountRequest__storage_ {
         .number = ManualAuthAccountRequest_FieldNumber_Ecdh,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(ManualAuthAccountRequest__storage_, ecdh),
-        .flags = GPBFieldRequired,
+        .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
       {
@@ -7295,7 +7295,7 @@ typedef struct ManualAuthAccountRequest__storage_ {
         .number = ManualAuthAccountRequest_FieldNumber_UserName,
         .hasIndex = 2,
         .offset = (uint32_t)offsetof(ManualAuthAccountRequest__storage_, userName),
-        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
@@ -7304,7 +7304,7 @@ typedef struct ManualAuthAccountRequest__storage_ {
         .number = ManualAuthAccountRequest_FieldNumber_Pwd,
         .hasIndex = 3,
         .offset = (uint32_t)offsetof(ManualAuthAccountRequest__storage_, pwd),
-        .flags = GPBFieldRequired,
+        .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
@@ -8968,7 +8968,7 @@ typedef struct SKBuiltinString_t__storage_ {
 @dynamic hasType, type;
 @dynamic hasCreateTime, createTime;
 @dynamic hasClientMsgId, clientMsgId;
-@dynamic hasAtList, atList;
+@dynamic hasMsgSource, msgSource;
 
 typedef struct MicroMsgRequestNew__storage_ {
   uint32_t _has_storage_[1];
@@ -8976,7 +8976,7 @@ typedef struct MicroMsgRequestNew__storage_ {
   int32_t createTime;
   SKBuiltinString_t *toUserName;
   NSString *content;
-  NSString *atList;
+  NSString *msgSource;
   int64_t clientMsgId;
 } MicroMsgRequestNew__storage_;
 
@@ -9032,12 +9032,12 @@ typedef struct MicroMsgRequestNew__storage_ {
         .dataType = GPBDataTypeInt64,
       },
       {
-        .name = "atList",
+        .name = "msgSource",
         .dataTypeSpecific.className = NULL,
-        .number = MicroMsgRequestNew_FieldNumber_AtList,
+        .number = MicroMsgRequestNew_FieldNumber_MsgSource,
         .hasIndex = 5,
-        .offset = (uint32_t)offsetof(MicroMsgRequestNew__storage_, atList),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(MicroMsgRequestNew__storage_, msgSource),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
     };
@@ -9051,7 +9051,7 @@ typedef struct MicroMsgRequestNew__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\003\001\n\000\004\n\000\005\013\000";
+        "\004\001\n\000\004\n\000\005\013\000\006\t\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");

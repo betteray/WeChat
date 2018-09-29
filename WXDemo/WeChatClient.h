@@ -22,6 +22,8 @@ typedef void (^FailureBlock)(NSError *error);
 @property (nonatomic, strong) NSData *pubKey;
 @property (nonatomic, strong) NSData *priKey;
 
+@property (nonatomic, copy) NSString *shortLinkUrl;
+
 + (instancetype)sharedClient;
 
 - (void)start;

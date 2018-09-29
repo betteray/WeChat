@@ -23,6 +23,8 @@
 #import "NSData+Compression.h"
 #import "NSData+GenRandomData.h"
 #import <YYModel/YYModel.h>
+#import "Varint128.h"
+#import "NSData+Compress.h"
 
 //#心跳
 #define CMDID_NOOP_REQ 6
@@ -112,7 +114,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)start {
     NSError *error;
-    [_socket connectToHost:@"long.weixin.qq.com" onPort:80 error:&error];
+    [_socket connectToHost:@"long.weixin.qq.com" onPort:8080 error:&error];
     if (error) {
         NSLog(@"Socks Start Error: %@", [error localizedDescription]);
     }
@@ -233,13 +235,37 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSLog(@"sendMsg: %@", request);
     
     NSData *serializedData = [request data];
-    NSData *sendData = [self pack:cgiWrap.cmdId cgi:cgiWrap.cgi serilizedData:serializedData type:5];
+//    NSData *sendData = [self pack:cgiWrap.cmdId cgi:cgiWrap.cgi serilizedData:serializedData type:5];
+    NSData *head = [self make_header:cgiWrap.cgi encryptMethod:AES bodyData:serializedData compressedBodyData:serializedData needCookie:YES];
+    NSData *body = [serializedData AES];
+
+    NSMutableData *sendData = [NSMutableData dataWithData:head];
+    [sendData appendData:body];
+    sendData = [[sendData subdataWithRange:NSMakeRange(2, [sendData length] - 1 - 2)] mutableCopy];
     
     Task *task = [Task new];
     task.sucBlock = successBlock;
     task.failBlock = failureBlock;
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
+    
+//    NSURL *nsurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", _shortLinkUrl]];
+//    NSMutableURLRequest *http_request = [NSMutableURLRequest requestWithURL:nsurl];
+//    http_request.HTTPMethod = @"POST";
+//    [http_request setValue:@"Accept" forHTTPHeaderField:@"*/*"];//token
+//    [http_request setValue:@"Cache-Control" forHTTPHeaderField:@"no-cache"];//坐标 lng
+//    [http_request setValue:@"Connection" forHTTPHeaderField:@"close"];//坐标 lat
+//    [http_request setValue:@"Content-type" forHTTPHeaderField:@"application/octet-stream"];//版本
+//    [http_request setValue:@"User-Agent" forHTTPHeaderField:@"MicroMessenger Client"];//版本
+//    [http_request setHTTPBody:[sendData copy]];
+//
+//    NSLog(@"POST-Header:%@",http_request.allHTTPHeaderFields);
+//
+//    NSURLSessionTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:http_request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        NSLog(@"%@", data);
+//    }];
+//
+//    [dataTask resume];
     
     [_socket writeData:sendData withTimeout:3 tag:cgiWrap.cgi];
 }
@@ -374,8 +400,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         }
             break;
         case 5: {
-            NSData *head = [self make_header:cgi encryptMethod:AES bodyData:serilizedData compressedBodyData:serilizedData needCookie:YES];
-            NSData *body = [serilizedData AES];
+            NSData *compressedData = [serilizedData compresss];
+            NSData *head = [self make_header:cgi encryptMethod:AES bodyData:serilizedData compressedBodyData:compressedData needCookie:YES];
+            NSData *body = [compressedData AES];
             NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
             [longlinkBody appendData:body];
             sendData = [self longlink_packWithSeq:self.seq++ cmdId:cmdId buffer:[longlinkBody copy]];
@@ -509,24 +536,24 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         }
     }
     
-    [header appendData:[NSData varintBytes:cgi]];
-    [header appendData:[NSData varintBytes:bodyDataLen]];
-    [header appendData:[NSData varintBytes:compressedBodyDataLen]];
+    [header appendData:[Varint128 dataWithUInt32:cgi]];
+    [header appendData:[Varint128 dataWithUInt32:bodyDataLen]];
+    [header appendData:[Varint128 dataWithUInt32:compressedBodyDataLen]];
     
     if (_checkEcdhKey.length > 0) {
         [header appendData:[self ecdhCheck:bodyData]];
     }
     
     if (need_login_rsa_verison(cgi)) {
-        [header appendData:[NSData varintBytes:LOGIN_RSA_VER_172]];
+        [header appendData:[Varint128 dataWithUInt32:LOGIN_RSA_VER_172]];
         [header appendData:[NSData dataWithHexString:@"0D00"]];
         [header appendData:[NSData packInt16:9 flip:NO]];
     } else {
         [header appendData:[NSData dataWithHexString:@"000D"]];
-        [header appendData:[NSData packInt16:(9 * (1 & encryptMethod)) flip:NO]];   //need fix
+        [header appendData:[NSData packInt16:(9 * (1 & 7)) flip:NO]];   //need fix
     }
     
-    [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[[NSData varintBytes:(int)(([header length] << 2) + 0x2)] bytes]];
+    [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[[Varint128 dataWithUInt32:(int)(([header length] << 2) + 0x2)] bytes]];
     return [header copy];
 }
 

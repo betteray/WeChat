@@ -779,9 +779,9 @@ message ManualAuthAccountRequest
         }
         required EcdhKey ecdhKey  = 2;
     }
-    required Ecdh   ecdh                                = 2;
-    required string userName                            = 3;
-    required string pwd                                 = 4;
+    optional Ecdh   ecdh                                = 2;
+    optional string userName                            = 3;
+    optional string pwd                                 = 4;
     optional string pwd2                                = 5;
 }
 
@@ -932,8 +932,8 @@ message MicroMsgRequestNew
     optional string content                         = 2; //消息内容
     optional int32 type                             = 3; //消息类型: 文字消息=>1,名片=>42，
     optional int32 createTime                       = 4; //1537268848
-    optional int64 clientMsgId                      = 5; //不同消息的utc与client_id必须至少有1个不相同 4287068409
-    optional string at_list                         = 6; //群聊at功能 iMac: "<msgsource></msgsource>"
+    optional int64 clientMsgId                      = 5; //不同消息的utc与client_id必须至少有1个不相同 4287068409, iMac 从1开始？
+    optional string msgSource                       = 6; //群聊at功能 iMac: "<msgsource></msgsource>"
 }
 
 //发送消息请求

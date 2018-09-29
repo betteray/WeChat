@@ -18,6 +18,8 @@
 #import "ECDH.h"
 #import "MarsOpenSSL.h"
 #import "NSData+AES.h"
+#import <Protobuf/GPBCodedOutputStream.h>
+#import "NSData+Util.h"
 
 #define TICK_INTERVAL 1
 
@@ -28,14 +30,18 @@
 @property (nonatomic, strong) NSTimer *qrcodeCheckTimer;
 
 @property (nonatomic, strong) NSData *nofityKey;
-
+@property (nonatomic, assign) NSInteger clientMsgId;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _clientMsgId = 1;
     
+    NSError *error;
+    ManualAuthAccountRequest *accountReqeust = [ManualAuthAccountRequest parseFromData:[NSData dataWithHexString:@"1214081012100d1302d731adbf5f7c49931c6ff12c381a4208c905123d08391239047ca0fce268c2a86826cb01b2e785dcf8f1a83fc135645e84cbe7eee0eb567370fe5de755aa86f2e521b75815e2e8a8794c1d34c6340ced23"] error:&error];
+    NSLog(@"%@, error: %@", accountReqeust, error);
 }
 
 - (IBAction)getQRCode {
@@ -147,8 +153,8 @@
     mmRequestNew.content = @"Hello There.";
     mmRequestNew.type = 1;
     mmRequestNew.createTime = [[NSDate date] timeIntervalSince1970];
-    mmRequestNew.clientMsgId = [[NSDate date] timeIntervalSince1970] + arc4random();
-//    mmRequestNew.atList = @"<msgsource></msgsource>";
+    mmRequestNew.clientMsgId = _clientMsgId++; //[[NSDate date] timeIntervalSince1970] + arc4random();
+    mmRequestNew.msgSource = @"<msgsource></msgsource>";
 
     SendMsgRequestNew *request = [SendMsgRequestNew new];
 
@@ -280,6 +286,8 @@
                           uin, resp.accountInfo.wxId,
                           resp.accountInfo.nickName,
                           resp.accountInfo.alias);
+                    
+                    [WeChatClient sharedClient].shortLinkUrl = [[resp.dns.ip.shortlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
                 }
             }
                 break;

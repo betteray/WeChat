@@ -39,6 +39,9 @@
 		71848F6521549A6200DB669E /* NSString+GenRandomString.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6421549A6200DB669E /* NSString+GenRandomString.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
 		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
+		71D593322158AC4A00DFEBC8 /* SignedVarint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */; };
+		71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932F2158AC4900DFEBC8 /* Varint128.m */; };
+		71D593592158E90500DFEBC8 /* NSData+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593582158E90500DFEBC8 /* NSData+Compress.m */; };
 		8A6B7E6AD0B44DCDF3A4DADB /* libPods-WXDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD18BBDEB2F4000E11CEB5B0 /* libPods-WXDemoTests.a */; };
 		A171A24009C24E78AD226EE0 /* libPods-WXDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB43DD6C2AA522C9401323 /* libPods-WXDemoUITests.a */; };
 /* End PBXBuildFile section */
@@ -207,6 +210,12 @@
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
 		71D592FF2155247C00DFEBC8 /* NSData+AES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
 		71D593002155247C00DFEBC8 /* NSData+AES.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
+		71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignedVarint128.m; sourceTree = "<group>"; };
+		71D5932F2158AC4900DFEBC8 /* Varint128.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Varint128.m; sourceTree = "<group>"; };
+		71D593302158AC4900DFEBC8 /* Varint128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Varint128.h; sourceTree = "<group>"; };
+		71D593312158AC4900DFEBC8 /* SignedVarint128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignedVarint128.h; sourceTree = "<group>"; };
+		71D593572158E90500DFEBC8 /* NSData+Compress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Compress.h"; sourceTree = "<group>"; };
+		71D593582158E90500DFEBC8 /* NSData+Compress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Compress.m"; sourceTree = "<group>"; };
 		B48B9EB914A530ED64A2B165 /* Pods-WXDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemoTests/Pods-WXDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD18BBDEB2F4000E11CEB5B0 /* libPods-WXDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D659E578DD4B1C7D6C568C19 /* Pods-WXDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemo/Pods-WXDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -516,6 +525,12 @@
 				71848F6721549C8100DB669E /* NSData+GenRandomData.m */,
 				71D592FF2155247C00DFEBC8 /* NSData+AES.h */,
 				71D593002155247C00DFEBC8 /* NSData+AES.m */,
+				71D593312158AC4900DFEBC8 /* SignedVarint128.h */,
+				71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */,
+				71D593302158AC4900DFEBC8 /* Varint128.h */,
+				71D5932F2158AC4900DFEBC8 /* Varint128.m */,
+				71D593572158E90500DFEBC8 /* NSData+Compress.h */,
+				71D593582158E90500DFEBC8 /* NSData+Compress.m */,
 			);
 			path = Catag;
 			sourceTree = "<group>";
@@ -714,11 +729,13 @@
 			files = (
 				712C6E93214A1E8900603022 /* WeChatClient.m in Sources */,
 				712C6E63214A145600603022 /* ViewController.m in Sources */,
+				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
 				712C7152214BAD8900603022 /* Header.m in Sources */,
 				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,
 				712C6E6E214A145700603022 /* main.m in Sources */,
 				712C7158214BFB1600603022 /* Task.m in Sources */,
 				712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */,
+				71D593322158AC4A00DFEBC8 /* SignedVarint128.m in Sources */,
 				71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */,
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
 				712C7166214D2BFD00603022 /* ECDH.m in Sources */,
@@ -732,6 +749,7 @@
 				712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */,
 				71848F272150CABD00DB669E /* NSData+Compression.m in Sources */,
 				712C714C214BA49300603022 /* LongLinkPackage.m in Sources */,
+				71D593592158E90500DFEBC8 /* NSData+Compress.m in Sources */,
 				712C7169214F4B8700603022 /* MarsOpenSSL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -3616,7 +3616,7 @@ typedef GPB_ENUM(MicroMsgRequestNew_FieldNumber) {
   MicroMsgRequestNew_FieldNumber_Type = 3,
   MicroMsgRequestNew_FieldNumber_CreateTime = 4,
   MicroMsgRequestNew_FieldNumber_ClientMsgId = 5,
-  MicroMsgRequestNew_FieldNumber_AtList = 6,
+  MicroMsgRequestNew_FieldNumber_MsgSource = 6,
 };
 
 @interface MicroMsgRequestNew : GPBMessage
@@ -3639,14 +3639,14 @@ typedef GPB_ENUM(MicroMsgRequestNew_FieldNumber) {
 @property(nonatomic, readwrite) int32_t createTime;
 
 @property(nonatomic, readwrite) BOOL hasCreateTime;
-/** 不同消息的utc与client_id必须至少有1个不相同 4287068409 */
+/** 不同消息的utc与client_id必须至少有1个不相同 4287068409, iMac 从1开始？ */
 @property(nonatomic, readwrite) int64_t clientMsgId;
 
 @property(nonatomic, readwrite) BOOL hasClientMsgId;
 /** 群聊at功能 iMac: "<msgsource></msgsource>" */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *atList;
-/** Test to see if @c atList has been set. */
-@property(nonatomic, readwrite) BOOL hasAtList;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *msgSource;
+/** Test to see if @c msgSource has been set. */
+@property(nonatomic, readwrite) BOOL hasMsgSource;
 
 @end
 
