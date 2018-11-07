@@ -13,7 +13,7 @@
 //bool GenEcdh(int nid, unsigned char *szPriKey, int *pLenPri, unsigned char *szPubKey, int *pLenPub);
 //bool DoEcdh(int nid, unsigned char * szServerPubKey, int nLenServerPub, unsigned char * szLocalPriKey, int nLenLocalPri, unsigned char * szShareKey, int *pLenShareKey);
 
-+ (BOOL)GenEcdh:(NSData **)pPriKeyData pubKeyData:(NSData **)pPubKeyData;
++ (BOOL)GenEcdhWithNid:(int)nid priKey:(NSData **)pPriKeyData pubKeyData:(NSData **)pPubKeyData;
 
 + (bool)DoEcdh:(int)nid
 szServerPubKey:(unsigned char *)szServerPubKey

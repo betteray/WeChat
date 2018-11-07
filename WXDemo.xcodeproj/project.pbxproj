@@ -34,6 +34,11 @@
 		712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C715E214CDB6C00603022 /* NSData+PackUtil.m */; };
 		712C7166214D2BFD00603022 /* ECDH.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7165214D2BFD00603022 /* ECDH.m */; };
 		712C7169214F4B8700603022 /* MarsOpenSSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7168214F4B8700603022 /* MarsOpenSSL.m */; };
+		7155BA4F21902A0B0002CE1D /* AesGcm.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA4E21902A0B0002CE1D /* AesGcm.m */; };
+		7155BA5221902AB30002CE1D /* ClientHello.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5121902AB30002CE1D /* ClientHello.m */; };
+		7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5421902ABE0002CE1D /* ServerHello.m */; };
+		7155BA5821902CDD0002CE1D /* WXSHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5721902CDD0002CE1D /* WXSHA256.m */; };
+		7155BA5B219033BF0002CE1D /* HKDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5A219033BF0002CE1D /* HKDF.m */; };
 		716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */; };
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6521549A6200DB669E /* NSString+GenRandomString.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6421549A6200DB669E /* NSString+GenRandomString.m */; };
@@ -200,6 +205,16 @@
 		712C7165214D2BFD00603022 /* ECDH.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECDH.m; sourceTree = "<group>"; };
 		712C7167214F4B8700603022 /* MarsOpenSSL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarsOpenSSL.h; sourceTree = "<group>"; };
 		712C7168214F4B8700603022 /* MarsOpenSSL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarsOpenSSL.m; sourceTree = "<group>"; };
+		7155BA4D21902A0B0002CE1D /* AesGcm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "A\U001besGcm.h"; sourceTree = "<group>"; };
+		7155BA4E21902A0B0002CE1D /* AesGcm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "A\U001besGcm.m"; sourceTree = "<group>"; };
+		7155BA5021902AB30002CE1D /* ClientHello.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClientHello.h; sourceTree = "<group>"; };
+		7155BA5121902AB30002CE1D /* ClientHello.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientHello.m; sourceTree = "<group>"; };
+		7155BA5321902ABE0002CE1D /* ServerHello.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerHello.h; sourceTree = "<group>"; };
+		7155BA5421902ABE0002CE1D /* ServerHello.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServerHello.m; sourceTree = "<group>"; };
+		7155BA5621902CDD0002CE1D /* WXSHA256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXSHA256.h; sourceTree = "<group>"; };
+		7155BA5721902CDD0002CE1D /* WXSHA256.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXSHA256.m; sourceTree = "<group>"; };
+		7155BA59219033BF0002CE1D /* HKDF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKDF.h; sourceTree = "<group>"; };
+		7155BA5A219033BF0002CE1D /* HKDF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HKDF.m; sourceTree = "<group>"; };
 		716AAE4D214FC8C5006BCFB2 /* NSData+CompressAndEncypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CompressAndEncypt.h"; sourceTree = "<group>"; };
 		716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CompressAndEncypt.m"; sourceTree = "<group>"; };
 		71848F252150CABD00DB669E /* NSData+Compression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Compression.h"; sourceTree = "<group>"; };
@@ -302,6 +317,7 @@
 		712C6E5D214A145600603022 /* WXDemo */ = {
 			isa = PBXGroup;
 			children = (
+				7155BA492190293B0002CE1D /* mmtls */,
 				71848F6221549A1C00DB669E /* Catag */,
 				712C7160214D231C00603022 /* ecdh */,
 				712C7159214CDA9100603022 /* Others */,
@@ -514,6 +530,23 @@
 				712C7165214D2BFD00603022 /* ECDH.m */,
 			);
 			path = ecdh;
+			sourceTree = "<group>";
+		};
+		7155BA492190293B0002CE1D /* mmtls */ = {
+			isa = PBXGroup;
+			children = (
+				7155BA4D21902A0B0002CE1D /* AesGcm.h */,
+				7155BA4E21902A0B0002CE1D /* AesGcm.m */,
+				7155BA5021902AB30002CE1D /* ClientHello.h */,
+				7155BA5121902AB30002CE1D /* ClientHello.m */,
+				7155BA5321902ABE0002CE1D /* ServerHello.h */,
+				7155BA5421902ABE0002CE1D /* ServerHello.m */,
+				7155BA5621902CDD0002CE1D /* WXSHA256.h */,
+				7155BA5721902CDD0002CE1D /* WXSHA256.m */,
+				7155BA59219033BF0002CE1D /* HKDF.h */,
+				7155BA5A219033BF0002CE1D /* HKDF.m */,
+			);
+			path = mmtls;
 			sourceTree = "<group>";
 		};
 		71848F6221549A1C00DB669E /* Catag */ = {
@@ -731,14 +764,19 @@
 				712C6E63214A145600603022 /* ViewController.m in Sources */,
 				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
 				712C7152214BAD8900603022 /* Header.m in Sources */,
+				7155BA5821902CDD0002CE1D /* WXSHA256.m in Sources */,
 				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,
+				7155BA5B219033BF0002CE1D /* HKDF.m in Sources */,
 				712C6E6E214A145700603022 /* main.m in Sources */,
 				712C7158214BFB1600603022 /* Task.m in Sources */,
 				712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */,
 				71D593322158AC4A00DFEBC8 /* SignedVarint128.m in Sources */,
+				7155BA4F21902A0B0002CE1D /* AesGcm.m in Sources */,
 				71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */,
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
 				712C7166214D2BFD00603022 /* ECDH.m in Sources */,
+				7155BA5221902AB30002CE1D /* ClientHello.m in Sources */,
+				7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */,
 				712C714F214BABA500603022 /* Package.m in Sources */,
 				71848F6521549A6200DB669E /* NSString+GenRandomString.m in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,

@@ -38,10 +38,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _clientMsgId = 1;
-    
-    NSError *error;
-    ManualAuthAccountRequest *accountReqeust = [ManualAuthAccountRequest parseFromData:[NSData dataWithHexString:@"1214081012100d1302d731adbf5f7c49931c6ff12c381a4208c905123d08391239047ca0fce268c2a86826cb01b2e785dcf8f1a83fc135645e84cbe7eee0eb567370fe5de755aa86f2e521b75815e2e8a8794c1d34c6340ced23"] error:&error];
-    NSLog(@"%@, error: %@", accountReqeust, error);
 }
 
 - (IBAction)getQRCode {
@@ -177,7 +173,7 @@
 - (void)mannualAtuhLoginWithWxid:(NSString *)wxid newPassword:(NSString *)password {
     NSData *priKeyData = nil;
     NSData *pubKeyData = nil;
-    BOOL ret = [ECDH GenEcdh:&priKeyData pubKeyData:&pubKeyData];
+    BOOL ret = [ECDH GenEcdhWithNid:713 priKey:&priKeyData pubKeyData:&pubKeyData];
     if (ret) {
 //        NSLog(@"+[ECDH GenEcdh:pubKeyData:] %@, PubKey: %@.", priKeyData, pubKeyData);
     }

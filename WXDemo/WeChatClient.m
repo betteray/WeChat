@@ -26,6 +26,9 @@
 #import "Varint128.h"
 #import "NSData+Compress.h"
 
+#import "ClientHello.h"
+#import "ServerHello.h"
+
 //#心跳
 #define CMDID_NOOP_REQ 6
 //#长链接确认
@@ -124,24 +127,11 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 }
 
 - (void)DoSendClientHello {
-    NSData *clientHelloData = [self CreateClientHello];
+    NSData *clientHelloData = [[ClientHello new] CreateClientHello];
     [_socket writeData:clientHelloData withTimeout:HEARTBEAT_TIMEOUT tag:HANDSHAKE_CLIENT_HELLO];
 }
 
-- (NSData *)CreateClientHello {
-    NSMutableData *clientHelloData = [[NSData dataWithHexString:@"16F10300D4000000D00103F101C02B"] mutableCopy];
-    [clientHelloData appendData:[NSData GenRandomDataWithSize:32]];
-    
-    NSUInteger timeStamp = [[NSDate date] timeIntervalSince1970];
-    [clientHelloData appendData:[NSData packInt32:(int32_t)timeStamp flip:NO]]; //time
-    [clientHelloData appendData:[NSData dataWithHexString:@"000000A2010000009D00100200000047000000010041"]]; //fix
-    [clientHelloData appendData:[NSData dataWithHexString:@"04BDB8F1450D9B8DDF82954E5CB7ADE728DD39E0B927278E69163D52799A2E1B33CEF36E503B34414F5EFEC0DBD5B810A56B9FA742BB0A5557BFB51D7215094DFD"]]; //pubkey
-    [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000020041"]]; //fix
-    [clientHelloData appendData:[NSData dataWithHexString:@"04EA4902EDC416E107805E5D72191814F132E44221969EF3E8F900321BD5DDBBEBA1CF0169E6ECDE4B04BA33401F586DDB9C57C37A28D5AFEA9669F166B44B90F3"]]; //pubkey
-    [clientHelloData appendData:[NSData dataWithHexString:@"00000001"]]; //fix
-    
-    return [clientHelloData copy];
-}
+
 
 - (void)restartUsingIpAddress:(NSString *)IpAddress {
     [_socket disconnect];
@@ -328,6 +318,11 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
  **/
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
     NSLog(@">>> didReadData: %@, cgi: %ld",data, tag);
+    
+    if (tag==HANDSHAKE_CLIENT_HELLO) {
+       ServerHello *serverHello = [[ServerHello alloc] initWithData:data];
+        return;
+    }
     
     [_recvedData appendData:data];
     

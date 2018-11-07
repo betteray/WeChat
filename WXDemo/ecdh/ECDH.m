@@ -26,6 +26,8 @@ static bool GenEcdh(int nid, unsigned char *szPriKey, int *pLenPri, unsigned cha
     EC_KEY *ec_key = EC_KEY_new_by_curve_name(nid);
     if (!ec_key) return false;
     
+    EC_KEY_set_asn1_flag(ec_key, 1);
+    
     int ret = EC_KEY_generate_key(ec_key);
     if (1 != ret)
     {
@@ -130,8 +132,7 @@ static bool DoEcdh(int nid, unsigned char * szServerPubKey, int nLenServerPub, u
 
 @implementation ECDH
 
-+ (BOOL)GenEcdh:(NSData **)pPriKeyData pubKeyData:(NSData **)pPubKeyData {
-    int nid = 713;
++ (BOOL)GenEcdhWithNid:(int)nid priKey:(NSData **)pPriKeyData pubKeyData:(NSData **)pPubKeyData {
     
     unsigned char priKey[2048];
     unsigned char pubKey[2048];
