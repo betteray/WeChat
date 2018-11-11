@@ -53,6 +53,7 @@
 #define HEARTBEAT_TIMEOUT 60
 
 #define HANDSHAKE_CLIENT_HELLO 22
+#define LONGLINK_HEART_BEAT 88
 
 typedef NS_ENUM(int, EncryptMethod) {
     NONE = 0x1,
@@ -80,6 +81,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 //
 @property (nonatomic, strong) ClientHello *clientHello;
+
+@property(nonatomic, strong)  KeyPair *longlinkKeyPair;
+
 @end
 
 @implementation WeChatClient
@@ -626,6 +630,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         NSData *writeIV = [WX_Hex IV:keyPair2.writeIV XORSeq:2];
         NSData *aadd = [NSData dataWithHexString:@"000000000000000217F1030020"];
         
+        _longlinkKeyPair = keyPair2;
         NSData *heartbeatCipherText = nil;
         [WX_AesGcm128 aes128gcmEncrypt:[NSData dataWithHexString:@"000000100010000100000006FFFFFFFF"] ciphertext:&heartbeatCipherText aad:aadd key:keyPair2.writeKEY ivec:writeIV];
         
@@ -640,8 +645,20 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         [hb appendData:heartbeatData];
         DLog(@"HB", hb);
         
-        [_socket writeData:hb withTimeout:3 tag:88];
+        [_socket writeData:hb withTimeout:3 tag:LONGLINK_HEART_BEAT];
         
+        return;
+    }
+    
+    if (tag == LONGLINK_HEART_BEAT) {
+        NSData *heartbeat_resp = [data subdataWithRange:NSMakeRange(5, 32)];
+        
+        NSData *aad = [NSData dataWithHexString:@"000000000000000417F1030020"];
+        NSData *plainText = nil;
+        NSData *readIV = [WX_Hex IV:_longlinkKeyPair.readIV XORSeq:4];
+        [WX_AesGcm128 aes128gcmDecrypt:heartbeat_resp plaintext:&plainText aad:aad key:_longlinkKeyPair.readKEY ivec:readIV];
+        
+        DLog(@"HB Resp", plainText);
         return;
     }
     
