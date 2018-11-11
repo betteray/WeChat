@@ -13,7 +13,7 @@
 - (instancetype)initWithHexString:(NSString *)string;
 + (instancetype)dataWithHexString:(NSString *)string;
 
-+ (NSData *)packInt32:(int)int32 flip:(BOOL)flip;
++ (NSData *)packInt32:(int32_t)int32 flip:(BOOL)flip;
 + (NSData *)packInt16:(int16_t)int16 flip:(BOOL)flip;
 
 + (NSData *)varintBytes:(int)int32;

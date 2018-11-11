@@ -12,4 +12,11 @@
 
 - (instancetype)initWithData:(NSData *)serverHelloData;
 
+- (NSData *)getHashPart;
+
+- (NSData *)getServerPublicKey;
+
+- (NSData *)getPart1;
+- (NSData *)getPart2;
+- (NSData *)getPart3;
 @end

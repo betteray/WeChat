@@ -10,12 +10,10 @@
 
 @interface ClientHello : NSObject
 
-- (void)setPubKey1:(NSData *)pubKey1;
-
-- (void)setPubKey2:(NSData *)pubKey2;
-
 - (NSData *)CreateClientHello;
 
-- (NSData *)clientRandom;
+- (NSData *)getHashPart;
+
+- (NSData *)getLocal1stPrikey;
 
 @end

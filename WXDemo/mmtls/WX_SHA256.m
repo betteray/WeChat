@@ -6,20 +6,20 @@
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "WXSHA256.h"
+#import "WX_SHA256.h"
 #include <openssl/sha.h>
 
-@implementation WXSHA256
+@implementation WX_SHA256
 
-+ (NSData *)wx_sha256:(char *)buf {
++ (NSData *)sha256:(NSData *)data {
     SHA256_CTX ctx;
     u_int8_t results[SHA256_DIGEST_LENGTH];
     int n;
     
-    n = (int)strlen(buf);
+    n = (int)[data length];
     
     SHA256_Init(&ctx);
-    SHA256_Update(&ctx, (u_int8_t *)buf, n);
+    SHA256_Update(&ctx, (u_int8_t *)[data bytes], n);
     SHA256_Final(results, &ctx);
     
     return [NSData dataWithBytes:results length:SHA256_DIGEST_LENGTH];

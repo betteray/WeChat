@@ -18,7 +18,7 @@
 
 - (int16_t)toInt16ofRange:(NSRange)range SwapBigToHost:(BOOL)swap {
     int16_t int16 = *(int16_t*)([[self subdataWithRange:range] bytes]);
-    return swap ? CFSwapInt32BigToHost(int16) : int16;
+    return swap ? CFSwapInt16BigToHost(int16) : int16;
 }
 
 - (int)toInt8ofRange:(NSInteger)location {
@@ -27,7 +27,7 @@
 }
 
 //Pack
-+ (NSData *)packInt32:(int)int32 flip:(BOOL)flip {
++ (NSData *)packInt32:(int32_t)int32 flip:(BOOL)flip {
     if (flip) {
         return [[[NSData alloc] initWithBytes:&int32 length:sizeof(int32)] bytesFlip];
     } else {

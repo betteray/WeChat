@@ -13,11 +13,13 @@
 #include <openssl/ec.h>
 #include <openssl/ecdh.h>
 #include <openssl/md5.h>
+#include <openssl/sha.h>
 
 static bool GenEcdh(int nid, unsigned char *szPriKey, int *pLenPri, unsigned char *szPubKey, int *pLenPub);
 static bool DoEcdh(int nid, unsigned char * szServerPubKey, int nLenServerPub, unsigned char * szLocalPriKey, int nLenLocalPri, unsigned char * szShareKey, int *pLenShareKey);
 
 #define MD5_DIGEST_LENGTH 16
+#define SHA256_DIGEST_LENGTH 32
 
 static bool GenEcdh(int nid, unsigned char *szPriKey, int *pLenPri, unsigned char *szPubKey, int *pLenPub)
 {
@@ -88,6 +90,16 @@ static void *KDF_MD5(const void *in, size_t inlen, void *out, size_t *outlen)
     *outlen = MD5_DIGEST_LENGTH;
     
     return out;
+}
+
+static void *KDF_SHA256(const void *in, size_t in_len, void *out, size_t *out_len)
+{
+    if ((!out_len)  || (!in) || (!in_len)  || *out_len < SHA256_DIGEST_LENGTH)
+        return NULL;
+    else
+        *out_len = SHA256_DIGEST_LENGTH;
+    
+    return SHA256((const unsigned char *)in, in_len, (unsigned char *)out);
 }
 
 static bool DoEcdh(int nid, unsigned char * szServerPubKey, int nLenServerPub, unsigned char * szLocalPriKey, int nLenLocalPri, unsigned char * szShareKey, int *pLenShareKey)
@@ -181,6 +193,52 @@ szServerPubKey:(unsigned char *)szServerPubKey
     }
     
     *pLenShareKey = MD5_DIGEST_LENGTH;
+    
+    if (pub_ec_key)
+    {
+        EC_KEY_free(pub_ec_key);
+        pub_ec_key = NULL;
+    }
+    
+    if (pri_ec_key)
+    {
+        EC_KEY_free(pri_ec_key);
+        pri_ec_key = NULL;
+    }
+    
+    return true;
+}
+
++ (bool)DoEcdh2:(int)nid
+szServerPubKey:(unsigned char *)szServerPubKey
+ nLenServerPub:(int)nLenServerPub
+ szLocalPriKey:(unsigned char *)szLocalPriKey
+  nLenLocalPri:(int)nLenLocalPri
+    szShareKey:(unsigned char *)szShareKey
+  pLenShareKey:(int *)pLenShareKey
+{
+    const unsigned char *public_material = (const unsigned char *)szServerPubKey;
+    const unsigned char *private_material = (const unsigned char *)szLocalPriKey;
+    
+    EC_KEY *pub_ec_key = EC_KEY_new_by_curve_name(nid);
+    if (!pub_ec_key)    return false;
+    pub_ec_key = o2i_ECPublicKey(&pub_ec_key, &public_material, nLenServerPub);
+    if (!pub_ec_key)    return false;
+    
+    EC_KEY *pri_ec_key = EC_KEY_new_by_curve_name(nid);
+    if (!pri_ec_key)    return false;
+    pri_ec_key = d2i_ECPrivateKey(&pri_ec_key, &private_material, nLenLocalPri);
+    if (!pri_ec_key) return false;
+    
+    if (SHA256_DIGEST_LENGTH != ECDH_compute_key((void *)szShareKey, SHA256_DIGEST_LENGTH, EC_KEY_get0_public_key(pub_ec_key), pri_ec_key, KDF_SHA256))
+    {
+        EC_KEY_free(pub_ec_key);
+        EC_KEY_free(pri_ec_key);
+        
+        return false;
+    }
+    
+    *pLenShareKey = SHA256_DIGEST_LENGTH;
     
     if (pub_ec_key)
     {

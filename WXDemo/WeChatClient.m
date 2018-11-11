@@ -1,4 +1,4 @@
-//
+
 //  WeChatClient.m
 //  WXDemo
 //
@@ -28,6 +28,10 @@
 
 #import "ClientHello.h"
 #import "ServerHello.h"
+#import "WX_SHA256.h"
+#import "ECDH.h"
+#import "WX_HKDF.h"
+#import "KeyPair.h"
 
 //#心跳
 #define CMDID_NOOP_REQ 6
@@ -73,6 +77,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 @property (nonatomic, strong) NSMutableArray *tasks;
 
+
+//
+@property (nonatomic, strong) ClientHello *clientHello;
 @end
 
 @implementation WeChatClient
@@ -93,8 +100,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         _uin = 0;
         _tasks = [NSMutableArray array];
         _recvedData = [NSMutableData data];
-//        _sessionKey = [FSOpenSSL random128BitAESKey]; // iPad
-        _sessionKey = [NSData GenRandomDataWithSize:184]; //iMac
+        _sessionKey = [FSOpenSSL random128BitAESKey]; // iPad
+//        _sessionKey = [NSData GenRandomDataWithSize:184]; //iMac
 
         NSString *priKey = nil;
         NSString *pubKey = nil;
@@ -105,8 +112,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
             NSLog(@" ** Gen RSA KeyPair Fail. ** ");
         }
         
-        _heartbeatTimer = [NSTimer timerWithTimeInterval:30 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
+//        _heartbeatTimer = [NSTimer timerWithTimeInterval:30 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
+//        [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
         
         GCDAsyncSocket *s = [[GCDAsyncSocket alloc] init];
         [s setDelegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
@@ -119,15 +126,18 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)start {
     NSError *error;
-    [_socket connectToHost:@"long.weixin.qq.com" onPort:443 error:&error];
+    [_socket connectToHost:@"long.weixin.qq.com" onPort:8080 error:&error];
+//    [_socket connectToHost:@"long.weixin.qq.com" onPort:8080 error:&error];
     if (error) {
         NSLog(@"Socks Start Error: %@", [error localizedDescription]);
     }
     [self DoSendClientHello];
+//    [self test];
 }
 
 - (void)DoSendClientHello {
-    NSData *clientHelloData = [[ClientHello new] CreateClientHello];
+    _clientHello = [ClientHello new];
+    NSData *clientHelloData = [_clientHello CreateClientHello];
     [_socket writeData:clientHelloData withTimeout:HEARTBEAT_TIMEOUT tag:HANDSHAKE_CLIENT_HELLO];
 }
 
@@ -146,8 +156,163 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 }
 
 - (void)test {
-//    NSData *header = [self make_header:502 encryptMethod:NONE bodyData:125 compressedBodyData:125 needCookie:false];
-//    NSLog(@"header: %@", header);
+    _clientHello = [ClientHello new];
+    [_clientHello CreateClientHello];
+    NSData *serHello = [NSData dataWithHexString:@"16F103007B000000770203F1C02B1B904D324F598E85303D6457CE442BA01B1D8EFB999AB6B44107E5B6AF4250F00000004E01000000490011000000010041049F91F744A91AEEA7F67E0F779BC7232DBE572447886791D07E07AF56FF3E7306DA57091A53DC06017E20E0657823BC088B1DFB84EB97868E6DBBCF5D78A2248516F103005D43AC2881675BA2063DD7B5A0ADE9E4E1D73049219F062F427DA3A435AEAE04B9AF3F9E11407C86C436FA96BB2B51C9811AE8C4EDE8F206CB2B88A32B7B01737111740540881C25BFCB1D64119FDE722AF4FA1A3BCDF3FCC20DC30A0D8916F10301252C0128630EAFB00ED01B587D5D33B9E18A2FA75CC6918FE369E5EF2E7C3DFA0188D196D2689EEC8288DF1F92A40DF9577E0A5CF46F409A590173E1DF7F09BDA631EF12BFE418D848CF769571B3CB6B3BB3353B2CF359D376FF0AE02538A2AFE64614909698DA44F8A1EE7A574F3E2FCB2DEDFC5E8F73CDAED16C7A9A5FA8BB625C477B8DA374D4924BC67EE858DC8A629EBBC697F6D9F45DCEBF6247BC90F9353A3D3E5FCA8EB0C2B9C459DAF0598899384548F56ABE9F3860DF44A4663E07F0E12F804A9FA47D5986E92601734491B4B2F83A030AA5D45FBE938097AC4522030A908A1AFEF5E82DBE04D96E8540B3A158CF0E007072DB7B58281DFA0F55D518859541DF1D4A485FEFE67BE2E11137FC21E1D69765CBF4DF8BE86B07FC7A3F551E9D50F78516F103003775A9F8553C597EECBEC93571B11F053A8A8D5BA9EB9B0134407523052BDA94D8EF10794656CFF5DAD7AB70F9736388915AA9B06163E8CE"];
+    
+    ServerHello *serverHello = [[ServerHello alloc] initWithData:serHello];
+    
+    NSData *hashPart1 = [_clientHello getHashPart];
+    NSData *hashPart2 = [serverHello getHashPart];
+    NSMutableData *hashData = [NSMutableData dataWithData:hashPart1];
+    [hashData  appendData:hashPart2];
+    NSData *hashResult = [WX_SHA256 sha256:hashData];
+    
+    DLog(@"Hash Result", hashResult);
+    
+    NSData *serverPublicKey = [serverHello getServerPublicKey];
+    NSData *localPriKey = [_clientHello getLocal1stPrikey];
+    
+    unsigned char buf[32] = {0};
+    int sharedKeyLen = 0;
+    [ECDH DoEcdh2:415
+   szServerPubKey:[serverPublicKey bytes] nLenServerPub:[serverPublicKey length]
+    szLocalPriKey:[localPriKey bytes] nLenLocalPri:[localPriKey length]
+       szShareKey:buf pLenShareKey:&sharedKeyLen];
+    NSData *secret = [NSData dataWithBytes:buf length:sharedKeyLen];
+    
+    DLog(@"secret", secret);
+    
+    NSMutableData *info = [NSMutableData dataWithData: [@"handshake key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
+    [info appendData:hashResult];
+    
+    NSData *outOkm = nil;
+    [WX_HKDF HKDF_Prk:secret Info:[info copy] outOkm:&outOkm];
+    
+    DLog(@"Key expand", outOkm);
+    
+    KeyPair *keyPair = [[KeyPair alloc] initWithData:outOkm];
+    
+    
+    /******************************** 开始解密PSK ****************************************/
+    // Part1 decrypt
+    NSData *part1 = [serverHello getPart1];
+    
+    NSMutableData *aad1 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
+    [aad1 appendData:[NSData packInt32:(int32_t)[part1 length] flip:NO]];
+    
+    NSData *readIV1 = [WX_Hex  IV:keyPair.readIV XORSeq:1];//序号从1开始。
+    
+    DLog(@"after XOR readIV 1", readIV1);
+    
+    NSData *plainText1 = nil;
+    [WX_AesGcm128 aes128gcmDecrypt:part1 plaintext:&plainText1 aad:[aad1 copy] key:keyPair.readKEY ivec:readIV1];
+    
+    DLog(@"decrypted part1", plainText1);
+    
+    
+    // Part2 decrypt
+    NSData *part2 = [serverHello getPart2];
+    
+    NSMutableData *aad2 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
+    [aad2 appendData:[NSData packInt32:(int32_t)[part2 length] flip:NO]];
+    
+    NSData *readIV2 = [WX_Hex  IV:keyPair.readIV XORSeq:2];//序号从1开始，每次+1；
+    
+    DLog(@"after XOR readIV 2", readIV2);
+    
+    NSData *plainText2 = nil;
+    [WX_AesGcm128 aes128gcmDecrypt:part2 plaintext:&plainText2 aad:[aad2 copy] key:keyPair.readKEY ivec:readIV2];
+    
+    DLog(@"decrypted part2", plainText2);
+    
+    
+    // Part3 decrypt
+    NSData *part3 = [serverHello getPart3];
+    
+    NSMutableData *aad3 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
+    [aad3 appendData:[NSData packInt32:(int32_t)[part3 length] flip:NO]];
+    
+    NSData *readIV3 = [WX_Hex  IV:keyPair.readIV XORSeq:3];//序号从1开始，每次+1；
+    
+    DLog(@"after XOR readIV 3", readIV3);
+    
+    NSData *plainText3 = nil;
+    [WX_AesGcm128 aes128gcmDecrypt:part3 plaintext:&plainText3 aad:[aad3 copy] key:keyPair.readKEY ivec:readIV3];
+    
+    DLog(@"decrypted part3", plainText3);
+    
+    
+    /******************************** 解密PSK结束 (OK) ****************************************/
+    
+    /******************************** 长连接 加密KEY & IV 的计算 **************************/
+    //1.需要第二部分解密结果的hash 结果。
+    NSMutableData *md = [NSMutableData dataWithData:hashData];
+    [md appendData:plainText1];
+    [md appendData:plainText2];
+    NSData *plainText2HashData = [WX_SHA256 sha256:md];
+    
+    DLog(@"PlainText2 Hash Result", plainText2HashData); //OK
+    // 需要密钥扩展一次结果。
+    NSMutableData *info2 = [NSMutableData dataWithData: [@"application data key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
+    [info2 appendData:plainText2HashData];
+    
+    //2. secret
+    NSMutableData *info3 = [NSMutableData dataWithData: [@"expanded secret" dataUsingEncoding:NSUTF8StringEncoding]];
+    [info3 appendData:plainText2HashData];
+    
+    NSData *outOkm2 = nil;
+    [WX_HKDF HKDF_Prk2:secret Info:info3 outOkm:&outOkm2];//
+    
+    DLog(@"outOkm2", outOkm2);//OK
+    
+    NSData *outOkm3 = nil;
+    [WX_HKDF HKDF_Prk:outOkm2 Info:[info2 copy] outOkm:&outOkm3];//长连接 加解密 key iv 生成。
+    
+    DLog(@"outOkm3", outOkm3);
+    
+    /******************************** 长连接 加密KEY & IV 的计算（OK） **************************/
+    
+    /******************************** 心跳请求组包 **************************/
+    
+    // 1. 心跳请求第一部分数据。
+    NSData *clientFinished = [@"client finished" dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *outOkm4 = nil;
+    [WX_HKDF HKDF_Prk2:secret Info:clientFinished outOkm:&outOkm4]; //OK
+    
+    NSData *hmacResult = nil;
+    [WX_HmacSha256 HmacSha256WithKey:outOkm4 data:plainText2HashData result:&hmacResult]; //OK
+    
+    NSMutableData *heartbeatPart1 = [NSMutableData dataWithHexString:@"00000023140020"];
+    [heartbeatPart1 appendData:hmacResult];
+    
+    NSData *aadddd = [NSData dataWithHexString:@"000000000000000116F1030037"];
+    NSData *heartbeatPart1CipherText = nil;
+    
+    NSData *writeIV1 = [WX_Hex  IV:keyPair.writeIV XORSeq:1];//序号从1开始，每次+1；
+    [WX_AesGcm128 aes128gcmEncrypt:heartbeatPart1 ciphertext:&heartbeatPart1CipherText aad:aadddd key:keyPair.writeKEY ivec:writeIV1];
+    NSMutableData *heartbeatData1 = [NSMutableData dataWithHexString:@"16F1030037"];
+    [heartbeatData1 appendData:heartbeatPart1CipherText];
+    DLog(@"HeartBeat 1", heartbeatData1);
+    
+    // 2. 心跳包数据。
+    KeyPair *keyPair2 = [[KeyPair alloc] initWithData:outOkm3];
+    NSData *writeIV = [WX_Hex IV:keyPair2.writeIV XORSeq:2];
+    NSData *aadd = [NSData dataWithHexString:@"000000000000000217F1030020"];
+    
+    NSData *heartbeatCipherText = nil;
+    [WX_AesGcm128 aes128gcmEncrypt:[NSData dataWithHexString:@"000000100010000100000006FFFFFFFF"] ciphertext:&heartbeatCipherText aad:aadd key:keyPair2.writeKEY ivec:writeIV];
+    
+    NSMutableData *heartbeatData = [NSMutableData dataWithHexString:@"17f1030020"];
+    [heartbeatData appendData:heartbeatCipherText];
+    
+    DLog(@"HeartBeat 2", heartbeatData); //OK
+    
+    // 3. 心跳包加一块.
+    NSMutableData *hb = [NSMutableData dataWithCapacity:[heartbeatData1 length] + [heartbeatData length]];
+    [hb appendData:heartbeatData1];
+    [hb appendData:heartbeatData];
+    DLog(@"HB", hb);
 }
 
 - (void)heartBeat {
@@ -317,10 +482,166 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
  * Not called if there is an error.
  **/
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSLog(@">>> didReadData: %@, cgi: %ld",data, tag);
+    NSString *logTag = [NSString stringWithFormat:@"DidReadDataWithTag: %ld", tag];
+    DLog(logTag, data);
     
     if (tag==HANDSHAKE_CLIENT_HELLO) {
-       ServerHello *serverHello = [[ServerHello alloc] initWithData:data];
+        ServerHello *serverHello = [[ServerHello alloc] initWithData:data];
+        
+        NSData *hashPart1 = [_clientHello getHashPart];
+        NSData *hashPart2 = [serverHello getHashPart];
+        NSMutableData *hashData = [NSMutableData dataWithData:hashPart1];
+        [hashData  appendData:hashPart2];
+        NSData *hashResult = [WX_SHA256 sha256:hashData];
+        
+        DLog(@"Hash Result", hashResult);
+        
+        NSData *serverPublicKey = [serverHello getServerPublicKey];
+        NSData *localPriKey = [_clientHello getLocal1stPrikey];
+        
+        unsigned char buf[32] = {0};
+        int sharedKeyLen = 0;
+        [ECDH DoEcdh2:415
+       szServerPubKey:[serverPublicKey bytes] nLenServerPub:[serverPublicKey length]
+        szLocalPriKey:[localPriKey bytes] nLenLocalPri:[localPriKey length]
+           szShareKey:buf pLenShareKey:&sharedKeyLen];
+        NSData *secret = [NSData dataWithBytes:buf length:sharedKeyLen];
+        
+        DLog(@"secret", secret);
+        
+        NSMutableData *info = [NSMutableData dataWithData: [@"handshake key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
+        [info appendData:hashResult];
+        
+        NSData *outOkm = nil;
+        [WX_HKDF HKDF_Prk:secret Info:[info copy] outOkm:&outOkm];
+        
+        DLog(@"Key expand", outOkm);
+        
+        KeyPair *keyPair = [[KeyPair alloc] initWithData:outOkm];
+        
+        
+        /******************************** 开始解密PSK ****************************************/
+        // Part1 decrypt
+        NSData *part1 = [serverHello getPart1];
+        
+        NSMutableData *aad1 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
+        [aad1 appendData:[NSData packInt32:(int32_t)[part1 length] flip:NO]];
+        
+        NSData *readIV1 = [WX_Hex  IV:keyPair.readIV XORSeq:1];//序号从1开始。
+        
+        DLog(@"after XOR readIV 1", readIV1);
+        
+        NSData *plainText1 = nil;
+        [WX_AesGcm128 aes128gcmDecrypt:part1 plaintext:&plainText1 aad:[aad1 copy] key:keyPair.readKEY ivec:readIV1];
+        
+        DLog(@"decrypted part1", plainText1);
+        
+        
+        // Part2 decrypt
+        NSData *part2 = [serverHello getPart2];
+        
+        NSMutableData *aad2 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
+        [aad2 appendData:[NSData packInt32:(int32_t)[part2 length] flip:NO]];
+        
+        NSData *readIV2 = [WX_Hex  IV:keyPair.readIV XORSeq:2];//序号从1开始，每次+1；
+        
+        DLog(@"after XOR readIV 2", readIV2);
+        
+        NSData *plainText2 = nil;
+        [WX_AesGcm128 aes128gcmDecrypt:part2 plaintext:&plainText2 aad:[aad2 copy] key:keyPair.readKEY ivec:readIV2];
+        
+        DLog(@"decrypted part2", plainText2);
+        
+        
+        // Part3 decrypt
+        NSData *part3 = [serverHello getPart3];
+        
+        NSMutableData *aad3 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
+        [aad3 appendData:[NSData packInt32:(int32_t)[part3 length] flip:NO]];
+        
+        NSData *readIV3 = [WX_Hex  IV:keyPair.readIV XORSeq:3];//序号从1开始，每次+1；
+        
+        DLog(@"after XOR readIV 3", readIV3);
+        
+        NSData *plainText3 = nil;
+        [WX_AesGcm128 aes128gcmDecrypt:part3 plaintext:&plainText3 aad:[aad3 copy] key:keyPair.readKEY ivec:readIV3];
+        
+        DLog(@"decrypted part3", plainText3);
+        
+        
+        /******************************** 解密PSK结束 (OK) ****************************************/
+        
+        /******************************** 长连接 加密KEY & IV 的计算 **************************/
+        //1.需要第二部分解密结果的hash 结果。
+        NSMutableData *md = [NSMutableData dataWithData:hashData];
+        [md appendData:plainText1];
+        [md appendData:plainText2];
+        NSData *plainText2HashData = [WX_SHA256 sha256:md];
+        
+        DLog(@"PlainText2 Hash Result", plainText2HashData); //OK
+        // 需要密钥扩展一次结果。
+        NSMutableData *info2 = [NSMutableData dataWithData: [@"application data key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
+        [info2 appendData:plainText2HashData];
+        
+        //2. secret
+        NSMutableData *info3 = [NSMutableData dataWithData: [@"expanded secret" dataUsingEncoding:NSUTF8StringEncoding]];
+        [info3 appendData:plainText2HashData];
+        
+        NSData *outOkm2 = nil;
+        [WX_HKDF HKDF_Prk2:secret Info:info3 outOkm:&outOkm2];//
+        
+        DLog(@"outOkm2", outOkm2);//OK
+        
+        NSData *outOkm3 = nil;
+        [WX_HKDF HKDF_Prk:outOkm2 Info:[info2 copy] outOkm:&outOkm3];//长连接 加解密 key iv 生成。
+        
+        DLog(@"outOkm3", outOkm3);
+        
+        /******************************** 长连接 加密KEY & IV 的计算（OK） **************************/
+        
+        /******************************** 心跳请求组包 **************************/
+        
+        // 1. 心跳请求第一部分数据。
+        NSData *clientFinished = [@"client finished" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *outOkm4 = nil;
+        [WX_HKDF HKDF_Prk2:secret Info:clientFinished outOkm:&outOkm4]; //OK
+        
+        NSData *hmacResult = nil;
+        [WX_HmacSha256 HmacSha256WithKey:outOkm4 data:plainText2HashData result:&hmacResult]; //OK
+        
+        NSMutableData *heartbeatPart1 = [NSMutableData dataWithHexString:@"00000023140020"];
+        [heartbeatPart1 appendData:hmacResult];
+        
+        NSData *aadddd = [NSData dataWithHexString:@"000000000000000116F1030037"];
+        NSData *heartbeatPart1CipherText = nil;
+        
+        NSData *writeIV1 = [WX_Hex  IV:keyPair.writeIV XORSeq:1];//序号从1开始，每次+1；
+        [WX_AesGcm128 aes128gcmEncrypt:heartbeatPart1 ciphertext:&heartbeatPart1CipherText aad:aadddd key:keyPair.writeKEY ivec:writeIV1];
+        NSMutableData *heartbeatData1 = [NSMutableData dataWithHexString:@"16F1030037"];
+        [heartbeatData1 appendData:heartbeatPart1CipherText];
+        DLog(@"HeartBeat 1", heartbeatData1);
+        
+        // 2. 心跳包数据。
+        KeyPair *keyPair2 = [[KeyPair alloc] initWithData:outOkm3];
+        NSData *writeIV = [WX_Hex IV:keyPair2.writeIV XORSeq:2];
+        NSData *aadd = [NSData dataWithHexString:@"000000000000000217F1030020"];
+        
+        NSData *heartbeatCipherText = nil;
+        [WX_AesGcm128 aes128gcmEncrypt:[NSData dataWithHexString:@"000000100010000100000006FFFFFFFF"] ciphertext:&heartbeatCipherText aad:aadd key:keyPair2.writeKEY ivec:writeIV];
+        
+        NSMutableData *heartbeatData = [NSMutableData dataWithHexString:@"17f1030020"];
+        [heartbeatData appendData:heartbeatCipherText];
+        
+        DLog(@"HeartBeat 2", heartbeatData); //OK
+        
+        // 3. 心跳包加一块.
+        NSMutableData *hb = [NSMutableData dataWithCapacity:[heartbeatData1 length] + [heartbeatData length]];
+        [hb appendData:heartbeatData1];
+        [hb appendData:heartbeatData];
+        DLog(@"HB", hb);
+        
+        [_socket writeData:hb withTimeout:3 tag:88];
+        
         return;
     }
     
