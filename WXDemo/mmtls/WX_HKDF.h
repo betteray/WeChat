@@ -10,7 +10,7 @@
 
 @interface WX_HKDF : NSObject
 
-+ (void) HKDF_Prk:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm;
-+ (void) HKDF_Prk2:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm;
++ (void) HKDF_Expand_Prk:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm;
++ (void) HKDF_Expand_Prk2:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm;
 
 @end

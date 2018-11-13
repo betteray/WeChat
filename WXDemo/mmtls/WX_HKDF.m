@@ -20,13 +20,13 @@
 //    unsigned char info[INFO_LEN] = {0x50, 0x53, 0x4b, 0x5f, 0x41, 0x43, 0x43, 0x45, 0x53, 0x53, 0x90, 0xc7, 0x16, 0x0b, 0x3a, 0xea, 0x10, 0x6a, 0x50, 0xaa, 0xfe, 0xf9, 0x38, 0x33, 0xfd, 0xac, 0xda, 0xf5, 0xa6, 0x5a, 0x5e, 0x4e, 0x0d, 0x66, 0xdf, 0xf6, 0x15, 0x98, 0xec, 0x46, 0x21, 0x2d};
 }
 
-+ (void) HKDF_Prk:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm {
++ (void) HKDF_Expand_Prk:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm {
     unsigned char buf[56];
     [self HKDF_Expand:[prk bytes] :[prk length] :[info bytes] :[info length] :buf :56];
     *outOkm = [NSData  dataWithBytes:buf length:56];
 }
 
-+ (void) HKDF_Prk2:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm {
++ (void) HKDF_Expand_Prk2:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm {
     unsigned char buf[0x20];
     [self HKDF_Expand:[prk bytes] :[prk length] :[info bytes] :[info length] :buf :0x20];
     *outOkm = [NSData  dataWithBytes:buf length:0x20];

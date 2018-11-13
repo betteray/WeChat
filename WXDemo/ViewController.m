@@ -102,7 +102,7 @@
     NSData *info = [NSData dataWithHexString:@"657870616E646564207365637265743FF0186737665A4FDD7689F4598126D8B2715C710865FDA9871161B27F27771E"];
     NSData *outOkm = nil;
     
-    [WX_HKDF HKDF_Prk2:prk Info:info outOkm:&outOkm]; //OK
+    [WX_HKDF HKDF_Expand_Prk2:prk Info:info outOkm:&outOkm]; //OK
     
 //    NSLog(@"%@", outOkm);//OK 0x20 字节的
     

@@ -130,7 +130,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)start {
     NSError *error;
-    [_socket connectToHost:@"long.weixin.qq.com" onPort:8080 error:&error];
+    [_socket connectToHost:@"long.weixin.qq.com" onPort:443 error:&error];
 //    [_socket connectToHost:@"long.weixin.qq.com" onPort:8080 error:&error];
     if (error) {
         NSLog(@"Socks Start Error: %@", [error localizedDescription]);
@@ -191,7 +191,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [info appendData:hashResult];
     
     NSData *outOkm = nil;
-    [WX_HKDF HKDF_Prk:secret Info:[info copy] outOkm:&outOkm];
+    [WX_HKDF HKDF_Expand_Prk:secret Info:[info copy] outOkm:&outOkm];
     
     DLog(@"Key expand", outOkm);
     
@@ -266,12 +266,12 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [info3 appendData:plainText2HashData];
     
     NSData *outOkm2 = nil;
-    [WX_HKDF HKDF_Prk2:secret Info:info3 outOkm:&outOkm2];//
+    [WX_HKDF HKDF_Expand_Prk2:secret Info:info3 outOkm:&outOkm2];//
     
     DLog(@"outOkm2", outOkm2);//OK
     
     NSData *outOkm3 = nil;
-    [WX_HKDF HKDF_Prk:outOkm2 Info:[info2 copy] outOkm:&outOkm3];//长连接 加解密 key iv 生成。
+    [WX_HKDF HKDF_Expand_Prk:outOkm2 Info:[info2 copy] outOkm:&outOkm3];//长连接 加解密 key iv 生成。
     
     DLog(@"outOkm3", outOkm3);
     
@@ -282,7 +282,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     // 1. 心跳请求第一部分数据。
     NSData *clientFinished = [@"client finished" dataUsingEncoding:NSUTF8StringEncoding];
     NSData *outOkm4 = nil;
-    [WX_HKDF HKDF_Prk2:secret Info:clientFinished outOkm:&outOkm4]; //OK
+    [WX_HKDF HKDF_Expand_Prk2:secret Info:clientFinished outOkm:&outOkm4]; //OK
     
     NSData *hmacResult = nil;
     [WX_HmacSha256 HmacSha256WithKey:outOkm4 data:plainText2HashData result:&hmacResult]; //OK
@@ -517,7 +517,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         [info appendData:hashResult];
         
         NSData *outOkm = nil;
-        [WX_HKDF HKDF_Prk:secret Info:[info copy] outOkm:&outOkm];
+        [WX_HKDF HKDF_Expand_Prk:secret Info:[info copy] outOkm:&outOkm];
         
         DLog(@"Key expand", outOkm);
         
@@ -592,12 +592,12 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         [info3 appendData:plainText2HashData];
         
         NSData *outOkm2 = nil;
-        [WX_HKDF HKDF_Prk2:secret Info:info3 outOkm:&outOkm2];//
+        [WX_HKDF HKDF_Expand_Prk2:secret Info:info3 outOkm:&outOkm2]; //expanded secret
         
         DLog(@"outOkm2", outOkm2);//OK
         
         NSData *outOkm3 = nil;
-        [WX_HKDF HKDF_Prk:outOkm2 Info:[info2 copy] outOkm:&outOkm3];//长连接 加解密 key iv 生成。
+        [WX_HKDF HKDF_Expand_Prk:outOkm2 Info:[info2 copy] outOkm:&outOkm3];//长连接 加解密 key iv 生成。 //application data key expansion
         
         DLog(@"outOkm3", outOkm3);
         
@@ -608,7 +608,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         // 1. 心跳请求第一部分数据。
         NSData *clientFinished = [@"client finished" dataUsingEncoding:NSUTF8StringEncoding];
         NSData *outOkm4 = nil;
-        [WX_HKDF HKDF_Prk2:secret Info:clientFinished outOkm:&outOkm4]; //OK
+        [WX_HKDF HKDF_Expand_Prk2:secret Info:clientFinished outOkm:&outOkm4]; //OK //client finished
         
         NSData *hmacResult = nil;
         [WX_HmacSha256 HmacSha256WithKey:outOkm4 data:plainText2HashData result:&hmacResult]; //OK
@@ -650,7 +650,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         return;
     }
     
-    if (tag == LONGLINK_HEART_BEAT) {
+    if (tag == LONGLINK_HEART_BEAT) {//解密心跳包。
         NSData *heartbeat_resp = [data subdataWithRange:NSMakeRange(5, 32)];
         
         NSData *aad = [NSData dataWithHexString:@"000000000000000417F1030020"];
