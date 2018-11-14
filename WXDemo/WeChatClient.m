@@ -165,17 +165,20 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)heartBeat {
     // 2. 心跳包数据。
+    
+    
+    NSData *heart = [self longlink_packWithSeq:_seq cmdId:CMDID_NOOP_REQ buffer:nil];
+    
     NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
     aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
-    aadd = [aadd addDataAtTail:[NSData dataWithHexString:@"17F1030020"]];
+    aadd = [[aadd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int16_t) ([heart length] + 0x10) flip:YES]];
     
     NSData *heartbeatCipherText = nil;
-    NSData *heart = [self longlink_packWithSeq:_seq cmdId:CMDID_NOOP_REQ buffer:nil];
     [WX_AesGcm128 aes128gcmEncrypt:heart ciphertext:&heartbeatCipherText aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
     
-    NSMutableData *heartbeatData = [NSMutableData dataWithHexString:@"17f1030020"];
-    [heartbeatData appendData:heartbeatCipherText];
+    NSData *heartbeatData = [[NSData dataWithHexString:@"17f103"] addDataAtTail:[NSData packInt16:(int16_t) ([heart length] + 0x10) flip:YES]];
+    heartbeatData = [heartbeatData addDataAtTail:heartbeatCipherText];
     
     DLog(@"HB", heartbeatData);
     
