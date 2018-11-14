@@ -259,12 +259,14 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
     aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
-    aadd = [aadd addDataAtTail:[NSData dataWithHexString:@"17F10307D3"]];
+    aadd = [[aadd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t) ([sendData length] + 0x10) flip:YES]]; //0x10 aad len
     NSData *manulauth = nil;
     [WX_AesGcm128 aes128gcmEncrypt:sendData ciphertext:&manulauth aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
     
-    NSMutableData *manualAuthSendData = [NSMutableData dataWithHexString:@"17F10307D3"];
-    [manualAuthSendData appendData:manulauth];
+    NSData *manualAuthSendData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t) ([sendData length] + 0x10) flip:YES]];
+    manualAuthSendData = [manualAuthSendData addDataAtTail:manulauth];
+    
+    DLog(@"manual auth", manualAuthSendData);
     
     Task *task = [Task new];
     task.sucBlock = successBlock;

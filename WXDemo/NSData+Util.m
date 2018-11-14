@@ -28,18 +28,19 @@
 
 //Pack
 + (NSData *)packInt32:(int32_t)int32 flip:(BOOL)flip {
+    int32_t realInt32 = int32;
     if (flip) {
-        return [[[NSData alloc] initWithBytes:&int32 length:sizeof(int32)] bytesFlip];
+        return [[[NSData alloc] initWithBytes:&realInt32 length:sizeof(realInt32)] bytesFlip];
     } else {
-        return [[NSData alloc] initWithBytes:&int32 length:sizeof(int32)];
+        return [[NSData alloc] initWithBytes:&realInt32 length:sizeof(realInt32)];
     }
 }
 
 + (NSData *)packInt16:(int16_t)int16 flip:(BOOL)flip {
     if (flip) {
-        return [[[NSData alloc] initWithBytes:&int16 length:sizeof(int16)] bytesFlip];
+        return [[[NSData alloc] initWithBytes:&int16 length:sizeof(int16_t)] bytesFlip];
     } else {
-        return [[NSData alloc] initWithBytes:&int16 length:sizeof(int16)];
+        return [[NSData alloc] initWithBytes:&int16 length:sizeof(int16_t)];
     }
 }
 
