@@ -257,8 +257,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     DLog(@"ManualAuthData", sendData)
     
     NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
-    NSData *aadd = [NSData dataWithHexString:@"000000000000000317F10307D3"];
-    
+    NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
+    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
+    aadd = [aadd addDataAtTail:[NSData dataWithHexString:@"17F10307D3"]];
     NSData *manulauth = nil;
     [WX_AesGcm128 aes128gcmEncrypt:sendData ciphertext:&manulauth aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
     
@@ -476,7 +477,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 - (void)onReceiveLonglinkHeartBeatData:(NSData *)hbData {
     NSData *heartbeat_resp = [hbData subdataWithRange:NSMakeRange(5, 32)];
     
-    NSData *aad = [NSData dataWithHexString:@"000000000000000417F1030020"];
+    NSData *aad = [NSData dataWithHexString:@"00000000000000"];
+    aad = [aad addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _readSeq]]];
+    aad = [aad addDataAtTail:[NSData dataWithHexString:@"17F1030020"]];
+    
     NSData *plainText = nil;
     NSData *readIV = [WX_Hex IV:_longlinkKeyPair.readIV XORSeq:_readSeq++];
     [WX_AesGcm128 aes128gcmDecrypt:heartbeat_resp plaintext:&plainText aad:aad key:_longlinkKeyPair.readKEY ivec:readIV];
