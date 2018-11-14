@@ -84,8 +84,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 @property (nonatomic, strong)  KeyPair *longlinkKeyPair;
 
-@property (nonatomic, assign) NSInteger write_seq;
-@property (nonatomic, assign) NSInteger read_seq;
+@property (nonatomic, assign) NSInteger writeSeq;
+@property (nonatomic, assign) NSInteger readSeq;
 
 @end
 
@@ -103,8 +103,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _write_seq = 1;
-        _read_seq = 1;
+        _writeSeq = 1;
+        _readSeq = 1;
         
         _seq = 1;
         _uin = 0;
@@ -165,9 +165,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)heartBeat {
     // 2. 心跳包数据。
-    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_write_seq++];
+    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
-    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _write_seq - 1]]];
+    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
     aadd = [aadd addDataAtTail:[NSData dataWithHexString:@"17F1030020"]];
     
     NSData *heartbeatCipherText = nil;
@@ -256,7 +256,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     
     DLog(@"ManualAuthData", sendData)
     
-    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_write_seq++];
+    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"000000000000000317F10307D3"];
     
     NSData *manulauth = nil;
@@ -355,7 +355,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *aad1 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
     [aad1 appendData:[NSData packInt32:(int32_t)[part1 length] flip:NO]];
     
-    NSData *readIV1 = [WX_Hex  IV:keyPair.readIV XORSeq:_read_seq++];//序号从1开始。
+    NSData *readIV1 = [WX_Hex  IV:keyPair.readIV XORSeq:_readSeq++];//序号从1开始。
     
     DLog(@"after XOR readIV 1", readIV1);
     
@@ -371,7 +371,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *aad2 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
     [aad2 appendData:[NSData packInt32:(int32_t)[part2 length] flip:NO]];
     
-    NSData *readIV2 = [WX_Hex  IV:keyPair.readIV XORSeq:_read_seq++];//序号从1开始，每次+1；
+    NSData *readIV2 = [WX_Hex  IV:keyPair.readIV XORSeq:_readSeq++];//序号从1开始，每次+1；
     
     DLog(@"after XOR readIV 2", readIV2);
     
@@ -387,7 +387,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *aad3 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
     [aad3 appendData:[NSData packInt32:(int32_t)[part3 length] flip:NO]];
     
-    NSData *readIV3 = [WX_Hex  IV:keyPair.readIV XORSeq:_read_seq++];//序号从1开始，每次+1；
+    NSData *readIV3 = [WX_Hex  IV:keyPair.readIV XORSeq:_readSeq++];//序号从1开始，每次+1；
     
     DLog(@"after XOR readIV 3", readIV3);
     
@@ -443,7 +443,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *aadddd = [NSData dataWithHexString:@"000000000000000116F1030037"];
     NSData *heartbeatPart1CipherText = nil;
     
-    NSData *writeIV1 = [WX_Hex  IV:keyPair.writeIV XORSeq:_write_seq++];//序号从1开始，每次+1；
+    NSData *writeIV1 = [WX_Hex  IV:keyPair.writeIV XORSeq:_writeSeq++];//序号从1开始，每次+1；
     [WX_AesGcm128 aes128gcmEncrypt:heartbeatPart1 ciphertext:&heartbeatPart1CipherText aad:aadddd key:keyPair.writeKEY ivec:writeIV1];
     NSMutableData *heartbeatData1 = [NSMutableData dataWithHexString:@"16F1030037"];
     [heartbeatData1 appendData:heartbeatPart1CipherText];
@@ -451,7 +451,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     
     // 2. 心跳包数据。
     KeyPair *keyPair2 = [[KeyPair alloc] initWithData:outOkm3];
-    NSData *writeIV = [WX_Hex IV:keyPair2.writeIV XORSeq:_write_seq++];
+    NSData *writeIV = [WX_Hex IV:keyPair2.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"000000000000000217F1030020"];
     
     _longlinkKeyPair = keyPair2;
@@ -478,7 +478,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     
     NSData *aad = [NSData dataWithHexString:@"000000000000000417F1030020"];
     NSData *plainText = nil;
-    NSData *readIV = [WX_Hex IV:_longlinkKeyPair.readIV XORSeq:_read_seq++];
+    NSData *readIV = [WX_Hex IV:_longlinkKeyPair.readIV XORSeq:_readSeq++];
     [WX_AesGcm128 aes128gcmDecrypt:heartbeat_resp plaintext:&plainText aad:aad key:_longlinkKeyPair.readKEY ivec:readIV];
     
     DLog(@"HB Resp", plainText);
