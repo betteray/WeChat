@@ -49,6 +49,7 @@
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6521549A6200DB669E /* NSString+GenRandomString.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6421549A6200DB669E /* NSString+GenRandomString.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
+		719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */ = {isa = PBXBuildFile; fileRef = 719A962C219BD53800E4D077 /* NSData+AddData.m */; };
 		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
 		71D593322158AC4A00DFEBC8 /* SignedVarint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */; };
 		71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932F2158AC4900DFEBC8 /* Varint128.m */; };
@@ -243,6 +244,8 @@
 		71848F6421549A6200DB669E /* NSString+GenRandomString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+GenRandomString.m"; sourceTree = "<group>"; };
 		71848F6621549C8100DB669E /* NSData+GenRandomData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+GenRandomData.h"; sourceTree = "<group>"; };
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
+		719A962B219BD53800E4D077 /* NSData+AddData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AddData.h"; sourceTree = "<group>"; };
+		719A962C219BD53800E4D077 /* NSData+AddData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AddData.m"; sourceTree = "<group>"; };
 		71D592FF2155247C00DFEBC8 /* NSData+AES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
 		71D593002155247C00DFEBC8 /* NSData+AES.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
 		71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignedVarint128.m; sourceTree = "<group>"; };
@@ -614,6 +617,8 @@
 				71D5932F2158AC4900DFEBC8 /* Varint128.m */,
 				71D593572158E90500DFEBC8 /* NSData+Compress.h */,
 				71D593582158E90500DFEBC8 /* NSData+Compress.m */,
+				719A962B219BD53800E4D077 /* NSData+AddData.h */,
+				719A962C219BD53800E4D077 /* NSData+AddData.m */,
 			);
 			path = Catag;
 			sourceTree = "<group>";
@@ -834,6 +839,7 @@
 				712C714F214BABA500603022 /* Package.m in Sources */,
 				71848F6521549A6200DB669E /* NSString+GenRandomString.m in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
+				719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */,
 				71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */,
 				7154D5222196DFE1005064C4 /* WX_Hex.m in Sources */,
 				712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */,

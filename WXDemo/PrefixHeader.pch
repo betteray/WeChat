@@ -12,10 +12,15 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
+#import "Constants.h"
+
 #import "DebugKit.h"
-#import "NSData+Util.h"
-#import "WX_Hex.h"
+
 #import "WX_AesGcm128.h"
 #import "WX_HmacSha256.h"
+
+#import "WX_Hex.h"
+#import "NSData+AddData.h"
+#import "NSData+Util.h"
 
 #endif /* PrefixHeader_pch */

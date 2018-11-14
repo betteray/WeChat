@@ -795,7 +795,7 @@ message ManualAuthDeviceRequest
         optional SKBuiltinBuffer cliDbencryptInfo  = 5; // iMac 第一次登陆没有数据，后续登陆会取一个数据。
         optional string authReqFlag                = 7; // iPad "" iMac 不需要
     }
-    optional BaseAuthReqInfo baseReqInfo                    = 2;
+    optional BaseAuthReqInfo baseReqInfo                = 2;
     required string imei                                = 3;
     optional string softType                            = 4;    // iPad: <softtype><k3>11.4.1</k3><k9>iPad</k9></softtype> ，iMac不需要此字段
     required int32  builtinIpseq                        = 5;    // 0

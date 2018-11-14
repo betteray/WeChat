@@ -82,7 +82,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 //
 @property (nonatomic, strong) ClientHello *clientHello;
 
-@property(nonatomic, strong)  KeyPair *longlinkKeyPair;
+@property (nonatomic, strong)  KeyPair *longlinkKeyPair;
+
+@property (nonatomic, assign) NSInteger write_seq;
+@property (nonatomic, assign) NSInteger read_seq;
 
 @end
 
@@ -100,6 +103,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 - (instancetype)init {
     self = [super init];
     if (self) {
+        _write_seq = 1;
+        _read_seq = 1;
+        
         _seq = 1;
         _uin = 0;
         _tasks = [NSMutableArray array];
@@ -158,8 +164,22 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 }
 
 - (void)heartBeat {
-    NSData *data = [self longlink_packWithSeq:_seq cmdId:CMDID_NOOP_REQ buffer:nil];
-    [_socket writeData:data withTimeout:HEARTBEAT_TIMEOUT tag:CMDID_NOOP_REQ];
+    // 2. 心跳包数据。
+    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_write_seq++];
+    NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
+    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _write_seq - 1]]];
+    aadd = [aadd addDataAtTail:[NSData dataWithHexString:@"17F1030020"]];
+    
+    NSData *heartbeatCipherText = nil;
+    NSData *heart = [self longlink_packWithSeq:_seq cmdId:CMDID_NOOP_REQ buffer:nil];
+    [WX_AesGcm128 aes128gcmEncrypt:heart ciphertext:&heartbeatCipherText aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
+    
+    NSMutableData *heartbeatData = [NSMutableData dataWithHexString:@"17f1030020"];
+    [heartbeatData appendData:heartbeatCipherText];
+    
+    DLog(@"HB", heartbeatData);
+    
+    [_socket writeData:heartbeatData withTimeout:HEARTBEAT_TIMEOUT tag:LONGLINK_HEART_BEAT];
 }
 
 + (void)startRequest:(CgiWrap *)cgiWrap
@@ -211,9 +231,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
     
     [deviceRequest setBaseRequest:base];
-    
-    NSLog(@"%@", [[cgiWrap request] yy_modelToJSONString]);
-    
+        
     NSData *accountSerializedData = [accountRequest data];
     NSData *deviceSerializedData = [deviceRequest data];
     
@@ -234,7 +252,18 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
     [longlinkBody appendData:body];
     
-    NSData *sendData = [self longlink_packWithSeq:self.seq++ cmdId:cgiWrap.cmdId buffer:longlinkBody];
+    NSData *sendData = [self longlink_packWithSeq:6 cmdId:cgiWrap.cmdId buffer:longlinkBody];
+    
+    DLog(@"ManualAuthData", sendData)
+    
+    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_write_seq++];
+    NSData *aadd = [NSData dataWithHexString:@"000000000000000317F10307D3"];
+    
+    NSData *manulauth = nil;
+    [WX_AesGcm128 aes128gcmEncrypt:sendData ciphertext:&manulauth aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
+    
+    NSMutableData *manualAuthSendData = [NSMutableData dataWithHexString:@"17F10307D3"];
+    [manualAuthSendData appendData:manulauth];
     
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -242,7 +271,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
     
-    [_socket writeData:sendData withTimeout:3 tag:[cgiWrap cgi]];
+    [_socket writeData:manualAuthSendData withTimeout:3 tag:[cgiWrap cgi]];
 }
 
 - (void)sendMsg:(CgiWrap *)cgiWrap
@@ -267,24 +296,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     task.failBlock = failureBlock;
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
-    
-//    NSURL *nsurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", _shortLinkUrl]];
-//    NSMutableURLRequest *http_request = [NSMutableURLRequest requestWithURL:nsurl];
-//    http_request.HTTPMethod = @"POST";
-//    [http_request setValue:@"Accept" forHTTPHeaderField:@"*/*"];//token
-//    [http_request setValue:@"Cache-Control" forHTTPHeaderField:@"no-cache"];//坐标 lng
-//    [http_request setValue:@"Connection" forHTTPHeaderField:@"close"];//坐标 lat
-//    [http_request setValue:@"Content-type" forHTTPHeaderField:@"application/octet-stream"];//版本
-//    [http_request setValue:@"User-Agent" forHTTPHeaderField:@"MicroMessenger Client"];//版本
-//    [http_request setHTTPBody:[sendData copy]];
-//
-//    NSLog(@"POST-Header:%@",http_request.allHTTPHeaderFields);
-//
-//    NSURLSessionTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:http_request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//        NSLog(@"%@", data);
-//    }];
-//
-//    [dataTask resume];
     
     [_socket writeData:sendData withTimeout:3 tag:cgiWrap.cgi];
 }
@@ -344,7 +355,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *aad1 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
     [aad1 appendData:[NSData packInt32:(int32_t)[part1 length] flip:NO]];
     
-    NSData *readIV1 = [WX_Hex  IV:keyPair.readIV XORSeq:1];//序号从1开始。
+    NSData *readIV1 = [WX_Hex  IV:keyPair.readIV XORSeq:_read_seq++];//序号从1开始。
     
     DLog(@"after XOR readIV 1", readIV1);
     
@@ -360,7 +371,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *aad2 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
     [aad2 appendData:[NSData packInt32:(int32_t)[part2 length] flip:NO]];
     
-    NSData *readIV2 = [WX_Hex  IV:keyPair.readIV XORSeq:2];//序号从1开始，每次+1；
+    NSData *readIV2 = [WX_Hex  IV:keyPair.readIV XORSeq:_read_seq++];//序号从1开始，每次+1；
     
     DLog(@"after XOR readIV 2", readIV2);
     
@@ -376,7 +387,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *aad3 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
     [aad3 appendData:[NSData packInt32:(int32_t)[part3 length] flip:NO]];
     
-    NSData *readIV3 = [WX_Hex  IV:keyPair.readIV XORSeq:3];//序号从1开始，每次+1；
+    NSData *readIV3 = [WX_Hex  IV:keyPair.readIV XORSeq:_read_seq++];//序号从1开始，每次+1；
     
     DLog(@"after XOR readIV 3", readIV3);
     
@@ -432,7 +443,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *aadddd = [NSData dataWithHexString:@"000000000000000116F1030037"];
     NSData *heartbeatPart1CipherText = nil;
     
-    NSData *writeIV1 = [WX_Hex  IV:keyPair.writeIV XORSeq:1];//序号从1开始，每次+1；
+    NSData *writeIV1 = [WX_Hex  IV:keyPair.writeIV XORSeq:_write_seq++];//序号从1开始，每次+1；
     [WX_AesGcm128 aes128gcmEncrypt:heartbeatPart1 ciphertext:&heartbeatPart1CipherText aad:aadddd key:keyPair.writeKEY ivec:writeIV1];
     NSMutableData *heartbeatData1 = [NSMutableData dataWithHexString:@"16F1030037"];
     [heartbeatData1 appendData:heartbeatPart1CipherText];
@@ -440,7 +451,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     
     // 2. 心跳包数据。
     KeyPair *keyPair2 = [[KeyPair alloc] initWithData:outOkm3];
-    NSData *writeIV = [WX_Hex IV:keyPair2.writeIV XORSeq:2];
+    NSData *writeIV = [WX_Hex IV:keyPair2.writeIV XORSeq:_write_seq++];
     NSData *aadd = [NSData dataWithHexString:@"000000000000000217F1030020"];
     
     _longlinkKeyPair = keyPair2;
@@ -467,7 +478,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     
     NSData *aad = [NSData dataWithHexString:@"000000000000000417F1030020"];
     NSData *plainText = nil;
-    NSData *readIV = [WX_Hex IV:_longlinkKeyPair.readIV XORSeq:4];
+    NSData *readIV = [WX_Hex IV:_longlinkKeyPair.readIV XORSeq:_read_seq++];
     [WX_AesGcm128 aes128gcmDecrypt:heartbeat_resp plaintext:&plainText aad:aad key:_longlinkKeyPair.readKEY ivec:readIV];
     
     DLog(@"HB Resp", plainText);
