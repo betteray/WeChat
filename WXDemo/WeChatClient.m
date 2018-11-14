@@ -136,7 +136,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)start {
     NSError *error;
-    [_socket connectToHost:@"long.weixin.qq.com" onPort:443 error:&error];
+    [_socket connectToHost:@"163.177.81.141" onPort:443 error:&error]; //long.weixin.qq.com 58.247.204.141
     if (error) {
         NSLog(@"Socks Start Error: %@", [error localizedDescription]);
     }
@@ -493,6 +493,59 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     DLog(@"HB Resp", plainText);
 }
 
+- (void)onReceive:(NSData *)data withTag:(NSInteger) tag{
+    
+    NSData *aad = [NSData dataWithHexString:@"00000000000000"];
+    aad = [aad addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _readSeq]]];
+    aad = [aad addDataAtTail:[data subdataWithRange:NSMakeRange(0, 5)]];
+    
+    NSData *plainText = nil;
+    NSData *readIV = [WX_Hex IV:_longlinkKeyPair.readIV XORSeq:_readSeq++];
+    [WX_AesGcm128 aes128gcmDecrypt:[data subdataWithRange:NSMakeRange(5, [data length] - 5)] plaintext:&plainText aad:aad key:_longlinkKeyPair.readKEY ivec:readIV];
+    
+    DLog(@"OnReceive", plainText);
+    
+    
+    
+    LongLinkPackage *longLinkPackage = [LongLinkPackage new];
+    UnPackResult result = [self unPackLongLink:plainText toLongLingPackage:longLinkPackage];
+
+    switch (result) {
+        case UnPack_Success: {
+            NSLog(@">>> LongLinkPackage Head CmdId: %d", longLinkPackage.header.cmdId);
+
+            if (longLinkPackage.header.bodyLength < 0x20) {
+                switch (longLinkPackage.header.cmdId) {
+                    case 1:
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                Package *package = [self UnPackLongLinkBody:longLinkPackage.body];
+                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:_sessionKey];
+                Task *task = [self getTaskWithTag:package.header.cgi];
+                id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
+                NSLog(@"WeChatClient Response: %@", response);
+                if (task.sucBlock) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        ((SuccessBlock)task.sucBlock)(response);
+                    });
+                    [_tasks removeObject:task];
+                }
+            }
+        }
+            break;
+        case UnPack_Continue: {
+            [_socket readDataWithTimeout:3 tag:tag];
+        }
+            break;
+        default:
+            [_recvedData setData:[NSData new]];//清空数据。
+            break;
+    }
+}
+
 #pragma mark - Delegate
 
 /**
@@ -530,46 +583,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         return;
     }
     
-    [_recvedData appendData:data];
+    [self onReceive:data withTag:tag];
     
-    LongLinkPackage *longLinkPackage = [LongLinkPackage new];
-    UnPackResult result = [self unPackLongLink:_recvedData toLongLingPackage:longLinkPackage];
-    
-    switch (result) {
-        case UnPack_Success: {
-            NSLog(@">>> LongLinkPackage Head CmdId: %d", longLinkPackage.header.cmdId);
-            [_recvedData setData:[NSData new]];//清空数据。
-            
-            if (longLinkPackage.header.bodyLength < 0x20) {
-                switch (longLinkPackage.header.cmdId) {
-                    case 1:
-                        break;
-                    default:
-                        break;
-                }
-            } else {
-                Package *package = [self UnPackLongLinkBody:longLinkPackage.body];
-                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:_sessionKey];
-                Task *task = [self getTaskWithTag:package.header.cgi];
-                id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
-                NSLog(@"WeChatClient Response: %@", response);
-                if (task.sucBlock) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        ((SuccessBlock)task.sucBlock)(response);
-                    });
-                    [_tasks removeObject:task];
-                }
-            }
-        }
-            break;
-        case UnPack_Continue: {
-            [_socket readDataWithTimeout:3 tag:tag];
-        }
-            break;
-        default:
-            [_recvedData setData:[NSData new]];//清空数据。
-            break;
-    }
+    return;
 }
 
 /**
