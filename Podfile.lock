@@ -1,5 +1,12 @@
 PODS:
   - CocoaAsyncSocket (7.6.3)
+  - CocoaLumberjack (3.4.2):
+    - CocoaLumberjack/Default (= 3.4.2)
+    - CocoaLumberjack/Extensions (= 3.4.2)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Extensions (3.4.2):
+    - CocoaLumberjack/Default
+  - MBProgressHUD (1.1.0)
   - Protobuf (3.6.1)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
@@ -8,6 +15,8 @@ PODS:
 
 DEPENDENCIES:
   - CocoaAsyncSocket
+  - CocoaLumberjack
+  - MBProgressHUD (~> 1.1.0)
   - Protobuf
   - SDWebImage
   - YYModel (~> 1.0.4)
@@ -15,16 +24,20 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CocoaAsyncSocket
+    - CocoaLumberjack
+    - MBProgressHUD
     - Protobuf
     - SDWebImage
     - YYModel
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 9986ebe8db768e130ff552ee53aa4a2cb362fafc
+PODFILE CHECKSUM: 4935004f33fc1cccf9490321f900058e0eb8b21a
 
 COCOAPODS: 1.5.3

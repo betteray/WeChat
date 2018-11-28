@@ -51,6 +51,7 @@
 		71848F6521549A6200DB669E /* NSString+GenRandomString.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6421549A6200DB669E /* NSString+GenRandomString.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
 		719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */ = {isa = PBXBuildFile; fileRef = 719A962C219BD53800E4D077 /* NSData+AddData.m */; };
+		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
 		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
 		71D593322158AC4A00DFEBC8 /* SignedVarint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */; };
 		71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932F2158AC4900DFEBC8 /* Varint128.m */; };
@@ -249,6 +250,8 @@
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
 		719A962B219BD53800E4D077 /* NSData+AddData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AddData.h"; sourceTree = "<group>"; };
 		719A962C219BD53800E4D077 /* NSData+AddData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AddData.m"; sourceTree = "<group>"; };
+		71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUB.h"; sourceTree = "<group>"; };
+		71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUB.m"; sourceTree = "<group>"; };
 		71D592FF2155247C00DFEBC8 /* NSData+AES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
 		71D593002155247C00DFEBC8 /* NSData+AES.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
 		71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignedVarint128.m; sourceTree = "<group>"; };
@@ -343,6 +346,7 @@
 		712C6E5D214A145600603022 /* WXDemo */ = {
 			isa = PBXGroup;
 			children = (
+				71D3DAA921AEACD2002ACF1C /* ViewCat */,
 				7154D51D2196D6BD005064C4 /* Tools */,
 				7154D50E2196B714005064C4 /* HexDump */,
 				7155BA492190293B0002CE1D /* mmtls */,
@@ -628,6 +632,15 @@
 			path = Catag;
 			sourceTree = "<group>";
 		};
+		71D3DAA921AEACD2002ACF1C /* ViewCat */ = {
+			isa = PBXGroup;
+			children = (
+				71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */,
+				71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */,
+			);
+			path = ViewCat;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -833,6 +846,7 @@
 				7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */,
 				712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */,
 				71D593322158AC4A00DFEBC8 /* SignedVarint128.m in Sources */,
+				71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */,
 				7154D5172196B721005064C4 /* NSData+HexDump.m in Sources */,
 				7155BA4F21902A0B0002CE1D /* WX_AesGcm128.m in Sources */,
 				71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */,

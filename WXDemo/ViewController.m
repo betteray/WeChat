@@ -29,12 +29,19 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *wxid;
+@property (weak, nonatomic) IBOutlet UILabel *alias;
+@property (weak, nonatomic) IBOutlet UILabel *nickname;
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *qrcodeImageView;
 @property (weak, nonatomic) IBOutlet UILabel *qrcodeTimerLabel;
 @property (nonatomic, strong) NSTimer *qrcodeCheckTimer;
 
 @property (nonatomic, strong) NSData *nofityKey;
 @property (nonatomic, assign) NSInteger clientMsgId;
+
+@property (nonatomic, assign) NSData *clientCheckData;
 @end
 
 @implementation ViewController
@@ -44,6 +51,20 @@
     _clientMsgId = 1;
     
     [self test2];
+    
+    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8080/"];
+    NSMutableURLRequest *newGetDNSReq = [NSMutableURLRequest requestWithURL:url];
+    newGetDNSReq.HTTPMethod = @"GET";
+    newGetDNSReq.timeoutInterval = 5;
+    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:newGetDNSReq
+                                                             completionHandler:^(NSData * _Nullable data,
+                                                                                 NSURLResponse * _Nullable response,
+                                                                                 NSError * _Nullable error) {
+                                                                 NSLog(@"%@", data);
+                                                                 self.clientCheckData = data;
+    }];
+    
+    [task resume];
 }
 
 - (void)test2 {
@@ -236,9 +257,17 @@
     deviceRequest.ostype = OS_TYPE;
     
     //iMac 暂时不需要
+    
+    if ([_clientCheckData length] <= 0) {
+        [self showHUDWithText:@"Make Sure ClientCheckData not nil."];
+        return ;
+    } else {
+        [self showHUDWithText:@"CLinetCheckData has worked."];
+    }
+    
     SKBuiltinBuffer *clientCheckData = [SKBuiltinBuffer new];
-    clientCheckData.iLen = (int) [CLIENT_CHECK_DATA length];
-    clientCheckData.buffer = CLIENT_CHECK_DATA;
+    clientCheckData.iLen = (int) [_clientCheckData length];
+    clientCheckData.buffer = _clientCheckData;
     deviceRequest.clientCheckData = clientCheckData;
     
     ManualAuthRequest *authRequest = [ManualAuthRequest new];
@@ -295,6 +324,10 @@
                           uin, resp.accountInfo.wxId,
                           resp.accountInfo.nickName,
                           resp.accountInfo.alias);
+                    
+                    self.wxid.text = resp.accountInfo.wxId;
+                    self.alias.text = resp.accountInfo.alias;
+                    self.nickname.text = resp.accountInfo.nickName;
                     
                     [WeChatClient sharedClient].shortLinkUrl = [[resp.dns.ip.shortlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
                 }

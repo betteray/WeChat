@@ -9,6 +9,9 @@ target 'WXDemo' do
   pod 'SDWebImage'
   pod 'YYModel', '~> 1.0.4'
 
+  pod 'CocoaLumberjack'
+  pod 'MBProgressHUD', '~> 1.1.0'
+  
   # Pods for WXDemo
 
   target 'WXDemoTests' do
