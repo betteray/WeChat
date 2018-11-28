@@ -122,7 +122,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
             NSLog(@" ** Gen RSA KeyPair Fail. ** ");
         }
         
-        _heartbeatTimer = [NSTimer timerWithTimeInterval:30 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
+        _heartbeatTimer = [NSTimer timerWithTimeInterval:3*60 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
         
         GCDAsyncSocket *s = [[GCDAsyncSocket alloc] init];
@@ -164,9 +164,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 }
 
 - (void)heartBeat {
-    // 2. 心跳包数据。
-    
-    
     NSData *heart = [self longlink_packWithSeq:_seq cmdId:CMDID_NOOP_REQ buffer:nil];
     
     NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
@@ -289,13 +286,21 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSLog(@"sendMsg: %@", request);
     
     NSData *serializedData = [request data];
-//    NSData *sendData = [self pack:cgiWrap.cmdId cgi:cgiWrap.cgi serilizedData:serializedData type:5];
-    NSData *head = [self make_header:cgiWrap.cgi encryptMethod:AES bodyData:serializedData compressedBodyData:serializedData needCookie:YES];
-    NSData *body = [serializedData AES];
+    NSData *sendData = [self pack:cgiWrap.cmdId cgi:cgiWrap.cgi serilizedData:serializedData type:5];
 
-    NSMutableData *sendData = [NSMutableData dataWithData:head];
-    [sendData appendData:body];
-    sendData = [[sendData subdataWithRange:NSMakeRange(2, [sendData length] - 1 - 2)] mutableCopy];
+    DLog(@"SendData", sendData);
+    
+    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
+    NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
+    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
+    aadd = [[aadd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t) ([sendData length] + 0x10) flip:YES]]; //0x10 aad len
+    NSData *manulauth = nil;
+    [WX_AesGcm128 aes128gcmEncrypt:sendData ciphertext:&manulauth aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
+    
+    NSData *manualAuthSendData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t) ([sendData length] + 0x10) flip:YES]];
+    manualAuthSendData = [manualAuthSendData addDataAtTail:manulauth];
+    
+    DLog(@"ManualAuth", manualAuthSendData);
     
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -303,7 +308,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
     
-    [_socket writeData:sendData withTimeout:3 tag:cgiWrap.cgi];
+    [_socket writeData:manualAuthSendData withTimeout:3 tag:cgiWrap.cgi];
 }
 
 - (Task *)getTaskWithTag:(NSInteger)tag {
@@ -639,9 +644,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         }
             break;
         case 5: {
-            NSData *compressedData = [serilizedData compresss];
-            NSData *head = [self make_header:cgi encryptMethod:AES bodyData:serilizedData compressedBodyData:compressedData needCookie:YES];
-            NSData *body = [compressedData AES];
+            NSData *head = [self make_header:cgi encryptMethod:AES bodyData:serilizedData compressedBodyData:serilizedData needCookie:YES];
+            NSData *body = [serilizedData AES];
             NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
             [longlinkBody appendData:body];
             sendData = [self longlink_packWithSeq:self.seq++ cmdId:cmdId buffer:[longlinkBody copy]];
@@ -779,17 +783,18 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [header appendData:[Varint128 dataWithUInt32:bodyDataLen]];
     [header appendData:[Varint128 dataWithUInt32:compressedBodyDataLen]];
     
-    if (_checkEcdhKey.length > 0) {
-        [header appendData:[self ecdhCheck:bodyData]];
-    }
+//    if (_checkEcdhKey.length > 0) {
+//        [header appendData:[self ecdhCheck:bodyData]];
+//    }
     
     if (need_login_rsa_verison(cgi)) {
         [header appendData:[Varint128 dataWithUInt32:LOGIN_RSA_VER_172]];
         [header appendData:[NSData dataWithHexString:@"0D00"]];
         [header appendData:[NSData packInt16:9 flip:NO]];
     } else {
-        [header appendData:[NSData dataWithHexString:@"000D"]];
-        [header appendData:[NSData packInt16:(9 * (1 & 7)) flip:NO]];   //need fix
+//        [header appendData:[NSData dataWithHexString:@"000D"]];
+//        [header appendData:[NSData packInt16:(9 * (1 & 7)) flip:NO]];   //need fix
+        [header appendData:[NSData dataWithHexString:@"000000000000000000000000000000"]];
     }
     
     [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[[Varint128 dataWithUInt32:(int)(([header length] << 2) + 0x2)] bytes]];

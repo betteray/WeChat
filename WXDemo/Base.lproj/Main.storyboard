@@ -39,20 +39,29 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LN-r1-bzx">
-                                <rect key="frame" x="155" y="589" width="64" height="30"/>
-                                <state key="normal" title="Say Hello"/>
+                                <rect key="frame" x="60" y="597" width="82" height="30"/>
+                                <state key="normal" title="ManualAuth"/>
                                 <connections>
-                                    <action selector="test" destination="BYZ-38-t0r" eventType="touchUpInside" id="WHy-aJ-rjp"/>
+                                    <action selector="ManualAuth" destination="BYZ-38-t0r" eventType="touchUpInside" id="wLT-8L-nTb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSa-dL-Pn1">
+                                <rect key="frame" x="250" y="597" width="65" height="30"/>
+                                <state key="normal" title="SendMsg"/>
+                                <connections>
+                                    <action selector="SendMsg" destination="BYZ-38-t0r" eventType="touchUpInside" id="zeB-Ll-ZlN"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="8LN-r1-bzx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="OmO-br-01m"/>
                             <constraint firstItem="XYp-E8-z3G" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="P6o-hD-SFb"/>
-                            <constraint firstItem="8LN-r1-bzx" firstAttribute="top" secondItem="XYp-E8-z3G" secondAttribute="bottom" constant="12" id="UcD-u7-vGA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GSa-dL-Pn1" secondAttribute="trailing" constant="60" id="ZeL-TZ-vq8"/>
                             <constraint firstItem="zpt-DE-qMy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZkI-5R-qWL"/>
-                            <constraint firstItem="8LN-r1-bzx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cmr-H3-qjS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8LN-r1-bzx" secondAttribute="bottom" constant="40" id="cda-Tb-fZB"/>
                             <constraint firstItem="FKq-3M-YNZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="ctR-Rk-UXg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GSa-dL-Pn1" secondAttribute="bottom" constant="40" id="pxi-hB-6Zv"/>
                             <constraint firstItem="zpt-DE-qMy" firstAttribute="top" secondItem="FKq-3M-YNZ" secondAttribute="bottom" constant="60" id="qBj-nX-OYa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XYp-E8-z3G" secondAttribute="bottom" constant="90" id="vLh-Ff-BSN"/>
                             <constraint firstItem="FKq-3M-YNZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xUH-cI-CDE"/>

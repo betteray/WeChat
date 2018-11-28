@@ -153,37 +153,37 @@
     }
 }
 
-//- (IBAction)test {
-//    SKBuiltinString_t *toUserName = [SKBuiltinString_t new];
-//    toUserName.string = @"rowhongwei";
-//
-//    MicroMsgRequestNew *mmRequestNew = [MicroMsgRequestNew new];
-//    mmRequestNew.toUserName = toUserName;
-//    mmRequestNew.content = @"Hello There.";
-//    mmRequestNew.type = 1;
-//    mmRequestNew.createTime = [[NSDate date] timeIntervalSince1970];
-//    mmRequestNew.clientMsgId = _clientMsgId++; //[[NSDate date] timeIntervalSince1970] + arc4random();
-//    mmRequestNew.msgSource = @"<msgsource></msgsource>";
-//
-//    SendMsgRequestNew *request = [SendMsgRequestNew new];
-//
-//    [request setListArray:[NSMutableArray arrayWithObject:mmRequestNew]];
-//    request.count = (int32_t)[[NSMutableArray arrayWithObject:mmRequestNew] count];
-//
-//    CgiWrap *cgiWrap = [CgiWrap new];
-//    cgiWrap.cmdId = 237;
-//    cgiWrap.cgi = 522;
-//    cgiWrap.request = request;
-//    cgiWrap.responseClass = [MicroMsgResponseNew class];
-//
-//    [[WeChatClient sharedClient] sendMsg:cgiWrap success:^(GPBMessage * _Nullable response) {
-//        NSLog(@"%@", response);
-//    } failure:^(NSError *error) {
-//        NSLog(@"%@", error);
-//    }];
-//}
+- (IBAction)SendMsg {
+    SKBuiltinString_t *toUserName = [SKBuiltinString_t new];
+    toUserName.string = @"rowhongwei";
 
-- (IBAction)test {
+    MicroMsgRequestNew *mmRequestNew = [MicroMsgRequestNew new];
+    mmRequestNew.toUserName = toUserName;
+    mmRequestNew.content = @"hello";
+    mmRequestNew.type = 1;
+    mmRequestNew.createTime = [[NSDate date] timeIntervalSince1970];
+    mmRequestNew.clientMsgId = [[NSDate date] timeIntervalSince1970] + arc4random(); //_clientMsgId++;
+//    mmRequestNew.msgSource = @""; // <msgsource></msgsource>
+
+    SendMsgRequestNew *request = [SendMsgRequestNew new];
+
+    [request setListArray:[NSMutableArray arrayWithObject:mmRequestNew]];
+    request.count = (int32_t)[[NSMutableArray arrayWithObject:mmRequestNew] count];
+
+    CgiWrap *cgiWrap = [CgiWrap new];
+    cgiWrap.cmdId = 237;
+    cgiWrap.cgi = 522;
+    cgiWrap.request = request;
+    cgiWrap.responseClass = [MicroMsgResponseNew class];
+
+    [[WeChatClient sharedClient] sendMsg:cgiWrap success:^(GPBMessage * _Nullable response) {
+        NSLog(@"%@", response);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+- (IBAction)ManualAuth {
     NSData *priKeyData = nil;
     NSData *pubKeyData = nil;
     
@@ -207,8 +207,8 @@
     ManualAuthAccountRequest *accountReqeust = [ManualAuthAccountRequest new];
     accountReqeust.aes = aesKey;
     accountReqeust.ecdh = ecdh;
-    accountReqeust.pwd = @"673c6942ad571abd42ea8a9caa4702b8";
-    accountReqeust.userName = @"alic_965";
+    accountReqeust.pwd = @"a4e1442774cc2eda89feb8ae66a33c8b";
+    accountReqeust.userName = @"+8613520806231";
     
     ManualAuthDeviceRequest_BaseAuthReqInfo *baseReqInfo = [ManualAuthDeviceRequest_BaseAuthReqInfo new];
     //TODO: ?第一次登陆没有数据，后续登陆会取一个数据。

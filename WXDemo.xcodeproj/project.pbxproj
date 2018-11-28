@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1CEB1940082B7F91328724F7 /* libPods-WXDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WXDemo.a */; };
+		71193F5321AE7A2000D982D5 /* NSString+Concat.m in Sources */ = {isa = PBXBuildFile; fileRef = 71193F5221AE7A2000D982D5 /* NSString+Concat.m */; };
 		712C6E60214A145600603022 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E5F214A145600603022 /* AppDelegate.m */; };
 		712C6E63214A145600603022 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E62214A145600603022 /* ViewController.m */; };
 		712C6E66214A145600603022 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712C6E64214A145600603022 /* Main.storyboard */; };
@@ -81,6 +82,8 @@
 		49481301164AD3564DCE2106 /* libPods-WXDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D68228E0161D108AB7FD03 /* Pods-WXDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemo/Pods-WXDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		6D6A0611B4D9173A0D7DFBB2 /* Pods-WXDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemoUITests/Pods-WXDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		71193F5121AE7A2000D982D5 /* NSString+Concat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Concat.h"; sourceTree = "<group>"; };
+		71193F5221AE7A2000D982D5 /* NSString+Concat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Concat.m"; sourceTree = "<group>"; };
 		712C6E5B214A145600603022 /* WXDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712C6E5E214A145600603022 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		712C6E5F214A145600603022 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -577,6 +580,8 @@
 			children = (
 				7154D5212196DFE1005064C4 /* WX_Hex.m */,
 				7154D51E2196D6DA005064C4 /* WX_Hex.h */,
+				71193F5121AE7A2000D982D5 /* NSString+Concat.h */,
+				71193F5221AE7A2000D982D5 /* NSString+Concat.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -840,6 +845,7 @@
 				71848F6521549A6200DB669E /* NSString+GenRandomString.m in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
 				719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */,
+				71193F5321AE7A2000D982D5 /* NSString+Concat.m in Sources */,
 				71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */,
 				7154D5222196DFE1005064C4 /* WX_Hex.m in Sources */,
 				712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */,
@@ -1031,7 +1037,7 @@
 					"${SRC_ROOT}WXDemo/openssl/include",
 				);
 				INFOPLIST_FILE = WXDemo/Others/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1079,7 +1085,7 @@
 					"${SRC_ROOT}WXDemo/openssl/include",
 				);
 				INFOPLIST_FILE = WXDemo/Others/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

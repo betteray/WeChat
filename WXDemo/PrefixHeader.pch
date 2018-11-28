@@ -23,4 +23,6 @@
 #import "NSData+AddData.h"
 #import "NSData+Util.h"
 
+#import "NSString+Concat.h"
+
 #endif /* PrefixHeader_pch */
