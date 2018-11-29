@@ -89,7 +89,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBu-wW-va6">
-                                <rect key="frame" x="292" y="11.5" width="67" height="30"/>
+                                <rect key="frame" x="292" y="20" width="67" height="30"/>
                                 <state key="normal" title="ReadData"/>
                                 <connections>
                                     <action selector="readDataManually:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uOg-US-ald"/>
@@ -104,6 +104,7 @@
                             <constraint firstItem="sbS-f4-ZU3" firstAttribute="top" secondItem="qkp-f9-sLz" secondAttribute="bottom" constant="8" id="MMg-Nm-Njx"/>
                             <constraint firstItem="8LN-r1-bzx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="OmO-br-01m"/>
                             <constraint firstItem="XYp-E8-z3G" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="P6o-hD-SFb"/>
+                            <constraint firstItem="dBu-wW-va6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="S2W-6W-rXI"/>
                             <constraint firstItem="sbS-f4-ZU3" firstAttribute="leading" secondItem="qkp-f9-sLz" secondAttribute="leading" id="VF6-9y-wVt"/>
                             <constraint firstItem="ode-Xb-mqs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="XzH-Md-KiA"/>
                             <constraint firstItem="ode-Xb-mqs" firstAttribute="centerY" secondItem="483-dt-hVi" secondAttribute="centerY" id="Y7m-MZ-Th3"/>
@@ -113,7 +114,6 @@
                             <constraint firstItem="FKq-3M-YNZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="ctR-Rk-UXg"/>
                             <constraint firstItem="ode-Xb-mqs" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="16" id="dS8-bm-Cos"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dBu-wW-va6" secondAttribute="trailing" constant="16" id="dwz-3e-iMb"/>
-                            <constraint firstItem="dBu-wW-va6" firstAttribute="centerY" secondItem="ode-Xb-mqs" secondAttribute="centerY" id="il9-vc-PVS"/>
                             <constraint firstItem="hlo-TX-fbh" firstAttribute="centerY" secondItem="qkp-f9-sLz" secondAttribute="centerY" id="joW-es-HCh"/>
                             <constraint firstItem="Keq-tP-YCQ" firstAttribute="centerY" secondItem="sbS-f4-ZU3" secondAttribute="centerY" id="lpc-Gn-meO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GSa-dL-Pn1" secondAttribute="bottom" constant="40" id="pxi-hB-6Zv"/>

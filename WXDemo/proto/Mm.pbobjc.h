@@ -800,90 +800,6 @@ typedef GPB_ENUM(contact_info_GroupMemberList_MemberInfo_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasTag8;
 @end
 
-#pragma mark - NewInitRequest
-
-typedef GPB_ENUM(NewInitRequest_FieldNumber) {
-  NewInitRequest_FieldNumber_BaseRequest = 1,
-  NewInitRequest_FieldNumber_Wxid = 2,
-  NewInitRequest_FieldNumber_SyncKeyCur = 3,
-  NewInitRequest_FieldNumber_SyncKeyMax = 4,
-  NewInitRequest_FieldNumber_Language = 5,
-};
-
-/**
- * 新设备第一次登录初始化请求
- **/
-@interface NewInitRequest : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) LoginInfo *baseRequest;
-/** Test to see if @c baseRequest has been set. */
-@property(nonatomic, readwrite) BOOL hasBaseRequest;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *wxid;
-/** Test to see if @c wxid has been set. */
-@property(nonatomic, readwrite) BOOL hasWxid;
-
-/** 首次初始化时sync_key_cur = '' */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKeyCur;
-/** Test to see if @c syncKeyCur has been set. */
-@property(nonatomic, readwrite) BOOL hasSyncKeyCur;
-
-/** 首次初始化时sync_key_max = '' */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKeyMax;
-/** Test to see if @c syncKeyMax has been set. */
-@property(nonatomic, readwrite) BOOL hasSyncKeyMax;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *language;
-/** Test to see if @c language has been set. */
-@property(nonatomic, readwrite) BOOL hasLanguage;
-
-@end
-
-#pragma mark - NewInitResponse
-
-typedef GPB_ENUM(NewInitResponse_FieldNumber) {
-  NewInitResponse_FieldNumber_Tag1 = 1,
-  NewInitResponse_FieldNumber_SyncKeyCur = 2,
-  NewInitResponse_FieldNumber_SyncKeyMax = 3,
-  NewInitResponse_FieldNumber_ContinueFlag = 4,
-  NewInitResponse_FieldNumber_CntList = 6,
-  NewInitResponse_FieldNumber_Tag7Array = 7,
-};
-
-/**
- * 新设备第一次登录初始化服务器响应
- **/
-@interface NewInitResponse : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag1;
-/** Test to see if @c tag1 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag1;
-
-/** 当前synckey二进制数据 */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKeyCur;
-/** Test to see if @c syncKeyCur has been set. */
-@property(nonatomic, readwrite) BOOL hasSyncKeyCur;
-
-/** 最新synckey二进制数据(若与sync_key_cur不相同,则continue_flag返回1,表示需要继续初始化) */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKeyMax;
-/** Test to see if @c syncKeyMax has been set. */
-@property(nonatomic, readwrite) BOOL hasSyncKeyMax;
-
-/** 为1时表示仍要继续调用newinit初始化,直到该标志位返回0停止初始化(联系人或未读消息数据太多,无法一次获取完毕) */
-@property(nonatomic, readwrite) int32_t continueFlag;
-
-@property(nonatomic, readwrite) BOOL hasContinueFlag;
-/** tag7结构体数量 */
-@property(nonatomic, readwrite) int32_t cntList;
-
-@property(nonatomic, readwrite) BOOL hasCntList;
-/** 需要根据消息类型解析 */
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<common_msg*> *tag7Array;
-/** The number of items in @c tag7Array without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger tag7Array_Count;
-
-@end
-
 #pragma mark - new_sync_req
 
 typedef GPB_ENUM(new_sync_req_FieldNumber) {
@@ -2658,6 +2574,20 @@ typedef GPB_ENUM(SKBuiltinBuffer_FieldNumber) {
 
 @end
 
+#pragma mark - SKBuiltinString_t
+
+typedef GPB_ENUM(SKBuiltinString_t_FieldNumber) {
+  SKBuiltinString_t_FieldNumber_String = 1,
+};
+
+@interface SKBuiltinString_t : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *string;
+/** Test to see if @c string has been set. */
+@property(nonatomic, readwrite) BOOL hasString;
+
+@end
+
 #pragma mark - BaseRequest
 
 typedef GPB_ENUM(BaseRequest_FieldNumber) {
@@ -3594,17 +3524,87 @@ typedef GPB_ENUM(ManualAuthResponse_dns_info_ip_info_shortlink_ip_info_FieldNumb
 
 @end
 
-#pragma mark - SKBuiltinString_t
+#pragma mark - NewInitRequest
 
-typedef GPB_ENUM(SKBuiltinString_t_FieldNumber) {
-  SKBuiltinString_t_FieldNumber_String = 1,
+typedef GPB_ENUM(NewInitRequest_FieldNumber) {
+  NewInitRequest_FieldNumber_BaseRequest = 1,
+  NewInitRequest_FieldNumber_Wxid = 2,
+  NewInitRequest_FieldNumber_SyncKeyCur = 3,
+  NewInitRequest_FieldNumber_SyncKeyMax = 4,
+  NewInitRequest_FieldNumber_Language = 5,
 };
 
-@interface SKBuiltinString_t : GPBMessage
+/**
+ * 新设备第一次登录初始化请求
+ **/
+@interface NewInitRequest : GPBMessage
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *string;
-/** Test to see if @c string has been set. */
-@property(nonatomic, readwrite) BOOL hasString;
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *wxid;
+/** Test to see if @c wxid has been set. */
+@property(nonatomic, readwrite) BOOL hasWxid;
+
+/** 首次初始化时sync_key_cur = '' */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKeyCur;
+/** Test to see if @c syncKeyCur has been set. */
+@property(nonatomic, readwrite) BOOL hasSyncKeyCur;
+
+/** 首次初始化时sync_key_max = '' */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKeyMax;
+/** Test to see if @c syncKeyMax has been set. */
+@property(nonatomic, readwrite) BOOL hasSyncKeyMax;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *language;
+/** Test to see if @c language has been set. */
+@property(nonatomic, readwrite) BOOL hasLanguage;
+
+@end
+
+#pragma mark - NewInitResponse
+
+typedef GPB_ENUM(NewInitResponse_FieldNumber) {
+  NewInitResponse_FieldNumber_Tag1 = 1,
+  NewInitResponse_FieldNumber_SyncKeyCur = 2,
+  NewInitResponse_FieldNumber_SyncKeyMax = 3,
+  NewInitResponse_FieldNumber_ContinueFlag = 4,
+  NewInitResponse_FieldNumber_CntList = 6,
+  NewInitResponse_FieldNumber_Tag7Array = 7,
+};
+
+/**
+ * 新设备第一次登录初始化服务器响应
+ **/
+@interface NewInitResponse : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *tag1;
+/** Test to see if @c tag1 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag1;
+
+/** 当前synckey二进制数据 */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKeyCur;
+/** Test to see if @c syncKeyCur has been set. */
+@property(nonatomic, readwrite) BOOL hasSyncKeyCur;
+
+/** 最新synckey二进制数据(若与sync_key_cur不相同,则continue_flag返回1,表示需要继续初始化) */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKeyMax;
+/** Test to see if @c syncKeyMax has been set. */
+@property(nonatomic, readwrite) BOOL hasSyncKeyMax;
+
+/** 为1时表示仍要继续调用newinit初始化,直到该标志位返回0停止初始化(联系人或未读消息数据太多,无法一次获取完毕) */
+@property(nonatomic, readwrite) int32_t continueFlag;
+
+@property(nonatomic, readwrite) BOOL hasContinueFlag;
+/** tag7结构体数量 */
+@property(nonatomic, readwrite) int32_t cntList;
+
+@property(nonatomic, readwrite) BOOL hasCntList;
+/** 需要根据消息类型解析 */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<common_msg*> *tag7Array;
+/** The number of items in @c tag7Array without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger tag7Array_Count;
 
 @end
 

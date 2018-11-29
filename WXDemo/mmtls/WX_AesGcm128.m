@@ -27,10 +27,7 @@
                       aad:(NSData*)aad
                       key:(NSData*)key
                      ivec:(NSData*)ivec;
-{
-
-    DLog(@"Encrypt aad", aad);
-    
+{    
     int status = 0;
     *ciphertext = [NSMutableData dataWithLength:[plaintext length]];
     if (! *ciphertext)

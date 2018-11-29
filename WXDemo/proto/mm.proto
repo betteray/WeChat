@@ -185,27 +185,6 @@ message contact_info
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//新设备第一次登录初始化请求
-message NewInitRequest
-{
-	optional LoginInfo baseRequest 				= 1;
-	optional string wxid 					= 2;
-	optional bytes sync_key_cur				= 3;				//首次初始化时sync_key_cur = ''
-	optional bytes sync_key_max				= 4;				//首次初始化时sync_key_max = ''
-	optional string language 				= 5;
-}
-
-//新设备第一次登录初始化服务器响应
-message NewInitResponse
-{
-	optional string tag1 					= 1;
-	optional bytes sync_key_cur				= 2;				//当前synckey二进制数据
-	optional bytes sync_key_max				= 3;				//最新synckey二进制数据(若与sync_key_cur不相同,则continue_flag返回1,表示需要继续初始化)
-	optional int32 continue_flag			= 4;				//为1时表示仍要继续调用newinit初始化,直到该标志位返回0停止初始化(联系人或未读消息数据太多,无法一次获取完毕)
-	optional int32  cntList 				= 6;				//tag7结构体数量
-	repeated common_msg tag7 			    = 7;				//需要根据消息类型解析
-}
-
 //同步消息
 message new_sync_req
 {
@@ -680,6 +659,11 @@ message SKBuiltinBuffer
     optional bytes  buffer = 2;
 }
 
+message SKBuiltinString_t
+{
+    optional string  string                  = 1;
+}
+
 message BaseRequest
 {
 	optional bytes      sessionKey 		= 1;	//解密服务器返回封包时使用的aeskey
@@ -921,10 +905,27 @@ message ManualAuthResponse
     optional dns_info dns                    = 5; //dns信息
 }
 
-message SKBuiltinString_t
+//新设备第一次登录初始化请求
+message NewInitRequest
 {
-    optional string  string                  = 1;
+    required BaseRequest baseRequest             = 1;
+    optional string wxid                     = 2;
+    optional bytes sync_key_cur                = 3;                //首次初始化时sync_key_cur = ''
+    optional bytes sync_key_max                = 4;                //首次初始化时sync_key_max = ''
+    optional string language                 = 5;
 }
+
+//新设备第一次登录初始化服务器响应
+message NewInitResponse
+{
+    optional string tag1                     = 1;
+    optional bytes sync_key_cur                = 2;                //当前synckey二进制数据
+    optional bytes sync_key_max                = 3;                //最新synckey二进制数据(若与sync_key_cur不相同,则continue_flag返回1,表示需要继续初始化)
+    optional int32 continue_flag            = 4;                //为1时表示仍要继续调用newinit初始化,直到该标志位返回0停止初始化(联系人或未读消息数据太多,无法一次获取完毕)
+    optional int32  cntList                 = 6;                //tag7结构体数量
+    repeated common_msg tag7                 = 7;                //需要根据消息类型解析
+}
+
 
 message MicroMsgRequestNew
 {

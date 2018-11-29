@@ -210,7 +210,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock {
     
-    if (!cgiWrap.needSetBaseRequest) {
+    if (cgiWrap.needSetBaseRequest) {
         BaseRequest *base = [BaseRequest new];
         [base setSessionKey:_sessionKey];
         [base setUin:(int32_t) [WXUserDefault getUIN]];
@@ -219,8 +219,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         [base setDeviceType:DEVICE_TYPE];
         [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
         
-        [[cgiWrap request] performSelector:@selector(baseRequest:) withObject:base];
+        [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
     }
+    
+    NSLog(@"Start Request: %@", cgiWrap.request);
     
     NSData *serilizedData = [[cgiWrap request] data];
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:5];

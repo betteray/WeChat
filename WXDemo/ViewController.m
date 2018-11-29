@@ -195,6 +195,7 @@
     cgiWrap.cmdId = 237;
     cgiWrap.cgi = 522;
     cgiWrap.request = request;
+    cgiWrap.needSetBaseRequest = NO;
     cgiWrap.responseClass = [MicroMsgResponseNew class];
 
 //    [[WeChatClient sharedClient] sendMsg:cgiWrap success:^(GPBMessage * _Nullable response) {
@@ -332,13 +333,16 @@
                           resp.accountInfo.nickName,
                           resp.accountInfo.alias);
                     
+                    [WeChatClient sharedClient].shortLinkUrl = [[resp.dns.ip.shortlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
+
                     self.wxid.text = resp.accountInfo.wxId;
                     self.alias.text = resp.accountInfo.alias;
                     self.nickname.text = resp.accountInfo.nickName;
-                
-                    [WeChatClient sharedClient].shortLinkUrl = [[resp.dns.ip.shortlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
-                    
-//                    [self newInitWithSyncKeyCur:nil syncKeyMax:nil];
+                                    
+                    [WXUserDefault saveUIN:uin];
+                    [WXUserDefault saveWXID:resp.accountInfo.wxId];
+                    [WXUserDefault saveNikeName:resp.accountInfo.nickName];
+                    [WXUserDefault saveAlias:resp.accountInfo.alias];
                 }
             }
                 break;
@@ -462,11 +466,6 @@
                           uin, resp.accountInfo.wxId,
                           resp.accountInfo.nickName,
                           resp.accountInfo.alias);
-                    
-                    [WXUserDefault saveUIN:uin];
-                    [WXUserDefault saveWXID:resp.accountInfo.wxId];
-                    [WXUserDefault saveNikeName:resp.accountInfo.nickName];
-                    [WXUserDefault saveAlias:resp.accountInfo.alias];
                     
                     [WeChatClient sharedClient].shortLinkUrl = [[resp.dns.ip.shortlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
                 }
