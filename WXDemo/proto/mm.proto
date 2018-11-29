@@ -667,7 +667,7 @@ message SKBuiltinString_t
 message BaseRequest
 {
 	optional bytes      sessionKey 		= 1;	//解密服务器返回封包时使用的aeskey
-	optional int32 	    uin 		    = 2;
+	optional int64 	    uin 		    = 2;
 	optional bytes      deviceId 		= 3;	//手机guid长度16,这里取前15字节,以'\0'结尾
 	optional int32      clientVersion 	= 4;
 	optional string     deviceType 	    = 5;
@@ -823,7 +823,7 @@ message ManualAuthResponse
     required int32  unifyFlag  = 2;
     message AuthParam
     {
-        required int32  uin    = 1;
+        required int64  uin    = 1;
 
         message Ecdh
         {
@@ -909,10 +909,10 @@ message ManualAuthResponse
 message NewInitRequest
 {
     required BaseRequest baseRequest             = 1;
-    optional string wxid                     = 2;
-    optional bytes sync_key_cur                = 3;                //首次初始化时sync_key_cur = ''
-    optional bytes sync_key_max                = 4;                //首次初始化时sync_key_max = ''
-    optional string language                 = 5;
+    required string wxid                     = 2;
+    required bytes sync_key_cur                = 3;                //首次初始化时sync_key_cur = ''
+    required bytes sync_key_max                = 4;                //首次初始化时sync_key_max = ''
+    required string language                 = 5;
 }
 
 //新设备第一次登录初始化服务器响应

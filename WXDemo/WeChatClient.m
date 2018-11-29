@@ -83,6 +83,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 @property (nonatomic, assign) NSInteger     writeSeq;
 @property (nonatomic, assign) NSInteger     readSeq;
 
+// sync_key
+@property (nonatomic, strong) NSData *sync_key_cur;
+@property (nonatomic, strong) NSData *sync_key_max;
+
 @end
 
 @implementation WeChatClient
@@ -157,10 +161,37 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     wrap.responseClass = [NewInitResponse class];
     
     [[WeChatClient sharedClient] startRequest:wrap success:^(NewInitResponse * _Nullable response) {
-        NSLog(@"%@", response);
+        self.sync_key_cur = response.syncKeyCur;
+        self.sync_key_max = response.syncKeyMax;
+        
+        DLog(@"sync key cur", self.sync_key_cur);
+        DLog(@"sync key max", self.sync_key_max);
+        
+        NSLog(@"newinit cmd count: %d, continue flag: %d", response.cntList, response.continueFlag);
+        
+        for (int i=0; i<response.cntList; i++) {
+            common_msg *cmsg = [response.tag7Array objectAtIndex:i];
+            if (5 == cmsg.type) {
+                Msg *msg = [[Msg alloc] initWithData:cmsg.data_p.data_p error:nil];
+                if (10002 == msg.type) { //系统消息
+                    continue;
+                } else {
+                    NSLog(@"Serverid: %lld, CreateTime: %d, WXID: %@, TOID: %@, Type: %d, Raw Content: %@", msg.serverid, msg.createTime, msg.fromId.wxid, msg.toId.wxid, msg.type, msg.raw.content);
+                }
+            }
+        }
+        
+        if (response.continueFlag) {
+            [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
+        }
+        
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
+}
+
+- (void)newSync {
+    
 }
 
 - (void)restartUsingIpAddress:(NSString *)IpAddress {
@@ -207,8 +238,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *serilizedData = [[cgiWrap request] data];
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:5];
     
-    DLog(@"SendData", sendData);
-
     Task *task = [Task new];
     task.sucBlock = successBlock;
     task.failBlock = failureBlock;
@@ -256,8 +285,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [longlinkBody appendData:body];
     
     NSData *sendData = [self longlink_packWithSeq:6 cmdId:cgiWrap.cmdId buffer:longlinkBody];
-    
-    DLog(@"ManualAuthData", sendData)
     
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -476,7 +503,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 - (void)onReceive:(NSData *)data withTag:(NSInteger)tag
 {
     NSData *plainText = [self mmtlsDeCryptData:data];
-    DLog(@"OnReceive", plainText);
+    DLog(@"OnReceive PlainText", plainText);
     
     LongLinkPackage *longLinkPackage = [LongLinkPackage new];
     UnPackResult result = [self unPackLongLink:plainText toLongLingPackage:longLinkPackage];
@@ -489,7 +516,11 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                 switch (longLinkPackage.header.cmdId) {
                     case CMDID_PUSH_ACK:
                         NSLog(@"Start New Init.");
-                        [self newInitWithSyncKeyCur:nil syncKeyMax:nil];
+                        if (nil == self.sync_key_cur) {
+                            [self newInitWithSyncKeyCur:[NSData data] syncKeyMax:[NSData data]];
+                        } else {
+                            [self newSync];
+                        }
                         break;
                     default:
                         break;
@@ -499,7 +530,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                 NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:_sessionKey];
                 Task *task = [self getTaskWithTag:package.header.cgi];
                 id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
-                NSLog(@"WeChatClient Response: %@", response);
                 if (task.sucBlock) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         ((SuccessBlock)task.sucBlock)(response);
@@ -543,8 +573,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
  **/
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
-    NSString *logTag = [NSString stringWithFormat:@"DidReadDataWithTag: %ld", tag];
-    DLog(logTag, data);
+//    NSString *logTag = [NSString stringWithFormat:@"DidReadDataWithTag: %ld", tag];
+//    DLog(logTag, data);
     
     if (tag==HANDSHAKE_CLIENT_HELLO) {
         ServerHello *serverHello = [[ServerHello alloc] initWithData:data];
@@ -559,7 +589,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
  **/
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
-    NSLog(@"<<< didWriteDataWithTag: %ld", tag);
+//    NSLog(@"<<< didWriteDataWithTag: %ld", tag);
     [_socket readDataWithTimeout:3 tag:tag];
 }
 

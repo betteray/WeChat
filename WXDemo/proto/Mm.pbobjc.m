@@ -6331,12 +6331,12 @@ typedef struct SKBuiltinString_t__storage_ {
 
 typedef struct BaseRequest__storage_ {
   uint32_t _has_storage_[1];
-  int32_t uin;
   int32_t clientVersion;
   int32_t scene;
   NSData *sessionKey;
   NSData *deviceId;
   NSString *deviceType;
+  int64_t uin;
 } BaseRequest__storage_;
 
 // This method is threadsafe because it is initially called
@@ -6361,7 +6361,7 @@ typedef struct BaseRequest__storage_ {
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(BaseRequest__storage_, uin),
         .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .dataType = GPBDataTypeInt64,
       },
       {
         .name = "deviceId",
@@ -7942,12 +7942,12 @@ typedef struct ManualAuthResponse_AuthResult_ErrMsg__storage_ {
 
 typedef struct ManualAuthResponse_AuthParam__storage_ {
   uint32_t _has_storage_[1];
-  int32_t uin;
   int32_t serverTime;
   ManualAuthResponse_AuthParam_Ecdh *ecdh;
   ManualAuthResponse_AuthParam_SessionKey *session;
   NSData *smsTicket;
   NSString *bindMailLoginURL;
+  int64_t uin;
 } ManualAuthResponse_AuthParam__storage_;
 
 // This method is threadsafe because it is initially called
@@ -7963,7 +7963,7 @@ typedef struct ManualAuthResponse_AuthParam__storage_ {
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam__storage_, uin),
         .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeInt32,
+        .dataType = GPBDataTypeInt64,
       },
       {
         .name = "ecdh",
@@ -8809,7 +8809,7 @@ typedef struct NewInitRequest__storage_ {
         .number = NewInitRequest_FieldNumber_Wxid,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(NewInitRequest__storage_, wxid),
-        .flags = GPBFieldOptional,
+        .flags = GPBFieldRequired,
         .dataType = GPBDataTypeString,
       },
       {
@@ -8818,7 +8818,7 @@ typedef struct NewInitRequest__storage_ {
         .number = NewInitRequest_FieldNumber_SyncKeyCur,
         .hasIndex = 2,
         .offset = (uint32_t)offsetof(NewInitRequest__storage_, syncKeyCur),
-        .flags = GPBFieldOptional,
+        .flags = GPBFieldRequired,
         .dataType = GPBDataTypeBytes,
       },
       {
@@ -8827,7 +8827,7 @@ typedef struct NewInitRequest__storage_ {
         .number = NewInitRequest_FieldNumber_SyncKeyMax,
         .hasIndex = 3,
         .offset = (uint32_t)offsetof(NewInitRequest__storage_, syncKeyMax),
-        .flags = GPBFieldOptional,
+        .flags = GPBFieldRequired,
         .dataType = GPBDataTypeBytes,
       },
       {
@@ -8836,7 +8836,7 @@ typedef struct NewInitRequest__storage_ {
         .number = NewInitRequest_FieldNumber_Language,
         .hasIndex = 4,
         .offset = (uint32_t)offsetof(NewInitRequest__storage_, language),
-        .flags = GPBFieldOptional,
+        .flags = GPBFieldRequired,
         .dataType = GPBDataTypeString,
       },
     };
