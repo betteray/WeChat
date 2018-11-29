@@ -11,7 +11,8 @@
 
 @implementation UIViewController (ProgressHUB)
 
-- (void) showHUDWithText: (NSString *) hintText {
+- (void)showHUDWithText:(NSString *)hintText
+{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.label.text = hintText;

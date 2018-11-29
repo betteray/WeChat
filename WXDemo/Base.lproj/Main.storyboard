@@ -88,6 +88,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBu-wW-va6">
+                                <rect key="frame" x="292" y="11.5" width="67" height="30"/>
+                                <state key="normal" title="ReadData"/>
+                                <connections>
+                                    <action selector="readDataManually:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uOg-US-ald"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -105,6 +112,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8LN-r1-bzx" secondAttribute="bottom" constant="40" id="cda-Tb-fZB"/>
                             <constraint firstItem="FKq-3M-YNZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="ctR-Rk-UXg"/>
                             <constraint firstItem="ode-Xb-mqs" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="16" id="dS8-bm-Cos"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dBu-wW-va6" secondAttribute="trailing" constant="16" id="dwz-3e-iMb"/>
+                            <constraint firstItem="dBu-wW-va6" firstAttribute="centerY" secondItem="ode-Xb-mqs" secondAttribute="centerY" id="il9-vc-PVS"/>
                             <constraint firstItem="hlo-TX-fbh" firstAttribute="centerY" secondItem="qkp-f9-sLz" secondAttribute="centerY" id="joW-es-HCh"/>
                             <constraint firstItem="Keq-tP-YCQ" firstAttribute="centerY" secondItem="sbS-f4-ZU3" secondAttribute="centerY" id="lpc-Gn-meO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GSa-dL-Pn1" secondAttribute="bottom" constant="40" id="pxi-hB-6Zv"/>

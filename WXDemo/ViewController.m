@@ -60,7 +60,7 @@
                                                              completionHandler:^(NSData * _Nullable data,
                                                                                  NSURLResponse * _Nullable response,
                                                                                  NSError * _Nullable error) {
-                                                                 NSLog(@"%@", data);
+                                                                 DLog(@"ClientCheckData", data);
                                                                  self.clientCheckData = data;
     }];
     

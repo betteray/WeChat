@@ -297,10 +297,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *manulauth = nil;
     [WX_AesGcm128 aes128gcmEncrypt:sendData ciphertext:&manulauth aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
     
-    NSData *manualAuthSendData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t) ([sendData length] + 0x10) flip:YES]];
-    manualAuthSendData = [manualAuthSendData addDataAtTail:manulauth];
+    NSData *sendMsgData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t) ([sendData length] + 0x10) flip:YES]];
+    sendMsgData = [sendMsgData addDataAtTail:manulauth];
     
-    DLog(@"ManualAuth", manualAuthSendData);
+    DLog(@"SendMsgData", sendMsgData);
     
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -308,7 +308,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
     
-    [_socket writeData:manualAuthSendData withTimeout:3 tag:cgiWrap.cgi];
+    [_socket writeData:sendMsgData withTimeout:3 tag:cgiWrap.cgi];
 }
 
 - (Task *)getTaskWithTag:(NSInteger)tag {
@@ -484,20 +484,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [_socket writeData:hb withTimeout:3 tag:LONGLINK_HEART_BEAT];
 }
 
-- (void)onReceiveLonglinkHeartBeatData:(NSData *)hbData {
-    NSData *heartbeat_resp = [hbData subdataWithRange:NSMakeRange(5, 32)];
-    
-    NSData *aad = [NSData dataWithHexString:@"00000000000000"];
-    aad = [aad addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _readSeq]]];
-    aad = [aad addDataAtTail:[NSData dataWithHexString:@"17F1030020"]];
-    
-    NSData *plainText = nil;
-    NSData *readIV = [WX_Hex IV:_longlinkKeyPair.readIV XORSeq:_readSeq++];
-    [WX_AesGcm128 aes128gcmDecrypt:heartbeat_resp plaintext:&plainText aad:aad key:_longlinkKeyPair.readKEY ivec:readIV];
-    
-    DLog(@"HB Resp", plainText);
-}
-
 - (void)onReceive:(NSData *)data withTag:(NSInteger) tag{
     
     NSData *aad = [NSData dataWithHexString:@"00000000000000"];
@@ -509,8 +495,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [WX_AesGcm128 aes128gcmDecrypt:[data subdataWithRange:NSMakeRange(5, [data length] - 5)] plaintext:&plainText aad:aad key:_longlinkKeyPair.readKEY ivec:readIV];
     
     DLog(@"OnReceive", plainText);
-    
-    
     
     LongLinkPackage *longLinkPackage = [LongLinkPackage new];
     UnPackResult result = [self unPackLongLink:plainText toLongLingPackage:longLinkPackage];
@@ -573,30 +557,24 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
  * Called when a socket has completed reading the requested data into memory.
  * Not called if there is an error.
  **/
-- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+{
     NSString *logTag = [NSString stringWithFormat:@"DidReadDataWithTag: %ld", tag];
     DLog(logTag, data);
     
     if (tag==HANDSHAKE_CLIENT_HELLO) {
         ServerHello *serverHello = [[ServerHello alloc] initWithData:data];
         [self onReviceServerHello:serverHello];
-        return;
+    } else {
+        [self onReceive:data withTag:tag];
     }
-    
-    if (tag == LONGLINK_HEART_BEAT) {//解密心跳包。
-        [self onReceiveLonglinkHeartBeatData:data];
-        return;
-    }
-    
-    [self onReceive:data withTag:tag];
-    
-    return;
 }
 
 /**
  * Called when a socket has completed writing the requested data. Not called if there is an error.
  **/
-- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
+- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
+{
     NSLog(@"<<< didWriteDataWithTag: %ld", tag);
     [_socket readDataWithTimeout:3 tag:tag];
 }

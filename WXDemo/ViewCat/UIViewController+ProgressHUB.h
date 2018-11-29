@@ -10,6 +10,6 @@
 
 @interface UIViewController (ProgressHUB)
 
-- (void) showHUDWithText: (NSString *) hintText;
+- (void)showHUDWithText:(NSString *)hintText;
 
 @end
