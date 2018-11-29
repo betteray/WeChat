@@ -118,7 +118,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
             NSLog(@" ** Gen RSA KeyPair Fail. ** ");
         }
         
-        _heartbeatTimer = [NSTimer timerWithTimeInterval:3*60 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
+        _heartbeatTimer = [NSTimer timerWithTimeInterval:20 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
         
         GCDAsyncSocket *s = [[GCDAsyncSocket alloc] init];
@@ -183,21 +183,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)heartBeat {
     NSData *heart = [self longlink_packWithSeq:_seq cmdId:CMDID_NOOP_REQ buffer:nil];
-    
-    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
-    NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
-    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
-    aadd = [[aadd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int16_t) ([heart length] + 0x10) flip:YES]];
-    
-    NSData *heartbeatCipherText = nil;
-    [WX_AesGcm128 aes128gcmEncrypt:heart ciphertext:&heartbeatCipherText aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
-    
-    NSData *heartbeatData = [[NSData dataWithHexString:@"17f103"] addDataAtTail:[NSData packInt16:(int16_t) ([heart length] + 0x10) flip:YES]];
-    heartbeatData = [heartbeatData addDataAtTail:heartbeatCipherText];
-    
-    DLog(@"HB", heartbeatData);
-    
-    [_socket writeData:heartbeatData withTimeout:HEARTBEAT_TIMEOUT tag:LONGLINK_HEART_BEAT];
+    [self mmtlsSend:heart withTag:LONGLINK_HEART_BEAT];
 }
 
 + (void)startRequest:(CgiWrap *)cgiWrap
@@ -228,26 +214,14 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:5];
     
     DLog(@"SendData", sendData);
-    
-    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
-    NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
-    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
-    aadd = [[aadd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t) ([sendData length] + 0x10) flip:YES]]; //0x10 aad len
-    NSData *manulauth = nil;
-    [WX_AesGcm128 aes128gcmEncrypt:sendData ciphertext:&manulauth aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
-    
-    NSData *sendMsgData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t) ([sendData length] + 0x10) flip:YES]];
-    sendMsgData = [sendMsgData addDataAtTail:manulauth];
-    
-    DLog(@"SendMsgData", sendMsgData);
-    
+
     Task *task = [Task new];
     task.sucBlock = successBlock;
     task.failBlock = failureBlock;
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
     
-    [_socket writeData:sendMsgData withTimeout:3 tag:cgiWrap.cgi];
+    [self mmtlsSend:sendData withTag:cgiWrap.cgi];
 }
 
 - (void)manualAuth:(CgiWrap *)cgiWrap
@@ -291,25 +265,13 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     
     DLog(@"ManualAuthData", sendData)
     
-    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
-    NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
-    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
-    aadd = [[aadd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t) ([sendData length] + 0x10) flip:YES]]; //0x10 aad len
-    NSData *manulauth = nil;
-    [WX_AesGcm128 aes128gcmEncrypt:sendData ciphertext:&manulauth aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
-    
-    NSData *manualAuthSendData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t) ([sendData length] + 0x10) flip:YES]];
-    manualAuthSendData = [manualAuthSendData addDataAtTail:manulauth];
-    
-    DLog(@"manual auth", manualAuthSendData);
-    
     Task *task = [Task new];
     task.sucBlock = successBlock;
     task.failBlock = failureBlock;
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
     
-    [_socket writeData:manualAuthSendData withTimeout:3 tag:[cgiWrap cgi]];
+    [self mmtlsSend:sendData withTag:cgiWrap.cgi];
 }
 
 - (Task *)getTaskWithTag:(NSInteger)tag {
@@ -326,8 +288,22 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 #pragma mark - MMTLS
 
-- (void)onReviceServerHello:(ServerHello *)serverHello {
+- (void)mmtlsSend:(NSData *)sendData withTag:(NSInteger)tag {
+    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
+    NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
+    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
+    aadd = [[aadd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t) ([sendData length] + 0x10) flip:YES]]; //0x10 aad len
     
+    NSData *mmtlsData = nil;
+    [WX_AesGcm128 aes128gcmEncrypt:sendData ciphertext:&mmtlsData aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
+    
+    NSData *sendMsgData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t) ([sendData length] + 0x10) flip:YES]];
+    sendMsgData = [sendMsgData addDataAtTail:mmtlsData];
+    
+    [_socket writeData:sendMsgData withTimeout:3 tag:tag];
+}
+
+- (void)onReviceServerHello:(ServerHello *)serverHello {
     NSData *hashPart1 = [_clientHello getHashPart];
     NSData *hashPart2 = [serverHello getHashPart];
     NSMutableData *hashData = [NSMutableData dataWithData:hashPart1];
