@@ -188,7 +188,7 @@ message contact_info
 //新设备第一次登录初始化请求
 message NewInitRequest
 {
-	optional LoginInfo login 				= 1;
+	optional LoginInfo baseRequest 				= 1;
 	optional string wxid 					= 2;
 	optional bytes sync_key_cur				= 3;				//首次初始化时sync_key_cur = ''
 	optional bytes sync_key_max				= 4;				//首次初始化时sync_key_max = ''

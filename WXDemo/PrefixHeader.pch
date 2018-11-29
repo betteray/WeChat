@@ -16,6 +16,7 @@
 #import "UIViewController+ProgressHUB.h"
 
 #import "Constants.h"
+#import "WXUserDefault.h"
 
 #import "DebugKit.h"
 

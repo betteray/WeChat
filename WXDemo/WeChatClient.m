@@ -38,11 +38,11 @@
 //#长链接确认
 #define CMDID_IDENTIFY_REQ 205
 //#登录
-#define CMDID_MANUALAUTH_REQ = 253
+#define CMDID_MANUALAUTH_REQ 253
 //#推送通知
-#define CMDID_PUSH_ACK = 24
+#define CMDID_PUSH_ACK 24
 //#通知服务器消息已接收
-#define CMDID_REPORT_KV_REQ = 1000000190
+#define CMDID_REPORT_KV_REQ 1000000190
 
 
 //#心跳包seq id
@@ -139,10 +139,34 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [self DoSendClientHello];
 }
 
+- (void)readDataManually {
+    [_socket readDataWithTimeout:3 tag:0];
+}
+
 - (void)DoSendClientHello {
     _clientHello = [ClientHello new];
     NSData *clientHelloData = [_clientHello CreateClientHello];
     [_socket writeData:clientHelloData withTimeout:HEARTBEAT_TIMEOUT tag:HANDSHAKE_CLIENT_HELLO];
+}
+
+- (void)newInitWithSyncKeyCur:(NSData *)syncKeyCur syncKeyMax:(NSData *)syncKeyMax {
+    NewInitRequest *request = [NewInitRequest new];
+    request.wxid = [WXUserDefault getWXID];
+    request.syncKeyCur = syncKeyCur;
+    request.syncKeyMax = syncKeyMax;
+    request.language = LANGUAGE;
+    
+    CgiWrap *wrap = [CgiWrap new];
+    wrap.cgi = 139;
+    wrap.cmdId = 27;
+    wrap.request = request;
+    wrap.responseClass = [NewInitResponse class];
+    
+    [[WeChatClient sharedClient] startRequest:wrap success:^(NewInitResponse * _Nullable response) {
+        NSLog(@"%@", response);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 - (void)restartUsingIpAddress:(NSString *)IpAddress {
@@ -186,19 +210,34 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock {
     
-    BaseRequest *base = [BaseRequest new];
-    [base setSessionKey:[NSData data]];
-    [base setUin:0];
-    [base setScene:1]; // iMac 1
-    [base setClientVersion:CLIENT_VERSION];
-    [base setDeviceType:DEVICE_TYPE];
-    [base setSessionKey:[NSData data]];
-    [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
-    
-    [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
+    if (!cgiWrap.needSetBaseRequest) {
+        BaseRequest *base = [BaseRequest new];
+        [base setSessionKey:_sessionKey];
+        [base setUin:(int32_t) [WXUserDefault getUIN]];
+        [base setScene:0]; // iMac 1
+        [base setClientVersion:CLIENT_VERSION];
+        [base setDeviceType:DEVICE_TYPE];
+        [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
+        
+        [[cgiWrap request] performSelector:@selector(baseRequest:) withObject:base];
+    }
     
     NSData *serilizedData = [[cgiWrap request] data];
-    NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:1];
+    NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:5];
+    
+    DLog(@"SendData", sendData);
+    
+    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
+    NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
+    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
+    aadd = [[aadd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t) ([sendData length] + 0x10) flip:YES]]; //0x10 aad len
+    NSData *manulauth = nil;
+    [WX_AesGcm128 aes128gcmEncrypt:sendData ciphertext:&manulauth aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
+    
+    NSData *sendMsgData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t) ([sendData length] + 0x10) flip:YES]];
+    sendMsgData = [sendMsgData addDataAtTail:manulauth];
+    
+    DLog(@"SendMsgData", sendMsgData);
     
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -206,7 +245,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
     
-    [_socket writeData:sendData withTimeout:3 tag:[cgiWrap cgi]];
+    [_socket writeData:sendMsgData withTimeout:3 tag:cgiWrap.cgi];
 }
 
 - (void)manualAuth:(CgiWrap *)cgiWrap
@@ -269,40 +308,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [_tasks addObject:task];
     
     [_socket writeData:manualAuthSendData withTimeout:3 tag:[cgiWrap cgi]];
-}
-
-- (void)sendMsg:(CgiWrap *)cgiWrap
-        success:(SuccessBlock)successBlock
-        failure:(FailureBlock)failureBlock {
-    
-    id request = cgiWrap.request;
-    
-    NSLog(@"sendMsg: %@", request);
-    
-    NSData *serializedData = [request data];
-    NSData *sendData = [self pack:cgiWrap.cmdId cgi:cgiWrap.cgi serilizedData:serializedData type:5];
-
-    DLog(@"SendData", sendData);
-    
-    NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
-    NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
-    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
-    aadd = [[aadd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t) ([sendData length] + 0x10) flip:YES]]; //0x10 aad len
-    NSData *manulauth = nil;
-    [WX_AesGcm128 aes128gcmEncrypt:sendData ciphertext:&manulauth aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
-    
-    NSData *sendMsgData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t) ([sendData length] + 0x10) flip:YES]];
-    sendMsgData = [sendMsgData addDataAtTail:manulauth];
-    
-    DLog(@"SendMsgData", sendMsgData);
-    
-    Task *task = [Task new];
-    task.sucBlock = successBlock;
-    task.failBlock = failureBlock;
-    task.cgiWrap = cgiWrap;
-    [_tasks addObject:task];
-    
-    [_socket writeData:sendMsgData withTimeout:3 tag:cgiWrap.cgi];
 }
 
 - (Task *)getTaskWithTag:(NSInteger)tag {
@@ -499,7 +504,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
             if (longLinkPackage.header.bodyLength < 0x20) {
                 switch (longLinkPackage.header.cmdId) {
-                    case 1:
+                    case CMDID_PUSH_ACK:
+                        NSLog(@"Start New Init.");
+                        [self newInitWithSyncKeyCur:nil syncKeyMax:nil];
                         break;
                     default:
                         break;

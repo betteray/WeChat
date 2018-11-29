@@ -10,4 +10,13 @@
 
 @implementation CgiWrap
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _needSetBaseRequest = YES;
+    }
+    
+    return self;
+}
+
 @end

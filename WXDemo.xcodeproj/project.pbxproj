@@ -52,6 +52,7 @@
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
 		719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */ = {isa = PBXBuildFile; fileRef = 719A962C219BD53800E4D077 /* NSData+AddData.m */; };
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
+		71D3DAAF21AFCA47002ACF1C /* WXUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */; };
 		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
 		71D593322158AC4A00DFEBC8 /* SignedVarint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */; };
 		71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932F2158AC4900DFEBC8 /* Varint128.m */; };
@@ -252,6 +253,8 @@
 		719A962C219BD53800E4D077 /* NSData+AddData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AddData.m"; sourceTree = "<group>"; };
 		71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUB.h"; sourceTree = "<group>"; };
 		71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUB.m"; sourceTree = "<group>"; };
+		71D3DAAD21AFCA47002ACF1C /* WXUserDefault.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXUserDefault.h; sourceTree = "<group>"; };
+		71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXUserDefault.m; sourceTree = "<group>"; };
 		71D592FF2155247C00DFEBC8 /* NSData+AES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
 		71D593002155247C00DFEBC8 /* NSData+AES.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
 		71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignedVarint128.m; sourceTree = "<group>"; };
@@ -375,6 +378,8 @@
 				71848F252150CABD00DB669E /* NSData+Compression.h */,
 				71848F262150CABD00DB669E /* NSData+Compression.m */,
 				7154D5192196B8DF005064C4 /* PrefixHeader.pch */,
+				71D3DAAD21AFCA47002ACF1C /* WXUserDefault.h */,
+				71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */,
 			);
 			path = WXDemo;
 			sourceTree = "<group>";
@@ -852,6 +857,7 @@
 				71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */,
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
 				7154D5252197EFB9005064C4 /* WX_HmacSha256.m in Sources */,
+				71D3DAAF21AFCA47002ACF1C /* WXUserDefault.m in Sources */,
 				712C7166214D2BFD00603022 /* ECDH.m in Sources */,
 				7155BA5221902AB30002CE1D /* ClientHello.m in Sources */,
 				7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */,

@@ -10,7 +10,7 @@
 
 @class GPBMessage, CgiWrap;
 
-typedef void (^SuccessBlock)(GPBMessage *_Nullable response);
+typedef void (^SuccessBlock)(id _Nullable response);
 typedef void (^FailureBlock)(NSError *error);
 
 @interface WeChatClient : NSObject
@@ -41,7 +41,6 @@ typedef void (^FailureBlock)(NSError *error);
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock;
 
-- (void)sendMsg:(CgiWrap *)cgiWrap
-           success:(SuccessBlock)successBlock
-           failure:(FailureBlock)failureBlock;
+- (void)readDataManually;
+
 @end

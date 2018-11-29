@@ -197,8 +197,15 @@
     cgiWrap.request = request;
     cgiWrap.responseClass = [MicroMsgResponseNew class];
 
-    [[WeChatClient sharedClient] sendMsg:cgiWrap success:^(GPBMessage * _Nullable response) {
+//    [[WeChatClient sharedClient] sendMsg:cgiWrap success:^(GPBMessage * _Nullable response) {
+//        NSLog(@"%@", response);
+//    } failure:^(NSError *error) {
+//        NSLog(@"%@", error);
+//    }];
+    
+    [WeChatClient startRequest:cgiWrap success:^(id  _Nullable response) {
         NSLog(@"%@", response);
+
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
@@ -328,8 +335,10 @@
                     self.wxid.text = resp.accountInfo.wxId;
                     self.alias.text = resp.accountInfo.alias;
                     self.nickname.text = resp.accountInfo.nickName;
-                    
+                
                     [WeChatClient sharedClient].shortLinkUrl = [[resp.dns.ip.shortlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
+                    
+//                    [self newInitWithSyncKeyCur:nil syncKeyMax:nil];
                 }
             }
                 break;
@@ -454,6 +463,11 @@
                           resp.accountInfo.nickName,
                           resp.accountInfo.alias);
                     
+                    [WXUserDefault saveUIN:uin];
+                    [WXUserDefault saveWXID:resp.accountInfo.wxId];
+                    [WXUserDefault saveNikeName:resp.accountInfo.nickName];
+                    [WXUserDefault saveAlias:resp.accountInfo.alias];
+                    
                     [WeChatClient sharedClient].shortLinkUrl = [[resp.dns.ip.shortlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
                 }
             }
@@ -464,6 +478,10 @@
     } failure:^(NSError *error) {
         
     }];
+}
+
+-(IBAction)readDataManually:(id)sender {
+    [[WeChatClient sharedClient] readDataManually];
 }
 
 @end

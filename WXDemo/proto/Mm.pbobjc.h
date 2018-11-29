@@ -803,7 +803,7 @@ typedef GPB_ENUM(contact_info_GroupMemberList_MemberInfo_FieldNumber) {
 #pragma mark - NewInitRequest
 
 typedef GPB_ENUM(NewInitRequest_FieldNumber) {
-  NewInitRequest_FieldNumber_Login = 1,
+  NewInitRequest_FieldNumber_BaseRequest = 1,
   NewInitRequest_FieldNumber_Wxid = 2,
   NewInitRequest_FieldNumber_SyncKeyCur = 3,
   NewInitRequest_FieldNumber_SyncKeyMax = 4,
@@ -815,9 +815,9 @@ typedef GPB_ENUM(NewInitRequest_FieldNumber) {
  **/
 @interface NewInitRequest : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) LoginInfo *login;
-/** Test to see if @c login has been set. */
-@property(nonatomic, readwrite) BOOL hasLogin;
+@property(nonatomic, readwrite, strong, null_resettable) LoginInfo *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *wxid;
 /** Test to see if @c wxid has been set. */
