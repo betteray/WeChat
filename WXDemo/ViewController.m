@@ -197,12 +197,6 @@
     cgiWrap.request = request;
     cgiWrap.needSetBaseRequest = NO;
     cgiWrap.responseClass = [MicroMsgResponseNew class];
-
-//    [[WeChatClient sharedClient] sendMsg:cgiWrap success:^(GPBMessage * _Nullable response) {
-//        NSLog(@"%@", response);
-//    } failure:^(NSError *error) {
-//        NSLog(@"%@", error);
-//    }];
     
     [WeChatClient startRequest:cgiWrap success:^(id  _Nullable response) {
         NSLog(@"%@", response);

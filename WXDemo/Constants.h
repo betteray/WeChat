@@ -48,7 +48,7 @@
 #define SOFT_TYPE @"<softtype><k3>11.3.1</k3><k9>iPhone</k9><k10>2</k10><k19>16F3CF44-DC31-4038-A219-3111C3F71FA8</k19><k20>15C0A21B-78A1-4D4C-B7D7-77FEFA23AA35</k20><k22>中国移动</k22><k33>微信</k33><k47>1</k47><k50>1</k50><k51>com.tencent.xin</k51><k54>iPhone9,2</k54><k61>2</k61></softtype>"
 #define CLIENT_SEQ_ID [NSString stringWithFormat:@"%@-%@", IMEI, TIMESTAMP]
 #define DEVICEN_NAME @"cdg iPhone"
-#define DEVICE_TYPE @"iPhone"
+#define DEVICE_TYPE @"iOS11.3.1"
 #define LANGUAGE @"zh_CN"
 #define TIME_ZONE @"8.00"
 #define DEVICE_BRAND @"Apple"
