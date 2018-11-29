@@ -69,23 +69,19 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 @interface WeChatClient()<GCDAsyncSocketDelegate>
 
-@property (nonatomic, strong) GCDAsyncSocket *socket;
-@property (nonatomic, strong) NSMutableData *recvedData;
-@property (nonatomic, assign) int seq;    //封包编号。
-@property (nonatomic, strong) NSTimer *heartbeatTimer;
+// longlink
+@property (nonatomic, strong) GCDAsyncSocket    *socket;
+@property (nonatomic, strong) NSMutableData     *recvedData;
+@property (nonatomic, assign) int               seq;    //封包编号。
+@property (nonatomic, strong) NSTimer           *heartbeatTimer;
+@property (nonatomic, strong) NSData            *cookie;
+@property (nonatomic, strong) NSMutableArray    *tasks;
 
-@property (nonatomic, strong) NSData *cookie;
-
-@property (nonatomic, strong) NSMutableArray *tasks;
-
-
-//
-@property (nonatomic, strong) ClientHello *clientHello;
-
-@property (nonatomic, strong)  KeyPair *longlinkKeyPair;
-
-@property (nonatomic, assign) NSInteger writeSeq;
-@property (nonatomic, assign) NSInteger readSeq;
+// mmtls
+@property (nonatomic, strong) ClientHello   *clientHello;
+@property (nonatomic, strong) KeyPair       *longlinkKeyPair;
+@property (nonatomic, assign) NSInteger     writeSeq;
+@property (nonatomic, assign) NSInteger     readSeq;
 
 @end
 
@@ -148,8 +144,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *clientHelloData = [_clientHello CreateClientHello];
     [_socket writeData:clientHelloData withTimeout:HEARTBEAT_TIMEOUT tag:HANDSHAKE_CLIENT_HELLO];
 }
-
-
 
 - (void)restartUsingIpAddress:(NSString *)IpAddress {
     [_socket disconnect];
@@ -341,8 +335,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     unsigned char buf[32] = {0};
     int sharedKeyLen = 0;
     [ECDH DoEcdh2:415
-   szServerPubKey:[serverPublicKey bytes] nLenServerPub:[serverPublicKey length]
-    szLocalPriKey:[localPriKey bytes] nLenLocalPri:[localPriKey length]
+   szServerPubKey:(unsigned char *) [serverPublicKey bytes] nLenServerPub:(int) [serverPublicKey length]
+    szLocalPriKey:(unsigned char *) [localPriKey bytes] nLenLocalPri:(int) [localPriKey length]
        szShareKey:buf pLenShareKey:&sharedKeyLen];
     NSData *secret = [NSData dataWithBytes:buf length:sharedKeyLen];
     
