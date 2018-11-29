@@ -143,12 +143,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [_socket readDataWithTimeout:3 tag:0];
 }
 
-- (void)DoSendClientHello {
-    _clientHello = [ClientHello new];
-    NSData *clientHelloData = [_clientHello CreateClientHello];
-    [_socket writeData:clientHelloData withTimeout:HEARTBEAT_TIMEOUT tag:HANDSHAKE_CLIENT_HELLO];
-}
-
 - (void)newInitWithSyncKeyCur:(NSData *)syncKeyCur syncKeyMax:(NSData *)syncKeyMax {
     NewInitRequest *request = [NewInitRequest new];
     request.wxid = [WXUserDefault getWXID];
@@ -183,7 +177,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)heartBeat {
     NSData *heart = [self longlink_packWithSeq:_seq cmdId:CMDID_NOOP_REQ buffer:nil];
-    [self mmtlsSend:heart withTag:LONGLINK_HEART_BEAT];
+    [self mmtlsEnCryptAndSend:heart withTag:LONGLINK_HEART_BEAT];
 }
 
 + (void)startRequest:(CgiWrap *)cgiWrap
@@ -221,7 +215,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
     
-    [self mmtlsSend:sendData withTag:cgiWrap.cgi];
+    [self mmtlsEnCryptAndSend:sendData withTag:cgiWrap.cgi];
 }
 
 - (void)manualAuth:(CgiWrap *)cgiWrap
@@ -271,7 +265,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
     
-    [self mmtlsSend:sendData withTag:cgiWrap.cgi];
+    [self mmtlsEnCryptAndSend:sendData withTag:cgiWrap.cgi];
 }
 
 - (Task *)getTaskWithTag:(NSInteger)tag {
@@ -288,7 +282,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 #pragma mark - MMTLS
 
-- (void)mmtlsSend:(NSData *)sendData withTag:(NSInteger)tag {
+- (void)mmtlsEnCryptAndSend:(NSData *)sendData withTag:(NSInteger)tag {
     NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
     aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
@@ -301,6 +295,24 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     sendMsgData = [sendMsgData addDataAtTail:mmtlsData];
     
     [_socket writeData:sendMsgData withTimeout:3 tag:tag];
+}
+
+- (NSData *)mmtlsDeCryptData:(NSData *)encrypedData {
+    NSData *aad = [NSData dataWithHexString:@"00000000000000"];
+    aad = [aad addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _readSeq]]];
+    aad = [aad addDataAtTail:[encrypedData subdataWithRange:NSMakeRange(0, 5)]];
+    
+    NSData *plainText = nil;
+    NSData *readIV = [WX_Hex IV:_longlinkKeyPair.readIV XORSeq:_readSeq++];
+    [WX_AesGcm128 aes128gcmDecrypt:[encrypedData subdataWithRange:NSMakeRange(5, [encrypedData length] - 5)] plaintext:&plainText aad:aad key:_longlinkKeyPair.readKEY ivec:readIV];
+    
+    return plainText;
+}
+
+- (void)DoSendClientHello {
+    _clientHello = [ClientHello new];
+    NSData *clientHelloData = [_clientHello CreateClientHello];
+    [_socket writeData:clientHelloData withTimeout:HEARTBEAT_TIMEOUT tag:HANDSHAKE_CLIENT_HELLO];
 }
 
 - (void)onReviceServerHello:(ServerHello *)serverHello {
@@ -461,16 +473,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [_socket writeData:hb withTimeout:3 tag:LONGLINK_HEART_BEAT];
 }
 
-- (void)onReceive:(NSData *)data withTag:(NSInteger) tag{
-    
-    NSData *aad = [NSData dataWithHexString:@"00000000000000"];
-    aad = [aad addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _readSeq]]];
-    aad = [aad addDataAtTail:[data subdataWithRange:NSMakeRange(0, 5)]];
-    
-    NSData *plainText = nil;
-    NSData *readIV = [WX_Hex IV:_longlinkKeyPair.readIV XORSeq:_readSeq++];
-    [WX_AesGcm128 aes128gcmDecrypt:[data subdataWithRange:NSMakeRange(5, [data length] - 5)] plaintext:&plainText aad:aad key:_longlinkKeyPair.readKEY ivec:readIV];
-    
+- (void)onReceive:(NSData *)data withTag:(NSInteger)tag
+{
+    NSData *plainText = [self mmtlsDeCryptData:data];
     DLog(@"OnReceive", plainText);
     
     LongLinkPackage *longLinkPackage = [LongLinkPackage new];
