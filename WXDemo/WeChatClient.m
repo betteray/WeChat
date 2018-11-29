@@ -519,7 +519,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     }
 }
 
-#pragma mark - Delegate
+#pragma mark - GCDAsyncSocket Delegate
 
 /**
  * Called when a socket connects and is ready for reading and writing.
