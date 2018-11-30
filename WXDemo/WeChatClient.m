@@ -340,7 +340,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 {
     NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
-    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _writeSeq - 1]]];
+    aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
     aadd = [[aadd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t)([sendData length] + 0x10) flip:YES]]; //0x10 aad len
 
     NSData *mmtlsData = nil;
@@ -355,7 +355,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 - (NSData *)mmtlsDeCryptData:(NSData *)encrypedData
 {
     NSData *aad = [NSData dataWithHexString:@"00000000000000"];
-    aad = [aad addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", _readSeq]]];
+    aad = [aad addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) _readSeq]]];
     aad = [aad addDataAtTail:[encrypedData subdataWithRange:NSMakeRange(0, 5)]];
 
     NSData *plainText = nil;
