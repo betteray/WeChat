@@ -8,6 +8,7 @@
 
 #import "WeChatClient.h"
 #import "GCDAsyncSocket.h" // for TCP
+#import <FastSocket.h>
 #import "NSData+Util.h"
 #import "Constants.h"
 #import "FSOpenSSL.h"
@@ -69,7 +70,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 @interface WeChatClient () <GCDAsyncSocketDelegate>
 
 // longlink
-@property (nonatomic, strong) GCDAsyncSocket *socket;
+//@property (nonatomic, strong) GCDAsyncSocket *socket;
+@property (nonatomic, strong) FastSocket *client;
+@property (nonatomic, strong) dispatch_queue_t readSerialQueue;
+@property (nonatomic, strong) dispatch_queue_t writeSerialQueue;
 @property (nonatomic, assign) int seq; //封包编号。
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
 @property (nonatomic, strong) NSData *cookie;
@@ -78,6 +82,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 // mmtls
 @property (nonatomic, strong) NSMutableData *mmtlsReceivedBuffer;
 @property (nonatomic, strong) ClientHello *clientHello;
+@property (nonatomic, strong) NSMutableData *serverHelloData;
 @property (nonatomic, strong) KeyPair *longlinkKeyPair;
 @property (nonatomic, assign) NSInteger writeSeq;
 @property (nonatomic, assign) NSInteger readSeq;
@@ -115,6 +120,11 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         _sessionKey = [FSOpenSSL random128BitAESKey]; // iPad
                                                       //        _sessionKey = [NSData GenRandomDataWithSize:184]; //iMac
 
+        _serverHelloData = [NSMutableData new];
+        
+        _sync_key_cur = [NSData data];
+        _sync_key_max = [NSData data];
+        
         NSString *priKey = nil;
         NSString *pubKey = nil;
         if ([MarsOpenSSL genRSAKeyPairPubKey:&pubKey priKey:&priKey])
@@ -127,17 +137,11 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
             NSLog(@" ** Gen RSA KeyPair Fail. ** ");
         }
 
-        _heartbeatTimer = [NSTimer timerWithTimeInterval:20 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
+//        _heartbeatTimer = [NSTimer timerWithTimeInterval:20 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
+//        [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
 
-//        NSTimer *updateTimer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(update) userInfo:nil repeats:YES];
-//        [[NSRunLoop mainRunLoop] addTimer:updateTimer forMode:NSRunLoopCommonModes];
-        
-        GCDAsyncSocket *s = [[GCDAsyncSocket alloc] init];
-        [s setDelegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
-        [s setDelegate:self];
-        _socket = s;
-        [_socket acceptOnPort:1 error:nil];
+        _readSerialQueue = dispatch_queue_create("me.ray.FastSocket.Read", DISPATCH_QUEUE_SERIAL);
+        _writeSerialQueue = dispatch_queue_create("me.ray.FastSocket.Write", DISPATCH_QUEUE_SERIAL);
     }
 
     return self;
@@ -145,29 +149,69 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)start
 {
-    NSError *error;
-    [_socket connectToHost:@"163.177.81.141" onPort:443 error:&error]; //long.weixin.qq.com 58.247.204.141
-    if (error)
-    {
-        NSLog(@"Socks Start Error: %@", [error localizedDescription]);
+    FastSocket *client = [[FastSocket alloc] initWithHost:@"163.177.81.141" andPort:@"443"];//long.weixin.qq.com 58.247.204.141
+    if ([client connect]) {
+        _client = client;
+        [self DoSendClientHello];
+        [self readData];
     }
-    [self DoSendClientHello];
 }
 
-- (void)update
+- (void)sendData:(NSData *)sendData
 {
-    NSLog(@"Socket Update: Cur Task: %ld", [_tasks count]);
+    DLog(@"SendData", sendData);
+    dispatch_async(_writeSerialQueue, ^{
+        long sent = [self.client sendBytes:[sendData bytes] count:[sendData length]];
+    });
+}
+
+- (void)readData
+{
+    dispatch_async(_readSerialQueue, ^{
+        while (1) {
+            NSData *dataPackage = [self readHeader];
+            DLog(@"DataPkg", dataPackage);
+            if ([dataPackage toInt8ofRange:0] == 0x16)        //mmtls handshake
+            {
+                [self.serverHelloData appendData:dataPackage];
+                if ([self.serverHelloData length] > 580)
+                {
+                    [self onReviceServerHello:[[ServerHello alloc] initWithData:self.serverHelloData]];
+                }
+            }
+            else if ([dataPackage toInt8ofRange:0] == 0x17)   //application data
+            {
+                [self onReceive:dataPackage withTag:0];
+            }
+        }
+    });
+}
+
+- (NSData *)readHeader
+{
+    NSMutableData *header = [NSMutableData dataWithLength:5];
+    long received = [_client receiveBytes:[header mutableBytes] count:5];
+    if (received == 5) {
+//        DLog(@"header", header);
+    }
+
+    int32_t payloadLength = [header toInt16ofRange:NSMakeRange(3, 2) SwapBigToHost:YES];
+    NSData *payloadData = [self readPayload:payloadLength];
     
-    if ([_tasks count] > 0)
-    {
-        Task *task = [_tasks objectAtIndex:0];
-        [_socket readDataWithTimeout:3 tag:task.cgiWrap.cgi];
-    }
+    [header appendData:payloadData];
+    return [header copy];
 }
 
-- (void)readDataManually
+- (NSData *)readPayload:(NSInteger)payloadLength
 {
-    [_socket readDataWithTimeout:3 tag:0];
+    NSMutableData *payload = [NSMutableData dataWithLength:payloadLength];
+    long received = [_client receiveBytes:[payload mutableBytes] count:payloadLength];
+    if (received == payloadLength) {
+//        DLog(@"payload", payload);
+        return [payload copy];
+    } else {
+        return nil;
+    }
 }
 
 - (void)newInitWithSyncKeyCur:(NSData *)syncKeyCur syncKeyMax:(NSData *)syncKeyMax
@@ -227,22 +271,18 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         }];
 }
 
-- (void)newSync
-{
-}
-
 - (void)restartUsingIpAddress:(NSString *)IpAddress
 {
-    [_socket disconnect];
+//    [_socket disconnect];
 
-    NSError *error;
-    [_socket connectToHost:IpAddress onPort:80 error:&error];
-    if (error)
-    {
-        NSLog(@"Socks ReStart Error: %@", [error localizedDescription]);
-        return;
-    }
-    [self heartBeat];
+//    NSError *error;
+//    [_socket connectToHost:IpAddress onPort:80 error:&error];
+//    if (error)
+//    {
+//        NSLog(@"Socks ReStart Error: %@", [error localizedDescription]);
+//        return;
+//    }
+//    [self heartBeat];
 }
 
 - (void)heartBeat
@@ -371,8 +411,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
     NSData *sendMsgData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t)([sendData length] + 0x10) flip:YES]];
     sendMsgData = [sendMsgData addDataAtTail:mmtlsData];
-
-    [_socket writeData:sendMsgData withTimeout:3 tag:tag];
+    
+    [self sendData:sendMsgData];
 }
 
 - (NSData *)mmtlsDeCryptData:(NSData *)encrypedData
@@ -392,7 +432,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 {
     _clientHello = [ClientHello new];
     NSData *clientHelloData = [_clientHello CreateClientHello];
-    [_socket writeData:clientHelloData withTimeout:HEARTBEAT_TIMEOUT tag:HANDSHAKE_CLIENT_HELLO];
+    [self sendData:clientHelloData];
 }
 
 - (void)onReviceServerHello:(ServerHello *)serverHello
@@ -550,7 +590,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [hb appendData:heartbeatData];
     DLog(@"HB", hb);
 
-    [_socket writeData:hb withTimeout:3 tag:LONGLINK_HEART_BEAT];
+    [self sendData:hb];
 }
 
 - (void)onReceive:(NSData *)data withTag:(NSInteger)tag
@@ -573,12 +613,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                 switch (longLinkPackage.header.cmdId)
                 {
                     case CMDID_PUSH_ACK:
+                    case 1000000027:
                         NSLog(@"Start New Init.");
-                        if (self.sync_key_cur) {
-//                            [self newSync];
-                        } else {
-//                            [self newInitWithSyncKeyCur:[NSData data] syncKeyMax:[NSData data]];
-                        }
+                         [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
                         break;
                     default:
                         break;
@@ -602,7 +639,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         break;
         case UnPack_Continue:
         {
-            [_socket readDataWithTimeout:3 tag:tag];
+//            [_socket readDataWithTimeout:3 tag:tag];
+            
         }
         break;
         default:
@@ -656,7 +694,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         }
         else
         {
-            [_socket readDataWithTimeout:3 tag:tag];
+//            [_socket readDataWithTimeout:3 tag:tag];
         }
     }
 }
@@ -667,7 +705,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
     //    NSLog(@"<<< didWriteDataWithTag: %ld", tag);
-    [_socket readDataWithTimeout:3 tag:tag];
+//    [_socket readDataWithTimeout:3 tag:tag];
 }
 
 #pragma mark - Pack
