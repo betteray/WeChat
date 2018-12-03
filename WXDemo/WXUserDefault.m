@@ -12,6 +12,7 @@
 #define UIN         @"UIN"
 #define ALIAS       @"ALIAS"
 #define NIKENAME    @"NIKENAME"
+#define CLIENTCHECKDATA @"CLIENTCHECKDATA"
 
 @implementation WXUserDefault
 
@@ -45,6 +46,14 @@
 
 + (NSString *)getAlias {
     return [[NSUserDefaults standardUserDefaults] objectForKey:ALIAS];
+}
+
++ (void)saveClientCheckData:(NSData *)clientCheckData {
+    [[NSUserDefaults standardUserDefaults] setObject:clientCheckData forKey:CLIENTCHECKDATA];
+}
+
++ (NSData *)getClientCheckData {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:CLIENTCHECKDATA];
 }
 
 @end

@@ -61,7 +61,7 @@
                                                                                  NSURLResponse *_Nullable response,
                                                                                  NSError *_Nullable error) {
                                                                  DLog(@"ClientCheckData", data);
-                                                                 self.clientCheckData = data;
+                                                                 [WXUserDefault saveClientCheckData:data];
                                                              }];
 
     [task resume];
@@ -281,7 +281,7 @@
 
     //iMac 暂时不需要
 
-    if ([_clientCheckData length] <= 0)
+    if ([[WXUserDefault getClientCheckData] length] <= 0)
     {
         [self showHUDWithText:@"Make Sure ClientCheckData not nil."];
         return;
@@ -292,8 +292,8 @@
     }
 
     SKBuiltinBuffer *clientCheckData = [SKBuiltinBuffer new];
-    clientCheckData.iLen = (int) [_clientCheckData length];
-    clientCheckData.buffer = _clientCheckData;
+    clientCheckData.iLen = (int) [[WXUserDefault getClientCheckData] length];
+    clientCheckData.buffer = [WXUserDefault getClientCheckData];
     deviceRequest.clientCheckData = clientCheckData;
 
     ManualAuthRequest *authRequest = [ManualAuthRequest new];
@@ -323,7 +323,7 @@
                                             }
                                             break;
                                             case 0:
-                                            {   //成功，停止检查二维码
+                                            { //成功，停止检查二维码
                                                 //                [self.qrcodeCheckTimer invalidate];
                                                 //                self.qrcodeCheckTimer = nil;
                                                 self.qrcodeTimerLabel.text = @"登陆成功";
@@ -369,7 +369,7 @@
                                                     [WXUserDefault saveNikeName:resp.accountInfo.nickName];
                                                     [WXUserDefault saveAlias:resp.accountInfo.alias];
 
-                                                    [[WeChatClient sharedClient] readDataManually];
+//                                                    [[WeChatClient sharedClient] readDataManually];
                                                 }
                                             }
                                             break;
