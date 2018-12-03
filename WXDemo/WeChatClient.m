@@ -70,13 +70,13 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 // longlink
 @property (nonatomic, strong) GCDAsyncSocket *socket;
-@property (nonatomic, strong) NSMutableData *mmtlsReceivedBuffer;
 @property (nonatomic, assign) int seq; //封包编号。
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
 @property (nonatomic, strong) NSData *cookie;
 @property (nonatomic, strong) NSMutableArray *tasks;
 
 // mmtls
+@property (nonatomic, strong) NSMutableData *mmtlsReceivedBuffer;
 @property (nonatomic, strong) ClientHello *clientHello;
 @property (nonatomic, strong) KeyPair *longlinkKeyPair;
 @property (nonatomic, assign) NSInteger writeSeq;
@@ -130,10 +130,14 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         _heartbeatTimer = [NSTimer timerWithTimeInterval:20 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
 
+//        NSTimer *updateTimer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(update) userInfo:nil repeats:YES];
+//        [[NSRunLoop mainRunLoop] addTimer:updateTimer forMode:NSRunLoopCommonModes];
+        
         GCDAsyncSocket *s = [[GCDAsyncSocket alloc] init];
         [s setDelegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
         [s setDelegate:self];
         _socket = s;
+        [_socket acceptOnPort:1 error:nil];
     }
 
     return self;
@@ -148,6 +152,17 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         NSLog(@"Socks Start Error: %@", [error localizedDescription]);
     }
     [self DoSendClientHello];
+}
+
+- (void)update
+{
+    NSLog(@"Socket Update: Cur Task: %ld", [_tasks count]);
+    
+    if ([_tasks count] > 0)
+    {
+        Task *task = [_tasks objectAtIndex:0];
+        [_socket readDataWithTimeout:3 tag:task.cgiWrap.cgi];
+    }
 }
 
 - (void)readDataManually
@@ -185,7 +200,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                 if (5 == cmsg.type)
                 {
                     Msg *msg = [[Msg alloc] initWithData:cmsg.data_p.data_p error:nil];
-                    if (10002 == msg.type)
+                    if (10002 == msg.type || 9999 == msg.type)
                     { //系统消息
                         continue;
                     }
@@ -193,6 +208,11 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                     {
                         NSLog(@"Serverid: %lld, CreateTime: %d, WXID: %@, TOID: %@, Type: %d, Raw Content: %@", msg.serverid, msg.createTime, msg.fromId.wxid, msg.toId.wxid, msg.type, msg.raw.content);
                     }
+                }
+                else if (2 == cmsg.type) //好友列表
+                {
+                    contact_info *cinfo = [[contact_info alloc] initWithData:cmsg.data_p.data_p error:nil];
+                    NSLog(@"update contact: Relation[%@], WXID: %@, Alias: %@", (cinfo.type & 1) ? @"好友" : @"非好友", cinfo.wxid.wxid, cinfo.alias);
                 }
             }
 
@@ -338,6 +358,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)mmtlsEnCryptAndSend:(NSData *)sendData withTag:(NSInteger)tag
 {
+    NSString *logTag = [NSString stringWithFormat:@"Send(%ld)", [sendData length]];
+    DLog(logTag, sendData);
+
     NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
     aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
@@ -533,7 +556,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 - (void)onReceive:(NSData *)data withTag:(NSInteger)tag
 {
     NSData *plainText = [self mmtlsDeCryptData:data];
-    DLog(@"OnReceive PlainText", plainText);
+    NSString *logTag = [NSString stringWithFormat:@"Receive(%ld)", [plainText length]];
+    DLog(logTag, plainText);
 
     LongLinkPackage *longLinkPackage = [LongLinkPackage new];
     UnPackResult result = [self unPackLongLink:plainText toLongLingPackage:longLinkPackage];
@@ -550,13 +574,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                 {
                     case CMDID_PUSH_ACK:
                         NSLog(@"Start New Init.");
-                        if (nil == self.sync_key_cur)
-                        {
-                            [self newInitWithSyncKeyCur:[NSData data] syncKeyMax:[NSData data]];
-                        }
-                        else
-                        {
-                            [self newSync];
+                        if (self.sync_key_cur) {
+//                            [self newSync];
+                        } else {
+//                            [self newInitWithSyncKeyCur:[NSData data] syncKeyMax:[NSData data]];
                         }
                         break;
                     default:
@@ -587,6 +608,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         default:
             break;
     }
+
+    //清空tls数据
+    [_mmtlsReceivedBuffer setData:[NSData data]];
 }
 
 #pragma mark - GCDAsyncSocket Delegate
@@ -615,9 +639,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
  **/
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
-    NSString *logTag = [NSString stringWithFormat:@"MMTLS::ReceiveData: %ld", tag];
-    DLog(logTag, data);
-
     if (tag == HANDSHAKE_CLIENT_HELLO)
     {
         ServerHello *serverHello = [[ServerHello alloc] initWithData:data];
@@ -625,9 +646,18 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     }
     else
     {
-
-        //        [_mmtlsReceivedBuffer appendData:data];
-        [self onReceive:data withTag:tag];
+        [_mmtlsReceivedBuffer appendData:data];
+        int16_t tlsPkgLen = [_mmtlsReceivedBuffer toInt16ofRange:NSMakeRange(3, 2) SwapBigToHost:YES];
+        if (tlsPkgLen == [_mmtlsReceivedBuffer length] - 5)
+        {
+            //            NSString *logTag = [NSString stringWithFormat:@"MMTLS::ReceiveData: %ld", tag];
+            //            DLog(logTag, _mmtlsReceivedBuffer);
+            [self onReceive:data withTag:tag];
+        }
+        else
+        {
+            [_socket readDataWithTimeout:3 tag:tag];
+        }
     }
 }
 
@@ -724,6 +754,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     {
         [longlink_header appendData:[NSData packInt32:IDENTIFY_SEQ flip:YES]];
     }
+//    else if (cmdId == 27)
+//    {
+//        [longlink_header appendData:[NSData packInt32:0x23 flip:YES]];
+//    }
     else
     {
         [longlink_header appendData:[NSData packInt32:seq flip:YES]];
