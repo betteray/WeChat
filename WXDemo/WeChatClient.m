@@ -40,6 +40,10 @@
 #define CMDID_IDENTIFY_REQ 205
 //#登录
 #define CMDID_MANUALAUTH_REQ 253
+
+//
+#define CMDID_NEWINIT_REQ 0x23
+
 //#推送通知
 #define CMDID_PUSH_ACK 24
 //#通知服务器消息已接收
@@ -137,8 +141,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
             NSLog(@" ** Gen RSA KeyPair Fail. ** ");
         }
 
-//        _heartbeatTimer = [NSTimer timerWithTimeInterval:20 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
-//        [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
+        _heartbeatTimer = [NSTimer timerWithTimeInterval:20 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
 
         _readSerialQueue = dispatch_queue_create("me.ray.FastSocket.Read", DISPATCH_QUEUE_SERIAL);
         _writeSerialQueue = dispatch_queue_create("me.ray.FastSocket.Write", DISPATCH_QUEUE_SERIAL);
@@ -171,6 +175,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         while (1) {
             NSData *dataPackage = [self readHeader];
             DLog(@"DataPkg", dataPackage);
+
             if ([dataPackage toInt8ofRange:0] == 0x16)        //mmtls handshake
             {
                 [self.serverHelloData appendData:dataPackage];
@@ -192,7 +197,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *header = [NSMutableData dataWithLength:5];
     long received = [_client receiveBytes:[header mutableBytes] count:5];
     if (received == 5) {
-//        DLog(@"header", header);
     }
 
     int32_t payloadLength = [header toInt16ofRange:NSMakeRange(3, 2) SwapBigToHost:YES];
@@ -207,7 +211,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *payload = [NSMutableData dataWithLength:payloadLength];
     long received = [_client receiveBytes:[payload mutableBytes] count:payloadLength];
     if (received == payloadLength) {
-//        DLog(@"payload", payload);
         return [payload copy];
     } else {
         return nil;
@@ -269,6 +272,30 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         failure:^(NSError *error) {
             NSLog(@"%@", error);
         }];
+}
+
+- (void)newSync
+{
+    new_sync_req *req = [new_sync_req new];
+    req.flag = @"";
+    req.selector = 262151;
+    req.syncKey = self.sync_key_cur;
+    req.scene = 7;
+    req.device = DEVICE_TYPE;
+    req.syncMsgDigest = 1;
+    
+    CgiWrap *wrap = [CgiWrap new];
+    wrap.cgi = 138;
+    wrap.cmdId = 121;
+    wrap.request = req;
+    wrap.needSetBaseRequest = NO;
+    wrap.responseClass = [new_sync_resp class];
+    
+    [[WeChatClient sharedClient] startRequest:wrap success:^(new_sync_resp*  _Nullable response) {
+        NSLog(@"new sync resp: %@", response);
+    } failure:^(NSError *error) {
+        NSLog(@"new sync resp error: %@", error);
+    }];
 }
 
 - (void)restartUsingIpAddress:(NSString *)IpAddress
@@ -613,9 +640,16 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                 switch (longLinkPackage.header.cmdId)
                 {
                     case CMDID_PUSH_ACK:
-                    case 1000000027:
-                        NSLog(@"Start New Init.");
-                         [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
+                        if ([self.sync_key_cur length] == 0)
+                        {
+                            NSLog(@"Start New Init.");
+                            [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
+                            NSLog(@"Stop New Init.");
+                        }
+                        else
+                        {
+                            [self newSync];
+                        }
                         break;
                     default:
                         break;
@@ -792,10 +826,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     {
         [longlink_header appendData:[NSData packInt32:IDENTIFY_SEQ flip:YES]];
     }
-//    else if (cmdId == 27)
-//    {
-//        [longlink_header appendData:[NSData packInt32:0x23 flip:YES]];
-//    }
     else
     {
         [longlink_header appendData:[NSData packInt32:seq flip:YES]];

@@ -309,6 +309,7 @@
     [[WeChatClient sharedClient] manualAuth:cgiWrap
                                     success:^(GPBMessage *_Nullable response) {
                                         ManualAuthResponse *resp = (ManualAuthResponse *) response;
+                                        NSLog(@"登陆响应: %@", resp);
 
                                         NSLog(@"登陆响应 Code: %d, msg: %@", resp.result.code, resp.result.errMsg.msg);
                                         switch (resp.result.code)
