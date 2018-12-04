@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WeChatClient.h"
+#import "DNSMgr.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,8 @@
     // Override point for customization after application launch.
     
     [[WeChatClient sharedClient] start];
+    [DNSMgr sharedMgr];
+    
     return YES;
 }
 

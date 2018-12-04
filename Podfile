@@ -9,6 +9,7 @@ target 'WXDemo' do
   pod 'Protobuf'
   pod 'SDWebImage'
   pod 'YYModel', '~> 1.0.4'
+  pod 'Ono' # xml
 
   pod 'CocoaLumberjack'
   pod 'MBProgressHUD', '~> 1.1.0'

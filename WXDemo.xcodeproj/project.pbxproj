@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1CEB1940082B7F91328724F7 /* libPods-WXDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WXDemo.a */; };
+		71008F3321B6750700DE8DF8 /* DNSMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3221B6750700DE8DF8 /* DNSMgr.m */; };
+		71008F3621B678F500DE8DF8 /* ShortLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3521B678F500DE8DF8 /* ShortLink.m */; };
+		71008F3921B67DE800DE8DF8 /* NSURLSession+DTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3821B67DE800DE8DF8 /* NSURLSession+DTAdditions.m */; };
 		71193F5321AE7A2000D982D5 /* NSString+Concat.m in Sources */ = {isa = PBXBuildFile; fileRef = 71193F5221AE7A2000D982D5 /* NSString+Concat.m */; };
 		712C6E60214A145600603022 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E5F214A145600603022 /* AppDelegate.m */; };
 		712C6E63214A145600603022 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E62214A145600603022 /* ViewController.m */; };
@@ -84,6 +87,12 @@
 		49481301164AD3564DCE2106 /* libPods-WXDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D68228E0161D108AB7FD03 /* Pods-WXDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemo/Pods-WXDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		6D6A0611B4D9173A0D7DFBB2 /* Pods-WXDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemoUITests/Pods-WXDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		71008F3121B6750700DE8DF8 /* DNSMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNSMgr.h; sourceTree = "<group>"; };
+		71008F3221B6750700DE8DF8 /* DNSMgr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNSMgr.m; sourceTree = "<group>"; };
+		71008F3421B678F500DE8DF8 /* ShortLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortLink.h; sourceTree = "<group>"; };
+		71008F3521B678F500DE8DF8 /* ShortLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortLink.m; sourceTree = "<group>"; };
+		71008F3721B67DE800DE8DF8 /* NSURLSession+DTAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+DTAdditions.h"; sourceTree = "<group>"; };
+		71008F3821B67DE800DE8DF8 /* NSURLSession+DTAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+DTAdditions.m"; sourceTree = "<group>"; };
 		71193F5121AE7A2000D982D5 /* NSString+Concat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Concat.h"; sourceTree = "<group>"; };
 		71193F5221AE7A2000D982D5 /* NSString+Concat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Concat.m"; sourceTree = "<group>"; };
 		712C6E5B214A145600603022 /* WXDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -324,6 +333,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		71008F3021B674D900DE8DF8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				71008F3121B6750700DE8DF8 /* DNSMgr.h */,
+				71008F3221B6750700DE8DF8 /* DNSMgr.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		712C6E52214A145600603022 = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +367,7 @@
 		712C6E5D214A145600603022 /* WXDemo */ = {
 			isa = PBXGroup;
 			children = (
+				71008F3021B674D900DE8DF8 /* Managers */,
 				71D3DAA921AEACD2002ACF1C /* ViewCat */,
 				7154D51D2196D6BD005064C4 /* Tools */,
 				7154D50E2196B714005064C4 /* HexDump */,
@@ -368,6 +387,8 @@
 				7154D5192196B8DF005064C4 /* PrefixHeader.pch */,
 				71D3DAAD21AFCA47002ACF1C /* WXUserDefault.h */,
 				71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */,
+				71008F3421B678F500DE8DF8 /* ShortLink.h */,
+				71008F3521B678F500DE8DF8 /* ShortLink.m */,
 			);
 			path = WXDemo;
 			sourceTree = "<group>";
@@ -633,6 +654,8 @@
 				71D593582158E90500DFEBC8 /* NSData+Compress.m */,
 				719A962B219BD53800E4D077 /* NSData+AddData.h */,
 				719A962C219BD53800E4D077 /* NSData+AddData.m */,
+				71008F3721B67DE800DE8DF8 /* NSURLSession+DTAdditions.h */,
+				71008F3821B67DE800DE8DF8 /* NSURLSession+DTAdditions.m */,
 			);
 			path = Catag;
 			sourceTree = "<group>";
@@ -844,6 +867,7 @@
 				712C7152214BAD8900603022 /* Header.m in Sources */,
 				7155BA5821902CDD0002CE1D /* WX_SHA256.m in Sources */,
 				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,
+				71008F3321B6750700DE8DF8 /* DNSMgr.m in Sources */,
 				7155BA5B219033BF0002CE1D /* WX_HKDF.m in Sources */,
 				712C6E6E214A145700603022 /* main.m in Sources */,
 				7154D51C2196CC1A005064C4 /* KeyPair.m in Sources */,
@@ -858,6 +882,7 @@
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
 				7154D5252197EFB9005064C4 /* WX_HmacSha256.m in Sources */,
 				71D3DAAF21AFCA47002ACF1C /* WXUserDefault.m in Sources */,
+				71008F3921B67DE800DE8DF8 /* NSURLSession+DTAdditions.m in Sources */,
 				712C7166214D2BFD00603022 /* ECDH.m in Sources */,
 				7155BA5221902AB30002CE1D /* ClientHello.m in Sources */,
 				7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */,
@@ -868,6 +893,7 @@
 				71193F5321AE7A2000D982D5 /* NSString+Concat.m in Sources */,
 				71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */,
 				7154D5222196DFE1005064C4 /* WX_Hex.m in Sources */,
+				71008F3621B678F500DE8DF8 /* ShortLink.m in Sources */,
 				712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */,
 				712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */,
 				712C7149214BA38900603022 /* LongLinkHeader.m in Sources */,
