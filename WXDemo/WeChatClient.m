@@ -7,7 +7,6 @@
 //
 
 #import "WeChatClient.h"
-#import "GCDAsyncSocket.h" // for TCP
 #import <FastSocket.h>
 #import "NSData+Util.h"
 #import "Constants.h"
@@ -71,10 +70,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     UnPack_Success
 };
 
-@interface WeChatClient () <GCDAsyncSocketDelegate>
+@interface WeChatClient ()
 
 // longlink
-//@property (nonatomic, strong) GCDAsyncSocket *socket;
 @property (nonatomic, strong) FastSocket *client;
 @property (nonatomic, strong) dispatch_queue_t readSerialQueue;
 @property (nonatomic, strong) dispatch_queue_t writeSerialQueue;
@@ -673,7 +671,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         break;
         case UnPack_Continue:
         {
-//            [_socket readDataWithTimeout:3 tag:tag];
             
         }
         break;
@@ -683,63 +680,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
     //清空tls数据
     [_mmtlsReceivedBuffer setData:[NSData data]];
-}
-
-#pragma mark - GCDAsyncSocket Delegate
-
-/**
- * Called when a socket connects and is ready for reading and writing.
- * The host parameter will be an IP address, not a DNS name.
- **/
-- (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
-{
-    NSLog(@"didConnectToHost %@:%d", host, port);
-}
-
-/**
- * Called when a socket connects and is ready for reading and writing.
- * The host parameter will be an IP address, not a DNS name.
- **/
-- (void)socket:(GCDAsyncSocket *)sock didConnectToUrl:(NSURL *)url
-{
-    NSLog(@"didConnectToUrl %@", url);
-}
-
-/**
- * Called when a socket has completed reading the requested data into memory.
- * Not called if there is an error.
- **/
-- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
-{
-    if (tag == HANDSHAKE_CLIENT_HELLO)
-    {
-        ServerHello *serverHello = [[ServerHello alloc] initWithData:data];
-        [self onReviceServerHello:serverHello];
-    }
-    else
-    {
-        [_mmtlsReceivedBuffer appendData:data];
-        int16_t tlsPkgLen = [_mmtlsReceivedBuffer toInt16ofRange:NSMakeRange(3, 2) SwapBigToHost:YES];
-        if (tlsPkgLen == [_mmtlsReceivedBuffer length] - 5)
-        {
-            //            NSString *logTag = [NSString stringWithFormat:@"MMTLS::ReceiveData: %ld", tag];
-            //            DLog(logTag, _mmtlsReceivedBuffer);
-            [self onReceive:data withTag:tag];
-        }
-        else
-        {
-//            [_socket readDataWithTimeout:3 tag:tag];
-        }
-    }
-}
-
-/**
- * Called when a socket has completed writing the requested data. Not called if there is an error.
- **/
-- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
-{
-    //    NSLog(@"<<< didWriteDataWithTag: %ld", tag);
-//    [_socket readDataWithTimeout:3 tag:tag];
 }
 
 #pragma mark - Pack

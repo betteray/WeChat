@@ -517,9 +517,4 @@
                                     }];
 }
 
-- (IBAction)readDataManually:(id)sender
-{
-    [[WeChatClient sharedClient] readDataManually];
-}
-
 @end
