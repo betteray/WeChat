@@ -45,7 +45,6 @@
         _readSeq = 1;
         
         _clientRandom = [NSData GenRandomDataWithSize:32];
-        _clientRandom = [NSData dataWithHexString:[@"EBB0067A 7ED9F2BC 88C19C4A 407ACA1F 6FEDC4C9 E65E8C93 B74E621F 7D658CF2" stringByReplacingOccurrencesOfString:@" " withString:@""]];   //test data
         _decryptedPart2 = decryptedPart2;
         _resumptionSecret = resumptionSecret;
         _httpData = httpData;
@@ -60,7 +59,6 @@
     
     NSUInteger timeStamp = [[NSDate date] timeIntervalSince1970];
     NSData *timeStampData = [NSData packInt32:(int32_t) timeStamp flip:NO];
-    timeStampData = [NSData dataWithHexString:@"5BE14B00"]; //test data
     [clientHelloData appendData:timeStampData];         //time
     [clientHelloData appendData:[NSData dataWithHexString:@"0000006F010000006A000F01000000"]]; //fix
     [clientHelloData appendData:_decryptedPart2];
@@ -86,7 +84,6 @@
     NSData *fixData = [NSData dataWithHexString:@"00000010080000000B01000000060012"];
     NSUInteger timeStamp = [[NSDate date] timeIntervalSince1970];
     NSData *timeStampData = [NSData packInt32:(int32_t) timeStamp flip:NO];
-    timeStampData = [NSData dataWithHexString:@"5BE14B00"];     //test data
     fixData = [fixData addDataAtTail:timeStampData]; // （固定 + 时间戳）
     
     _clientHashPart = [_clientHelloData addDataAtTail:fixData];
