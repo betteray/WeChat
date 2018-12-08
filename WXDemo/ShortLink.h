@@ -10,6 +10,6 @@
 
 @interface ShortLink : NSObject
 
-+ (NSData *)mmPost:(NSString *)cgi data:(NSData *)sendData;
++ (NSData *)mmPost:(NSString *)cgi data:(NSData *)mmtlsData;
 
 @end

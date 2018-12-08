@@ -52,8 +52,8 @@
     [super viewDidLoad];
     _clientMsgId = 1;
 
-    [self test2];
-
+    [ShortLinKWithMMTLSTest test];
+    
     NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8080/"];
     NSMutableURLRequest *newGetDNSReq = [NSMutableURLRequest requestWithURL:url];
     newGetDNSReq.HTTPMethod = @"GET";
@@ -71,12 +71,7 @@
 
 - (void)test2
 {
-    time_t t = time(NULL);
-    srand((unsigned int) t);
-    unsigned long long r = rand();
-    //    printf("/mmtls/%08llx", r);
     
-    [ShortLinKWithMMTLSTest test];
 }
 
 - (IBAction)getQRCode
