@@ -123,10 +123,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                                                       //        _sessionKey = [NSData GenRandomDataWithSize:184]; //iMac
 
         _serverHelloData = [NSMutableData new];
-        
+
         _sync_key_cur = [NSData data];
         _sync_key_max = [NSData data];
-        
+
         NSString *priKey = nil;
         NSString *pubKey = nil;
         if ([MarsOpenSSL genRSAKeyPairPubKey:&pubKey priKey:&priKey])
@@ -151,8 +151,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)start
 {
-    FastSocket *client = [[FastSocket alloc] initWithHost:@"163.177.81.141" andPort:@"443"];//long.weixin.qq.com 58.247.204.141
-    if ([client connect]) {
+    FastSocket *client = [[FastSocket alloc] initWithHost:@"163.177.81.141" andPort:@"443"]; //long.weixin.qq.com 58.247.204.141
+    if ([client connect])
+    {
         _client = client;
         [self DoSendClientHello];
         [self readData];
@@ -170,11 +171,12 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 - (void)readData
 {
     dispatch_async(_readSerialQueue, ^{
-        while (1) {
+        while (1)
+        {
             NSData *dataPackage = [self readHeader];
             DLog(@"DataPkg", dataPackage);
 
-            if ([dataPackage toInt8ofRange:0] == 0x16)        //mmtls handshake
+            if ([dataPackage toInt8ofRange:0] == 0x16) //mmtls handshake
             {
                 [self.serverHelloData appendData:dataPackage];
                 if ([self.serverHelloData length] > 580)
@@ -182,7 +184,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                     [self onReviceServerHello:[[ServerHello alloc] initWithData:self.serverHelloData]];
                 }
             }
-            else if ([dataPackage toInt8ofRange:0] == 0x17)   //application data
+            else if ([dataPackage toInt8ofRange:0] == 0x17) //application data
             {
                 [self onReceive:dataPackage withTag:0];
             }
@@ -194,12 +196,13 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 {
     NSMutableData *header = [NSMutableData dataWithLength:5];
     long received = [_client receiveBytes:[header mutableBytes] count:5];
-    if (received == 5) {
+    if (received == 5)
+    {
     }
 
     int32_t payloadLength = [header toInt16ofRange:NSMakeRange(3, 2) SwapBigToHost:YES];
     NSData *payloadData = [self readPayload:payloadLength];
-    
+
     [header appendData:payloadData];
     return [header copy];
 }
@@ -208,9 +211,12 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 {
     NSMutableData *payload = [NSMutableData dataWithLength:payloadLength];
     long received = [_client receiveBytes:[payload mutableBytes] count:payloadLength];
-    if (received == payloadLength) {
+    if (received == payloadLength)
+    {
         return [payload copy];
-    } else {
+    }
+    else
+    {
         return nil;
     }
 }
@@ -281,33 +287,35 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     req.scene = 7;
     req.device = DEVICE_TYPE;
     req.syncMsgDigest = 1;
-    
+
     CgiWrap *wrap = [CgiWrap new];
     wrap.cgi = 138;
     wrap.cmdId = 121;
     wrap.request = req;
     wrap.needSetBaseRequest = NO;
     wrap.responseClass = [new_sync_resp class];
-    
-    [[WeChatClient sharedClient] startRequest:wrap success:^(new_sync_resp*  _Nullable response) {
-        NSLog(@"new sync resp: %@", response);
-    } failure:^(NSError *error) {
-        NSLog(@"new sync resp error: %@", error);
-    }];
+
+    [[WeChatClient sharedClient] startRequest:wrap
+        success:^(new_sync_resp *_Nullable response) {
+            NSLog(@"new sync resp: %@", response);
+        }
+        failure:^(NSError *error) {
+            NSLog(@"new sync resp error: %@", error);
+        }];
 }
 
 - (void)restartUsingIpAddress:(NSString *)IpAddress
 {
-//    [_socket disconnect];
+    //    [_socket disconnect];
 
-//    NSError *error;
-//    [_socket connectToHost:IpAddress onPort:80 error:&error];
-//    if (error)
-//    {
-//        NSLog(@"Socks ReStart Error: %@", [error localizedDescription]);
-//        return;
-//    }
-//    [self heartBeat];
+    //    NSError *error;
+    //    [_socket connectToHost:IpAddress onPort:80 error:&error];
+    //    if (error)
+    //    {
+    //        NSLog(@"Socks ReStart Error: %@", [error localizedDescription]);
+    //        return;
+    //    }
+    //    [self heartBeat];
 }
 
 - (void)heartBeat
@@ -436,7 +444,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
     NSData *sendMsgData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t)([sendData length] + 0x10) flip:YES]];
     sendMsgData = [sendMsgData addDataAtTail:mmtlsData];
-    
+
     [self sendData:sendMsgData];
 }
 
@@ -671,7 +679,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         break;
         case UnPack_Continue:
         {
-            
         }
         break;
         default:
@@ -714,20 +721,22 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (NSData *)pack:(int)cmdId cgi:(int)cgi serilizedData:(NSData *)serilizedData type:(NSInteger)type
 {
-    NSData *sendData = nil;
+    NSData *shortLinkBuf = [self shortlinkPackWithCgi:cgi serilizedData:serilizedData type:type];
+    return [self longlink_packWithSeq:self.seq++ cmdId:cmdId buffer:shortLinkBuf];
+}
+
+- (NSData *)shortlinkPackWithCgi:(int)cgi serilizedData:(NSData *)serilizedData type:(NSInteger)type
+{
     switch (type)
     {
-        case 7:
-        {
-        }
-        break;
         case 1:
         {
             NSData *head = [self make_header:cgi encryptMethod:NONE bodyData:serilizedData compressedBodyData:serilizedData needCookie:NO];
             NSData *body = [MarsOpenSSL RSA_PUB_EncryptData:serilizedData modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
             NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
             [longlinkBody appendData:body];
-            sendData = [self longlink_packWithSeq:self.seq++ cmdId:cmdId buffer:[longlinkBody copy]];
+
+            return [longlinkBody copy];
         }
         break;
         case 5:
@@ -736,14 +745,15 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
             NSData *body = [serilizedData AES];
             NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
             [longlinkBody appendData:body];
-            sendData = [self longlink_packWithSeq:self.seq++ cmdId:cmdId buffer:[longlinkBody copy]];
+
+            return [longlinkBody copy];
         }
         break;
         default:
             break;
     }
 
-    return sendData;
+    return nil;
 }
 
 #pragma mark - longlink pack
