@@ -25,6 +25,8 @@
 #import "WX_SHA256.h"
 #import "WX_HKDF.h"
 
+#import "ShortLinKWithMMTLSTest.h"
+
 #define TICK_INTERVAL 1
 
 @interface ViewController ()
@@ -73,6 +75,8 @@
     srand((unsigned int) t);
     unsigned long long r = rand();
     //    printf("/mmtls/%08llx", r);
+    
+    [ShortLinKWithMMTLSTest test];
 }
 
 - (IBAction)getQRCode

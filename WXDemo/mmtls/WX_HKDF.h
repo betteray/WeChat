@@ -12,5 +12,6 @@
 
 + (void) HKDF_Expand_Prk:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm;
 + (void) HKDF_Expand_Prk2:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm;
++ (void) HKDF_Expand_Prk3:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm;
 
 @end

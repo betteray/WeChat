@@ -32,6 +32,12 @@
     *outOkm = [NSData  dataWithBytes:buf length:0x20];
 }
 
++ (void) HKDF_Expand_Prk3:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm {
+    unsigned char buf[28];
+    [self HKDF_Expand:[prk bytes] :[prk length] :[info bytes] :[info length] :buf :28];
+    *outOkm = [NSData  dataWithBytes:buf length:28];
+}
+
 
 + (unsigned char *) HKDF_Expand
 :(const unsigned char *)prk :(size_t) prk_len
