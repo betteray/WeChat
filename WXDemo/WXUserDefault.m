@@ -13,6 +13,8 @@
 #define ALIAS       @"ALIAS"
 #define NIKENAME    @"NIKENAME"
 #define CLIENTCHECKDATA @"CLIENTCHECKDATA"
+#define LONGLINKIP @"LONGLINKIP"
+#define SHORTLINKIP @"SHORTLINKIP"
 
 @implementation WXUserDefault
 

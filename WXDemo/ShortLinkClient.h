@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ShortLink : NSObject
+@interface ShortLinkClient : NSObject
 
-+ (NSData *)mmPost:(NSString *)cgi data:(NSData *)mmtlsData;
++ (NSData *)mmPost:(NSData *)mmtlsData withHost:(NSString *)headerHost;
 
 @end

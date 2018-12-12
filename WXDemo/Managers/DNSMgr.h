@@ -12,7 +12,7 @@
 
 + (instancetype)sharedMgr;
 
-- (NSString *)getShortLinkUrl;
-- (NSString *)getLongLinkUrl;
+- (NSString *)getShortLinkIp;
+- (NSString *)getLongLinkIp;
 
 @end

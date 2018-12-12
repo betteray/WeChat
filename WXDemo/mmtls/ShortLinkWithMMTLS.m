@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSData *httpData;
 
 @property (nonatomic, strong) NSData *clientHashPart;
+@property (nonatomic, strong) NSData *timeStampData;
 
 @end
 
@@ -45,9 +46,15 @@
         _readSeq = 1;
         
         _clientRandom = [NSData GenRandomDataWithSize:32];
+//        _clientRandom = [NSData dataWithHexString:@"EBB0067A7ED9F2BC88C19C4A407ACA1F6FEDC4C9E65E8C93B74E621F7D658CF2"]; //test
         _decryptedPart2 = decryptedPart2;
         _resumptionSecret = resumptionSecret;
         _httpData = httpData;
+        
+        NSUInteger timeStamp = [[NSDate date] timeIntervalSince1970];
+        _timeStampData = [NSData packInt32:(int32_t) timeStamp flip:YES];
+        
+//        _timeStampData = [NSData dataWithHexString:@"5BE14B00"]; //test
     }
     return self;
 }
@@ -57,9 +64,7 @@
     NSMutableData *clientHelloData = [[NSData dataWithHexString:@"0000009D0103F10100A8"] mutableCopy];
     [clientHelloData appendData:_clientRandom];                                              //client random
     
-    NSUInteger timeStamp = [[NSDate date] timeIntervalSince1970];
-    NSData *timeStampData = [NSData packInt32:(int32_t) timeStamp flip:NO];
-    [clientHelloData appendData:timeStampData];         //time
+    [clientHelloData appendData:_timeStampData];         //time
     [clientHelloData appendData:[NSData dataWithHexString:@"0000006F010000006A000F01000000"]]; //fix
     [clientHelloData appendData:_decryptedPart2];
     
@@ -82,15 +87,17 @@
     ShortLinkKey *shortlinkWriteKey = [[ShortLinkKey alloc] initWithData:expandResult];
     
     NSData *fixData = [NSData dataWithHexString:@"00000010080000000B01000000060012"];
-    NSUInteger timeStamp = [[NSDate date] timeIntervalSince1970];
-    NSData *timeStampData = [NSData packInt32:(int32_t) timeStamp flip:NO];
-    fixData = [fixData addDataAtTail:timeStampData]; // （固定 + 时间戳）
+    fixData = [fixData addDataAtTail:_timeStampData]; // （固定 + 时间戳）
     
     _clientHashPart = [_clientHelloData addDataAtTail:fixData];
     
     NSData *writeIV = [WX_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
+    
+    NSData *aadddd = [NSData dataWithHexString:@"00000000000000"];
+    aadddd = [aadddd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
+    aadddd = [[aadddd addDataAtTail:[NSData dataWithHexString:@"19F103"]] addDataAtTail:[NSData packInt16:(int32_t)([fixData length] + 0x10) flip:YES]]; //0x10 aad len
+    
     NSData *encryptedPart1 = nil;
-    NSData *aadddd = [NSData dataWithHexString:@"000000000000000119F1030024"];
     [WX_AesGcm128 aes128gcmEncrypt:fixData ciphertext:&encryptedPart1 aad:aadddd key:shortlinkWriteKey.KEY ivec:writeIV];          //第一次加密
     
     NSData *postData = [NSData dataWithHexString:@"19F103"];
@@ -102,19 +109,25 @@
     postData = [postData addDataAtTail:encryptedPart1];
     
     writeIV = [WX_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
+    aadddd = [NSData dataWithHexString:@"00000000000000"];
+    aadddd = [aadddd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
+    aadddd = [[aadddd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t)([_httpData length] + 0x10) flip:YES]]; //0x10 aad len
+    
     NSData *encryptedPart2 = nil;
-    aadddd = [NSData dataWithHexString:@"000000000000000217F1030251"];
     [WX_AesGcm128 aes128gcmEncrypt:_httpData ciphertext:&encryptedPart2 aad:aadddd key:shortlinkWriteKey.KEY ivec:writeIV];        //第二次加密 http 明文流量
 
     postData = [postData addDataAtTail:[NSData dataWithHexString:@"17F103"]];
     postData = [postData addDataAtTail:[NSData packInt16:(int16_t)[encryptedPart2 length] flip:YES]];
-
     postData = [postData addDataAtTail:encryptedPart2];
     
     NSData *plainTextData3 = [NSData dataWithHexString:@"00000003000101"]; // 第三次固定内容
     writeIV = [WX_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
+    
+    aadddd = [NSData dataWithHexString:@"00000000000000"];
+    aadddd = [aadddd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
+    aadddd = [[aadddd addDataAtTail:[NSData dataWithHexString:@"15F103"]] addDataAtTail:[NSData packInt16:(int32_t)([plainTextData3 length] + 0x10) flip:YES]]; //0x10 aad len
+    
     NSData *encryptedPart3 = nil;
-    aadddd = [NSData dataWithHexString:@"000000000000000315F1030017"];
     [WX_AesGcm128 aes128gcmEncrypt:plainTextData3 ciphertext:&encryptedPart3 aad:aadddd key:shortlinkWriteKey.KEY ivec:writeIV];   //第三次解密内容固定
     
     postData = [postData addDataAtTail:[NSData dataWithHexString:@"15F103"]];

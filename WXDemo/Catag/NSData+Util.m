@@ -44,6 +44,11 @@
     }
 }
 
++ (NSData *)packInt8:(int8_t)int8
+{
+    return [[NSData alloc] initWithBytes:&int8 length:sizeof(int8_t)];
+}
+
 + (NSData *)a:(int)int32 {
     return [[self dataWithHexString:[NSString stringWithFormat:@"%x", int32]] bytesFlip];
 }

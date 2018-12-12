@@ -33,6 +33,7 @@
     if (self)
     {
         _clientRandom = [NSData GenRandomDataWithSize:32];
+//        _clientRandom = [NSData dataWithHexString:@"BFBB3304CE294BF241A754996B85D0D91DB37F4D9B0656AA3AB635C48545B72A"];
         NSData *pubkey1;
         NSData *prikey1;
         BOOL ret1 = [ECDH GenEcdhWithNid:415 priKey:&prikey1 pubKeyData:&pubkey1];
@@ -50,6 +51,12 @@
             _prikey2 = prikey2;
             _pubkey2 = pubkey2;
         }
+        
+//        _prikey1 = [NSData dataWithHexString:@"307702010104204B5DF336CEEAAECD52F44983D05ECB16E063134B48214A30279ABC0DE6D1F4ACA00A06082A8648CE3D030107A144034200040683FFB4280A0061018227C215501363CBE26E99A1222C56A43C5337C4F625CAA3A9102F969235B1775EB948D47A84C56AD3E109C1AE2F748B72E885A9E41A41"];
+//        _pubkey1 = [NSData dataWithHexString:@"040683FFB4280A0061018227C215501363CBE26E99A1222C56A43C5337C4F625CAA3A9102F969235B1775EB948D47A84C56AD3E109C1AE2F748B72E885A9E41A41"];
+//
+//        _prikey2 = [NSData dataWithHexString:@"307702010104205A6AADCC8D11CEFC1FFAA2E1B6C06362859F8BF3C7A02053871F669A7109DEABA00A06082A8648CE3D030107A144034200042BFC62671C1C977B3C51678D386FEC388C14A2EEE439062106B6603C305F2C9AC07147D33790658F06876BB158D95531FD3210784E2CDF41707846907A03A17C"];
+//        _pubkey2 = [NSData dataWithHexString:@"042BFC62671C1C977B3C51678D386FEC388C14A2EEE439062106B6603C305F2C9AC07147D33790658F06876BB158D95531FD3210784E2CDF41707846907A03A17C"];
     }
 
     return self;
@@ -64,7 +71,9 @@
         [clientHelloData appendData:_clientRandom];                                              //client random
 
         NSUInteger timeStamp = [[NSDate date] timeIntervalSince1970];
-        [clientHelloData appendData:[NSData packInt32:(int32_t) timeStamp flip:NO]];         //time
+        NSData *timeStampData = [NSData packInt32:(int32_t) timeStamp flip:YES];
+//        timeStampData = [NSData dataWithHexString:@"5BE14AFB"];
+        [clientHelloData appendData:timeStampData];         //time
         [clientHelloData appendData:[NSData dataWithHexString:@"000000A2010000009D001002"]]; //fix
 
         [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000010041"]]; //fix

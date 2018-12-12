@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		1CEB1940082B7F91328724F7 /* libPods-WXDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WXDemo.a */; };
 		71008F3321B6750700DE8DF8 /* DNSMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3221B6750700DE8DF8 /* DNSMgr.m */; };
-		71008F3621B678F500DE8DF8 /* ShortLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3521B678F500DE8DF8 /* ShortLink.m */; };
+		71008F3621B678F500DE8DF8 /* ShortLinkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3521B678F500DE8DF8 /* ShortLinkClient.m */; };
 		71008F3921B67DE800DE8DF8 /* NSURLSession+DTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3821B67DE800DE8DF8 /* NSURLSession+DTAdditions.m */; };
 		71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */; };
 		71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3E21B6CBB400DE8DF8 /* ShortLinkKey.m */; };
 		71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */; };
-		71008F4521B7EF2500DE8DF8 /* ShortLinKWithMMTLSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F4421B7EF2500DE8DF8 /* ShortLinKWithMMTLSTest.m */; };
 		71193F5321AE7A2000D982D5 /* NSString+Concat.m in Sources */ = {isa = PBXBuildFile; fileRef = 71193F5221AE7A2000D982D5 /* NSString+Concat.m */; };
 		712C6E60214A145600603022 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E5F214A145600603022 /* AppDelegate.m */; };
 		712C6E63214A145600603022 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E62214A145600603022 /* ViewController.m */; };
@@ -93,8 +92,8 @@
 		6D6A0611B4D9173A0D7DFBB2 /* Pods-WXDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXDemoUITests/Pods-WXDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		71008F3121B6750700DE8DF8 /* DNSMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNSMgr.h; sourceTree = "<group>"; };
 		71008F3221B6750700DE8DF8 /* DNSMgr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNSMgr.m; sourceTree = "<group>"; };
-		71008F3421B678F500DE8DF8 /* ShortLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortLink.h; sourceTree = "<group>"; };
-		71008F3521B678F500DE8DF8 /* ShortLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortLink.m; sourceTree = "<group>"; };
+		71008F3421B678F500DE8DF8 /* ShortLinkClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortLinkClient.h; sourceTree = "<group>"; };
+		71008F3521B678F500DE8DF8 /* ShortLinkClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortLinkClient.m; sourceTree = "<group>"; };
 		71008F3721B67DE800DE8DF8 /* NSURLSession+DTAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+DTAdditions.h"; sourceTree = "<group>"; };
 		71008F3821B67DE800DE8DF8 /* NSURLSession+DTAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+DTAdditions.m"; sourceTree = "<group>"; };
 		71008F3A21B6925100DE8DF8 /* ShortLinkWithMMTLS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortLinkWithMMTLS.h; sourceTree = "<group>"; };
@@ -103,8 +102,6 @@
 		71008F3E21B6CBB400DE8DF8 /* ShortLinkKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortLinkKey.m; sourceTree = "<group>"; };
 		71008F4021B7A36200DE8DF8 /* MMTLSShortLinkResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMTLSShortLinkResponse.h; sourceTree = "<group>"; };
 		71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMTLSShortLinkResponse.m; sourceTree = "<group>"; };
-		71008F4321B7EF2500DE8DF8 /* ShortLinKWithMMTLSTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortLinKWithMMTLSTest.h; sourceTree = "<group>"; };
-		71008F4421B7EF2500DE8DF8 /* ShortLinKWithMMTLSTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortLinKWithMMTLSTest.m; sourceTree = "<group>"; };
 		71193F5121AE7A2000D982D5 /* NSString+Concat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Concat.h"; sourceTree = "<group>"; };
 		71193F5221AE7A2000D982D5 /* NSString+Concat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Concat.m"; sourceTree = "<group>"; };
 		712C6E5B214A145600603022 /* WXDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -399,8 +396,8 @@
 				7154D5192196B8DF005064C4 /* PrefixHeader.pch */,
 				71D3DAAD21AFCA47002ACF1C /* WXUserDefault.h */,
 				71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */,
-				71008F3421B678F500DE8DF8 /* ShortLink.h */,
-				71008F3521B678F500DE8DF8 /* ShortLink.m */,
+				71008F3421B678F500DE8DF8 /* ShortLinkClient.h */,
+				71008F3521B678F500DE8DF8 /* ShortLinkClient.m */,
 			);
 			path = WXDemo;
 			sourceTree = "<group>";
@@ -639,8 +636,6 @@
 				71008F3E21B6CBB400DE8DF8 /* ShortLinkKey.m */,
 				71008F4021B7A36200DE8DF8 /* MMTLSShortLinkResponse.h */,
 				71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */,
-				71008F4321B7EF2500DE8DF8 /* ShortLinKWithMMTLSTest.h */,
-				71008F4421B7EF2500DE8DF8 /* ShortLinKWithMMTLSTest.m */,
 			);
 			path = mmtls;
 			sourceTree = "<group>";
@@ -915,9 +910,8 @@
 				7154D5222196DFE1005064C4 /* WX_Hex.m in Sources */,
 				71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */,
 				71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */,
-				71008F3621B678F500DE8DF8 /* ShortLink.m in Sources */,
+				71008F3621B678F500DE8DF8 /* ShortLinkClient.m in Sources */,
 				712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */,
-				71008F4521B7EF2500DE8DF8 /* ShortLinKWithMMTLSTest.m in Sources */,
 				712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */,
 				712C7149214BA38900603022 /* LongLinkHeader.m in Sources */,
 				712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */,

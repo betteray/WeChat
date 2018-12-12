@@ -30,6 +30,8 @@ CF_EXTERN_C_BEGIN
 @class BaseRequest;
 @class BaseResponse;
 @class CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg;
+@class CheckResUpdateRequest_ResID;
+@class CheckResUpdateRequest_ResID_SubTypeVector;
 @class ClientChcekData_Tag;
 @class LoginInfo;
 @class ManualAuthAccountRequest;
@@ -3744,6 +3746,63 @@ typedef GPB_ENUM(SendMsgResponseNew_FieldNumber) {
 /** Test to see if @c list has been set. */
 @property(nonatomic, readwrite) BOOL hasList;
 
+@end
+
+#pragma mark - CheckResUpdateRequest
+
+typedef GPB_ENUM(CheckResUpdateRequest_FieldNumber) {
+  CheckResUpdateRequest_FieldNumber_ResIdArray = 1,
+};
+
+@interface CheckResUpdateRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<CheckResUpdateRequest_ResID*> *resIdArray;
+/** The number of items in @c resIdArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger resIdArray_Count;
+
+@end
+
+#pragma mark - CheckResUpdateRequest_ResID
+
+typedef GPB_ENUM(CheckResUpdateRequest_ResID_FieldNumber) {
+  CheckResUpdateRequest_ResID_FieldNumber_Type = 1,
+  CheckResUpdateRequest_ResID_FieldNumber_SubTypeVectorArray = 2,
+};
+
+@interface CheckResUpdateRequest_ResID : GPBMessage
+
+@property(nonatomic, readwrite) int32_t type;
+
+@property(nonatomic, readwrite) BOOL hasType;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<CheckResUpdateRequest_ResID_SubTypeVector*> *subTypeVectorArray;
+/** The number of items in @c subTypeVectorArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger subTypeVectorArray_Count;
+
+@end
+
+#pragma mark - CheckResUpdateRequest_ResID_SubTypeVector
+
+typedef GPB_ENUM(CheckResUpdateRequest_ResID_SubTypeVector_FieldNumber) {
+  CheckResUpdateRequest_ResID_SubTypeVector_FieldNumber_SubType = 1,
+  CheckResUpdateRequest_ResID_SubTypeVector_FieldNumber_KeyVersion = 2,
+  CheckResUpdateRequest_ResID_SubTypeVector_FieldNumber_ResVersion = 3,
+  CheckResUpdateRequest_ResID_SubTypeVector_FieldNumber_Eid = 4,
+};
+
+@interface CheckResUpdateRequest_ResID_SubTypeVector : GPBMessage
+
+@property(nonatomic, readwrite) int32_t subType;
+
+@property(nonatomic, readwrite) BOOL hasSubType;
+@property(nonatomic, readwrite) int32_t keyVersion;
+
+@property(nonatomic, readwrite) BOOL hasKeyVersion;
+@property(nonatomic, readwrite) int32_t resVersion;
+
+@property(nonatomic, readwrite) BOOL hasResVersion;
+@property(nonatomic, readwrite) int32_t eid;
+
+@property(nonatomic, readwrite) BOOL hasEid;
 @end
 
 #pragma mark - ClientChcekData

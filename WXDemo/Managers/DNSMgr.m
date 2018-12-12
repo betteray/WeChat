@@ -83,12 +83,12 @@
     return [ma copy];
 }
 
-- (NSString *)getShortLinkUrl
+- (NSString *)getShortLinkIp
 {
     return [self.shortLinkIpList randomObject];
 }
 
-- (NSString *)getLongLinkUrl
+- (NSString *)getLongLinkIp
 {
     return [self.longLinkIpList randomObject];
 }

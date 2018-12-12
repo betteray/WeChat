@@ -964,6 +964,24 @@ message SendMsgResponseNew
     optional MicroMsgResponseNew list               = 3; //发送结果
 }
 
+message CheckResUpdateRequest
+{
+    message ResID
+    {
+        optional int32 type                     = 1;
+        message SubTypeVector
+        {
+            optional int32 subType              = 1;
+            optional int32 keyVersion           = 2;
+            optional int32 resVersion           = 3;
+            optional int32 eid                  = 4;
+        }
+
+        repeated SubTypeVector subTypeVector    = 2;
+    }
+
+    repeated ResID resId                        = 1;
+}
 
 //Test
 

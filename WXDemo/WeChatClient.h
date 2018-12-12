@@ -41,4 +41,8 @@ typedef void (^FailureBlock)(NSError *error);
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock;
 
+- (void)postRequest:(CgiWrap *)cgiWrap
+            success:(SuccessBlock)successBlock
+            failure:(FailureBlock)failureBlock;
+
 @end

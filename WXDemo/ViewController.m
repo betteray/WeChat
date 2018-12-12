@@ -25,8 +25,6 @@
 #import "WX_SHA256.h"
 #import "WX_HKDF.h"
 
-#import "ShortLinKWithMMTLSTest.h"
-
 #define TICK_INTERVAL 1
 
 @interface ViewController ()
@@ -51,8 +49,6 @@
 {
     [super viewDidLoad];
     _clientMsgId = 1;
-
-    [ShortLinKWithMMTLSTest test];
     
     NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8080/"];
     NSMutableURLRequest *newGetDNSReq = [NSMutableURLRequest requestWithURL:url];
@@ -67,11 +63,37 @@
                                                              }];
 
     [task resume];
+    
 }
 
-- (void)test2
+- (IBAction)checkresUpdate:(id)sender
 {
+    CheckResUpdateRequest_ResID_SubTypeVector *crs = [CheckResUpdateRequest_ResID_SubTypeVector new];
+    crs.subType = 1;
+    crs.keyVersion = 0;
+    crs.resVersion = 473;
+    crs.eid = 0;
     
+    CheckResUpdateRequest_ResID *resID = [CheckResUpdateRequest_ResID new];
+    resID.type = 37;
+    resID.subTypeVectorArray = [@[crs] mutableCopy];
+    
+    CheckResUpdateRequest *request = [[CheckResUpdateRequest alloc] init];
+    request.resIdArray = [@[resID] mutableCopy];
+    
+    CgiWrap *cgiWrap = [CgiWrap new];
+    cgiWrap.cgi = 180;
+    cgiWrap.cmdId = 0;
+    cgiWrap.request = request;
+    cgiWrap.needSetBaseRequest = NO;
+    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/encryptchecktinkerupdate";
+//    cgiWrap.responseClass = [GetLoginQRCodeResponse class];
+    
+    [[WeChatClient sharedClient] postRequest:cgiWrap success:^(id  _Nullable response) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 - (IBAction)getQRCode
@@ -212,16 +234,23 @@
     cgiWrap.cgi = 522;
     cgiWrap.request = request;
     cgiWrap.needSetBaseRequest = NO;
+    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/newsendmsg";
     cgiWrap.responseClass = [MicroMsgResponseNew class];
 
-    [WeChatClient startRequest:cgiWrap
-        success:^(id _Nullable response) {
-            NSLog(@"%@", response);
+//    [WeChatClient startRequest:cgiWrap
+//        success:^(id _Nullable response) {
+//            NSLog(@"%@", response);
+//
+//        }
+//        failure:^(NSError *error) {
+//            NSLog(@"%@", error);
+//        }];
+    
+    [[WeChatClient sharedClient] postRequest:cgiWrap success:^(id  _Nullable response) {
 
-        }
-        failure:^(NSError *error) {
-            NSLog(@"%@", error);
-        }];
+    } failure:^(NSError *error) {
+
+    }];
 }
 
 - (IBAction)ManualAuth
@@ -280,15 +309,15 @@
 
     //iMac 暂时不需要
 
-    if ([[WXUserDefault getClientCheckData] length] <= 0)
-    {
-        [self showHUDWithText:@"Make Sure ClientCheckData not nil."];
-        return;
-    }
-    else
-    {
-        [self showHUDWithText:@"CLinetCheckData has worked."];
-    }
+//    if ([[WXUserDefault getClientCheckData] length] <= 0)
+//    {
+//        [self showHUDWithText:@"Make Sure ClientCheckData not nil."];
+//        return;
+//    }
+//    else
+//    {
+//        [self showHUDWithText:@"CLinetCheckData has worked."];
+//    }
 
     SKBuiltinBuffer *clientCheckData = [SKBuiltinBuffer new];
     clientCheckData.iLen = (int) [[WXUserDefault getClientCheckData] length];
@@ -302,8 +331,11 @@
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cgi = 701;
     cgiWrap.cmdId = 253;
+    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/manualauth";
     cgiWrap.request = authRequest;
     cgiWrap.responseClass = [ManualAuthResponse class];
+    cgiWrap.needSetBaseRequest = NO;
+
 
     [[WeChatClient sharedClient] manualAuth:cgiWrap
                                     success:^(GPBMessage *_Nullable response) {

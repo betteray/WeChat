@@ -6,6 +6,7 @@ target 'WXDemo' do
   # use_frameworks!
   pod 'CocoaAsyncSocket'
   pod 'FastSocket'
+  pod 'ASIHTTPRequest'
   pod 'Protobuf'
   pod 'SDWebImage'
   pod 'YYModel', '~> 1.0.4'

@@ -9316,6 +9316,196 @@ typedef struct SendMsgResponseNew__storage_ {
 
 @end
 
+#pragma mark - CheckResUpdateRequest
+
+@implementation CheckResUpdateRequest
+
+@dynamic resIdArray, resIdArray_Count;
+
+typedef struct CheckResUpdateRequest__storage_ {
+  uint32_t _has_storage_[1];
+  NSMutableArray *resIdArray;
+} CheckResUpdateRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "resIdArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(CheckResUpdateRequest_ResID),
+        .number = CheckResUpdateRequest_FieldNumber_ResIdArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(CheckResUpdateRequest__storage_, resIdArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[CheckResUpdateRequest class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(CheckResUpdateRequest__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001\000resId\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - CheckResUpdateRequest_ResID
+
+@implementation CheckResUpdateRequest_ResID
+
+@dynamic hasType, type;
+@dynamic subTypeVectorArray, subTypeVectorArray_Count;
+
+typedef struct CheckResUpdateRequest_ResID__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t type;
+  NSMutableArray *subTypeVectorArray;
+} CheckResUpdateRequest_ResID__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "type",
+        .dataTypeSpecific.className = NULL,
+        .number = CheckResUpdateRequest_ResID_FieldNumber_Type,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(CheckResUpdateRequest_ResID__storage_, type),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "subTypeVectorArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(CheckResUpdateRequest_ResID_SubTypeVector),
+        .number = CheckResUpdateRequest_ResID_FieldNumber_SubTypeVectorArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(CheckResUpdateRequest_ResID__storage_, subTypeVectorArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[CheckResUpdateRequest_ResID class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(CheckResUpdateRequest_ResID__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\002\000subTypeVector\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(CheckResUpdateRequest)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - CheckResUpdateRequest_ResID_SubTypeVector
+
+@implementation CheckResUpdateRequest_ResID_SubTypeVector
+
+@dynamic hasSubType, subType;
+@dynamic hasKeyVersion, keyVersion;
+@dynamic hasResVersion, resVersion;
+@dynamic hasEid, eid;
+
+typedef struct CheckResUpdateRequest_ResID_SubTypeVector__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t subType;
+  int32_t keyVersion;
+  int32_t resVersion;
+  int32_t eid;
+} CheckResUpdateRequest_ResID_SubTypeVector__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "subType",
+        .dataTypeSpecific.className = NULL,
+        .number = CheckResUpdateRequest_ResID_SubTypeVector_FieldNumber_SubType,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(CheckResUpdateRequest_ResID_SubTypeVector__storage_, subType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "keyVersion",
+        .dataTypeSpecific.className = NULL,
+        .number = CheckResUpdateRequest_ResID_SubTypeVector_FieldNumber_KeyVersion,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(CheckResUpdateRequest_ResID_SubTypeVector__storage_, keyVersion),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "resVersion",
+        .dataTypeSpecific.className = NULL,
+        .number = CheckResUpdateRequest_ResID_SubTypeVector_FieldNumber_ResVersion,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(CheckResUpdateRequest_ResID_SubTypeVector__storage_, resVersion),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "eid",
+        .dataTypeSpecific.className = NULL,
+        .number = CheckResUpdateRequest_ResID_SubTypeVector_FieldNumber_Eid,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(CheckResUpdateRequest_ResID_SubTypeVector__storage_, eid),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[CheckResUpdateRequest_ResID_SubTypeVector class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(CheckResUpdateRequest_ResID_SubTypeVector__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\003\001\007\000\002\n\000\003\n\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(CheckResUpdateRequest_ResID)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - ClientChcekData
 
 @implementation ClientChcekData
