@@ -294,7 +294,7 @@
     deviceRequest.builtinIpseq = 0;
     deviceRequest.clientSeqId = CLIENT_SEQ_ID;
     deviceRequest.deviceName = DEVICEN_NAME;
-    deviceRequest.deviceType = DEVICE_TYPE;
+    deviceRequest.deviceType = @"iPhone"; //"DEVICE_TYPE;
     deviceRequest.language = LANGUAGE;
     deviceRequest.timeZone = TIME_ZONE;
     deviceRequest.channel = CHANEL;
