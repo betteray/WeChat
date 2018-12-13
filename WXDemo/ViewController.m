@@ -50,7 +50,7 @@
     [super viewDidLoad];
     _clientMsgId = 1;
     
-    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8080/"];
+    NSURL *url = [NSURL URLWithString:@"http://10.12.87.38:8080/"];
     NSMutableURLRequest *newGetDNSReq = [NSMutableURLRequest requestWithURL:url];
     newGetDNSReq.HTTPMethod = @"GET";
     newGetDNSReq.timeoutInterval = 5;
@@ -309,15 +309,15 @@
 
     //iMac 暂时不需要
 
-//    if ([[WXUserDefault getClientCheckData] length] <= 0)
-//    {
-//        [self showHUDWithText:@"Make Sure ClientCheckData not nil."];
-//        return;
-//    }
-//    else
-//    {
-//        [self showHUDWithText:@"CLinetCheckData has worked."];
-//    }
+    if ([[WXUserDefault getClientCheckData] length] <= 0)
+    {
+        [self showHUDWithText:@"Make Sure ClientCheckData not nil."];
+        return;
+    }
+    else
+    {
+        [self showHUDWithText:@"CLinetCheckData has worked."];
+    }
 
     SKBuiltinBuffer *clientCheckData = [SKBuiltinBuffer new];
     clientCheckData.iLen = (int) [[WXUserDefault getClientCheckData] length];
