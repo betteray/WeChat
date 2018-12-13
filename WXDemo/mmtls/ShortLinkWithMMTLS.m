@@ -182,6 +182,21 @@
     
     DLog(@"decrypted part2", plainText2);
     
+    // 第三部分
+    NSData *encrypedPart3 = [response getPart3];
+    
+    aad1 = [[NSData dataWithHexString:@"000000000000000317F10301"] mutableCopy];
+    [aad1 appendData:[NSData packInt32:(int32_t)[encrypedPart3 length] flip:NO]];
+    
+    readIV1 = [WX_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
+    
+    DLog(@"after XOR readIV 1", readIV1);
+    
+    NSData *plainText3 = nil;
+    [WX_AesGcm128 aes128gcmDecrypt:encrypedPart3 plaintext:&plainText3 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
+    
+    DLog(@"decrypted part2", plainText3);
+    
     return plainText2;
 }
 

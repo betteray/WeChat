@@ -145,7 +145,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
             NSLog(@" ** Gen RSA KeyPair Fail. ** ");
         }
 
-        _heartbeatTimer = [NSTimer timerWithTimeInterval:60 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
+        _heartbeatTimer = [NSTimer timerWithTimeInterval:60*3 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
 
         _readSerialQueue = dispatch_queue_create("me.ray.FastSocket.Read", DISPATCH_QUEUE_SERIAL);
@@ -241,9 +241,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     wrap.cgi = 139;
     wrap.cmdId = 27;
     wrap.request = request;
+    wrap.cgiPath = @"/cgi-bin/micromsg-bin/newinit";
     wrap.responseClass = [NewInitResponse class];
 
-    [[WeChatClient sharedClient] startRequest:wrap
+    [[WeChatClient sharedClient] postRequest:wrap
         success:^(NewInitResponse *_Nullable response) {
             self.sync_key_cur = response.syncKeyCur;
             self.sync_key_max = response.syncKeyMax;
@@ -409,15 +410,29 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     DLog(@"RCV mmtlsData", rcvData);
 
     MMTLSShortLinkResponse *response = [[MMTLSShortLinkResponse alloc] initWithData:rcvData];
-    [slm receiveData:response];
-
-//    Task *task = [Task new];
-//    task.sucBlock = successBlock;
-//    task.failBlock = failureBlock;
-//    task.cgiWrap = cgiWrap;
-//    [_tasks addObject:task];
+    NSData *packData = [slm receiveData:response];
+    [self UnPack:packData];
     
-//    [self mmtlsEnCryptAndSend:sendData withTag:cgiWrap.cgi];
+    Task *task = [Task new];
+    task.sucBlock = successBlock;
+    task.failBlock = failureBlock;
+    task.cgiWrap = cgiWrap;
+    [_tasks addObject:task];
+}
+
+- (void)UnPack:(NSData *)data
+{
+    Package *package = [self UnPackLongLinkBody:data];
+    NSData *protobufData = [package.body aesDecryptWithKey:_sessionKey];
+    Task *task = [self getTaskWithTag:package.header.cgi];
+    id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
+    if (task.sucBlock)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            ((SuccessBlock) task.sucBlock)(response);
+        });
+        [_tasks removeObject:task];
+    }
 }
 
 - (NSData *)getHttpDataWithShortLinkPackData:(NSData *)shortlinkData
@@ -744,16 +759,16 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                 switch (longLinkPackage.header.cmdId)
                 {
                     case CMDID_PUSH_ACK:
-//                        if ([self.sync_key_cur length] == 0)
-//                        {
-//                            NSLog(@"Start New Init.");
-//                            [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
-//                            NSLog(@"Stop New Init.");
-//                        }
-//                        else
-//                        {
-//                            [self newSync];
-//                        }
+                        if ([self.sync_key_cur length] == 0)
+                        {
+                            NSLog(@"Start New Init.");
+                            [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
+                            NSLog(@"Stop New Init.");
+                        }
+                        else
+                        {
+                            [self newSync];
+                        }
                         break;
                     default:
                         break;
