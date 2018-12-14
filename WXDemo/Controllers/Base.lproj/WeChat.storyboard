@@ -206,6 +206,16 @@
                     <view key="view" contentMode="scaleToFill" id="1Ca-Y2-x3b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7w-XZ-aza">
+                                <rect key="frame" x="46" y="97" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SendMsg"/>
+                                <connections>
+                                    <action selector="SendMsg" destination="WX2-nG-CkI" eventType="touchUpInside" id="cck-bu-44l"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="PJ7-fA-7lV"/>
                     </view>

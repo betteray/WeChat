@@ -14,14 +14,58 @@
 
 @implementation FunctionsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)SendMsg
+{
+    SKBuiltinString_t *toUserName = [SKBuiltinString_t new];
+    toUserName.string = @"rowhongwei";
+
+    MicroMsgRequestNew *mmRequestNew = [MicroMsgRequestNew new];
+    mmRequestNew.toUserName = toUserName;
+    mmRequestNew.content = @"hello";
+    mmRequestNew.type = 1;
+    mmRequestNew.createTime = [[NSDate date] timeIntervalSince1970];
+    mmRequestNew.clientMsgId = [[NSDate date] timeIntervalSince1970] + arc4random(); //_clientMsgId++;
+    //    mmRequestNew.msgSource = @""; // <msgsource></msgsource>
+
+    SendMsgRequestNew *request = [SendMsgRequestNew new];
+
+    [request setListArray:[NSMutableArray arrayWithObject:mmRequestNew]];
+    request.count = (int32_t)[[NSMutableArray arrayWithObject:mmRequestNew] count];
+
+    CgiWrap *cgiWrap = [CgiWrap new];
+    cgiWrap.cmdId = 237;
+    cgiWrap.cgi = 522;
+    cgiWrap.request = request;
+    cgiWrap.needSetBaseRequest = NO;
+    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/newsendmsg";
+    cgiWrap.responseClass = [MicroMsgResponseNew class];
+
+    [WeChatClient startRequest:cgiWrap
+        success:^(id _Nullable response) {
+            NSLog(@"%@", response);
+
+        }
+        failure:^(NSError *error) {
+            NSLog(@"%@", error);
+        }];
+
+    //    [[WeChatClient sharedClient] postRequest:cgiWrap success:^(id  _Nullable response) {
+    //
+    //    } failure:^(NSError *error) {
+    //
+    //    }];
 }
 
 /*
