@@ -178,7 +178,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         long sent = [self.client sendBytes:[sendData bytes] count:[sendData length]];
         if (sent == sendData.length)
         {
-            LogInfo(@"FastSocket Send All the Data.");
+            LogInfo(@"FastSocket Send all the Data, Len: %ld", sent);
         }
         else
         {
@@ -301,7 +301,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 - (void)newSync
 {
     new_sync_req *req = [new_sync_req new];
-    req.flag = @"";
+//    req.flag = @"";
     req.selector = 262151;
     req.syncKey = self.sync_key_cur;
     req.scene = 7;
@@ -762,7 +762,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     {
         case UnPack_Success:
         {
-            LogInfo(@"Receive CmdID: %d", longLinkPackage.header.cmdId);
+            LogInfo(@"Receive CmdID: %d, BodyLen: %d", longLinkPackage.header.cmdId, longLinkPackage.header.bodyLength);
 
             if (longLinkPackage.header.bodyLength < 0x20)
             {
