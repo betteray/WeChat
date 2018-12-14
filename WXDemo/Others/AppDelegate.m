@@ -22,11 +22,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    
     // Configure CocoaLumberjack
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     [self freshClientCheckDataToDB];
-    
     [[WeChatClient sharedClient] start];
     [DNSManager sharedMgr];
     
