@@ -89,7 +89,7 @@
 
     GetLoginQRCodeRequest *request = [GetLoginQRCodeRequest new];
 
-    SKBuiltinBuffer *buffer = [SKBuiltinBuffer new];
+    SKBuiltinBuffer_t *buffer = [SKBuiltinBuffer_t new];
     [buffer setILen:(int32_t)[[WeChatClient sharedClient].sessionKey length]];
     [buffer setBuffer:[WeChatClient sharedClient].sessionKey];
     [request setRandomEncryKey:buffer];
@@ -100,7 +100,7 @@
     [request setHardwareExtra:0];
     [request setUserName:nil];
     [request setSoftType:nil];
-    SKBuiltinBuffer *pubKey = [SKBuiltinBuffer new];
+    SKBuiltinBuffer_t *pubKey = [SKBuiltinBuffer_t new];
     pubKey.buffer = [WeChatClient sharedClient].pubKey;
     [pubKey setILen:(int32_t)[[WeChatClient sharedClient].pubKey length]];
     [request setMsgContextPubKey:pubKey];
@@ -136,7 +136,7 @@
 
     CheckLoginQRCodeRequest *request = [CheckLoginQRCodeRequest new];
 
-    SKBuiltinBuffer *buffer = [SKBuiltinBuffer new];
+    SKBuiltinBuffer_t *buffer = [SKBuiltinBuffer_t new];
     [buffer setILen:16];
     [buffer setBuffer:[WeChatClient sharedClient].sessionKey];
     [request setRandomEncryKey:buffer];
@@ -250,7 +250,7 @@
     deviceRequest.ostype = @"Version 10.13.6 (Build 17G65)";
 
     //iMac 暂时不需要
-    //    SKBuiltinBuffer *clientCheckData = [SKBuiltinBuffer new];
+    //    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
     //    clientCheckData.iLen = 0;
     //    clientCheckData.buffer = [NSData data];
     //    deviceRequest.clientCheckData = clientCheckData;

@@ -300,12 +300,12 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)newSync
 {
-    new_sync_req *req = [new_sync_req new];
-//    req.flag = @"";
+    NewSyncRequest *req = [NewSyncRequest new];
+    req.tag1 = @"";
     req.selector = 262151;
-    req.syncKey = self.sync_key_cur;
+    req.keyBuf = self.sync_key_cur;
     req.scene = 7;
-    req.device = DEVICE_TYPE;
+    req.deviceType = DEVICE_TYPE;
     req.syncMsgDigest = 1;
 
     CgiWrap *wrap = [CgiWrap new];

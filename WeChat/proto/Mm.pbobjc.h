@@ -56,7 +56,7 @@ CF_EXTERN_C_BEGIN
 @class MicroMsgRequestNew;
 @class MicroMsgResponseNew;
 @class Msg_RawContent;
-@class SKBuiltinBuffer;
+@class SKBuiltinBuffer_t;
 @class SKBuiltinString_t;
 @class SyncKey_MsgKey;
 @class SyncKey_MsgKey_Key;
@@ -91,7 +91,6 @@ CF_EXTERN_C_BEGIN
 @class mm_facing_create_chatroom_resp_result;
 @class mm_facing_create_chatroom_resp_result_err_msg;
 @class new_send_app_msg_req_appmsg_info;
-@class new_sync_req_continue_flag;
 @class new_sync_resp_new_msg;
 @class open_wxhb_resp_TAG1;
 @class oplog_req_TAG1;
@@ -802,62 +801,49 @@ typedef GPB_ENUM(contact_info_GroupMemberList_MemberInfo_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasTag8;
 @end
 
-#pragma mark - new_sync_req
+#pragma mark - NewSyncRequest
 
-typedef GPB_ENUM(new_sync_req_FieldNumber) {
-  new_sync_req_FieldNumber_Flag = 1,
-  new_sync_req_FieldNumber_Selector = 2,
-  new_sync_req_FieldNumber_SyncKey = 3,
-  new_sync_req_FieldNumber_Scene = 4,
-  new_sync_req_FieldNumber_Device = 5,
-  new_sync_req_FieldNumber_SyncMsgDigest = 6,
+typedef GPB_ENUM(NewSyncRequest_FieldNumber) {
+  NewSyncRequest_FieldNumber_Tag1 = 1,
+  NewSyncRequest_FieldNumber_Selector = 2,
+  NewSyncRequest_FieldNumber_KeyBuf = 3,
+  NewSyncRequest_FieldNumber_Scene = 4,
+  NewSyncRequest_FieldNumber_DeviceType = 5,
+  NewSyncRequest_FieldNumber_SyncMsgDigest = 6,
 };
 
 /**
  * 同步消息
  **/
-@interface new_sync_req : GPBMessage
+@interface NewSyncRequest : GPBMessage
 
 /** unknown,must be 0 */
-@property(nonatomic, readwrite, strong, null_resettable) new_sync_req_continue_flag *flag;
-/** Test to see if @c flag has been set. */
-@property(nonatomic, readwrite) BOOL hasFlag;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *tag1;
+/** Test to see if @c tag1 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag1;
 
 /** unknown,just set 7 */
 @property(nonatomic, readwrite) int32_t selector;
 
 @property(nonatomic, readwrite) BOOL hasSelector;
 /** 同步成功后服务器返回的消息id */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKey;
-/** Test to see if @c syncKey has been set. */
-@property(nonatomic, readwrite) BOOL hasSyncKey;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *keyBuf;
+/** Test to see if @c keyBuf has been set. */
+@property(nonatomic, readwrite) BOOL hasKeyBuf;
 
 /** unkown,just set 3 */
 @property(nonatomic, readwrite) int32_t scene;
 
 @property(nonatomic, readwrite) BOOL hasScene;
 /** 'android-22' */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *device;
-/** Test to see if @c device has been set. */
-@property(nonatomic, readwrite) BOOL hasDevice;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceType;
+/** Test to see if @c deviceType has been set. */
+@property(nonatomic, readwrite) BOOL hasDeviceType;
 
 /** unknown,just set 1 */
 @property(nonatomic, readwrite) int32_t syncMsgDigest;
 
 @property(nonatomic, readwrite) BOOL hasSyncMsgDigest;
-@end
-
-#pragma mark - new_sync_req_continue_flag
-
-typedef GPB_ENUM(new_sync_req_continue_flag_FieldNumber) {
-  new_sync_req_continue_flag_FieldNumber_Flag = 1,
-};
-
-@interface new_sync_req_continue_flag : GPBMessage
-
-@property(nonatomic, readwrite) int32_t flag;
-
-@property(nonatomic, readwrite) BOOL hasFlag;
 @end
 
 #pragma mark - new_sync_resp
@@ -2558,14 +2544,14 @@ typedef GPB_ENUM(revoke_msg_resp_FieldNumber) {
 
 @end
 
-#pragma mark - SKBuiltinBuffer
+#pragma mark - SKBuiltinBuffer_t
 
-typedef GPB_ENUM(SKBuiltinBuffer_FieldNumber) {
-  SKBuiltinBuffer_FieldNumber_ILen = 1,
-  SKBuiltinBuffer_FieldNumber_Buffer = 2,
+typedef GPB_ENUM(SKBuiltinBuffer_t_FieldNumber) {
+  SKBuiltinBuffer_t_FieldNumber_ILen = 1,
+  SKBuiltinBuffer_t_FieldNumber_Buffer = 2,
 };
 
-@interface SKBuiltinBuffer : GPBMessage
+@interface SKBuiltinBuffer_t : GPBMessage
 
 @property(nonatomic, readwrite) int32_t iLen;
 
@@ -2672,7 +2658,7 @@ typedef GPB_ENUM(GetLoginQRCodeRequest_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasBaseRequest;
 
 /** iPad 16位 iMac 184位 */
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *randomEncryKey;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *randomEncryKey;
 /** Test to see if @c randomEncryKey has been set. */
 @property(nonatomic, readwrite) BOOL hasRandomEncryKey;
 
@@ -2702,7 +2688,7 @@ typedef GPB_ENUM(GetLoginQRCodeRequest_FieldNumber) {
 
 @property(nonatomic, readwrite) BOOL hasExtDevLoginType;
 /** iMac */
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *msgContextPubKey;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *msgContextPubKey;
 /** Test to see if @c msgContextPubKey has been set. */
 @property(nonatomic, readwrite) BOOL hasMsgContextPubKey;
 
@@ -2727,7 +2713,7 @@ typedef GPB_ENUM(GetLoginQRCodeResponse_FieldNumber) {
 /** Test to see if @c baseResponse has been set. */
 @property(nonatomic, readwrite) BOOL hasBaseResponse;
 
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *qrcode;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *qrcode;
 /** Test to see if @c qrcode has been set. */
 @property(nonatomic, readwrite) BOOL hasQrcode;
 
@@ -2738,7 +2724,7 @@ typedef GPB_ENUM(GetLoginQRCodeResponse_FieldNumber) {
 @property(nonatomic, readwrite) int32_t checkTime;
 
 @property(nonatomic, readwrite) BOOL hasCheckTime;
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *notifyKey;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *notifyKey;
 /** Test to see if @c notifyKey has been set. */
 @property(nonatomic, readwrite) BOOL hasNotifyKey;
 
@@ -2749,7 +2735,7 @@ typedef GPB_ENUM(GetLoginQRCodeResponse_FieldNumber) {
 /** Test to see if @c blueToothBroadCastUuid has been set. */
 @property(nonatomic, readwrite) BOOL hasBlueToothBroadCastUuid;
 
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *blueToothBroadCastContent;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *blueToothBroadCastContent;
 /** Test to see if @c blueToothBroadCastContent has been set. */
 @property(nonatomic, readwrite) BOOL hasBlueToothBroadCastContent;
 
@@ -2774,7 +2760,7 @@ typedef GPB_ENUM(CheckLoginQRCodeRequest_FieldNumber) {
 /** Test to see if @c baseRequest has been set. */
 @property(nonatomic, readwrite) BOOL hasBaseRequest;
 
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *randomEncryKey;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *randomEncryKey;
 /** Test to see if @c randomEncryKey has been set. */
 @property(nonatomic, readwrite) BOOL hasRandomEncryKey;
 
@@ -2819,7 +2805,7 @@ typedef GPB_ENUM(CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg_FieldNumber) {
 @interface CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg : GPBMessage
 
 /** 是bytes,需notifykey不解压aes解密一次,解密后再序列化成下面的对象 */
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *notifyData;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *notifyData;
 /** Test to see if @c notifyData has been set. */
 @property(nonatomic, readwrite) BOOL hasNotifyData;
 
@@ -3095,7 +3081,7 @@ typedef GPB_ENUM(ManualAuthDeviceRequest_FieldNumber) {
 @property(nonatomic, readwrite) int32_t inputType;
 
 @property(nonatomic, readwrite) BOOL hasInputType;
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *clientCheckData;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *clientCheckData;
 /** Test to see if @c clientCheckData has been set. */
 @property(nonatomic, readwrite) BOOL hasClientCheckData;
 
@@ -3111,7 +3097,7 @@ typedef GPB_ENUM(ManualAuthDeviceRequest_BaseAuthReqInfo_FieldNumber) {
 @interface ManualAuthDeviceRequest_BaseAuthReqInfo : GPBMessage
 
 /** iMac 第一次登陆没有数据，后续登陆会取一个数据。 */
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer *cliDbencryptInfo;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *cliDbencryptInfo;
 /** Test to see if @c cliDbencryptInfo has been set. */
 @property(nonatomic, readwrite) BOOL hasCliDbencryptInfo;
 

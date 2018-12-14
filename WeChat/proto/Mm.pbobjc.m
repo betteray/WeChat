@@ -1798,26 +1798,26 @@ typedef struct contact_info_GroupMemberList_MemberInfo__storage_ {
 
 @end
 
-#pragma mark - new_sync_req
+#pragma mark - NewSyncRequest
 
-@implementation new_sync_req
+@implementation NewSyncRequest
 
-@dynamic hasFlag, flag;
+@dynamic hasTag1, tag1;
 @dynamic hasSelector, selector;
-@dynamic hasSyncKey, syncKey;
+@dynamic hasKeyBuf, keyBuf;
 @dynamic hasScene, scene;
-@dynamic hasDevice, device;
+@dynamic hasDeviceType, deviceType;
 @dynamic hasSyncMsgDigest, syncMsgDigest;
 
-typedef struct new_sync_req__storage_ {
+typedef struct NewSyncRequest__storage_ {
   uint32_t _has_storage_[1];
   int32_t selector;
   int32_t scene;
   int32_t syncMsgDigest;
-  new_sync_req_continue_flag *flag;
-  NSData *syncKey;
-  NSString *device;
-} new_sync_req__storage_;
+  NSString *tag1;
+  NSData *keyBuf;
+  NSString *deviceType;
+} NewSyncRequest__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -1826,117 +1826,73 @@ typedef struct new_sync_req__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "flag",
-        .dataTypeSpecific.className = GPBStringifySymbol(new_sync_req_continue_flag),
-        .number = new_sync_req_FieldNumber_Flag,
+        .name = "tag1",
+        .dataTypeSpecific.className = NULL,
+        .number = NewSyncRequest_FieldNumber_Tag1,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(new_sync_req__storage_, flag),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
+        .offset = (uint32_t)offsetof(NewSyncRequest__storage_, tag1),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeString,
       },
       {
         .name = "selector",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_req_FieldNumber_Selector,
+        .number = NewSyncRequest_FieldNumber_Selector,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(new_sync_req__storage_, selector),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(NewSyncRequest__storage_, selector),
+        .flags = GPBFieldRequired,
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "syncKey",
+        .name = "keyBuf",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_req_FieldNumber_SyncKey,
+        .number = NewSyncRequest_FieldNumber_KeyBuf,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(new_sync_req__storage_, syncKey),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .offset = (uint32_t)offsetof(NewSyncRequest__storage_, keyBuf),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
       {
         .name = "scene",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_req_FieldNumber_Scene,
+        .number = NewSyncRequest_FieldNumber_Scene,
         .hasIndex = 3,
-        .offset = (uint32_t)offsetof(new_sync_req__storage_, scene),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(NewSyncRequest__storage_, scene),
+        .flags = GPBFieldRequired,
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "device",
+        .name = "deviceType",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_req_FieldNumber_Device,
+        .number = NewSyncRequest_FieldNumber_DeviceType,
         .hasIndex = 4,
-        .offset = (uint32_t)offsetof(new_sync_req__storage_, device),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(NewSyncRequest__storage_, deviceType),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "syncMsgDigest",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_req_FieldNumber_SyncMsgDigest,
+        .number = NewSyncRequest_FieldNumber_SyncMsgDigest,
         .hasIndex = 5,
-        .offset = (uint32_t)offsetof(new_sync_req__storage_, syncMsgDigest),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(NewSyncRequest__storage_, syncMsgDigest),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[new_sync_req class]
+        [GPBDescriptor allocDescriptorForClass:[NewSyncRequest class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(new_sync_req__storage_)
+                                   storageSize:sizeof(NewSyncRequest__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\001\003\004\203\000";
+        "\003\003\006\000\005\n\000\006\r\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - new_sync_req_continue_flag
-
-@implementation new_sync_req_continue_flag
-
-@dynamic hasFlag, flag;
-
-typedef struct new_sync_req_continue_flag__storage_ {
-  uint32_t _has_storage_[1];
-  int32_t flag;
-} new_sync_req_continue_flag__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "flag",
-        .dataTypeSpecific.className = NULL,
-        .number = new_sync_req_continue_flag_FieldNumber_Flag,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(new_sync_req_continue_flag__storage_, flag),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[new_sync_req_continue_flag class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(new_sync_req_continue_flag__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(new_sync_req)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -6216,18 +6172,18 @@ typedef struct revoke_msg_resp__storage_ {
 
 @end
 
-#pragma mark - SKBuiltinBuffer
+#pragma mark - SKBuiltinBuffer_t
 
-@implementation SKBuiltinBuffer
+@implementation SKBuiltinBuffer_t
 
 @dynamic hasILen, iLen;
 @dynamic hasBuffer, buffer;
 
-typedef struct SKBuiltinBuffer__storage_ {
+typedef struct SKBuiltinBuffer_t__storage_ {
   uint32_t _has_storage_[1];
   int32_t iLen;
   NSData *buffer;
-} SKBuiltinBuffer__storage_;
+} SKBuiltinBuffer_t__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -6238,29 +6194,29 @@ typedef struct SKBuiltinBuffer__storage_ {
       {
         .name = "iLen",
         .dataTypeSpecific.className = NULL,
-        .number = SKBuiltinBuffer_FieldNumber_ILen,
+        .number = SKBuiltinBuffer_t_FieldNumber_ILen,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(SKBuiltinBuffer__storage_, iLen),
+        .offset = (uint32_t)offsetof(SKBuiltinBuffer_t__storage_, iLen),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
         .name = "buffer",
         .dataTypeSpecific.className = NULL,
-        .number = SKBuiltinBuffer_FieldNumber_Buffer,
+        .number = SKBuiltinBuffer_t_FieldNumber_Buffer,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(SKBuiltinBuffer__storage_, buffer),
+        .offset = (uint32_t)offsetof(SKBuiltinBuffer_t__storage_, buffer),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeBytes,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[SKBuiltinBuffer class]
+        [GPBDescriptor allocDescriptorForClass:[SKBuiltinBuffer_t class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(SKBuiltinBuffer__storage_)
+                                   storageSize:sizeof(SKBuiltinBuffer_t__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
@@ -6500,11 +6456,11 @@ typedef struct GetLoginQRCodeRequest__storage_ {
   int32_t hardwareExtra;
   int32_t extDevLoginType;
   BaseRequest *baseRequest;
-  SKBuiltinBuffer *randomEncryKey;
+  SKBuiltinBuffer_t *randomEncryKey;
   NSString *deviceName;
   NSString *userName;
   NSString *softType;
-  SKBuiltinBuffer *msgContextPubKey;
+  SKBuiltinBuffer_t *msgContextPubKey;
 } GetLoginQRCodeRequest__storage_;
 
 // This method is threadsafe because it is initially called
@@ -6524,7 +6480,7 @@ typedef struct GetLoginQRCodeRequest__storage_ {
       },
       {
         .name = "randomEncryKey",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer),
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
         .number = GetLoginQRCodeRequest_FieldNumber_RandomEncryKey,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(GetLoginQRCodeRequest__storage_, randomEncryKey),
@@ -6587,7 +6543,7 @@ typedef struct GetLoginQRCodeRequest__storage_ {
       },
       {
         .name = "msgContextPubKey",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer),
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
         .number = GetLoginQRCodeRequest_FieldNumber_MsgContextPubKey,
         .hasIndex = 8,
         .offset = (uint32_t)offsetof(GetLoginQRCodeRequest__storage_, msgContextPubKey),
@@ -6634,11 +6590,11 @@ typedef struct GetLoginQRCodeResponse__storage_ {
   int32_t checkTime;
   int32_t expiredTime;
   BaseResponse *baseResponse;
-  SKBuiltinBuffer *qrcode;
+  SKBuiltinBuffer_t *qrcode;
   NSString *uuid;
-  SKBuiltinBuffer *notifyKey;
+  SKBuiltinBuffer_t *notifyKey;
   NSString *blueToothBroadCastUuid;
-  SKBuiltinBuffer *blueToothBroadCastContent;
+  SKBuiltinBuffer_t *blueToothBroadCastContent;
 } GetLoginQRCodeResponse__storage_;
 
 // This method is threadsafe because it is initially called
@@ -6658,7 +6614,7 @@ typedef struct GetLoginQRCodeResponse__storage_ {
       },
       {
         .name = "qrcode",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer),
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
         .number = GetLoginQRCodeResponse_FieldNumber_Qrcode,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(GetLoginQRCodeResponse__storage_, qrcode),
@@ -6685,7 +6641,7 @@ typedef struct GetLoginQRCodeResponse__storage_ {
       },
       {
         .name = "notifyKey",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer),
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
         .number = GetLoginQRCodeResponse_FieldNumber_NotifyKey,
         .hasIndex = 4,
         .offset = (uint32_t)offsetof(GetLoginQRCodeResponse__storage_, notifyKey),
@@ -6712,7 +6668,7 @@ typedef struct GetLoginQRCodeResponse__storage_ {
       },
       {
         .name = "blueToothBroadCastContent",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer),
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
         .number = GetLoginQRCodeResponse_FieldNumber_BlueToothBroadCastContent,
         .hasIndex = 7,
         .offset = (uint32_t)offsetof(GetLoginQRCodeResponse__storage_, blueToothBroadCastContent),
@@ -6756,7 +6712,7 @@ typedef struct CheckLoginQRCodeRequest__storage_ {
   int32_t timeStamp;
   int32_t opcode;
   BaseRequest *baseRequest;
-  SKBuiltinBuffer *randomEncryKey;
+  SKBuiltinBuffer_t *randomEncryKey;
   NSString *uuid;
 } CheckLoginQRCodeRequest__storage_;
 
@@ -6777,7 +6733,7 @@ typedef struct CheckLoginQRCodeRequest__storage_ {
       },
       {
         .name = "randomEncryKey",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer),
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
         .number = CheckLoginQRCodeRequest_FieldNumber_RandomEncryKey,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(CheckLoginQRCodeRequest__storage_, randomEncryKey),
@@ -6902,7 +6858,7 @@ typedef struct CheckLoginQRCodeResponse__storage_ {
 typedef struct CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg__storage_ {
   uint32_t _has_storage_[1];
   int32_t opcode;
-  SKBuiltinBuffer *notifyData;
+  SKBuiltinBuffer_t *notifyData;
 } CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg__storage_;
 
 // This method is threadsafe because it is initially called
@@ -6913,7 +6869,7 @@ typedef struct CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "notifyData",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer),
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
         .number = CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg_FieldNumber_NotifyData,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg__storage_, notifyData),
@@ -7407,7 +7363,7 @@ typedef struct ManualAuthDeviceRequest__storage_ {
   NSString *bundleId;
   NSString *adSource;
   NSString *iphoneVer;
-  SKBuiltinBuffer *clientCheckData;
+  SKBuiltinBuffer_t *clientCheckData;
 } ManualAuthDeviceRequest__storage_;
 
 // This method is threadsafe because it is initially called
@@ -7589,7 +7545,7 @@ typedef struct ManualAuthDeviceRequest__storage_ {
       },
       {
         .name = "clientCheckData",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer),
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
         .number = ManualAuthDeviceRequest_FieldNumber_ClientCheckData,
         .hasIndex = 19,
         .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, clientCheckData),
@@ -7628,7 +7584,7 @@ typedef struct ManualAuthDeviceRequest__storage_ {
 
 typedef struct ManualAuthDeviceRequest_BaseAuthReqInfo__storage_ {
   uint32_t _has_storage_[1];
-  SKBuiltinBuffer *cliDbencryptInfo;
+  SKBuiltinBuffer_t *cliDbencryptInfo;
   NSString *authReqFlag;
 } ManualAuthDeviceRequest_BaseAuthReqInfo__storage_;
 
@@ -7640,7 +7596,7 @@ typedef struct ManualAuthDeviceRequest_BaseAuthReqInfo__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "cliDbencryptInfo",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer),
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
         .number = ManualAuthDeviceRequest_BaseAuthReqInfo_FieldNumber_CliDbencryptInfo,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(ManualAuthDeviceRequest_BaseAuthReqInfo__storage_, cliDbencryptInfo),

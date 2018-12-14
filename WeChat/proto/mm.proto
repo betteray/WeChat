@@ -186,18 +186,15 @@ message contact_info
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //同步消息
-message new_sync_req
+message NewSyncRequest
 {
-	message continue_flag
-	{
-		optional int32 flag 	= 1;
-	}
-	optional continue_flag  flag  		= 1;						//unknown,must be 0
-	optional int32 selector 			= 2;						//unknown,just set 7
-	optional bytes sync_Key     		= 3;						//同步成功后服务器返回的消息id
-	optional int32  scene 				= 4;						//unkown,just set 3
-	optional string device 				= 5;						//'android-22'
-	optional int32  sync_msg_digest 	= 6;						//unknown,just set 1
+
+    required string  tag1               = 1;    //unknown,must be 0
+	required int32 selector 			= 2;	//unknown,just set 7
+	required bytes keyBuf     		= 3;						//同步成功后服务器返回的消息id
+	required int32  scene 				= 4;						//unkown,just set 3
+	required string deviceType 				= 5;						//'android-22'
+	required int32  syncMsgDigest 	= 6;						//unknown,just set 1
 }
 
 //同步消息响应
@@ -653,7 +650,7 @@ message revoke_msg_resp
 
 //=============================== iPad/iPhone ===========================================
 
-message SKBuiltinBuffer
+message SKBuiltinBuffer_t
 {
     optional int32  iLen = 1;
     optional bytes  buffer = 2;
@@ -684,33 +681,33 @@ message BaseResponse
 message GetLoginQRCodeRequest
 {
 	required BaseRequest        baseRequest                 = 1;
-	required SKBuiltinBuffer    randomEncryKey              = 2; //iPad 16位 iMac 184位
+	required SKBuiltinBuffer_t  randomEncryKey              = 2; //iPad 16位 iMac 184位
 	required int32              opcode                      = 3; //0
 	optional string             deviceName                  = 4; //iMac "iMac"
 	optional string             userName                    = 5;
 	optional int32              hardwareExtra               = 6; //iMac 0,
 	optional string             softType                    = 7;
 	optional int32              extDevLoginType             = 8; //0
-    optional SKBuiltinBuffer    msgContextPubKey            = 9; //iMac 
+    optional SKBuiltinBuffer_t  msgContextPubKey            = 9; //iMac
 }
 
 message GetLoginQRCodeResponse
 {
 	required BaseResponse               baseResponse =1;
-	required SKBuiltinBuffer            qrcode = 2;
+	required SKBuiltinBuffer_t          qrcode = 2;
 	required string                     uuid = 3;
 	required int32                      checkTime = 4;
-	optional SKBuiltinBuffer            notifyKey = 5;
+	optional SKBuiltinBuffer_t          notifyKey = 5;
 	optional int32                      expiredTime = 6;
 	optional string                     blueToothBroadCastUuid = 7;
-	optional SKBuiltinBuffer            blueToothBroadCastContent = 8;
+	optional SKBuiltinBuffer_t          blueToothBroadCastContent = 8;
 }
 
 //QRCode Check
 message CheckLoginQRCodeRequest
 {
 	required BaseRequest        baseRequest = 1;
-	required SKBuiltinBuffer    randomEncryKey = 2;
+	required SKBuiltinBuffer_t  randomEncryKey = 2;
 	required string             uuid = 3;
 	required int32              timeStamp = 4;
 	required int32              opcode = 5;
@@ -721,7 +718,7 @@ message CheckLoginQRCodeResponse {
 
     message LoginQRCodeNotifyPkg
 	{
-         optional SKBuiltinBuffer 	NotifyData = 1;  //是bytes,需notifykey不解压aes解密一次,解密后再序列化成下面的对象
+         optional SKBuiltinBuffer_t NotifyData = 1;  //是bytes,需notifykey不解压aes解密一次,解密后再序列化成下面的对象
          optional int32  Opcode = 2;
 	}
 	optional LoginQRCodeNotifyPkg notifyPkg = 3;
@@ -776,7 +773,7 @@ message ManualAuthDeviceRequest
     optional BaseRequest baseRequest                      = 1;
     message BaseAuthReqInfo
     {
-        optional SKBuiltinBuffer cliDbencryptInfo  = 5; // iMac 第一次登陆没有数据，后续登陆会取一个数据。
+        optional SKBuiltinBuffer_t cliDbencryptInfo  = 5; // iMac 第一次登陆没有数据，后续登陆会取一个数据。
         optional string authReqFlag                = 7; // iPad "" iMac 不需要
     }
     optional BaseAuthReqInfo baseReqInfo                = 2;
@@ -797,7 +794,7 @@ message ManualAuthDeviceRequest
     optional string adSource                            = 20;   // iPad:"AAA7AE28-7620-431D-8B4C-7FB4F67AA45E", iMad: ""
     required string iphoneVer                           = 21;   // iPad:iPad4,4 , iMac:iMac18,2
     required int32  inputType                           = 22;   // 2
-    optional SKBuiltinBuffer  clientCheckData           = 23;
+    optional SKBuiltinBuffer_t  clientCheckData           = 23;
 }
 
 message ManualAuthRequest

@@ -98,7 +98,7 @@
         [self showHUDWithText:@"CLinetCheckData has worked."];
     }
 
-    SKBuiltinBuffer *clientCheckData = [SKBuiltinBuffer new];
+    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
     clientCheckData.iLen = (int) [data length];
     clientCheckData.buffer = data;
     deviceRequest.clientCheckData = clientCheckData;
