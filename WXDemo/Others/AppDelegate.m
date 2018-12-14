@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WeChatClient.h"
-#import "DNSMgr.h"
+#import "DNSManager.h"
 
 @interface AppDelegate ()
 
@@ -20,10 +20,28 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [self freshClientCheckDataToDB];
+    
     [[WeChatClient sharedClient] start];
-    [DNSMgr sharedMgr];
+    [DNSManager sharedMgr];
     
     return YES;
+}
+
+- (void)freshClientCheckDataToDB
+{
+    NSURL *url = [NSURL URLWithString:@"http://10.12.87.38:8080/"];
+    NSMutableURLRequest *newGetDNSReq = [NSMutableURLRequest requestWithURL:url];
+    newGetDNSReq.HTTPMethod = @"GET";
+    newGetDNSReq.timeoutInterval = 5;
+    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:newGetDNSReq
+                                                             completionHandler:^(NSData *_Nullable data,
+                                                                                 NSURLResponse *_Nullable response,
+                                                                                 NSError *_Nullable error) {
+                                                                 [[DBManager sharedManager] saveClientCheckData:data];
+                                                             }];
+    
+    [task resume];
 }
 
 

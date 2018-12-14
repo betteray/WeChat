@@ -7,7 +7,7 @@
 //
 
 #import "ShortLinkClient.h"
-#import "DNSMgr.h"
+#import "DNSManager.h"
 #import <ASIHTTPRequest.h>
 
 @implementation ShortLinkClient
@@ -18,7 +18,7 @@
     srand((unsigned int) t);
     unsigned long long r = rand();
     
-    NSString *host = [NSString stringWithFormat:@"http://%@", [[DNSMgr sharedMgr] getShortLinkIp]];
+    NSString *host = [NSString stringWithFormat:@"http://%@", [[DNSManager sharedMgr] getShortLinkIp]];
     NSString *urlstr = [NSString stringWithFormat:@"%@/%@", host, [NSString stringWithFormat:@"mmtls/%08llx", r]];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlstr]];

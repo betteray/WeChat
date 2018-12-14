@@ -1,5 +1,5 @@
 //
-//  DNSMgr.h
+//  DNSManager.h
 //  WXDemo
 //
 //  Created by ray on 2018/12/4.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DNSMgr : NSObject
+@interface DNSManager : NSObject
 
 + (instancetype)sharedMgr;
 

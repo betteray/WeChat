@@ -1,12 +1,12 @@
 //
-//  DNSMgr.m
+//  DNSManager.m
 //  WXDemo
 //
 //  Created by ray on 2018/12/4.
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "DNSMgr.h"
+#import "DNSManager.h"
 #import <Ono.h>
 
 @interface NSArray<ObjectType>  (Random)
@@ -21,21 +21,21 @@
 }
 @end
 
-@interface DNSMgr ()
+@interface DNSManager ()
 
 @property (nonatomic, strong) NSArray *longLinkIpList;
 @property (nonatomic, strong) NSArray *shortLinkIpList;
 
 @end
 
-@implementation DNSMgr
+@implementation DNSManager
 
 + (instancetype)sharedMgr
 {
-    static DNSMgr *_mgr = nil;
+    static DNSManager *_mgr = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _mgr = [[DNSMgr alloc] init];
+        _mgr = [[DNSManager alloc] init];
     });
     
     return _mgr;

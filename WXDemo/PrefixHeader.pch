@@ -18,6 +18,10 @@
 
 #import "Constants.h"
 #import "WXUserDefault.h"
+#import "Mm.pbobjc.h"
+#import "CgiWrap.h"
+#import "WeChatClient.h"
+#import "DBManager.h"
 
 #import "DebugKit.h"
 

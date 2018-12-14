@@ -244,7 +244,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     wrap.cgiPath = @"/cgi-bin/micromsg-bin/newinit";
     wrap.responseClass = [NewInitResponse class];
 
-    [[WeChatClient sharedClient] postRequest:wrap
+    [[WeChatClient sharedClient] startRequest:wrap
         success:^(NewInitResponse *_Nullable response) {
             self.sync_key_cur = response.syncKeyCur;
             self.sync_key_max = response.syncKeyMax;
