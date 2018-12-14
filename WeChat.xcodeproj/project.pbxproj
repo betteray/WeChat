@@ -389,7 +389,7 @@
 		712C6E52214A145600603022 = {
 			isa = PBXGroup;
 			children = (
-				712C6E5D214A145600603022 /* WXDemo */,
+				712C6E5D214A145600603022 /* WeChat */,
 				712C6E76214A145700603022 /* WeChatTests */,
 				712C6E81214A145700603022 /* WeChatUITests */,
 				712C6E5C214A145600603022 /* Products */,
@@ -408,7 +408,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		712C6E5D214A145600603022 /* WXDemo */ = {
+		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
 				71848F6221549A1C00DB669E /* Categories */,
@@ -432,7 +432,7 @@
 				71D3DAAD21AFCA47002ACF1C /* WXUserDefault.h */,
 				71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */,
 			);
-			path = WXDemo;
+			path = WeChat;
 			sourceTree = "<group>";
 		};
 		712C6E76214A145700603022 /* WeChatTests */ = {
@@ -1129,14 +1129,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RB4EN3PQ7J;
 				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/WXDemo/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WeChat/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
-					"${SRC_ROOT}WXDemo/openssl/include",
+					"${SRC_ROOT}WeChat/openssl/include",
 				);
-				INFOPLIST_FILE = WXDemo/Others/Info.plist;
+				INFOPLIST_FILE = WeChat/Others/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1144,14 +1144,14 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/WXDemo/openssl/lib",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/arm64",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/armv6",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/armv7",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/armv7s",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/i386",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/x86_64",
+					"$(PROJECT_DIR)/WeChat/openssl/lib",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/arm64",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/armv6",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/armv7",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/armv7s",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/i386",
+					"$(PROJECT_DIR)/WeChat/rsa/lib",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/x86_64",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1177,14 +1177,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RB4EN3PQ7J;
 				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/WXDemo/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WeChat/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
-					"${SRC_ROOT}WXDemo/openssl/include",
+					"${SRC_ROOT}WeChat/openssl/include",
 				);
-				INFOPLIST_FILE = WXDemo/Others/Info.plist;
+				INFOPLIST_FILE = WeChat/Others/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1192,14 +1192,14 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/WXDemo/openssl/lib",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/arm64",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/armv6",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/armv7",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/armv7s",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/i386",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib",
-					"$(PROJECT_DIR)/WXDemo/rsa/lib/x86_64",
+					"$(PROJECT_DIR)/WeChat/openssl/lib",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/arm64",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/armv6",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/armv7",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/armv7s",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/i386",
+					"$(PROJECT_DIR)/WeChat/rsa/lib",
+					"$(PROJECT_DIR)/WeChat/rsa/lib/x86_64",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
