@@ -401,26 +401,26 @@
 		712C6E5D214A145600603022 /* WXDemo */ = {
 			isa = PBXGroup;
 			children = (
+				71848F6221549A1C00DB669E /* Categories */,
+				712C7065214A9A8B00603022 /* Constants.h */,
 				7121C35F21C3494A00A3E900 /* Controllers */,
-				71008F3021B674D900DE8DF8 /* Managers */,
-				71D3DAA921AEACD2002ACF1C /* ViewCat */,
-				7154D51D2196D6BD005064C4 /* Tools */,
-				7154D50E2196B714005064C4 /* HexDump */,
-				7155BA492190293B0002CE1D /* mmtls */,
-				71848F6221549A1C00DB669E /* Catag */,
 				712C7160214D231C00603022 /* ecdh */,
-				712C7159214CDA9100603022 /* Others */,
+				7154D50E2196B714005064C4 /* HexDump */,
+				71008F3021B674D900DE8DF8 /* Managers */,
+				7155BA492190293B0002CE1D /* mmtls */,
 				712C7146214BA35700603022 /* model */,
 				712C70E9214B5A4B00603022 /* openssl */,
-				712C6F18214A6A5800603022 /* proto */,
-				712C6E91214A1E8900603022 /* WeChatClient.h */,
-				712C6E92214A1E8900603022 /* WeChatClient.m */,
-				712C7065214A9A8B00603022 /* Constants.h */,
+				712C7159214CDA9100603022 /* Others */,
 				7154D5192196B8DF005064C4 /* PrefixHeader.pch */,
-				71D3DAAD21AFCA47002ACF1C /* WXUserDefault.h */,
-				71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */,
+				712C6F18214A6A5800603022 /* proto */,
 				71008F3421B678F500DE8DF8 /* ShortLinkClient.h */,
 				71008F3521B678F500DE8DF8 /* ShortLinkClient.m */,
+				7154D51D2196D6BD005064C4 /* Tools */,
+				71D3DAA921AEACD2002ACF1C /* ViewCat */,
+				712C6E91214A1E8900603022 /* WeChatClient.h */,
+				712C6E92214A1E8900603022 /* WeChatClient.m */,
+				71D3DAAD21AFCA47002ACF1C /* WXUserDefault.h */,
+				71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */,
 			);
 			path = WXDemo;
 			sourceTree = "<group>";
@@ -663,7 +663,7 @@
 			path = mmtls;
 			sourceTree = "<group>";
 		};
-		71848F6221549A1C00DB669E /* Catag */ = {
+		71848F6221549A1C00DB669E /* Categories */ = {
 			isa = PBXGroup;
 			children = (
 				712C6EFF214A5D8200603022 /* FSOpenSSL.h */,
@@ -695,7 +695,7 @@
 				71008F3721B67DE800DE8DF8 /* NSURLSession+DTAdditions.h */,
 				71008F3821B67DE800DE8DF8 /* NSURLSession+DTAdditions.m */,
 			);
-			path = Catag;
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		71D3DAA921AEACD2002ACF1C /* ViewCat */ = {
