@@ -504,7 +504,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
     [longlinkBody appendData:body];
 
-    NSData *sendData = [self longlink_packWithSeq:6 cmdId:cgiWrap.cmdId buffer:longlinkBody];
+    NSData *sendData = [self longlink_packWithSeq:_seq cmdId:cgiWrap.cmdId buffer:longlinkBody];
 
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -699,7 +699,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *outOkm3 = nil;
     [WX_HKDF HKDF_Expand_Prk:outOkm2 Info:[info2 copy] outOkm:&outOkm3]; //长连接 加解密 key iv 生成。 //application data key expansion
 
-    //    DLog(@"outOkm3", outOkm3);
+    DLog(@"outOkm3", outOkm3);
 
     /******************************** 长连接 加密KEY & IV 的计算（OK） **************************/
 
