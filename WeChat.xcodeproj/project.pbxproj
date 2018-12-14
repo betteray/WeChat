@@ -1163,7 +1163,7 @@
 					"-framework",
 					"\"Security\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ray.me.WXDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = ray.me.chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1211,7 +1211,7 @@
 					"-framework",
 					"\"Security\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ray.me.WXDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = ray.me.chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
