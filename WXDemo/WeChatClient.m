@@ -160,11 +160,14 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     FastSocket *client = [[FastSocket alloc] initWithHost:@"163.177.81.141" andPort:@"443"]; //long.weixin.qq.com 58.247.204.141
     if ([client connect])
     {
+        LogInfo(@"FastSocket Connected To Server.");
         _client = client;
         [self DoSendClientHello];
-        //        self.serverHelloData = [NSData dataWithHexString:@"16F103007B000000770203F1C02B5ED80DEE3A787A133FCE64B082A677BCFF38649FA719A3740E0625E7EF55C1820000004E010000004900110000000100410458687A537C48C52423C5B45F413E0591C1C618AE2EDFCDEF4AF469E8D89E66DA53CE028B801A6DEC1420DBDC5587761B6336EF921B28D91E7B49FB4C395CE10B16F103005E1A7AB2E1807044A9902775A6DE9946C293BD862187F7D055058D505E58CB884154E13E8D95ACB2CC231B955BE67C6C25D2EEACBD43A9FF8D50205A8040CDE03D33E1A732EA6815508FAB1BD5EFA2CC4E3B71DA5FAE13D8770E182517823316F10301253132D53DD0153B6E58DE9FA9B49AFC0844EA8C55952DFC0A23BB0EA45B10735F0F6EC1839A6289CE4EBD1048AF796A694DB9FFC152712CA7663FEA2B7BFEC2CA8E1BB8AEADDC9720AD1C3ECAF317B92C3738275842A77E5652614E64AEFFBA17AAD0BD10F950B528C227566BF63556112380294F5E5DE296A5F0A40985DCB2A8045125EF4D2B88E24F1147DD2EB7047F5504B1BC350B4023FD5701FFA81013E08C6E22C7AE3B129982FEE1B85C165390D1DC5A412D470300ACEF39F893301D98A1BED91F65B893009F0E2C5ECACEAC5A391017A42A1E7C30CAA5C4ED25CCF5AEAB8762A725624B9B54C17FB7149982E9A2AD2466A46FB57517229B2A9554E24FAF0646E301C7076C3D24229D83A3B1F7FB90178C1E7A5EF44F5AA349002D5EB5F34393A1AF16F10300373865BDE51B864C0F805765F6E4AB792600C7CEB9FCBA4C13C77807AA8A944F06CEEEF9F2C0CED0EA6A9E9C9863AA3C32A68D778A5C60A2"];
-        //        [self onReviceServerHello:[[ServerHello alloc] initWithData:self.serverHelloData]];
         [self readData];
+    }
+    else
+    {
+        LogError(@"FastSocket Can Not Connect.");
     }
 }
 
@@ -173,6 +176,14 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     DLog(@"SendData", sendData);
     dispatch_async(_writeSerialQueue, ^{
         long sent = [self.client sendBytes:[sendData bytes] count:[sendData length]];
+        if (sent == sendData.length)
+        {
+            LogInfo(@"FastSocket Send All the Data.");
+        }
+        else
+        {
+            LogError(@"FastSocket Send Only %ld Bytes.", sent);
+        }
     });
 }
 
@@ -358,7 +369,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
     }
 
-    LogInfo(@"Start Request: %@", cgiWrap.request);
+    LogInfo(@"Start Request: \n\n%@\n", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:5];
@@ -523,8 +534,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)mmtlsEnCryptAndSend:(NSData *)sendData withTag:(NSInteger)tag
 {
-        NSString *logTag = [NSString stringWithFormat:@"Send(%ld)", [sendData length]];
-        DLog(logTag, sendData);
+    NSString *logTag = [NSString stringWithFormat:@"Send(%ld)", [sendData length]];
+    DLog(logTag, sendData);
 
     NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
@@ -568,7 +579,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [hashData appendData:hashPart2];
     NSData *hashResult = [WX_SHA256 sha256:hashData];
 
-        DLog(@"Hash Result", hashResult);
+    DLog(@"Hash Result", hashResult);
 
     NSData *serverPublicKey = [serverHello getServerPublicKey];
     NSData *localPriKey = [_clientHello getLocal1stPrikey];
@@ -584,7 +595,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
           pLenShareKey:&sharedKeyLen];
     NSData *secret = [NSData dataWithBytes:buf length:sharedKeyLen];
 
-        DLog(@"secret", secret);
+    DLog(@"secret", secret);
 
     NSMutableData *info = [NSMutableData dataWithData:[@"handshake key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
     [info appendData:hashResult];
@@ -592,7 +603,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *outOkm = nil;
     [WX_HKDF HKDF_Expand_Prk:secret Info:[info copy] outOkm:&outOkm];
 
-        DLog(@"Key expand", outOkm);
+    DLog(@"Key expand", outOkm);
 
     KeyPair *keyPair = [[KeyPair alloc] initWithData:outOkm];
 
@@ -605,12 +616,12 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
     NSData *readIV1 = [WX_Hex IV:keyPair.readIV XORSeq:_readSeq++]; //序号从1开始。
 
-        DLog(@"after XOR readIV 1", readIV1);
+    DLog(@"after XOR readIV 1", readIV1);
 
     NSData *plainText1 = nil;
     [WX_AesGcm128 aes128gcmDecrypt:part1 plaintext:&plainText1 aad:[aad1 copy] key:keyPair.readKEY ivec:readIV1];
 
-        DLog(@"decrypted part1", plainText1);
+    DLog(@"decrypted part1", plainText1);
 
     // Part2 decrypt
     NSData *part2 = [serverHello getPart2];
@@ -620,7 +631,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
     NSData *readIV2 = [WX_Hex IV:keyPair.readIV XORSeq:_readSeq++]; //序号从1开始，每次+1；
 
-        DLog(@"after XOR readIV 2", readIV2);
+    DLog(@"after XOR readIV 2", readIV2);
 
     NSData *plainText2 = nil;
     [WX_AesGcm128 aes128gcmDecrypt:part2 plaintext:&plainText2 aad:[aad2 copy] key:keyPair.readKEY ivec:readIV2];
@@ -629,7 +640,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
     {
         NSData *data = [plainText2 subdataWithRange:NSMakeRange(9, 100)];
-                DLog(@"PSK", data);
+        DLog(@"PSK", data);
         _shortLinkPSKData = data;
 
         NSData *hashDataTmp = hashData;
@@ -643,7 +654,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         NSData *resumptionSecret = nil;
         [WX_HKDF HKDF_Expand_Prk2:secret Info:info222 outOkm:&resumptionSecret]; //expanded secret
 
-                DLog(@"resumptionSecret", resumptionSecret); //OK
+        DLog(@"resumptionSecret", resumptionSecret); //OK
         _resumptionSecret = resumptionSecret;
     }
 
@@ -655,12 +666,12 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
     NSData *readIV3 = [WX_Hex IV:keyPair.readIV XORSeq:_readSeq++]; //序号从1开始，每次+1；
 
-        DLog(@"after XOR readIV 3", readIV3);
+    DLog(@"after XOR readIV 3", readIV3);
 
     NSData *plainText3 = nil;
     [WX_AesGcm128 aes128gcmDecrypt:part3 plaintext:&plainText3 aad:[aad3 copy] key:keyPair.readKEY ivec:readIV3];
 
-        DLog(@"decrypted part3", plainText3);
+    DLog(@"decrypted part3", plainText3);
 
     /******************************** 解密PSK结束 (OK) ****************************************/
 
@@ -671,7 +682,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [md appendData:plainText2];
     NSData *plainText2HashData = [WX_SHA256 sha256:md];
 
-        DLog(@"PlainText2 Hash Result", plainText2HashData); //OK
+    DLog(@"PlainText2 Hash Result", plainText2HashData); //OK
     // 需要密钥扩展一次结果。
     NSMutableData *info2 = [NSMutableData dataWithData:[@"application data key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
     [info2 appendData:plainText2HashData];
@@ -683,7 +694,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *outOkm2 = nil;
     [WX_HKDF HKDF_Expand_Prk2:secret Info:info3 outOkm:&outOkm2]; //expanded secret
 
-        DLog(@"outOkm2", outOkm2); //OK
+    DLog(@"outOkm2", outOkm2); //OK
 
     NSData *outOkm3 = nil;
     [WX_HKDF HKDF_Expand_Prk:outOkm2 Info:[info2 copy] outOkm:&outOkm3]; //长连接 加解密 key iv 生成。 //application data key expansion
@@ -712,7 +723,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [WX_AesGcm128 aes128gcmEncrypt:heartbeatPart1 ciphertext:&heartbeatPart1CipherText aad:aadddd key:keyPair.writeKEY ivec:writeIV1];
     NSMutableData *heartbeatData1 = [NSMutableData dataWithHexString:@"16F1030037"];
     [heartbeatData1 appendData:heartbeatPart1CipherText];
-        DLog(@"HeartBeat 1", heartbeatData1);
+    DLog(@"HeartBeat 1", heartbeatData1);
 
     // 2. 心跳包数据。
     KeyPair *keyPair2 = [[KeyPair alloc] initWithData:outOkm3];
