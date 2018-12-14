@@ -84,7 +84,7 @@
 
 - (IBAction)getQRCode
 {
-    NSLog(@"扫描成功");
+    LogInfo(@"扫描成功");
     [self.qrcodeCheckTimer invalidate];
     self.qrcodeCheckTimer = nil;
 
@@ -114,7 +114,7 @@
 
     [WeChatClient startRequest:cgiWrap
         success:^(GPBMessage *_Nullable response) {
-            NSLog(@"%@", response);
+            LogInfo(@"%@", response);
             GetLoginQRCodeResponse *resp = (GetLoginQRCodeResponse *) response;
 
             if (resp)
@@ -127,7 +127,7 @@
 
         }
         failure:^(NSError *error) {
-            NSLog(@"%@", error);
+            LogError(@"%@", error);
         }];
 }
 
@@ -161,7 +161,7 @@
                 NotifyMsg *msg = [NotifyMsg parseFromData:notifyProtobufData error:nil];
                 if (![msg.avatar isEqualToString:@""])
                 {
-                    NSLog(@"扫描成功: %@", msg);
+                    LogInfo(@"扫描成功: %@", msg);
                     self.qrcodeTimerLabel.text = msg.nickName;
                     [self.qrcodeImageView sd_setImageWithURL:[NSURL URLWithString:msg.avatar]];
                 }
@@ -174,13 +174,13 @@
 
                 if (msg.state == 0 || msg.state == 1)
                 {
-                    NSLog(@"继续检查确认登陆。");
+                    LogInfo(@"继续检查确认登陆。");
                 }
             }
 
         }
         failure:^(NSError *error) {
-            NSLog(@"%@", error);
+            LogError(@"%@", error);
         }];
 }
 
@@ -312,7 +312,7 @@
                                     success:^(GPBMessage *_Nullable response) {
                                         ManualAuthResponse *resp = (ManualAuthResponse *) response;
 
-                                        NSLog(@"登陆响应 Code: %d, msg: %@", resp.result.code, resp.result.errMsg.msg);
+                                        LogInfo(@"登陆响应 Code: %d, msg: %@", resp.result.code, resp.result.errMsg.msg);
                                         switch (resp.result.code)
                                         {
                                             case -301:
@@ -354,7 +354,7 @@
                                                     [WeChatClient sharedClient].sessionKey = [FSOpenSSL aesDecryptData:resp.authParam.session.key key:checkEcdhKey];
                                                     [WeChatClient sharedClient].checkEcdhKey = checkEcdhKey;
 
-                                                    NSLog(@"登陆成功: SessionKey: %@, uin: %d, wxid: %@, NickName: %@, alias: %@",
+                                                    LogInfo(@"登陆成功: SessionKey: %@, uin: %d, wxid: %@, NickName: %@, alias: %@",
                                                           [WeChatClient sharedClient].sessionKey,
                                                           uin, resp.accountInfo.wxId,
                                                           resp.accountInfo.nickName,

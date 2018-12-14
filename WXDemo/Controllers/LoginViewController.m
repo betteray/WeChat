@@ -39,7 +39,7 @@
     BOOL ret = [ECDH GenEcdhWithNid:713 priKey:&priKeyData pubKeyData:&pubKeyData];
     if (ret)
     {
-        //NSLog(@"+[ECDH GenEcdh:pubKeyData:] %@, PubKey: %@.", priKeyData, pubKeyData);
+        LogInfo(@"+[ECDH GenEcdh:pubKeyData:] %@, PubKey: %@.", priKeyData, pubKeyData);
     }
 
     ManualAuthAccountRequest_AesKey *aesKey = [ManualAuthAccountRequest_AesKey new];
@@ -61,8 +61,8 @@
     accountReqeust.userName = _userNameTextField.text;
 
     ManualAuthDeviceRequest_BaseAuthReqInfo *baseReqInfo = [ManualAuthDeviceRequest_BaseAuthReqInfo new];
-    //TODO: ?第一次登陆没有数据，后续登陆会取一个数据。
-    //    baseReqInfo.cliDbencryptInfo = [NSData data];
+    //第一次登陆没有数据，后续登陆会取一个数据。
+    //baseReqInfo.cliDbencryptInfo = [NSData data];
     baseReqInfo.authReqFlag = @"";
 
     ManualAuthDeviceRequest *deviceRequest = [ManualAuthDeviceRequest new];
@@ -118,9 +118,9 @@
     [[WeChatClient sharedClient] manualAuth:cgiWrap
                                     success:^(GPBMessage *_Nullable response) {
                                         ManualAuthResponse *resp = (ManualAuthResponse *) response;
-                                        NSLog(@"登陆响应: %@", resp);
 
-                                        NSLog(@"登陆响应 Code: %d, msg: %@", resp.result.code, resp.result.errMsg.msg);
+                                        LogInfo(@"登陆响应 Code: %d, msg: %@", resp.result.code, resp.result.errMsg.msg);
+                                        
                                         switch (resp.result.code)
                                         {
                                             case -301:
@@ -159,7 +159,7 @@
                                                     [WeChatClient sharedClient].sessionKey = [FSOpenSSL aesDecryptData:resp.authParam.session.key key:checkEcdhKey];
                                                     [WeChatClient sharedClient].checkEcdhKey = checkEcdhKey;
 
-                                                    NSLog(@"登陆成功: SessionKey: %@, uin: %d, wxid: %@, NickName: %@, alias: %@",
+                                                    LogInfo(@"登陆成功: SessionKey: %@, uin: %d, wxid: %@, NickName: %@, alias: %@",
                                                           [WeChatClient sharedClient].sessionKey,
                                                           uin, resp.accountInfo.wxId,
                                                           resp.accountInfo.nickName,

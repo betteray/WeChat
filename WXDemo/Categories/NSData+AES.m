@@ -218,7 +218,7 @@ static int aes_ecb_decrypt(const unsigned char* pKey, unsigned int uiKeyLen
     if (ret == 0) {
         return [NSData dataWithBytes:pOutput length:outputLen];
     } else {
-        NSLog(@"AES_CBC_encryptWithKey error: %d", ret);
+        LogError(@"AES_CBC_encryptWithKey error: %d", ret);
         return nil;
     }
 }
@@ -238,7 +238,7 @@ static int aes_ecb_decrypt(const unsigned char* pKey, unsigned int uiKeyLen
     if (ret == 0) {
         return [NSData dataWithBytes:pOutput length:outputLen];
     } else {
-        NSLog(@"AES_CBC_encryptWithKey error: %d", ret);
+        LogError(@"AES_CBC_encryptWithKey error: %d", ret);
         return nil;
     }
 }

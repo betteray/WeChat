@@ -142,7 +142,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         }
         else
         {
-            NSLog(@" ** Gen RSA KeyPair Fail. ** ");
+            LogError(@" ** Gen RSA KeyPair Fail. ** ");
         }
 
         _heartbeatTimer = [NSTimer timerWithTimeInterval:60 * 3 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
@@ -170,7 +170,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)sendData:(NSData *)sendData
 {
-//    DLog(@"SendData", sendData);
+    DLog(@"SendData", sendData);
     dispatch_async(_writeSerialQueue, ^{
         long sent = [self.client sendBytes:[sendData bytes] count:[sendData length]];
     });
@@ -182,7 +182,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         while (1)
         {
             NSData *dataPackage = [self readHeader];
-//            DLog(@"DataPkg", dataPackage);
+            DLog(@"DataPkg", dataPackage);
 
             if ([dataPackage toInt8ofRange:0] == 0x16) //mmtls handshake
             {
@@ -249,10 +249,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
             self.sync_key_cur = response.syncKeyCur;
             self.sync_key_max = response.syncKeyMax;
 
-            DLog(@"sync key cur", self.sync_key_cur);
-            DLog(@"sync key max", self.sync_key_max);
+            LogInfo(@"sync key cur: %@", self.sync_key_cur);
+            LogInfo(@"sync key max: %@", self.sync_key_max);
 
-            NSLog(@"newinit cmd count: %d, continue flag: %d", response.cntList, response.continueFlag);
+            LogInfo(@"newinit cmd count: %d, continue flag: %d", response.cntList, response.continueFlag);
 
             for (int i = 0; i < response.cntList; i++)
             {
@@ -266,13 +266,13 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                     }
                     else
                     {
-                        NSLog(@"Serverid: %lld, CreateTime: %d, WXID: %@, TOID: %@, Type: %d, Raw Content: %@", msg.serverid, msg.createTime, msg.fromId.wxid, msg.toId.wxid, msg.type, msg.raw.content);
+                        LogInfo(@"Serverid: %lld, CreateTime: %d, WXID: %@, TOID: %@, Type: %d, Raw Content: %@", msg.serverid, msg.createTime, msg.fromId.wxid, msg.toId.wxid, msg.type, msg.raw.content);
                     }
                 }
                 else if (2 == cmsg.type) //好友列表
                 {
                     contact_info *cinfo = [[contact_info alloc] initWithData:cmsg.data_p.data_p error:nil];
-                    NSLog(@"update contact: Relation[%@], WXID: %@, Alias: %@", (cinfo.type & 1) ? @"好友" : @"非好友", cinfo.wxid.wxid, cinfo.alias);
+                    LogInfo(@"update contact: Relation[%@], WXID: %@, Alias: %@", (cinfo.type & 1) ? @"好友" : @"非好友", cinfo.wxid.wxid, cinfo.alias);
                 }
             }
 
@@ -283,7 +283,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
         }
         failure:^(NSError *error) {
-            NSLog(@"%@", error);
+            LogError(@"%@", error);
         }];
 }
 
@@ -306,10 +306,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
     [[WeChatClient sharedClient] startRequest:wrap
         success:^(new_sync_resp *_Nullable response) {
-            NSLog(@"new sync resp: %@", response);
+            LogInfo(@"new sync resp: %@", response);
         }
         failure:^(NSError *error) {
-            NSLog(@"new sync resp error: %@", error);
+            LogError(@"new sync resp error: %@", error);
         }];
 }
 
@@ -358,7 +358,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
     }
 
-    NSLog(@"Start Request: %@", cgiWrap.request);
+    LogInfo(@"Start Request: %@", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:5];
@@ -390,7 +390,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
     }
 
-    NSLog(@"Start Request: %@", cgiWrap.request);
+    LogInfo(@"Start Request: %@", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
     NSData *sendData = [self shortlinkPackWithCgi:cgiWrap.cgi serilizedData:serilizedData type:5];
@@ -523,8 +523,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)mmtlsEnCryptAndSend:(NSData *)sendData withTag:(NSInteger)tag
 {
-    //    NSString *logTag = [NSString stringWithFormat:@"Send(%ld)", [sendData length]];
-    //    DLog(logTag, sendData);
+        NSString *logTag = [NSString stringWithFormat:@"Send(%ld)", [sendData length]];
+        DLog(logTag, sendData);
 
     NSData *writeIV = [WX_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
@@ -568,7 +568,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [hashData appendData:hashPart2];
     NSData *hashResult = [WX_SHA256 sha256:hashData];
 
-    //    DLog(@"Hash Result", hashResult);
+        DLog(@"Hash Result", hashResult);
 
     NSData *serverPublicKey = [serverHello getServerPublicKey];
     NSData *localPriKey = [_clientHello getLocal1stPrikey];
@@ -584,7 +584,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
           pLenShareKey:&sharedKeyLen];
     NSData *secret = [NSData dataWithBytes:buf length:sharedKeyLen];
 
-    //    DLog(@"secret", secret);
+        DLog(@"secret", secret);
 
     NSMutableData *info = [NSMutableData dataWithData:[@"handshake key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
     [info appendData:hashResult];
@@ -592,7 +592,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *outOkm = nil;
     [WX_HKDF HKDF_Expand_Prk:secret Info:[info copy] outOkm:&outOkm];
 
-    //    DLog(@"Key expand", outOkm);
+        DLog(@"Key expand", outOkm);
 
     KeyPair *keyPair = [[KeyPair alloc] initWithData:outOkm];
 
@@ -605,12 +605,12 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
     NSData *readIV1 = [WX_Hex IV:keyPair.readIV XORSeq:_readSeq++]; //序号从1开始。
 
-    //    DLog(@"after XOR readIV 1", readIV1);
+        DLog(@"after XOR readIV 1", readIV1);
 
     NSData *plainText1 = nil;
     [WX_AesGcm128 aes128gcmDecrypt:part1 plaintext:&plainText1 aad:[aad1 copy] key:keyPair.readKEY ivec:readIV1];
 
-    //    DLog(@"decrypted part1", plainText1);
+        DLog(@"decrypted part1", plainText1);
 
     // Part2 decrypt
     NSData *part2 = [serverHello getPart2];
@@ -620,16 +620,16 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
     NSData *readIV2 = [WX_Hex IV:keyPair.readIV XORSeq:_readSeq++]; //序号从1开始，每次+1；
 
-    //    DLog(@"after XOR readIV 2", readIV2);
+        DLog(@"after XOR readIV 2", readIV2);
 
     NSData *plainText2 = nil;
     [WX_AesGcm128 aes128gcmDecrypt:part2 plaintext:&plainText2 aad:[aad2 copy] key:keyPair.readKEY ivec:readIV2];
 
-//    DLog(@"decrypted part2", plainText2);
+    DLog(@"decrypted part2", plainText2);
 
     {
         NSData *data = [plainText2 subdataWithRange:NSMakeRange(9, 100)];
-        //        DLog(@"PSK", data);
+                DLog(@"PSK", data);
         _shortLinkPSKData = data;
 
         NSData *hashDataTmp = hashData;
@@ -643,7 +643,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
         NSData *resumptionSecret = nil;
         [WX_HKDF HKDF_Expand_Prk2:secret Info:info222 outOkm:&resumptionSecret]; //expanded secret
 
-        //        DLog(@"resumptionSecret", resumptionSecret); //OK
+                DLog(@"resumptionSecret", resumptionSecret); //OK
         _resumptionSecret = resumptionSecret;
     }
 
@@ -655,12 +655,12 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
     NSData *readIV3 = [WX_Hex IV:keyPair.readIV XORSeq:_readSeq++]; //序号从1开始，每次+1；
 
-    //    DLog(@"after XOR readIV 3", readIV3);
+        DLog(@"after XOR readIV 3", readIV3);
 
     NSData *plainText3 = nil;
     [WX_AesGcm128 aes128gcmDecrypt:part3 plaintext:&plainText3 aad:[aad3 copy] key:keyPair.readKEY ivec:readIV3];
 
-    //    DLog(@"decrypted part3", plainText3);
+        DLog(@"decrypted part3", plainText3);
 
     /******************************** 解密PSK结束 (OK) ****************************************/
 
@@ -671,7 +671,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [md appendData:plainText2];
     NSData *plainText2HashData = [WX_SHA256 sha256:md];
 
-    //    DLog(@"PlainText2 Hash Result", plainText2HashData); //OK
+        DLog(@"PlainText2 Hash Result", plainText2HashData); //OK
     // 需要密钥扩展一次结果。
     NSMutableData *info2 = [NSMutableData dataWithData:[@"application data key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
     [info2 appendData:plainText2HashData];
@@ -683,7 +683,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *outOkm2 = nil;
     [WX_HKDF HKDF_Expand_Prk2:secret Info:info3 outOkm:&outOkm2]; //expanded secret
 
-    //    DLog(@"outOkm2", outOkm2); //OK
+        DLog(@"outOkm2", outOkm2); //OK
 
     NSData *outOkm3 = nil;
     [WX_HKDF HKDF_Expand_Prk:outOkm2 Info:[info2 copy] outOkm:&outOkm3]; //长连接 加解密 key iv 生成。 //application data key expansion
@@ -712,7 +712,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [WX_AesGcm128 aes128gcmEncrypt:heartbeatPart1 ciphertext:&heartbeatPart1CipherText aad:aadddd key:keyPair.writeKEY ivec:writeIV1];
     NSMutableData *heartbeatData1 = [NSMutableData dataWithHexString:@"16F1030037"];
     [heartbeatData1 appendData:heartbeatPart1CipherText];
-    //    DLog(@"HeartBeat 1", heartbeatData1);
+        DLog(@"HeartBeat 1", heartbeatData1);
 
     // 2. 心跳包数据。
     KeyPair *keyPair2 = [[KeyPair alloc] initWithData:outOkm3];
@@ -733,7 +733,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *hb = [NSMutableData dataWithCapacity:[heartbeatData1 length] + [heartbeatData length]];
     [hb appendData:heartbeatData1];
     [hb appendData:heartbeatData];
-    //    DLog(@"HB", hb);
+    DLog(@"HB", hb);
 
     [self sendData:hb];
 }
@@ -741,8 +741,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 - (void)onReceive:(NSData *)data withTag:(NSInteger)tag
 {
     NSData *plainText = [self mmtlsDeCryptData:data];
-//    NSString *logTag = [NSString stringWithFormat:@"Receive(%ld)", [plainText length]];
-//    DLog(logTag, plainText);
+    NSString *logTag = [NSString stringWithFormat:@"Receive(%ld)", [plainText length]];
+    DLog(logTag, plainText);
 
     LongLinkPackage *longLinkPackage = [LongLinkPackage new];
     UnPackResult result = [self unPackLongLink:plainText toLongLingPackage:longLinkPackage];
@@ -751,7 +751,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     {
         case UnPack_Success:
         {
-            NSLog(@">>> LongLinkPackage Head CmdId: %d", longLinkPackage.header.cmdId);
+            LogInfo(@">>> LongLinkPackage Head CmdId: %d", longLinkPackage.header.cmdId);
 
             if (longLinkPackage.header.bodyLength < 0x20)
             {
@@ -760,9 +760,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                     case CMDID_PUSH_ACK:
                         if ([self.sync_key_cur length] == 0)
                         {
-                            NSLog(@"Start New Init.");
+                            LogInfo(@"Start New Init.");
                             [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
-                            NSLog(@"Stop New Init.");
+                            LogInfo(@"Stop New Init.");
                         }
                         else
                         {
@@ -807,7 +807,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 {
     if ([recvdRawData length] < 16)
     { // 包头不完整。
-        NSLog(@"Should Contine Read Data: 包头不完整");
+        LogError(@"Should Contine Read Data: 包头不完整");
         return UnPack_Continue;
     }
 
@@ -821,7 +821,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     if (header.bodyLength > [recvdRawData length])
     {
         //包未收完。
-        NSLog(@"Should Contine Read Data: 包未收完。");
+        LogError(@"Should Contine Read Data: 包未收完。");
         return UnPack_Continue;
     }
 
@@ -948,7 +948,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     if (cookieLen > 0 && cookieLen <= 0xf)
     {
         NSData *cookie = [body subdataWithRange:NSMakeRange(index, cookieLen)];
-        NSLog(@"Cookie: %@", cookie);
+        LogInfo(@"Cookie: %@", cookie);
         index += cookieLen;
         _cookie = cookie;
     }

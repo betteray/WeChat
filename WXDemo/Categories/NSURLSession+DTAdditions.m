@@ -18,7 +18,7 @@
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *taskData, NSURLResponse *response, NSError *error) {
         data = taskData;
         if (!data) {
-            NSLog(@"%@", error);
+            LogError(@"%@", error);
         }
         dispatch_semaphore_signal(semaphore);
         

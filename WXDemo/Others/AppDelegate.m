@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "WeChatClient.h"
 #import "DNSManager.h"
+#import "DDASLLogger.h"
+#import "DDTTYLogger.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +21,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Configure CocoaLumberjack
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     [self freshClientCheckDataToDB];
     

@@ -17,7 +17,7 @@
         NSError *lastError = [_db lastError]; \
         if (lastError)                        \
         {                                     \
-            NSLog(@"Error: %@", lastError);   \
+            LogError(@"Error: %@", lastError);   \
             return NO;                        \
         }                                     \
         else                                  \
@@ -56,11 +56,11 @@
 
         if (![_db open])
         {
-            NSLog(@"WXHooks: Could not open db.");
+            LogError(@"WXHooks: Could not open db.");
             return nil;
         }
 
-        NSLog(@"Create DB File at: %@", [dbPath path]);
+        LogInfo(@"Create DB File at: %@", [dbPath path]);
         
         [self createTables];
     }
@@ -80,7 +80,7 @@
     BOOL success = [_db executeStatements:sql];
     if (!success)
     {
-        NSLog(@"Create DB Table Failed.");
+        LogError(@"Create DB Table Failed.");
     }
 }
 

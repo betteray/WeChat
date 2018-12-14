@@ -24,19 +24,4 @@
 #import "NSData+HexDump.h"
 #import "NSString+HexDump.h"
 
-//
-// Logging macros from http://stackoverflow.com/questions/969130/nslog-tips-and-tricks
-//
-
-#ifdef DEBUG
-#   define NSLog(fmt, ...) NSLog((@"%s [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#else
-#   define NSLog(...)
-#endif
-
-#ifdef DEBUG
-#   define DLog(tag, data) NSLog(@"%@(len=%ld) \n%@", (tag), [data length], data.hexDump);
-#else
-#   define DLog(...)
-#endif
 
