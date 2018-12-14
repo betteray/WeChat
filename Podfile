@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'WXDemo' do
+target 'WeChat' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
   pod 'CocoaAsyncSocket'
@@ -16,14 +16,14 @@ target 'WXDemo' do
   pod 'CocoaLumberjack'
   pod 'MBProgressHUD', '~> 1.1.0'
   
-  # Pods for WXDemo
+  # Pods for WeChat
 
-  target 'WXDemoTests' do
+  target 'WeChatTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'WXDemoUITests' do
+  target 'WeChatUITests' do
     inherit! :search_paths
     # Pods for testing
   end
