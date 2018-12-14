@@ -762,7 +762,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     {
         case UnPack_Success:
         {
-            LogInfo(@"Receive CmdID: %d, BodyLen: %d", longLinkPackage.header.cmdId, longLinkPackage.header.bodyLength);
+            LogInfo(@"Receive CmdID: %d, SEQ: %d, BodyLen: %d", longLinkPackage.header.cmdId, longLinkPackage.header.seq, longLinkPackage.header.bodyLength);
 
             if (longLinkPackage.header.bodyLength < 0x20)
             {
