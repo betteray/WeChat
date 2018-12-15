@@ -21,44 +21,41 @@
     #import "CgiWrap.h"
     #import "WeChatClient.h"
     #import "DBManager.h"
-
-    #import "DebugKit.h"
-
     #import "WX_AesGcm128.h"
     #import "WX_HmacSha256.h"
 
     #import "WX_Hex.h"
     #import "NSData+AddData.h"
     #import "NSData+Util.h"
-
     #import "NSString+Concat.h"
+
+    #import "DebugKit.h"
     #import "DDLog.h"
+    //DEBUG
+    #define LogError(fmt, ...) DDLogError((@"[E] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    #define LogWarn(fmt, ...) DDLogWarn((@"[W] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    #define LogInfo(fmt, ...) DDLogInfo((@"[I] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    #define LogVerbose(fmt, ...) DDLogVerbose((@"[V] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
-#endif
+    #ifdef DEBUG
+    static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+    #else
+    static const DDLogLevel ddLogLevel = LOG_LEVEL_ERROR;
+    #endif
 
-//DEBUG
-#define LogError(fmt, ...) DDLogError((@"[E] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#define LogWarn(fmt, ...) DDLogWarn((@"[W] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#define LogInfo(fmt, ...) DDLogInfo((@"[I] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#define LogVerbose(fmt, ...) DDLogVerbose((@"[V] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-
-#ifdef DEBUG
-static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
-#else
-static const DDLogLevel ddLogLevel = LOG_LEVEL_ERROR;
-#endif
-
-#ifdef DEBUG
+    #ifdef DEBUG
     #define NSLog(fmt, ...) NSLog((@"%s [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#else
+    #else
     #define NSLog(...)
-#endif
+    #endif
 
-#ifdef DEBUG
+    #ifdef DEBUG
     #define DLog(...)
     //#define DLog(tag, data) NSLog(@"%@(len=%ld) \n%@", (tag), [data length], data.hexDump);
-#else
+    #else
     #define DLog(...)
+    #endif
+
 #endif
 
 #endif /* PrefixHeader_pch */

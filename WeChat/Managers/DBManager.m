@@ -11,19 +11,19 @@
 #import "DBManager.h"
 #import <FMDB.h>
 
-#define CHECKFMDBERROR                        \
-    do                                        \
-    {                                         \
-        NSError *lastError = [_db lastError]; \
-        if (lastError)                        \
-        {                                     \
-            LogError(@"Error: %@", lastError);   \
-            return NO;                        \
-        }                                     \
-        else                                  \
-        {                                     \
-            return YES;                       \
-        }                                     \
+#define CHECKFMDBERROR                         \
+    do                                         \
+    {                                          \
+        NSError *lastError = [_db lastError];  \
+        if (lastError)                         \
+        {                                      \
+            LogError(@"Error: %@", lastError); \
+            return NO;                         \
+        }                                      \
+        else                                   \
+        {                                      \
+            return YES;                        \
+        }                                      \
     } while (0)
 
 @interface DBManager ()
@@ -61,7 +61,7 @@
         }
 
         LogInfo(@"Create DB File at: %@", [dbPath path]);
-        
+
         [self createTables];
     }
 
@@ -142,4 +142,3 @@
 }
 
 @end
-
