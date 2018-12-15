@@ -70,12 +70,10 @@
 
 - (void)createTables
 {
-    //    [self.db executeUpdate:@"CREATE TABLE IF NOT EXISTS lbsfind(id INTEGER PRIMARY KEY AUTOINCREMENT, user_name TEXT, nick_name TEXT NULL, alias TEXT NULL, verified INTEGER DEFAULT 0, signature TEXT NULL, antispam_ticket TEXT, sex integer NULL, country TEXT NULL, province TEXT NULL, city TEXT NULL, big_avatar TEXT NULL, small_avatar TEXT NULL)"];
-
     NSString *sql = @"CREATE TABLE IF NOT EXISTS account_info (id INTEGER PRIMARY KEY AUTOINCREMENT, wxid TEXT, nick_name TEXT NULL, alias TEXT NULL);"
                      "CREATE TABLE IF NOT EXISTS client_check_data (id INTEGER PRIMARY KEY AUTOINCREMENT, data BLOB);"
-                     "CREATE TABLE IF NOT EXISTS long_ip (id INTEGER PRIMARY KEY AUTOINCREMENT, ip text);"
-                     "CREATE TABLE IF NOT EXISTS short_ip (id INTEGER PRIMARY KEY AUTOINCREMENT, ip text);";
+                     "CREATE TABLE IF NOT EXISTS long_ip (ip text PRIMARY KEY AUTOINCREMENT, ip text UNIQUE);"
+                     "CREATE TABLE IF NOT EXISTS short_ip (id INTEGER PRIMARY KEY AUTOINCREMENT, ip text UNIQUE);";
 
     BOOL success = [_db executeStatements:sql];
     if (!success)
@@ -139,6 +137,48 @@
     {
         return nil;
     }
+}
+
+- (BOOL)saveShortIpList:(NSArray *)ipList
+{
+    for (NSString *ip in ipList) {
+        [_db executeUpdate:@"INSERT INTO short_ip (ip) VALUES (?)", ip];
+    }
+    
+    CHECKFMDBERROR;
+}
+
+- (NSArray *)getShortIpList
+{
+    NSMutableArray *ipList = [NSMutableArray array];
+    FMResultSet *resultSet = [_db executeQuery:@"SELECT ip FROM short_ip"];
+    while ([resultSet next])
+    {
+        [ipList addObject:[resultSet dataForColumn:@"ip"]];
+    }
+    
+    return [ipList copy];
+}
+
+- (BOOL)saveLongIpList:(NSArray *)ipList
+{
+    for (NSString *ip in ipList) {
+        [_db executeUpdate:@"INSERT INTO long_ip (ip) VALUES (?)", ip];
+    }
+    
+    CHECKFMDBERROR;
+}
+
+- (NSArray *)getLongIpList
+{
+    NSMutableArray *ipList = [NSMutableArray array];
+    FMResultSet *resultSet = [_db executeQuery:@"SELECT ip FROM long_ip"];
+    while ([resultSet next])
+    {
+        [ipList addObject:[resultSet dataForColumn:@"ip"]];
+    }
+    
+    return [ipList copy];
 }
 
 @end

@@ -23,9 +23,6 @@
 
 @interface DNSManager ()
 
-@property (nonatomic, strong) NSArray *longLinkIpList;
-@property (nonatomic, strong) NSArray *shortLinkIpList;
-
 @end
 
 @implementation DNSManager
@@ -60,8 +57,9 @@
         NSArray *longLinkIpList = [self getIpListWithDoc:document tag:@"long.weixin.qq.com"];
         NSArray *shortLinkIpList = [self getIpListWithDoc:document tag:@"short.weixin.qq.com"];
         
-        self.longLinkIpList = longLinkIpList;
-        self.shortLinkIpList = shortLinkIpList;
+        [[DBManager sharedManager] saveShortIpList:shortLinkIpList];
+        [[DBManager sharedManager] saveLongIpList:longLinkIpList];
+        
     }];
     
     [task resume];
@@ -85,12 +83,12 @@
 
 - (NSString *)getShortLinkIp
 {
-    return [self.shortLinkIpList randomObject];
+    return [[[DBManager sharedManager] getShortIpList] randomObject];
 }
 
 - (NSString *)getLongLinkIp
 {
-    return [self.longLinkIpList randomObject];
+    return [[[DBManager sharedManager] getLongIpList] randomObject];
 }
 
 @end

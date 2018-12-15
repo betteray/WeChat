@@ -16,4 +16,10 @@
 - (BOOL)saveClientCheckData:(NSData *)clientCheckData;
 - (NSData *)getClientCheckData;
 
+- (BOOL)saveShortIpList:(NSArray *)ipList;
+- (NSArray *)getShortIpList;
+
+- (BOOL)saveLongIpList:(NSArray *)ipList;
+- (NSArray *)getLongIpList;
+
 @end
