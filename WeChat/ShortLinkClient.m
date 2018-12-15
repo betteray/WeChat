@@ -39,7 +39,7 @@
     
     NSError *error = [request error];
     if (error) {
-        NSLog(@"Error: %@", error);
+        LogError(@"Error: %@", error);
     }
     
     return [request responseData];

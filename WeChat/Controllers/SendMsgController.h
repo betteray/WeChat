@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FunctionsViewController : UIViewController
+@interface SendMsgController : UIViewController
 
 @end

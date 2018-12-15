@@ -68,18 +68,16 @@
     return self;
 }
 
-- (void)createTables
+- (BOOL)createTables
 {
     NSString *sql = @"CREATE TABLE IF NOT EXISTS account_info (id INTEGER PRIMARY KEY AUTOINCREMENT, wxid TEXT, nick_name TEXT NULL, alias TEXT NULL);"
                      "CREATE TABLE IF NOT EXISTS client_check_data (id INTEGER PRIMARY KEY AUTOINCREMENT, data BLOB);"
-                     "CREATE TABLE IF NOT EXISTS long_ip (ip text PRIMARY KEY AUTOINCREMENT, ip text UNIQUE);"
+                     "CREATE TABLE IF NOT EXISTS long_ip (id INTEGER PRIMARY KEY AUTOINCREMENT, ip text UNIQUE);"
                      "CREATE TABLE IF NOT EXISTS short_ip (id INTEGER PRIMARY KEY AUTOINCREMENT, ip text UNIQUE);";
 
-    BOOL success = [_db executeStatements:sql];
-    if (!success)
-    {
-        LogError(@"Create DB Table Failed.");
-    }
+    [_db executeStatements:sql];
+    
+    CHECKFMDBERROR;
 }
 
 - (BOOL)saveProfile:(ManualAuthResponse_AccountInfo *)accountInfo
@@ -142,7 +140,17 @@
 - (BOOL)saveShortIpList:(NSArray *)ipList
 {
     for (NSString *ip in ipList) {
-        [_db executeUpdate:@"INSERT INTO short_ip (ip) VALUES (?)", ip];
+        FMResultSet *resultSet = [_db executeQuery:@"SELECT ip FROM short_ip where ip = ?", ip];
+        
+        BOOL has = NO;
+        if ([resultSet next])
+        {
+            has = YES;
+        }
+        
+        if (!has) {
+            [_db executeUpdate:@"INSERT INTO short_ip (ip) VALUES (?)", ip];
+        }
     }
     
     CHECKFMDBERROR;
@@ -154,7 +162,7 @@
     FMResultSet *resultSet = [_db executeQuery:@"SELECT ip FROM short_ip"];
     while ([resultSet next])
     {
-        [ipList addObject:[resultSet dataForColumn:@"ip"]];
+        [ipList addObject:[resultSet stringForColumn:@"ip"]];
     }
     
     return [ipList copy];
@@ -163,7 +171,17 @@
 - (BOOL)saveLongIpList:(NSArray *)ipList
 {
     for (NSString *ip in ipList) {
-        [_db executeUpdate:@"INSERT INTO long_ip (ip) VALUES (?)", ip];
+        FMResultSet *resultSet = [_db executeQuery:@"SELECT ip FROM long_ip where ip = ?", ip];
+        
+        BOOL has = NO;
+        if ([resultSet next])
+        {
+            has = YES;
+        }
+        
+        if (!has) {
+            [_db executeUpdate:@"INSERT INTO long_ip (ip) VALUES (?)", ip];
+        }
     }
     
     CHECKFMDBERROR;
@@ -175,7 +193,7 @@
     FMResultSet *resultSet = [_db executeQuery:@"SELECT ip FROM long_ip"];
     while ([resultSet next])
     {
-        [ipList addObject:[resultSet dataForColumn:@"ip"]];
+        [ipList addObject:[resultSet stringForColumn:@"ip"]];
     }
     
     return [ipList copy];

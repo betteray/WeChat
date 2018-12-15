@@ -980,15 +980,48 @@ message CheckResUpdateRequest
     repeated ResID resId                        = 1;
 }
 
-//Test
-
-message ClientChcekData
+message SnsObject
 {
-    message Tag
+    required uint64 id                      = 1;    //12944632620798980176
+    required string username                = 2;    //wxid_19py48yw39qw22
+    required string nickname                = 3;    //xiaohao
+    required int32 createTime               = 4;    //1543120458
+    required SKBuiltinBuffer_t objectDesc   = 5;
+
+    optional int32 extFlag                  = 16;
+    required mmStr objectOperations         = 28;
+}
+
+message SnsTimeLineRequest
+{
+    optional BaseRequest baseRequest    = 1;    //iOS不用设置
+    optional string firstPageMd5        = 2;
+    required int32 minFilterId          = 3;
+    required int32 maxId                = 4;
+    required int32 lastRequestTime      = 5;
+    optional int64 clientLatestId       = 6;
+    optional SKBuiltinBuffer_t session  = 7;
+    required int32 networkType          = 8;
+    optional string adexpinfo           = 10;   //""
+}
+
+message SnsTimeLineResponse
+{
+    required BaseResponse baseResponse      = 1;
+    required string firstPageMd5            = 2;
+    required int32 objectCount              = 3;
+    repeated SnsObject objectList           = 4;
+    optional int32 newRequestTime           = 5;
+    optional int32 objectCountForSameMd5    = 6;
+    optional int32 controlFlag              = 7;
+    message SnsServerConfig
     {
-        repeated int32 count                            = 6;
+        required int32 postMentionLimit         = 1;
+        required int32 copyAndPasteWordLimit    = 2;
+
     }
-    optional Tag field1              = 1;
-    optional int32 field2                            = 2;
-    optional bytes clientcheckdata               = 3; //发送结果
+    optional SnsServerConfig serverConfig   = 8;
+    required int32 recCount                 = 9;
+    //repeated recList                      = 10;
+    optional bytes session                  = 11;
 }

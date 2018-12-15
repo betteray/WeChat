@@ -6,13 +6,13 @@
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "FunctionsViewController.h"
+#import "SendMsgController.h"
 
-@interface FunctionsViewController ()
+@interface SendMsgController ()
 
 @end
 
-@implementation FunctionsViewController
+@implementation SendMsgController
 
 - (void)viewDidLoad
 {

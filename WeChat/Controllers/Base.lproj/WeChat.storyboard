@@ -219,32 +219,6 @@
             </objects>
             <point key="canvasLocation" x="944.79999999999995" y="859.52023988005999"/>
         </scene>
-        <!--Functions-->
-        <scene sceneID="jvj-qU-2Zn">
-            <objects>
-                <viewController id="WX2-nG-CkI" customClass="FunctionsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1Ca-Y2-x3b">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7w-XZ-aza">
-                                <rect key="frame" x="46" y="97" width="65" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="SendMsg"/>
-                                <connections>
-                                    <action selector="SendMsg" destination="WX2-nG-CkI" eventType="touchUpInside" id="cck-bu-44l"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="PJ7-fA-7lV"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Functions" id="Cq3-5b-iOT"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HGR-aZ-S4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="958" y="1578"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="eKZ-De-kkY">
             <objects>
@@ -274,12 +248,134 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="WX2-nG-CkI" kind="relationship" relationship="rootViewController" id="kgu-tM-JI2"/>
+                        <segue destination="Xz2-hy-had" kind="relationship" relationship="rootViewController" id="cU3-mf-fnX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJq-SH-Lb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18" y="1578"/>
+        </scene>
+        <!--Functions-->
+        <scene sceneID="9Je-4t-oxu">
+            <objects>
+                <tableViewController id="Xz2-hy-had" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Iu8-Y8-wVn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="GFP-dy-fHS">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0LS-77-34o" style="IBUITableViewCellStyleDefault" id="iND-Iv-mOh">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iND-Iv-mOh" id="jxU-Qz-T1f">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="SendMsg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0LS-77-34o">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="pV9-Mz-d26" kind="show" id="Ybk-jq-ON8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ua5-UT-UKu" style="IBUITableViewCellStyleDefault" id="aWJ-3f-kmS">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aWJ-3f-kmS" id="uLa-rF-MAY">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="SnsTimeLine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ua5-UT-UKu">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ufY-wl-Jzo" kind="show" id="CuW-01-eJb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Xz2-hy-had" id="Pa5-cN-Xcl"/>
+                            <outlet property="delegate" destination="Xz2-hy-had" id="XRy-pt-y11"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Functions" id="Y9V-BI-XWy"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2D7-Kc-cl5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="782" y="1573"/>
+        </scene>
+        <!--SendMsg-->
+        <scene sceneID="HdF-iE-evI">
+            <objects>
+                <viewController title="SendMsg" id="pV9-Mz-d26" customClass="SendMsgController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Gc-zZ-LO5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koh-76-kxv">
+                                <rect key="frame" x="153" y="557" width="69" height="30"/>
+                                <state key="normal" title="Send Msg"/>
+                                <connections>
+                                    <action selector="SendMsg" destination="pV9-Mz-d26" eventType="touchUpInside" id="FQt-Xb-7mz"/>
+                                    <action selector="fetchSnsTimeLine:" destination="ufY-wl-Jzo" eventType="touchUpInside" id="TjI-zr-Un5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ziR-D0-Et1" firstAttribute="bottom" secondItem="koh-76-kxv" secondAttribute="bottom" constant="80" id="1Oi-IE-Ns7"/>
+                            <constraint firstItem="koh-76-kxv" firstAttribute="centerX" secondItem="6Gc-zZ-LO5" secondAttribute="centerX" id="u04-Wf-0ga"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ziR-D0-Et1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cPC-pY-z9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1671" y="1388"/>
+        </scene>
+        <!--SnsTimeLine-->
+        <scene sceneID="5au-1D-kmC">
+            <objects>
+                <viewController title="SnsTimeLine" id="ufY-wl-Jzo" customClass="SnsTimeLineViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yrY-PY-jeE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipS-ay-VOp">
+                                <rect key="frame" x="129" y="557" width="116" height="30"/>
+                                <state key="normal" title="Get SnsTimeLine"/>
+                                <connections>
+                                    <action selector="fetchSnsTimeLine:" destination="ufY-wl-Jzo" eventType="touchUpInside" id="CDx-MG-PUL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zYE-zW-XQx" firstAttribute="bottom" secondItem="ipS-ay-VOp" secondAttribute="bottom" constant="80" id="h9V-Tl-BA8"/>
+                            <constraint firstItem="ipS-ay-VOp" firstAttribute="centerX" secondItem="yrY-PY-jeE" secondAttribute="centerX" id="nQz-Eu-JXh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zYE-zW-XQx"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9jG-Sp-Xhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1718" y="2112"/>
         </scene>
     </scenes>
 </document>

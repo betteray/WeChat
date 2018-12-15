@@ -9462,20 +9462,28 @@ typedef struct CheckResUpdateRequest_ResID_SubTypeVector__storage_ {
 
 @end
 
-#pragma mark - ClientChcekData
+#pragma mark - SnsObject
 
-@implementation ClientChcekData
+@implementation SnsObject
 
-@dynamic hasField1, field1;
-@dynamic hasField2, field2;
-@dynamic hasClientcheckdata, clientcheckdata;
+@dynamic hasId_p, id_p;
+@dynamic hasUsername, username;
+@dynamic hasNickname, nickname;
+@dynamic hasCreateTime, createTime;
+@dynamic hasObjectDesc, objectDesc;
+@dynamic hasExtFlag, extFlag;
+@dynamic hasObjectOperations, objectOperations;
 
-typedef struct ClientChcekData__storage_ {
+typedef struct SnsObject__storage_ {
   uint32_t _has_storage_[1];
-  int32_t field2;
-  ClientChcekData_Tag *field1;
-  NSData *clientcheckdata;
-} ClientChcekData__storage_;
+  int32_t createTime;
+  int32_t extFlag;
+  NSString *username;
+  NSString *nickname;
+  SKBuiltinBuffer_t *objectDesc;
+  mmStr *objectOperations;
+  uint64_t id_p;
+} SnsObject__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -9484,41 +9492,82 @@ typedef struct ClientChcekData__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "field1",
-        .dataTypeSpecific.className = GPBStringifySymbol(ClientChcekData_Tag),
-        .number = ClientChcekData_FieldNumber_Field1,
+        .name = "id_p",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_Id_p,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ClientChcekData__storage_, field1),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, id_p),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeUInt64,
       },
       {
-        .name = "field2",
+        .name = "username",
         .dataTypeSpecific.className = NULL,
-        .number = ClientChcekData_FieldNumber_Field2,
+        .number = SnsObject_FieldNumber_Username,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ClientChcekData__storage_, field2),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, username),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "nickname",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_Nickname,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, nickname),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "createTime",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_CreateTime,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, createTime),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "clientcheckdata",
+        .name = "objectDesc",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = SnsObject_FieldNumber_ObjectDesc,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, objectDesc),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "extFlag",
         .dataTypeSpecific.className = NULL,
-        .number = ClientChcekData_FieldNumber_Clientcheckdata,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(ClientChcekData__storage_, clientcheckdata),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeBytes,
+        .number = SnsObject_FieldNumber_ExtFlag,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, extFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "objectOperations",
+        .dataTypeSpecific.className = GPBStringifySymbol(mmStr),
+        .number = SnsObject_FieldNumber_ObjectOperations,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, objectOperations),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ClientChcekData class]
+        [GPBDescriptor allocDescriptorForClass:[SnsObject class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ClientChcekData__storage_)
+                                   storageSize:sizeof(SnsObject__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\004\004\n\000\005\n\000\020\007\000\034\020\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -9527,16 +9576,32 @@ typedef struct ClientChcekData__storage_ {
 
 @end
 
-#pragma mark - ClientChcekData_Tag
+#pragma mark - SnsTimeLineRequest
 
-@implementation ClientChcekData_Tag
+@implementation SnsTimeLineRequest
 
-@dynamic countArray, countArray_Count;
+@dynamic hasBaseRequest, baseRequest;
+@dynamic hasFirstPageMd5, firstPageMd5;
+@dynamic hasMinFilterId, minFilterId;
+@dynamic hasMaxId, maxId;
+@dynamic hasLastRequestTime, lastRequestTime;
+@dynamic hasClientLatestId, clientLatestId;
+@dynamic hasSession, session;
+@dynamic hasNetworkType, networkType;
+@dynamic hasAdexpinfo, adexpinfo;
 
-typedef struct ClientChcekData_Tag__storage_ {
+typedef struct SnsTimeLineRequest__storage_ {
   uint32_t _has_storage_[1];
-  GPBInt32Array *countArray;
-} ClientChcekData_Tag__storage_;
+  int32_t minFilterId;
+  int32_t maxId;
+  int32_t lastRequestTime;
+  int32_t networkType;
+  BaseRequest *baseRequest;
+  NSString *firstPageMd5;
+  SKBuiltinBuffer_t *session;
+  NSString *adexpinfo;
+  int64_t clientLatestId;
+} SnsTimeLineRequest__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -9545,24 +9610,307 @@ typedef struct ClientChcekData_Tag__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "countArray",
+        .name = "baseRequest",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseRequest),
+        .number = SnsTimeLineRequest_FieldNumber_BaseRequest,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SnsTimeLineRequest__storage_, baseRequest),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "firstPageMd5",
         .dataTypeSpecific.className = NULL,
-        .number = ClientChcekData_Tag_FieldNumber_CountArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(ClientChcekData_Tag__storage_, countArray),
-        .flags = GPBFieldRepeated,
+        .number = SnsTimeLineRequest_FieldNumber_FirstPageMd5,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(SnsTimeLineRequest__storage_, firstPageMd5),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "minFilterId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineRequest_FieldNumber_MinFilterId,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(SnsTimeLineRequest__storage_, minFilterId),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "maxId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineRequest_FieldNumber_MaxId,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(SnsTimeLineRequest__storage_, maxId),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "lastRequestTime",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineRequest_FieldNumber_LastRequestTime,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(SnsTimeLineRequest__storage_, lastRequestTime),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "clientLatestId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineRequest_FieldNumber_ClientLatestId,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(SnsTimeLineRequest__storage_, clientLatestId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "session",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = SnsTimeLineRequest_FieldNumber_Session,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(SnsTimeLineRequest__storage_, session),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "networkType",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineRequest_FieldNumber_NetworkType,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(SnsTimeLineRequest__storage_, networkType),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "adexpinfo",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineRequest_FieldNumber_Adexpinfo,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(SnsTimeLineRequest__storage_, adexpinfo),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ClientChcekData_Tag class]
+        [GPBDescriptor allocDescriptorForClass:[SnsTimeLineRequest class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ClientChcekData_Tag__storage_)
+                                   storageSize:sizeof(SnsTimeLineRequest__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ClientChcekData)];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\007\001\013\000\002\014\000\003\013\000\004\005\000\005\017\000\006\016\000\010\013\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - SnsTimeLineResponse
+
+@implementation SnsTimeLineResponse
+
+@dynamic hasBaseResponse, baseResponse;
+@dynamic hasFirstPageMd5, firstPageMd5;
+@dynamic hasObjectCount, objectCount;
+@dynamic objectListArray, objectListArray_Count;
+@dynamic hasNewRequestTime, newRequestTime;
+@dynamic hasObjectCountForSameMd5, objectCountForSameMd5;
+@dynamic hasControlFlag, controlFlag;
+@dynamic hasServerConfig, serverConfig;
+@dynamic hasRecCount, recCount;
+@dynamic hasSession, session;
+
+typedef struct SnsTimeLineResponse__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t objectCount;
+  int32_t newRequestTime;
+  int32_t objectCountForSameMd5;
+  int32_t controlFlag;
+  int32_t recCount;
+  BaseResponse *baseResponse;
+  NSString *firstPageMd5;
+  NSMutableArray *objectListArray;
+  SnsTimeLineResponse_SnsServerConfig *serverConfig;
+  NSData *session;
+} SnsTimeLineResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseResponse",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseResponse),
+        .number = SnsTimeLineResponse_FieldNumber_BaseResponse,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse__storage_, baseResponse),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "firstPageMd5",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineResponse_FieldNumber_FirstPageMd5,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse__storage_, firstPageMd5),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "objectCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineResponse_FieldNumber_ObjectCount,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse__storage_, objectCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "objectListArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(SnsObject),
+        .number = SnsTimeLineResponse_FieldNumber_ObjectListArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse__storage_, objectListArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "newRequestTime",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineResponse_FieldNumber_NewRequestTime,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse__storage_, newRequestTime),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "objectCountForSameMd5",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineResponse_FieldNumber_ObjectCountForSameMd5,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse__storage_, objectCountForSameMd5),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "controlFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineResponse_FieldNumber_ControlFlag,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse__storage_, controlFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "serverConfig",
+        .dataTypeSpecific.className = GPBStringifySymbol(SnsTimeLineResponse_SnsServerConfig),
+        .number = SnsTimeLineResponse_FieldNumber_ServerConfig,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse__storage_, serverConfig),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "recCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineResponse_FieldNumber_RecCount,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse__storage_, recCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "session",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineResponse_FieldNumber_Session,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse__storage_, session),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SnsTimeLineResponse class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SnsTimeLineResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\t\001\014\000\002\014\000\003\013\000\004\000objectList\000\005\016\000\006\025\000\007\013\000\010\014\000\t\010\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - SnsTimeLineResponse_SnsServerConfig
+
+@implementation SnsTimeLineResponse_SnsServerConfig
+
+@dynamic hasPostMentionLimit, postMentionLimit;
+@dynamic hasCopyAndPasteWordLimit, copyAndPasteWordLimit;
+
+typedef struct SnsTimeLineResponse_SnsServerConfig__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t postMentionLimit;
+  int32_t copyAndPasteWordLimit;
+} SnsTimeLineResponse_SnsServerConfig__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "postMentionLimit",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineResponse_SnsServerConfig_FieldNumber_PostMentionLimit,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse_SnsServerConfig__storage_, postMentionLimit),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "copyAndPasteWordLimit",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsTimeLineResponse_SnsServerConfig_FieldNumber_CopyAndPasteWordLimit,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(SnsTimeLineResponse_SnsServerConfig__storage_, copyAndPasteWordLimit),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SnsTimeLineResponse_SnsServerConfig class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SnsTimeLineResponse_SnsServerConfig__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\002\001\020\000\002\025\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(SnsTimeLineResponse)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }

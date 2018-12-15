@@ -88,16 +88,6 @@
     //iMac 暂时不需要
 
     NSData *data = [[DBManager sharedManager] getClientCheckData];
-    if ([data length] <= 0)
-    {
-        [self showHUDWithText:@"Make Sure ClientCheckData not nil."];
-        return;
-    }
-    else
-    {
-        [self showHUDWithText:@"CLinetCheckData has worked."];
-    }
-
     SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
     clientCheckData.iLen = (int) [data length];
     clientCheckData.buffer = data;

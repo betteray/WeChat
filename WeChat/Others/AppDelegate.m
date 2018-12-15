@@ -23,7 +23,9 @@
     // Override point for customization after application launch.
 
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
-
+    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
+    [[UIButton appearance] setTintColor:[UIColor blackColor]];
+    
     // Configure CocoaLumberjack
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 

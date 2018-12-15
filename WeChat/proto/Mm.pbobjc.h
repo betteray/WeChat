@@ -32,7 +32,6 @@ CF_EXTERN_C_BEGIN
 @class CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg;
 @class CheckResUpdateRequest_ResID;
 @class CheckResUpdateRequest_ResID_SubTypeVector;
-@class ClientChcekData_Tag;
 @class LoginInfo;
 @class ManualAuthAccountRequest;
 @class ManualAuthAccountRequest_AesKey;
@@ -58,6 +57,8 @@ CF_EXTERN_C_BEGIN
 @class Msg_RawContent;
 @class SKBuiltinBuffer_t;
 @class SKBuiltinString_t;
+@class SnsObject;
+@class SnsTimeLineResponse_SnsServerConfig;
 @class SyncKey_MsgKey;
 @class SyncKey_MsgKey_Key;
 @class Wxid;
@@ -3791,42 +3792,172 @@ typedef GPB_ENUM(CheckResUpdateRequest_ResID_SubTypeVector_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasEid;
 @end
 
-#pragma mark - ClientChcekData
+#pragma mark - SnsObject
 
-typedef GPB_ENUM(ClientChcekData_FieldNumber) {
-  ClientChcekData_FieldNumber_Field1 = 1,
-  ClientChcekData_FieldNumber_Field2 = 2,
-  ClientChcekData_FieldNumber_Clientcheckdata = 3,
+typedef GPB_ENUM(SnsObject_FieldNumber) {
+  SnsObject_FieldNumber_Id_p = 1,
+  SnsObject_FieldNumber_Username = 2,
+  SnsObject_FieldNumber_Nickname = 3,
+  SnsObject_FieldNumber_CreateTime = 4,
+  SnsObject_FieldNumber_ObjectDesc = 5,
+  SnsObject_FieldNumber_ExtFlag = 16,
+  SnsObject_FieldNumber_ObjectOperations = 28,
 };
 
-@interface ClientChcekData : GPBMessage
+@interface SnsObject : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) ClientChcekData_Tag *field1;
-/** Test to see if @c field1 has been set. */
-@property(nonatomic, readwrite) BOOL hasField1;
+/** 12944632620798980176 */
+@property(nonatomic, readwrite) uint64_t id_p;
 
-@property(nonatomic, readwrite) int32_t field2;
+@property(nonatomic, readwrite) BOOL hasId_p;
+/** wxid_19py48yw39qw22 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *username;
+/** Test to see if @c username has been set. */
+@property(nonatomic, readwrite) BOOL hasUsername;
 
-@property(nonatomic, readwrite) BOOL hasField2;
-/** 发送结果 */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *clientcheckdata;
-/** Test to see if @c clientcheckdata has been set. */
-@property(nonatomic, readwrite) BOOL hasClientcheckdata;
+/** xiaohao */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *nickname;
+/** Test to see if @c nickname has been set. */
+@property(nonatomic, readwrite) BOOL hasNickname;
+
+/** 1543120458 */
+@property(nonatomic, readwrite) int32_t createTime;
+
+@property(nonatomic, readwrite) BOOL hasCreateTime;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *objectDesc;
+/** Test to see if @c objectDesc has been set. */
+@property(nonatomic, readwrite) BOOL hasObjectDesc;
+
+@property(nonatomic, readwrite) int32_t extFlag;
+
+@property(nonatomic, readwrite) BOOL hasExtFlag;
+@property(nonatomic, readwrite, strong, null_resettable) mmStr *objectOperations;
+/** Test to see if @c objectOperations has been set. */
+@property(nonatomic, readwrite) BOOL hasObjectOperations;
 
 @end
 
-#pragma mark - ClientChcekData_Tag
+#pragma mark - SnsTimeLineRequest
 
-typedef GPB_ENUM(ClientChcekData_Tag_FieldNumber) {
-  ClientChcekData_Tag_FieldNumber_CountArray = 6,
+typedef GPB_ENUM(SnsTimeLineRequest_FieldNumber) {
+  SnsTimeLineRequest_FieldNumber_BaseRequest = 1,
+  SnsTimeLineRequest_FieldNumber_FirstPageMd5 = 2,
+  SnsTimeLineRequest_FieldNumber_MinFilterId = 3,
+  SnsTimeLineRequest_FieldNumber_MaxId = 4,
+  SnsTimeLineRequest_FieldNumber_LastRequestTime = 5,
+  SnsTimeLineRequest_FieldNumber_ClientLatestId = 6,
+  SnsTimeLineRequest_FieldNumber_Session = 7,
+  SnsTimeLineRequest_FieldNumber_NetworkType = 8,
+  SnsTimeLineRequest_FieldNumber_Adexpinfo = 10,
 };
 
-@interface ClientChcekData_Tag : GPBMessage
+@interface SnsTimeLineRequest : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) GPBInt32Array *countArray;
-/** The number of items in @c countArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger countArray_Count;
+/** iOS不用设置 */
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
 
+@property(nonatomic, readwrite, copy, null_resettable) NSString *firstPageMd5;
+/** Test to see if @c firstPageMd5 has been set. */
+@property(nonatomic, readwrite) BOOL hasFirstPageMd5;
+
+@property(nonatomic, readwrite) int32_t minFilterId;
+
+@property(nonatomic, readwrite) BOOL hasMinFilterId;
+@property(nonatomic, readwrite) int32_t maxId;
+
+@property(nonatomic, readwrite) BOOL hasMaxId;
+@property(nonatomic, readwrite) int32_t lastRequestTime;
+
+@property(nonatomic, readwrite) BOOL hasLastRequestTime;
+@property(nonatomic, readwrite) int64_t clientLatestId;
+
+@property(nonatomic, readwrite) BOOL hasClientLatestId;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *session;
+/** Test to see if @c session has been set. */
+@property(nonatomic, readwrite) BOOL hasSession;
+
+@property(nonatomic, readwrite) int32_t networkType;
+
+@property(nonatomic, readwrite) BOOL hasNetworkType;
+/** "" */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *adexpinfo;
+/** Test to see if @c adexpinfo has been set. */
+@property(nonatomic, readwrite) BOOL hasAdexpinfo;
+
+@end
+
+#pragma mark - SnsTimeLineResponse
+
+typedef GPB_ENUM(SnsTimeLineResponse_FieldNumber) {
+  SnsTimeLineResponse_FieldNumber_BaseResponse = 1,
+  SnsTimeLineResponse_FieldNumber_FirstPageMd5 = 2,
+  SnsTimeLineResponse_FieldNumber_ObjectCount = 3,
+  SnsTimeLineResponse_FieldNumber_ObjectListArray = 4,
+  SnsTimeLineResponse_FieldNumber_NewRequestTime = 5,
+  SnsTimeLineResponse_FieldNumber_ObjectCountForSameMd5 = 6,
+  SnsTimeLineResponse_FieldNumber_ControlFlag = 7,
+  SnsTimeLineResponse_FieldNumber_ServerConfig = 8,
+  SnsTimeLineResponse_FieldNumber_RecCount = 9,
+  SnsTimeLineResponse_FieldNumber_Session = 11,
+};
+
+@interface SnsTimeLineResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *firstPageMd5;
+/** Test to see if @c firstPageMd5 has been set. */
+@property(nonatomic, readwrite) BOOL hasFirstPageMd5;
+
+@property(nonatomic, readwrite) int32_t objectCount;
+
+@property(nonatomic, readwrite) BOOL hasObjectCount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SnsObject*> *objectListArray;
+/** The number of items in @c objectListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger objectListArray_Count;
+
+@property(nonatomic, readwrite) int32_t newRequestTime;
+
+@property(nonatomic, readwrite) BOOL hasNewRequestTime;
+@property(nonatomic, readwrite) int32_t objectCountForSameMd5;
+
+@property(nonatomic, readwrite) BOOL hasObjectCountForSameMd5;
+@property(nonatomic, readwrite) int32_t controlFlag;
+
+@property(nonatomic, readwrite) BOOL hasControlFlag;
+@property(nonatomic, readwrite, strong, null_resettable) SnsTimeLineResponse_SnsServerConfig *serverConfig;
+/** Test to see if @c serverConfig has been set. */
+@property(nonatomic, readwrite) BOOL hasServerConfig;
+
+@property(nonatomic, readwrite) int32_t recCount;
+
+@property(nonatomic, readwrite) BOOL hasRecCount;
+/** repeated recList                      = 10; */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *session;
+/** Test to see if @c session has been set. */
+@property(nonatomic, readwrite) BOOL hasSession;
+
+@end
+
+#pragma mark - SnsTimeLineResponse_SnsServerConfig
+
+typedef GPB_ENUM(SnsTimeLineResponse_SnsServerConfig_FieldNumber) {
+  SnsTimeLineResponse_SnsServerConfig_FieldNumber_PostMentionLimit = 1,
+  SnsTimeLineResponse_SnsServerConfig_FieldNumber_CopyAndPasteWordLimit = 2,
+};
+
+@interface SnsTimeLineResponse_SnsServerConfig : GPBMessage
+
+@property(nonatomic, readwrite) int32_t postMentionLimit;
+
+@property(nonatomic, readwrite) BOOL hasPostMentionLimit;
+@property(nonatomic, readwrite) int32_t copyAndPasteWordLimit;
+
+@property(nonatomic, readwrite) BOOL hasCopyAndPasteWordLimit;
 @end
 
 NS_ASSUME_NONNULL_END
