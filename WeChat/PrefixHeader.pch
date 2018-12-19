@@ -21,10 +21,10 @@
     #import "CgiWrap.h"
     #import "WeChatClient.h"
     #import "DBManager.h"
-    #import "WX_AesGcm128.h"
+    #import "WC_AesGcm128.h"
     #import "WX_HmacSha256.h"
 
-    #import "WX_Hex.h"
+    #import "WC_Hex.h"
     #import "NSData+AddData.h"
     #import "NSData+Util.h"
     #import "NSString+Concat.h"
@@ -32,10 +32,10 @@
     #import "DebugKit.h"
     #import "DDLog.h"
     //DEBUG
-    #define LogError(fmt, ...) DDLogError((@"[E] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-    #define LogWarn(fmt, ...) DDLogWarn((@"[W] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-    #define LogInfo(fmt, ...) DDLogInfo((@"[I] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-    #define LogVerbose(fmt, ...) DDLogVerbose((@"[V] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    #define LogError(fmt, ...) DDLogError((@"[E][👹] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    #define LogWarn(fmt, ...) DDLogWarn((@"[W][⚠️] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    #define LogInfo(fmt, ...) DDLogInfo((@"[I][💙] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    #define LogVerbose(fmt, ...) DDLogVerbose((@"[V][🍀] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
     #ifdef DEBUG
     static const DDLogLevel ddLogLevel = DDLogLevelVerbose;

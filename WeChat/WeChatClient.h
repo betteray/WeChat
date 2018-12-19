@@ -47,7 +47,7 @@ typedef void (^FailureBlock)(NSError *error);
             success:(SuccessBlock)successBlock
             failure:(FailureBlock)failureBlock;
 
-
+- (void)newInitWithSyncKeyCur:(NSData *)syncKeyCur syncKeyMax:(NSData *)syncKeyMax;
 @end
 
 NS_ASSUME_NONNULL_END

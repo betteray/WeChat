@@ -10,6 +10,6 @@
 
 @interface WX_HmacSha256 : NSObject
 
-+ (unsigned char*) HmacSha256WithKey:(NSData *)key data:(NSData *)data result:(NSData **)result;
++ (NSData *)HmacSha256WithKey:(NSData *)key data:(NSData *)data;
 
 @end

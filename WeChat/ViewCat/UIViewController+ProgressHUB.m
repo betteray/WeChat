@@ -17,7 +17,7 @@
     hud.mode = MBProgressHUDModeText;
     hud.label.text = hintText;
     
-    [hud hideAnimated:YES afterDelay:2.5f];
+    [hud hideAnimated:YES afterDelay:1.5f];
 }
 
 @end

@@ -12,7 +12,7 @@
 
 @implementation WX_HmacSha256
 
-+ (unsigned char*) HmacSha256WithKey:(NSData *)key data:(NSData *)data result:(NSData **)result
++ (NSData *)HmacSha256WithKey:(NSData *)key data:(NSData *)data
 {
     NSParameterAssert(key);
     NSParameterAssert(data);
@@ -21,9 +21,8 @@
     unsigned int resultlen = 0;
     
     unsigned char* r = HMAC(EVP_sha256(), [key bytes], (int)[key length], [data bytes], (int)[data length], buf, &resultlen);
-    *result = [NSData dataWithBytes:buf length:resultlen];
     
-    return r;
+    return [NSData dataWithBytes:buf length:resultlen];
 }
 
 @end

@@ -48,10 +48,11 @@
                                                                                  NSError *_Nullable error) {
                                                                  if (error)
                                                                  {
-                                                                     LogError(@"Get Clinet Check Data Failed: %@", error);
+                                                                     LogWarn(@"Get Clinet Check Data Failed: %@", error);
                                                                  }
                                                                  else
                                                                  {
+                                                                     LogVerbose(@"Get Clinet Check Data OK.");
                                                                      [[DBManager sharedManager] saveClientCheckData:data];
                                                                  }
                                                              }];

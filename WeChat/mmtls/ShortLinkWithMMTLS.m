@@ -10,7 +10,7 @@
 #import "NSData+GenRandomData.h"
 
 #import "WX_SHA256.h"
-#import "WX_HKDF.h"
+#import "WC_HKDF.h"
 #import "ShortLinkKey.h"
 
 #import "MMTLSShortLinkResponse.h"
@@ -83,7 +83,7 @@
     NSData *expandParam1 = _resumptionSecret;
     
     NSData *expandResult = nil;
-    [WX_HKDF HKDF_Expand_Prk3:expandParam1 Info:expandParam2 outOkm:&expandResult]; //短链接加密key 及 iv 。
+    [WC_HKDF HKDF_Expand_Prk3:expandParam1 Info:expandParam2 outOkm:&expandResult]; //短链接加密key 及 iv 。
     ShortLinkKey *shortlinkWriteKey = [[ShortLinkKey alloc] initWithData:expandResult];
     
     NSData *fixData = [NSData dataWithHexString:@"00000010080000000B01000000060012"];
@@ -91,14 +91,13 @@
     
     _clientHashPart = [_clientHelloData addDataAtTail:fixData];
     
-    NSData *writeIV = [WX_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
+    NSData *writeIV = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
     
     NSData *aadddd = [NSData dataWithHexString:@"00000000000000"];
     aadddd = [aadddd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
     aadddd = [[aadddd addDataAtTail:[NSData dataWithHexString:@"19F103"]] addDataAtTail:[NSData packInt16:(int32_t)([fixData length] + 0x10) flip:YES]]; //0x10 aad len
     
-    NSData *encryptedPart1 = nil;
-    [WX_AesGcm128 aes128gcmEncrypt:fixData ciphertext:&encryptedPart1 aad:aadddd key:shortlinkWriteKey.KEY ivec:writeIV];          //第一次加密
+    NSData *encryptedPart1 = [WC_AesGcm128 aes128gcmEncrypt:fixData aad:aadddd key:shortlinkWriteKey.KEY ivec:writeIV];          //第一次加密
     
     NSData *postData = [NSData dataWithHexString:@"19F103"];
     postData = [postData addDataAtTail:[NSData packInt16:(int16_t)[hashPart length] flip:YES]];
@@ -108,27 +107,25 @@
     postData = [postData addDataAtTail:[NSData packInt16:(int16_t)[encryptedPart1 length] flip:YES]];
     postData = [postData addDataAtTail:encryptedPart1];
     
-    writeIV = [WX_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
+    writeIV = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
     aadddd = [NSData dataWithHexString:@"00000000000000"];
     aadddd = [aadddd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
     aadddd = [[aadddd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t)([_httpData length] + 0x10) flip:YES]]; //0x10 aad len
     
-    NSData *encryptedPart2 = nil;
-    [WX_AesGcm128 aes128gcmEncrypt:_httpData ciphertext:&encryptedPart2 aad:aadddd key:shortlinkWriteKey.KEY ivec:writeIV];        //第二次加密 http 明文流量
+    NSData *encryptedPart2 = [WC_AesGcm128 aes128gcmEncrypt:_httpData aad:aadddd key:shortlinkWriteKey.KEY ivec:writeIV];        //第二次加密 http 明文流量
 
     postData = [postData addDataAtTail:[NSData dataWithHexString:@"17F103"]];
     postData = [postData addDataAtTail:[NSData packInt16:(int16_t)[encryptedPart2 length] flip:YES]];
     postData = [postData addDataAtTail:encryptedPart2];
     
     NSData *plainTextData3 = [NSData dataWithHexString:@"00000003000101"]; // 第三次固定内容
-    writeIV = [WX_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
+    writeIV = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
     
     aadddd = [NSData dataWithHexString:@"00000000000000"];
     aadddd = [aadddd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
     aadddd = [[aadddd addDataAtTail:[NSData dataWithHexString:@"15F103"]] addDataAtTail:[NSData packInt16:(int32_t)([plainTextData3 length] + 0x10) flip:YES]]; //0x10 aad len
     
-    NSData *encryptedPart3 = nil;
-    [WX_AesGcm128 aes128gcmEncrypt:plainTextData3 ciphertext:&encryptedPart3 aad:aadddd key:shortlinkWriteKey.KEY ivec:writeIV];   //第三次解密内容固定
+    NSData *encryptedPart3 = [WC_AesGcm128 aes128gcmEncrypt:plainTextData3 aad:aadddd key:shortlinkWriteKey.KEY ivec:writeIV];   //第三次解密内容固定
     
     postData = [postData addDataAtTail:[NSData dataWithHexString:@"15F103"]];
     postData = [postData addDataAtTail:[NSData packInt16:(int16_t)[encryptedPart3 length] flip:YES]];
@@ -149,7 +146,7 @@
     [info appendData:hashResult];
     
     NSData *expandResult = nil;
-    [WX_HKDF HKDF_Expand_Prk3:_resumptionSecret Info:info outOkm:&expandResult];
+    [WC_HKDF HKDF_Expand_Prk3:_resumptionSecret Info:info outOkm:&expandResult];
     ShortLinkKey *shortlinkWriteKey = [[ShortLinkKey alloc] initWithData:expandResult]; //解密key iv
     
     // 第一部分
@@ -158,12 +155,11 @@
     NSMutableData *aad1 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
     [aad1 appendData:[NSData packInt32:(int32_t)[encryptedPart1 length] flip:NO]];
     
-    NSData *readIV1 = [WX_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
+    NSData *readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
     
     DLog(@"after XOR readIV 1", readIV1);
     
-    NSData *plainText1 = nil;
-    [WX_AesGcm128 aes128gcmDecrypt:encryptedPart1 plaintext:&plainText1 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
+    NSData *plainText1 = [WC_AesGcm128 aes128gcmDecrypt:encryptedPart1 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
     
     DLog(@"decrypted part1", plainText1);   //好像校验数据用。
     
@@ -173,12 +169,11 @@
     aad1 = [[NSData dataWithHexString:@"000000000000000217F10301"] mutableCopy];
     [aad1 appendData:[NSData packInt32:(int32_t)[encrypedPart2 length] flip:NO]];
     
-    readIV1 = [WX_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
+    readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
     
     DLog(@"after XOR readIV 1", readIV1);
     
-    NSData *plainText2 = nil;
-    [WX_AesGcm128 aes128gcmDecrypt:encrypedPart2 plaintext:&plainText2 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
+    NSData *plainText2 = [WC_AesGcm128 aes128gcmDecrypt:encrypedPart2 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
     
     DLog(@"decrypted part2", plainText2);
     
@@ -188,12 +183,11 @@
     aad1 = [[NSData dataWithHexString:@"000000000000000317F10301"] mutableCopy];
     [aad1 appendData:[NSData packInt32:(int32_t)[encrypedPart3 length] flip:NO]];
     
-    readIV1 = [WX_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
+    readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
     
     DLog(@"after XOR readIV 1", readIV1);
     
-    NSData *plainText3 = nil;
-    [WX_AesGcm128 aes128gcmDecrypt:encrypedPart3 plaintext:&plainText3 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
+    NSData *plainText3 = [WC_AesGcm128 aes128gcmDecrypt:encrypedPart3 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
     
     DLog(@"decrypted part2", plainText3);
     

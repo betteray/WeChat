@@ -109,7 +109,7 @@
                                     success:^(GPBMessage *_Nullable response) {
                                         ManualAuthResponse *resp = (ManualAuthResponse *) response;
 
-                                        LogInfo(@"登陆响应 Code: %d, msg: %@", resp.result.code, resp.result.errMsg.msg);
+                                        LogVerbose(@"登陆响应 Code: %d, msg: %@", resp.result.code, resp.result.errMsg.msg);
                                         
                                         switch (resp.result.code)
                                         {
@@ -149,7 +149,7 @@
                                                     [WeChatClient sharedClient].sessionKey = [FSOpenSSL aesDecryptData:resp.authParam.session.key key:checkEcdhKey];
                                                     [WeChatClient sharedClient].checkEcdhKey = checkEcdhKey;
 
-                                                    LogInfo(@"登陆成功: SessionKey: %@, uin: %d, wxid: %@, NickName: %@, alias: %@",
+                                                    LogVerbose(@"登陆成功: SessionKey: %@, uin: %d, wxid: %@, NickName: %@, alias: %@",
                                                           [WeChatClient sharedClient].sessionKey,
                                                           uin, resp.accountInfo.wxId,
                                                           resp.accountInfo.nickName,
@@ -162,10 +162,16 @@
                                                     [WXUserDefault saveNikeName:resp.accountInfo.nickName];
                                                     [WXUserDefault saveAlias:resp.accountInfo.alias];
                                                     
-                                                    UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
-                                                    UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"NavFunctionsViewController"];
-                                                    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-                                                    keyWindow.rootViewController = nav;
+                                                    [self showHUDWithText:@"登陆成功"];
+                                                    
+                                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                        UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
+                                                        UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"NavFunctionsViewController"];
+//                                                        UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+//                                                        keyWindow.rootViewController = nav;
+                                                        
+                                                        [self presentViewController:nav animated:YES completion:nil];
+                                                    });
                                                 }
                                             }
                                             break;

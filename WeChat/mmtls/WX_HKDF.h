@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WX_HKDF : NSObject
+@interface WC_HKDF : NSObject
 
-+ (void) HKDF_Expand_Prk:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm;
++ (NSData *) HKDF_Expand:(NSData *)prk Info:(NSData *)info;
 + (void) HKDF_Expand_Prk2:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm;
 + (void) HKDF_Expand_Prk3:(NSData *)prk Info:(NSData *)info outOkm:(NSData **)outOkm;
 

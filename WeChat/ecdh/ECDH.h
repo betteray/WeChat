@@ -20,12 +20,8 @@ szServerPubKey:(unsigned char *)szServerPubKey
     szShareKey:(unsigned char *)szShareKey
   pLenShareKey:(int *)pLenShareKey;
 
-+ (bool)DoEcdh2:(int)nid
- szServerPubKey:(unsigned char *)szServerPubKey
-  nLenServerPub:(int)nLenServerPub
-  szLocalPriKey:(unsigned char *)szLocalPriKey
-   nLenLocalPri:(int)nLenLocalPri
-     szShareKey:(unsigned char *)szShareKey
-   pLenShareKey:(int *)pLenShareKey;
++ (NSData *)DoEcdh2:(int)nid
+       ServerPubKey:(NSData *)serverPubKey
+        LocalPriKey:(NSData *)localPriKey;
 
 @end

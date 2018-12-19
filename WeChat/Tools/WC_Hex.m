@@ -6,9 +6,9 @@
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "WX_Hex.h"
+#import "WC_Hex.h"
 
-@implementation WX_Hex
+@implementation WC_Hex
 
 +(NSData *) IV:(NSData *) IV XORSeq:(NSInteger) Seq {
     NSMutableData *prefixData = [[NSData dataWithHexString:@"0000000000000000"] mutableCopy];

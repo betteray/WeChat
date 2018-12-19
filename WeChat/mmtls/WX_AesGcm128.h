@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WX_AesGcm128 : NSObject
+@interface WC_AesGcm128 : NSObject
 
 
 + (BOOL) aes128gcmEncrypt:(NSData*)plaintext
