@@ -46,12 +46,6 @@
     cgiWrap.needSetBaseRequest = NO;
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/encryptchecktinkerupdate";
     //    cgiWrap.responseClass = [GetLoginQRCodeResponse class];
-    
-    [[WeChatClient sharedClient] postRequest:cgiWrap success:^(id  _Nullable response) {
-        
-    } failure:^(NSError *error) {
-        
-    }];
 }
 
 /*

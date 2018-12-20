@@ -52,7 +52,7 @@
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/newsendmsg";
     cgiWrap.responseClass = [SendMsgResponseNew class];
 
-    [[WeChatClient sharedClient] startRequest:cgiWrap
+    [WeChatClient startRequest:cgiWrap
         success:^(id _Nullable response) {
             NSLog(@"%@", response);
 
@@ -60,12 +60,6 @@
         failure:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-
-    //    [[WeChatClient sharedClient] postRequest:cgiWrap success:^(id  _Nullable response) {
-    //
-    //    } failure:^(NSError *error) {
-    //
-    //    }];
 }
 
 /*

@@ -86,7 +86,7 @@
 
         _clientHelloData = [clientHelloData copy];
 
-        DLog(@"Client Hello", _clientHelloData);
+//        DLog(@"Client Hello", _clientHelloData);
     }
 
     return _clientHelloData;

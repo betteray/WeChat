@@ -41,12 +41,6 @@
     cgiWrap.needSetBaseRequest = YES;
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/mmsnstimeline";
     cgiWrap.responseClass = [SnsTimeLineResponse class];
-    
-    [[WeChatClient sharedClient] postRequest:cgiWrap success:^(id  _Nullable response) {
-        
-    } failure:^(NSError * _Nonnull error) {
-        
-    }];
 }
 
 @end

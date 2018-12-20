@@ -28,11 +28,6 @@ typedef void (^FailureBlock)(NSError *error);
 + (instancetype)sharedClient;
 
 - (void)start;
-- (void)restartUsingIpAddress:(NSString *)IpAddress;
-
-- (void)startRequest:(CgiWrap *)cgiWrap
-             success:(SuccessBlock)successBlock
-             failure:(FailureBlock)failureBlock;
 
 + (void)startRequest:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
@@ -41,10 +36,6 @@ typedef void (^FailureBlock)(NSError *error);
 - (void)manualAuth:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock;
-
-- (void)postRequest:(CgiWrap *)cgiWrap
-            success:(SuccessBlock)successBlock
-            failure:(FailureBlock)failureBlock;
 
 @end
 

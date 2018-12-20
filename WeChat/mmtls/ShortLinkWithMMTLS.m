@@ -69,7 +69,7 @@
     [clientHelloData appendData:_decryptedPart2];
     
     _clientHelloData = [clientHelloData copy];
-    DLog(@"Client Hello", _clientHelloData);
+//    DLog(@"Client Hello", _clientHelloData);
 
     return _clientHelloData;
 }
@@ -157,11 +157,11 @@
     
     NSData *readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
     
-    DLog(@"after XOR readIV 1", readIV1);
+//    DLog(@"after XOR readIV 1", readIV1);
     
     NSData *plainText1 = [WC_AesGcm128 aes128gcmDecrypt:encryptedPart1 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
     
-    DLog(@"decrypted part1", plainText1);   //好像校验数据用。
+//    DLog(@"decrypted part1", plainText1);   //好像校验数据用。
     
     // 第二部分
     NSData *encrypedPart2 = [response getPart2];
@@ -171,11 +171,11 @@
     
     readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
     
-    DLog(@"after XOR readIV 1", readIV1);
+//    DLog(@"after XOR readIV 1", readIV1);
     
     NSData *plainText2 = [WC_AesGcm128 aes128gcmDecrypt:encrypedPart2 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
     
-    DLog(@"decrypted part2", plainText2);
+//    DLog(@"decrypted part2", plainText2);
     
     // 第三部分
     NSData *encrypedPart3 = [response getPart3];
@@ -185,11 +185,11 @@
     
     readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
     
-    DLog(@"after XOR readIV 1", readIV1);
+//    DLog(@"after XOR readIV 1", readIV1);
     
     NSData *plainText3 = [WC_AesGcm128 aes128gcmDecrypt:encrypedPart3 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
     
-    DLog(@"decrypted part2", plainText3);
+//    DLog(@"decrypted part2", plainText3);
     
     return plainText2;
 }

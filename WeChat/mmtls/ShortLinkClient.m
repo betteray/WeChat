@@ -84,4 +84,55 @@
     return payloadData;
 }
 
+//+ (void)postRequest:(CgiWrap *)cgiWrap
+//            success:(SuccessBlock)successBlock
+//            failure:(FailureBlock)failureBlock
+//{
+//    
+//    if (cgiWrap.needSetBaseRequest)
+//    {
+//        BaseRequest *base = [BaseRequest new];
+//        NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+//        [base setSessionKey:sessionKey];
+//        [base setUin:(int32_t)[WXUserDefault getUIN]];
+//        [base setScene:0]; // iMac 1
+//        [base setClientVersion:CLIENT_VERSION];
+//        [base setDeviceType:DEVICE_TYPE];
+//        [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
+//
+//        [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
+//    }
+//
+//    LogInfo(@"Start Request: %@", cgiWrap.request);
+//
+//    NSData *serilizedData = [[cgiWrap request] data];
+//    NSData *sendData = [short_pack pack:cgiWrap.cgi serilizedData:serilizedData type:5 uin:_uin cookie:_cookie];
+//
+//    NSData *decryptedPart2 = _mmtlsClient.shortLinkPSKData;
+//    NSData *resumptionSecret = _mmtlsClient.resumptionSecret;
+//
+//    NSData *httpData = [ShortLinkClient getPayloadDataWithData:sendData cgiPath:cgiWrap.cgiPath host:@"short.weixin.qq.com"];
+//    DLog(@"HttpData", httpData);
+//
+//    ShortLinkWithMMTLS *slm = [[ShortLinkWithMMTLS alloc] initWithDecryptedPart2:decryptedPart2 resumptionSecret:resumptionSecret httpData:httpData];
+//    NSData *mmtlsData = [slm getSendData];
+//
+//    DLog(@"Send mmtlsData", mmtlsData);
+//
+//    NSData *rcvData = [ShortLinkClient mmPost:mmtlsData withHost:@"short.weixin.qq.com"];
+//
+//    DLog(@"RCV mmtlsData", rcvData);
+//
+//    MMTLSShortLinkResponse *response = [[MMTLSShortLinkResponse alloc] initWithData:rcvData];
+//    NSData *packData = [slm receiveData:response];
+//    [self UnPack:packData];
+//
+//    Task *task = [Task new];
+//    task.sucBlock = successBlock;
+//    task.failBlock = failureBlock;
+//    task.cgiWrap = cgiWrap;
+//    [_tasks addObject:task];
+//}
+
+
 @end

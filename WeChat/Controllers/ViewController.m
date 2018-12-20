@@ -255,7 +255,7 @@
                                                 if (resp.dns.ip.longlinkIpCnt > 0)
                                                 {
                                                     NSString *longlinkIp = [[resp.dns.ip.longlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
-                                                    [[WeChatClient sharedClient] restartUsingIpAddress:longlinkIp];
+//                                                    [[WeChatClient sharedClient] restartUsingIpAddress:longlinkIp];
                                                 }
                                             }
                                             break;

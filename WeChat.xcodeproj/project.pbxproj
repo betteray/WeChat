@@ -13,7 +13,6 @@
 		71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */; };
 		71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3E21B6CBB400DE8DF8 /* ShortLinkKey.m */; };
 		71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */; };
-		71193F5321AE7A2000D982D5 /* NSString+Concat.m in Sources */ = {isa = PBXBuildFile; fileRef = 71193F5221AE7A2000D982D5 /* NSString+Concat.m */; };
 		7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C35D21C3494300A3E900 /* LoginViewController.m */; };
 		7121C36221C350B700A3E900 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C36121C350B700A3E900 /* DBManager.m */; };
 		7121C36521C3610000A3E900 /* SendMsgController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C36421C3610000A3E900 /* SendMsgController.m */; };
@@ -57,6 +56,7 @@
 		7161984921CB6FEA00A76F39 /* header.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984821CB6FEA00A76F39 /* header.m */; };
 		7161984C21CB704F00A76F39 /* short_pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984B21CB704F00A76F39 /* short_pack.m */; };
 		7161984F21CB712900A76F39 /* long_pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984E21CB712900A76F39 /* long_pack.m */; };
+		7161985321CB863A00A76F39 /* LongLinkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161985221CB863A00A76F39 /* LongLinkClient.m */; };
 		716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */; };
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
@@ -105,8 +105,6 @@
 		71008F3E21B6CBB400DE8DF8 /* ShortLinkKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortLinkKey.m; sourceTree = "<group>"; };
 		71008F4021B7A36200DE8DF8 /* MMTLSShortLinkResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMTLSShortLinkResponse.h; sourceTree = "<group>"; };
 		71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMTLSShortLinkResponse.m; sourceTree = "<group>"; };
-		71193F5121AE7A2000D982D5 /* NSString+Concat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Concat.h"; sourceTree = "<group>"; };
-		71193F5221AE7A2000D982D5 /* NSString+Concat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Concat.m"; sourceTree = "<group>"; };
 		7121C35C21C3494300A3E900 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7121C35D21C3494300A3E900 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7121C36021C350B700A3E900 /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
@@ -274,6 +272,8 @@
 		7161984B21CB704F00A76F39 /* short_pack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = short_pack.m; sourceTree = "<group>"; };
 		7161984D21CB712900A76F39 /* long_pack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = long_pack.h; sourceTree = "<group>"; };
 		7161984E21CB712900A76F39 /* long_pack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = long_pack.m; sourceTree = "<group>"; };
+		7161985121CB863A00A76F39 /* LongLinkClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongLinkClient.h; sourceTree = "<group>"; };
+		7161985221CB863A00A76F39 /* LongLinkClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LongLinkClient.m; sourceTree = "<group>"; };
 		716AAE4D214FC8C5006BCFB2 /* NSData+CompressAndEncypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CompressAndEncypt.h"; sourceTree = "<group>"; };
 		716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CompressAndEncypt.m"; sourceTree = "<group>"; };
 		71848F252150CABD00DB669E /* NSData+Compression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Compression.h"; sourceTree = "<group>"; };
@@ -415,7 +415,6 @@
 		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
-				7161985021CB79E000A76F39 /* Pack */,
 				71848F6221549A1C00DB669E /* Categories */,
 				712C7065214A9A8B00603022 /* Constants.h */,
 				7121C35F21C3494A00A3E900 /* Controllers */,
@@ -426,10 +425,9 @@
 				712C7146214BA35700603022 /* model */,
 				712C70E9214B5A4B00603022 /* openssl */,
 				712C7159214CDA9100603022 /* Others */,
+				7161985021CB79E000A76F39 /* Pack */,
 				7154D5192196B8DF005064C4 /* PrefixHeader.pch */,
 				712C6F18214A6A5800603022 /* proto */,
-				71008F3421B678F500DE8DF8 /* ShortLinkClient.h */,
-				71008F3521B678F500DE8DF8 /* ShortLinkClient.m */,
 				7154D51D2196D6BD005064C4 /* Tools */,
 				71D3DAA921AEACD2002ACF1C /* ViewCat */,
 				712C6E91214A1E8900603022 /* WeChatClient.h */,
@@ -637,8 +635,6 @@
 			children = (
 				7154D5212196DFE1005064C4 /* WC_Hex.m */,
 				7154D51E2196D6DA005064C4 /* WC_Hex.h */,
-				71193F5121AE7A2000D982D5 /* NSString+Concat.h */,
-				71193F5221AE7A2000D982D5 /* NSString+Concat.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -666,6 +662,10 @@
 				71008F3E21B6CBB400DE8DF8 /* ShortLinkKey.m */,
 				71008F4021B7A36200DE8DF8 /* MMTLSShortLinkResponse.h */,
 				71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */,
+				7161985121CB863A00A76F39 /* LongLinkClient.h */,
+				7161985221CB863A00A76F39 /* LongLinkClient.m */,
+				71008F3421B678F500DE8DF8 /* ShortLinkClient.h */,
+				71008F3521B678F500DE8DF8 /* ShortLinkClient.m */,
 			);
 			path = mmtls;
 			sourceTree = "<group>";
@@ -945,12 +945,12 @@
 				7155BA5221902AB30002CE1D /* ClientHello.m in Sources */,
 				7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */,
 				7161984C21CB704F00A76F39 /* short_pack.m in Sources */,
+				7161985321CB863A00A76F39 /* LongLinkClient.m in Sources */,
 				7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */,
 				712C714F214BABA500603022 /* ShortPackage.m in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
 				7161984921CB6FEA00A76F39 /* header.m in Sources */,
 				719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */,
-				71193F5321AE7A2000D982D5 /* NSString+Concat.m in Sources */,
 				71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */,
 				7154D5222196DFE1005064C4 /* WC_Hex.m in Sources */,
 				71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */,
