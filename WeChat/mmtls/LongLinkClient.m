@@ -317,7 +317,7 @@
 
 - (void)mmtlsEnCryptAndSend:(NSData *)sendData
 {
-    NSString *logTag = [NSString stringWithFormat:@"MMTLS Send(%ld)", [sendData length]];
+    NSString *logTag = [NSString stringWithFormat:@"Send(%ld)", [sendData length]];
     DLog(logTag, sendData);
     
     NSData *writeIV = [WC_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
@@ -329,6 +329,9 @@
     
     NSData *sendMsgData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t)([sendData length] + 0x10) flip:YES]];
     sendMsgData = [sendMsgData addDataAtTail:mmtlsData];
+    
+    logTag = [NSString stringWithFormat:@"[MMTLS] Send(%ld)", [sendMsgData length]];
+    DLog(logTag, sendMsgData);
     
     [self sendData:sendMsgData];
 }

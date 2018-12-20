@@ -61,6 +61,7 @@
     }
     
     [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[[Varint128 dataWithUInt32:(int)(([header length] << 2) + 0x2)] bytes]];
+    DLog(@"Make Header", header);
     return [header copy];
 }
 

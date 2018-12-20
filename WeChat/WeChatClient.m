@@ -102,7 +102,7 @@
             LogError(@" ** Gen RSA KeyPair Fail. ** ");
         }
 
-        _heartbeatTimer = [NSTimer timerWithTimeInterval:60 * 3 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
+        _heartbeatTimer = [NSTimer timerWithTimeInterval:20 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
 
     }
@@ -333,7 +333,8 @@
 
 - (NSData *)pack:(int)cmdId cgi:(int)cgi serilizedData:(NSData *)serilizedData type:(NSInteger)type
 {
-    NSData *shortLinkBuf = [short_pack pack:cgi serilizedData:serilizedData type:type uin:_uin cookie:_cookie];
+    NSData *cookie = [[DBManager sharedManager] getCookie];
+    NSData *shortLinkBuf = [short_pack pack:cgi serilizedData:serilizedData type:type uin:_uin cookie:cookie];
     return [long_pack pack:self.seq++ cmdId:cmdId shortData:shortLinkBuf];
 }
 

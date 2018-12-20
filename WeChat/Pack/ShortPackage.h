@@ -15,6 +15,5 @@
 @property (nonatomic, strong) NSData *body;
 
 @property (nonatomic, assign) uint32_t uin;
-@property (nonatomic, strong) NSData *cookie;
 
 @end

@@ -73,6 +73,7 @@
     NSString *sql = @"CREATE TABLE IF NOT EXISTS account_info (id INTEGER PRIMARY KEY AUTOINCREMENT, wxid TEXT, nick_name TEXT NULL, alias TEXT NULL);"
                         "CREATE TABLE IF NOT EXISTS client_check_data (id INTEGER PRIMARY KEY AUTOINCREMENT, data BLOB);"
                         "CREATE TABLE IF NOT EXISTS session_key (id INTEGER PRIMARY KEY AUTOINCREMENT, data BLOB);"
+                        "CREATE TABLE IF NOT EXISTS cookie (id INTEGER PRIMARY KEY AUTOINCREMENT, data BLOB);"
                         "CREATE TABLE IF NOT EXISTS long_ip (id INTEGER PRIMARY KEY AUTOINCREMENT, ip text UNIQUE);"
                         "CREATE TABLE IF NOT EXISTS short_ip (id INTEGER PRIMARY KEY AUTOINCREMENT, ip text UNIQUE);";
 
@@ -165,6 +166,42 @@
 - (NSData *)getSessionKey
 {
     FMResultSet *resultSet = [_db executeQuery:@"SELECT data FROM session_key"];
+    if ([resultSet next])
+    {
+        return [resultSet dataForColumn:@"data"];
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+// cookie
+- (BOOL)saveCookie:(NSData *)cookie
+{
+    FMResultSet *resultSet = [_db executeQuery:@"SELECT id FROM cookie"];
+    
+    BOOL has = NO;
+    if ([resultSet next])
+    {
+        has = YES;
+    }
+    
+    if (!has)
+    {
+        [_db executeUpdate:@"INSERT INTO cookie (data) VALUES (?)", cookie];
+    }
+    else
+    {
+        [_db executeUpdate:@"UPDATE cookie SET data = ? where id = 0", cookie];
+    }
+    
+    CHECKFMDBERROR;
+}
+
+- (NSData *)getCookie
+{
+    FMResultSet *resultSet = [_db executeQuery:@"SELECT data FROM cookie"];
     if ([resultSet next])
     {
         return [resultSet dataForColumn:@"data"];

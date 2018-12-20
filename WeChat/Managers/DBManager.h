@@ -27,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)saveLongIpList:(NSArray *)ipList;
 - (NSArray *)getLongIpList;
 
+- (BOOL)saveCookie:(NSData *)cookie;
+- (NSData *)getCookie;
+
 @end
 
 NS_ASSUME_NONNULL_END
