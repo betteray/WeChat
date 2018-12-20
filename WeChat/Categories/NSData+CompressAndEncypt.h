@@ -15,4 +15,7 @@
 - (NSData *)Compress_And_AES;
 - (NSData *)AES;
 
+- (NSData *)aesDecryptWithKey:(NSData *)key;
+- (NSData *)aesDecrypt_then_decompress;
+
 @end

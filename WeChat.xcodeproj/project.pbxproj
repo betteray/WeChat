@@ -39,7 +39,6 @@
 		712C7152214BAD8900603022 /* ShortHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7151214BAD8900603022 /* ShortHeader.m */; };
 		712C7155214BF8A900603022 /* CgiWrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7154214BF8A900603022 /* CgiWrap.m */; };
 		712C7158214BFB1600603022 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7157214BFB1600603022 /* Task.m */; };
-		712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C715E214CDB6C00603022 /* NSData+PackUtil.m */; };
 		712C7166214D2BFD00603022 /* ECDH.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7165214D2BFD00603022 /* ECDH.m */; };
 		7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5102196B720005064C4 /* NSString+HexDump.m */; };
 		7154D5162196B721005064C4 /* HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5132196B720005064C4 /* HexDump.m */; };
@@ -236,8 +235,6 @@
 		712C7154214BF8A900603022 /* CgiWrap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CgiWrap.m; sourceTree = "<group>"; };
 		712C7156214BFB1600603022 /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		712C7157214BFB1600603022 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
-		712C715D214CDB6C00603022 /* NSData+PackUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+PackUtil.h"; sourceTree = "<group>"; };
-		712C715E214CDB6C00603022 /* NSData+PackUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+PackUtil.m"; sourceTree = "<group>"; };
 		712C7164214D2BFD00603022 /* ECDH.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECDH.h; sourceTree = "<group>"; };
 		712C7165214D2BFD00603022 /* ECDH.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECDH.m; sourceTree = "<group>"; };
 		7154D50D219686BD005064C4 /* WC_HKDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WC_HKDF.h; sourceTree = "<group>"; };
@@ -700,8 +697,6 @@
 				716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */,
 				712C6E97214A2F9C00603022 /* NSData+Util.h */,
 				712C6E98214A2F9C00603022 /* NSData+Util.m */,
-				712C715D214CDB6C00603022 /* NSData+PackUtil.h */,
-				712C715E214CDB6C00603022 /* NSData+PackUtil.m */,
 				71848F252150CABD00DB669E /* NSData+Compression.h */,
 				71848F262150CABD00DB669E /* NSData+Compression.m */,
 				71848F6621549C8100DB669E /* NSData+GenRandomData.h */,
@@ -956,7 +951,6 @@
 				71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */,
 				71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */,
 				71008F3621B678F500DE8DF8 /* ShortLinkClient.m in Sources */,
-				712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */,
 				712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */,
 				712C7149214BA38900603022 /* LongHeader.m in Sources */,
 				712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */,

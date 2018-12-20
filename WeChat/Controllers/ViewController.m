@@ -12,12 +12,12 @@
 #import "NSData+Util.h"
 #import "FSOpenSSL.h"
 
-#import "NSData+PackUtil.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ECDH.h"
 #import "NSData+AES.h"
 #import <Protobuf/GPBCodedOutputStream.h>
 #import "NSData+Util.h"
+#import "NSData+CompressAndEncypt.h"
 
 #import "WC_AesGcm128.h"
 #import "WX_SHA256.h"

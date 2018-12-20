@@ -14,9 +14,10 @@ static const size_t CHUNK = 65536;
 
 @implementation NSData (Compression)
 
-- (NSData *)dataByInflatingWithError:(NSError * __autoreleasing *)error
+- (NSData *)dataByInflatingWithError:(NSError *__autoreleasing *)error
 {
-    if (![self length]) return [self copy];
+    if (![self length])
+        return [self copy];
     NSMutableData *outData = [NSMutableData data];
     [self inflate:^(NSData *toAppend) {
         [outData appendData:toAppend];
@@ -27,7 +28,8 @@ static const size_t CHUNK = 65536;
 
 - (NSData *)dataByDeflating
 {
-    if (![self length]) return [self copy];
+    if (![self length])
+        return [self copy];
     NSMutableData *outData = [NSMutableData data];
     [self deflate:^(NSData *toAppend) {
         [outData appendData:toAppend];
@@ -36,7 +38,7 @@ static const size_t CHUNK = 65536;
 }
 
 - (BOOL)inflate:(void (^)(NSData *))processBlock
-          error:(NSError * __autoreleasing *)error
+          error:(NSError *__autoreleasing *)error
 {
     z_stream stream;
     stream.zalloc = Z_NULL;
@@ -44,32 +46,37 @@ static const size_t CHUNK = 65536;
     stream.opaque = Z_NULL;
     stream.avail_in = 0;
     stream.next_in = Z_NULL;
-    
+
     int ret = inflateInit(&stream);
     NSCAssert(ret == Z_OK, @"Could not init deflate");
-    Bytef *source = (Bytef *)[self bytes]; // yay
+    Bytef *source = (Bytef *) [self bytes]; // yay
     uInt offset = 0;
     uInt len = (uInt)[self length];
-    
-    do {
-        stream.avail_in = MIN(CHUNK, len - offset);
-        if (stream.avail_in == 0) break;
+
+    do
+    {
+        stream.avail_in = (uint) MIN(CHUNK, len - offset);
+        if (stream.avail_in == 0)
+            break;
         stream.next_in = source + offset;
         offset += stream.avail_in;
-        do {
+        do
+        {
             Bytef out[CHUNK];
             stream.avail_out = CHUNK;
             stream.next_out = out;
             ret = inflate(&stream, Z_NO_FLUSH);
             NSCAssert(ret != Z_STREAM_ERROR, @"Error");
-            switch (ret) {
+            switch (ret)
+            {
                 case Z_NEED_DICT:
                 case Z_DATA_ERROR:
                 case Z_MEM_ERROR:
                     inflateEnd(&stream);
-                    if (error) *error = [NSError errorWithDomain:BBZlibErrorDomain
-                                                                code:BBZlibErrorCodeInflationError
-                                                            userInfo:nil];
+                    if (error)
+                        *error = [NSError errorWithDomain:BBZlibErrorDomain
+                                                     code:BBZlibErrorCodeInflationError
+                                                 userInfo:nil];
                     return NO;
             }
             processBlock([NSData dataWithBytesNoCopy:out
@@ -77,11 +84,10 @@ static const size_t CHUNK = 65536;
                                         freeWhenDone:NO]);
         } while (stream.avail_out == 0);
     } while (ret != Z_STREAM_END);
-    
+
     inflateEnd(&stream);
     return YES;
 }
-
 
 - (void)deflate:(void (^)(NSData *))processBlock
 {
@@ -89,20 +95,22 @@ static const size_t CHUNK = 65536;
     stream.zalloc = Z_NULL;
     stream.zfree = Z_NULL;
     stream.opaque = Z_NULL;
-    
+
     int ret = deflateInit(&stream, 9);
     NSCAssert(ret == Z_OK, @"Could not init deflate");
-    Bytef *source = (Bytef *)[self bytes]; // yay
+    Bytef *source = (Bytef *) [self bytes]; // yay
     uInt offset = 0;
     uInt len = (uInt)[self length];
     int flush;
-    
-    do {
-        stream.avail_in = MIN(CHUNK, len - offset);
+
+    do
+    {
+        stream.avail_in = (uint) MIN(CHUNK, len - offset);
         stream.next_in = source + offset;
         offset += stream.avail_in;
         flush = offset > len - 1 ? Z_FINISH : Z_NO_FLUSH;
-        do {
+        do
+        {
             Bytef out[CHUNK];
             stream.avail_out = CHUNK;
             stream.next_out = out;

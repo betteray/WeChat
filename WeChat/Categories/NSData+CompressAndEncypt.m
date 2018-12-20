@@ -36,4 +36,17 @@
     return [self AES_CBC_encryptWithKey:sessionKey];
 }
 
+
+- (NSData *)aesDecryptWithKey:(NSData *)key
+{
+    return [self AES_CBC_decryptWithKey:key];
+}
+
+- (NSData *)aesDecrypt_then_decompress
+{
+    NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+    NSData *decryptedData = [self AES_CBC_decryptWithKey:sessionKey];
+    return [decryptedData dataByInflatingWithError:nil];
+}
+
 @end
