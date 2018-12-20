@@ -151,7 +151,7 @@
                            [[DBManager sharedManager] saveSessionKey:sessionKey];
                            [WeChatClient sharedClient].checkEcdhKey = checkEcdhKey;
 
-                           LogVerbose(@"登陆成功: SessionKey: %@, uin: %d, wxid: %@, NickName: %@, alias: %@",
+                           LogVerbose(@"登陆成功: SessionKey: %@, uin: %lld, wxid: %@, NickName: %@, alias: %@",
                                       sessionKey,
                                       uin, resp.accountInfo.wxId,
                                       resp.accountInfo.nickName,
@@ -164,14 +164,9 @@
                            [WXUserDefault saveNikeName:resp.accountInfo.nickName];
                            [WXUserDefault saveAlias:resp.accountInfo.alias];
 
-                           [self showHUDWithText:@"登陆成功"];
-
-                           dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                               UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
-                               UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"NavFunctionsViewController"];
-
-                               [self presentViewController:nav animated:YES completion:nil];
-                           });
+                           UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
+                           UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"NavFunctionsViewController"];
+                           [self presentViewController:nav animated:YES completion:nil];
                        }
                    }
                    break;
