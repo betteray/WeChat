@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LongLinkHeader : NSObject
+@interface LongHeader : NSObject
 
 @property (nonatomic, assign) uint32_t bodyLength;
 @property (nonatomic, assign) uint32_t headLength;

@@ -22,7 +22,5 @@
 + (void)saveAlias:(NSString *)alias;
 + (NSString *)getAlias;
 
-+ (void)saveClientCheckData:(NSData *)clientCheckData;
-+ (NSData *)getClientCheckData;
 
 @end

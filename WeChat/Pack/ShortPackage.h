@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Header.h"
+#import "ShortHeader.h"
 
-@interface Package : NSObject
+@interface ShortPackage : NSObject
 
-@property (nonatomic, strong) Header *header;
+@property (nonatomic, strong) ShortHeader *header;
 @property (nonatomic, strong) NSData *body;
+
+@property (nonatomic, assign) uint32_t uin;
+@property (nonatomic, strong) NSData *cookie;
 
 @end

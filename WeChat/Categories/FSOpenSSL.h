@@ -48,4 +48,7 @@ enum
 + (NSData *) aesEncryptData:(NSData *)contentData key:(NSData *)keyData;
 + (NSData *) aesDecryptData:(NSData *)contentData key:( NSData *)keyData;
 
++ (NSData *)RSA_PUB_EncryptData:(NSData *)data modulus:(NSString *)modules exponent:(NSString *)exponent;
++ (BOOL)genRSAKeyPairPubKey:(NSString **)rsaPubKey priKey:(NSString **)rsaPriKey;
+
 @end

@@ -10,6 +10,13 @@
 
 @interface ShortLinkClient : NSObject
 
-+ (NSData *)mmPost:(NSData *)mmtlsData withHost:(NSString *)headerHost;
+- (instancetype)initWithDecryptedPart2:(NSData *)decryptedPart2 resumptionSecret:(NSData *)resumptionSecret;
+
++ (NSData *)mmPost:(NSData *)mmtlsData
+          withHost:(NSString *)headerHost;
+
++ (NSData *)getPayloadDataWithData:(NSData *)shortlinkData
+                           cgiPath:(NSString *)cgiPath
+                              host:(NSString *)host;
 
 @end

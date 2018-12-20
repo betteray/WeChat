@@ -1,13 +1,13 @@
 //
-//  LongLinkPackage.m
+//  Header.m
 //  WXDemo
 //
 //  Created by ray on 2018/9/14.
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "LongLinkPackage.h"
+#import "ShortHeader.h"
 
-@implementation LongLinkPackage
+@implementation ShortHeader
 
 @end

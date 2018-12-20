@@ -17,7 +17,6 @@ typedef void (^FailureBlock)(NSError *error);
 
 @interface WeChatClient : NSObject
 
-@property (nonatomic, strong) NSData * sessionKey;
 @property (nonatomic, strong) NSData * checkEcdhKey;
 @property (nonatomic, assign) int32_t uin;
 
@@ -47,7 +46,6 @@ typedef void (^FailureBlock)(NSError *error);
             success:(SuccessBlock)successBlock
             failure:(FailureBlock)failureBlock;
 
-- (void)newInitWithSyncKeyCur:(NSData *)syncKeyCur syncKeyMax:(NSData *)syncKeyMax;
 @end
 
 NS_ASSUME_NONNULL_END

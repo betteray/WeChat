@@ -9,22 +9,22 @@
 #import "WeChatClient.h"
 #import <FastSocket.h>
 #import "NSData+Util.h"
-#import "Constants.h"
+
 #import "FSOpenSSL.h"
-#import "LongLinkHeader.h"
-#import "LongLinkPackage.h"
-#import "Package.h"
+
+#import "LongHeader.h"
+#import "LongPackage.h"
+#import "ShortPackage.h"
+
 #import "Mm.pbobjc.h"
 #import "CgiWrap.h"
 #import "Task.h"
 #import "NSData+PackUtil.h"
-#import "MarsOpenSSL.h"
 #import "NSData+CompressAndEncypt.h"
 #import "NSData+Compression.h"
 #import "NSData+GenRandomData.h"
 #import <YYModel/YYModel.h>
 #import "Varint128.h"
-#import "NSData+Compress.h"
 
 #import "ClientHello.h"
 #import "ServerHello.h"
@@ -36,6 +36,10 @@
 #import "MMTLSShortLinkResponse.h"
 #import "ShortLinkWithMMTLS.h"
 #import "ShortLinkClient.h"
+
+#import "header.h"
+#import "short_pack.h"
+#import "long_pack.h"
 
 //#心跳
 #define CMDID_NOOP_REQ 6
@@ -62,11 +66,11 @@
 #define HANDSHAKE_CLIENT_HELLO 22
 #define LONGLINK_HEART_BEAT 88
 
-typedef NS_ENUM(int, EncryptMethod) {
-    NONE = 0x1,
-    AES = 0x5,
-    RSA = 0x7,
-};
+#define CMDID_NOOP_REQ 6
+#define HEARTBEAT_SEQ 0xFFFFFFFF
+
+#define CMDID_IDENTIFY_REQ 205
+#define IDENTIFY_SEQ 0xFFFFFFFE
 
 @interface WeChatClient ()
 
@@ -120,8 +124,9 @@ typedef NS_ENUM(int, EncryptMethod) {
         
         _tasks = [NSMutableArray array];
         _mmtlsReceivedBuffer = [NSMutableData data];
-        _sessionKey = [FSOpenSSL random128BitAESKey]; // iPad
-                                                      //        _sessionKey = [NSData GenRandomDataWithSize:184]; //iMac
+
+        [[DBManager sharedManager] saveSessionKey:[FSOpenSSL random128BitAESKey]];      // iPad
+        //[[DBManager sharedManager] saveSessionKey:[NSData GenRandomDataWithSize:184]];  // iMac
 
         _serverHelloData = [NSMutableData new];
 
@@ -130,7 +135,7 @@ typedef NS_ENUM(int, EncryptMethod) {
 
         NSString *priKey = nil;
         NSString *pubKey = nil;
-        if ([MarsOpenSSL genRSAKeyPairPubKey:&pubKey priKey:&priKey])
+        if ([FSOpenSSL genRSAKeyPairPubKey:&pubKey priKey:&priKey])
         {
             _priKey = [priKey dataUsingEncoding:NSUTF8StringEncoding];
             _pubKey = [pubKey dataUsingEncoding:NSUTF8StringEncoding];
@@ -323,23 +328,9 @@ typedef NS_ENUM(int, EncryptMethod) {
         }];
 }
 
-- (void)restartUsingIpAddress:(NSString *)IpAddress
-{
-    //    [_socket disconnect];
-
-    //    NSError *error;
-    //    [_socket connectToHost:IpAddress onPort:80 error:&error];
-    //    if (error)
-    //    {
-    //        NSLog(@"Socks ReStart Error: %@", [error localizedDescription]);
-    //        return;
-    //    }
-    //    [self heartBeat];
-}
-
 - (void)heartBeat
 {
-    NSData *heart = [self longlink_packWithSeq:-1 cmdId:CMDID_NOOP_REQ buffer:nil];
+    NSData *heart = [long_pack pack:-1 cmdId:CMDID_NOOP_REQ shortData:nil];
     [self mmtlsEnCryptAndSend:heart withTag:LONGLINK_HEART_BEAT];
 }
 
@@ -358,7 +349,7 @@ typedef NS_ENUM(int, EncryptMethod) {
     if (cgiWrap.needSetBaseRequest)
     {
         BaseRequest *base = [BaseRequest new];
-        [base setSessionKey:_sessionKey];
+        [base setSessionKey:[[DBManager sharedManager] getSessionKey]];
         [base setUin:(int32_t)[WXUserDefault getUIN]];
         [base setScene:0]; // iMac 1
         [base setClientVersion:CLIENT_VERSION];
@@ -386,82 +377,50 @@ typedef NS_ENUM(int, EncryptMethod) {
             success:(SuccessBlock)successBlock
             failure:(FailureBlock)failureBlock
 {
-
+    
     if (cgiWrap.needSetBaseRequest)
     {
         BaseRequest *base = [BaseRequest new];
-        [base setSessionKey:_sessionKey];
+        NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+        [base setSessionKey:sessionKey];
         [base setUin:(int32_t)[WXUserDefault getUIN]];
         [base setScene:0]; // iMac 1
         [base setClientVersion:CLIENT_VERSION];
         [base setDeviceType:DEVICE_TYPE];
         [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
-
+        
         [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
     }
-
+    
     LogInfo(@"Start Request: %@", cgiWrap.request);
-
+    
     NSData *serilizedData = [[cgiWrap request] data];
-    NSData *sendData = [self shortlinkPackWithCgi:cgiWrap.cgi serilizedData:serilizedData type:5];
-
+    NSData *sendData = [short_pack pack:cgiWrap.cgi serilizedData:serilizedData type:5 uin:_uin cookie:_cookie];
+    
     NSData *decryptedPart2 = _shortLinkPSKData;
     NSData *resumptionSecret = _resumptionSecret;
-    NSData *httpData = [self getHttpDataWithShortLinkPackData:sendData cgiPath:cgiWrap.cgiPath host:@"short.weixin.qq.com"];
+    
+    NSData *httpData = [ShortLinkClient getPayloadDataWithData:sendData cgiPath:cgiWrap.cgiPath host:@"short.weixin.qq.com"];
     DLog(@"HttpData", httpData);
-//        httpData = [NSData dataWithHexString:@"0000023D002E2F6367692D62696E2F6D6963726F6D73672D62696E2F656E6372797074636865636B74696E6B6572757064617465001373686F72742E77656978696E2E71712E636F6D000001F4BF62701607032100000000B401DC03DC03B201010009000000000016000000DE00000100816F467E57C38275CB7239664D3F436DA6090E4AB8C71D5E01C73BB5A2EAD9F2B8CD124B75EFBCC590658A6C2D2218DBCFD02AD485C6BE91C163E6FEE8BF5C40E134047DD9F33D7A029018E12EB742CDADC756599749FAF22592B23BFFE6F6C8A1BECAB5060273839459F5D417829AD1D340DFF70E198AA63BADEC0BA000F71F4F9B64044236C6CFAA66549A1CDD1ACCCA3A4FA9F0674DF8248F37C7DD2923D8C069786EA2EE30DD110FC2A4047BBB06DECB9EE189A720931987F69BDB15C53CD18DA42096BA9CAC468D8CB222A23FBECCF8168C8669227C9EF963D49DF3352C90136CF3548FBED0A0B06555ACDB81F24A8FB19F6F8B195BACB38B1906BF648E3BB86A675A64639F0F6FE788373041D2DCA3CC7D7A79A01CAA8C161695FB22D3DE70B8124813C69BB08571A17B0AAA7716D2819AD2FD8A981DD5083DC52E7F3D67F9B7814FCBE5C3C312E226A8E3F97FA114D0AF86ABC2D643722D2F065359ABE7066192A3F5B42938AF04A218F1F248256BB7E95952BA81632B38D252EF8344BFEFFF9D4C5A626824037B8CAD3488ACE0907C96233DDED25946A4C652B1B652E8FFC2FDCD700159FA35747C9828292907D64A5266A9F457989633BC1A5A57CE4FA4965438461EF40104D2D20CD71305"];
+    
     ShortLinkWithMMTLS *slm = [[ShortLinkWithMMTLS alloc] initWithDecryptedPart2:decryptedPart2 resumptionSecret:resumptionSecret httpData:httpData];
     NSData *mmtlsData = [slm getSendData];
-
+    
     DLog(@"Send mmtlsData", mmtlsData);
-
+    
     NSData *rcvData = [ShortLinkClient mmPost:mmtlsData withHost:@"short.weixin.qq.com"];
-
+    
     DLog(@"RCV mmtlsData", rcvData);
-
+    
     MMTLSShortLinkResponse *response = [[MMTLSShortLinkResponse alloc] initWithData:rcvData];
     NSData *packData = [slm receiveData:response];
     [self UnPack:packData];
-
+    
     Task *task = [Task new];
     task.sucBlock = successBlock;
     task.failBlock = failureBlock;
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
-}
-
-- (void)UnPack:(NSData *)data
-{
-    Package *package = [self UnPackLongLinkBody:data];
-    NSData *protobufData = [package.body aesDecryptWithKey:_sessionKey];
-    Task *task = [self getTaskWithTag:package.header.cgi];
-    id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
-    if (task.sucBlock)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            ((SuccessBlock) task.sucBlock)(response);
-        });
-        [_tasks removeObject:task];
-    }
-}
-
-- (NSData *)getHttpDataWithShortLinkPackData:(NSData *)shortlinkData
-                                     cgiPath:(NSString *)cgiPath
-                                        host:(NSString *)host
-{
-    NSData *len1 = [NSData packInt16:[cgiPath length] flip:YES];
-    NSData *len2 = [NSData packInt16:[host length] flip:YES];
-    NSData *len3 = [NSData packInt32:(int32_t)[shortlinkData length] flip:YES];
-    NSData *result = [len1 addDataAtTail:[cgiPath dataUsingEncoding:NSUTF8StringEncoding]];
-    result = [result addDataAtTail:len2];
-    result = [result addDataAtTail:[host dataUsingEncoding:NSUTF8StringEncoding]];
-    result = [result addDataAtTail:len3];
-    result = [result addDataAtTail:shortlinkData];
-
-    NSData *len4 = [NSData packInt32:(int32_t)[result length] flip:YES];
-    result = [len4 addDataAtTail:result];
-
-    return result;
 }
 
 - (void)manualAuth:(CgiWrap *)cgiWrap
@@ -497,12 +456,12 @@ typedef NS_ENUM(int, EncryptMethod) {
     [body appendData:reqAccount];
     [body appendData:reqDevice];
 
-    NSData *head = [self make_header:cgiWrap.cgi encryptMethod:RSA bodyData:body compressedBodyData:body needCookie:NO];
+    NSData *head = [header make_header:cgiWrap.cgi encryptMethod:RSA bodyData:body compressedBodyData:body needCookie:NO cookie:nil uin:_uin];
 
     NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
     [longlinkBody appendData:body];
 
-    NSData *sendData = [self longlink_packWithSeq:_seq cmdId:cgiWrap.cmdId buffer:longlinkBody];
+    NSData *sendData = [long_pack pack:_seq++ cmdId:cgiWrap.cmdId shortData:longlinkBody];
 
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -532,9 +491,6 @@ typedef NS_ENUM(int, EncryptMethod) {
 
 - (void)mmtlsEnCryptAndSend:(NSData *)sendData withTag:(NSInteger)tag
 {
-//    NSString *logTag = [NSString stringWithFormat:@"Send(%ld)", [sendData length]];
-//    DLog(logTag, sendData);
-
     NSData *writeIV = [WC_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
     aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
@@ -567,18 +523,7 @@ typedef NS_ENUM(int, EncryptMethod) {
 {
     _clientHello = [ClientHello new];
     NSData *clientHelloData = [_clientHello CreateClientHello];
-    
-    NSString *logTag = [NSString stringWithFormat:@"MMTLS Send(%ld)", [clientHelloData length]];
-    DLog(logTag, clientHelloData);
-    
     [self sendData:clientHelloData];
-    
-//    NSData *longLinkMMTLSData = [self ReadMMTLSDataPkg];
-//    longLinkMMTLSData = [longLinkMMTLSData addDataAtTail:[self ReadMMTLSDataPkg]];
-//    longLinkMMTLSData = [longLinkMMTLSData addDataAtTail:[self ReadMMTLSDataPkg]];
-//    longLinkMMTLSData = [longLinkMMTLSData addDataAtTail:[self ReadMMTLSDataPkg]];
-//
-//    [self onReviceServerHello:[[ServerHello alloc] initWithData:longLinkMMTLSData]];
 }
 
 - (void)onReviceServerHello:(ServerHello *)serverHello
@@ -722,7 +667,7 @@ typedef NS_ENUM(int, EncryptMethod) {
     NSData *aadd = [NSData dataWithHexString:@"000000000000000217F1030020"];
 
     _longlinkKeyPair = keyPair2;
-    NSData *heart = [self longlink_packWithSeq:-1 cmdId:CMDID_NOOP_REQ buffer:nil];
+    NSData *heart = [long_pack pack:-1 cmdId:CMDID_NOOP_REQ shortData:nil];
     NSData *heartbeatCipherText = [WC_AesGcm128 aes128gcmEncrypt:heart aad:aadd key:keyPair2.writeKEY ivec:writeIV];
 
     NSMutableData *heartbeatData = [NSMutableData dataWithHexString:@"17f1030020"];
@@ -751,7 +696,7 @@ typedef NS_ENUM(int, EncryptMethod) {
     logTag = [NSString stringWithFormat:@"MMTLS Decrypted(%ld)", [data length]];
     DLog(logTag, plainText);
     
-    LongLinkPackage *longLinkPackage = [self unPackLongLink:plainText];
+    LongPackage *longLinkPackage = [long_pack unpack:plainText];
 
     switch (longLinkPackage.result)
     {
@@ -765,20 +710,20 @@ typedef NS_ENUM(int, EncryptMethod) {
                 {
                     case CMDID_PUSH_ACK:
                     {
-                        static int push_ack_counter = 0;
-                        if (push_ack_counter==0) {
-                            if ([self.sync_key_cur length] == 0)
-                            {
-                                LogInfo(@"Start New Init.");
-                                [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
-                                LogInfo(@"Stop New Init.");
-                            }
-                        }
-                        else if(push_ack_counter > 1)
-                        {
-                            [self newSync];
-                        }
-                        push_ack_counter++;
+//                        static int push_ack_counter = 0;
+//                        if (push_ack_counter==0) {
+//                            if ([self.sync_key_cur length] == 0)
+//                            {
+//                                LogInfo(@"Start New Init.");
+//                                [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
+//                                LogInfo(@"Stop New Init.");
+//                            }
+//                        }
+//                        else if(push_ack_counter > 1)
+//                        {
+//                            [self newSync];
+//                        }
+//                        push_ack_counter++;
                         break;
                         
                     }
@@ -788,8 +733,9 @@ typedef NS_ENUM(int, EncryptMethod) {
             }
             else
             {
-                Package *package = [self UnPackLongLinkBody:longLinkPackage.body];
-                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:_sessionKey];
+                ShortPackage *package = [short_pack unpack:longLinkPackage.body];
+                NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:sessionKey];
                 DLog(@"Protobuf Buf", protobufData);
                 Task *task = [self getTaskWithTag:package.header.cgi];
                 id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
@@ -817,252 +763,26 @@ typedef NS_ENUM(int, EncryptMethod) {
 
 #pragma mark - Pack
 
-- (LongLinkPackage *)unPackLongLink:(NSData *)recvdRawData
+- (void)UnPack:(NSData *)data
 {
-    LongLinkPackage *lpkg = [LongLinkPackage new];
-    
-    if ([recvdRawData length] < 16)
-    { // 包头不完整。
-        LogError(@"Should Contine Read Data: 包头不完整");
-        lpkg.result = UnPack_Continue;
-        return lpkg;
-    }
-
-    LongLinkHeader *header = [LongLinkHeader new];
-
-    header.bodyLength = [recvdRawData toInt32ofRange:NSMakeRange(0, 4) SwapBigToHost:YES];
-    header.headLength = [recvdRawData toInt16ofRange:NSMakeRange(4, 2) SwapBigToHost:NO] >> 8;
-    header.clientVersion = [recvdRawData toInt16ofRange:NSMakeRange(6, 2) SwapBigToHost:NO] >> 8;
-    header.cmdId = [recvdRawData toInt32ofRange:NSMakeRange(8, 4) SwapBigToHost:YES];
-    header.seq = [recvdRawData toInt32ofRange:NSMakeRange(12, 4) SwapBigToHost:YES];
-    if (header.bodyLength > [recvdRawData length])
+    ShortPackage *package = [short_pack unpack:data];
+    NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+    NSData *protobufData = [package.body aesDecryptWithKey:sessionKey];
+    Task *task = [self getTaskWithTag:package.header.cgi];
+    id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
+    if (task.sucBlock)
     {
-        //包未收完。
-        LogError(@"Should Contine Read Data: 包未收完。");
-        lpkg.result = UnPack_Continue;
-        return lpkg;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            ((SuccessBlock) task.sucBlock)(response);
+        });
+        [_tasks removeObject:task];
     }
-
-    lpkg.header = header;
-    lpkg.body = [recvdRawData subdataWithRange:NSMakeRange(16, [recvdRawData length] - 16)];
-    lpkg.result = UnPack_Success;
-    
-    return lpkg;
 }
 
 - (NSData *)pack:(int)cmdId cgi:(int)cgi serilizedData:(NSData *)serilizedData type:(NSInteger)type
 {
-    NSData *shortLinkBuf = [self shortlinkPackWithCgi:cgi serilizedData:serilizedData type:type];
-    return [self longlink_packWithSeq:self.seq cmdId:cmdId buffer:shortLinkBuf];
-}
-
-- (NSData *)shortlinkPackWithCgi:(int)cgi serilizedData:(NSData *)serilizedData type:(NSInteger)type
-{
-    switch (type)
-    {
-        case 1:
-        {
-            NSData *head = [self make_header:cgi encryptMethod:NONE bodyData:serilizedData compressedBodyData:serilizedData needCookie:NO];
-            NSData *body = [MarsOpenSSL RSA_PUB_EncryptData:serilizedData modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
-            NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
-            [longlinkBody appendData:body];
-
-            return [longlinkBody copy];
-        }
-        break;
-        case 5:
-        {
-            NSData *head = [self make_header:cgi encryptMethod:AES bodyData:serilizedData compressedBodyData:serilizedData needCookie:YES];
-            NSData *body = [serilizedData AES];
-            NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
-            [longlinkBody appendData:body];
-
-            return [longlinkBody copy];
-        }
-        break;
-        default:
-            break;
-    }
-
-    return nil;
-}
-
-#pragma mark - longlink pack
-
-- (NSData *)longlink_packWithSeq:(int)seq cmdId:(int)cmdId buffer:(NSData *)buffer
-{
-    NSMutableData *longlink_header = [NSMutableData data];
-
-    [longlink_header appendData:[NSData packInt32:(int) ([buffer length] + 16) flip:YES]];
-    [longlink_header appendData:[NSData dataWithHexString:@"0010"]];
-    [longlink_header appendData:[NSData dataWithHexString:@"0001"]];
-    [longlink_header appendData:[NSData packInt32:cmdId flip:YES]];
-
-    if (cmdId == CMDID_NOOP_REQ)
-    {
-        [longlink_header appendData:[NSData packInt32:HEARTBEAT_SEQ flip:YES]];
-    }
-    else if (CMDID_IDENTIFY_REQ == cmdId)
-    {
-        [longlink_header appendData:[NSData packInt32:IDENTIFY_SEQ flip:YES]];
-    }
-    else
-    {
-        [longlink_header appendData:[NSData packInt32:_seq++ flip:YES]];
-    }
-
-    [longlink_header appendData:buffer];
-    return [longlink_header copy];
-}
-
-#pragma mark - make header
-
-- (int)decode:(int *)apuValue bytes:(NSData *)apcBuffer off:(int)off
-{
-    int num3;
-    int num = 0;
-    int num2 = 0;
-    int num4 = 0;
-    int num5 = *(int *) [[apcBuffer subdataWithRange:NSMakeRange(off + num++, 1)] bytes];
-    while ((num5 & 0xff) >= 0x80)
-    {
-        num3 = num5 & 0x7f;
-        num4 += num3 << num2;
-        num2 += 7;
-        num5 = *(int *) [[apcBuffer subdataWithRange:NSMakeRange(off + num++, 1)] bytes];
-    }
-    num3 = num5;
-    num4 += num3 << num2;
-    *apuValue = num4;
-    return num;
-}
-
-- (Package *)UnPackLongLinkBody:(NSData *)body
-{
-    Package *package = [Package new];
-    Header *header = [Header new];
-    package.header = header;
-    if ([body length] < 0x20)
-    {
-        LogError(@"UnPack BF Fail, Body too short.");
-        return nil;
-    }
-
-    NSInteger index = 0;
-    int mark = (int) [body toInt8ofRange:index];
-    if (mark == 0xbf)
-    {
-        index++;
-    }
-    int32_t headLength = (int) [body toInt8ofRange:index] >> 2;
-    header.compressed = (1 == ((int) [body toInt8ofRange:index] & 0x3));
-    index++;
-
-    header.decrytType = (int) [body toInt8ofRange:index] >> 4;
-    int cookieLen = (int) [body toInt8ofRange:index] & 0xf;
-    index++;
-    index += 4; //服务器版本，忽略。
-
-    _uin = (int) [body toInt8ofRange:index];
-    index += 4;
-
-    if (cookieLen > 0 && cookieLen <= 0xf)
-    {
-        NSData *cookie = [body subdataWithRange:NSMakeRange(index, cookieLen)];
-        LogInfo(@"Cookie: %@", cookie);
-        index += cookieLen;
-        _cookie = cookie;
-    }
-    else if (cookieLen > 0xf)
-    {
-        LogError(@"UnPack BF Fail, cookieLen too long.");
-        return nil;
-    }
-
-    int cgi = 0;
-    int dwLen = [self decode:&cgi bytes:[body subdataWithRange:NSMakeRange(index, 5)] off:0];
-    header.cgi = cgi;
-    index += dwLen;
-
-    int protobufLen = 0;
-    dwLen = [self decode:&protobufLen bytes:[body subdataWithRange:NSMakeRange(index, 5)] off:0];
-    index += dwLen;
-
-    int compressedLen = 0;
-    dwLen = [self decode:&compressedLen bytes:[body subdataWithRange:NSMakeRange(index, 5)] off:0];
-    //后面的数据无视。
-
-    //解包完毕，取包体。
-
-    if (headLength < [body length])
-    {
-        package.body = [body subdataWithRange:NSMakeRange(headLength, [body length] - headLength)];
-    }
-
-    return package;
-}
-
-- (NSData *)make_header:(int)cgi encryptMethod:(EncryptMethod)encryptMethod bodyData:(NSData *)bodyData compressedBodyData:(NSData *)compressedBodyData needCookie:(BOOL)needCookie
-{
-
-    int bodyDataLen = (int) [bodyData length];
-    int compressedBodyDataLen = (int) [compressedBodyData length];
-
-    NSMutableData *header = [NSMutableData data];
-
-    [header appendData:[NSData dataWithHexString:@"BF"]]; //
-    [header appendData:[NSData dataWithHexString:@"00"]]; //包头长度，最后计算。
-    int len = (encryptMethod << 4) + (needCookie ? 0xf : 0x0);
-    [header appendData:[NSData dataWithHexString:[NSString stringWithFormat:@"%2x", len]]];
-    [header appendData:[NSData packInt32:CLIENT_VERSION flip:YES]];
-    [header appendData:[NSData packInt32:_uin flip:YES]];
-
-    if (needCookie)
-    {
-        if ([_cookie length] < 0xf)
-        {
-            [header appendData:[NSData dataWithHexString:@"000000000000000000000000000000"]];
-        }
-        else
-        {
-            [header appendData:_cookie];
-        }
-    }
-
-    [header appendData:[Varint128 dataWithUInt32:cgi]];
-    [header appendData:[Varint128 dataWithUInt32:bodyDataLen]];
-    [header appendData:[Varint128 dataWithUInt32:compressedBodyDataLen]];
-
-    //    if (_checkEcdhKey.length > 0) {
-    //        [header appendData:[self ecdhCheck:bodyData]];
-    //    }
-
-    if (need_login_rsa_verison(cgi))
-    {
-        [header appendData:[Varint128 dataWithUInt32:LOGIN_RSA_VER_172]];
-        [header appendData:[NSData dataWithHexString:@"0D00"]];
-        [header appendData:[NSData packInt16:9 flip:NO]];
-    }
-    else
-    {
-        //        [header appendData:[NSData dataWithHexString:@"000D"]];
-        //        [header appendData:[NSData packInt16:(9 * (1 & 7)) flip:NO]];   //need fix
-        [header appendData:[NSData dataWithHexString:@"000000000000000000000000000000"]];
-    }
-    
-    [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[[Varint128 dataWithUInt32:(int)(([header length] << 2) + 0x2)] bytes]];
-    return [header copy];
-}
-
-- (NSData *)ecdhCheck:(NSData *)buff
-{
-    NSData *data = [buff dataByDeflating];
-    return [FSOpenSSL aesEncryptData:data key:_checkEcdhKey];
-}
-
-bool need_login_rsa_verison(int cgi)
-{
-    return cgi == 502 || cgi == 503 || cgi == 701;
+    NSData *shortLinkBuf = [short_pack pack:cgi serilizedData:serilizedData type:type uin:_uin cookie:_cookie];
+    return [long_pack pack:self.seq++ cmdId:cmdId shortData:shortLinkBuf];
 }
 
 @end

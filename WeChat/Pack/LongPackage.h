@@ -14,13 +14,13 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     UnPack_Success
 };
 
-@class LongLinkHeader;
+@class LongHeader;
 
-@interface LongLinkPackage : NSObject
+@interface LongPackage : NSObject
 
 @property(nonatomic, assign) UnPackResult result;
 
-@property (nonatomic, strong) LongLinkHeader *header;
+@property (nonatomic, strong) LongHeader *header;
 @property (nonatomic, strong) NSData *body;
 
 @end

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DBManager : NSObject
 
 + (instancetype)sharedManager;
@@ -16,6 +18,9 @@
 - (BOOL)saveClientCheckData:(NSData *)clientCheckData;
 - (NSData *)getClientCheckData;
 
+- (BOOL)saveSessionKey:(NSData *)sessionKey;
+- (NSData *)getSessionKey;
+
 - (BOOL)saveShortIpList:(NSArray *)ipList;
 - (NSArray *)getShortIpList;
 
@@ -23,3 +28,5 @@
 - (NSArray *)getLongIpList;
 
 @end
+
+NS_ASSUME_NONNULL_END

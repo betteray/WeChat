@@ -9,7 +9,7 @@
 #import "NSData+CompressAndEncypt.h"
 
 #import "NSData+Util.h"
-#import "MarsOpenSSL.h"
+#import "FSOpenSSL.h"
 #import "Constants.h"
 #import "WeChatClient.h"
 #import "FSOpenSSL.h"
@@ -19,32 +19,28 @@
 @implementation NSData (CompressAndEncypt)
 
 //Send
-- (NSData *)Compress_And_RSA {
+- (NSData *)Compress_And_RSA
+{
     NSData *compressedData = [self dataByDeflating];
-    return [MarsOpenSSL RSA_PUB_EncryptData:compressedData modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
+    return [FSOpenSSL RSA_PUB_EncryptData:compressedData modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
 }
 
-- (NSData *)RSA {
-    return [MarsOpenSSL RSA_PUB_EncryptData:self modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
+- (NSData *)RSA
+{
+    return [FSOpenSSL RSA_PUB_EncryptData:self modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
 }
 
-- (NSData *)Compress_And_AES {
+- (NSData *)Compress_And_AES
+{
     NSData *compressedData = [self dataByDeflating];
-    return [compressedData AES_CBC_encryptWithKey:[WeChatClient sharedClient].sessionKey];
+    NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+    return [compressedData AES_CBC_encryptWithKey:sessionKey];
 }
 
-- (NSData *)AES {
-    return [self AES_CBC_encryptWithKey:[WeChatClient sharedClient].sessionKey];
-}
-
-//Receive
-- (NSData *)decompress_and_aesDecrypt {
-    NSData *deCompressedData = [self decompress];
-    return [deCompressedData AES_CBC_decryptWithKey:[WeChatClient sharedClient].sessionKey];
-}
-
-- (NSData *)aesDecrypt {
-    return [self AES_CBC_decryptWithKey:[WeChatClient sharedClient].sessionKey];
+- (NSData *)AES
+{
+    NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+    return [self AES_CBC_encryptWithKey:sessionKey];
 }
 
 @end

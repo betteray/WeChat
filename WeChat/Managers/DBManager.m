@@ -71,9 +71,10 @@
 - (BOOL)createTables
 {
     NSString *sql = @"CREATE TABLE IF NOT EXISTS account_info (id INTEGER PRIMARY KEY AUTOINCREMENT, wxid TEXT, nick_name TEXT NULL, alias TEXT NULL);"
-                     "CREATE TABLE IF NOT EXISTS client_check_data (id INTEGER PRIMARY KEY AUTOINCREMENT, data BLOB);"
-                     "CREATE TABLE IF NOT EXISTS long_ip (id INTEGER PRIMARY KEY AUTOINCREMENT, ip text UNIQUE);"
-                     "CREATE TABLE IF NOT EXISTS short_ip (id INTEGER PRIMARY KEY AUTOINCREMENT, ip text UNIQUE);";
+                        "CREATE TABLE IF NOT EXISTS client_check_data (id INTEGER PRIMARY KEY AUTOINCREMENT, data BLOB);"
+                        "CREATE TABLE IF NOT EXISTS session_key (id INTEGER PRIMARY KEY AUTOINCREMENT, data BLOB);"
+                        "CREATE TABLE IF NOT EXISTS long_ip (id INTEGER PRIMARY KEY AUTOINCREMENT, ip text UNIQUE);"
+                        "CREATE TABLE IF NOT EXISTS short_ip (id INTEGER PRIMARY KEY AUTOINCREMENT, ip text UNIQUE);";
 
     [_db executeStatements:sql];
     
@@ -102,6 +103,7 @@
     CHECKFMDBERROR;
 }
 
+// Client Check Data
 - (BOOL)saveClientCheckData:(NSData *)clientCheckData
 {
     FMResultSet *resultSet = [_db executeQuery:@"SELECT id FROM client_check_data"];
@@ -137,6 +139,43 @@
     }
 }
 
+// Session Key
+- (BOOL)saveSessionKey:(NSData *)sessionKey
+{
+    FMResultSet *resultSet = [_db executeQuery:@"SELECT id FROM session_key"];
+    
+    BOOL has = NO;
+    if ([resultSet next])
+    {
+        has = YES;
+    }
+    
+    if (!has)
+    {
+        [_db executeUpdate:@"INSERT INTO session_key (data) VALUES (?)", sessionKey];
+    }
+    else
+    {
+        [_db executeUpdate:@"UPDATE session_key SET data = ? where id = 0", sessionKey];
+    }
+    
+    CHECKFMDBERROR;
+}
+
+- (NSData *)getSessionKey
+{
+    FMResultSet *resultSet = [_db executeQuery:@"SELECT data FROM session_key"];
+    if ([resultSet next])
+    {
+        return [resultSet dataForColumn:@"data"];
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+// Short Ip
 - (BOOL)saveShortIpList:(NSArray *)ipList
 {
     for (NSString *ip in ipList) {
@@ -168,6 +207,7 @@
     return [ipList copy];
 }
 
+// Long Ip
 - (BOOL)saveLongIpList:(NSArray *)ipList
 {
     for (NSString *ip in ipList) {

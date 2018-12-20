@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Header : NSObject
+@interface ShortHeader : NSObject
 
 @property (nonatomic, assign) BOOL compressed;
 @property (nonatomic, assign) int decrytType;

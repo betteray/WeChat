@@ -43,8 +43,9 @@
     }
 
     ManualAuthAccountRequest_AesKey *aesKey = [ManualAuthAccountRequest_AesKey new];
-    aesKey.len = (int32_t)[[WeChatClient sharedClient].sessionKey length];
-    aesKey.key = [WeChatClient sharedClient].sessionKey;
+    NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+    aesKey.len = (int32_t)[sessionKey length];
+    aesKey.key = sessionKey;
 
     ManualAuthAccountRequest_Ecdh_EcdhKey *ecdhKey = [ManualAuthAccountRequest_Ecdh_EcdhKey new];
     ecdhKey.len = (int32_t)[pubKeyData length];
@@ -146,11 +147,12 @@
                                                 if (ret)
                                                 {
                                                     NSData *checkEcdhKey = [NSData dataWithBytes:szSharedKey length:szSharedKeyLen];
-                                                    [WeChatClient sharedClient].sessionKey = [FSOpenSSL aesDecryptData:resp.authParam.session.key key:checkEcdhKey];
+                                                    NSData *sessionKey = [FSOpenSSL aesDecryptData:resp.authParam.session.key key:checkEcdhKey];
+                                                    [[DBManager sharedManager] saveSessionKey:sessionKey];
                                                     [WeChatClient sharedClient].checkEcdhKey = checkEcdhKey;
 
                                                     LogVerbose(@"登陆成功: SessionKey: %@, uin: %d, wxid: %@, NickName: %@, alias: %@",
-                                                          [WeChatClient sharedClient].sessionKey,
+                                                          sessionKey,
                                                           uin, resp.accountInfo.wxId,
                                                           resp.accountInfo.nickName,
                                                           resp.accountInfo.alias);
@@ -167,8 +169,6 @@
                                                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                                                         UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
                                                         UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"NavFunctionsViewController"];
-//                                                        UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-//                                                        keyWindow.rootViewController = nav;
                                                         
                                                         [self presentViewController:nav animated:YES completion:nil];
                                                     });

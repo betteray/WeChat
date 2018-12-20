@@ -17,8 +17,4 @@
 - (NSData *)Compress_And_AES;
 - (NSData *)AES;
 
-//Receive
-- (NSData *)decompress_and_aesDecrypt;
-- (NSData *)aesDecrypt;
-
 @end

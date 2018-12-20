@@ -50,12 +50,4 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:ALIAS];
 }
 
-+ (void)saveClientCheckData:(NSData *)clientCheckData {
-    [[NSUserDefaults standardUserDefaults] setObject:clientCheckData forKey:CLIENTCHECKDATA];
-}
-
-+ (NSData *)getClientCheckData {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:CLIENTCHECKDATA];
-}
-
 @end

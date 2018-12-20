@@ -10,7 +10,6 @@
 		2FFBBBF5A4F4493C2BD0EBFB /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE308AEA822A0536476B28E2 /* libPods-WeChat.a */; };
 		71008F3321B6750700DE8DF8 /* DNSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3221B6750700DE8DF8 /* DNSManager.m */; };
 		71008F3621B678F500DE8DF8 /* ShortLinkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3521B678F500DE8DF8 /* ShortLinkClient.m */; };
-		71008F3921B67DE800DE8DF8 /* NSURLSession+DTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3821B67DE800DE8DF8 /* NSURLSession+DTAdditions.m */; };
 		71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */; };
 		71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3E21B6CBB400DE8DF8 /* ShortLinkKey.m */; };
 		71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */; };
@@ -35,15 +34,14 @@
 		712C7143214B5A4B00603022 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 712C70EB214B5A4B00603022 /* LICENSE */; };
 		712C7144214B5A4B00603022 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7141214B5A4B00603022 /* libcrypto.a */; };
 		712C7145214B5A4B00603022 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7142214B5A4B00603022 /* libssl.a */; };
-		712C7149214BA38900603022 /* LongLinkHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7148214BA38900603022 /* LongLinkHeader.m */; };
-		712C714C214BA49300603022 /* LongLinkPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C714B214BA49300603022 /* LongLinkPackage.m */; };
-		712C714F214BABA500603022 /* Package.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C714E214BABA500603022 /* Package.m */; };
-		712C7152214BAD8900603022 /* Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7151214BAD8900603022 /* Header.m */; };
+		712C7149214BA38900603022 /* LongHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7148214BA38900603022 /* LongHeader.m */; };
+		712C714C214BA49300603022 /* LongPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C714B214BA49300603022 /* LongPackage.m */; };
+		712C714F214BABA500603022 /* ShortPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C714E214BABA500603022 /* ShortPackage.m */; };
+		712C7152214BAD8900603022 /* ShortHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7151214BAD8900603022 /* ShortHeader.m */; };
 		712C7155214BF8A900603022 /* CgiWrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7154214BF8A900603022 /* CgiWrap.m */; };
 		712C7158214BFB1600603022 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7157214BFB1600603022 /* Task.m */; };
 		712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C715E214CDB6C00603022 /* NSData+PackUtil.m */; };
 		712C7166214D2BFD00603022 /* ECDH.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7165214D2BFD00603022 /* ECDH.m */; };
-		712C7169214F4B8700603022 /* MarsOpenSSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7168214F4B8700603022 /* MarsOpenSSL.m */; };
 		7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5102196B720005064C4 /* NSString+HexDump.m */; };
 		7154D5162196B721005064C4 /* HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5132196B720005064C4 /* HexDump.m */; };
 		7154D5172196B721005064C4 /* NSData+HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5142196B721005064C4 /* NSData+HexDump.m */; };
@@ -56,18 +54,18 @@
 		7155BA5821902CDD0002CE1D /* WX_SHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5721902CDD0002CE1D /* WX_SHA256.m */; };
 		7155BA5B219033BF0002CE1D /* WC_HKDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5A219033BF0002CE1D /* WC_HKDF.m */; };
 		716197FA21C7A36200A76F39 /* NewInitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716197F921C7A36200A76F39 /* NewInitViewController.m */; };
+		7161984921CB6FEA00A76F39 /* header.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984821CB6FEA00A76F39 /* header.m */; };
+		7161984C21CB704F00A76F39 /* short_pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984B21CB704F00A76F39 /* short_pack.m */; };
+		7161984F21CB712900A76F39 /* long_pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984E21CB712900A76F39 /* long_pack.m */; };
 		716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */; };
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
-		71848F6521549A6200DB669E /* NSString+GenRandomString.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6421549A6200DB669E /* NSString+GenRandomString.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
 		719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */ = {isa = PBXBuildFile; fileRef = 719A962C219BD53800E4D077 /* NSData+AddData.m */; };
 		71C9CA5421C4DC1D006C4DDD /* SnsTimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* SnsTimeLineViewController.m */; };
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
 		71D3DAAF21AFCA47002ACF1C /* WXUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */; };
 		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
-		71D593322158AC4A00DFEBC8 /* SignedVarint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */; };
 		71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932F2158AC4900DFEBC8 /* Varint128.m */; };
-		71D593592158E90500DFEBC8 /* NSData+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593582158E90500DFEBC8 /* NSData+Compress.m */; };
 		8A6B7E6AD0B44DCDF3A4DADB /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD18BBDEB2F4000E11CEB5B0 /* libPods-WeChatTests.a */; };
 		A171A24009C24E78AD226EE0 /* libPods-WeChatUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB43DD6C2AA522C9401323 /* libPods-WeChatUITests.a */; };
 		B29AF48CDFF2BFFF255F71A2 /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 814381742B1C4841306B49D3 /* libPods-WeChatTests.a */; };
@@ -101,8 +99,6 @@
 		71008F3221B6750700DE8DF8 /* DNSManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNSManager.m; sourceTree = "<group>"; };
 		71008F3421B678F500DE8DF8 /* ShortLinkClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortLinkClient.h; sourceTree = "<group>"; };
 		71008F3521B678F500DE8DF8 /* ShortLinkClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortLinkClient.m; sourceTree = "<group>"; };
-		71008F3721B67DE800DE8DF8 /* NSURLSession+DTAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+DTAdditions.h"; sourceTree = "<group>"; };
-		71008F3821B67DE800DE8DF8 /* NSURLSession+DTAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+DTAdditions.m"; sourceTree = "<group>"; };
 		71008F3A21B6925100DE8DF8 /* ShortLinkWithMMTLS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortLinkWithMMTLS.h; sourceTree = "<group>"; };
 		71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortLinkWithMMTLS.m; sourceTree = "<group>"; };
 		71008F3D21B6CBB400DE8DF8 /* ShortLinkKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortLinkKey.h; sourceTree = "<group>"; };
@@ -230,14 +226,14 @@
 		712C713F214B5A4B00603022 /* opensslconf-template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "opensslconf-template.h"; sourceTree = "<group>"; };
 		712C7141214B5A4B00603022 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		712C7142214B5A4B00603022 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
-		712C7147214BA38900603022 /* LongLinkHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongLinkHeader.h; sourceTree = "<group>"; };
-		712C7148214BA38900603022 /* LongLinkHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LongLinkHeader.m; sourceTree = "<group>"; };
-		712C714A214BA49300603022 /* LongLinkPackage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongLinkPackage.h; sourceTree = "<group>"; };
-		712C714B214BA49300603022 /* LongLinkPackage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LongLinkPackage.m; sourceTree = "<group>"; };
-		712C714D214BABA500603022 /* Package.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Package.h; sourceTree = "<group>"; };
-		712C714E214BABA500603022 /* Package.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Package.m; sourceTree = "<group>"; };
-		712C7150214BAD8900603022 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
-		712C7151214BAD8900603022 /* Header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Header.m; sourceTree = "<group>"; };
+		712C7147214BA38900603022 /* LongHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongHeader.h; sourceTree = "<group>"; };
+		712C7148214BA38900603022 /* LongHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LongHeader.m; sourceTree = "<group>"; };
+		712C714A214BA49300603022 /* LongPackage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongPackage.h; sourceTree = "<group>"; };
+		712C714B214BA49300603022 /* LongPackage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LongPackage.m; sourceTree = "<group>"; };
+		712C714D214BABA500603022 /* ShortPackage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortPackage.h; sourceTree = "<group>"; };
+		712C714E214BABA500603022 /* ShortPackage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortPackage.m; sourceTree = "<group>"; };
+		712C7150214BAD8900603022 /* ShortHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortHeader.h; sourceTree = "<group>"; };
+		712C7151214BAD8900603022 /* ShortHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortHeader.m; sourceTree = "<group>"; };
 		712C7153214BF8A900603022 /* CgiWrap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CgiWrap.h; sourceTree = "<group>"; };
 		712C7154214BF8A900603022 /* CgiWrap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CgiWrap.m; sourceTree = "<group>"; };
 		712C7156214BFB1600603022 /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
@@ -246,8 +242,6 @@
 		712C715E214CDB6C00603022 /* NSData+PackUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+PackUtil.m"; sourceTree = "<group>"; };
 		712C7164214D2BFD00603022 /* ECDH.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECDH.h; sourceTree = "<group>"; };
 		712C7165214D2BFD00603022 /* ECDH.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECDH.m; sourceTree = "<group>"; };
-		712C7167214F4B8700603022 /* MarsOpenSSL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarsOpenSSL.h; sourceTree = "<group>"; };
-		712C7168214F4B8700603022 /* MarsOpenSSL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarsOpenSSL.m; sourceTree = "<group>"; };
 		7154D50D219686BD005064C4 /* WC_HKDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WC_HKDF.h; sourceTree = "<group>"; };
 		7154D50F2196B720005064C4 /* HexDump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexDump.h; sourceTree = "<group>"; };
 		7154D5102196B720005064C4 /* NSString+HexDump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HexDump.m"; sourceTree = "<group>"; };
@@ -274,12 +268,16 @@
 		7155BA5A219033BF0002CE1D /* WC_HKDF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WC_HKDF.m; sourceTree = "<group>"; };
 		716197F821C7A36200A76F39 /* NewInitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewInitViewController.h; sourceTree = "<group>"; };
 		716197F921C7A36200A76F39 /* NewInitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewInitViewController.m; sourceTree = "<group>"; };
+		7161984721CB6FEA00A76F39 /* header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = header.h; sourceTree = "<group>"; };
+		7161984821CB6FEA00A76F39 /* header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = header.m; sourceTree = "<group>"; };
+		7161984A21CB704F00A76F39 /* short_pack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = short_pack.h; sourceTree = "<group>"; };
+		7161984B21CB704F00A76F39 /* short_pack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = short_pack.m; sourceTree = "<group>"; };
+		7161984D21CB712900A76F39 /* long_pack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = long_pack.h; sourceTree = "<group>"; };
+		7161984E21CB712900A76F39 /* long_pack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = long_pack.m; sourceTree = "<group>"; };
 		716AAE4D214FC8C5006BCFB2 /* NSData+CompressAndEncypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CompressAndEncypt.h"; sourceTree = "<group>"; };
 		716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CompressAndEncypt.m"; sourceTree = "<group>"; };
 		71848F252150CABD00DB669E /* NSData+Compression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Compression.h"; sourceTree = "<group>"; };
 		71848F262150CABD00DB669E /* NSData+Compression.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Compression.m"; sourceTree = "<group>"; };
-		71848F6321549A6200DB669E /* NSString+GenRandomString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+GenRandomString.h"; sourceTree = "<group>"; };
-		71848F6421549A6200DB669E /* NSString+GenRandomString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+GenRandomString.m"; sourceTree = "<group>"; };
 		71848F6621549C8100DB669E /* NSData+GenRandomData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+GenRandomData.h"; sourceTree = "<group>"; };
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
 		719A962B219BD53800E4D077 /* NSData+AddData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AddData.h"; sourceTree = "<group>"; };
@@ -292,12 +290,8 @@
 		71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXUserDefault.m; sourceTree = "<group>"; };
 		71D592FF2155247C00DFEBC8 /* NSData+AES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
 		71D593002155247C00DFEBC8 /* NSData+AES.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
-		71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignedVarint128.m; sourceTree = "<group>"; };
 		71D5932F2158AC4900DFEBC8 /* Varint128.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Varint128.m; sourceTree = "<group>"; };
 		71D593302158AC4900DFEBC8 /* Varint128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Varint128.h; sourceTree = "<group>"; };
-		71D593312158AC4900DFEBC8 /* SignedVarint128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignedVarint128.h; sourceTree = "<group>"; };
-		71D593572158E90500DFEBC8 /* NSData+Compress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Compress.h"; sourceTree = "<group>"; };
-		71D593582158E90500DFEBC8 /* NSData+Compress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Compress.m"; sourceTree = "<group>"; };
 		814381742B1C4841306B49D3 /* libPods-WeChatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8435ACA679E3636C36C7D47C /* Pods-WeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChat/Pods-WeChat.debug.xcconfig"; sourceTree = "<group>"; };
 		A8AE4D42890ED7488CA924E7 /* Pods-WeChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatUITests/Pods-WeChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -421,6 +415,7 @@
 		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				7161985021CB79E000A76F39 /* Pack */,
 				71848F6221549A1C00DB669E /* Categories */,
 				712C7065214A9A8B00603022 /* Constants.h */,
 				7121C35F21C3494A00A3E900 /* Controllers */,
@@ -593,14 +588,6 @@
 		712C7146214BA35700603022 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				712C7147214BA38900603022 /* LongLinkHeader.h */,
-				712C7148214BA38900603022 /* LongLinkHeader.m */,
-				712C714A214BA49300603022 /* LongLinkPackage.h */,
-				712C714B214BA49300603022 /* LongLinkPackage.m */,
-				712C714D214BABA500603022 /* Package.h */,
-				712C714E214BABA500603022 /* Package.m */,
-				712C7150214BAD8900603022 /* Header.h */,
-				712C7151214BAD8900603022 /* Header.m */,
 				712C7153214BF8A900603022 /* CgiWrap.h */,
 				712C7154214BF8A900603022 /* CgiWrap.m */,
 				712C7156214BFB1600603022 /* Task.h */,
@@ -683,13 +670,32 @@
 			path = mmtls;
 			sourceTree = "<group>";
 		};
+		7161985021CB79E000A76F39 /* Pack */ = {
+			isa = PBXGroup;
+			children = (
+				712C7147214BA38900603022 /* LongHeader.h */,
+				712C7148214BA38900603022 /* LongHeader.m */,
+				712C714A214BA49300603022 /* LongPackage.h */,
+				712C714B214BA49300603022 /* LongPackage.m */,
+				712C714D214BABA500603022 /* ShortPackage.h */,
+				712C714E214BABA500603022 /* ShortPackage.m */,
+				712C7150214BAD8900603022 /* ShortHeader.h */,
+				712C7151214BAD8900603022 /* ShortHeader.m */,
+				7161984721CB6FEA00A76F39 /* header.h */,
+				7161984821CB6FEA00A76F39 /* header.m */,
+				7161984A21CB704F00A76F39 /* short_pack.h */,
+				7161984B21CB704F00A76F39 /* short_pack.m */,
+				7161984D21CB712900A76F39 /* long_pack.h */,
+				7161984E21CB712900A76F39 /* long_pack.m */,
+			);
+			path = Pack;
+			sourceTree = "<group>";
+		};
 		71848F6221549A1C00DB669E /* Categories */ = {
 			isa = PBXGroup;
 			children = (
 				712C6EFF214A5D8200603022 /* FSOpenSSL.h */,
 				712C6EFE214A5D8200603022 /* FSOpenSSL.m */,
-				712C7167214F4B8700603022 /* MarsOpenSSL.h */,
-				712C7168214F4B8700603022 /* MarsOpenSSL.m */,
 				716AAE4D214FC8C5006BCFB2 /* NSData+CompressAndEncypt.h */,
 				716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */,
 				712C6E97214A2F9C00603022 /* NSData+Util.h */,
@@ -698,22 +704,14 @@
 				712C715E214CDB6C00603022 /* NSData+PackUtil.m */,
 				71848F252150CABD00DB669E /* NSData+Compression.h */,
 				71848F262150CABD00DB669E /* NSData+Compression.m */,
-				71848F6321549A6200DB669E /* NSString+GenRandomString.h */,
-				71848F6421549A6200DB669E /* NSString+GenRandomString.m */,
 				71848F6621549C8100DB669E /* NSData+GenRandomData.h */,
 				71848F6721549C8100DB669E /* NSData+GenRandomData.m */,
 				71D592FF2155247C00DFEBC8 /* NSData+AES.h */,
 				71D593002155247C00DFEBC8 /* NSData+AES.m */,
-				71D593312158AC4900DFEBC8 /* SignedVarint128.h */,
-				71D5932E2158AC4900DFEBC8 /* SignedVarint128.m */,
 				71D593302158AC4900DFEBC8 /* Varint128.h */,
 				71D5932F2158AC4900DFEBC8 /* Varint128.m */,
-				71D593572158E90500DFEBC8 /* NSData+Compress.h */,
-				71D593582158E90500DFEBC8 /* NSData+Compress.m */,
 				719A962B219BD53800E4D077 /* NSData+AddData.h */,
 				719A962C219BD53800E4D077 /* NSData+AddData.m */,
-				71008F3721B67DE800DE8DF8 /* NSURLSession+DTAdditions.h */,
-				71008F3821B67DE800DE8DF8 /* NSURLSession+DTAdditions.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -922,8 +920,9 @@
 				712C6E93214A1E8900603022 /* WeChatClient.m in Sources */,
 				712C6E63214A145600603022 /* ViewController.m in Sources */,
 				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
-				712C7152214BAD8900603022 /* Header.m in Sources */,
+				712C7152214BAD8900603022 /* ShortHeader.m in Sources */,
 				7155BA5821902CDD0002CE1D /* WX_SHA256.m in Sources */,
+				7161984F21CB712900A76F39 /* long_pack.m in Sources */,
 				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,
 				71008F3321B6750700DE8DF8 /* DNSManager.m in Sources */,
 				7155BA5B219033BF0002CE1D /* WC_HKDF.m in Sources */,
@@ -933,7 +932,6 @@
 				7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */,
 				7121C36521C3610000A3E900 /* SendMsgController.m in Sources */,
 				712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */,
-				71D593322158AC4A00DFEBC8 /* SignedVarint128.m in Sources */,
 				71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */,
 				7154D5172196B721005064C4 /* NSData+HexDump.m in Sources */,
 				7155BA4F21902A0B0002CE1D /* WC_AesGcm128.m in Sources */,
@@ -942,15 +940,15 @@
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
 				7154D5252197EFB9005064C4 /* WX_HmacSha256.m in Sources */,
 				71D3DAAF21AFCA47002ACF1C /* WXUserDefault.m in Sources */,
-				71008F3921B67DE800DE8DF8 /* NSURLSession+DTAdditions.m in Sources */,
 				712C7166214D2BFD00603022 /* ECDH.m in Sources */,
 				716197FA21C7A36200A76F39 /* NewInitViewController.m in Sources */,
 				7155BA5221902AB30002CE1D /* ClientHello.m in Sources */,
 				7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */,
+				7161984C21CB704F00A76F39 /* short_pack.m in Sources */,
 				7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */,
-				712C714F214BABA500603022 /* Package.m in Sources */,
-				71848F6521549A6200DB669E /* NSString+GenRandomString.m in Sources */,
+				712C714F214BABA500603022 /* ShortPackage.m in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
+				7161984921CB6FEA00A76F39 /* header.m in Sources */,
 				719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */,
 				71193F5321AE7A2000D982D5 /* NSString+Concat.m in Sources */,
 				71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */,
@@ -960,13 +958,11 @@
 				71008F3621B678F500DE8DF8 /* ShortLinkClient.m in Sources */,
 				712C715F214CDB6C00603022 /* NSData+PackUtil.m in Sources */,
 				712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */,
-				712C7149214BA38900603022 /* LongLinkHeader.m in Sources */,
+				712C7149214BA38900603022 /* LongHeader.m in Sources */,
 				712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */,
 				71848F272150CABD00DB669E /* NSData+Compression.m in Sources */,
 				7154D5162196B721005064C4 /* HexDump.m in Sources */,
-				712C714C214BA49300603022 /* LongLinkPackage.m in Sources */,
-				71D593592158E90500DFEBC8 /* NSData+Compress.m in Sources */,
-				712C7169214F4B8700603022 /* MarsOpenSSL.m in Sources */,
+				712C714C214BA49300603022 /* LongPackage.m in Sources */,
 				71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */,
 				7121C36221C350B700A3E900 /* DBManager.m in Sources */,
 			);

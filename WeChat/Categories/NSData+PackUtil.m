@@ -13,12 +13,15 @@
 
 @implementation NSData (PackUtil)
 
-- (NSData *)aesDecryptWithKey:(NSData *)key {
+- (NSData *)aesDecryptWithKey:(NSData *)key
+{
     return [self AES_CBC_decryptWithKey:key];
 }
 
-- (NSData *)aesDecrypt_then_decompress {
-    NSData *decryptedData = [self AES_CBC_decryptWithKey:[WeChatClient sharedClient].sessionKey];
+- (NSData *)aesDecrypt_then_decompress
+{
+    NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+    NSData *decryptedData = [self AES_CBC_decryptWithKey:sessionKey];
     return [decryptedData decompress];
 }
 
