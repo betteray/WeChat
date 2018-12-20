@@ -24,9 +24,6 @@
     {
         _KEY = [keyData subdataWithRange:NSMakeRange(0, 0x10)];
         _IV = [keyData subdataWithRange:NSMakeRange(0x10, 0xc)];
-
-//        DLog(@"write KEY", _KEY);
-//        DLog(@"write IV", _IV);
     }
     return self;
 }

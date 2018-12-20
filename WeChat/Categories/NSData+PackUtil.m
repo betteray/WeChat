@@ -10,6 +10,7 @@
 #import "WeChatClient.h"
 #import "NSData+Util.h"
 #import "NSData+AES.h"
+#import "NSData+Compression.h"
 
 @implementation NSData (PackUtil)
 
@@ -22,7 +23,7 @@
 {
     NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
     NSData *decryptedData = [self AES_CBC_decryptWithKey:sessionKey];
-    return [decryptedData decompress];
+    return [decryptedData dataByInflatingWithError:nil];
 }
 
 @end

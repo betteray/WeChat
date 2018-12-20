@@ -82,7 +82,6 @@
         _tasks = [NSMutableArray array];
 
         [[DBManager sharedManager] saveSessionKey:[FSOpenSSL random128BitAESKey]];      // iPad
-        //[[DBManager sharedManager] saveSessionKey:[NSData GenRandomDataWithSize:184]];  // iMac
 
         _mmtlsClient = [LongLinkClient new];
         _mmtlsClient.delegate = self;
@@ -383,7 +382,6 @@
                 ShortPackage *package = [short_pack unpack:longLinkPackage.body];
                 NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
                 NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:sessionKey];
-                DLog(@"Protobuf Buf", protobufData);
                 Task *task = [self getTaskWithTag:package.header.cgi];
                 id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
                 if (task.sucBlock)

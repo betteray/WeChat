@@ -49,8 +49,8 @@
     #endif
 
     #ifdef DEBUG
-//    #define DLog(...)
-    #define DLog(tag, data) NSLog(@"%@(len=%ld) \n%@", (tag), [data length], data.hexDump);
+    #define DLog(...)
+//    #define DLog(tag, data) NSLog(@"%@(len=%ld) \n%@", (tag), [data length], data.hexDump);
     #else
     #define DLog(...)
     #endif

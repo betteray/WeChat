@@ -11,17 +11,18 @@
 
 @implementation WX_SHA256
 
-+ (NSData *)sha256:(NSData *)data {
++ (NSData *)sha256:(NSData *)data
+{
     SHA256_CTX ctx;
     u_int8_t results[SHA256_DIGEST_LENGTH];
     int n;
-    
-    n = (int)[data length];
-    
+
+    n = (int) [data length];
+
     SHA256_Init(&ctx);
-    SHA256_Update(&ctx, (u_int8_t *)[data bytes], n);
+    SHA256_Update(&ctx, (u_int8_t *) [data bytes], n);
     SHA256_Final(results, &ctx);
-    
+
     return [NSData dataWithBytes:results length:SHA256_DIGEST_LENGTH];
 }
 

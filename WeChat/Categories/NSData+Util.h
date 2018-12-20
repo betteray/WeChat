@@ -27,8 +27,4 @@
 - (int16_t)toInt16ofRange:(NSRange)range SwapBigToHost:(BOOL)swap;
 - (int32_t)toInt32ofRange:(NSRange)range SwapBigToHost:(BOOL)swap;
 
-//zlib
-
-- (NSData*) decompress;
-
 @end

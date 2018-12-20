@@ -18,7 +18,6 @@
 
 #import "long_pack.h"
 
-
 #define CMDID_NOOP_REQ 6
 
 @interface LongLinkClient ()
@@ -50,7 +49,7 @@
         _readSeq = 1;
 
         _serverHelloData = [NSMutableData data];
-        
+
         _readSerialQueue = dispatch_queue_create("me.ray.FastSocket.Read", DISPATCH_QUEUE_SERIAL);
         _writeSerialQueue = dispatch_queue_create("me.ray.FastSocket.Write", DISPATCH_QUEUE_SERIAL);
     }
@@ -83,7 +82,6 @@
 #pragma mark - Write Read Data
 - (void)sendData:(NSData *)sendData
 {
-//    DLog(@"[MMTLS]SendData", sendData);
     dispatch_async(_writeSerialQueue, ^{
         long sent = [self.client sendBytes:[sendData bytes] count:[sendData length]];
         if (sent == sendData.length)
@@ -103,8 +101,6 @@
         while (1)
         {
             NSData *dataPackage = [self ReadMMTLSDataPkg];
-//            DLog(@"DataPkg", dataPackage);
-
             if ([dataPackage toInt8ofRange:0] == 0x16) //mmtls handshake
             {
                 [self.serverHelloData appendData:dataPackage];
@@ -152,7 +148,6 @@
     }
 }
 
-
 #pragma mark - Deal Server Hello
 
 - (void)onReviceServerHello:(ServerHello *)serverHello
@@ -162,154 +157,120 @@
     NSMutableData *hashData = [NSMutableData dataWithData:hashPart1];
     [hashData appendData:hashPart2];
     NSData *HandshakeKeyExpansionHash = [WX_SHA256 sha256:hashData];
-    
-//    DLog(@"handshake key expansion handshake_hash", HandshakeKeyExpansionHash);
-    
+
     NSData *serverPublicKey = [serverHello getServerPublicKey];
     NSData *localPriKey = [_clientHello getLocal1stPrikey];
-    
+
     NSData *EphemeralSecret = [ECDH DoEcdh2:415 ServerPubKey:serverPublicKey LocalPriKey:localPriKey];
-    
-//    DLog(@"secret", EphemeralSecret);
-    
+
     NSMutableData *HandshakeKeyExpansionHashInfo = [NSMutableData dataWithData:[@"handshake key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
     [HandshakeKeyExpansionHashInfo appendData:HandshakeKeyExpansionHash];
-    
+
     NSData *HandShakeKey = [WC_HKDF HKDF_Expand:EphemeralSecret Info:[HandshakeKeyExpansionHashInfo copy]];
-    
-//    DLog(@"Key expand", HandShakeKey);
-    
     KeyPair *keyPair = [[KeyPair alloc] initWithData:HandShakeKey];
-    
+
     /******************************** 开始解密PSK ****************************************/
     // Part1 decrypt
     NSData *part1 = [serverHello getPart1];
-    
+
     NSMutableData *aad1 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
     [aad1 appendData:[NSData packInt32:(int32_t)[part1 length] flip:NO]];
-    
+
     NSData *readIV1 = [WC_Hex IV:keyPair.readIV XORSeq:_readSeq++]; //序号从1开始。
-    
-//    DLog(@"after XOR readIV 1", readIV1);
-    
     NSData *plainText1 = [WC_AesGcm128 aes128gcmDecrypt:part1 aad:[aad1 copy] key:keyPair.readKEY ivec:readIV1];
-    
-//    DLog(@"decrypted part1", plainText1);
-    
+
     // Part2 decrypt
     NSData *part2 = [serverHello getPart2];
-    
+
     NSMutableData *aad2 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
     [aad2 appendData:[NSData packInt32:(int32_t)[part2 length] flip:NO]];
-    
+
     NSData *readIV2 = [WC_Hex IV:keyPair.readIV XORSeq:_readSeq++]; //序号从1开始，每次+1；
-    
-//    DLog(@"after XOR readIV 2", readIV2);
-    
     NSData *plainText2 = [WC_AesGcm128 aes128gcmDecrypt:part2 aad:[aad2 copy] key:keyPair.readKEY ivec:readIV2];
-    
-//    DLog(@"decrypted part2", plainText2);
     
     {
         NSData *data = [plainText2 subdataWithRange:NSMakeRange(9, 100)];
-//        DLog(@"PSK", data);
         _shortLinkPSKData = data;
-        
+
         NSData *hashDataTmp = hashData;
         hashDataTmp = [hashDataTmp addDataAtTail:plainText1];
         NSData *hashResult = [WX_SHA256 sha256:hashDataTmp];
-        
+
         // 需要密钥扩展一次结果。
         NSMutableData *info222 = [NSMutableData dataWithData:[@"PSK_ACCESS" dataUsingEncoding:NSUTF8StringEncoding]];
         [info222 appendData:hashResult];
-        
+
         NSData *ResumptionSecret = [WC_HKDF HKDF_Expand_Prk2:EphemeralSecret Info:info222]; //expanded secret
-        
-//        DLog(@"resumptionSecret", ResumptionSecret); //OK
         _resumptionSecret = ResumptionSecret;
     }
-    
+
     // Part3 decrypt
     NSData *part3 = [serverHello getPart3];
-    
+
     NSMutableData *aad3 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
     [aad3 appendData:[NSData packInt32:(int32_t)[part3 length] flip:NO]];
-    
+
     NSData *readIV3 = [WC_Hex IV:keyPair.readIV XORSeq:_readSeq++]; //序号从1开始，每次+1；
-    
-//    DLog(@"after XOR readIV 3", readIV3);
-    
     NSData *plainText3 = [WC_AesGcm128 aes128gcmDecrypt:part3 aad:[aad3 copy] key:keyPair.readKEY ivec:readIV3];
     
-//    DLog(@"decrypted part3", plainText3);
-    
     /******************************** 解密PSK结束 (OK) ****************************************/
-    
+
     /******************************** 长连接 加密KEY & IV 的计算 **************************/
     //1.需要第二部分解密结果的hash 结果。
     NSMutableData *md = [NSMutableData dataWithData:hashData];
     [md appendData:plainText1];
     [md appendData:plainText2];
     NSData *ApplicationDataKeyExpansionHash = [WX_SHA256 sha256:md];
-    
-//    DLog(@"PlainText2 Hash Result", ApplicationDataKeyExpansionHash); //OK
     // 需要密钥扩展一次结果。
     NSMutableData *ApplicationDataKeyExpansion = [NSMutableData dataWithData:[@"application data key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
     [ApplicationDataKeyExpansion appendData:ApplicationDataKeyExpansionHash];
-    
+
     //2. secret
     NSMutableData *ExpandedSecret = [NSMutableData dataWithData:[@"expanded secret" dataUsingEncoding:NSUTF8StringEncoding]];
     [ExpandedSecret appendData:ApplicationDataKeyExpansionHash];
-    
+
     NSData *ExpandSecretKey = [WC_HKDF HKDF_Expand_Prk2:EphemeralSecret Info:ExpandedSecret]; //expanded secret
-    
-//    DLog(@"ExpandSecretKey", ExpandSecretKey); //OK
-    
     NSData *ApplicationDataKey = [WC_HKDF HKDF_Expand:ExpandSecretKey Info:[ApplicationDataKeyExpansion copy]]; //长连接 加解密 key iv 生成。 //application data key expansion
-    
-//    DLog(@"ApplicationDataKey", ApplicationDataKey);
-    
+
+    //    DLog(@"ApplicationDataKey", ApplicationDataKey);
+
     /******************************** 长连接 加密KEY & IV 的计算（OK） **************************/
-    
+
     /******************************** 心跳请求组包 **************************/
-    
+
     // 1. 心跳请求第一部分数据。
     NSData *clientFinished = [@"client finished" dataUsingEncoding:NSUTF8StringEncoding];
     NSData *ClientFinishedKey = [WC_HKDF HKDF_Expand_Prk2:EphemeralSecret Info:clientFinished]; //OK //client finished
-    
+
     NSData *hmacResult = [WX_HmacSha256 HmacSha256WithKey:ClientFinishedKey data:ApplicationDataKeyExpansionHash]; //OK
-    
+
     NSMutableData *heartbeatPart1 = [NSMutableData dataWithHexString:@"00000023140020"];
     [heartbeatPart1 appendData:hmacResult];
-    
+
     NSData *aadddd = [NSData dataWithHexString:@"000000000000000116F1030037"];
-    
+
     NSData *writeIV1 = [WC_Hex IV:keyPair.writeIV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
     NSData *heartbeatPart1CipherText = [WC_AesGcm128 aes128gcmEncrypt:heartbeatPart1 aad:aadddd key:keyPair.writeKEY ivec:writeIV1];
     NSMutableData *heartbeatData1 = [NSMutableData dataWithHexString:@"16F1030037"];
     [heartbeatData1 appendData:heartbeatPart1CipherText];
-//    DLog(@"HeartBeat 1", heartbeatData1);
-    
+
     // 2. 心跳包数据。
     KeyPair *keyPair2 = [[KeyPair alloc] initWithData:ApplicationDataKey];
     NSData *writeIV = [WC_Hex IV:keyPair2.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"000000000000000217F1030020"];
-    
+
     _longlinkKeyPair = keyPair2;
     NSData *heart = [long_pack pack:-1 cmdId:CMDID_NOOP_REQ shortData:nil];
     NSData *heartbeatCipherText = [WC_AesGcm128 aes128gcmEncrypt:heart aad:aadd key:keyPair2.writeKEY ivec:writeIV];
-    
+
     NSMutableData *heartbeatData = [NSMutableData dataWithHexString:@"17f1030020"];
     [heartbeatData appendData:heartbeatCipherText];
-    
-    //    DLog(@"HeartBeat 2", heartbeatData); //OK
-    
+
     // 3. 心跳包加一块.
     NSMutableData *hb = [NSMutableData dataWithCapacity:[heartbeatData1 length] + [heartbeatData length]];
     [hb appendData:heartbeatData1];
     [hb appendData:heartbeatData];
-//    DLog(@"HB", hb);
-    
+
     [self sendData:hb];
 }
 
@@ -317,22 +278,16 @@
 
 - (void)mmtlsEnCryptAndSend:(NSData *)sendData
 {
-    NSString *logTag = [NSString stringWithFormat:@"Send(%ld)", [sendData length]];
-    DLog(logTag, sendData);
-    
     NSData *writeIV = [WC_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
     aadd = [aadd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
     aadd = [[aadd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t)([sendData length] + 0x10) flip:YES]]; //0x10 aad len
-    
+
     NSData *mmtlsData = [WC_AesGcm128 aes128gcmEncrypt:sendData aad:aadd key:_longlinkKeyPair.writeKEY ivec:writeIV];
-    
+
     NSData *sendMsgData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t)([sendData length] + 0x10) flip:YES]];
     sendMsgData = [sendMsgData addDataAtTail:mmtlsData];
-    
-    logTag = [NSString stringWithFormat:@"[MMTLS] Send(%ld)", [sendMsgData length]];
-    DLog(logTag, sendMsgData);
-    
+
     [self sendData:sendMsgData];
 }
 
@@ -341,10 +296,10 @@
     NSData *aad = [NSData dataWithHexString:@"00000000000000"];
     aad = [aad addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) _readSeq]]];
     aad = [aad addDataAtTail:[encrypedData subdataWithRange:NSMakeRange(0, 5)]];
-    
+
     NSData *readIV = [WC_Hex IV:_longlinkKeyPair.readIV XORSeq:_readSeq++];
     NSData *plainText = [WC_AesGcm128 aes128gcmDecrypt:[encrypedData subdataWithRange:NSMakeRange(5, [encrypedData length] - 5)] aad:aad key:_longlinkKeyPair.readKEY ivec:readIV];
-    
+
     return plainText;
 }
 
@@ -352,14 +307,7 @@
 
 - (void)onReceive:(NSData *)data
 {
-//    NSString *logTag = [NSString stringWithFormat:@"MMTLS Receive(%ld)", [data length]];
-//    DLog(logTag, data);
-    
     NSData *plainText = [self mmtlsDeCryptData:data];
-    
-    NSString *logTag = [NSString stringWithFormat:@"[MMTLS] Decrypted(%ld)", [data length]];
-    DLog(logTag, plainText);
-    
     [_delegate onRecivceLongLinkPlainData:plainText];
 }
 

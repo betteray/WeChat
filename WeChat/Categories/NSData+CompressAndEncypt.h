@@ -12,8 +12,6 @@
 
 //Send
 - (NSData *)Compress_And_RSA;
-- (NSData *)RSA;
-
 - (NSData *)Compress_And_AES;
 - (NSData *)AES;
 

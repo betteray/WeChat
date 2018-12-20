@@ -21,6 +21,6 @@ typedef NS_ENUM(NSUInteger, BBZlibErrorCode) {
 @interface NSData (Compression)
 
 - (NSData *)dataByDeflating;
-- (NSData *)dataByInflatingWithError:(NSError * __autoreleasing *)error;
+- (NSData *)dataByInflatingWithError:(NSError **)error;
 
 @end

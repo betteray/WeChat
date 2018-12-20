@@ -46,15 +46,12 @@
         _readSeq = 1;
         
         _clientRandom = [NSData GenRandomDataWithSize:32];
-//        _clientRandom = [NSData dataWithHexString:@"EBB0067A7ED9F2BC88C19C4A407ACA1F6FEDC4C9E65E8C93B74E621F7D658CF2"]; //test
         _decryptedPart2 = decryptedPart2;
         _resumptionSecret = resumptionSecret;
         _httpData = httpData;
         
         NSUInteger timeStamp = [[NSDate date] timeIntervalSince1970];
         _timeStampData = [NSData packInt32:(int32_t) timeStamp flip:YES];
-        
-//        _timeStampData = [NSData dataWithHexString:@"5BE14B00"]; //test
     }
     return self;
 }
@@ -69,7 +66,6 @@
     [clientHelloData appendData:_decryptedPart2];
     
     _clientHelloData = [clientHelloData copy];
-//    DLog(@"Client Hello", _clientHelloData);
 
     return _clientHelloData;
 }
@@ -157,11 +153,7 @@
     
     NSData *readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
     
-//    DLog(@"after XOR readIV 1", readIV1);
-    
     NSData *plainText1 = [WC_AesGcm128 aes128gcmDecrypt:encryptedPart1 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
-    
-//    DLog(@"decrypted part1", plainText1);   //好像校验数据用。
     
     // 第二部分
     NSData *encrypedPart2 = [response getPart2];
@@ -171,11 +163,7 @@
     
     readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
     
-//    DLog(@"after XOR readIV 1", readIV1);
-    
     NSData *plainText2 = [WC_AesGcm128 aes128gcmDecrypt:encrypedPart2 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
-    
-//    DLog(@"decrypted part2", plainText2);
     
     // 第三部分
     NSData *encrypedPart3 = [response getPart3];
@@ -184,13 +172,9 @@
     [aad1 appendData:[NSData packInt32:(int32_t)[encrypedPart3 length] flip:NO]];
     
     readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
-    
-//    DLog(@"after XOR readIV 1", readIV1);
-    
+
     NSData *plainText3 = [WC_AesGcm128 aes128gcmDecrypt:encrypedPart3 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
-    
-//    DLog(@"decrypted part2", plainText3);
-    
+
     return plainText2;
 }
 

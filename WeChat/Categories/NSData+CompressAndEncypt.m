@@ -11,8 +11,6 @@
 #import "NSData+Util.h"
 #import "FSOpenSSL.h"
 #import "Constants.h"
-#import "WeChatClient.h"
-#import "FSOpenSSL.h"
 #import "NSData+Compression.h"
 #import "NSData+AES.h"
 
@@ -23,11 +21,6 @@
 {
     NSData *compressedData = [self dataByDeflating];
     return [FSOpenSSL RSA_PUB_EncryptData:compressedData modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
-}
-
-- (NSData *)RSA
-{
-    return [FSOpenSSL RSA_PUB_EncryptData:self modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
 }
 
 - (NSData *)Compress_And_AES

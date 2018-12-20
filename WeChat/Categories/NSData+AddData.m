@@ -10,19 +10,21 @@
 
 @implementation NSData (AddData)
 
-- (NSData *)addDataAtTail:(NSData *)data {
+- (NSData *)addDataAtTail:(NSData *)data
+{
     NSMutableData *ma = [NSMutableData dataWithCapacity:[self length] + [data length]];
     [ma appendData:self];
     [ma appendData:data];
-    
+
     return [ma copy];
 }
 
-- (NSData *)addDataAtHead:(NSData *)data {
+- (NSData *)addDataAtHead:(NSData *)data
+{
     NSMutableData *ma = [NSMutableData dataWithCapacity:[data length] + [self length]];
     [ma appendData:data];
     [ma appendData:self];
-    
+
     return [ma copy];
 }
 

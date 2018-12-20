@@ -20,7 +20,7 @@
     unsigned char buf[1024];
     unsigned int resultlen = 0;
     
-    unsigned char* r = HMAC(EVP_sha256(), [key bytes], (int)[key length], [data bytes], (int)[data length], buf, &resultlen);
+    HMAC(EVP_sha256(), [key bytes], (int)[key length], [data bytes], (int)[data length], buf, &resultlen);
     
     return [NSData dataWithBytes:buf length:resultlen];
 }
