@@ -296,7 +296,7 @@
                                                           resp.accountInfo.nickName,
                                                           resp.accountInfo.alias);
 
-                                                    [WeChatClient sharedClient].shortLinkUrl = [[resp.dns.ip.shortlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
+//                                                    [WeChatClient sharedClient].shortLinkUrl = [[resp.dns.ip.shortlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
                                                 }
                                             }
                                             break;

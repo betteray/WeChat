@@ -51,7 +51,7 @@
 
 @property (nonatomic, assign) int seq; //封包编号。
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
-@property (nonatomic, strong) NSData *cookie;
+
 @property (nonatomic, strong) NSMutableArray *tasks;
 
 @property (nonatomic, strong) NSData *sync_key_cur;
@@ -102,7 +102,7 @@
             LogError(@" ** Gen RSA KeyPair Fail. ** ");
         }
 
-        _heartbeatTimer = [NSTimer timerWithTimeInterval:20 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
+        _heartbeatTimer = [NSTimer timerWithTimeInterval:70 * 3 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
 
     }
@@ -238,7 +238,10 @@
     LogInfo(@"Start Request: \n\n%@\n", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
+    DLog(@"serilizedData", serilizedData);
+    
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:5];
+    DLog(@"sendData", sendData);
 
     Task *task = [Task new];
     task.sucBlock = successBlock;
