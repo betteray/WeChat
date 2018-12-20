@@ -64,7 +64,7 @@
     GetLoginQRCodeRequest *request = [GetLoginQRCodeRequest new];
 
     SKBuiltinBuffer_t *buffer = [SKBuiltinBuffer_t new];
-    NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+    NSData *sessionKey = [DBManager sharedManager].sessionKey;
     [buffer setILen:(int32_t)[sessionKey length]];
     [buffer setBuffer:sessionKey];
     [request setRandomEncryKey:buffer];
@@ -112,7 +112,7 @@
     CheckLoginQRCodeRequest *request = [CheckLoginQRCodeRequest new];
 
     SKBuiltinBuffer_t *buffer = [SKBuiltinBuffer_t new];
-    NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+    NSData *sessionKey = [DBManager sharedManager].sessionKey;
     [buffer setILen:[sessionKey length]];
     [buffer setBuffer:sessionKey];
     [request setRandomEncryKey:buffer];
@@ -184,7 +184,7 @@
 
     ManualAuthAccountRequest_AesKey *aesKey = [ManualAuthAccountRequest_AesKey new];
     
-    NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+    NSData *sessionKey = [DBManager sharedManager].sessionKey;
     aesKey.len = (int32_t)[sessionKey length];
     aesKey.key = sessionKey;
 
@@ -287,7 +287,7 @@
                                                 {
                                                     NSData *checkEcdhKey = [NSData dataWithBytes:szSharedKey length:szSharedKeyLen];
                                                     NSData * sessionKey = [FSOpenSSL aesDecryptData:resp.authParam.session.key key:checkEcdhKey];
-                                                    [[DBManager sharedManager] saveSessionKey:sessionKey];
+                                                    [[DBManager sharedManager] setSessionKey:sessionKey];
                                                     [WeChatClient sharedClient].checkEcdhKey = checkEcdhKey;
 
                                                     LogInfo(@"登陆成功: SessionKey: %@, uin: %d, wxid: %@, NickName: %@, alias: %@",

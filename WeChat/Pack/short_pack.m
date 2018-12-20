@@ -83,7 +83,7 @@
         NSData *cookie = [body subdataWithRange:NSMakeRange(index, cookieLen)];
         LogInfo(@"Cookie: %@", cookie);
         index += cookieLen;
-        [[DBManager sharedManager] saveCookie:cookie];
+        [[DBManager sharedManager] setCookie:cookie];
     }
     else if (cookieLen > 0xf)
     {

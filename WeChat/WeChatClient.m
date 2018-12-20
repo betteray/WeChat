@@ -80,7 +80,7 @@
         
         _tasks = [NSMutableArray array];
 
-        [[DBManager sharedManager] saveSessionKey:[FSOpenSSL random128BitAESKey]];      // iPad
+        [[DBManager sharedManager] setSessionKey:[FSOpenSSL random128BitAESKey]];      // iPad
 
         _mmtlsClient = [LongLinkClient new];
         _mmtlsClient.delegate = self;
@@ -223,7 +223,7 @@
     if (cgiWrap.needSetBaseRequest)
     {
         BaseRequest *base = [BaseRequest new];
-        [base setSessionKey:[[DBManager sharedManager] getSessionKey]];
+        [base setSessionKey:[DBManager sharedManager].sessionKey];
         [base setUin:(int32_t)[WXUserDefault getUIN]];
         [base setScene:0]; // iMac 1
         [base setClientVersion:CLIENT_VERSION];
@@ -319,7 +319,7 @@
 - (void)UnPack:(NSData *)data
 {
     ShortPackage *package = [short_pack unpack:data];
-    NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+    NSData *sessionKey = [DBManager sharedManager].sessionKey;
     NSData *protobufData = [package.body aesDecryptWithKey:sessionKey];
     Task *task = [self getTaskWithTag:package.header.cgi];
     id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
@@ -334,7 +334,7 @@
 
 - (NSData *)pack:(int)cmdId cgi:(int)cgi serilizedData:(NSData *)serilizedData type:(NSInteger)type
 {
-    NSData *cookie = [[DBManager sharedManager] getCookie];
+    NSData *cookie = [DBManager sharedManager].cookie;
     NSData *shortLinkBuf = [short_pack pack:cgi serilizedData:serilizedData type:type uin:_uin cookie:cookie];
     return [long_pack pack:self.seq++ cmdId:cmdId shortData:shortLinkBuf];
 }
@@ -379,7 +379,7 @@
             else
             {
                 ShortPackage *package = [short_pack unpack:longLinkPackage.body];
-                NSData *sessionKey = [[DBManager sharedManager] getSessionKey];
+                NSData *sessionKey = [DBManager sharedManager].sessionKey;
                 NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:sessionKey];
                 Task *task = [self getTaskWithTag:package.header.cgi];
                 id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
