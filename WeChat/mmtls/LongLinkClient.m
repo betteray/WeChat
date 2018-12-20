@@ -11,7 +11,7 @@
 
 #import "ClientHello.h"
 #import "ServerHello.h"
-#import "WX_SHA256.h"
+#import "WC_SHA256.h"
 #import "ECDH.h"
 #import "WC_HKDF.h"
 #import "KeyPair.h"
@@ -156,7 +156,7 @@
     NSData *hashPart2 = [serverHello getHashPart];
     NSMutableData *hashData = [NSMutableData dataWithData:hashPart1];
     [hashData appendData:hashPart2];
-    NSData *HandshakeKeyExpansionHash = [WX_SHA256 sha256:hashData];
+    NSData *HandshakeKeyExpansionHash = [WC_SHA256 sha256:hashData];
 
     NSData *serverPublicKey = [serverHello getServerPublicKey];
     NSData *localPriKey = [_clientHello getLocal1stPrikey];
@@ -194,7 +194,7 @@
 
         NSData *hashDataTmp = hashData;
         hashDataTmp = [hashDataTmp addDataAtTail:plainText1];
-        NSData *hashResult = [WX_SHA256 sha256:hashDataTmp];
+        NSData *hashResult = [WC_SHA256 sha256:hashDataTmp];
 
         // 需要密钥扩展一次结果。
         NSMutableData *info222 = [NSMutableData dataWithData:[@"PSK_ACCESS" dataUsingEncoding:NSUTF8StringEncoding]];
@@ -220,7 +220,7 @@
     NSMutableData *md = [NSMutableData dataWithData:hashData];
     [md appendData:plainText1];
     [md appendData:plainText2];
-    NSData *ApplicationDataKeyExpansionHash = [WX_SHA256 sha256:md];
+    NSData *ApplicationDataKeyExpansionHash = [WC_SHA256 sha256:md];
     // 需要密钥扩展一次结果。
     NSMutableData *ApplicationDataKeyExpansion = [NSMutableData dataWithData:[@"application data key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
     [ApplicationDataKeyExpansion appendData:ApplicationDataKeyExpansionHash];
@@ -242,7 +242,7 @@
     NSData *clientFinished = [@"client finished" dataUsingEncoding:NSUTF8StringEncoding];
     NSData *ClientFinishedKey = [WC_HKDF HKDF_Expand_Prk2:EphemeralSecret Info:clientFinished]; //OK //client finished
 
-    NSData *hmacResult = [WX_HmacSha256 HmacSha256WithKey:ClientFinishedKey data:ApplicationDataKeyExpansionHash]; //OK
+    NSData *hmacResult = [WC_HmacSha256 HmacSha256WithKey:ClientFinishedKey data:ApplicationDataKeyExpansionHash]; //OK
 
     NSMutableData *clientFinishedData = [NSMutableData dataWithHexString:@"00000023140020"];
     [clientFinishedData appendData:hmacResult];

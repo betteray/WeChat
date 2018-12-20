@@ -6,10 +6,10 @@
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "WX_SHA256.h"
+#import "WC_SHA256.h"
 #include <openssl/sha.h>
 
-@implementation WX_SHA256
+@implementation WC_SHA256
 
 + (NSData *)sha256:(NSData *)data
 {

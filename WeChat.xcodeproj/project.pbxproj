@@ -45,11 +45,11 @@
 		7154D5172196B721005064C4 /* NSData+HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5142196B721005064C4 /* NSData+HexDump.m */; };
 		7154D51C2196CC1A005064C4 /* KeyPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D51B2196CC1A005064C4 /* KeyPair.m */; };
 		7154D5222196DFE1005064C4 /* WC_Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5212196DFE1005064C4 /* WC_Hex.m */; };
-		7154D5252197EFB9005064C4 /* WX_HmacSha256.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5242197EFB9005064C4 /* WX_HmacSha256.m */; };
+		7154D5252197EFB9005064C4 /* WC_HmacSha256.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5242197EFB9005064C4 /* WC_HmacSha256.m */; };
 		7155BA4F21902A0B0002CE1D /* WC_AesGcm128.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA4E21902A0B0002CE1D /* WC_AesGcm128.m */; };
 		7155BA5221902AB30002CE1D /* ClientHello.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5121902AB30002CE1D /* ClientHello.m */; };
 		7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5421902ABE0002CE1D /* ServerHello.m */; };
-		7155BA5821902CDD0002CE1D /* WX_SHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5721902CDD0002CE1D /* WX_SHA256.m */; };
+		7155BA5821902CDD0002CE1D /* WC_SHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5721902CDD0002CE1D /* WC_SHA256.m */; };
 		7155BA5B219033BF0002CE1D /* WC_HKDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5A219033BF0002CE1D /* WC_HKDF.m */; };
 		716197FA21C7A36200A76F39 /* NewInitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716197F921C7A36200A76F39 /* NewInitViewController.m */; };
 		7161984921CB6FEA00A76F39 /* header.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984821CB6FEA00A76F39 /* header.m */; };
@@ -250,16 +250,16 @@
 		7154D51B2196CC1A005064C4 /* KeyPair.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyPair.m; sourceTree = "<group>"; };
 		7154D51E2196D6DA005064C4 /* WC_Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WC_Hex.h; sourceTree = "<group>"; };
 		7154D5212196DFE1005064C4 /* WC_Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WC_Hex.m; sourceTree = "<group>"; };
-		7154D5232197EFB9005064C4 /* WX_HmacSha256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WX_HmacSha256.h; sourceTree = "<group>"; };
-		7154D5242197EFB9005064C4 /* WX_HmacSha256.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WX_HmacSha256.m; sourceTree = "<group>"; };
+		7154D5232197EFB9005064C4 /* WC_HmacSha256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WC_HmacSha256.h; sourceTree = "<group>"; };
+		7154D5242197EFB9005064C4 /* WC_HmacSha256.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WC_HmacSha256.m; sourceTree = "<group>"; };
 		7155BA4D21902A0B0002CE1D /* WC_AesGcm128.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WC_AesGcm128.h; sourceTree = "<group>"; };
 		7155BA4E21902A0B0002CE1D /* WC_AesGcm128.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WC_AesGcm128.m; sourceTree = "<group>"; };
 		7155BA5021902AB30002CE1D /* ClientHello.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClientHello.h; sourceTree = "<group>"; };
 		7155BA5121902AB30002CE1D /* ClientHello.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientHello.m; sourceTree = "<group>"; };
 		7155BA5321902ABE0002CE1D /* ServerHello.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerHello.h; sourceTree = "<group>"; };
 		7155BA5421902ABE0002CE1D /* ServerHello.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServerHello.m; sourceTree = "<group>"; };
-		7155BA5621902CDD0002CE1D /* WX_SHA256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WX_SHA256.h; sourceTree = "<group>"; };
-		7155BA5721902CDD0002CE1D /* WX_SHA256.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WX_SHA256.m; sourceTree = "<group>"; };
+		7155BA5621902CDD0002CE1D /* WC_SHA256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WC_SHA256.h; sourceTree = "<group>"; };
+		7155BA5721902CDD0002CE1D /* WC_SHA256.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WC_SHA256.m; sourceTree = "<group>"; };
 		7155BA5A219033BF0002CE1D /* WC_HKDF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WC_HKDF.m; sourceTree = "<group>"; };
 		716197F821C7A36200A76F39 /* NewInitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewInitViewController.h; sourceTree = "<group>"; };
 		716197F921C7A36200A76F39 /* NewInitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewInitViewController.m; sourceTree = "<group>"; };
@@ -647,12 +647,12 @@
 				7155BA4E21902A0B0002CE1D /* WC_AesGcm128.m */,
 				7154D50D219686BD005064C4 /* WC_HKDF.h */,
 				7155BA5A219033BF0002CE1D /* WC_HKDF.m */,
-				7155BA5621902CDD0002CE1D /* WX_SHA256.h */,
-				7155BA5721902CDD0002CE1D /* WX_SHA256.m */,
+				7155BA5621902CDD0002CE1D /* WC_SHA256.h */,
+				7155BA5721902CDD0002CE1D /* WC_SHA256.m */,
 				7154D51A2196CC1A005064C4 /* KeyPair.h */,
 				7154D51B2196CC1A005064C4 /* KeyPair.m */,
-				7154D5232197EFB9005064C4 /* WX_HmacSha256.h */,
-				7154D5242197EFB9005064C4 /* WX_HmacSha256.m */,
+				7154D5232197EFB9005064C4 /* WC_HmacSha256.h */,
+				7154D5242197EFB9005064C4 /* WC_HmacSha256.m */,
 				71008F3A21B6925100DE8DF8 /* ShortLinkWithMMTLS.h */,
 				71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */,
 				71008F3D21B6CBB400DE8DF8 /* ShortLinkKey.h */,
@@ -916,7 +916,7 @@
 				712C6E63214A145600603022 /* ViewController.m in Sources */,
 				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
 				712C7152214BAD8900603022 /* ShortHeader.m in Sources */,
-				7155BA5821902CDD0002CE1D /* WX_SHA256.m in Sources */,
+				7155BA5821902CDD0002CE1D /* WC_SHA256.m in Sources */,
 				7161984F21CB712900A76F39 /* long_pack.m in Sources */,
 				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,
 				71008F3321B6750700DE8DF8 /* DNSManager.m in Sources */,
@@ -933,7 +933,7 @@
 				71C9CA5421C4DC1D006C4DDD /* SnsTimeLineViewController.m in Sources */,
 				71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */,
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
-				7154D5252197EFB9005064C4 /* WX_HmacSha256.m in Sources */,
+				7154D5252197EFB9005064C4 /* WC_HmacSha256.m in Sources */,
 				71D3DAAF21AFCA47002ACF1C /* WXUserDefault.m in Sources */,
 				712C7166214D2BFD00603022 /* ECDH.m in Sources */,
 				716197FA21C7A36200A76F39 /* NewInitViewController.m in Sources */,

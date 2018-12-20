@@ -6,11 +6,11 @@
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "WX_HmacSha256.h"
+#import "WC_HmacSha256.h"
 #include <openssl/evp.h>
 #include <openssl/hmac.h>
 
-@implementation WX_HmacSha256
+@implementation WC_HmacSha256
 
 + (NSData *)HmacSha256WithKey:(NSData *)key data:(NSData *)data
 {

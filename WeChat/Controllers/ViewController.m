@@ -20,7 +20,7 @@
 #import "NSData+CompressAndEncypt.h"
 
 #import "WC_AesGcm128.h"
-#import "WX_SHA256.h"
+#import "WC_SHA256.h"
 #import "WC_HKDF.h"
 
 #define TICK_INTERVAL 1

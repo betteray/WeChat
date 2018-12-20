@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WX_HmacSha256 : NSObject
+@interface WC_HmacSha256 : NSObject
 
 + (NSData *)HmacSha256WithKey:(NSData *)key data:(NSData *)data;
 

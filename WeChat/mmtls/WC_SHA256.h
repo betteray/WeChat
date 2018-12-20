@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WX_SHA256 : NSObject
+@interface WC_SHA256 : NSObject
 
 + (NSData *)sha256:(NSData *)data;
 

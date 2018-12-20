@@ -9,7 +9,7 @@
 #import "ShortLinkWithMMTLS.h"
 #import "NSData+GenRandomData.h"
 
-#import "WX_SHA256.h"
+#import "WC_SHA256.h"
 #import "WC_HKDF.h"
 #import "ShortLinkKey.h"
 
@@ -73,7 +73,7 @@
 - (NSData *)getSendData
 {
     NSData *hashPart = [self getHashPart];
-    NSData *hashResult = [WX_SHA256 sha256:hashPart];
+    NSData *hashResult = [WC_SHA256 sha256:hashPart];
     NSData *info = [NSData dataWithData:[@"early data key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
     NSData *expandParam2 = [info addDataAtTail:hashResult];
     NSData *expandParam1 = _resumptionSecret;
@@ -136,7 +136,7 @@
     NSData *clientHashPart = _clientHashPart;
     NSData *serverHashPart = [response getHashPart];
     clientHashPart = [clientHashPart addDataAtTail:serverHashPart];
-    NSData *hashResult = [WX_SHA256 sha256:clientHashPart];
+    NSData *hashResult = [WC_SHA256 sha256:clientHashPart];
     
     NSMutableData *info = [NSMutableData dataWithData:[@"handshake key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
     [info appendData:hashResult];
