@@ -50,7 +50,7 @@
     cgiWrap.request = request;
     cgiWrap.needSetBaseRequest = NO;
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/newsendmsg";
-    cgiWrap.responseClass = [MicroMsgResponseNew class];
+    cgiWrap.responseClass = [SendMsgResponseNew class];
 
     [[WeChatClient sharedClient] startRequest:cgiWrap
         success:^(id _Nullable response) {

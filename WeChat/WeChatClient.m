@@ -68,12 +68,6 @@ typedef NS_ENUM(int, EncryptMethod) {
     RSA = 0x7,
 };
 
-typedef NS_ENUM(NSInteger, UnPackResult) {
-    UnPack_Fail,
-    UnPack_Continue,
-    UnPack_Success
-};
-
 @interface WeChatClient ()
 
 // longlink
@@ -123,6 +117,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
         _seq = 1;
         _uin = 0;
+        
         _tasks = [NSMutableArray array];
         _mmtlsReceivedBuffer = [NSMutableData data];
         _sessionKey = [FSOpenSSL random128BitAESKey]; // iPad
@@ -247,9 +242,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 - (void)newInitWithSyncKeyCur:(NSData *)syncKeyCur syncKeyMax:(NSData *)syncKeyMax
 {
     NewInitRequest *request = [NewInitRequest new];
-    request.wxid = [WXUserDefault getWXID];
-    request.syncKeyCur = syncKeyCur;
-    request.syncKeyMax = syncKeyMax;
+    request.userName = [WXUserDefault getWXID];
+    request.currentSynckey = syncKeyCur;
+    request.maxSynckey = syncKeyMax;
     request.language = LANGUAGE;
 
     CgiWrap *wrap = [CgiWrap new];
@@ -267,7 +262,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
             LogInfo(@"sync key cur: %@", self.sync_key_cur);
             LogInfo(@"sync key max: %@", self.sync_key_max);
 
-            LogInfo(@"newinit cmd count: %d, continue flag: %d", response.cntList, response.continueFlag);
+            LogVerbose(@"newinit cmd count: %d, continue flag: %d", response.cntList, response.continueFlag);
 
             for (int i = 0; i < response.cntList; i++)
             {
@@ -281,13 +276,13 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                     }
                     else
                     {
-                        LogInfo(@"Serverid: %lld, CreateTime: %d, WXID: %@, TOID: %@, Type: %d, Raw Content: %@", msg.serverid, msg.createTime, msg.fromId.wxid, msg.toId.wxid, msg.type, msg.raw.content);
+                        LogVerbose(@"Serverid: %lld, CreateTime: %d, WXID: %@, TOID: %@, Type: %d, Raw Content: %@", msg.serverid, msg.createTime, msg.fromId.string, msg.toId.string, msg.type, msg.raw.content);
                     }
                 }
                 else if (2 == cmsg.type) //好友列表
                 {
                     contact_info *cinfo = [[contact_info alloc] initWithData:cmsg.data_p.data_p error:nil];
-                    LogInfo(@"update contact: Relation[%@], WXID: %@, Alias: %@", (cinfo.type & 1) ? @"好友" : @"非好友", cinfo.wxid.wxid, cinfo.alias);
+                    LogVerbose(@"update contact: Relation[%@], WXID: %@, Alias: %@", (cinfo.type & 1) ? @"好友" : @"非好友", cinfo.wxid.string, cinfo.alias);
                 }
             }
 
@@ -507,7 +502,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
     [longlinkBody appendData:body];
 
-    NSData *sendData = [self longlink_packWithSeq:_seq++ cmdId:cgiWrap.cmdId buffer:longlinkBody];
+    NSData *sendData = [self longlink_packWithSeq:_seq cmdId:cgiWrap.cmdId buffer:longlinkBody];
 
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -537,8 +532,8 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)mmtlsEnCryptAndSend:(NSData *)sendData withTag:(NSInteger)tag
 {
-    NSString *logTag = [NSString stringWithFormat:@"Send(%ld)", [sendData length]];
-    DLog(logTag, sendData);
+//    NSString *logTag = [NSString stringWithFormat:@"Send(%ld)", [sendData length]];
+//    DLog(logTag, sendData);
 
     NSData *writeIV = [WC_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
@@ -550,6 +545,9 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     NSData *sendMsgData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t)([sendData length] + 0x10) flip:YES]];
     sendMsgData = [sendMsgData addDataAtTail:mmtlsData];
 
+    NSString *logTag = [NSString stringWithFormat:@"MMTLS Send(%ld)", [sendMsgData length]];
+    DLog(logTag, sendMsgData);
+    
     [self sendData:sendMsgData];
 }
 
@@ -569,6 +567,10 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 {
     _clientHello = [ClientHello new];
     NSData *clientHelloData = [_clientHello CreateClientHello];
+    
+    NSString *logTag = [NSString stringWithFormat:@"MMTLS Send(%ld)", [clientHelloData length]];
+    DLog(logTag, clientHelloData);
+    
     [self sendData:clientHelloData];
     
 //    NSData *longLinkMMTLSData = [self ReadMMTLSDataPkg];
@@ -676,7 +678,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     [md appendData:plainText2];
     NSData *ApplicationDataKeyExpansionHash = [WX_SHA256 sha256:md];
 
-    DLog(@"PlainText2 Hash Result", plainText2HashData); //OK
+    DLog(@"PlainText2 Hash Result", ApplicationDataKeyExpansionHash); //OK
     // 需要密钥扩展一次结果。
     NSMutableData *ApplicationDataKeyExpansion = [NSMutableData dataWithData:[@"application data key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
     [ApplicationDataKeyExpansion appendData:ApplicationDataKeyExpansionHash];
@@ -741,14 +743,17 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (void)onReceive:(NSData *)data
 {
+    NSString *logTag = [NSString stringWithFormat:@"MMTLS Receive(%ld)", [data length]];
+    DLog(logTag, data);
+    
     NSData *plainText = [self mmtlsDeCryptData:data];
-    NSString *logTag = [NSString stringWithFormat:@"Receive(%ld)", [plainText length]];
+
+    logTag = [NSString stringWithFormat:@"MMTLS Decrypted(%ld)", [data length]];
     DLog(logTag, plainText);
+    
+    LongLinkPackage *longLinkPackage = [self unPackLongLink:plainText];
 
-    LongLinkPackage *longLinkPackage = [LongLinkPackage new];
-    UnPackResult result = [self unPackLongLink:plainText toLongLingPackage:longLinkPackage];
-
-    switch (result)
+    switch (longLinkPackage.result)
     {
         case UnPack_Success:
         {
@@ -759,17 +764,24 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
                 switch (longLinkPackage.header.cmdId)
                 {
                     case CMDID_PUSH_ACK:
-//                        if ([self.sync_key_cur length] == 0)
-//                        {
-//                            LogInfo(@"Start New Init.");
-//                            [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
-//                            LogInfo(@"Stop New Init.");
-//                        }
-//                        else
-//                        {
-//                            [self newSync];
-//                        }
+                    {
+                        static int push_ack_counter = 0;
+                        if (push_ack_counter==0) {
+                            if ([self.sync_key_cur length] == 0)
+                            {
+                                LogInfo(@"Start New Init.");
+                                [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
+                                LogInfo(@"Stop New Init.");
+                            }
+                        }
+                        else if(push_ack_counter > 1)
+                        {
+                            [self newSync];
+                        }
+                        push_ack_counter++;
                         break;
+                        
+                    }
                     default:
                         break;
                 }
@@ -778,6 +790,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
             {
                 Package *package = [self UnPackLongLinkBody:longLinkPackage.body];
                 NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:_sessionKey];
+                DLog(@"Protobuf Buf", protobufData);
                 Task *task = [self getTaskWithTag:package.header.cgi];
                 id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
                 if (task.sucBlock)
@@ -804,12 +817,15 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 #pragma mark - Pack
 
-- (UnPackResult)unPackLongLink:(NSData *)recvdRawData toLongLingPackage:(LongLinkPackage *)longLinkPackage
+- (LongLinkPackage *)unPackLongLink:(NSData *)recvdRawData
 {
+    LongLinkPackage *lpkg = [LongLinkPackage new];
+    
     if ([recvdRawData length] < 16)
     { // 包头不完整。
         LogError(@"Should Contine Read Data: 包头不完整");
-        return UnPack_Continue;
+        lpkg.result = UnPack_Continue;
+        return lpkg;
     }
 
     LongLinkHeader *header = [LongLinkHeader new];
@@ -823,19 +839,21 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     {
         //包未收完。
         LogError(@"Should Contine Read Data: 包未收完。");
-        return UnPack_Continue;
+        lpkg.result = UnPack_Continue;
+        return lpkg;
     }
 
-    longLinkPackage.header = header;
-    longLinkPackage.body = [recvdRawData subdataWithRange:NSMakeRange(16, [recvdRawData length] - 16)];
-
-    return UnPack_Success;
+    lpkg.header = header;
+    lpkg.body = [recvdRawData subdataWithRange:NSMakeRange(16, [recvdRawData length] - 16)];
+    lpkg.result = UnPack_Success;
+    
+    return lpkg;
 }
 
 - (NSData *)pack:(int)cmdId cgi:(int)cgi serilizedData:(NSData *)serilizedData type:(NSInteger)type
 {
     NSData *shortLinkBuf = [self shortlinkPackWithCgi:cgi serilizedData:serilizedData type:type];
-    return [self longlink_packWithSeq:self.seq++ cmdId:cmdId buffer:shortLinkBuf];
+    return [self longlink_packWithSeq:self.seq cmdId:cmdId buffer:shortLinkBuf];
 }
 
 - (NSData *)shortlinkPackWithCgi:(int)cgi serilizedData:(NSData *)serilizedData type:(NSInteger)type
@@ -873,8 +891,6 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
 
 - (NSData *)longlink_packWithSeq:(int)seq cmdId:(int)cmdId buffer:(NSData *)buffer
 {
-
-    LogInfo(@"CmdID: %d SEQ: %d",cmdId, seq);
     NSMutableData *longlink_header = [NSMutableData data];
 
     [longlink_header appendData:[NSData packInt32:(int) ([buffer length] + 16) flip:YES]];
@@ -892,7 +908,7 @@ typedef NS_ENUM(NSInteger, UnPackResult) {
     }
     else
     {
-        [longlink_header appendData:[NSData packInt32:seq flip:YES]];
+        [longlink_header appendData:[NSData packInt32:_seq++ flip:YES]];
     }
 
     [longlink_header appendData:buffer];
