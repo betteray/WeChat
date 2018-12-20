@@ -244,16 +244,15 @@
 
     NSData *hmacResult = [WX_HmacSha256 HmacSha256WithKey:ClientFinishedKey data:ApplicationDataKeyExpansionHash]; //OK
 
-    NSMutableData *heartbeatPart1 = [NSMutableData dataWithHexString:@"00000023140020"];
-    [heartbeatPart1 appendData:hmacResult];
+    NSMutableData *clientFinishedData = [NSMutableData dataWithHexString:@"00000023140020"];
+    [clientFinishedData appendData:hmacResult];
 
     NSData *aadddd = [NSData dataWithHexString:@"000000000000000116F1030037"];
 
     NSData *writeIV1 = [WC_Hex IV:keyPair.writeIV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
-    NSData *heartbeatPart1CipherText = [WC_AesGcm128 aes128gcmEncrypt:heartbeatPart1 aad:aadddd key:keyPair.writeKEY ivec:writeIV1];
-    NSMutableData *heartbeatData1 = [NSMutableData dataWithHexString:@"16F1030037"];
-    [heartbeatData1 appendData:heartbeatPart1CipherText];
-
+    NSData *clientFinishedCipherData = [WC_AesGcm128 aes128gcmEncrypt:clientFinishedData aad:aadddd key:keyPair.writeKEY ivec:writeIV1];
+    clientFinishedCipherData = [clientFinishedCipherData addDataAtHead:[NSData dataWithHexString:@"16F1030037"]];
+    
     // 2. 心跳包数据。
     KeyPair *keyPair2 = [[KeyPair alloc] initWithData:ApplicationDataKey];
     NSData *writeIV = [WC_Hex IV:keyPair2.writeIV XORSeq:_writeSeq++];
@@ -261,17 +260,12 @@
 
     _longlinkKeyPair = keyPair2;
     NSData *heart = [long_pack pack:-1 cmdId:CMDID_NOOP_REQ shortData:nil];
-    NSData *heartbeatCipherText = [WC_AesGcm128 aes128gcmEncrypt:heart aad:aadd key:keyPair2.writeKEY ivec:writeIV];
+    NSData *heartbeatCipherData = [WC_AesGcm128 aes128gcmEncrypt:heart aad:aadd key:keyPair2.writeKEY ivec:writeIV];
 
-    NSMutableData *heartbeatData = [NSMutableData dataWithHexString:@"17f1030020"];
-    [heartbeatData appendData:heartbeatCipherText];
-
+    heartbeatCipherData =  [heartbeatCipherData addDataAtHead:[NSData dataWithHexString:@"17f1030020"]];
     // 3. 心跳包加一块.
-    NSMutableData *hb = [NSMutableData dataWithCapacity:[heartbeatData1 length] + [heartbeatData length]];
-    [hb appendData:heartbeatData1];
-    [hb appendData:heartbeatData];
-
-    [self sendData:hb];
+    NSData *sendData = [clientFinishedCipherData addDataAtTail:heartbeatCipherData];
+    [self sendData:sendData];
 }
 
 #pragma mark - MMTLS
