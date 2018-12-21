@@ -32,6 +32,7 @@ CF_EXTERN_C_BEGIN
 @class CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg;
 @class CheckResUpdateRequest_ResID;
 @class CheckResUpdateRequest_ResID_SubTypeVector;
+@class CmdItem;
 @class ManualAuthAccountRequest;
 @class ManualAuthAccountRequest_AesKey;
 @class ManualAuthAccountRequest_Ecdh;
@@ -54,12 +55,11 @@ CF_EXTERN_C_BEGIN
 @class MicroMsgRequestNew;
 @class MicroMsgResponseNew;
 @class Msg_RawContent;
+@class NewSyncResponse_CmdList;
 @class SKBuiltinBuffer_t;
 @class SKBuiltinString_t;
 @class SnsObject;
 @class SnsTimeLineResponse_SnsServerConfig;
-@class common_msg;
-@class common_msg_Data;
 @class contact_info_BeiZhu;
 @class contact_info_GroupMemberList;
 @class contact_info_GroupMemberList_MemberInfo;
@@ -68,7 +68,6 @@ CF_EXTERN_C_BEGIN
 @class contact_info_QuanPin;
 @class contact_info_REAL_PY_SHORT;
 @class contact_info_REAL_QuanPin;
-@class new_sync_resp_new_msg;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -1578,55 +1577,37 @@ typedef GPB_ENUM(contact_info_GroupMemberList_MemberInfo_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasTag8;
 @end
 
-#pragma mark - common_msg
+#pragma mark - CmdItem
 
-typedef GPB_ENUM(common_msg_FieldNumber) {
-  common_msg_FieldNumber_Type = 1,
-  common_msg_FieldNumber_Data_p = 2,
+typedef GPB_ENUM(CmdItem_FieldNumber) {
+  CmdItem_FieldNumber_CmdId = 1,
+  CmdItem_FieldNumber_CmdBuf = 2,
 };
 
 /**
  * 同步消息
  **/
-@interface common_msg : GPBMessage
+@interface CmdItem : GPBMessage
 
 /** 消息类型:1==>个人信息,2==>好友信息,5==>服务器上未读取的最新消息,其余消息类型暂未知 */
-@property(nonatomic, readwrite) int32_t type;
+@property(nonatomic, readwrite) int32_t cmdId;
 
-@property(nonatomic, readwrite) BOOL hasType;
-@property(nonatomic, readwrite, strong, null_resettable) common_msg_Data *data_p;
-/** Test to see if @c data_p has been set. */
-@property(nonatomic, readwrite) BOOL hasData_p;
-
-@end
-
-#pragma mark - common_msg_Data
-
-typedef GPB_ENUM(common_msg_Data_FieldNumber) {
-  common_msg_Data_FieldNumber_Len = 1,
-  common_msg_Data_FieldNumber_Data_p = 2,
-};
-
-@interface common_msg_Data : GPBMessage
-
-@property(nonatomic, readwrite) int32_t len;
-
-@property(nonatomic, readwrite) BOOL hasLen;
-@property(nonatomic, readwrite, copy, null_resettable) NSData *data_p;
-/** Test to see if @c data_p has been set. */
-@property(nonatomic, readwrite) BOOL hasData_p;
+@property(nonatomic, readwrite) BOOL hasCmdId;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *cmdBuf;
+/** Test to see if @c cmdBuf has been set. */
+@property(nonatomic, readwrite) BOOL hasCmdBuf;
 
 @end
 
 #pragma mark - NewInitResponse
 
 typedef GPB_ENUM(NewInitResponse_FieldNumber) {
-  NewInitResponse_FieldNumber_Tag1 = 1,
-  NewInitResponse_FieldNumber_SyncKeyCur = 2,
-  NewInitResponse_FieldNumber_SyncKeyMax = 3,
+  NewInitResponse_FieldNumber_BaseResponse = 1,
+  NewInitResponse_FieldNumber_CurrentSynckey = 2,
+  NewInitResponse_FieldNumber_MaxSynckey = 3,
   NewInitResponse_FieldNumber_ContinueFlag = 4,
-  NewInitResponse_FieldNumber_CntList = 6,
-  NewInitResponse_FieldNumber_Tag7Array = 7,
+  NewInitResponse_FieldNumber_Count = 6,
+  NewInitResponse_FieldNumber_ListArray = 7,
 };
 
 /**
@@ -1634,39 +1615,39 @@ typedef GPB_ENUM(NewInitResponse_FieldNumber) {
  **/
 @interface NewInitResponse : GPBMessage
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag1;
-/** Test to see if @c tag1 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag1;
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
 
 /** 当前synckey二进制数据 */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKeyCur;
-/** Test to see if @c syncKeyCur has been set. */
-@property(nonatomic, readwrite) BOOL hasSyncKeyCur;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *currentSynckey;
+/** Test to see if @c currentSynckey has been set. */
+@property(nonatomic, readwrite) BOOL hasCurrentSynckey;
 
 /** 最新synckey二进制数据(若与sync_key_cur不相同,则continue_flag返回1,表示需要继续初始化) */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKeyMax;
-/** Test to see if @c syncKeyMax has been set. */
-@property(nonatomic, readwrite) BOOL hasSyncKeyMax;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *maxSynckey;
+/** Test to see if @c maxSynckey has been set. */
+@property(nonatomic, readwrite) BOOL hasMaxSynckey;
 
 /** 为1时表示仍要继续调用newinit初始化,直到该标志位返回0停止初始化(联系人或未读消息数据太多,无法一次获取完毕) */
 @property(nonatomic, readwrite) int32_t continueFlag;
 
 @property(nonatomic, readwrite) BOOL hasContinueFlag;
 /** tag7结构体数量 */
-@property(nonatomic, readwrite) int32_t cntList;
+@property(nonatomic, readwrite) int32_t count;
 
-@property(nonatomic, readwrite) BOOL hasCntList;
+@property(nonatomic, readwrite) BOOL hasCount;
 /** 需要根据消息类型解析 */
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<common_msg*> *tag7Array;
-/** The number of items in @c tag7Array without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger tag7Array_Count;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<CmdItem*> *listArray;
+/** The number of items in @c listArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger listArray_Count;
 
 @end
 
 #pragma mark - NewSyncRequest
 
 typedef GPB_ENUM(NewSyncRequest_FieldNumber) {
-  NewSyncRequest_FieldNumber_Tag1 = 1,
+  NewSyncRequest_FieldNumber_Oplog = 1,
   NewSyncRequest_FieldNumber_Selector = 2,
   NewSyncRequest_FieldNumber_KeyBuf = 3,
   NewSyncRequest_FieldNumber_Scene = 4,
@@ -1680,9 +1661,9 @@ typedef GPB_ENUM(NewSyncRequest_FieldNumber) {
 @interface NewSyncRequest : GPBMessage
 
 /** unknown,must be 0 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag1;
-/** Test to see if @c tag1 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag1;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *oplog;
+/** Test to see if @c oplog has been set. */
+@property(nonatomic, readwrite) BOOL hasOplog;
 
 /** unknown,just set 7 */
 @property(nonatomic, readwrite) int32_t selector;
@@ -1697,7 +1678,7 @@ typedef GPB_ENUM(NewSyncRequest_FieldNumber) {
 @property(nonatomic, readwrite) int32_t scene;
 
 @property(nonatomic, readwrite) BOOL hasScene;
-/** 'android-22' */
+/** android-22 iOS11.3.1 */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *deviceType;
 /** Test to see if @c deviceType has been set. */
 @property(nonatomic, readwrite) BOOL hasDeviceType;
@@ -1708,67 +1689,67 @@ typedef GPB_ENUM(NewSyncRequest_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasSyncMsgDigest;
 @end
 
-#pragma mark - new_sync_resp
+#pragma mark - NewSyncResponse
 
-typedef GPB_ENUM(new_sync_resp_FieldNumber) {
-  new_sync_resp_FieldNumber_Tag1 = 1,
-  new_sync_resp_FieldNumber_Msg = 2,
-  new_sync_resp_FieldNumber_Tag3 = 3,
-  new_sync_resp_FieldNumber_SyncKey = 4,
-  new_sync_resp_FieldNumber_Tag5 = 5,
-  new_sync_resp_FieldNumber_Tag6 = 6,
-  new_sync_resp_FieldNumber_Utc = 7,
+typedef GPB_ENUM(NewSyncResponse_FieldNumber) {
+  NewSyncResponse_FieldNumber_Ret = 1,
+  NewSyncResponse_FieldNumber_CmdList = 2,
+  NewSyncResponse_FieldNumber_ContinueFlag = 3,
+  NewSyncResponse_FieldNumber_KeyBuf = 4,
+  NewSyncResponse_FieldNumber_Status = 5,
+  NewSyncResponse_FieldNumber_OnlineVersion = 6,
+  NewSyncResponse_FieldNumber_SvrTime = 7,
 };
 
 /**
  * 同步消息响应
  **/
-@interface new_sync_resp : GPBMessage
+@interface NewSyncResponse : GPBMessage
 
-@property(nonatomic, readwrite) int32_t tag1;
+@property(nonatomic, readwrite) int32_t ret;
 
-@property(nonatomic, readwrite) BOOL hasTag1;
+@property(nonatomic, readwrite) BOOL hasRet;
 /** 未读消息 */
-@property(nonatomic, readwrite, strong, null_resettable) new_sync_resp_new_msg *msg;
-/** Test to see if @c msg has been set. */
-@property(nonatomic, readwrite) BOOL hasMsg;
+@property(nonatomic, readwrite, strong, null_resettable) NewSyncResponse_CmdList *cmdList;
+/** Test to see if @c cmdList has been set. */
+@property(nonatomic, readwrite) BOOL hasCmdList;
 
-@property(nonatomic, readwrite) int32_t tag3;
+@property(nonatomic, readwrite) int32_t continueFlag;
 
-@property(nonatomic, readwrite) BOOL hasTag3;
+@property(nonatomic, readwrite) BOOL hasContinueFlag;
 /** 服务器返回的sync key */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *syncKey;
-/** Test to see if @c syncKey has been set. */
-@property(nonatomic, readwrite) BOOL hasSyncKey;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *keyBuf;
+/** Test to see if @c keyBuf has been set. */
+@property(nonatomic, readwrite) BOOL hasKeyBuf;
 
-@property(nonatomic, readwrite) int32_t tag5;
+@property(nonatomic, readwrite) int32_t status;
 
-@property(nonatomic, readwrite) BOOL hasTag5;
-@property(nonatomic, readwrite) int32_t tag6;
+@property(nonatomic, readwrite) BOOL hasStatus;
+@property(nonatomic, readwrite) int32_t onlineVersion;
 
-@property(nonatomic, readwrite) BOOL hasTag6;
-@property(nonatomic, readwrite) int32_t utc;
+@property(nonatomic, readwrite) BOOL hasOnlineVersion;
+@property(nonatomic, readwrite) int32_t svrTime;
 
-@property(nonatomic, readwrite) BOOL hasUtc;
+@property(nonatomic, readwrite) BOOL hasSvrTime;
 @end
 
-#pragma mark - new_sync_resp_new_msg
+#pragma mark - NewSyncResponse_CmdList
 
-typedef GPB_ENUM(new_sync_resp_new_msg_FieldNumber) {
-  new_sync_resp_new_msg_FieldNumber_CntList = 1,
-  new_sync_resp_new_msg_FieldNumber_Tag2Array = 2,
+typedef GPB_ENUM(NewSyncResponse_CmdList_FieldNumber) {
+  NewSyncResponse_CmdList_FieldNumber_Count = 1,
+  NewSyncResponse_CmdList_FieldNumber_ListArray = 2,
 };
 
-@interface new_sync_resp_new_msg : GPBMessage
+@interface NewSyncResponse_CmdList : GPBMessage
 
 /** tag2结构体数量 */
-@property(nonatomic, readwrite) int32_t cntList;
+@property(nonatomic, readwrite) int32_t count;
 
-@property(nonatomic, readwrite) BOOL hasCntList;
+@property(nonatomic, readwrite) BOOL hasCount;
 /** 需要根据消息类型解析 */
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<common_msg*> *tag2Array;
-/** The number of items in @c tag2Array without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger tag2Array_Count;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<CmdItem*> *listArray;
+/** The number of items in @c listArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger listArray_Count;
 
 @end
 

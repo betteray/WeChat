@@ -390,58 +390,50 @@ message contact_info
 }
 
 //同步消息
-message common_msg
+message CmdItem
 {
-    optional int32  type 		= 1;						//消息类型:1==>个人信息,2==>好友信息,5==>服务器上未读取的最新消息,其余消息类型暂未知
-    message Data
-    {
-        optional int32 len 		= 1;
-        optional bytes data 	= 2;
-    }
-    optional Data data 			= 2;
+    optional int32  cmdId 		                = 1;						//消息类型:1==>个人信息,2==>好友信息,5==>服务器上未读取的最新消息,其余消息类型暂未知
+    optional SKBuiltinBuffer_t cmdBuf 			= 2;
 }
 
 //新设备第一次登录初始化服务器响应
 message NewInitResponse
 {
-    optional string tag1                     = 1;
-    optional bytes sync_key_cur                = 2;                //当前synckey二进制数据
-    optional bytes sync_key_max                = 3;                //最新synckey二进制数据(若与sync_key_cur不相同,则continue_flag返回1,表示需要继续初始化)
-    optional int32 continue_flag            = 4;                //为1时表示仍要继续调用newinit初始化,直到该标志位返回0停止初始化(联系人或未读消息数据太多,无法一次获取完毕)
-    optional int32  cntList                 = 6;                //tag7结构体数量
-    repeated common_msg tag7                 = 7;                //需要根据消息类型解析
+    optional BaseResponse baseResponse                          = 1;
+    optional bytes currentSynckey                               = 2;                //当前synckey二进制数据
+    optional bytes maxSynckey                                   = 3;                //最新synckey二进制数据(若与sync_key_cur不相同,则continue_flag返回1,表示需要继续初始化)
+    optional int32 continueFlag                                 = 4;                //为1时表示仍要继续调用newinit初始化,直到该标志位返回0停止初始化(联系人或未读消息数据太多,无法一次获取完毕)
+    optional int32  count                                       = 6;                //tag7结构体数量
+    repeated CmdItem list                                       = 7;                //需要根据消息类型解析
 }
 
 //同步消息
 message NewSyncRequest
 {
-
-    required string  tag1               = 1;    //unknown,must be 0
-	required int32 selector 			= 2;	//unknown,just set 7
-	required bytes keyBuf     		= 3;						//同步成功后服务器返回的消息id
-	required int32  scene 				= 4;						//unkown,just set 3
-	required string deviceType 				= 5;						//'android-22'
-	required int32  syncMsgDigest 	= 6;						//unknown,just set 1
+    required string  oplog                  = 1;    //unknown,must be 0
+	required int32 selector 			    = 2;	//unknown,just set 7
+	required bytes keyBuf     		        = 3;	//同步成功后服务器返回的消息id
+	required int32  scene 				    = 4;	//unkown,just set 3
+	required string deviceType 				= 5;	//android-22 iOS11.3.1
+	required int32  syncMsgDigest 	        = 6;	//unknown,just set 1
 }
 
 //同步消息响应
-message new_sync_resp
+message NewSyncResponse
 {
-	optional int32 tag1 				= 1;
-	message new_msg
+	optional int32 ret 				        = 1;
+	message CmdList
 	{
-		optional int32  cntList 	= 1;							//tag2结构体数量
-		repeated common_msg tag2 	= 2;							//需要根据消息类型解析
+		optional int32  count 	            = 1;    //tag2结构体数量
+		repeated CmdItem list 	            = 2;    //需要根据消息类型解析
 	}
-	optional new_msg msg 				= 2;						//未读消息
-	optional int32  tag3 				= 3;
-	optional bytes sync_key 			= 4;						//服务器返回的sync key
-	optional int32  tag5 				= 5;
-	optional int32  tag6 				= 6;
-	optional int32  utc 				= 7;
+	optional CmdList cmdList 				= 2;    //未读消息
+	optional int32  continueFlag 			= 3;
+	optional bytes keyBuf 			        = 4;    //服务器返回的sync key
+	optional int32  status 				    = 5;
+	optional int32  onlineVersion 			= 6;
+	optional int32  svrTime 				= 7;
 }
-
-
 
 message MicroMsgRequestNew
 {

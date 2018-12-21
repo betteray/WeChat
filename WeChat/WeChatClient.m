@@ -133,41 +133,16 @@
 
     [[WeChatClient sharedClient] startRequest:wrap
         success:^(NewInitResponse *_Nullable response) {
-            self.sync_key_cur = response.syncKeyCur;
-            self.sync_key_max = response.syncKeyMax;
+            self.sync_key_cur = response.currentSynckey;
+            self.sync_key_max = response.maxSynckey;
 
-            LogInfo(@"sync key cur: %@", self.sync_key_cur);
-            LogInfo(@"sync key max: %@", self.sync_key_max);
-
-            LogVerbose(@"newinit cmd count: %d, continue flag: %d", response.cntList, response.continueFlag);
-
-            for (int i = 0; i < response.cntList; i++)
-            {
-                common_msg *cmsg = [response.tag7Array objectAtIndex:i];
-                if (5 == cmsg.type)
-                {
-                    Msg *msg = [[Msg alloc] initWithData:cmsg.data_p.data_p error:nil];
-                    if (10002 == msg.type || 9999 == msg.type)
-                    { //系统消息
-                        continue;
-                    }
-                    else
-                    {
-                        LogVerbose(@"Serverid: %lld, CreateTime: %d, WXID: %@, TOID: %@, Type: %d, Raw Content: %@", msg.serverid, msg.createTime, msg.fromId.string, msg.toId.string, msg.type, msg.raw.content);
-                    }
-                }
-                else if (2 == cmsg.type) //好友列表
-                {
-                    contact_info *cinfo = [[contact_info alloc] initWithData:cmsg.data_p.data_p error:nil];
-                    LogVerbose(@"update contact: Relation[%@], WXID: %@, Alias: %@", (cinfo.type & 1) ? @"好友" : @"非好友", cinfo.wxid.string, cinfo.alias);
-                }
-            }
-
+            [self parseCmdList:response.listArray];
+            
+            LogVerbose(@"newinit cmd count: %d, continue flag: %d", response.count, response.continueFlag);
             if (response.continueFlag)
             {
                 [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
             }
-
         }
         failure:^(NSError *error) {
             LogError(@"%@", error);
@@ -177,7 +152,7 @@
 - (void)newSync
 {
     NewSyncRequest *req = [NewSyncRequest new];
-    req.tag1 = @"";
+    req.oplog = @"";
     req.selector = 262151;
     req.keyBuf = self.sync_key_cur;
     req.scene = 7;
@@ -189,15 +164,41 @@
     wrap.cmdId = 121;
     wrap.request = req;
     wrap.needSetBaseRequest = NO;
-    wrap.responseClass = [new_sync_resp class];
+    wrap.responseClass = [NewSyncResponse class];
 
     [[WeChatClient sharedClient] startRequest:wrap
-        success:^(new_sync_resp *_Nullable response) {
-            LogInfo(@"new sync resp: %@", response);
+        success:^(NewSyncResponse *_Nullable response) {
+            self.sync_key_cur = response.keyBuf;
+            [self parseCmdList:response.cmdList.listArray];
         }
         failure:^(NSError *error) {
             LogError(@"new sync resp error: %@", error);
         }];
+}
+
+- (void)parseCmdList:(NSArray<CmdItem *> *)cmdList
+{
+    for (int i = 0; i < cmdList.count; i++)
+    {
+        CmdItem *cmdItem = [cmdList objectAtIndex:i];
+        if (5 == cmdItem.cmdId)
+        {
+            Msg *msg = [[Msg alloc] initWithData:cmdItem.cmdBuf.buffer error:nil];
+            if (10002 == msg.type || 9999 == msg.type)  //系统消息
+            {
+                continue;
+            }
+            else
+            {
+                LogVerbose(@"Serverid: %lld, CreateTime: %d, WXID: %@, TOID: %@, Type: %d, Raw Content: %@", msg.serverid, msg.createTime, msg.fromId.string, msg.toId.string, msg.type, msg.raw.content);
+            }
+        }
+        else if (2 == cmdItem.cmdId) //好友列表
+        {
+            contact_info *cinfo = [[contact_info alloc] initWithData:cmdItem.cmdBuf.buffer error:nil];
+            LogVerbose(@"update contact: Relation[%@], WXID: %@, Alias: %@", (cinfo.type & 1) ? @"好友" : @"非好友", cinfo.wxid.string, cinfo.alias);
+        }
+    }
 }
 
 - (void)heartBeat

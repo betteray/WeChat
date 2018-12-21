@@ -3916,18 +3916,18 @@ typedef struct contact_info_GroupMemberList_MemberInfo__storage_ {
 
 @end
 
-#pragma mark - common_msg
+#pragma mark - CmdItem
 
-@implementation common_msg
+@implementation CmdItem
 
-@dynamic hasType, type;
-@dynamic hasData_p, data_p;
+@dynamic hasCmdId, cmdId;
+@dynamic hasCmdBuf, cmdBuf;
 
-typedef struct common_msg__storage_ {
+typedef struct CmdItem__storage_ {
   uint32_t _has_storage_[1];
-  int32_t type;
-  common_msg_Data *data_p;
-} common_msg__storage_;
+  int32_t cmdId;
+  SKBuiltinBuffer_t *cmdBuf;
+} CmdItem__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -3936,87 +3936,37 @@ typedef struct common_msg__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "type",
+        .name = "cmdId",
         .dataTypeSpecific.className = NULL,
-        .number = common_msg_FieldNumber_Type,
+        .number = CmdItem_FieldNumber_CmdId,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(common_msg__storage_, type),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(CmdItem__storage_, cmdId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "data_p",
-        .dataTypeSpecific.className = GPBStringifySymbol(common_msg_Data),
-        .number = common_msg_FieldNumber_Data_p,
+        .name = "cmdBuf",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = CmdItem_FieldNumber_CmdBuf,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(common_msg__storage_, data_p),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(CmdItem__storage_, cmdBuf),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[common_msg class]
+        [GPBDescriptor allocDescriptorForClass:[CmdItem class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(common_msg__storage_)
+                                   storageSize:sizeof(CmdItem__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - common_msg_Data
-
-@implementation common_msg_Data
-
-@dynamic hasLen, len;
-@dynamic hasData_p, data_p;
-
-typedef struct common_msg_Data__storage_ {
-  uint32_t _has_storage_[1];
-  int32_t len;
-  NSData *data_p;
-} common_msg_Data__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "len",
-        .dataTypeSpecific.className = NULL,
-        .number = common_msg_Data_FieldNumber_Len,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(common_msg_Data__storage_, len),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "data_p",
-        .dataTypeSpecific.className = NULL,
-        .number = common_msg_Data_FieldNumber_Data_p,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(common_msg_Data__storage_, data_p),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeBytes,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[common_msg_Data class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(common_msg_Data__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(common_msg)];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\002\001\005\000\002\006\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -4029,21 +3979,21 @@ typedef struct common_msg_Data__storage_ {
 
 @implementation NewInitResponse
 
-@dynamic hasTag1, tag1;
-@dynamic hasSyncKeyCur, syncKeyCur;
-@dynamic hasSyncKeyMax, syncKeyMax;
+@dynamic hasBaseResponse, baseResponse;
+@dynamic hasCurrentSynckey, currentSynckey;
+@dynamic hasMaxSynckey, maxSynckey;
 @dynamic hasContinueFlag, continueFlag;
-@dynamic hasCntList, cntList;
-@dynamic tag7Array, tag7Array_Count;
+@dynamic hasCount, count;
+@dynamic listArray, listArray_Count;
 
 typedef struct NewInitResponse__storage_ {
   uint32_t _has_storage_[1];
   int32_t continueFlag;
-  int32_t cntList;
-  NSString *tag1;
-  NSData *syncKeyCur;
-  NSData *syncKeyMax;
-  NSMutableArray *tag7Array;
+  int32_t count;
+  BaseResponse *baseResponse;
+  NSData *currentSynckey;
+  NSData *maxSynckey;
+  NSMutableArray *listArray;
 } NewInitResponse__storage_;
 
 // This method is threadsafe because it is initially called
@@ -4053,30 +4003,30 @@ typedef struct NewInitResponse__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "tag1",
-        .dataTypeSpecific.className = NULL,
-        .number = NewInitResponse_FieldNumber_Tag1,
+        .name = "baseResponse",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseResponse),
+        .number = NewInitResponse_FieldNumber_BaseResponse,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(NewInitResponse__storage_, tag1),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
+        .offset = (uint32_t)offsetof(NewInitResponse__storage_, baseResponse),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "syncKeyCur",
+        .name = "currentSynckey",
         .dataTypeSpecific.className = NULL,
-        .number = NewInitResponse_FieldNumber_SyncKeyCur,
+        .number = NewInitResponse_FieldNumber_CurrentSynckey,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(NewInitResponse__storage_, syncKeyCur),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(NewInitResponse__storage_, currentSynckey),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
       {
-        .name = "syncKeyMax",
+        .name = "maxSynckey",
         .dataTypeSpecific.className = NULL,
-        .number = NewInitResponse_FieldNumber_SyncKeyMax,
+        .number = NewInitResponse_FieldNumber_MaxSynckey,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(NewInitResponse__storage_, syncKeyMax),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(NewInitResponse__storage_, maxSynckey),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
       {
@@ -4085,24 +4035,24 @@ typedef struct NewInitResponse__storage_ {
         .number = NewInitResponse_FieldNumber_ContinueFlag,
         .hasIndex = 3,
         .offset = (uint32_t)offsetof(NewInitResponse__storage_, continueFlag),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "cntList",
-        .dataTypeSpecific.className = NULL,
-        .number = NewInitResponse_FieldNumber_CntList,
-        .hasIndex = 4,
-        .offset = (uint32_t)offsetof(NewInitResponse__storage_, cntList),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "tag7Array",
-        .dataTypeSpecific.className = GPBStringifySymbol(common_msg),
-        .number = NewInitResponse_FieldNumber_Tag7Array,
+        .name = "count",
+        .dataTypeSpecific.className = NULL,
+        .number = NewInitResponse_FieldNumber_Count,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(NewInitResponse__storage_, count),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "listArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(CmdItem),
+        .number = NewInitResponse_FieldNumber_ListArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(NewInitResponse__storage_, tag7Array),
+        .offset = (uint32_t)offsetof(NewInitResponse__storage_, listArray),
         .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
       },
@@ -4117,7 +4067,7 @@ typedef struct NewInitResponse__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\001\006\007\000";
+        "\004\001\014\000\002\016\000\003\n\000\004\014\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -4132,7 +4082,7 @@ typedef struct NewInitResponse__storage_ {
 
 @implementation NewSyncRequest
 
-@dynamic hasTag1, tag1;
+@dynamic hasOplog, oplog;
 @dynamic hasSelector, selector;
 @dynamic hasKeyBuf, keyBuf;
 @dynamic hasScene, scene;
@@ -4144,7 +4094,7 @@ typedef struct NewSyncRequest__storage_ {
   int32_t selector;
   int32_t scene;
   int32_t syncMsgDigest;
-  NSString *tag1;
+  NSString *oplog;
   NSData *keyBuf;
   NSString *deviceType;
 } NewSyncRequest__storage_;
@@ -4156,11 +4106,11 @@ typedef struct NewSyncRequest__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "tag1",
+        .name = "oplog",
         .dataTypeSpecific.className = NULL,
-        .number = NewSyncRequest_FieldNumber_Tag1,
+        .number = NewSyncRequest_FieldNumber_Oplog,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(NewSyncRequest__storage_, tag1),
+        .offset = (uint32_t)offsetof(NewSyncRequest__storage_, oplog),
         .flags = GPBFieldRequired,
         .dataType = GPBDataTypeString,
       },
@@ -4231,28 +4181,28 @@ typedef struct NewSyncRequest__storage_ {
 
 @end
 
-#pragma mark - new_sync_resp
+#pragma mark - NewSyncResponse
 
-@implementation new_sync_resp
+@implementation NewSyncResponse
 
-@dynamic hasTag1, tag1;
-@dynamic hasMsg, msg;
-@dynamic hasTag3, tag3;
-@dynamic hasSyncKey, syncKey;
-@dynamic hasTag5, tag5;
-@dynamic hasTag6, tag6;
-@dynamic hasUtc, utc;
+@dynamic hasRet, ret;
+@dynamic hasCmdList, cmdList;
+@dynamic hasContinueFlag, continueFlag;
+@dynamic hasKeyBuf, keyBuf;
+@dynamic hasStatus, status;
+@dynamic hasOnlineVersion, onlineVersion;
+@dynamic hasSvrTime, svrTime;
 
-typedef struct new_sync_resp__storage_ {
+typedef struct NewSyncResponse__storage_ {
   uint32_t _has_storage_[1];
-  int32_t tag1;
-  int32_t tag3;
-  int32_t tag5;
-  int32_t tag6;
-  int32_t utc;
-  new_sync_resp_new_msg *msg;
-  NSData *syncKey;
-} new_sync_resp__storage_;
+  int32_t ret;
+  int32_t continueFlag;
+  int32_t status;
+  int32_t onlineVersion;
+  int32_t svrTime;
+  NewSyncResponse_CmdList *cmdList;
+  NSData *keyBuf;
+} NewSyncResponse__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -4261,77 +4211,82 @@ typedef struct new_sync_resp__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "tag1",
+        .name = "ret",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_resp_FieldNumber_Tag1,
+        .number = NewSyncResponse_FieldNumber_Ret,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(new_sync_resp__storage_, tag1),
+        .offset = (uint32_t)offsetof(NewSyncResponse__storage_, ret),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "msg",
-        .dataTypeSpecific.className = GPBStringifySymbol(new_sync_resp_new_msg),
-        .number = new_sync_resp_FieldNumber_Msg,
+        .name = "cmdList",
+        .dataTypeSpecific.className = GPBStringifySymbol(NewSyncResponse_CmdList),
+        .number = NewSyncResponse_FieldNumber_CmdList,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(new_sync_resp__storage_, msg),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(NewSyncResponse__storage_, cmdList),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "tag3",
+        .name = "continueFlag",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_resp_FieldNumber_Tag3,
+        .number = NewSyncResponse_FieldNumber_ContinueFlag,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(new_sync_resp__storage_, tag3),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(NewSyncResponse__storage_, continueFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "syncKey",
+        .name = "keyBuf",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_resp_FieldNumber_SyncKey,
+        .number = NewSyncResponse_FieldNumber_KeyBuf,
         .hasIndex = 3,
-        .offset = (uint32_t)offsetof(new_sync_resp__storage_, syncKey),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(NewSyncResponse__storage_, keyBuf),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
       {
-        .name = "tag5",
+        .name = "status",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_resp_FieldNumber_Tag5,
+        .number = NewSyncResponse_FieldNumber_Status,
         .hasIndex = 4,
-        .offset = (uint32_t)offsetof(new_sync_resp__storage_, tag5),
+        .offset = (uint32_t)offsetof(NewSyncResponse__storage_, status),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "tag6",
+        .name = "onlineVersion",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_resp_FieldNumber_Tag6,
+        .number = NewSyncResponse_FieldNumber_OnlineVersion,
         .hasIndex = 5,
-        .offset = (uint32_t)offsetof(new_sync_resp__storage_, tag6),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(NewSyncResponse__storage_, onlineVersion),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "utc",
+        .name = "svrTime",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_resp_FieldNumber_Utc,
+        .number = NewSyncResponse_FieldNumber_SvrTime,
         .hasIndex = 6,
-        .offset = (uint32_t)offsetof(new_sync_resp__storage_, utc),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(NewSyncResponse__storage_, svrTime),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[new_sync_resp class]
+        [GPBDescriptor allocDescriptorForClass:[NewSyncResponse class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(new_sync_resp__storage_)
+                                   storageSize:sizeof(NewSyncResponse__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\005\002\007\000\003\014\000\004\006\000\006\r\000\007\007\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -4340,18 +4295,18 @@ typedef struct new_sync_resp__storage_ {
 
 @end
 
-#pragma mark - new_sync_resp_new_msg
+#pragma mark - NewSyncResponse_CmdList
 
-@implementation new_sync_resp_new_msg
+@implementation NewSyncResponse_CmdList
 
-@dynamic hasCntList, cntList;
-@dynamic tag2Array, tag2Array_Count;
+@dynamic hasCount, count;
+@dynamic listArray, listArray_Count;
 
-typedef struct new_sync_resp_new_msg__storage_ {
+typedef struct NewSyncResponse_CmdList__storage_ {
   uint32_t _has_storage_[1];
-  int32_t cntList;
-  NSMutableArray *tag2Array;
-} new_sync_resp_new_msg__storage_;
+  int32_t count;
+  NSMutableArray *listArray;
+} NewSyncResponse_CmdList__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -4360,38 +4315,33 @@ typedef struct new_sync_resp_new_msg__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "cntList",
+        .name = "count",
         .dataTypeSpecific.className = NULL,
-        .number = new_sync_resp_new_msg_FieldNumber_CntList,
+        .number = NewSyncResponse_CmdList_FieldNumber_Count,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(new_sync_resp_new_msg__storage_, cntList),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .offset = (uint32_t)offsetof(NewSyncResponse_CmdList__storage_, count),
+        .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "tag2Array",
-        .dataTypeSpecific.className = GPBStringifySymbol(common_msg),
-        .number = new_sync_resp_new_msg_FieldNumber_Tag2Array,
+        .name = "listArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(CmdItem),
+        .number = NewSyncResponse_CmdList_FieldNumber_ListArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(new_sync_resp_new_msg__storage_, tag2Array),
+        .offset = (uint32_t)offsetof(NewSyncResponse_CmdList__storage_, listArray),
         .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[new_sync_resp_new_msg class]
+        [GPBDescriptor allocDescriptorForClass:[NewSyncResponse_CmdList class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(new_sync_resp_new_msg__storage_)
+                                   storageSize:sizeof(NewSyncResponse_CmdList__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    static const char *extraTextFormatInfo =
-        "\001\001\007\000";
-    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
-#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(new_sync_resp)];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(NewSyncResponse)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
