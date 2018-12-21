@@ -77,14 +77,14 @@
     {
         _seq = 1;
         _uin = 0;
-        
+
         _tasks = [NSMutableArray array];
 
-        [[DBManager sharedManager] setSessionKey:[FSOpenSSL random128BitAESKey]];      // iPad
+        [[DBManager sharedManager] setSessionKey:[FSOpenSSL random128BitAESKey]]; // iPad
 
         _mmtlsClient = [LongLinkClient new];
         _mmtlsClient.delegate = self;
-        
+
         _sync_key_cur = [NSData data];
         _sync_key_max = [NSData data];
 
@@ -100,9 +100,13 @@
             LogError(@" ** Gen RSA KeyPair Fail. ** ");
         }
 
-        _heartbeatTimer = [NSTimer timerWithTimeInterval:70 * 3 target:self selector:@selector(heartBeat) userInfo:nil repeats:YES];
+        _heartbeatTimer = [NSTimer timerWithTimeInterval:70*3
+                                                  target:self
+                                                selector:@selector(heartBeat)
+                                                userInfo:nil
+                                                 repeats:YES];
+        
         [[NSRunLoop mainRunLoop] addTimer:_heartbeatTimer forMode:NSRunLoopCommonModes];
-
     }
 
     return self;
@@ -113,6 +117,11 @@
     [_mmtlsClient start];
 }
 
+- (void)heartBeat
+{
+    NSData *heart = [long_pack pack:-1 cmdId:CMDID_NOOP_REQ shortData:nil];
+    [_mmtlsClient mmtlsEnCryptAndSend:heart];
+}
 
 #pragma mark - Clinet Misc
 
@@ -137,7 +146,7 @@
             self.sync_key_max = response.maxSynckey;
 
             [self parseCmdList:response.listArray];
-            
+
             LogVerbose(@"newinit cmd count: %d, continue flag: %d", response.count, response.continueFlag);
             if (response.continueFlag)
             {
@@ -184,27 +193,30 @@
         if (5 == cmdItem.cmdId)
         {
             Msg *msg = [[Msg alloc] initWithData:cmdItem.cmdBuf.buffer error:nil];
-            if (10002 == msg.type || 9999 == msg.type)  //系统消息
+            if (10002 == msg.type || 9999 == msg.type) //系统消息
             {
                 continue;
             }
             else
             {
-                LogVerbose(@"Serverid: %lld, CreateTime: %d, WXID: %@, TOID: %@, Type: %d, Raw Content: %@", msg.serverid, msg.createTime, msg.fromId.string, msg.toId.string, msg.type, msg.raw.content);
+                LogVerbose(@"Serverid: %lld, CreateTime: %d, WXID: %@, TOID: %@, Type: %d, Raw Content: %@",
+                           msg.serverid,
+                           msg.createTime,
+                           msg.fromId.string,
+                           msg.toId.string,
+                           msg.type,
+                           msg.raw.content);
             }
         }
         else if (2 == cmdItem.cmdId) //好友列表
         {
             contact_info *cinfo = [[contact_info alloc] initWithData:cmdItem.cmdBuf.buffer error:nil];
-            LogVerbose(@"update contact: Relation[%@], WXID: %@, Alias: %@", (cinfo.type & 1) ? @"好友" : @"非好友", cinfo.wxid.string, cinfo.alias);
+            LogVerbose(@"update contact: Relation[%@], WXID: %@, Alias: %@",
+                       (cinfo.type & 1) ? @"好友" : @"非好友",
+                       cinfo.wxid.string,
+                       cinfo.alias);
         }
     }
-}
-
-- (void)heartBeat
-{
-    NSData *heart = [long_pack pack:-1 cmdId:CMDID_NOOP_REQ shortData:nil];
-    [_mmtlsClient mmtlsEnCryptAndSend:heart];
 }
 
 #pragma mark - Public
@@ -238,7 +250,7 @@
 
     NSData *serilizedData = [[cgiWrap request] data];
     DLog(@"serilizedData", serilizedData);
-    
+
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:5];
     DLog(@"sendData", sendData);
 
@@ -284,7 +296,13 @@
     [body appendData:reqAccount];
     [body appendData:reqDevice];
 
-    NSData *head = [header make_header:cgiWrap.cgi encryptMethod:RSA bodyData:body compressedBodyData:body needCookie:NO cookie:nil uin:_uin];
+    NSData *head = [header make_header:cgiWrap.cgi
+                         encryptMethod:RSA
+                              bodyData:body
+                    compressedBodyData:body
+                            needCookie:NO
+                                cookie:nil
+                                   uin:_uin];
 
     NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
     [longlinkBody appendData:body];
@@ -313,7 +331,7 @@
             result = task;
         }
     }
-    
+
     return result;
 }
 
@@ -343,13 +361,16 @@
 - (void)onRecivceLongLinkPlainData:(NSData *)plainData
 {
     LongPackage *longLinkPackage = [long_pack unpack:plainData];
-    
+
     switch (longLinkPackage.result)
     {
         case UnPack_Success:
         {
-            LogInfo(@"Receive CmdID: %d, SEQ: %d, BodyLen: %d", longLinkPackage.header.cmdId, longLinkPackage.header.seq, longLinkPackage.header.bodyLength);
-            
+            LogInfo(@"Receive CmdID: %d, SEQ: %d, BodyLen: %d",
+                    longLinkPackage.header.cmdId,
+                    longLinkPackage.header.seq,
+                    longLinkPackage.header.bodyLength);
+
             if (longLinkPackage.header.bodyLength < 0x20)
             {
                 switch (longLinkPackage.header.cmdId)
@@ -357,7 +378,8 @@
                     case CMDID_PUSH_ACK:
                     {
                         static int push_ack_counter = 0;
-                        if (push_ack_counter==0) {
+                        if (push_ack_counter == 0)
+                        {
                             if ([self.sync_key_cur length] == 0)
                             {
                                 LogInfo(@"Start New Init.");
@@ -365,13 +387,12 @@
                                 LogInfo(@"Stop New Init.");
                             }
                         }
-                        else if(push_ack_counter > 1)
+                        else if (push_ack_counter > 1)
                         {
                             [self newSync];
                         }
                         push_ack_counter++;
                         break;
-                        
                     }
                     default:
                         break;
@@ -393,11 +414,11 @@
                 }
             }
         }
-            break;
+        break;
         case UnPack_Continue:
         {
         }
-            break;
+        break;
         default:
             break;
     }
