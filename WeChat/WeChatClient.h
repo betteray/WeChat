@@ -27,13 +27,17 @@ typedef void (^FailureBlock)(NSError *error);
 
 - (void)start;
 
+- (void)manualAuth:(CgiWrap *)cgiWrap
+           success:(SuccessBlock)successBlock
+           failure:(FailureBlock)failureBlock;
+
 + (void)startRequest:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock;
 
-- (void)manualAuth:(CgiWrap *)cgiWrap
-             success:(SuccessBlock)successBlock
-             failure:(FailureBlock)failureBlock;
++ (void)postRequest:(CgiWrap *)cgiWrap
+            success:(SuccessBlock)successBlock
+            failure:(FailureBlock)failureBlock;
 
 @end
 

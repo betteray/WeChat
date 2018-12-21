@@ -153,7 +153,8 @@
 
                            LogVerbose(@"登陆成功: SessionKey: %@, uin: %lld, wxid: %@, NickName: %@, alias: %@",
                                       sessionKey,
-                                      uin, resp.accountInfo.wxId,
+                                      uin,
+                                      resp.accountInfo.wxId,
                                       resp.accountInfo.nickName,
                                       resp.accountInfo.alias);
 

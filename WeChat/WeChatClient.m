@@ -15,8 +15,6 @@
 #import "LongPackage.h"
 #import "ShortPackage.h"
 
-#import "Mm.pbobjc.h"
-#import "CgiWrap.h"
 #import "Task.h"
 #import "NSData+CompressAndEncypt.h"
 #import "NSData+Compression.h"
@@ -228,31 +226,24 @@
     [[self sharedClient] startRequest:cgiWrap success:successBlock failure:failureBlock];
 }
 
++ (void)postRequest:(CgiWrap *)cgiWrap
+            success:(SuccessBlock)successBlock
+            failure:(FailureBlock)failureBlock
+{
+    [[self sharedClient] postRequest:cgiWrap success:successBlock failure:failureBlock];
+}
+
+#pragma mark - Internal
+
 - (void)startRequest:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock
 {
-
-    if (cgiWrap.needSetBaseRequest)
-    {
-        BaseRequest *base = [BaseRequest new];
-        [base setSessionKey:[DBManager sharedManager].sessionKey];
-        [base setUin:(int32_t)[WXUserDefault getUIN]];
-        [base setScene:0]; // iMac 1
-        [base setClientVersion:CLIENT_VERSION];
-        [base setDeviceType:DEVICE_TYPE];
-        [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
-
-        [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
-    }
-
+    [self setBaseResquestIfNeed:cgiWrap];
     LogInfo(@"Start Request: \n\n%@\n", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
-    DLog(@"serilizedData", serilizedData);
-
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:5];
-    DLog(@"sendData", sendData);
 
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -261,6 +252,66 @@
     [_tasks addObject:task];
 
     [_mmtlsClient mmtlsEnCryptAndSend:sendData];
+}
+
+- (void)postRequest:(CgiWrap *)cgiWrap
+            success:(SuccessBlock)successBlock
+            failure:(FailureBlock)failureBlock
+{
+
+    [self setBaseResquestIfNeed:cgiWrap];
+
+    LogInfo(@"Start Request: %@", cgiWrap.request);
+
+    NSData *serilizedData = [[cgiWrap request] data];
+    NSData *sendData = [short_pack pack:cgiWrap.cgi
+                          serilizedData:serilizedData
+                                   type:5
+                                    uin:_uin
+                                 cookie:[DBManager sharedManager].cookie];
+
+    NSData *httpPayloadData =
+    [ShortLinkClient getPayloadDataWithData:sendData
+                                    cgiPath:cgiWrap.cgiPath
+                                       host:@"szextshort.weixin.qq.com"];
+
+    ShortLinkWithMMTLS *slm =
+    [[ShortLinkWithMMTLS alloc] initWithDecryptedPart2:_mmtlsClient.shortLinkPSKData
+                                      resumptionSecret:_mmtlsClient.resumptionSecret
+                                              httpData:httpPayloadData];
+    
+    NSData *mmtlsData = [slm getSendData];
+    NSData *httpResponseBody = [ShortLinkClient mmPost:mmtlsData withHost:@"szextshort.weixin.qq.com"];
+    
+    LogInfo(@"Send Data HexDump: \n\n%@", mmtlsData.hexDump);
+    LogInfo(@"Rcv Data HexDump: \n\n%@", httpResponseBody.hexDump);
+
+    MMTLSShortLinkResponse *response = [[MMTLSShortLinkResponse alloc] initWithData:httpResponseBody];
+    NSData *packData = [slm receiveData:response];
+    [self UnPack:packData];
+
+    Task *task = [Task new];
+    task.sucBlock = successBlock;
+    task.failBlock = failureBlock;
+    task.cgiWrap = cgiWrap;
+    [_tasks addObject:task];
+}
+
+- (void)setBaseResquestIfNeed:(CgiWrap *)cgiWrap
+{
+    if (cgiWrap.needSetBaseRequest)
+    {
+        BaseRequest *base = [BaseRequest new];
+        NSData *sessionKey = [DBManager sharedManager].sessionKey;
+        [base setSessionKey:sessionKey];
+        [base setUin:(int32_t)[WXUserDefault getUIN]];
+        [base setScene:0]; // iMac 1
+        [base setClientVersion:CLIENT_VERSION];
+        [base setDeviceType:DEVICE_TYPE];
+        [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
+        
+        [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
+    }
 }
 
 - (void)manualAuth:(CgiWrap *)cgiWrap
@@ -402,7 +453,8 @@
             {
                 ShortPackage *package = [short_pack unpack:longLinkPackage.body];
                 NSData *sessionKey = [DBManager sharedManager].sessionKey;
-                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:sessionKey];
+                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress]
+                                                                 : [package.body aesDecryptWithKey:sessionKey];
                 Task *task = [self getTaskWithTag:package.header.cgi];
                 id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
                 if (task.sucBlock)
