@@ -283,11 +283,15 @@
     NSData *mmtlsData = [slm getSendData];
     NSData *httpResponseBody = [ShortLinkClient mmPost:mmtlsData withHost:@"szextshort.weixin.qq.com"];
     
+    LogInfo(@"httpPayloadData Data HexDump: \n\n%@", httpPayloadData.hexDump);
     LogInfo(@"Send Data HexDump: \n\n%@", mmtlsData.hexDump);
     LogInfo(@"Rcv Data HexDump: \n\n%@", httpResponseBody.hexDump);
 
     MMTLSShortLinkResponse *response = [[MMTLSShortLinkResponse alloc] initWithData:httpResponseBody];
     NSData *packData = [slm receiveData:response];
+    
+    LogInfo(@"ShortLink PackedData HexDump: \n\n%@", packData.hexDump);
+
     [self UnPack:packData];
 
     Task *task = [Task new];

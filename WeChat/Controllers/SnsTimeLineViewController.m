@@ -14,18 +14,14 @@
 
 @implementation SnsTimeLineViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (IBAction)fetchSnsTimeLine:(id)sender {
+- (IBAction)fetchSnsTimeLine:(id)sender
+{
     SnsTimeLineRequest *request = [SnsTimeLineRequest new];
     request.firstPageMd5 = @"";
     request.minFilterId = 0;
@@ -33,7 +29,7 @@
     request.lastRequestTime = 0;
     request.clientLatestId = 0;
     request.networkType = 1;
-    
+
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cmdId = 0;
     cgiWrap.cgi = 211;
@@ -41,6 +37,14 @@
     cgiWrap.needSetBaseRequest = YES;
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/mmsnstimeline";
     cgiWrap.responseClass = [SnsTimeLineResponse class];
+
+    [WeChatClient postRequest:cgiWrap
+                      success:^(SnsTimeLineResponse *_Nullable response) {
+                          LogInfo(@"SnsTimeLine Resp: %@", response);
+                      }
+                      failure:^(NSError *_Nonnull error){
+
+                      }];
 }
 
 @end

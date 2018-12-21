@@ -13,6 +13,7 @@
 		71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */; };
 		71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3E21B6CBB400DE8DF8 /* ShortLinkKey.m */; };
 		71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */; };
+		71076B2621CCF10500570FB1 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71076B2521CCF10500570FB1 /* TestViewController.m */; };
 		7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C35D21C3494300A3E900 /* LoginViewController.m */; };
 		7121C36221C350B700A3E900 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C36121C350B700A3E900 /* DBManager.m */; };
 		7121C36521C3610000A3E900 /* SendMsgController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C36421C3610000A3E900 /* SendMsgController.m */; };
@@ -51,7 +52,6 @@
 		7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5421902ABE0002CE1D /* ServerHello.m */; };
 		7155BA5821902CDD0002CE1D /* WC_SHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5721902CDD0002CE1D /* WC_SHA256.m */; };
 		7155BA5B219033BF0002CE1D /* WC_HKDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5A219033BF0002CE1D /* WC_HKDF.m */; };
-		716197FA21C7A36200A76F39 /* NewInitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716197F921C7A36200A76F39 /* NewInitViewController.m */; };
 		7161984921CB6FEA00A76F39 /* header.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984821CB6FEA00A76F39 /* header.m */; };
 		7161984C21CB704F00A76F39 /* short_pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984B21CB704F00A76F39 /* short_pack.m */; };
 		7161984F21CB712900A76F39 /* long_pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984E21CB712900A76F39 /* long_pack.m */; };
@@ -104,6 +104,7 @@
 		71008F3E21B6CBB400DE8DF8 /* ShortLinkKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortLinkKey.m; sourceTree = "<group>"; };
 		71008F4021B7A36200DE8DF8 /* MMTLSShortLinkResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMTLSShortLinkResponse.h; sourceTree = "<group>"; };
 		71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMTLSShortLinkResponse.m; sourceTree = "<group>"; };
+		71076B2521CCF10500570FB1 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		7121C35C21C3494300A3E900 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7121C35D21C3494300A3E900 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7121C36021C350B700A3E900 /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
@@ -261,8 +262,7 @@
 		7155BA5621902CDD0002CE1D /* WC_SHA256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WC_SHA256.h; sourceTree = "<group>"; };
 		7155BA5721902CDD0002CE1D /* WC_SHA256.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WC_SHA256.m; sourceTree = "<group>"; };
 		7155BA5A219033BF0002CE1D /* WC_HKDF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WC_HKDF.m; sourceTree = "<group>"; };
-		716197F821C7A36200A76F39 /* NewInitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewInitViewController.h; sourceTree = "<group>"; };
-		716197F921C7A36200A76F39 /* NewInitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewInitViewController.m; sourceTree = "<group>"; };
+		716197F821C7A36200A76F39 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		7161984721CB6FEA00A76F39 /* header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = header.h; sourceTree = "<group>"; };
 		7161984821CB6FEA00A76F39 /* header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = header.m; sourceTree = "<group>"; };
 		7161984A21CB704F00A76F39 /* short_pack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = short_pack.h; sourceTree = "<group>"; };
@@ -372,17 +372,17 @@
 		7121C35F21C3494A00A3E900 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				712C6E64214A145600603022 /* WeChat.storyboard */,
-				712C6E61214A145600603022 /* ViewController.h */,
-				712C6E62214A145600603022 /* ViewController.m */,
 				7121C35C21C3494300A3E900 /* LoginViewController.h */,
 				7121C35D21C3494300A3E900 /* LoginViewController.m */,
 				7121C36321C3610000A3E900 /* SendMsgController.h */,
 				7121C36421C3610000A3E900 /* SendMsgController.m */,
 				71C9CA5221C4DC1D006C4DDD /* SnsTimeLineViewController.h */,
 				71C9CA5321C4DC1D006C4DDD /* SnsTimeLineViewController.m */,
-				716197F821C7A36200A76F39 /* NewInitViewController.h */,
-				716197F921C7A36200A76F39 /* NewInitViewController.m */,
+				716197F821C7A36200A76F39 /* TestViewController.h */,
+				71076B2521CCF10500570FB1 /* TestViewController.m */,
+				712C6E61214A145600603022 /* ViewController.h */,
+				712C6E62214A145600603022 /* ViewController.m */,
+				712C6E64214A145600603022 /* WeChat.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -924,6 +924,7 @@
 				712C6E6E214A145700603022 /* main.m in Sources */,
 				7154D51C2196CC1A005064C4 /* KeyPair.m in Sources */,
 				712C7158214BFB1600603022 /* Task.m in Sources */,
+				71076B2621CCF10500570FB1 /* TestViewController.m in Sources */,
 				7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */,
 				7121C36521C3610000A3E900 /* SendMsgController.m in Sources */,
 				712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */,
@@ -936,7 +937,6 @@
 				7154D5252197EFB9005064C4 /* WC_HmacSha256.m in Sources */,
 				71D3DAAF21AFCA47002ACF1C /* WXUserDefault.m in Sources */,
 				712C7166214D2BFD00603022 /* ECDH.m in Sources */,
-				716197FA21C7A36200A76F39 /* NewInitViewController.m in Sources */,
 				7155BA5221902AB30002CE1D /* ClientHello.m in Sources */,
 				7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */,
 				7161984C21CB704F00A76F39 /* short_pack.m in Sources */,
