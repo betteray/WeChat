@@ -86,18 +86,6 @@
         _sync_key_cur = [NSData data];
         _sync_key_max = [NSData data];
 
-        NSString *priKey = nil;
-        NSString *pubKey = nil;
-        if ([FSOpenSSL genRSAKeyPairPubKey:&pubKey priKey:&priKey])
-        {
-            _priKey = [priKey dataUsingEncoding:NSUTF8StringEncoding];
-            _pubKey = [pubKey dataUsingEncoding:NSUTF8StringEncoding];
-        }
-        else
-        {
-            LogError(@" ** Gen RSA KeyPair Fail. ** ");
-        }
-
         _heartbeatTimer = [NSTimer timerWithTimeInterval:70*3
                                                   target:self
                                                 selector:@selector(heartBeat)
