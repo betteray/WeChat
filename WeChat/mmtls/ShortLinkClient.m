@@ -71,11 +71,9 @@
     NSData *shortlinkDataLen = [NSData packInt32:(int32_t)[shortlinkData length] flip:YES];
     NSData *payloadData = [cgiPathLen addDataAtTail:[cgiPath dataUsingEncoding:NSUTF8StringEncoding]];
     
-    if ([host length] != 0) {
-        NSData *hostLen = [NSData packInt16:[host length] flip:YES];
-        payloadData = [payloadData addDataAtTail:hostLen];
-        payloadData = [payloadData addDataAtTail:[host dataUsingEncoding:NSUTF8StringEncoding]];
-    }
+    NSData *hostLen = [NSData packInt16:[host length] flip:YES];
+    payloadData = [payloadData addDataAtTail:hostLen];
+    payloadData = [payloadData addDataAtTail:[host dataUsingEncoding:NSUTF8StringEncoding]];
     
     payloadData = [payloadData addDataAtTail:shortlinkDataLen];
     payloadData = [payloadData addDataAtTail:shortlinkData];

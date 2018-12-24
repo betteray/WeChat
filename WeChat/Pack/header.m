@@ -60,8 +60,8 @@
         [header appendData:[NSData dataWithHexString:@"000000000000000000000000000000"]];
     }
     
-    [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[[Varint128 dataWithUInt32:(int)(([header length] << 2) + 0x2)] bytes]];
-    DLog(@"Make Header", header);
+    NSData *headerLen = [Varint128 dataWithUInt32:(int) (([header length] << 2) + 0x2)];//0x2 !use_compress
+    [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[headerLen bytes]];
     return [header copy];
 }
 
