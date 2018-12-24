@@ -492,6 +492,7 @@ typedef GPB_ENUM(ManualAuthAesReqData_FieldNumber) {
   ManualAuthAesReqData_FieldNumber_SoftType = 4,
   ManualAuthAesReqData_FieldNumber_BuiltinIpseq = 5,
   ManualAuthAesReqData_FieldNumber_ClientSeqId = 6,
+  ManualAuthAesReqData_FieldNumber_ClientSeqIdsign = 7,
   ManualAuthAesReqData_FieldNumber_DeviceName = 8,
   ManualAuthAesReqData_FieldNumber_DeviceType = 9,
   ManualAuthAesReqData_FieldNumber_Language = 10,
@@ -499,6 +500,7 @@ typedef GPB_ENUM(ManualAuthAesReqData_FieldNumber) {
   ManualAuthAesReqData_FieldNumber_Channel = 13,
   ManualAuthAesReqData_FieldNumber_TimeStamp = 14,
   ManualAuthAesReqData_FieldNumber_DeviceBrand = 15,
+  ManualAuthAesReqData_FieldNumber_DeviceModel = 16,
   ManualAuthAesReqData_FieldNumber_Ostype = 17,
   ManualAuthAesReqData_FieldNumber_RealCountry = 18,
   ManualAuthAesReqData_FieldNumber_BundleId = 19,
@@ -539,12 +541,17 @@ typedef GPB_ENUM(ManualAuthAesReqData_FieldNumber) {
 /** Test to see if @c clientSeqId has been set. */
 @property(nonatomic, readwrite) BOOL hasClientSeqId;
 
+/** android only */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *clientSeqIdsign;
+/** Test to see if @c clientSeqIdsign has been set. */
+@property(nonatomic, readwrite) BOOL hasClientSeqIdsign;
+
 /** iPad:ccc iPad, iMac: ray的iMac */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *deviceName;
 /** Test to see if @c deviceName has been set. */
 @property(nonatomic, readwrite) BOOL hasDeviceName;
 
-/** iPad iMac18,2 */
+/** iPad iMac18,2 android 不一样 */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *deviceType;
 /** Test to see if @c deviceType has been set. */
 @property(nonatomic, readwrite) BOOL hasDeviceType;
@@ -572,6 +579,11 @@ typedef GPB_ENUM(ManualAuthAesReqData_FieldNumber) {
 /** Test to see if @c deviceBrand has been set. */
 @property(nonatomic, readwrite) BOOL hasDeviceBrand;
 
+/** android only */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceModel;
+/** Test to see if @c deviceModel has been set. */
+@property(nonatomic, readwrite) BOOL hasDeviceModel;
+
 /** iMac "Version 10.13.6 (Build 17G65)" */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *ostype;
 /** Test to see if @c ostype has been set. */
@@ -582,17 +594,17 @@ typedef GPB_ENUM(ManualAuthAesReqData_FieldNumber) {
 /** Test to see if @c realCountry has been set. */
 @property(nonatomic, readwrite) BOOL hasRealCountry;
 
-/** iPad:com.tencent.xin , iMac:com.tencent.xinWeChat */
+/** iPad:com.tencent.xin , iMac:com.tencent.xinWeChat **** ios only **** */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *bundleId;
 /** Test to see if @c bundleId has been set. */
 @property(nonatomic, readwrite) BOOL hasBundleId;
 
-/** iPad:"AAA7AE28-7620-431D-8B4C-7FB4F67AA45E", iMad: "" */
+/** iPad:"AAA7AE28-7620-431D-8B4C-7FB4F67AA45E", iMad: "" **** ios only **** */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *adSource;
 /** Test to see if @c adSource has been set. */
 @property(nonatomic, readwrite) BOOL hasAdSource;
 
-/** iPad:iPad4,4 , iMac:iMac18,2 */
+/** iPad:iPad4,4 , iMac:iMac18,2 **** ios only **** */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *iphoneVer;
 /** Test to see if @c iphoneVer has been set. */
 @property(nonatomic, readwrite) BOOL hasIphoneVer;
@@ -601,6 +613,7 @@ typedef GPB_ENUM(ManualAuthAesReqData_FieldNumber) {
 @property(nonatomic, readwrite) int32_t inputType;
 
 @property(nonatomic, readwrite) BOOL hasInputType;
+/** **** ios only **** */
 @property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *clientCheckData;
 /** Test to see if @c clientCheckData has been set. */
 @property(nonatomic, readwrite) BOOL hasClientCheckData;

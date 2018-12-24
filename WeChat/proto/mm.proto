@@ -115,26 +115,28 @@ message BaseAuthReqInfo
 //登录请求--设备信息
 message ManualAuthAesReqData
 {
-    optional BaseRequest baseRequest                    = 1;
-    optional BaseAuthReqInfo baseReqInfo                = 2;
+    required BaseRequest baseRequest                    = 1;
+    required BaseAuthReqInfo baseReqInfo                = 2;
     required string imei                                = 3;
-    optional string softType                            = 4;    // iPad: <softtype><k3>11.4.1</k3><k9>iPad</k9></softtype> ，iMac不需要此字段
+    required string softType                            = 4;    // iPad: <softtype><k3>11.4.1</k3><k9>iPad</k9></softtype> ，iMac不需要此字段
     required int32  builtinIpseq                        = 5;    // 0
     required string clientSeqId                         = 6;    // iPad: dd09ae95fe48164451be954cd1871cb7-1537165222, iMac: ""
+    optional string clientSeqIDSign                     = 7;    // android only
     required string deviceName                          = 8;    // iPad:ccc iPad, iMac: ray的iMac
-    required string deviceType                          = 9;    // iPad iMac18,2
+    required string deviceType                          = 9;    // iPad iMac18,2 android 不一样
     required string language                            = 10;   // zh_CN
     required string timeZone                            = 11;   // 8.00
     required int32  channel                             = 13;   // iPad:3d  iMac:0
     required int32  timeStamp                           = 14;   // 1537178341
     optional string deviceBrand                         = 15;   // Apple
+    optional string deviceModel                         = 16;   // android only
     optional string ostype                              = 17;   // iMac "Version 10.13.6 (Build 17G65)"
     required string realCountry                         = 18;   // CN
-    required string bundleId                            = 19;   // iPad:com.tencent.xin , iMac:com.tencent.xinWeChat
-    optional string adSource                            = 20;   // iPad:"AAA7AE28-7620-431D-8B4C-7FB4F67AA45E", iMad: ""
-    required string iphoneVer                           = 21;   // iPad:iPad4,4 , iMac:iMac18,2
+    optional string bundleId                            = 19;   // iPad:com.tencent.xin , iMac:com.tencent.xinWeChat **** ios only ****
+    optional string adSource                            = 20;   // iPad:"AAA7AE28-7620-431D-8B4C-7FB4F67AA45E", iMad: "" **** ios only ****
+    optional string iphoneVer                           = 21;   // iPad:iPad4,4 , iMac:iMac18,2 **** ios only ****
     required int32  inputType                           = 22;   // 2
-    optional SKBuiltinBuffer_t  clientCheckData         = 23;
+    optional SKBuiltinBuffer_t  clientCheckData         = 23;   // **** ios only ****
 }
 
 message ManualAuthRequest

@@ -1140,6 +1140,7 @@ typedef struct BaseAuthReqInfo__storage_ {
 @dynamic hasSoftType, softType;
 @dynamic hasBuiltinIpseq, builtinIpseq;
 @dynamic hasClientSeqId, clientSeqId;
+@dynamic hasClientSeqIdsign, clientSeqIdsign;
 @dynamic hasDeviceName, deviceName;
 @dynamic hasDeviceType, deviceType;
 @dynamic hasLanguage, language;
@@ -1147,6 +1148,7 @@ typedef struct BaseAuthReqInfo__storage_ {
 @dynamic hasChannel, channel;
 @dynamic hasTimeStamp, timeStamp;
 @dynamic hasDeviceBrand, deviceBrand;
+@dynamic hasDeviceModel, deviceModel;
 @dynamic hasOstype, ostype;
 @dynamic hasRealCountry, realCountry;
 @dynamic hasBundleId, bundleId;
@@ -1166,11 +1168,13 @@ typedef struct ManualAuthAesReqData__storage_ {
   NSString *imei;
   NSString *softType;
   NSString *clientSeqId;
+  NSString *clientSeqIdsign;
   NSString *deviceName;
   NSString *deviceType;
   NSString *language;
   NSString *timeZone;
   NSString *deviceBrand;
+  NSString *deviceModel;
   NSString *ostype;
   NSString *realCountry;
   NSString *bundleId;
@@ -1191,7 +1195,7 @@ typedef struct ManualAuthAesReqData__storage_ {
         .number = ManualAuthAesReqData_FieldNumber_BaseRequest,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, baseRequest),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
@@ -1200,7 +1204,7 @@ typedef struct ManualAuthAesReqData__storage_ {
         .number = ManualAuthAesReqData_FieldNumber_BaseReqInfo,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, baseReqInfo),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
@@ -1218,7 +1222,7 @@ typedef struct ManualAuthAesReqData__storage_ {
         .number = ManualAuthAesReqData_FieldNumber_SoftType,
         .hasIndex = 3,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, softType),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
@@ -1240,10 +1244,19 @@ typedef struct ManualAuthAesReqData__storage_ {
         .dataType = GPBDataTypeString,
       },
       {
+        .name = "clientSeqIdsign",
+        .dataTypeSpecific.className = NULL,
+        .number = ManualAuthAesReqData_FieldNumber_ClientSeqIdsign,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, clientSeqIdsign),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
         .name = "deviceName",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_DeviceName,
-        .hasIndex = 6,
+        .hasIndex = 7,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, deviceName),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -1252,7 +1265,7 @@ typedef struct ManualAuthAesReqData__storage_ {
         .name = "deviceType",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_DeviceType,
-        .hasIndex = 7,
+        .hasIndex = 8,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, deviceType),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -1261,7 +1274,7 @@ typedef struct ManualAuthAesReqData__storage_ {
         .name = "language",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_Language,
-        .hasIndex = 8,
+        .hasIndex = 9,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, language),
         .flags = GPBFieldRequired,
         .dataType = GPBDataTypeString,
@@ -1270,7 +1283,7 @@ typedef struct ManualAuthAesReqData__storage_ {
         .name = "timeZone",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_TimeZone,
-        .hasIndex = 9,
+        .hasIndex = 10,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, timeZone),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -1279,7 +1292,7 @@ typedef struct ManualAuthAesReqData__storage_ {
         .name = "channel",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_Channel,
-        .hasIndex = 10,
+        .hasIndex = 11,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, channel),
         .flags = GPBFieldRequired,
         .dataType = GPBDataTypeInt32,
@@ -1288,7 +1301,7 @@ typedef struct ManualAuthAesReqData__storage_ {
         .name = "timeStamp",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_TimeStamp,
-        .hasIndex = 11,
+        .hasIndex = 12,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, timeStamp),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
@@ -1297,8 +1310,17 @@ typedef struct ManualAuthAesReqData__storage_ {
         .name = "deviceBrand",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_DeviceBrand,
-        .hasIndex = 12,
+        .hasIndex = 13,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, deviceBrand),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "deviceModel",
+        .dataTypeSpecific.className = NULL,
+        .number = ManualAuthAesReqData_FieldNumber_DeviceModel,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, deviceModel),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
@@ -1306,7 +1328,7 @@ typedef struct ManualAuthAesReqData__storage_ {
         .name = "ostype",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_Ostype,
-        .hasIndex = 13,
+        .hasIndex = 15,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, ostype),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
@@ -1315,7 +1337,7 @@ typedef struct ManualAuthAesReqData__storage_ {
         .name = "realCountry",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_RealCountry,
-        .hasIndex = 14,
+        .hasIndex = 16,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, realCountry),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -1324,16 +1346,16 @@ typedef struct ManualAuthAesReqData__storage_ {
         .name = "bundleId",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_BundleId,
-        .hasIndex = 15,
+        .hasIndex = 17,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, bundleId),
-        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "adSource",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_AdSource,
-        .hasIndex = 16,
+        .hasIndex = 18,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, adSource),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -1342,16 +1364,16 @@ typedef struct ManualAuthAesReqData__storage_ {
         .name = "iphoneVer",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_IphoneVer,
-        .hasIndex = 17,
+        .hasIndex = 19,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, iphoneVer),
-        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "inputType",
         .dataTypeSpecific.className = NULL,
         .number = ManualAuthAesReqData_FieldNumber_InputType,
-        .hasIndex = 18,
+        .hasIndex = 20,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, inputType),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
@@ -1360,7 +1382,7 @@ typedef struct ManualAuthAesReqData__storage_ {
         .name = "clientCheckData",
         .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
         .number = ManualAuthAesReqData_FieldNumber_ClientCheckData,
-        .hasIndex = 19,
+        .hasIndex = 21,
         .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, clientCheckData),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
@@ -1376,8 +1398,8 @@ typedef struct ManualAuthAesReqData__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\020\001\013\000\002\013\000\004\010\000\005\014\000\006\013\000\010\n\000\t\n\000\013\010\000\016\t\000\017\013\000\022\013\000\023\010\000\024\010\000"
-        "\025\t\000\026\t\000\027\017\000";
+        "\022\001\013\000\002\013\000\004\010\000\005\014\000\006\013\000\007\nb\003\000\010\n\000\t\n\000\013\010\000\016\t\000\017\013\000\020\013\000\022"
+        "\013\000\023\010\000\024\010\000\025\t\000\026\t\000\027\017\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");

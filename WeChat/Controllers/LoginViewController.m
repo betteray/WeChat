@@ -37,6 +37,8 @@
         _pubKeyData = pubKeyData;
         LogInfo(@"+[ECDH GenEcdh:pubKeyData:] %@, PubKey: %@.", priKeyData, pubKeyData);
     }
+    
+    _userNameTextField.text = @"13520806231";
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,48 +66,77 @@
     rsaReqData.randomEncryKey = aesKey;
     rsaReqData.cliPubEcdhkey = cliPubEcdhkey;
     rsaReqData.pwd = [FSOpenSSL md5FromString:_pwdTextField.text];
+#if PROTOCOL_FOR_ANDROID
+    rsaReqData.pwd2 = [FSOpenSSL md5FromString:_pwdTextField.text];
+#endif
     rsaReqData.userName = _userNameTextField.text;
 
     BaseAuthReqInfo *baseReqInfo = [BaseAuthReqInfo new];
     //第一次登陆没有数据，后续登陆会取一个数据。
     //baseReqInfo.cliDbencryptInfo = [NSData data];
+#if PROTOCOL_FOR_IOS
     baseReqInfo.authReqFlag = @"";
-
-    WCDevice *iosDevice = [[DeviceManager sharedManager] getCurrentDevice];
+#endif
+    WCDevice *device = [[DeviceManager sharedManager] getCurrentDevice];
     
     ManualAuthAesReqData *aesReqData = [ManualAuthAesReqData new];
     aesReqData.baseReqInfo = baseReqInfo;
-    aesReqData.imei = iosDevice.imei;
-    aesReqData.softType = iosDevice.softType;
+    aesReqData.imei = device.imei;
+    aesReqData.softType = device.softType;
     aesReqData.builtinIpseq = 0;
-    aesReqData.clientSeqId = iosDevice.clientSeq;
-    aesReqData.deviceName = iosDevice.deviceName;
-    aesReqData.deviceType = iosDevice.deviceType; //"DEVICE_TYPE;
-    aesReqData.language = iosDevice.language;
-    aesReqData.timeZone = iosDevice.timeZone;
-    aesReqData.channel = (int32_t) iosDevice.chanel;
+    aesReqData.clientSeqId = device.clientSeq;
+#if PROTOCOL_FOR_ANDROID
+    aesReqData.clientSeqIdsign = device.clientSeqIdsign;
+#endif
+    aesReqData.deviceName = device.deviceName;
+    aesReqData.deviceType = device.deviceType;
+    aesReqData.language = device.language;
+    aesReqData.timeZone = device.timeZone;
+    aesReqData.channel = (int32_t) device.chanel;
+#if PROTOCOL_FOR_IOS
     aesReqData.timeStamp = [[NSDate date] timeIntervalSince1970];
-    aesReqData.deviceBrand = iosDevice.deviceBrand;
-    aesReqData.realCountry = iosDevice.realCountry;
-    aesReqData.bundleId = iosDevice.bundleID;
-    aesReqData.adSource = iosDevice.adSource; //iMac 不需要
-    aesReqData.iphoneVer = iosDevice.iphoneVer;
+#elif PROTOCOL_FOR_ANDROID
+    aesReqData.timeStamp = 0;
+#endif
+    aesReqData.deviceBrand = device.deviceBrand;
+#if PROTOCOL_FOR_ANDROID
+    aesReqData.deviceModel = device.deviceModel;
+#endif
+    aesReqData.realCountry = device.realCountry;
+#if PROTOCOL_FOR_IOS
+    aesReqData.bundleId = device.bundleID;
+    aesReqData.adSource = device.adSource; //iMac 不需要
+    aesReqData.iphoneVer = device.iphoneVer;
+#endif
     aesReqData.inputType = 2;
-    aesReqData.ostype = iosDevice.osType;
+    aesReqData.ostype = device.osType;
 
+#if PROTOCOL_FOR_IOS
     //iMac 暂时不需要
-
     NSData *data = [[DBManager sharedManager] getClientCheckData];
     SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
     clientCheckData.iLen = (int) [data length];
     clientCheckData.buffer = data;
-    
     aesReqData.clientCheckData = clientCheckData;
-
+#endif
     ManualAuthRequest *authRequest = [ManualAuthRequest new];
     authRequest.aesReqData = aesReqData;
     authRequest.rsaReqData = rsaReqData;
-
+    
+    BaseRequest *baseRequest = [BaseRequest new];
+    [baseRequest setSessionKey:[DBManager sharedManager].sessionKey];
+    [baseRequest setUin:0];
+#if PROTOCOL_FOR_IOS
+    [baseRequest setScene:0];
+#elif PROTOCOL_FOR_ANDROID
+    [baseRequest setScene:1];
+#endif
+    [baseRequest setClientVersion:CLIENT_VERSION];
+    [baseRequest setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].osType];
+    [baseRequest setDeviceId:[[DeviceManager sharedManager] getCurrentDevice].deviceID];
+    
+    [aesReqData setBaseRequest:baseRequest];
+    
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cgi = 701;
     cgiWrap.cmdId = 253;

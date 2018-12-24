@@ -13,6 +13,7 @@
 @property (nonatomic, readonly, copy) NSString *imei;
 @property (nonatomic, readonly, copy) NSString *softType;
 @property (nonatomic, readonly, copy) NSString *clientSeq;
+@property (nonatomic, readonly, copy) NSString *clientSeqIdsign;
 @property (nonatomic, readonly, copy) NSString *deviceName;
 @property (nonatomic, readonly, copy) NSString *deviceType;
 @property (nonatomic, readonly, copy) NSString *language;
@@ -24,12 +25,13 @@
 @property (nonatomic, readonly, copy) NSString *iphoneVer;
 @property (nonatomic, readonly, copy) NSString *osType;
 @property (nonatomic, readonly, copy) NSString *adSource;
-@property (nonatomic, readonly, copy) NSString *deviceModle;
-@property (nonatomic, readonly, copy) NSString *deviceID;
+@property (nonatomic, readonly, copy) NSString *deviceModel;
+@property (nonatomic, readonly, strong) NSData *deviceID;
 
 - (instancetype)initWithImei:(NSString *)imei
                     softType:(NSString *)softType
                    clientSeq:(NSString *)clientSeq
+             clientSeqIdsign:(NSString *)clientSeqIdsign
                   deviceName:(NSString *)deviceName
                   deviceType:(NSString *)deviceType
                     language:(NSString *)language
@@ -41,7 +43,7 @@
                    iphoneVer:(NSString *)iphoneVer
                       osType:(NSString *)osType
                     adSource:(NSString *)adSource
-                 deviceModle:(NSString *)deviceModel
+                 deviceModel:(NSString *)deviceModel
                     deviceID:(NSString *)deviceID;
 
 @end

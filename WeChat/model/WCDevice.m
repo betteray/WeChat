@@ -13,6 +13,7 @@
 @property (nonatomic, copy) NSString *imei;
 @property (nonatomic, copy) NSString *softType;
 @property (nonatomic, copy) NSString *clientSeq;
+@property (nonatomic, copy) NSString *clientSeqIdsign;
 @property (nonatomic, copy) NSString *deviceName;
 @property (nonatomic, copy) NSString *deviceType;
 @property (nonatomic, copy) NSString *language;
@@ -24,8 +25,8 @@
 @property (nonatomic, copy) NSString *iphoneVer;
 @property (nonatomic, copy) NSString *osType;
 @property (nonatomic, copy) NSString *adSource;
-@property (nonatomic, copy) NSString *deviceModle;
-@property (nonatomic, copy) NSString *deviceID;
+@property (nonatomic, copy) NSString *deviceModel;
+@property (nonatomic, strong) NSData *deviceID;
 
 @end
 
@@ -34,6 +35,7 @@
 - (instancetype)initWithImei:(NSString *)imei
                     softType:(NSString *)softType
                    clientSeq:(NSString *)clientSeq
+             clientSeqIdsign:(NSString *)clientSeqIdsign
                   deviceName:(NSString *)deviceName
                   deviceType:(NSString *)deviceType
                     language:(NSString *)language
@@ -45,14 +47,15 @@
                    iphoneVer:(NSString *)iphoneVer
                       osType:(NSString *)osType
                     adSource:(NSString *)adSource
-                 deviceModle:(NSString *)deviceModel
-                    deviceID:(NSString *)deviceID
+                 deviceModel:(NSString *)deviceModel
+                    deviceID:(NSData *)deviceID
 {
     self  = [super init];
     if (self) {
         _imei = imei;
         _softType = softType;
         _clientSeq = clientSeq;
+        _clientSeqIdsign = clientSeqIdsign;
         _deviceName = deviceName;
         _deviceType = deviceType;
         _language = language;
@@ -64,7 +67,7 @@
         _iphoneVer = iphoneVer;
         _osType = osType;
         _adSource = adSource;
-        _deviceModle = deviceModel;
+        _deviceModel = deviceModel;
         _deviceID = deviceID;
     }
     

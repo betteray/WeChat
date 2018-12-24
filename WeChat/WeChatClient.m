@@ -299,9 +299,8 @@
         [base setUin:(int32_t)[WXUserDefault getUIN]];
         [base setScene:0]; // iMac 1
         [base setClientVersion:CLIENT_VERSION];
-        [base setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].deviceType];
-        [base setDeviceId:[NSData dataWithHexString:[[DeviceManager sharedManager] getCurrentDevice].deviceID]];
-        
+        [base setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].osType];
+        [base setDeviceId:[[DeviceManager sharedManager] getCurrentDevice].deviceID];
         [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
     }
 }
@@ -311,28 +310,18 @@
            failure:(FailureBlock)failureBlock
 {
     ManualAuthRequest *request = (ManualAuthRequest *) [cgiWrap request];
-    ManualAuthRsaReqData *accountRequest = [request rsaReqData];
-    ManualAuthAesReqData *deviceRequest = [request aesReqData];
+    ManualAuthRsaReqData *rsaReqData = [request rsaReqData];
+    ManualAuthAesReqData *aesReqData = [request aesReqData];
 
-    BaseRequest *base = [BaseRequest new];
-    [base setUin:0];
-    [base setScene:0];
-    [base setClientVersion:CLIENT_VERSION];
-    [base setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].deviceType];
-    [base setSessionKey:[NSData data]];
-    [base setDeviceId:[NSData dataWithHexString:[[DeviceManager sharedManager] getCurrentDevice].deviceID]];
-
-    [deviceRequest setBaseRequest:base];
-
-    NSData *accountSerializedData = [accountRequest data];
-    NSData *deviceSerializedData = [deviceRequest data];
-
-    NSData *reqAccount = [accountSerializedData Compress_And_RSA];
-    NSData *reqDevice = [deviceSerializedData Compress_And_AES];
+    NSData *rsaReqDataSerializedData = [rsaReqData data];
+    NSData *aesReqDataSerializedData = [aesReqData data];
+    
+    NSData *reqAccount = [rsaReqDataSerializedData Compress_And_RSA];
+    NSData *reqDevice = [aesReqDataSerializedData Compress_And_AES];
 
     NSMutableData *subHeader = [NSMutableData data];
-    [subHeader appendData:[NSData packInt32:(int32_t)[accountSerializedData length] flip:YES]];
-    [subHeader appendData:[NSData packInt32:(int32_t)[deviceSerializedData length] flip:YES]];
+    [subHeader appendData:[NSData packInt32:(int32_t)[rsaReqDataSerializedData length] flip:YES]];
+    [subHeader appendData:[NSData packInt32:(int32_t)[aesReqDataSerializedData length] flip:YES]];
     [subHeader appendData:[NSData packInt32:(int32_t)[reqAccount length] flip:YES]];
 
     NSMutableData *body = [NSMutableData dataWithData:subHeader];
@@ -448,7 +437,12 @@
                 NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress]
                                                                  : [package.body aesDecryptWithKey:sessionKey];
                 Task *task = [self getTaskWithTag:package.header.cgi];
-                id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
+                NSError *serializeError = nil;
+                id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:&serializeError];
+                if (serializeError)
+                {
+                    LogError(@"Serialized Error: %@", serializeError);
+                }
                 if (task.sucBlock)
                 {
                     dispatch_async(dispatch_get_main_queue(), ^{
