@@ -33,14 +33,14 @@ message BaseResponse
 message GetLoginQRCodeRequest
 {
 	required BaseRequest        baseRequest                 = 1;
-	required SKBuiltinBuffer_t  randomEncryKey              = 2; //iPad 16位 iMac 184位
-	required int32              opcode                      = 3; //0
-	optional string             deviceName                  = 4; //iMac "iMac"
+	required SKBuiltinBuffer_t  randomEncryKey              = 2;    //iPad 16位 iMac 184位
+	required int32              opcode                      = 3;    //0
+	optional string             deviceName                  = 4;    //iMac "iMac"
 	optional string             userName                    = 5;
-	optional int32              hardwareExtra               = 6; //iMac 0,
+	optional int32              hardwareExtra               = 6;    //iMac 0,
 	optional string             softType                    = 7;
-	optional int32              extDevLoginType             = 8; //0
-    optional SKBuiltinBuffer_t  msgContextPubKey            = 9; //iMac
+	optional int32              extDevLoginType             = 8;    //0
+    optional SKBuiltinBuffer_t  msgContextPubKey            = 9;    //iMac
 }
 
 message GetLoginQRCodeResponse
@@ -99,7 +99,7 @@ message ECDHKey
 //登录请求--账号信息
 message ManualAuthRsaReqData
 {
-    required SKBuiltinBuffer_t randomEncryKey           = 1; //仅用于本次登录请求,后续通讯使用的aeskey根据服务器返回的数据做ECDH生成
+    required SKBuiltinBuffer_t randomEncryKey           = 1;    //仅用于本次登录请求,后续通讯使用的aeskey根据服务器返回的数据做ECDH生成
     optional ECDHKey cliPubEcdhkey                      = 2;
     optional string userName                            = 3;
     optional string pwd                                 = 4;
@@ -381,7 +381,7 @@ message contact_info
 //同步消息
 message CmdItem
 {
-    optional int32  cmdId 		                = 1;						//消息类型:1==>个人信息,2==>好友信息,5==>服务器上未读取的最新消息,其余消息类型暂未知
+    optional int32  cmdId 		                = 1;    //消息类型:1==>个人信息,2==>好友信息,5==>服务器上未读取的最新消息,其余消息类型暂未知
     optional SKBuiltinBuffer_t cmdBuf 			= 2;
 }
 
@@ -389,11 +389,11 @@ message CmdItem
 message NewInitResponse
 {
     optional BaseResponse baseResponse                          = 1;
-    optional bytes currentSynckey                               = 2;                //当前synckey二进制数据
-    optional bytes maxSynckey                                   = 3;                //最新synckey二进制数据(若与sync_key_cur不相同,则continue_flag返回1,表示需要继续初始化)
-    optional int32 continueFlag                                 = 4;                //为1时表示仍要继续调用newinit初始化,直到该标志位返回0停止初始化(联系人或未读消息数据太多,无法一次获取完毕)
-    optional int32  count                                       = 6;                //tag7结构体数量
-    repeated CmdItem list                                       = 7;                //需要根据消息类型解析
+    optional bytes currentSynckey                               = 2;    //当前synckey二进制数据
+    optional bytes maxSynckey                                   = 3;    //最新synckey二进制数据(若与sync_key_cur不相同,则continue_flag返回1,表示需要继续初始化)
+    optional int32 continueFlag                                 = 4;    //为1时表示仍要继续调用newinit初始化,直到该标志位返回0停止初始化(联系人或未读消息数据太多,无法一次获取完毕)
+    optional int32  count                                       = 6;    //tag7结构体数量
+    repeated CmdItem list                                       = 7;    //需要根据消息类型解析
 }
 
 //同步消息
@@ -426,31 +426,31 @@ message NewSyncResponse
 
 message MicroMsgRequestNew
 {
-    optional SKBuiltinString_t  toUserName          = 1; //to wxid
-    optional string content                         = 2; //消息内容
-    optional int32 type                             = 3; //消息类型: 文字消息=>1,名片=>42，
-    optional int32 createTime                       = 4; //1537268848
-    optional int64 clientMsgId                      = 5; //不同消息的utc与client_id必须至少有1个不相同 4287068409, iMac 从1开始？
-    optional string msgSource                       = 6; //群聊at功能 iMac: "<msgsource></msgsource>"
+    optional SKBuiltinString_t  toUserName          = 1;    //to wxid
+    optional string content                         = 2;    //消息内容
+    optional int32 type                             = 3;    //消息类型: 文字消息=>1,名片=>42，
+    optional int32 createTime                       = 4;    //1537268848
+    optional int64 clientMsgId                      = 5;    //不同消息的utc与client_id必须至少有1个不相同 4287068409, iMac 从1开始？
+    optional string msgSource                       = 6;    //群聊at功能 iMac: "<msgsource></msgsource>"
 }
 
 //发送消息请求
 message SendMsgRequestNew
 {
-    optional int32  count                               = 1; //本次发送的消息数量
-    repeated MicroMsgRequestNew list                    = 2; //这里可以是repeated,允许一次发送多条消息
+    optional int32  count                               = 1;    //本次发送的消息数量
+    repeated MicroMsgRequestNew list                    = 2;    //这里可以是repeated,允许一次发送多条消息
 }
 
 message MicroMsgResponseNew
 {
-    optional int32 ret                          = 1; //错误码 0=>发送成功,-44=>对方开启了朋友验证(被删好友),-22=>消息已发出,但被对方拒收了(被拉黑)
-    optional SKBuiltinString_t toUserName       = 2; //to wxid
+    optional int32 ret                          = 1;    //错误码 0=>发送成功,-44=>对方开启了朋友验证(被删好友),-22=>消息已发出,但被对方拒收了(被拉黑)
+    optional SKBuiltinString_t toUserName       = 2;    //to wxid
     optional int32 msgId                        = 3;
     optional int32 clientMsgId                  = 4;
     optional int32 createTime                   = 5;
     optional int32 serverTime                   = 6;
-    optional int32 type                         = 7; //消息类型
-    optional int64 newMsgId                     = 8; //消息唯一id
+    optional int32 type                         = 7;    //消息类型
+    optional int64 newMsgId                     = 8;    //消息唯一id
 }
 
 //发送消息响应
@@ -458,7 +458,7 @@ message SendMsgResponseNew
 {
     optional BaseResponse baseResponse              = 1;
     optional int32 count                            = 2;
-    repeated MicroMsgResponseNew list               = 3; //发送结
+    repeated MicroMsgResponseNew list               = 3;    //发送结
 }
 
 message CheckResUpdateRequest
