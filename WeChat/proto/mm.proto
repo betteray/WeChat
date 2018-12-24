@@ -16,7 +16,7 @@ message SKBuiltinString_t
 message BaseRequest
 {
 	optional bytes      sessionKey 		= 1;	//解密服务器返回封包时使用的aeskey
-	optional int64 	    uin 		    = 2;
+	optional uint32 	uin 		    = 2;
 	optional bytes      deviceId 		= 3;	//手机guid长度16,这里取前15字节,以'\0'结尾
 	optional int32      clientVersion 	= 4;
 	optional string     deviceType 	    = 5;

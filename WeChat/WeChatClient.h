@@ -18,7 +18,7 @@ typedef void (^FailureBlock)(NSError *error);
 @interface WeChatClient : NSObject
 
 @property (nonatomic, strong) NSData * checkEcdhKey;
-@property (nonatomic, assign) int32_t uin;
+@property (nonatomic, assign) NSInteger uin;
 
 @property (nonatomic, strong) NSData *pubKey;
 @property (nonatomic, strong) NSData *priKey;

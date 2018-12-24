@@ -130,7 +130,7 @@ typedef GPB_ENUM(BaseRequest_FieldNumber) {
 /** Test to see if @c sessionKey has been set. */
 @property(nonatomic, readwrite) BOOL hasSessionKey;
 
-@property(nonatomic, readwrite) int64_t uin;
+@property(nonatomic, readwrite) uint32_t uin;
 
 @property(nonatomic, readwrite) BOOL hasUin;
 /** 手机guid长度16,这里取前15字节,以'\\0'结尾 */

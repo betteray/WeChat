@@ -157,12 +157,12 @@ typedef struct SKBuiltinString_t__storage_ {
 
 typedef struct BaseRequest__storage_ {
   uint32_t _has_storage_[1];
+  uint32_t uin;
   int32_t clientVersion;
   int32_t scene;
   NSData *sessionKey;
   NSData *deviceId;
   NSString *deviceType;
-  int64_t uin;
 } BaseRequest__storage_;
 
 // This method is threadsafe because it is initially called
@@ -187,7 +187,7 @@ typedef struct BaseRequest__storage_ {
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(BaseRequest__storage_, uin),
         .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt64,
+        .dataType = GPBDataTypeUInt32,
       },
       {
         .name = "deviceId",

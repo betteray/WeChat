@@ -63,7 +63,7 @@
     ManualAuthRsaReqData *rsaReqData = [ManualAuthRsaReqData new];
     rsaReqData.randomEncryKey = aesKey;
     rsaReqData.cliPubEcdhkey = cliPubEcdhkey;
-    rsaReqData.pwd = [FSOpenSSL md5FromString:_pwdTextField.text]; //@"a4e1442774cc2eda89feb8ae66a33c8b"
+    rsaReqData.pwd = [FSOpenSSL md5FromString:_pwdTextField.text];
     rsaReqData.userName = _userNameTextField.text;
 
     BaseAuthReqInfo *baseReqInfo = [BaseAuthReqInfo new];
@@ -133,14 +133,14 @@
         { //需要重定向
             if (resp.networkSectResp.builtinIplist.longConnectIpcount > 0)
             {
-                NSString *longlinkIp = [[resp.networkSectResp.builtinIplist.longConnectIplistArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
+                //NSString *longlinkIp = [[resp.networkSectResp.builtinIplist.longConnectIplistArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
                 //[[WeChatClient sharedClient] restartUsingIpAddress:longlinkIp];
             }
         }
         break;
         case 0:
         {
-            int64_t uin = resp.authSectResp.uin;
+            NSInteger uin = resp.authSectResp.uin;
             [WeChatClient sharedClient].uin = uin;
 
             int32_t nid = resp.authSectResp.svrPubEcdhkey.nid;
@@ -165,7 +165,7 @@
                 [[DBManager sharedManager] setSessionKey:sessionKey];
                 [WeChatClient sharedClient].checkEcdhKey = checkEcdhKey;
 
-                LogVerbose(@"登陆成功: SessionKey: %@, uin: %lld, wxid: %@, NickName: %@, alias: %@",
+                LogVerbose(@"登陆成功: SessionKey: %@, uin: %ld, wxid: %@, NickName: %@, alias: %@",
                            sessionKey,
                            uin,
                            resp.acctSectResp.userName,
