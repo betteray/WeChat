@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Device : NSObject
+@interface WCDevice : NSObject
 
 @property (nonatomic, readonly, copy) NSString *imei;
 @property (nonatomic, readonly, copy) NSString *softType;
@@ -22,8 +22,26 @@
 @property (nonatomic, readonly, copy) NSString *realCountry;
 @property (nonatomic, readonly, copy) NSString *bundleID;
 @property (nonatomic, readonly, copy) NSString *iphoneVer;
+@property (nonatomic, readonly, copy) NSString *osType;
 @property (nonatomic, readonly, copy) NSString *adSource;
 @property (nonatomic, readonly, copy) NSString *deviceModle;
 @property (nonatomic, readonly, copy) NSString *deviceID;
+
+- (instancetype)initWithImei:(NSString *)imei
+                    softType:(NSString *)softType
+                   clientSeq:(NSString *)clientSeq
+                  deviceName:(NSString *)deviceName
+                  deviceType:(NSString *)deviceType
+                    language:(NSString *)language
+                    timeZone:(NSString *)timeZone
+                 deviceBrand:(NSString *)deviceBrand
+                      chanel:(NSInteger)chanel
+                 realCountry:(NSString *)realCountry
+                    bundleID:(NSString *)bundleID
+                   iphoneVer:(NSString *)iphoneVer
+                      osType:(NSString *)osType
+                    adSource:(NSString *)adSource
+                 deviceModle:(NSString *)deviceModel
+                    deviceID:(NSString *)deviceID;
 
 @end

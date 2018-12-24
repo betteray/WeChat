@@ -71,25 +71,27 @@
     //baseReqInfo.cliDbencryptInfo = [NSData data];
     baseReqInfo.authReqFlag = @"";
 
+    WCDevice *iosDevice = [[DeviceManager sharedManager] getCurrentDevice];
+    
     ManualAuthDeviceRequest *deviceRequest = [ManualAuthDeviceRequest new];
     deviceRequest.baseReqInfo = baseReqInfo;
-    deviceRequest.imei = IMEI;
-    deviceRequest.softType = SOFT_TYPE;
+    deviceRequest.imei = iosDevice.imei;
+    deviceRequest.softType = iosDevice.softType;
     deviceRequest.builtinIpseq = 0;
-    deviceRequest.clientSeqId = CLIENT_SEQ_ID;
-    deviceRequest.deviceName = DEVICEN_NAME;
-    deviceRequest.deviceType = @"iPhone"; //"DEVICE_TYPE;
-    deviceRequest.language = LANGUAGE;
-    deviceRequest.timeZone = TIME_ZONE;
-    deviceRequest.channel = CHANEL;
+    deviceRequest.clientSeqId = iosDevice.clientSeq;
+    deviceRequest.deviceName = iosDevice.deviceName;
+    deviceRequest.deviceType = iosDevice.deviceType; //"DEVICE_TYPE;
+    deviceRequest.language = iosDevice.language;
+    deviceRequest.timeZone = iosDevice.timeZone;
+    deviceRequest.channel = (int32_t) iosDevice.chanel;
     deviceRequest.timeStamp = [[NSDate date] timeIntervalSince1970];
-    deviceRequest.deviceBrand = DEVICE_BRAND;
-    deviceRequest.realCountry = REAL_COUNTRY;
-    deviceRequest.bundleId = BUNDLE_ID;
-    deviceRequest.adSource = AD_SOURCE; //iMac 不需要
-    deviceRequest.iphoneVer = IPHONE_VER;
+    deviceRequest.deviceBrand = iosDevice.deviceBrand;
+    deviceRequest.realCountry = iosDevice.realCountry;
+    deviceRequest.bundleId = iosDevice.bundleID;
+    deviceRequest.adSource = iosDevice.adSource; //iMac 不需要
+    deviceRequest.iphoneVer = iosDevice.iphoneVer;
     deviceRequest.inputType = 2;
-    deviceRequest.ostype = OS_TYPE;
+    deviceRequest.ostype = iosDevice.osType;
 
     //iMac 暂时不需要
 

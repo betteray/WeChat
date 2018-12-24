@@ -69,7 +69,8 @@
     [buffer setBuffer:sessionKey];
     [request setRandomEncryKey:buffer];
 
-    [request setDeviceName:DEVICEN_NAME];
+    WCDevice *curDevice = [[DeviceManager sharedManager] getCurrentDevice];
+    [request setDeviceName:curDevice.deviceName];
     [request setExtDevLoginType:0];
     [request setOpcode:0];
     [request setHardwareExtra:0];
@@ -213,7 +214,7 @@
     //    deviceRequest.softType = @"<softtype><k3>11.4.1</k3><k9>iPad</k9><k10>2</k10><k19>68ADE338-AA19-433E-BA2A-3D6DF3C787D5</k19><k20>AAA7AE28-7620-431D-8B4C-7FB4F67AA45E</k20><k22>(null)</k22><k33>微信</k33><k47>1</k47><k50>0</k50><k51>com.tencent.xin</k51><k54>iPad4,4</k54><k61>2</k61></softtype>";
     deviceRequest.builtinIpseq = 0;
     deviceRequest.clientSeqId = @""; //[NSString stringWithFormat:@"%@-%d", @"dd09ae95fe48164451be954cd1871cb7", (int)[[NSDate date] timeIntervalSince1970]];
-    deviceRequest.deviceName = DEVICEN_NAME;
+    deviceRequest.deviceName = [[DeviceManager sharedManager] getCurrentDevice].deviceName;
     deviceRequest.deviceType = @"iMac18,2";
     deviceRequest.language = @"zh_CN";
     deviceRequest.timeZone = @"8.00";

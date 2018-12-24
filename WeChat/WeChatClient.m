@@ -117,7 +117,7 @@
     request.userName = [WXUserDefault getWXID];
     request.currentSynckey = syncKeyCur;
     request.maxSynckey = syncKeyMax;
-    request.language = LANGUAGE;
+    request.language = [[DeviceManager sharedManager] getCurrentDevice].language;
 
     CgiWrap *wrap = [CgiWrap new];
     wrap.cgi = 139;
@@ -151,7 +151,7 @@
     req.selector = 262151;
     req.keyBuf = self.sync_key_cur;
     req.scene = 7;
-    req.deviceType = DEVICE_TYPE;
+    req.deviceType = [[DeviceManager sharedManager] getCurrentDevice].deviceType;
     req.syncMsgDigest = 1;
 
     CgiWrap *wrap = [CgiWrap new];
@@ -299,8 +299,8 @@
         [base setUin:(int32_t)[WXUserDefault getUIN]];
         [base setScene:0]; // iMac 1
         [base setClientVersion:CLIENT_VERSION];
-        [base setDeviceType:DEVICE_TYPE];
-        [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
+        [base setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].deviceType];
+        [base setDeviceId:[NSData dataWithHexString:[[DeviceManager sharedManager] getCurrentDevice].deviceID]];
         
         [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
     }
@@ -318,9 +318,9 @@
     [base setUin:0];
     [base setScene:0];
     [base setClientVersion:CLIENT_VERSION];
-    [base setDeviceType:DEVICE_TYPE];
+    [base setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].deviceType];
     [base setSessionKey:[NSData data]];
-    [base setDeviceId:[NSData dataWithHexString:DEVICE_ID]];
+    [base setDeviceId:[NSData dataWithHexString:[[DeviceManager sharedManager] getCurrentDevice].deviceID]];
 
     [deviceRequest setBaseRequest:base];
 
