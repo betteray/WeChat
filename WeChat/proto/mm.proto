@@ -45,7 +45,7 @@ message GetLoginQRCodeRequest
 
 message GetLoginQRCodeResponse
 {
-	required BaseResponse               baseResponse =1;
+	required BaseResponse               baseResponse = 1;
 	required SKBuiltinBuffer_t          qrcode = 2;
 	required string                     uuid = 3;
 	required int32                      checkTime = 4;
@@ -90,44 +90,32 @@ message NotifyMsg
     optional string     devices = 11;
 }
 
+message ECDHKey
+{
+    required int32 nid              = 1;        //椭圆曲线类型
+    required SKBuiltinBuffer_t key  = 2;
+}
 
 //登录请求--账号信息
-message ManualAuthAccountRequest
+message ManualAuthRsaReqData
 {
-    message AesKey
-    {
-        required int32  len  = 1;
-        required bytes key = 2;
-    }
-    required AesKey aes                                 = 1; //仅用于本次登录请求,后续通讯使用的aeskey根据服务器返回的数据做ECDH生成
-
-    message Ecdh
-    {
-        required int32      nid     = 1;        //椭圆曲线类型
-
-        message EcdhKey
-        {
-            required int32  len  = 1;
-            required bytes key  = 2;       //椭圆曲线client pubkey
-        }
-        required EcdhKey ecdhKey  = 2;
-    }
-    optional Ecdh   ecdh                                = 2;
+    required SKBuiltinBuffer_t randomEncryKey           = 1; //仅用于本次登录请求,后续通讯使用的aeskey根据服务器返回的数据做ECDH生成
+    optional ECDHKey cliPubEcdhkey                      = 2;
     optional string userName                            = 3;
     optional string pwd                                 = 4;
     optional string pwd2                                = 5;
 }
 
+message BaseAuthReqInfo
+{
+    optional SKBuiltinBuffer_t cliDbencryptInfo     = 5;    // iMac 第一次登陆没有数据，后续登陆会取一个数据。
+    optional string authReqFlag                     = 7;    // iPad "" iMac 不需要
+}
 
 //登录请求--设备信息
-message ManualAuthDeviceRequest
+message ManualAuthAesReqData
 {
-    optional BaseRequest baseRequest                      = 1;
-    message BaseAuthReqInfo
-    {
-        optional SKBuiltinBuffer_t cliDbencryptInfo     = 5;    // iMac 第一次登陆没有数据，后续登陆会取一个数据。
-        optional string authReqFlag                     = 7;    // iPad "" iMac 不需要
-    }
+    optional BaseRequest baseRequest                    = 1;
     optional BaseAuthReqInfo baseReqInfo                = 2;
     required string imei                                = 3;
     optional string softType                            = 4;    // iPad: <softtype><k3>11.4.1</k3><k9>iPad</k9></softtype> ，iMac不需要此字段
@@ -151,108 +139,109 @@ message ManualAuthDeviceRequest
 
 message ManualAuthRequest
 {
-    required ManualAuthAccountRequest rsaReqData        = 1;
-    required ManualAuthDeviceRequest aesReqData         = 2;
+    required ManualAuthRsaReqData rsaReqData        = 1;
+    required ManualAuthAesReqData aesReqData        = 2;
 }
-
 
 //登录结果
-message ManualAuthResponse
+message UnifyAuthResponse
 {
-    message AuthResult
+    required BaseResponse baseResponse  = 1;
+    required int32  unifyAuthSectFlag   = 2;
+    message AuthSectResp
     {
-        required int32  code          = 1; //登录错误码
-        message ErrMsg
-        {
-            optional string msg     = 1; //错误信息
-        }
-        required ErrMsg err_msg =2;
-    }
-    required AuthResult result = 1; //登录结果
-    required int32  unifyFlag  = 2;
-    message AuthParam
-    {
-        required int64  uin    = 1;
+        required int64 uin                      = 1;
+        required ECDHKey svrPubEcdhkey          = 2;
+        required SKBuiltinBuffer_t sessionKey   = 3;    //加密的sessionKey 需要使用ECDH握手后的密钥做AES解密得到最终长16字节的aeskey
+        optional SKBuiltinBuffer_t autoAuthKey  = 4;
+        optional int32 wtloginRspBuffFlag       = 5;
 
-        message Ecdh
+        message ShowStyleKey
         {
-            required int32      nid     = 1;
-            message EcdhKey
+            optional int32 keyCount = 1;
+            message StyleKeyVal
             {
-                required int32  len  = 1;
-                optional bytes key  = 2; //椭圆曲线server pubkey
+                optional int32 key  = 1;
+                optional string val = 2;
             }
-            optional EcdhKey ecdhKey  = 2;
         }
-        required Ecdh   ecdh              = 2;
 
-        message SessionKey
-        {
-            required int32      len          = 1;
-            optional bytes  key         = 2;
-        }
-        required SessionKey session = 3;            //加密的sessionKey 需要使用ECDH握手后的密钥做AES解密得到最终长16字节的aeskey
-        optional bytes SmsTicket = 16;                //需要短信授权时的ticket,用于后续请求验证码以及发送验证码
-
-        optional string bindMailLoginUrl = 20;
-        optional int32 serverTime        = 22;
+        optional ShowStyleKey showStyle         = 15;
+        optional bytes SmsTicket                = 16;   //需要短信授权时的ticket,用于后续请求验证码以及发送验证码
+        optional int32 authResultFlag           = 19;
+        optional string fsurl                   = 20;
+        optional int32 serverTime               = 22;
     }
-    required AuthParam authParam = 3;
-    message AccountInfo
+    required AuthSectResp authSectResp = 3;
+    message AcctSectResp
     {
-        optional string wxId                = 1;
+        optional string userName            = 1;
         optional string nickName            = 2;
-        optional int32  tag3                = 3;
+        optional int32  bindUin             = 3;
         optional string bindMail            = 4;
         optional string bindMobile          = 5;
-        optional string Alias               = 6;
-        optional string tag7                = 7;
+        optional string alias               = 6;
+        optional string bindEmail           = 7;
         optional int32 status               = 8;
         optional int32 pluginFlag           = 9;
-        optional int32 registerType         = 10;
-        optional string tag11               = 11;
+        optional int32 regType              = 10;
+        optional string deviceInfoXml       = 11;
         optional int32 safeDevice           = 12;
-        optional string officialNamePinyin  = 13;
-        optional string officialNameZh      = 14;
-        optional string tag15               = 15;
+        optional string officialUserName    = 13;   //"weixin"
+        optional string officialNickName    = 14;   //"微信团队"
+        optional int32 pushMailStatus       = 15;
         optional string fsUrl               = 16;
     }
-    optional AccountInfo accountInfo = 4; //登录成功后返回账号信息
+    optional AcctSectResp acctSectResp = 4; //登录成功后返回账号信息
 
-    message dns_info
+    message NetworkSectResp
     {
-        message redirect_info
+        message HostList
         {
-            optional int32 cnt                = 1; //host cnt
-            message real_host_info
+            optional int32 count                = 1;    //host cnt
+            message Host
             {
-                optional string host          = 1; //host
-                optional string redirect      = 2; //redirect_host
+                optional string origin          = 1;    //host
+                optional string substitute      = 2;    //redirect_host
+                optional int32 priority         = 3;
+
             }
-            repeated real_host_info real_host = 2;
+            repeated Host list = 2;
         }
-        optional redirect_info redirect                = 1; //域名重定向信息
-        message ip_info
+        optional HostList newHostList           = 1; //域名重定向信息
+
+        message NetworkControl
         {
-            optional int32 longlink_ip_cnt    = 1; //长链接ip池数量
-            optional int32 shortlink_ip_cnt    = 2; //短链接ip池数量
-            message longlink_ip_info
-            {
-                optional string ip      = 3; //ip
-                optional string host      = 4; //host
-            }
-            repeated longlink_ip_info longlink = 3; //长链接ip池
-            message shortlink_ip_info
-            {
-                optional string ip      = 3; //ip
-                optional string host      = 4; //host
-            }
-            repeated shortlink_ip_info shortlink = 4; //短链接ip池
+            optional string portList            = 1;
+            optional string timeoutList         = 2;
+            optional int32 minNoopInterval      = 3;
+            optional int32 maxNoopInterval      = 4;
+            optional int32 typingInterval       = 5;
+            optional int32 noopIntervalTime     = 7;
         }
-        optional ip_info ip                            = 3; //长短链接ip
+
+        optional NetworkControl networkControl = 2;
+
+        message BuiltinIPList
+        {
+            optional int32 longConnectIpcount       = 1;
+            optional int32 shortConnectIpcount      = 2;
+            message BuiltinIP
+            {
+                optional int32 type     = 1;
+                optional int32 port     = 2;
+                optional string ip      = 3;
+                optional string domain  = 4;
+            }
+            repeated BuiltinIP longConnectIplist    = 3;
+            repeated BuiltinIP shortConnectIplist   = 4;
+            optional int32 seq                      = 5;
+        }
+        optional BuiltinIPList builtinIplist    = 3;
     }
-    optional dns_info dns                    = 5; //dns信息
+    optional NetworkSectResp networkSectResp                    = 5; //dns信息
 }
+
 
 //新设备第一次登录初始化请求
 message NewInitRequest
@@ -504,7 +493,7 @@ message SnsObject
 
 message SnsTimeLineRequest
 {
-    optional BaseRequest baseRequest    = 1;    //iOS不用设置
+    optional BaseRequest baseRequest    = 1;
     optional string firstPageMd5        = 2;
     required int32 minFilterId          = 3;
     required int32 maxId                = 4;

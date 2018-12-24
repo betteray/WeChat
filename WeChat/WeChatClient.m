@@ -311,8 +311,8 @@
            failure:(FailureBlock)failureBlock
 {
     ManualAuthRequest *request = (ManualAuthRequest *) [cgiWrap request];
-    ManualAuthAccountRequest *accountRequest = [request rsaReqData];
-    ManualAuthDeviceRequest *deviceRequest = [request aesReqData];
+    ManualAuthRsaReqData *accountRequest = [request rsaReqData];
+    ManualAuthAesReqData *deviceRequest = [request aesReqData];
 
     BaseRequest *base = [BaseRequest new];
     [base setUin:0];

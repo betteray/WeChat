@@ -925,165 +925,18 @@ typedef struct NotifyMsg__storage_ {
 
 @end
 
-#pragma mark - ManualAuthAccountRequest
+#pragma mark - ECDHKey
 
-@implementation ManualAuthAccountRequest
-
-@dynamic hasAes, aes;
-@dynamic hasEcdh, ecdh;
-@dynamic hasUserName, userName;
-@dynamic hasPwd, pwd;
-@dynamic hasPwd2, pwd2;
-
-typedef struct ManualAuthAccountRequest__storage_ {
-  uint32_t _has_storage_[1];
-  ManualAuthAccountRequest_AesKey *aes;
-  ManualAuthAccountRequest_Ecdh *ecdh;
-  NSString *userName;
-  NSString *pwd;
-  NSString *pwd2;
-} ManualAuthAccountRequest__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "aes",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthAccountRequest_AesKey),
-        .number = ManualAuthAccountRequest_FieldNumber_Aes,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthAccountRequest__storage_, aes),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "ecdh",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthAccountRequest_Ecdh),
-        .number = ManualAuthAccountRequest_FieldNumber_Ecdh,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthAccountRequest__storage_, ecdh),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "userName",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthAccountRequest_FieldNumber_UserName,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(ManualAuthAccountRequest__storage_, userName),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "pwd",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthAccountRequest_FieldNumber_Pwd,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(ManualAuthAccountRequest__storage_, pwd),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "pwd2",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthAccountRequest_FieldNumber_Pwd2,
-        .hasIndex = 4,
-        .offset = (uint32_t)offsetof(ManualAuthAccountRequest__storage_, pwd2),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthAccountRequest class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthAccountRequest__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    static const char *extraTextFormatInfo =
-        "\001\003\010\000";
-    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
-#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - ManualAuthAccountRequest_AesKey
-
-@implementation ManualAuthAccountRequest_AesKey
-
-@dynamic hasLen, len;
-@dynamic hasKey, key;
-
-typedef struct ManualAuthAccountRequest_AesKey__storage_ {
-  uint32_t _has_storage_[1];
-  int32_t len;
-  NSData *key;
-} ManualAuthAccountRequest_AesKey__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "len",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthAccountRequest_AesKey_FieldNumber_Len,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthAccountRequest_AesKey__storage_, len),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "key",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthAccountRequest_AesKey_FieldNumber_Key,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthAccountRequest_AesKey__storage_, key),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeBytes,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthAccountRequest_AesKey class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthAccountRequest_AesKey__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthAccountRequest)];
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - ManualAuthAccountRequest_Ecdh
-
-@implementation ManualAuthAccountRequest_Ecdh
+@implementation ECDHKey
 
 @dynamic hasNid, nid;
-@dynamic hasEcdhKey, ecdhKey;
+@dynamic hasKey, key;
 
-typedef struct ManualAuthAccountRequest_Ecdh__storage_ {
+typedef struct ECDHKey__storage_ {
   uint32_t _has_storage_[1];
   int32_t nid;
-  ManualAuthAccountRequest_Ecdh_EcdhKey *ecdhKey;
-} ManualAuthAccountRequest_Ecdh__storage_;
+  SKBuiltinBuffer_t *key;
+} ECDHKey__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -1094,36 +947,30 @@ typedef struct ManualAuthAccountRequest_Ecdh__storage_ {
       {
         .name = "nid",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthAccountRequest_Ecdh_FieldNumber_Nid,
+        .number = ECDHKey_FieldNumber_Nid,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthAccountRequest_Ecdh__storage_, nid),
+        .offset = (uint32_t)offsetof(ECDHKey__storage_, nid),
         .flags = GPBFieldRequired,
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "ecdhKey",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthAccountRequest_Ecdh_EcdhKey),
-        .number = ManualAuthAccountRequest_Ecdh_FieldNumber_EcdhKey,
+        .name = "key",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = ECDHKey_FieldNumber_Key,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthAccountRequest_Ecdh__storage_, ecdhKey),
-        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .offset = (uint32_t)offsetof(ECDHKey__storage_, key),
+        .flags = GPBFieldRequired,
         .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthAccountRequest_Ecdh class]
+        [GPBDescriptor allocDescriptorForClass:[ECDHKey class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthAccountRequest_Ecdh__storage_)
+                                   storageSize:sizeof(ECDHKey__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    static const char *extraTextFormatInfo =
-        "\001\002\007\000";
-    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
-#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthAccountRequest)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -1132,18 +979,24 @@ typedef struct ManualAuthAccountRequest_Ecdh__storage_ {
 
 @end
 
-#pragma mark - ManualAuthAccountRequest_Ecdh_EcdhKey
+#pragma mark - ManualAuthRsaReqData
 
-@implementation ManualAuthAccountRequest_Ecdh_EcdhKey
+@implementation ManualAuthRsaReqData
 
-@dynamic hasLen, len;
-@dynamic hasKey, key;
+@dynamic hasRandomEncryKey, randomEncryKey;
+@dynamic hasCliPubEcdhkey, cliPubEcdhkey;
+@dynamic hasUserName, userName;
+@dynamic hasPwd, pwd;
+@dynamic hasPwd2, pwd2;
 
-typedef struct ManualAuthAccountRequest_Ecdh_EcdhKey__storage_ {
+typedef struct ManualAuthRsaReqData__storage_ {
   uint32_t _has_storage_[1];
-  int32_t len;
-  NSData *key;
-} ManualAuthAccountRequest_Ecdh_EcdhKey__storage_;
+  SKBuiltinBuffer_t *randomEncryKey;
+  ECDHKey *cliPubEcdhkey;
+  NSString *userName;
+  NSString *pwd;
+  NSString *pwd2;
+} ManualAuthRsaReqData__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -1152,33 +1005,64 @@ typedef struct ManualAuthAccountRequest_Ecdh_EcdhKey__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "len",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthAccountRequest_Ecdh_EcdhKey_FieldNumber_Len,
+        .name = "randomEncryKey",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = ManualAuthRsaReqData_FieldNumber_RandomEncryKey,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthAccountRequest_Ecdh_EcdhKey__storage_, len),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ManualAuthRsaReqData__storage_, randomEncryKey),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "key",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthAccountRequest_Ecdh_EcdhKey_FieldNumber_Key,
+        .name = "cliPubEcdhkey",
+        .dataTypeSpecific.className = GPBStringifySymbol(ECDHKey),
+        .number = ManualAuthRsaReqData_FieldNumber_CliPubEcdhkey,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthAccountRequest_Ecdh_EcdhKey__storage_, key),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeBytes,
+        .offset = (uint32_t)offsetof(ManualAuthRsaReqData__storage_, cliPubEcdhkey),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "userName",
+        .dataTypeSpecific.className = NULL,
+        .number = ManualAuthRsaReqData_FieldNumber_UserName,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ManualAuthRsaReqData__storage_, userName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "pwd",
+        .dataTypeSpecific.className = NULL,
+        .number = ManualAuthRsaReqData_FieldNumber_Pwd,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(ManualAuthRsaReqData__storage_, pwd),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "pwd2",
+        .dataTypeSpecific.className = NULL,
+        .number = ManualAuthRsaReqData_FieldNumber_Pwd2,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(ManualAuthRsaReqData__storage_, pwd2),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthAccountRequest_Ecdh_EcdhKey class]
+        [GPBDescriptor allocDescriptorForClass:[ManualAuthRsaReqData class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthAccountRequest_Ecdh_EcdhKey__storage_)
+                                   storageSize:sizeof(ManualAuthRsaReqData__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthAccountRequest_Ecdh)];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\003\001\016\000\002\r\000\003\010\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -1187,9 +1071,68 @@ typedef struct ManualAuthAccountRequest_Ecdh_EcdhKey__storage_ {
 
 @end
 
-#pragma mark - ManualAuthDeviceRequest
+#pragma mark - BaseAuthReqInfo
 
-@implementation ManualAuthDeviceRequest
+@implementation BaseAuthReqInfo
+
+@dynamic hasCliDbencryptInfo, cliDbencryptInfo;
+@dynamic hasAuthReqFlag, authReqFlag;
+
+typedef struct BaseAuthReqInfo__storage_ {
+  uint32_t _has_storage_[1];
+  SKBuiltinBuffer_t *cliDbencryptInfo;
+  NSString *authReqFlag;
+} BaseAuthReqInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "cliDbencryptInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = BaseAuthReqInfo_FieldNumber_CliDbencryptInfo,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(BaseAuthReqInfo__storage_, cliDbencryptInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "authReqFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = BaseAuthReqInfo_FieldNumber_AuthReqFlag,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(BaseAuthReqInfo__storage_, authReqFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[BaseAuthReqInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(BaseAuthReqInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\002\005\020\000\007\013\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ManualAuthAesReqData
+
+@implementation ManualAuthAesReqData
 
 @dynamic hasBaseRequest, baseRequest;
 @dynamic hasBaseReqInfo, baseReqInfo;
@@ -1212,14 +1155,14 @@ typedef struct ManualAuthAccountRequest_Ecdh_EcdhKey__storage_ {
 @dynamic hasInputType, inputType;
 @dynamic hasClientCheckData, clientCheckData;
 
-typedef struct ManualAuthDeviceRequest__storage_ {
+typedef struct ManualAuthAesReqData__storage_ {
   uint32_t _has_storage_[1];
   int32_t builtinIpseq;
   int32_t channel;
   int32_t timeStamp;
   int32_t inputType;
   BaseRequest *baseRequest;
-  ManualAuthDeviceRequest_BaseAuthReqInfo *baseReqInfo;
+  BaseAuthReqInfo *baseReqInfo;
   NSString *imei;
   NSString *softType;
   NSString *clientSeqId;
@@ -1234,7 +1177,7 @@ typedef struct ManualAuthDeviceRequest__storage_ {
   NSString *adSource;
   NSString *iphoneVer;
   SKBuiltinBuffer_t *clientCheckData;
-} ManualAuthDeviceRequest__storage_;
+} ManualAuthAesReqData__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -1245,191 +1188,191 @@ typedef struct ManualAuthDeviceRequest__storage_ {
       {
         .name = "baseRequest",
         .dataTypeSpecific.className = GPBStringifySymbol(BaseRequest),
-        .number = ManualAuthDeviceRequest_FieldNumber_BaseRequest,
+        .number = ManualAuthAesReqData_FieldNumber_BaseRequest,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, baseRequest),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, baseRequest),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "baseReqInfo",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthDeviceRequest_BaseAuthReqInfo),
-        .number = ManualAuthDeviceRequest_FieldNumber_BaseReqInfo,
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseAuthReqInfo),
+        .number = ManualAuthAesReqData_FieldNumber_BaseReqInfo,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, baseReqInfo),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, baseReqInfo),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "imei",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_Imei,
+        .number = ManualAuthAesReqData_FieldNumber_Imei,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, imei),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, imei),
         .flags = GPBFieldRequired,
         .dataType = GPBDataTypeString,
       },
       {
         .name = "softType",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_SoftType,
+        .number = ManualAuthAesReqData_FieldNumber_SoftType,
         .hasIndex = 3,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, softType),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, softType),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "builtinIpseq",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_BuiltinIpseq,
+        .number = ManualAuthAesReqData_FieldNumber_BuiltinIpseq,
         .hasIndex = 4,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, builtinIpseq),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, builtinIpseq),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
         .name = "clientSeqId",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_ClientSeqId,
+        .number = ManualAuthAesReqData_FieldNumber_ClientSeqId,
         .hasIndex = 5,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, clientSeqId),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, clientSeqId),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "deviceName",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_DeviceName,
+        .number = ManualAuthAesReqData_FieldNumber_DeviceName,
         .hasIndex = 6,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, deviceName),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, deviceName),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "deviceType",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_DeviceType,
+        .number = ManualAuthAesReqData_FieldNumber_DeviceType,
         .hasIndex = 7,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, deviceType),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, deviceType),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "language",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_Language,
+        .number = ManualAuthAesReqData_FieldNumber_Language,
         .hasIndex = 8,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, language),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, language),
         .flags = GPBFieldRequired,
         .dataType = GPBDataTypeString,
       },
       {
         .name = "timeZone",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_TimeZone,
+        .number = ManualAuthAesReqData_FieldNumber_TimeZone,
         .hasIndex = 9,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, timeZone),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, timeZone),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "channel",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_Channel,
+        .number = ManualAuthAesReqData_FieldNumber_Channel,
         .hasIndex = 10,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, channel),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, channel),
         .flags = GPBFieldRequired,
         .dataType = GPBDataTypeInt32,
       },
       {
         .name = "timeStamp",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_TimeStamp,
+        .number = ManualAuthAesReqData_FieldNumber_TimeStamp,
         .hasIndex = 11,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, timeStamp),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, timeStamp),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
         .name = "deviceBrand",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_DeviceBrand,
+        .number = ManualAuthAesReqData_FieldNumber_DeviceBrand,
         .hasIndex = 12,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, deviceBrand),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, deviceBrand),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "ostype",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_Ostype,
+        .number = ManualAuthAesReqData_FieldNumber_Ostype,
         .hasIndex = 13,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, ostype),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, ostype),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
         .name = "realCountry",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_RealCountry,
+        .number = ManualAuthAesReqData_FieldNumber_RealCountry,
         .hasIndex = 14,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, realCountry),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, realCountry),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "bundleId",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_BundleId,
+        .number = ManualAuthAesReqData_FieldNumber_BundleId,
         .hasIndex = 15,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, bundleId),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, bundleId),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "adSource",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_AdSource,
+        .number = ManualAuthAesReqData_FieldNumber_AdSource,
         .hasIndex = 16,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, adSource),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, adSource),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "iphoneVer",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_IphoneVer,
+        .number = ManualAuthAesReqData_FieldNumber_IphoneVer,
         .hasIndex = 17,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, iphoneVer),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, iphoneVer),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "inputType",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_FieldNumber_InputType,
+        .number = ManualAuthAesReqData_FieldNumber_InputType,
         .hasIndex = 18,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, inputType),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, inputType),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
         .name = "clientCheckData",
         .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
-        .number = ManualAuthDeviceRequest_FieldNumber_ClientCheckData,
+        .number = ManualAuthAesReqData_FieldNumber_ClientCheckData,
         .hasIndex = 19,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest__storage_, clientCheckData),
+        .offset = (uint32_t)offsetof(ManualAuthAesReqData__storage_, clientCheckData),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthDeviceRequest class]
+        [GPBDescriptor allocDescriptorForClass:[ManualAuthAesReqData class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthDeviceRequest__storage_)
+                                   storageSize:sizeof(ManualAuthAesReqData__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
@@ -1437,66 +1380,6 @@ typedef struct ManualAuthDeviceRequest__storage_ {
         "\025\t\000\026\t\000\027\017\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - ManualAuthDeviceRequest_BaseAuthReqInfo
-
-@implementation ManualAuthDeviceRequest_BaseAuthReqInfo
-
-@dynamic hasCliDbencryptInfo, cliDbencryptInfo;
-@dynamic hasAuthReqFlag, authReqFlag;
-
-typedef struct ManualAuthDeviceRequest_BaseAuthReqInfo__storage_ {
-  uint32_t _has_storage_[1];
-  SKBuiltinBuffer_t *cliDbencryptInfo;
-  NSString *authReqFlag;
-} ManualAuthDeviceRequest_BaseAuthReqInfo__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "cliDbencryptInfo",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
-        .number = ManualAuthDeviceRequest_BaseAuthReqInfo_FieldNumber_CliDbencryptInfo,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest_BaseAuthReqInfo__storage_, cliDbencryptInfo),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "authReqFlag",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthDeviceRequest_BaseAuthReqInfo_FieldNumber_AuthReqFlag,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthDeviceRequest_BaseAuthReqInfo__storage_, authReqFlag),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeString,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthDeviceRequest_BaseAuthReqInfo class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthDeviceRequest_BaseAuthReqInfo__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    static const char *extraTextFormatInfo =
-        "\002\005\020\000\007\013\000";
-    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
-#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthDeviceRequest)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -1514,8 +1397,8 @@ typedef struct ManualAuthDeviceRequest_BaseAuthReqInfo__storage_ {
 
 typedef struct ManualAuthRequest__storage_ {
   uint32_t _has_storage_[1];
-  ManualAuthAccountRequest *rsaReqData;
-  ManualAuthDeviceRequest *aesReqData;
+  ManualAuthRsaReqData *rsaReqData;
+  ManualAuthAesReqData *aesReqData;
 } ManualAuthRequest__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1526,7 +1409,7 @@ typedef struct ManualAuthRequest__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "rsaReqData",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthAccountRequest),
+        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthRsaReqData),
         .number = ManualAuthRequest_FieldNumber_RsaReqData,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(ManualAuthRequest__storage_, rsaReqData),
@@ -1535,7 +1418,7 @@ typedef struct ManualAuthRequest__storage_ {
       },
       {
         .name = "aesReqData",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthDeviceRequest),
+        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthAesReqData),
         .number = ManualAuthRequest_FieldNumber_AesReqData,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(ManualAuthRequest__storage_, aesReqData),
@@ -1564,24 +1447,24 @@ typedef struct ManualAuthRequest__storage_ {
 
 @end
 
-#pragma mark - ManualAuthResponse
+#pragma mark - UnifyAuthResponse
 
-@implementation ManualAuthResponse
+@implementation UnifyAuthResponse
 
-@dynamic hasResult, result;
-@dynamic hasUnifyFlag, unifyFlag;
-@dynamic hasAuthParam, authParam;
-@dynamic hasAccountInfo, accountInfo;
-@dynamic hasDns, dns;
+@dynamic hasBaseResponse, baseResponse;
+@dynamic hasUnifyAuthSectFlag, unifyAuthSectFlag;
+@dynamic hasAuthSectResp, authSectResp;
+@dynamic hasAcctSectResp, acctSectResp;
+@dynamic hasNetworkSectResp, networkSectResp;
 
-typedef struct ManualAuthResponse__storage_ {
+typedef struct UnifyAuthResponse__storage_ {
   uint32_t _has_storage_[1];
-  int32_t unifyFlag;
-  ManualAuthResponse_AuthResult *result;
-  ManualAuthResponse_AuthParam *authParam;
-  ManualAuthResponse_AccountInfo *accountInfo;
-  ManualAuthResponse_dns_info *dns;
-} ManualAuthResponse__storage_;
+  int32_t unifyAuthSectFlag;
+  BaseResponse *baseResponse;
+  UnifyAuthResponse_AuthSectResp *authSectResp;
+  UnifyAuthResponse_AcctSectResp *acctSectResp;
+  UnifyAuthResponse_NetworkSectResp *networkSectResp;
+} UnifyAuthResponse__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -1590,62 +1473,62 @@ typedef struct ManualAuthResponse__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "result",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_AuthResult),
-        .number = ManualAuthResponse_FieldNumber_Result,
+        .name = "baseResponse",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseResponse),
+        .number = UnifyAuthResponse_FieldNumber_BaseResponse,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse__storage_, result),
-        .flags = GPBFieldRequired,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse__storage_, baseResponse),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "unifyFlag",
+        .name = "unifyAuthSectFlag",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_FieldNumber_UnifyFlag,
+        .number = UnifyAuthResponse_FieldNumber_UnifyAuthSectFlag,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse__storage_, unifyFlag),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse__storage_, unifyAuthSectFlag),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "authParam",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_AuthParam),
-        .number = ManualAuthResponse_FieldNumber_AuthParam,
+        .name = "authSectResp",
+        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_AuthSectResp),
+        .number = UnifyAuthResponse_FieldNumber_AuthSectResp,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(ManualAuthResponse__storage_, authParam),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse__storage_, authSectResp),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "accountInfo",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_AccountInfo),
-        .number = ManualAuthResponse_FieldNumber_AccountInfo,
+        .name = "acctSectResp",
+        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_AcctSectResp),
+        .number = UnifyAuthResponse_FieldNumber_AcctSectResp,
         .hasIndex = 3,
-        .offset = (uint32_t)offsetof(ManualAuthResponse__storage_, accountInfo),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse__storage_, acctSectResp),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "dns",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_dns_info),
-        .number = ManualAuthResponse_FieldNumber_Dns,
+        .name = "networkSectResp",
+        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp),
+        .number = UnifyAuthResponse_FieldNumber_NetworkSectResp,
         .hasIndex = 4,
-        .offset = (uint32_t)offsetof(ManualAuthResponse__storage_, dns),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse__storage_, networkSectResp),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse class]
+        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse__storage_)
+                                   storageSize:sizeof(UnifyAuthResponse__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\003\002\t\000\003\t\000\004\013\000";
+        "\005\001\014\000\002\021\000\003\014\000\004\014\000\005\017\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -1656,125 +1539,34 @@ typedef struct ManualAuthResponse__storage_ {
 
 @end
 
-#pragma mark - ManualAuthResponse_AuthResult
+#pragma mark - UnifyAuthResponse_AuthSectResp
 
-@implementation ManualAuthResponse_AuthResult
-
-@dynamic hasCode, code;
-@dynamic hasErrMsg, errMsg;
-
-typedef struct ManualAuthResponse_AuthResult__storage_ {
-  uint32_t _has_storage_[1];
-  int32_t code;
-  ManualAuthResponse_AuthResult_ErrMsg *errMsg;
-} ManualAuthResponse_AuthResult__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "code",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AuthResult_FieldNumber_Code,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthResult__storage_, code),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "errMsg",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_AuthResult_ErrMsg),
-        .number = ManualAuthResponse_AuthResult_FieldNumber_ErrMsg,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthResult__storage_, errMsg),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeMessage,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_AuthResult class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_AuthResult__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse)];
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - ManualAuthResponse_AuthResult_ErrMsg
-
-@implementation ManualAuthResponse_AuthResult_ErrMsg
-
-@dynamic hasMsg, msg;
-
-typedef struct ManualAuthResponse_AuthResult_ErrMsg__storage_ {
-  uint32_t _has_storage_[1];
-  NSString *msg;
-} ManualAuthResponse_AuthResult_ErrMsg__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "msg",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AuthResult_ErrMsg_FieldNumber_Msg,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthResult_ErrMsg__storage_, msg),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_AuthResult_ErrMsg class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_AuthResult_ErrMsg__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse_AuthResult)];
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - ManualAuthResponse_AuthParam
-
-@implementation ManualAuthResponse_AuthParam
+@implementation UnifyAuthResponse_AuthSectResp
 
 @dynamic hasUin, uin;
-@dynamic hasEcdh, ecdh;
-@dynamic hasSession, session;
+@dynamic hasSvrPubEcdhkey, svrPubEcdhkey;
+@dynamic hasSessionKey, sessionKey;
+@dynamic hasAutoAuthKey, autoAuthKey;
+@dynamic hasWtloginRspBuffFlag, wtloginRspBuffFlag;
+@dynamic hasShowStyle, showStyle;
 @dynamic hasSmsTicket, smsTicket;
-@dynamic hasBindMailLoginURL, bindMailLoginURL;
+@dynamic hasAuthResultFlag, authResultFlag;
+@dynamic hasFsurl, fsurl;
 @dynamic hasServerTime, serverTime;
 
-typedef struct ManualAuthResponse_AuthParam__storage_ {
+typedef struct UnifyAuthResponse_AuthSectResp__storage_ {
   uint32_t _has_storage_[1];
+  int32_t wtloginRspBuffFlag;
+  int32_t authResultFlag;
   int32_t serverTime;
-  ManualAuthResponse_AuthParam_Ecdh *ecdh;
-  ManualAuthResponse_AuthParam_SessionKey *session;
+  ECDHKey *svrPubEcdhkey;
+  SKBuiltinBuffer_t *sessionKey;
+  SKBuiltinBuffer_t *autoAuthKey;
+  UnifyAuthResponse_AuthSectResp_ShowStyleKey *showStyle;
   NSData *smsTicket;
-  NSString *bindMailLoginURL;
+  NSString *fsurl;
   int64_t uin;
-} ManualAuthResponse_AuthParam__storage_;
+} UnifyAuthResponse_AuthSectResp__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -1785,72 +1577,108 @@ typedef struct ManualAuthResponse_AuthParam__storage_ {
       {
         .name = "uin",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AuthParam_FieldNumber_Uin,
+        .number = UnifyAuthResponse_AuthSectResp_FieldNumber_Uin,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam__storage_, uin),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp__storage_, uin),
         .flags = GPBFieldRequired,
         .dataType = GPBDataTypeInt64,
       },
       {
-        .name = "ecdh",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_AuthParam_Ecdh),
-        .number = ManualAuthResponse_AuthParam_FieldNumber_Ecdh,
+        .name = "svrPubEcdhkey",
+        .dataTypeSpecific.className = GPBStringifySymbol(ECDHKey),
+        .number = UnifyAuthResponse_AuthSectResp_FieldNumber_SvrPubEcdhkey,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam__storage_, ecdh),
-        .flags = GPBFieldRequired,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp__storage_, svrPubEcdhkey),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "session",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_AuthParam_SessionKey),
-        .number = ManualAuthResponse_AuthParam_FieldNumber_Session,
+        .name = "sessionKey",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = UnifyAuthResponse_AuthSectResp_FieldNumber_SessionKey,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam__storage_, session),
-        .flags = GPBFieldRequired,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp__storage_, sessionKey),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "autoAuthKey",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = UnifyAuthResponse_AuthSectResp_FieldNumber_AutoAuthKey,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp__storage_, autoAuthKey),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "wtloginRspBuffFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_AuthSectResp_FieldNumber_WtloginRspBuffFlag,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp__storage_, wtloginRspBuffFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "showStyle",
+        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_AuthSectResp_ShowStyleKey),
+        .number = UnifyAuthResponse_AuthSectResp_FieldNumber_ShowStyle,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp__storage_, showStyle),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "smsTicket",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AuthParam_FieldNumber_SmsTicket,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam__storage_, smsTicket),
+        .number = UnifyAuthResponse_AuthSectResp_FieldNumber_SmsTicket,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp__storage_, smsTicket),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
       {
-        .name = "bindMailLoginURL",
+        .name = "authResultFlag",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AuthParam_FieldNumber_BindMailLoginURL,
-        .hasIndex = 4,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam__storage_, bindMailLoginURL),
+        .number = UnifyAuthResponse_AuthSectResp_FieldNumber_AuthResultFlag,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp__storage_, authResultFlag),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "fsurl",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_AuthSectResp_FieldNumber_Fsurl,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp__storage_, fsurl),
+        .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
         .name = "serverTime",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AuthParam_FieldNumber_ServerTime,
-        .hasIndex = 5,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam__storage_, serverTime),
+        .number = UnifyAuthResponse_AuthSectResp_FieldNumber_ServerTime,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp__storage_, serverTime),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_AuthParam class]
+        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_AuthSectResp class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_AuthParam__storage_)
+                                   storageSize:sizeof(UnifyAuthResponse_AuthSectResp__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\003\020I\000\024\016!!\000\026\n\000";
+        "\010\002\r\000\003\n\000\004\013\000\005\022\000\017\t\000\020I\000\023\016\000\026\n\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse)];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -1859,18 +1687,16 @@ typedef struct ManualAuthResponse_AuthParam__storage_ {
 
 @end
 
-#pragma mark - ManualAuthResponse_AuthParam_Ecdh
+#pragma mark - UnifyAuthResponse_AuthSectResp_ShowStyleKey
 
-@implementation ManualAuthResponse_AuthParam_Ecdh
+@implementation UnifyAuthResponse_AuthSectResp_ShowStyleKey
 
-@dynamic hasNid, nid;
-@dynamic hasEcdhKey, ecdhKey;
+@dynamic hasKeyCount, keyCount;
 
-typedef struct ManualAuthResponse_AuthParam_Ecdh__storage_ {
+typedef struct UnifyAuthResponse_AuthSectResp_ShowStyleKey__storage_ {
   uint32_t _has_storage_[1];
-  int32_t nid;
-  ManualAuthResponse_AuthParam_Ecdh_EcdhKey *ecdhKey;
-} ManualAuthResponse_AuthParam_Ecdh__storage_;
+  int32_t keyCount;
+} UnifyAuthResponse_AuthSectResp_ShowStyleKey__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -1879,38 +1705,29 @@ typedef struct ManualAuthResponse_AuthParam_Ecdh__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "nid",
+        .name = "keyCount",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AuthParam_Ecdh_FieldNumber_Nid,
+        .number = UnifyAuthResponse_AuthSectResp_ShowStyleKey_FieldNumber_KeyCount,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam_Ecdh__storage_, nid),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "ecdhKey",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_AuthParam_Ecdh_EcdhKey),
-        .number = ManualAuthResponse_AuthParam_Ecdh_FieldNumber_EcdhKey,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam_Ecdh__storage_, ecdhKey),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp_ShowStyleKey__storage_, keyCount),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeMessage,
+        .dataType = GPBDataTypeInt32,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_AuthParam_Ecdh class]
+        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_AuthSectResp_ShowStyleKey class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_AuthParam_Ecdh__storage_)
+                                   storageSize:sizeof(UnifyAuthResponse_AuthSectResp_ShowStyleKey__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\001\002\007\000";
+        "\001\001\010\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse_AuthParam)];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse_AuthSectResp)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -1919,18 +1736,18 @@ typedef struct ManualAuthResponse_AuthParam_Ecdh__storage_ {
 
 @end
 
-#pragma mark - ManualAuthResponse_AuthParam_Ecdh_EcdhKey
+#pragma mark - UnifyAuthResponse_AuthSectResp_ShowStyleKey_StyleKeyVal
 
-@implementation ManualAuthResponse_AuthParam_Ecdh_EcdhKey
+@implementation UnifyAuthResponse_AuthSectResp_ShowStyleKey_StyleKeyVal
 
-@dynamic hasLen, len;
 @dynamic hasKey, key;
+@dynamic hasVal, val;
 
-typedef struct ManualAuthResponse_AuthParam_Ecdh_EcdhKey__storage_ {
+typedef struct UnifyAuthResponse_AuthSectResp_ShowStyleKey_StyleKeyVal__storage_ {
   uint32_t _has_storage_[1];
-  int32_t len;
-  NSData *key;
-} ManualAuthResponse_AuthParam_Ecdh_EcdhKey__storage_;
+  int32_t key;
+  NSString *val;
+} UnifyAuthResponse_AuthSectResp_ShowStyleKey_StyleKeyVal__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -1939,33 +1756,33 @@ typedef struct ManualAuthResponse_AuthParam_Ecdh_EcdhKey__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "len",
+        .name = "key",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AuthParam_Ecdh_EcdhKey_FieldNumber_Len,
+        .number = UnifyAuthResponse_AuthSectResp_ShowStyleKey_StyleKeyVal_FieldNumber_Key,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam_Ecdh_EcdhKey__storage_, len),
-        .flags = GPBFieldRequired,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp_ShowStyleKey_StyleKeyVal__storage_, key),
+        .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "key",
+        .name = "val",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AuthParam_Ecdh_EcdhKey_FieldNumber_Key,
+        .number = UnifyAuthResponse_AuthSectResp_ShowStyleKey_StyleKeyVal_FieldNumber_Val,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam_Ecdh_EcdhKey__storage_, key),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp_ShowStyleKey_StyleKeyVal__storage_, val),
         .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeBytes,
+        .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_AuthParam_Ecdh_EcdhKey class]
+        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_AuthSectResp_ShowStyleKey_StyleKeyVal class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_AuthParam_Ecdh_EcdhKey__storage_)
+                                   storageSize:sizeof(UnifyAuthResponse_AuthSectResp_ShowStyleKey_StyleKeyVal__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse_AuthParam_Ecdh)];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse_AuthSectResp_ShowStyleKey)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -1974,101 +1791,46 @@ typedef struct ManualAuthResponse_AuthParam_Ecdh_EcdhKey__storage_ {
 
 @end
 
-#pragma mark - ManualAuthResponse_AuthParam_SessionKey
+#pragma mark - UnifyAuthResponse_AcctSectResp
 
-@implementation ManualAuthResponse_AuthParam_SessionKey
+@implementation UnifyAuthResponse_AcctSectResp
 
-@dynamic hasLen, len;
-@dynamic hasKey, key;
-
-typedef struct ManualAuthResponse_AuthParam_SessionKey__storage_ {
-  uint32_t _has_storage_[1];
-  int32_t len;
-  NSData *key;
-} ManualAuthResponse_AuthParam_SessionKey__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "len",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AuthParam_SessionKey_FieldNumber_Len,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam_SessionKey__storage_, len),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "key",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AuthParam_SessionKey_FieldNumber_Key,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AuthParam_SessionKey__storage_, key),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeBytes,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_AuthParam_SessionKey class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_AuthParam_SessionKey__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse_AuthParam)];
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - ManualAuthResponse_AccountInfo
-
-@implementation ManualAuthResponse_AccountInfo
-
-@dynamic hasWxId, wxId;
+@dynamic hasUserName, userName;
 @dynamic hasNickName, nickName;
-@dynamic hasTag3, tag3;
+@dynamic hasBindUin, bindUin;
 @dynamic hasBindMail, bindMail;
 @dynamic hasBindMobile, bindMobile;
 @dynamic hasAlias, alias;
-@dynamic hasTag7, tag7;
+@dynamic hasBindEmail, bindEmail;
 @dynamic hasStatus, status;
 @dynamic hasPluginFlag, pluginFlag;
-@dynamic hasRegisterType, registerType;
-@dynamic hasTag11, tag11;
+@dynamic hasRegType, regType;
+@dynamic hasDeviceInfoXml, deviceInfoXml;
 @dynamic hasSafeDevice, safeDevice;
-@dynamic hasOfficialNamePinyin, officialNamePinyin;
-@dynamic hasOfficialNameZh, officialNameZh;
-@dynamic hasTag15, tag15;
+@dynamic hasOfficialUserName, officialUserName;
+@dynamic hasOfficialNickName, officialNickName;
+@dynamic hasPushMailStatus, pushMailStatus;
 @dynamic hasFsURL, fsURL;
 
-typedef struct ManualAuthResponse_AccountInfo__storage_ {
+typedef struct UnifyAuthResponse_AcctSectResp__storage_ {
   uint32_t _has_storage_[1];
-  int32_t tag3;
+  int32_t bindUin;
   int32_t status;
   int32_t pluginFlag;
-  int32_t registerType;
+  int32_t regType;
   int32_t safeDevice;
-  NSString *wxId;
+  int32_t pushMailStatus;
+  NSString *userName;
   NSString *nickName;
   NSString *bindMail;
   NSString *bindMobile;
   NSString *alias;
-  NSString *tag7;
-  NSString *tag11;
-  NSString *officialNamePinyin;
-  NSString *officialNameZh;
-  NSString *tag15;
+  NSString *bindEmail;
+  NSString *deviceInfoXml;
+  NSString *officialUserName;
+  NSString *officialNickName;
   NSString *fsURL;
-} ManualAuthResponse_AccountInfo__storage_;
+} UnifyAuthResponse_AcctSectResp__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -2077,164 +1839,165 @@ typedef struct ManualAuthResponse_AccountInfo__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "wxId",
+        .name = "userName",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_WxId,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_UserName,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, wxId),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, userName),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "nickName",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_NickName,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_NickName,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, nickName),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, nickName),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "tag3",
+        .name = "bindUin",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_Tag3,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_BindUin,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, tag3),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, bindUin),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
         .name = "bindMail",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_BindMail,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_BindMail,
         .hasIndex = 3,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, bindMail),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, bindMail),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "bindMobile",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_BindMobile,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_BindMobile,
         .hasIndex = 4,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, bindMobile),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, bindMobile),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "alias",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_Alias,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_Alias,
         .hasIndex = 5,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, alias),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, alias),
+        .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "tag7",
+        .name = "bindEmail",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_Tag7,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_BindEmail,
         .hasIndex = 6,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, tag7),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, bindEmail),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "status",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_Status,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_Status,
         .hasIndex = 7,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, status),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, status),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },
       {
         .name = "pluginFlag",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_PluginFlag,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_PluginFlag,
         .hasIndex = 8,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, pluginFlag),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, pluginFlag),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "registerType",
+        .name = "regType",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_RegisterType,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_RegType,
         .hasIndex = 9,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, registerType),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, regType),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "tag11",
+        .name = "deviceInfoXml",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_Tag11,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_DeviceInfoXml,
         .hasIndex = 10,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, tag11),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, deviceInfoXml),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "safeDevice",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_SafeDevice,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_SafeDevice,
         .hasIndex = 11,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, safeDevice),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, safeDevice),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "officialNamePinyin",
+        .name = "officialUserName",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_OfficialNamePinyin,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_OfficialUserName,
         .hasIndex = 12,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, officialNamePinyin),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, officialUserName),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "officialNameZh",
+        .name = "officialNickName",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_OfficialNameZh,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_OfficialNickName,
         .hasIndex = 13,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, officialNameZh),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, officialNickName),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "tag15",
+        .name = "pushMailStatus",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_Tag15,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_PushMailStatus,
         .hasIndex = 14,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, tag15),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, pushMailStatus),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
       },
       {
         .name = "fsURL",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_AccountInfo_FieldNumber_FsURL,
+        .number = UnifyAuthResponse_AcctSectResp_FieldNumber_FsURL,
         .hasIndex = 15,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_AccountInfo__storage_, fsURL),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_AcctSectResp__storage_, fsURL),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_AccountInfo class]
+        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_AcctSectResp class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_AccountInfo__storage_)
+                                   storageSize:sizeof(UnifyAuthResponse_AcctSectResp__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\013\001\004\000\002\010\000\004\010\000\005\n\000\006E\000\t\n\000\n\014\000\014\n\000\r\022\000\016\016\000\020\003!!\000";
+        "\016\001\010\000\002\010\000\003\007\000\004\010\000\005\n\000\007\t\000\t\n\000\n\007\000\013\r\000\014\n\000\r\020\000\016\020\000\017\016\000"
+        "\020\003!!\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse)];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -2243,18 +2006,20 @@ typedef struct ManualAuthResponse_AccountInfo__storage_ {
 
 @end
 
-#pragma mark - ManualAuthResponse_dns_info
+#pragma mark - UnifyAuthResponse_NetworkSectResp
 
-@implementation ManualAuthResponse_dns_info
+@implementation UnifyAuthResponse_NetworkSectResp
 
-@dynamic hasRedirect, redirect;
-@dynamic hasIp, ip;
+@dynamic hasNewHostList, newHostList;
+@dynamic hasNetworkControl, networkControl;
+@dynamic hasBuiltinIplist, builtinIplist;
 
-typedef struct ManualAuthResponse_dns_info__storage_ {
+typedef struct UnifyAuthResponse_NetworkSectResp__storage_ {
   uint32_t _has_storage_[1];
-  ManualAuthResponse_dns_info_redirect_info *redirect;
-  ManualAuthResponse_dns_info_ip_info *ip;
-} ManualAuthResponse_dns_info__storage_;
+  UnifyAuthResponse_NetworkSectResp_HostList *newHostList;
+  UnifyAuthResponse_NetworkSectResp_NetworkControl *networkControl;
+  UnifyAuthResponse_NetworkSectResp_BuiltinIPList *builtinIplist;
+} UnifyAuthResponse_NetworkSectResp__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -2263,33 +2028,47 @@ typedef struct ManualAuthResponse_dns_info__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "redirect",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_dns_info_redirect_info),
-        .number = ManualAuthResponse_dns_info_FieldNumber_Redirect,
+        .name = "newHostList",
+        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_HostList),
+        .number = UnifyAuthResponse_NetworkSectResp_FieldNumber_NewHostList,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info__storage_, redirect),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp__storage_, newHostList),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "ip",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_dns_info_ip_info),
-        .number = ManualAuthResponse_dns_info_FieldNumber_Ip,
+        .name = "networkControl",
+        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_NetworkControl),
+        .number = UnifyAuthResponse_NetworkSectResp_FieldNumber_NetworkControl,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info__storage_, ip),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp__storage_, networkControl),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "builtinIplist",
+        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_BuiltinIPList),
+        .number = UnifyAuthResponse_NetworkSectResp_FieldNumber_BuiltinIplist,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp__storage_, builtinIplist),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_dns_info class]
+        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_NetworkSectResp class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_dns_info__storage_)
+                                   storageSize:sizeof(UnifyAuthResponse_NetworkSectResp__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse)];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\003\001\013\000\002\016\000\003\r\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -2298,18 +2077,18 @@ typedef struct ManualAuthResponse_dns_info__storage_ {
 
 @end
 
-#pragma mark - ManualAuthResponse_dns_info_redirect_info
+#pragma mark - UnifyAuthResponse_NetworkSectResp_HostList
 
-@implementation ManualAuthResponse_dns_info_redirect_info
+@implementation UnifyAuthResponse_NetworkSectResp_HostList
 
-@dynamic hasCnt, cnt;
-@dynamic realHostArray, realHostArray_Count;
+@dynamic hasCount, count;
+@dynamic listArray, listArray_Count;
 
-typedef struct ManualAuthResponse_dns_info_redirect_info__storage_ {
+typedef struct UnifyAuthResponse_NetworkSectResp_HostList__storage_ {
   uint32_t _has_storage_[1];
-  int32_t cnt;
-  NSMutableArray *realHostArray;
-} ManualAuthResponse_dns_info_redirect_info__storage_;
+  int32_t count;
+  NSMutableArray *listArray;
+} UnifyAuthResponse_NetworkSectResp_HostList__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -2318,33 +2097,33 @@ typedef struct ManualAuthResponse_dns_info_redirect_info__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "cnt",
+        .name = "count",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_dns_info_redirect_info_FieldNumber_Cnt,
+        .number = UnifyAuthResponse_NetworkSectResp_HostList_FieldNumber_Count,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_redirect_info__storage_, cnt),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_HostList__storage_, count),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "realHostArray",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_dns_info_redirect_info_real_host_info),
-        .number = ManualAuthResponse_dns_info_redirect_info_FieldNumber_RealHostArray,
+        .name = "listArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_HostList_Host),
+        .number = UnifyAuthResponse_NetworkSectResp_HostList_FieldNumber_ListArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_redirect_info__storage_, realHostArray),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_HostList__storage_, listArray),
         .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_dns_info_redirect_info class]
+        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_NetworkSectResp_HostList class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_dns_info_redirect_info__storage_)
+                                   storageSize:sizeof(UnifyAuthResponse_NetworkSectResp_HostList__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse_dns_info)];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -2353,18 +2132,20 @@ typedef struct ManualAuthResponse_dns_info_redirect_info__storage_ {
 
 @end
 
-#pragma mark - ManualAuthResponse_dns_info_redirect_info_real_host_info
+#pragma mark - UnifyAuthResponse_NetworkSectResp_HostList_Host
 
-@implementation ManualAuthResponse_dns_info_redirect_info_real_host_info
+@implementation UnifyAuthResponse_NetworkSectResp_HostList_Host
 
-@dynamic hasHost, host;
-@dynamic hasRedirect, redirect;
+@dynamic hasOrigin, origin;
+@dynamic hasSubstitute, substitute;
+@dynamic hasPriority, priority;
 
-typedef struct ManualAuthResponse_dns_info_redirect_info_real_host_info__storage_ {
+typedef struct UnifyAuthResponse_NetworkSectResp_HostList_Host__storage_ {
   uint32_t _has_storage_[1];
-  NSString *host;
-  NSString *redirect;
-} ManualAuthResponse_dns_info_redirect_info_real_host_info__storage_;
+  int32_t priority;
+  NSString *origin;
+  NSString *substitute;
+} UnifyAuthResponse_NetworkSectResp_HostList_Host__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -2373,33 +2154,42 @@ typedef struct ManualAuthResponse_dns_info_redirect_info_real_host_info__storage
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "host",
+        .name = "origin",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_dns_info_redirect_info_real_host_info_FieldNumber_Host,
+        .number = UnifyAuthResponse_NetworkSectResp_HostList_Host_FieldNumber_Origin,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_redirect_info_real_host_info__storage_, host),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_HostList_Host__storage_, origin),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "redirect",
+        .name = "substitute",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_dns_info_redirect_info_real_host_info_FieldNumber_Redirect,
+        .number = UnifyAuthResponse_NetworkSectResp_HostList_Host_FieldNumber_Substitute,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_redirect_info_real_host_info__storage_, redirect),
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_HostList_Host__storage_, substitute),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
+      {
+        .name = "priority",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_NetworkSectResp_HostList_Host_FieldNumber_Priority,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_HostList_Host__storage_, priority),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_dns_info_redirect_info_real_host_info class]
+        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_NetworkSectResp_HostList_Host class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_dns_info_redirect_info_real_host_info__storage_)
+                                   storageSize:sizeof(UnifyAuthResponse_NetworkSectResp_HostList_Host__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse_dns_info_redirect_info)];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_HostList)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -2408,22 +2198,26 @@ typedef struct ManualAuthResponse_dns_info_redirect_info_real_host_info__storage
 
 @end
 
-#pragma mark - ManualAuthResponse_dns_info_ip_info
+#pragma mark - UnifyAuthResponse_NetworkSectResp_NetworkControl
 
-@implementation ManualAuthResponse_dns_info_ip_info
+@implementation UnifyAuthResponse_NetworkSectResp_NetworkControl
 
-@dynamic hasLonglinkIpCnt, longlinkIpCnt;
-@dynamic hasShortlinkIpCnt, shortlinkIpCnt;
-@dynamic longlinkArray, longlinkArray_Count;
-@dynamic shortlinkArray, shortlinkArray_Count;
+@dynamic hasPortList, portList;
+@dynamic hasTimeoutList, timeoutList;
+@dynamic hasMinNoopInterval, minNoopInterval;
+@dynamic hasMaxNoopInterval, maxNoopInterval;
+@dynamic hasTypingInterval, typingInterval;
+@dynamic hasNoopIntervalTime, noopIntervalTime;
 
-typedef struct ManualAuthResponse_dns_info_ip_info__storage_ {
+typedef struct UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_ {
   uint32_t _has_storage_[1];
-  int32_t longlinkIpCnt;
-  int32_t shortlinkIpCnt;
-  NSMutableArray *longlinkArray;
-  NSMutableArray *shortlinkArray;
-} ManualAuthResponse_dns_info_ip_info__storage_;
+  int32_t minNoopInterval;
+  int32_t maxNoopInterval;
+  int32_t typingInterval;
+  int32_t noopIntervalTime;
+  NSString *portList;
+  NSString *timeoutList;
+} UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -2432,51 +2226,74 @@ typedef struct ManualAuthResponse_dns_info_ip_info__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "longlinkIpCnt",
+        .name = "portList",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_dns_info_ip_info_FieldNumber_LonglinkIpCnt,
+        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_PortList,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_ip_info__storage_, longlinkIpCnt),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, portList),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
       },
       {
-        .name = "shortlinkIpCnt",
+        .name = "timeoutList",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_dns_info_ip_info_FieldNumber_ShortlinkIpCnt,
+        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_TimeoutList,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_ip_info__storage_, shortlinkIpCnt),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, timeoutList),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "minNoopInterval",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_MinNoopInterval,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, minNoopInterval),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "longlinkArray",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_dns_info_ip_info_longlink_ip_info),
-        .number = ManualAuthResponse_dns_info_ip_info_FieldNumber_LonglinkArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_ip_info__storage_, longlinkArray),
-        .flags = GPBFieldRepeated,
-        .dataType = GPBDataTypeMessage,
+        .name = "maxNoopInterval",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_MaxNoopInterval,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, maxNoopInterval),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "shortlinkArray",
-        .dataTypeSpecific.className = GPBStringifySymbol(ManualAuthResponse_dns_info_ip_info_shortlink_ip_info),
-        .number = ManualAuthResponse_dns_info_ip_info_FieldNumber_ShortlinkArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_ip_info__storage_, shortlinkArray),
-        .flags = GPBFieldRepeated,
-        .dataType = GPBDataTypeMessage,
+        .name = "typingInterval",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_TypingInterval,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, typingInterval),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "noopIntervalTime",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_NoopIntervalTime,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, noopIntervalTime),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_dns_info_ip_info class]
+        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_NetworkSectResp_NetworkControl class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_dns_info_ip_info__storage_)
+                                   storageSize:sizeof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse_dns_info)];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\006\001\010\000\002\013\000\003\017\000\004\017\000\005\016\000\007\020\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -2485,18 +2302,116 @@ typedef struct ManualAuthResponse_dns_info_ip_info__storage_ {
 
 @end
 
-#pragma mark - ManualAuthResponse_dns_info_ip_info_longlink_ip_info
+#pragma mark - UnifyAuthResponse_NetworkSectResp_BuiltinIPList
 
-@implementation ManualAuthResponse_dns_info_ip_info_longlink_ip_info
+@implementation UnifyAuthResponse_NetworkSectResp_BuiltinIPList
 
-@dynamic hasIp, ip;
-@dynamic hasHost, host;
+@dynamic hasLongConnectIpcount, longConnectIpcount;
+@dynamic hasShortConnectIpcount, shortConnectIpcount;
+@dynamic longConnectIplistArray, longConnectIplistArray_Count;
+@dynamic shortConnectIplistArray, shortConnectIplistArray_Count;
+@dynamic hasSeq, seq;
 
-typedef struct ManualAuthResponse_dns_info_ip_info_longlink_ip_info__storage_ {
+typedef struct UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_ {
   uint32_t _has_storage_[1];
+  int32_t longConnectIpcount;
+  int32_t shortConnectIpcount;
+  int32_t seq;
+  NSMutableArray *longConnectIplistArray;
+  NSMutableArray *shortConnectIplistArray;
+} UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "longConnectIpcount",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_LongConnectIpcount,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_, longConnectIpcount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "shortConnectIpcount",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_ShortConnectIpcount,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_, shortConnectIpcount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "longConnectIplistArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP),
+        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_LongConnectIplistArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_, longConnectIplistArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "shortConnectIplistArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP),
+        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_ShortConnectIplistArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_, shortConnectIplistArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "seq",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_Seq,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_, seq),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_NetworkSectResp_BuiltinIPList class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\004\001\022\000\002\023\000\003\000longConnectIplist\000\004\000shortConnec"
+        "tIplist\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP
+
+@implementation UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP
+
+@dynamic hasType, type;
+@dynamic hasPort, port;
+@dynamic hasIp, ip;
+@dynamic hasDomain, domain;
+
+typedef struct UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t type;
+  int32_t port;
   NSString *ip;
-  NSString *host;
-} ManualAuthResponse_dns_info_ip_info_longlink_ip_info__storage_;
+  NSString *domain;
+} UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -2505,88 +2420,51 @@ typedef struct ManualAuthResponse_dns_info_ip_info_longlink_ip_info__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
+        .name = "type",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Type,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_, type),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "port",
+        .dataTypeSpecific.className = NULL,
+        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Port,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_, port),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
         .name = "ip",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_dns_info_ip_info_longlink_ip_info_FieldNumber_Ip,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_ip_info_longlink_ip_info__storage_, ip),
+        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Ip,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_, ip),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "host",
+        .name = "domain",
         .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_dns_info_ip_info_longlink_ip_info_FieldNumber_Host,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_ip_info_longlink_ip_info__storage_, host),
+        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Domain,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_, domain),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_dns_info_ip_info_longlink_ip_info class]
+        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_dns_info_ip_info_longlink_ip_info__storage_)
+                                   storageSize:sizeof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse_dns_info_ip_info)];
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - ManualAuthResponse_dns_info_ip_info_shortlink_ip_info
-
-@implementation ManualAuthResponse_dns_info_ip_info_shortlink_ip_info
-
-@dynamic hasIp, ip;
-@dynamic hasHost, host;
-
-typedef struct ManualAuthResponse_dns_info_ip_info_shortlink_ip_info__storage_ {
-  uint32_t _has_storage_[1];
-  NSString *ip;
-  NSString *host;
-} ManualAuthResponse_dns_info_ip_info_shortlink_ip_info__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "ip",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_dns_info_ip_info_shortlink_ip_info_FieldNumber_Ip,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_ip_info_shortlink_ip_info__storage_, ip),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "host",
-        .dataTypeSpecific.className = NULL,
-        .number = ManualAuthResponse_dns_info_ip_info_shortlink_ip_info_FieldNumber_Host,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ManualAuthResponse_dns_info_ip_info_shortlink_ip_info__storage_, host),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ManualAuthResponse_dns_info_ip_info_shortlink_ip_info class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ManualAuthResponse_dns_info_ip_info_shortlink_ip_info__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ManualAuthResponse_dns_info_ip_info)];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_BuiltinIPList)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }

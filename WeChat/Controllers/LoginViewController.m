@@ -47,51 +47,51 @@
 
 - (IBAction)ManualAuth
 {
-    ManualAuthAccountRequest_AesKey *aesKey = [ManualAuthAccountRequest_AesKey new];
     NSData *sessionKey = [DBManager sharedManager].sessionKey;
-    aesKey.len = (int32_t)[sessionKey length];
-    aesKey.key = sessionKey;
+    SKBuiltinBuffer_t *aesKey = [SKBuiltinBuffer_t new];
+    aesKey.iLen = (int32_t)[sessionKey length];
+    aesKey.buffer = sessionKey;
 
-    ManualAuthAccountRequest_Ecdh_EcdhKey *ecdhKey = [ManualAuthAccountRequest_Ecdh_EcdhKey new];
-    ecdhKey.len = (int32_t)[_pubKeyData length];
-    ecdhKey.key = _pubKeyData;
+    SKBuiltinBuffer_t *ecdhKey = [SKBuiltinBuffer_t new];
+    ecdhKey.iLen = (int32_t)[_pubKeyData length];
+    ecdhKey.buffer = _pubKeyData;
 
-    ManualAuthAccountRequest_Ecdh *ecdh = [ManualAuthAccountRequest_Ecdh new];
-    ecdh.nid = 713;
-    ecdh.ecdhKey = ecdhKey;
+    ECDHKey *cliPubEcdhkey = [ECDHKey new];
+    cliPubEcdhkey.nid = 713;
+    cliPubEcdhkey.key = ecdhKey;
 
-    ManualAuthAccountRequest *accountReqeust = [ManualAuthAccountRequest new];
-    accountReqeust.aes = aesKey;
-    accountReqeust.ecdh = ecdh;
-    accountReqeust.pwd = [FSOpenSSL md5FromString:_pwdTextField.text]; //@"a4e1442774cc2eda89feb8ae66a33c8b"
-    accountReqeust.userName = _userNameTextField.text;
+    ManualAuthRsaReqData *rsaReqData = [ManualAuthRsaReqData new];
+    rsaReqData.randomEncryKey = aesKey;
+    rsaReqData.cliPubEcdhkey = cliPubEcdhkey;
+    rsaReqData.pwd = [FSOpenSSL md5FromString:_pwdTextField.text]; //@"a4e1442774cc2eda89feb8ae66a33c8b"
+    rsaReqData.userName = _userNameTextField.text;
 
-    ManualAuthDeviceRequest_BaseAuthReqInfo *baseReqInfo = [ManualAuthDeviceRequest_BaseAuthReqInfo new];
+    BaseAuthReqInfo *baseReqInfo = [BaseAuthReqInfo new];
     //第一次登陆没有数据，后续登陆会取一个数据。
     //baseReqInfo.cliDbencryptInfo = [NSData data];
     baseReqInfo.authReqFlag = @"";
 
     WCDevice *iosDevice = [[DeviceManager sharedManager] getCurrentDevice];
     
-    ManualAuthDeviceRequest *deviceRequest = [ManualAuthDeviceRequest new];
-    deviceRequest.baseReqInfo = baseReqInfo;
-    deviceRequest.imei = iosDevice.imei;
-    deviceRequest.softType = iosDevice.softType;
-    deviceRequest.builtinIpseq = 0;
-    deviceRequest.clientSeqId = iosDevice.clientSeq;
-    deviceRequest.deviceName = iosDevice.deviceName;
-    deviceRequest.deviceType = iosDevice.deviceType; //"DEVICE_TYPE;
-    deviceRequest.language = iosDevice.language;
-    deviceRequest.timeZone = iosDevice.timeZone;
-    deviceRequest.channel = (int32_t) iosDevice.chanel;
-    deviceRequest.timeStamp = [[NSDate date] timeIntervalSince1970];
-    deviceRequest.deviceBrand = iosDevice.deviceBrand;
-    deviceRequest.realCountry = iosDevice.realCountry;
-    deviceRequest.bundleId = iosDevice.bundleID;
-    deviceRequest.adSource = iosDevice.adSource; //iMac 不需要
-    deviceRequest.iphoneVer = iosDevice.iphoneVer;
-    deviceRequest.inputType = 2;
-    deviceRequest.ostype = iosDevice.osType;
+    ManualAuthAesReqData *aesReqData = [ManualAuthAesReqData new];
+    aesReqData.baseReqInfo = baseReqInfo;
+    aesReqData.imei = iosDevice.imei;
+    aesReqData.softType = iosDevice.softType;
+    aesReqData.builtinIpseq = 0;
+    aesReqData.clientSeqId = iosDevice.clientSeq;
+    aesReqData.deviceName = iosDevice.deviceName;
+    aesReqData.deviceType = iosDevice.deviceType; //"DEVICE_TYPE;
+    aesReqData.language = iosDevice.language;
+    aesReqData.timeZone = iosDevice.timeZone;
+    aesReqData.channel = (int32_t) iosDevice.chanel;
+    aesReqData.timeStamp = [[NSDate date] timeIntervalSince1970];
+    aesReqData.deviceBrand = iosDevice.deviceBrand;
+    aesReqData.realCountry = iosDevice.realCountry;
+    aesReqData.bundleId = iosDevice.bundleID;
+    aesReqData.adSource = iosDevice.adSource; //iMac 不需要
+    aesReqData.iphoneVer = iosDevice.iphoneVer;
+    aesReqData.inputType = 2;
+    aesReqData.ostype = iosDevice.osType;
 
     //iMac 暂时不需要
 
@@ -99,24 +99,25 @@
     SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
     clientCheckData.iLen = (int) [data length];
     clientCheckData.buffer = data;
-    deviceRequest.clientCheckData = clientCheckData;
+    
+    aesReqData.clientCheckData = clientCheckData;
 
     ManualAuthRequest *authRequest = [ManualAuthRequest new];
-    authRequest.aesReqData = deviceRequest;
-    authRequest.rsaReqData = accountReqeust;
+    authRequest.aesReqData = aesReqData;
+    authRequest.rsaReqData = rsaReqData;
 
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cgi = 701;
     cgiWrap.cmdId = 253;
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/manualauth";
     cgiWrap.request = authRequest;
-    cgiWrap.responseClass = [ManualAuthResponse class];
+    cgiWrap.responseClass = [UnifyAuthResponse class];
     cgiWrap.needSetBaseRequest = NO;
 
     [[WeChatClient sharedClient]
         manualAuth:cgiWrap
-           success:^(ManualAuthResponse *_Nullable response) {
-               LogVerbose(@"登陆响应 Code: %d, msg: %@", response.result.code, response.result.errMsg.msg);
+           success:^(UnifyAuthResponse *_Nullable response) {
+               LogVerbose(@"登陆响应 Code: %d, msg: %@", response.baseResponse.ret, response.baseResponse.errMsg);
                [self onLoginResponse:response];
            }
            failure:^(NSError *error){
@@ -124,27 +125,27 @@
            }];
 }
 
-- (void)onLoginResponse:(ManualAuthResponse *)resp
+- (void)onLoginResponse:(UnifyAuthResponse *)resp
 {
-    switch (resp.result.code)
+    switch (resp.baseResponse.ret)
     {
         case -301:
         { //需要重定向
-            if (resp.dns.ip.longlinkIpCnt > 0)
+            if (resp.networkSectResp.builtinIplist.longConnectIpcount > 0)
             {
-                NSString *longlinkIp = [[resp.dns.ip.longlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
+                NSString *longlinkIp = [[resp.networkSectResp.builtinIplist.longConnectIplistArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
                 //[[WeChatClient sharedClient] restartUsingIpAddress:longlinkIp];
             }
         }
         break;
         case 0:
         {
-            int64_t uin = resp.authParam.uin;
+            int64_t uin = resp.authSectResp.uin;
             [WeChatClient sharedClient].uin = uin;
 
-            int32_t nid = resp.authParam.ecdh.nid;
-            int32_t ecdhKeyLen = resp.authParam.ecdh.ecdhKey.len;
-            NSData *ecdhKey = resp.authParam.ecdh.ecdhKey.key;
+            int32_t nid = resp.authSectResp.svrPubEcdhkey.nid;
+            int32_t ecdhKeyLen = resp.authSectResp.svrPubEcdhkey.key.iLen;
+            NSData *ecdhKey = resp.authSectResp.svrPubEcdhkey.key.buffer;
 
             unsigned char szSharedKey[2048];
             int szSharedKeyLen = 0;
@@ -160,23 +161,23 @@
             if (ret)
             {
                 NSData *checkEcdhKey = [NSData dataWithBytes:szSharedKey length:szSharedKeyLen];
-                NSData *sessionKey = [FSOpenSSL aesDecryptData:resp.authParam.session.key key:checkEcdhKey];
+                NSData *sessionKey = [FSOpenSSL aesDecryptData:resp.authSectResp.sessionKey.buffer key:checkEcdhKey];
                 [[DBManager sharedManager] setSessionKey:sessionKey];
                 [WeChatClient sharedClient].checkEcdhKey = checkEcdhKey;
 
                 LogVerbose(@"登陆成功: SessionKey: %@, uin: %lld, wxid: %@, NickName: %@, alias: %@",
                            sessionKey,
                            uin,
-                           resp.accountInfo.wxId,
-                           resp.accountInfo.nickName,
-                           resp.accountInfo.alias);
+                           resp.acctSectResp.userName,
+                           resp.acctSectResp.nickName,
+                           resp.acctSectResp.alias);
 
                 //[WeChatClient sharedClient].shortLinkUrl = [[resp.dns.ip.shortlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
 
                 [WXUserDefault saveUIN:uin];
-                [WXUserDefault saveWXID:resp.accountInfo.wxId];
-                [WXUserDefault saveNikeName:resp.accountInfo.nickName];
-                [WXUserDefault saveAlias:resp.accountInfo.alias];
+                [WXUserDefault saveWXID:resp.acctSectResp.userName];
+                [WXUserDefault saveNikeName:resp.acctSectResp.nickName];
+                [WXUserDefault saveAlias:resp.acctSectResp.alias];
 
                 UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
                 UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"NavFunctionsViewController"];

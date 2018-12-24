@@ -18,7 +18,6 @@
 		7121C36221C350B700A3E900 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C36121C350B700A3E900 /* DBManager.m */; };
 		7121C36521C3610000A3E900 /* SendMsgController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C36421C3610000A3E900 /* SendMsgController.m */; };
 		712C6E60214A145600603022 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E5F214A145600603022 /* AppDelegate.m */; };
-		712C6E63214A145600603022 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E62214A145600603022 /* ViewController.m */; };
 		712C6E66214A145600603022 /* WeChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712C6E64214A145600603022 /* WeChat.storyboard */; };
 		712C6E68214A145700603022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C6E67214A145700603022 /* Assets.xcassets */; };
 		712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712C6E69214A145700603022 /* LaunchScreen.storyboard */; };
@@ -116,8 +115,6 @@
 		712C6E5B214A145600603022 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712C6E5E214A145600603022 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		712C6E5F214A145600603022 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		712C6E61214A145600603022 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		712C6E62214A145600603022 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		712C6E65214A145600603022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WeChat.storyboard; sourceTree = "<group>"; };
 		712C6E67214A145700603022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		712C6E6A214A145700603022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -388,8 +385,6 @@
 				71C9CA5321C4DC1D006C4DDD /* SnsTimeLineViewController.m */,
 				716197F821C7A36200A76F39 /* TestViewController.h */,
 				71076B2521CCF10500570FB1 /* TestViewController.m */,
-				712C6E61214A145600603022 /* ViewController.h */,
-				712C6E62214A145600603022 /* ViewController.m */,
 				712C6E64214A145600603022 /* WeChat.storyboard */,
 			);
 			path = Controllers;
@@ -923,7 +918,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				712C6E93214A1E8900603022 /* WeChatClient.m in Sources */,
-				712C6E63214A145600603022 /* ViewController.m in Sources */,
 				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
 				712F95F221D0981B00CFE3A0 /* WCDevice.m in Sources */,
 				712C7152214BAD8900603022 /* ShortHeader.m in Sources */,

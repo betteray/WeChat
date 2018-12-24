@@ -80,31 +80,31 @@
     return YES;
 }
 
-- (BOOL)saveProfile:(ManualAuthResponse_AccountInfo *)accountInfo
-{
-    [_databaseQueue inDatabase:^(FMDatabase * _Nonnull db) {
-        FMResultSet *resultSet = [db executeQuery:@"SELECT wxid FROM account_info WHERE wxid = ?", accountInfo.wxId];
-        
-        BOOL has = NO;
-        if ([resultSet next])
-        {
-            has = YES;
-        }
-        
-        if (!has)
-        {
-            [db executeUpdate:@"INSERT INTO account_info (wxid, nick_name, alias) VALUES (?, ?, ?, ?)", accountInfo.wxId, accountInfo.nickName, accountInfo.alias];
-        }
-        else
-        {
-            [db executeUpdate:@"UPDATE account_info SET nick_name = ?, alias = ? where user_name = ?", accountInfo.nickName, accountInfo.alias, accountInfo.wxId];
-        }
-        
-        CHECKFMDBERROR;
-    }];
+//- (BOOL)saveProfile:(ManualAuthResponse_AccountInfo *)accountInfo
+//{
+//    [_databaseQueue inDatabase:^(FMDatabase * _Nonnull db) {
+//        FMResultSet *resultSet = [db executeQuery:@"SELECT wxid FROM account_info WHERE wxid = ?", accountInfo.wxId];
+//
+//        BOOL has = NO;
+//        if ([resultSet next])
+//        {
+//            has = YES;
+//        }
+//
+//        if (!has)
+//        {
+//            [db executeUpdate:@"INSERT INTO account_info (wxid, nick_name, alias) VALUES (?, ?, ?, ?)", accountInfo.wxId, accountInfo.nickName, accountInfo.alias];
+//        }
+//        else
+//        {
+//            [db executeUpdate:@"UPDATE account_info SET nick_name = ?, alias = ? where user_name = ?", accountInfo.nickName, accountInfo.alias, accountInfo.wxId];
+//        }
+//
+//        CHECKFMDBERROR;
+//    }];
     
-    return YES;
-}
+//    return YES;
+//}
 
 // Client Check Data
 - (BOOL)saveClientCheckData:(NSData *)clientCheckData
