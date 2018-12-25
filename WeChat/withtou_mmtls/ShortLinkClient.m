@@ -13,10 +13,11 @@
 
 + (NSData *)post:(NSData *)data toCgiPath:(NSString *)cgiPath
 {
-    NSString *host = [NSString stringWithFormat:@"http://%@%@", @"58.247.204.139", cgiPath];
+    NSString *host = [NSString stringWithFormat:@"http://%@%@", @"163.177.81.139", cgiPath];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:host]];
     [request addRequestHeader:@"Accept" value:@"*/*"];
+//    [request addRequestHeader:@"Accept-Encoding" value:@"identity"];
     [request addRequestHeader:@"Cache-Control" value:@"no-cache"];
     [request addRequestHeader:@"Connection" value:@"close"];
     [request addRequestHeader:@"Content-Type" value:@"application/octet-stream"];

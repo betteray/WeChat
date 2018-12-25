@@ -157,7 +157,7 @@ typedef struct SKBuiltinString_t__storage_ {
 
 typedef struct BaseRequest__storage_ {
   uint32_t _has_storage_[1];
-  uint32_t uin;
+  int32_t uin;
   int32_t clientVersion;
   int32_t scene;
   NSData *sessionKey;
@@ -187,7 +187,7 @@ typedef struct BaseRequest__storage_ {
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(BaseRequest__storage_, uin),
         .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeUInt32,
+        .dataType = GPBDataTypeInt32,
       },
       {
         .name = "deviceId",
@@ -1578,6 +1578,7 @@ typedef struct UnifyAuthResponse__storage_ {
 
 typedef struct UnifyAuthResponse_AuthSectResp__storage_ {
   uint32_t _has_storage_[1];
+  int32_t uin;
   int32_t wtloginRspBuffFlag;
   int32_t authResultFlag;
   int32_t serverTime;
@@ -1587,7 +1588,6 @@ typedef struct UnifyAuthResponse_AuthSectResp__storage_ {
   UnifyAuthResponse_AuthSectResp_ShowStyleKey *showStyle;
   NSData *smsTicket;
   NSString *fsurl;
-  int64_t uin;
 } UnifyAuthResponse_AuthSectResp__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1603,7 +1603,7 @@ typedef struct UnifyAuthResponse_AuthSectResp__storage_ {
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(UnifyAuthResponse_AuthSectResp__storage_, uin),
         .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeInt64,
+        .dataType = GPBDataTypeInt32,
       },
       {
         .name = "svrPubEcdhkey",

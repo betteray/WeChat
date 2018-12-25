@@ -259,9 +259,16 @@
 
     [self setBaseResquestIfNeed:cgiWrap];
 
+    Task *task = [Task new];
+    task.sucBlock = successBlock;
+    task.failBlock = failureBlock;
+    task.cgiWrap = cgiWrap;
+    [_tasks addObject:task];
+    
     LogInfo(@"Start Request: %@", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
+//    serilizedData = [NSData dataWithHexString:@"0A430A103B2A7C654162245C722B2F47724A767D10E7A3EBF5FEFFFFFFFF011A104130393762343938666364353230370020B28C98B0022A0A616E64726F69642D32373000120018002000280030004001"];
     NSData *sendData = [short_pack pack:cgiWrap.cgi
                           serilizedData:serilizedData
                                    type:5
@@ -275,12 +282,6 @@
 #endif
     
     [self UnPack:packData];
-
-    Task *task = [Task new];
-    task.sucBlock = successBlock;
-    task.failBlock = failureBlock;
-    task.cgiWrap = cgiWrap;
-    [_tasks addObject:task];
 }
 
 - (void)setBaseResquestIfNeed:(CgiWrap *)cgiWrap

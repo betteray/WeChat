@@ -171,7 +171,7 @@
         break;
         case 0:
         {
-            NSInteger uin = resp.authSectResp.uin;
+            int32_t uin = resp.authSectResp.uin;
             [WeChatClient sharedClient].uin = uin;
 
             int32_t nid = resp.authSectResp.svrPubEcdhkey.nid;

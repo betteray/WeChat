@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2FFBBBF5A4F4493C2BD0EBFB /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE308AEA822A0536476B28E2 /* libPods-WeChat.a */; };
+		3170D26FEE89CCA046B85687 /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WeChat.a */; };
 		71008F3321B6750700DE8DF8 /* DNSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3221B6750700DE8DF8 /* DNSManager.m */; };
 		71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3521B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m */; };
 		71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */; };
@@ -316,6 +317,7 @@
 				712C70E8214AB2BC00603022 /* libc++.1.tbd in Frameworks */,
 				712C7144214B5A4B00603022 /* libcrypto.a in Frameworks */,
 				2FFBBBF5A4F4493C2BD0EBFB /* libPods-WeChat.a in Frameworks */,
+				3170D26FEE89CCA046B85687 /* libPods-WeChat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
