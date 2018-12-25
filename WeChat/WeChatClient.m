@@ -366,7 +366,10 @@
 {
     ShortPackage *package = [short_pack unpack:data];
     NSData *sessionKey = [DBManager sharedManager].sessionKey;
-    NSData *protobufData = [package.body aesDecryptWithKey:sessionKey];
+    NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress]
+                                                     : [package.body aesDecryptWithKey:sessionKey];
+    
+    
     Task *task = [self getTaskWithTag:package.header.cgi];
     id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
     if (task.sucBlock)
