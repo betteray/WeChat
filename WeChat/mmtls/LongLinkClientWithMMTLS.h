@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol LongLinkClientDelegate <NSObject>
+@protocol LongLinkClientWithMMTLSDelegate <NSObject>
 
 - (void)onRecivceLongLinkPlainData:(NSData *)plainData;
 
@@ -16,12 +16,9 @@
 
 @interface LongLinkClientWithMMTLS : NSObject
 
-@property (nonatomic, readonly, strong) NSData *shortLinkPSKData;
-@property (nonatomic, readonly, strong) NSData *resumptionSecret;
-
-@property (nonatomic, weak) id<LongLinkClientDelegate> delegate;
+@property (nonatomic, weak) id<LongLinkClientWithMMTLSDelegate> delegate;
 
 - (void)start;
-- (void)mmtlsEnCryptAndSend:(NSData *)sendData;
+- (void)sendData:(NSData *)sendData;
 
 @end

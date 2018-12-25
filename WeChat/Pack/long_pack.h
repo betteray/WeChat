@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@class LongPackage;
+#import "LongPackage.h"
+#import "LongHeader.h"
 
 @interface long_pack : NSObject
 
 + (NSData *)pack:(int)seq cmdId:(int)cmdId shortData:(NSData *)shortData;
 + (LongPackage *)unpack:(NSData *)recvdRawData;
++ (LongHeader *)unpackLongHeder:(NSData *)longHeaderData;
 
 @end

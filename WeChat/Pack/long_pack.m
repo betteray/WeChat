@@ -7,8 +7,6 @@
 //
 
 #import "long_pack.h"
-#import "LongPackage.h"
-#import "LongHeader.h"
 
 #define CMDID_NOOP_REQ 6
 #define HEARTBEAT_SEQ 0xFFFFFFFF
@@ -42,6 +40,24 @@
     
     [longlink_header appendData:shortData];
     return [longlink_header copy];
+}
+
++ (LongHeader *)unpackLongHeder:(NSData *)longHeaderData
+{
+    if ([longHeaderData length] < 16)
+    {
+        LogError(@"长连接包头不够16字节。逗我玩儿呢？");
+    }
+    
+    LongHeader *header = [[LongHeader alloc] init];
+    
+    header.bodyLength = [longHeaderData toInt32ofRange:NSMakeRange(0, 4) SwapBigToHost:YES];
+    header.headLength = [longHeaderData toInt16ofRange:NSMakeRange(4, 2) SwapBigToHost:NO] >> 8;
+    header.clientVersion = [longHeaderData toInt16ofRange:NSMakeRange(6, 2) SwapBigToHost:NO] >> 8;
+    header.cmdId = [longHeaderData toInt32ofRange:NSMakeRange(8, 4) SwapBigToHost:YES];
+    header.seq = [longHeaderData toInt32ofRange:NSMakeRange(12, 4) SwapBigToHost:YES];
+    
+    return header;
 }
 
 + (LongPackage *)unpack:(NSData *)recvdRawData

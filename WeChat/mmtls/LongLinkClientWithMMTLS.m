@@ -76,11 +76,11 @@
 {
     _clientHello = [ClientHello new];
     NSData *clientHelloData = [_clientHello CreateClientHello];
-    [self sendData:clientHelloData];
+    [self _sendData:clientHelloData];
 }
 
 #pragma mark - Write Read Data
-- (void)sendData:(NSData *)sendData
+- (void)_sendData:(NSData *)sendData
 {
     dispatch_async(_writeSerialQueue, ^{
         long sent = [self.client sendBytes:[sendData bytes] count:[sendData length]];
@@ -190,7 +190,7 @@
     
     {
         NSData *data = [plainText2 subdataWithRange:NSMakeRange(9, 100)];
-        _shortLinkPSKData = data;
+        [DBManager sharedManager].shortLinkPSKData = data;
 
         NSData *hashDataTmp = hashData;
         hashDataTmp = [hashDataTmp addDataAtTail:plainText1];
@@ -201,7 +201,7 @@
         [info222 appendData:hashResult];
 
         NSData *ResumptionSecret = [WC_HKDF HKDF_Expand_Prk2:EphemeralSecret Info:info222]; //expanded secret
-        _resumptionSecret = ResumptionSecret;
+        [DBManager sharedManager].resumptionSecret = ResumptionSecret;
     }
 
     // Part3 decrypt
@@ -265,12 +265,12 @@
     heartbeatCipherData =  [heartbeatCipherData addDataAtHead:[NSData dataWithHexString:@"17f1030020"]];
     // 3. 心跳包加一块.
     NSData *sendData = [clientFinishedCipherData addDataAtTail:heartbeatCipherData];
-    [self sendData:sendData];
+    [self _sendData:sendData];
 }
 
 #pragma mark - MMTLS
 
-- (void)mmtlsEnCryptAndSend:(NSData *)sendData
+- (void)sendData:(NSData *)sendData
 {
     NSData *writeIV = [WC_Hex IV:_longlinkKeyPair.writeIV XORSeq:_writeSeq++];
     NSData *aadd = [NSData dataWithHexString:@"00000000000000"];
@@ -282,7 +282,7 @@
     NSData *sendMsgData = [[NSData dataWithHexString:@"17F103"] addDataAtTail:[NSData packInt16:(int16_t)([sendData length] + 0x10) flip:YES]];
     sendMsgData = [sendMsgData addDataAtTail:mmtlsData];
 
-    [self sendData:sendMsgData];
+    [self _sendData:sendMsgData];
 }
 
 - (NSData *)mmtlsDeCryptData:(NSData *)encrypedData

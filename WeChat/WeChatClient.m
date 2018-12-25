@@ -27,6 +27,7 @@
 #import "ShortLinkClientWithMMTLS.h"
 
 #import "LongLinkClientWithMMTLS.h"
+#import "LongLinkClient.h"
 
 #import "header.h"
 #import "short_pack.h"
@@ -42,9 +43,14 @@
 #define HEARTBEAT_SEQ 0xFFFFFFFF
 #define IDENTIFY_SEQ 0xFFFFFFFE
 
-@interface WeChatClient () <LongLinkClientDelegate>
+@interface WeChatClient () <LongLinkClientWithMMTLSDelegate, LongLinkClientDelegate>
 
-@property (nonatomic, strong) LongLinkClientWithMMTLS *mmtlsClient;
+#if USE_MMTLS
+@property (nonatomic, strong) LongLinkClientWithMMTLS *client;
+#else
+@property (nonatomic, strong) LongLinkClient *client;
+#endif
+
 
 @property (nonatomic, assign) int seq; //封包编号。
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
@@ -79,10 +85,13 @@
         _tasks = [NSMutableArray array];
 
         [[DBManager sharedManager] setSessionKey:[FSOpenSSL random128BitAESKey]]; // iPad
-
-        _mmtlsClient = [LongLinkClientWithMMTLS new];
-        _mmtlsClient.delegate = self;
-
+#if USE_MMTLS
+        _client = [LongLinkClientWithMMTLS new];
+#else
+        _client = [LongLinkClient new];
+#endif
+        _client.delegate = self;
+        
         _sync_key_cur = [NSData data];
         _sync_key_max = [NSData data];
 
@@ -100,13 +109,13 @@
 
 - (void)start
 {
-    [_mmtlsClient start];
+    [_client start];
 }
 
 - (void)heartBeat
 {
     NSData *heart = [long_pack pack:-1 cmdId:CMDID_NOOP_REQ shortData:nil];
-    [_mmtlsClient mmtlsEnCryptAndSend:heart];
+    [_client sendData:heart];
 }
 
 #pragma mark - Clinet Misc
@@ -239,7 +248,7 @@
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
 
-    [_mmtlsClient mmtlsEnCryptAndSend:sendData];
+    [_client sendData:sendData];
 }
 
 - (void)postRequest:(CgiWrap *)cgiWrap
@@ -264,8 +273,8 @@
                                        host:@"szextshort.weixin.qq.com"];
 
     ShortLinkWithMMTLS *slm =
-    [[ShortLinkWithMMTLS alloc] initWithDecryptedPart2:_mmtlsClient.shortLinkPSKData
-                                      resumptionSecret:_mmtlsClient.resumptionSecret
+    [[ShortLinkWithMMTLS alloc] initWithDecryptedPart2:[DBManager sharedManager].shortLinkPSKData
+                                      resumptionSecret:[DBManager sharedManager].resumptionSecret
                                               httpData:httpPayloadData];
     
     NSData *mmtlsData = [slm getSendData];
@@ -347,7 +356,8 @@
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
 
-    [_mmtlsClient mmtlsEnCryptAndSend:sendData];
+//    [_mmtlsClient mmtlsEnCryptAndSend:sendData];
+    [_client sendData:sendData];
 }
 
 #pragma mark - Pack

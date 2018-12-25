@@ -27,5 +27,6 @@
     #define CLIENT_VERSION 637929010    //android 666 = 637929010
 #endif
 
+#define USE_MMTLS 0
 
 #endif /* Header_h */

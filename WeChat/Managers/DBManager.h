@@ -33,6 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSData *sessionKey;
 @property (nonatomic, strong) NSData *cookie;
 
+@property (nonatomic, strong) NSData *shortLinkPSKData;
+@property (nonatomic, strong) NSData *resumptionSecret;
+
 @end
 
 NS_ASSUME_NONNULL_END
