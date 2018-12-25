@@ -1,6 +1,7 @@
-syntax = "proto2";
+//clang-format -i -style=file ./WeChat/proto/mm.proto
+//protoc --proto_path /Users/ray/Desktop/WeChat/WeChat/proto/ --objc_out=/Users/ray/Desktop/WeChat/WeChat/proto/ /Users/ray/Desktop/WeChat/WeChat/proto/mm.proto
 
-//=============================== iPad/iPhone ===========================================
+syntax = "proto2";
 
 message SKBuiltinBuffer_t
 {
