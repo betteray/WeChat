@@ -34,9 +34,7 @@
         case 5:
         {
             NSData *head = [header make_header:cgi encryptMethod:AES bodyData:serilizedData compressedBodyData:serilizedData needCookie:YES cookie:cookie uin:uin];
-            LogDebug(@"AES Before: \n\n%@\n", serilizedData.hexDump);
             NSData *body = [serilizedData AES];
-            LogDebug(@"AES After: \n\n%@\n", body.hexDump);
             NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
             [longlinkBody appendData:body];
             return [longlinkBody copy];

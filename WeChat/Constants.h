@@ -9,7 +9,7 @@
 #ifndef Constants
 #define Constants
 
-#define PROTOCOL_FOR_IOS 0
+#define PROTOCOL_FOR_IOS 1
 #define PROTOCOL_FOR_ANDROID !PROTOCOL_FOR_IOS
 
 #define LOGIN_RSA_VER_172 174
