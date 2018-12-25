@@ -14,7 +14,7 @@
 
 @end
 
-@interface LongLinkClient : NSObject
+@interface LongLinkClientWithMMTLS : NSObject
 
 @property (nonatomic, readonly, strong) NSData *shortLinkPSKData;
 @property (nonatomic, readonly, strong) NSData *resumptionSecret;

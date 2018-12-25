@@ -6,18 +6,18 @@
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "ShortLinkClient.h"
+#import "ShortLinkClientWithMMTLS.h"
 #import "DNSManager.h"
 #import <ASIHTTPRequest.h>
 
-@interface ShortLinkClient()
+@interface ShortLinkClientWithMMTLS()
 
 @property(nonatomic, strong) NSData *decryptedPart2;
 @property(nonatomic, strong) NSData *resumptionSecret;
 
 @end
 
-@implementation ShortLinkClient
+@implementation ShortLinkClientWithMMTLS
 
 - (instancetype)initWithDecryptedPart2:(NSData *)decryptedPart2 resumptionSecret:(NSData *)resumptionSecret
 {

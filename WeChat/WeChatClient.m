@@ -24,9 +24,9 @@
 
 #import "MMTLSShortLinkResponse.h"
 #import "ShortLinkWithMMTLS.h"
-#import "ShortLinkClient.h"
+#import "ShortLinkClientWithMMTLS.h"
 
-#import "LongLinkClient.h"
+#import "LongLinkClientWithMMTLS.h"
 
 #import "header.h"
 #import "short_pack.h"
@@ -44,7 +44,7 @@
 
 @interface WeChatClient () <LongLinkClientDelegate>
 
-@property (nonatomic, strong) LongLinkClient *mmtlsClient;
+@property (nonatomic, strong) LongLinkClientWithMMTLS *mmtlsClient;
 
 @property (nonatomic, assign) int seq; //封包编号。
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
@@ -80,7 +80,7 @@
 
         [[DBManager sharedManager] setSessionKey:[FSOpenSSL random128BitAESKey]]; // iPad
 
-        _mmtlsClient = [LongLinkClient new];
+        _mmtlsClient = [LongLinkClientWithMMTLS new];
         _mmtlsClient.delegate = self;
 
         _sync_key_cur = [NSData data];
@@ -259,7 +259,7 @@
                                  cookie:[DBManager sharedManager].cookie];
 
     NSData *httpPayloadData =
-    [ShortLinkClient getPayloadDataWithData:sendData
+    [ShortLinkClientWithMMTLS getPayloadDataWithData:sendData
                                     cgiPath:cgiWrap.cgiPath
                                        host:@"szextshort.weixin.qq.com"];
 
@@ -269,7 +269,7 @@
                                               httpData:httpPayloadData];
     
     NSData *mmtlsData = [slm getSendData];
-    NSData *httpResponseBody = [ShortLinkClient mmPost:mmtlsData withHost:@"szextshort.weixin.qq.com"];
+    NSData *httpResponseBody = [ShortLinkClientWithMMTLS mmPost:mmtlsData withHost:@"szextshort.weixin.qq.com"];
     
     LogInfo(@"httpPayloadData Data HexDump: \n\n%@", httpPayloadData.hexDump);
     LogInfo(@"Send Data HexDump: \n\n%@", mmtlsData.hexDump);

@@ -6,7 +6,7 @@
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "LongLinkClient.h"
+#import "LongLinkClientWithMMTLS.h"
 #import <FastSocket.h>
 
 #import "ClientHello.h"
@@ -20,7 +20,7 @@
 
 #define CMDID_NOOP_REQ 6
 
-@interface LongLinkClient ()
+@interface LongLinkClientWithMMTLS ()
 
 // longlink
 @property (nonatomic, strong) FastSocket *client;
@@ -38,7 +38,7 @@
 
 @end
 
-@implementation LongLinkClient
+@implementation LongLinkClientWithMMTLS
 
 - (instancetype)init
 {

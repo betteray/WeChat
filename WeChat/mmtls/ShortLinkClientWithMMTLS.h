@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ShortLinkClient : NSObject
+@interface ShortLinkClientWithMMTLS : NSObject
 
 - (instancetype)initWithDecryptedPart2:(NSData *)decryptedPart2 resumptionSecret:(NSData *)resumptionSecret;
 
