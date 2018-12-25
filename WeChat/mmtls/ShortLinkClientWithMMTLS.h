@@ -19,4 +19,6 @@
                            cgiPath:(NSString *)cgiPath
                               host:(NSString *)host;
 
++ (NSData *)post:(NSData *)sendData toCgiPath:(NSString *)cgiPath;
+
 @end

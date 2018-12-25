@@ -25,6 +25,7 @@
 #import "MMTLSShortLinkResponse.h"
 #import "ShortLinkWithMMTLS.h"
 #import "ShortLinkClientWithMMTLS.h"
+#import "ShortLinkClient.h"
 
 #import "LongLinkClientWithMMTLS.h"
 #import "LongLinkClient.h"
@@ -266,29 +267,13 @@
                                    type:5
                                     uin:_uin
                                  cookie:[DBManager sharedManager].cookie];
-
-    NSData *httpPayloadData =
-    [ShortLinkClientWithMMTLS getPayloadDataWithData:sendData
-                                    cgiPath:cgiWrap.cgiPath
-                                       host:@"szextshort.weixin.qq.com"];
-
-    ShortLinkWithMMTLS *slm =
-    [[ShortLinkWithMMTLS alloc] initWithDecryptedPart2:[DBManager sharedManager].shortLinkPSKData
-                                      resumptionSecret:[DBManager sharedManager].resumptionSecret
-                                              httpData:httpPayloadData];
     
-    NSData *mmtlsData = [slm getSendData];
-    NSData *httpResponseBody = [ShortLinkClientWithMMTLS mmPost:mmtlsData withHost:@"szextshort.weixin.qq.com"];
+#if USE_MMTLS
+    NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
+#else
+    NSData *packData = [ShortLinkClient post:sendData toCgiPath:cgiWrap.cgiPath];
+#endif
     
-    LogInfo(@"httpPayloadData Data HexDump: \n\n%@", httpPayloadData.hexDump);
-    LogInfo(@"Send Data HexDump: \n\n%@", mmtlsData.hexDump);
-    LogInfo(@"Rcv Data HexDump: \n\n%@", httpResponseBody.hexDump);
-
-    MMTLSShortLinkResponse *response = [[MMTLSShortLinkResponse alloc] initWithData:httpResponseBody];
-    NSData *packData = [slm receiveData:response];
-    
-    LogInfo(@"ShortLink PackedData HexDump: \n\n%@", packData.hexDump);
-
     [self UnPack:packData];
 
     Task *task = [Task new];

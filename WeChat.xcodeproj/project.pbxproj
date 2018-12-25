@@ -43,6 +43,7 @@
 		712F95F221D0981B00CFE3A0 /* WCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F95F121D0981B00CFE3A0 /* WCDevice.m */; };
 		712F95F521D0B91F00CFE3A0 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F95F421D0B91F00CFE3A0 /* DeviceManager.m */; };
 		712F95FA21D1E71600CFE3A0 /* LongLinkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F95F921D1E71600CFE3A0 /* LongLinkClient.m */; };
+		712F960021D20A7800CFE3A0 /* ShortLinkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F95FF21D20A7800CFE3A0 /* ShortLinkClient.m */; };
 		7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5102196B720005064C4 /* NSString+HexDump.m */; };
 		7154D5162196B721005064C4 /* HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5132196B720005064C4 /* HexDump.m */; };
 		7154D5172196B721005064C4 /* NSData+HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5142196B721005064C4 /* NSData+HexDump.m */; };
@@ -244,6 +245,8 @@
 		712F95F621D0B99900CFE3A0 /* WCDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCDevice.h; sourceTree = "<group>"; };
 		712F95F921D1E71600CFE3A0 /* LongLinkClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LongLinkClient.m; sourceTree = "<group>"; };
 		712F95FB21D2033B00CFE3A0 /* LongLinkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongLinkClient.h; sourceTree = "<group>"; };
+		712F95FE21D20A7800CFE3A0 /* ShortLinkClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortLinkClient.h; sourceTree = "<group>"; };
+		712F95FF21D20A7800CFE3A0 /* ShortLinkClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortLinkClient.m; sourceTree = "<group>"; };
 		7154D50D219686BD005064C4 /* WC_HKDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WC_HKDF.h; sourceTree = "<group>"; };
 		7154D50F2196B720005064C4 /* HexDump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexDump.h; sourceTree = "<group>"; };
 		7154D5102196B720005064C4 /* NSString+HexDump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HexDump.m"; sourceTree = "<group>"; };
@@ -627,6 +630,8 @@
 			children = (
 				712F95FB21D2033B00CFE3A0 /* LongLinkClient.h */,
 				712F95F921D1E71600CFE3A0 /* LongLinkClient.m */,
+				712F95FE21D20A7800CFE3A0 /* ShortLinkClient.h */,
+				712F95FF21D20A7800CFE3A0 /* ShortLinkClient.m */,
 			);
 			path = withtou_mmtls;
 			sourceTree = "<group>";
@@ -933,6 +938,7 @@
 				712C6E93214A1E8900603022 /* WeChatClient.m in Sources */,
 				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
 				712F95F221D0981B00CFE3A0 /* WCDevice.m in Sources */,
+				712F960021D20A7800CFE3A0 /* ShortLinkClient.m in Sources */,
 				712C7152214BAD8900603022 /* ShortHeader.m in Sources */,
 				7155BA5821902CDD0002CE1D /* WC_SHA256.m in Sources */,
 				7161984F21CB712900A76F39 /* long_pack.m in Sources */,

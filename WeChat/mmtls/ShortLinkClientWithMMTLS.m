@@ -1,3 +1,5 @@
+
+
 //
 //  ShortLink.m
 //  WXDemo
@@ -10,10 +12,13 @@
 #import "DNSManager.h"
 #import <ASIHTTPRequest.h>
 
-@interface ShortLinkClientWithMMTLS()
+#import "ShortLinkWithMMTLS.h"
+#import "MMTLSShortLinkResponse.h"
 
-@property(nonatomic, strong) NSData *decryptedPart2;
-@property(nonatomic, strong) NSData *resumptionSecret;
+@interface ShortLinkClientWithMMTLS ()
+
+@property (nonatomic, strong) NSData *decryptedPart2;
+@property (nonatomic, strong) NSData *resumptionSecret;
 
 @end
 
@@ -22,7 +27,8 @@
 - (instancetype)initWithDecryptedPart2:(NSData *)decryptedPart2 resumptionSecret:(NSData *)resumptionSecret
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _decryptedPart2 = decryptedPart2;
         _resumptionSecret = resumptionSecret;
     }
@@ -70,11 +76,11 @@
     NSData *cgiPathLen = [NSData packInt16:[cgiPath length] flip:YES];
     NSData *shortlinkDataLen = [NSData packInt32:(int32_t)[shortlinkData length] flip:YES];
     NSData *payloadData = [cgiPathLen addDataAtTail:[cgiPath dataUsingEncoding:NSUTF8StringEncoding]];
-    
+
     NSData *hostLen = [NSData packInt16:[host length] flip:YES];
     payloadData = [payloadData addDataAtTail:hostLen];
     payloadData = [payloadData addDataAtTail:[host dataUsingEncoding:NSUTF8StringEncoding]];
-    
+
     payloadData = [payloadData addDataAtTail:shortlinkDataLen];
     payloadData = [payloadData addDataAtTail:shortlinkData];
 
@@ -82,6 +88,33 @@
     payloadData = [len4 addDataAtTail:payloadData];
 
     return payloadData;
+}
+
++ (NSData *)post:(NSData *)sendData toCgiPath:(NSString *)cgiPath
+{
+    NSData *httpPayloadData =
+        [ShortLinkClientWithMMTLS getPayloadDataWithData:sendData
+                                                 cgiPath:cgiPath
+                                                    host:@"szextshort.weixin.qq.com"];
+
+    ShortLinkWithMMTLS *slm =
+        [[ShortLinkWithMMTLS alloc] initWithDecryptedPart2:[DBManager sharedManager].shortLinkPSKData
+                                          resumptionSecret:[DBManager sharedManager].resumptionSecret
+                                                  httpData:httpPayloadData];
+
+    NSData *mmtlsData = [slm getSendData];
+    NSData *httpResponseBody = [ShortLinkClientWithMMTLS mmPost:mmtlsData withHost:@"szextshort.weixin.qq.com"];
+
+    LogInfo(@"httpPayloadData Data HexDump: \n\n%@", httpPayloadData.hexDump);
+    LogInfo(@"Send Data HexDump: \n\n%@", mmtlsData.hexDump);
+    LogInfo(@"Rcv Data HexDump: \n\n%@", httpResponseBody.hexDump);
+
+    MMTLSShortLinkResponse *response = [[MMTLSShortLinkResponse alloc] initWithData:httpResponseBody];
+    NSData *packData = [slm receiveData:response];
+
+    LogInfo(@"ShortLink PackedData HexDump: \n\n%@", packData.hexDump);
+
+    return packData;
 }
 
 @end
