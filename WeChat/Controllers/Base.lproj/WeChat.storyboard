@@ -161,15 +161,20 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D05-Oc-R3P">
-                                <rect key="frame" x="157.5" y="552" width="60" height="35"/>
+                                <rect key="frame" x="42" y="539" width="291" height="48"/>
+                                <color key="backgroundColor" red="0.26831150054931641" green="0.74030959606170654" blue="0.08365226536989212" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="1Og-3I-MVI"/>
-                                    <constraint firstAttribute="width" constant="60" id="2zT-wA-ffg"/>
+                                    <constraint firstAttribute="height" constant="48" id="aQa-N1-SIn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="ManualAuth" destination="H51-Yv-4ta" eventType="touchUpInside" id="VvY-QD-R01"/>
                                 </connections>
@@ -191,6 +196,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="D05-Oc-R3P" firstAttribute="leading" secondItem="dVr-md-8qw" secondAttribute="leading" id="26A-76-Rl2"/>
                             <constraint firstItem="dVr-md-8qw" firstAttribute="centerX" secondItem="P9K-Ma-n3x" secondAttribute="centerX" id="4lq-eJ-lBV"/>
                             <constraint firstItem="o4C-2F-aVV" firstAttribute="leading" secondItem="Itp-RN-FB6" secondAttribute="leading" constant="42" id="5gE-Ls-DoG"/>
                             <constraint firstItem="Zpw-2n-EgH" firstAttribute="leading" secondItem="dVr-md-8qw" secondAttribute="leading" id="6OT-z1-Nu6"/>
@@ -201,7 +207,7 @@
                             <constraint firstItem="Zpw-2n-EgH" firstAttribute="trailing" secondItem="dVr-md-8qw" secondAttribute="trailing" id="JgU-3G-gyX"/>
                             <constraint firstItem="CCC-TC-rT1" firstAttribute="leading" secondItem="o4C-2F-aVV" secondAttribute="leading" id="Kvf-Wh-hkn"/>
                             <constraint firstItem="CCC-TC-rT1" firstAttribute="trailing" secondItem="o4C-2F-aVV" secondAttribute="trailing" id="TuC-aZ-byy"/>
-                            <constraint firstItem="D05-Oc-R3P" firstAttribute="centerX" secondItem="P9K-Ma-n3x" secondAttribute="centerX" id="cW1-SF-0cF"/>
+                            <constraint firstItem="D05-Oc-R3P" firstAttribute="trailing" secondItem="dVr-md-8qw" secondAttribute="trailing" id="Y0e-3D-g7y"/>
                             <constraint firstItem="dVr-md-8qw" firstAttribute="height" secondItem="o4C-2F-aVV" secondAttribute="height" id="eAC-IM-K0N"/>
                             <constraint firstItem="Itp-RN-FB6" firstAttribute="bottom" secondItem="D05-Oc-R3P" secondAttribute="bottom" constant="80" id="ogf-zC-Y0E"/>
                             <constraint firstItem="CCC-TC-rT1" firstAttribute="top" secondItem="o4C-2F-aVV" secondAttribute="bottom" id="pi5-Pz-naa"/>
@@ -347,6 +353,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Qd0-5T-Cda"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s33-li-ceS">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
