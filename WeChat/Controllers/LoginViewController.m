@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "WCECDH.h"
 #import "FSOpenSSL.h"
+#import "WeChatStore.h"
 
 @interface LoginViewController ()
 
@@ -112,11 +113,10 @@
     aesReqData.ostype = device.osType;
 
 #if PROTOCOL_FOR_IOS
-    //iMac 暂时不需要
-    NSData *data = [[DBManager sharedManager] getClientCheckData];
+    WeChatStore *store = [[WeChatStore allObjects] firstObject];
     SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
-    clientCheckData.iLen = (int) [data length];
-    clientCheckData.buffer = data;
+    clientCheckData.iLen = (int) [store.clientCheckData length];
+    clientCheckData.buffer = store.clientCheckData;
     aesReqData.clientCheckData = clientCheckData;
 #endif
     ManualAuthRequest *authRequest = [ManualAuthRequest new];

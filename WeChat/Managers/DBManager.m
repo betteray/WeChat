@@ -10,6 +10,7 @@
 
 #import "DBManager.h"
 #import <FMDB.h>
+#import <Realm/Realm.h>
 
 #define CHECKFMDBERROR                         \
     do                                         \

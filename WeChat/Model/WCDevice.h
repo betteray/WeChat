@@ -44,6 +44,6 @@
                       osType:(NSString *)osType
                     adSource:(NSString *)adSource
                  deviceModel:(NSString *)deviceModel
-                    deviceID:(NSString *)deviceID;
+                    deviceID:(NSData *)deviceID;
 
 @end

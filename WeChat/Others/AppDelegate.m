@@ -12,6 +12,8 @@
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
 
+#import "WeChatStore.h"
+
 @interface AppDelegate ()
 
 @end
@@ -52,7 +54,16 @@
                                                                  else
                                                                  {
                                                                      LogVerbose(@"Get Clinet Check Data OK.");
-                                                                     [[DBManager sharedManager] saveClientCheckData:data];
+//                                                                     [[DBManager sharedManager] saveClientCheckData:data];
+                                                                     
+                                                                     WeChatStore *clientCheckData = [WeChatStore new];
+                                                                     clientCheckData.clientCheckData = data;
+                                                                     
+                                                                     // Persist your data easily
+                                                                     RLMRealm *realm = [RLMRealm defaultRealm];
+                                                                     [realm transactionWithBlock:^{
+                                                                         [realm addObject:clientCheckData];
+                                                                     }];
                                                                  }
                                                              }];
 

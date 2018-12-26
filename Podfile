@@ -11,6 +11,7 @@ target 'WeChat' do
   pod 'YYModel', '~> 1.0.4'
   pod 'Ono' # xml
   pod 'FMDB'
+  pod 'Realm'
   pod 'CocoaLumberjack'
   
   pod 'MBProgressHUD', '~> 1.1.0'

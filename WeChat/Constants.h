@@ -9,7 +9,7 @@
 #ifndef Constants
 #define Constants
 
-#define PROTOCOL_FOR_IOS 0
+#define PROTOCOL_FOR_IOS 1
 #define PROTOCOL_FOR_ANDROID !PROTOCOL_FOR_IOS
 
 #define LOGIN_RSA_VER_172 174
@@ -22,7 +22,9 @@
     //671 = 369557796 = 0x16070124
     //672 = 369558293 = 0x16070315
     //674 = 369558574 = 0x1607042e
-    #define CLIENT_VERSION 369558575    //ios 674 update
+    //#define CLIENT_VERSION 369558575    //ios 674 update
+    //#define CLIENT_VERSION 385876256    //7.0.0
+    #define CLIENT_VERSION 385876008    //7.0.0
 #elif PROTOCOL_FOR_ANDROID
     #define CLIENT_VERSION 637929010    //android 666 = 637929010
 #endif

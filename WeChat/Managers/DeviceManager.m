@@ -33,23 +33,27 @@
     {
         NSString *imei = @"8fd2fc510d3fb9bb8e0661b0c6a026cc";
         NSString *ts = [NSString stringWithFormat:@"%ld", (long) [[NSDate date] timeIntervalSince1970]];
+        
+        //NSString *k19 = @"16F3CF44-DC31-4038-A219-3111C3F71FA8";
+        NSString *k19 = @"856AA466-8098-4C90-9D6A-3EF6AFF6BC04";
+
         NSString *adSource = @"15C0A21B-78A1-4D4C-B7D7-77FEFA23AA35";
-
+        
         NSString *sofyType = [NSString stringWithFormat:@"<softtype>"
-                                                         "<k3>11.3.1</k3>"
-                                                         "<k9>iPhone</k9>"
-                                                         "<k10>2</k10>"
-                                                         "<k19>16F3CF44-DC31-4038-A219-3111C3F71FA8</k19>"
-                                                         "<k20>%@</k20>"
-                                                         "<k22>中国移动</k22>"
-                                                         "<k33>微信</k33>"
-                                                         "<k47>1</k47>"
-                                                         "<k50>1</k50>"
-                                                         "<k51>com.tencent.xin</k51>"
-                                                         "<k54>iPhone9,2</k54>"
-                                                         "<k61>2</k61>"
-                                                         "</softtype>", adSource];
-
+                              "<k3>11.3.1</k3>"
+                              "<k9>iPhone</k9>"
+                              "<k10>2</k10>"
+                              "<k19>%@</k19>"
+                              "<k20>%@</k20>"
+                              "<k22>中国移动</k22>"
+                              "<k33>微信</k33>"
+                              "<k47>1</k47>"
+                              "<k50>1</k50>"
+                              "<k51>com.tencent.xin</k51>"
+                              "<k54>iPhone9,2</k54>"
+                              "<k61>2</k61>"
+                              "</softtype>", k19, adSource];
+        
         WCDevice *sevenPuls = [[WCDevice alloc] initWithImei:imei
                                                     softType:sofyType
                                                    clientSeq:[NSString stringWithFormat:@"%@-%@", imei, ts]
@@ -67,7 +71,6 @@
                                                     adSource:adSource
                                                  deviceModel:@""
                                                     deviceID:[NSData dataWithHexString:@"49D2FC510D3FB9BB8E0661B0C6A026CC"]];
-        
         
 
         _sevenPuls = sevenPuls;
