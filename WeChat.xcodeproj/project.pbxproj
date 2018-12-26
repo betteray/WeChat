@@ -1201,7 +1201,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"CocoaAsyncSocket\"",
 					"-l\"Protobuf\"",
 					"-framework",
 					"\"CFNetwork\"",
@@ -1250,7 +1249,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"CocoaAsyncSocket\"",
 					"-l\"Protobuf\"",
 					"-framework",
 					"\"CFNetwork\"",

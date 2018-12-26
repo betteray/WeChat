@@ -161,7 +161,7 @@
     req.selector = 262151;
     req.keyBuf = self.sync_key_cur;
     req.scene = 7;
-    req.deviceType = [[DeviceManager sharedManager] getCurrentDevice].deviceType;
+    req.deviceType = [[DeviceManager sharedManager] getCurrentDevice].osType;
     req.syncMsgDigest = 1;
 
     CgiWrap *wrap = [CgiWrap new];
