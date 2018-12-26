@@ -372,7 +372,6 @@
 			children = (
 				712C6E91214A1E8900603022 /* WeChatClient.h */,
 				712C6E92214A1E8900603022 /* WeChatClient.m */,
-				712C6F18214A6A5800603022 /* proto */,
 				7161985021CB79E000A76F39 /* pack */,
 				712C7160214D231C00603022 /* ecdh */,
 				712F95F721D1E6D700CFE3A0 /* without_mmtls */,
@@ -444,6 +443,7 @@
 		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				712C6F18214A6A5800603022 /* Proto */,
 				469F657C21D2801100C1DC8B /* Vendor */,
 				469F657B21D27FCE00C1DC8B /* Network */,
 				71848F6221549A1C00DB669E /* Categories */,
@@ -478,14 +478,14 @@
 			path = WeChatUITests;
 			sourceTree = "<group>";
 		};
-		712C6F18214A6A5800603022 /* proto */ = {
+		712C6F18214A6A5800603022 /* Proto */ = {
 			isa = PBXGroup;
 			children = (
 				712C6F1C214A6B5E00603022 /* Mm.pbobjc.h */,
 				712C6F1B214A6B5E00603022 /* Mm.pbobjc.m */,
 				712C6F19214A6A5800603022 /* mm.proto */,
 			);
-			path = proto;
+			path = Proto;
 			sourceTree = "<group>";
 		};
 		712C70E9214B5A4B00603022 /* openssl */ = {
