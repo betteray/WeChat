@@ -211,7 +211,7 @@
                 [WXUserDefault saveAlias:resp.acctSectResp.alias];
 
                 UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
-                UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"NavFunctionsViewController"];
+                UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"WeChatTabBarController"];
                 [self presentViewController:nav animated:YES completion:nil];
             }
         }
