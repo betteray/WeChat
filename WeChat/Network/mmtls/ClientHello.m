@@ -9,7 +9,7 @@
 #import "ClientHello.h"
 #import "NSData+Util.h"
 #import "NSData+GenRandomData.h"
-#import "ECDH.h"
+#import "WCECDH.h"
 
 @interface ClientHello ()
 
@@ -35,7 +35,7 @@
         _clientRandom = [NSData GenRandomDataWithSize:32];
         NSData *pubkey1;
         NSData *prikey1;
-        BOOL ret1 = [ECDH GenEcdhWithNid:415 priKey:&prikey1 pubKeyData:&pubkey1];
+        BOOL ret1 = [WCECDH GenEcdhWithNid:415 priKey:&prikey1 pubKeyData:&pubkey1];
         if (ret1)
         {
             _prikey1 = prikey1;
@@ -44,7 +44,7 @@
 
         NSData *pubkey2;
         NSData *prikey2;
-        BOOL ret2 = [ECDH GenEcdhWithNid:415 priKey:&prikey2 pubKeyData:&pubkey2];
+        BOOL ret2 = [WCECDH GenEcdhWithNid:415 priKey:&prikey2 pubKeyData:&pubkey2];
         if (ret2)
         {
             _prikey2 = prikey2;

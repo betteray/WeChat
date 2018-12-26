@@ -37,7 +37,7 @@
     #define LogError(fmt, ...) DDLogError((@"[E][👹] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
     #define LogWarn(fmt, ...) DDLogWarn((@"[W][⚠️] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
     #define LogInfo(fmt, ...) DDLogInfo((@"[I][💙] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-    #define LogDebug(fmt, ...) DDLogDebug((@"[I][🐸] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    #define LogDebug(fmt, ...) DDLogDebug((@"[D][🐸] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
     #define LogVerbose(fmt, ...) DDLogVerbose((@"[V][🍀] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
     #ifdef DEBUG

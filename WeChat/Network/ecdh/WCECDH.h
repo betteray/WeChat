@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ECDH : NSObject
+@interface WCECDH : NSObject
 
 + (BOOL)GenEcdhWithNid:(int)nid priKey:(NSData **)pPriKeyData pubKeyData:(NSData **)pPubKeyData;
 

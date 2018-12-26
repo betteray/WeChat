@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2FFBBBF5A4F4493C2BD0EBFB /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE308AEA822A0536476B28E2 /* libPods-WeChat.a */; };
 		3170D26FEE89CCA046B85687 /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WeChat.a */; };
+		469F657D21D3196100C1DC8B /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7141214B5A4B00603022 /* libcrypto.a */; };
 		71008F3321B6750700DE8DF8 /* DNSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3221B6750700DE8DF8 /* DNSManager.m */; };
 		71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3521B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m */; };
 		71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */; };
@@ -32,15 +33,13 @@
 		712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6F1B214A6B5E00603022 /* Mm.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		712C70E8214AB2BC00603022 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C70E7214AB2BC00603022 /* libc++.1.tbd */; };
 		712C7143214B5A4B00603022 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 712C70EB214B5A4B00603022 /* LICENSE */; };
-		712C7144214B5A4B00603022 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7141214B5A4B00603022 /* libcrypto.a */; };
-		712C7145214B5A4B00603022 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7142214B5A4B00603022 /* libssl.a */; };
 		712C7149214BA38900603022 /* LongHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7148214BA38900603022 /* LongHeader.m */; };
 		712C714C214BA49300603022 /* LongPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C714B214BA49300603022 /* LongPackage.m */; };
 		712C714F214BABA500603022 /* ShortPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C714E214BABA500603022 /* ShortPackage.m */; };
 		712C7152214BAD8900603022 /* ShortHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7151214BAD8900603022 /* ShortHeader.m */; };
 		712C7155214BF8A900603022 /* CgiWrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7154214BF8A900603022 /* CgiWrap.m */; };
 		712C7158214BFB1600603022 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7157214BFB1600603022 /* Task.m */; };
-		712C7166214D2BFD00603022 /* ECDH.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7165214D2BFD00603022 /* ECDH.m */; };
+		712C7166214D2BFD00603022 /* WCECDH.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7165214D2BFD00603022 /* WCECDH.m */; };
 		712F95F221D0981B00CFE3A0 /* WCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F95F121D0981B00CFE3A0 /* WCDevice.m */; };
 		712F95F521D0B91F00CFE3A0 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F95F421D0B91F00CFE3A0 /* DeviceManager.m */; };
 		712F95FA21D1E71600CFE3A0 /* LongLinkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F95F921D1E71600CFE3A0 /* LongLinkClient.m */; };
@@ -238,8 +237,8 @@
 		712C7154214BF8A900603022 /* CgiWrap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CgiWrap.m; sourceTree = "<group>"; };
 		712C7156214BFB1600603022 /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		712C7157214BFB1600603022 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
-		712C7164214D2BFD00603022 /* ECDH.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECDH.h; sourceTree = "<group>"; };
-		712C7165214D2BFD00603022 /* ECDH.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECDH.m; sourceTree = "<group>"; };
+		712C7164214D2BFD00603022 /* WCECDH.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCECDH.h; sourceTree = "<group>"; };
+		712C7165214D2BFD00603022 /* WCECDH.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCECDH.m; sourceTree = "<group>"; };
 		712F95F121D0981B00CFE3A0 /* WCDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCDevice.m; sourceTree = "<group>"; };
 		712F95F321D0B91F00CFE3A0 /* DeviceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
 		712F95F421D0B91F00CFE3A0 /* DeviceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
@@ -313,9 +312,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				712C7145214B5A4B00603022 /* libssl.a in Frameworks */,
 				712C70E8214AB2BC00603022 /* libc++.1.tbd in Frameworks */,
-				712C7144214B5A4B00603022 /* libcrypto.a in Frameworks */,
+				469F657D21D3196100C1DC8B /* libcrypto.a in Frameworks */,
 				2FFBBBF5A4F4493C2BD0EBFB /* libPods-WeChat.a in Frameworks */,
 				3170D26FEE89CCA046B85687 /* libPods-WeChat.a in Frameworks */,
 			);
@@ -367,6 +365,29 @@
 				A8AE4D42890ED7488CA924E7 /* Pods-WeChatUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		469F657B21D27FCE00C1DC8B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				712C6E91214A1E8900603022 /* WeChatClient.h */,
+				712C6E92214A1E8900603022 /* WeChatClient.m */,
+				712C6F18214A6A5800603022 /* proto */,
+				7161985021CB79E000A76F39 /* pack */,
+				712C7160214D231C00603022 /* ecdh */,
+				712F95F721D1E6D700CFE3A0 /* without_mmtls */,
+				7155BA492190293B0002CE1D /* mmtls */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		469F657C21D2801100C1DC8B /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				7154D50E2196B714005064C4 /* HexDump */,
+				712C70E9214B5A4B00603022 /* openssl */,
+			);
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 		71008F3021B674D900DE8DF8 /* Managers */ = {
@@ -423,22 +444,15 @@
 		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
-				712F95F721D1E6D700CFE3A0 /* without_mmtls */,
+				469F657C21D2801100C1DC8B /* Vendor */,
+				469F657B21D27FCE00C1DC8B /* Network */,
 				71848F6221549A1C00DB669E /* Categories */,
 				7121C35F21C3494A00A3E900 /* Controllers */,
-				712C7160214D231C00603022 /* ecdh */,
-				7154D50E2196B714005064C4 /* HexDump */,
 				71008F3021B674D900DE8DF8 /* Managers */,
-				7155BA492190293B0002CE1D /* mmtls */,
-				712C7146214BA35700603022 /* model */,
-				712C70E9214B5A4B00603022 /* openssl */,
+				712C7146214BA35700603022 /* Model */,
 				712C7159214CDA9100603022 /* Others */,
-				7161985021CB79E000A76F39 /* Pack */,
-				712C6F18214A6A5800603022 /* proto */,
 				7154D51D2196D6BD005064C4 /* Tools */,
 				71D3DAA921AEACD2002ACF1C /* ViewCat */,
-				712C6E91214A1E8900603022 /* WeChatClient.h */,
-				712C6E92214A1E8900603022 /* WeChatClient.m */,
 				71D3DAAD21AFCA47002ACF1C /* WXUserDefault.h */,
 				71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */,
 				712C7065214A9A8B00603022 /* Constants.h */,
@@ -592,7 +606,7 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
-		712C7146214BA35700603022 /* model */ = {
+		712C7146214BA35700603022 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				712C7153214BF8A900603022 /* CgiWrap.h */,
@@ -602,7 +616,7 @@
 				712F95F621D0B99900CFE3A0 /* WCDevice.h */,
 				712F95F121D0981B00CFE3A0 /* WCDevice.m */,
 			);
-			path = model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		712C7159214CDA9100603022 /* Others */ = {
@@ -621,8 +635,8 @@
 		712C7160214D231C00603022 /* ecdh */ = {
 			isa = PBXGroup;
 			children = (
-				712C7164214D2BFD00603022 /* ECDH.h */,
-				712C7165214D2BFD00603022 /* ECDH.m */,
+				712C7164214D2BFD00603022 /* WCECDH.h */,
+				712C7165214D2BFD00603022 /* WCECDH.m */,
 			);
 			path = ecdh;
 			sourceTree = "<group>";
@@ -692,7 +706,7 @@
 			path = mmtls;
 			sourceTree = "<group>";
 		};
-		7161985021CB79E000A76F39 /* Pack */ = {
+		7161985021CB79E000A76F39 /* pack */ = {
 			isa = PBXGroup;
 			children = (
 				712C7147214BA38900603022 /* LongHeader.h */,
@@ -710,7 +724,7 @@
 				7161984D21CB712900A76F39 /* long_pack.h */,
 				7161984E21CB712900A76F39 /* long_pack.m */,
 			);
-			path = Pack;
+			path = pack;
 			sourceTree = "<group>";
 		};
 		71848F6221549A1C00DB669E /* Categories */ = {
@@ -962,7 +976,7 @@
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
 				7154D5252197EFB9005064C4 /* WC_HmacSha256.m in Sources */,
 				71D3DAAF21AFCA47002ACF1C /* WXUserDefault.m in Sources */,
-				712C7166214D2BFD00603022 /* ECDH.m in Sources */,
+				712C7166214D2BFD00603022 /* WCECDH.m in Sources */,
 				7155BA5221902AB30002CE1D /* ClientHello.m in Sources */,
 				712F95FA21D1E71600CFE3A0 /* LongLinkClient.m in Sources */,
 				7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */,
@@ -1164,7 +1178,7 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
-					"${SRC_ROOT}WeChat/openssl/include",
+					"${SRC_ROOT}WeChat/Vendor/openssl/include",
 				);
 				INFOPLIST_FILE = WeChat/Others/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1182,6 +1196,7 @@
 					"$(PROJECT_DIR)/WeChat/rsa/lib/i386",
 					"$(PROJECT_DIR)/WeChat/rsa/lib",
 					"$(PROJECT_DIR)/WeChat/rsa/lib/x86_64",
+					"$(PROJECT_DIR)/WeChat/Vendor/openssl/lib",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1212,7 +1227,7 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
-					"${SRC_ROOT}WeChat/openssl/include",
+					"${SRC_ROOT}WeChat/Vendor/openssl/include",
 				);
 				INFOPLIST_FILE = WeChat/Others/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1230,6 +1245,7 @@
 					"$(PROJECT_DIR)/WeChat/rsa/lib/i386",
 					"$(PROJECT_DIR)/WeChat/rsa/lib",
 					"$(PROJECT_DIR)/WeChat/rsa/lib/x86_64",
+					"$(PROJECT_DIR)/WeChat/Vendor/openssl/lib",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

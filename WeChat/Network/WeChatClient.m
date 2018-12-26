@@ -239,7 +239,7 @@
 {
     [self setBaseResquestIfNeed:cgiWrap];
     
-    LogInfo(@"Start Request: \n\n%@\n", cgiWrap.request);
+    LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
     NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:5];
@@ -266,7 +266,7 @@
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
     
-    LogInfo(@"Start Request: %@", cgiWrap.request);
+    LogVerbose(@"Start Request: %@", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
     NSData *sendData = [short_pack pack:cgiWrap.cgi
@@ -396,7 +396,7 @@
     {
         case UnPack_Success:
         {
-            LogInfo(@"Receive CmdID: %d, SEQ: %d, BodyLen: %d",
+            LogVerbose(@"Receive CmdID: %d, SEQ: %d, BodyLen: %d",
                     longLinkPackage.header.cmdId,
                     longLinkPackage.header.seq,
                     longLinkPackage.header.bodyLength);
@@ -412,9 +412,7 @@
                         {
                             if ([self.sync_key_cur length] == 0)
                             {
-                                LogInfo(@"Start New Init.");
                                 [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
-                                LogInfo(@"Stop New Init.");
                             }
                         }
                         else if (push_ack_counter > 1)

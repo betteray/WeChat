@@ -55,7 +55,7 @@
             return nil;
         }
 
-        LogInfo(@"Create DB File at: %@", [dbPath path]);
+        LogDebug(@"Create DB File at: %@", [dbPath path]);
 
         [self createTables];
     }

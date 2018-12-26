@@ -80,7 +80,7 @@
     if (cookieLen > 0 && cookieLen <= 0xf)
     {
         NSData *cookie = [body subdataWithRange:NSMakeRange(index, cookieLen)];
-        LogInfo(@"Cookie: %@", cookie);
+        LogVerbose(@"Cookie: %@", cookie);
         index += cookieLen;
         [[DBManager sharedManager] setCookie:cookie];
     }

@@ -39,7 +39,7 @@
     FastSocket *client = [[FastSocket alloc] initWithHost:@"163.177.81.141" andPort:@"8080"]; //long.weixin.qq.com 58.247.204.141
     if ([client connect])
     {
-        LogInfo(@"FastSocket Connected To Server.");
+        LogDebug(@"FastSocket Connected To Server.");
         _client = client;
 
         [self heartbeat];
@@ -107,7 +107,7 @@
         long sent = [self.client sendBytes:[sendData bytes] count:[sendData length]];
         if (sent == sendData.length)
         {
-            LogInfo(@"FastSocket Send all the Data, Len: %ld", sent);
+            LogDebug(@"FastSocket Send all the Data, Len: %ld", sent);
         }
         else
         {

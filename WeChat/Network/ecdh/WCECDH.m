@@ -6,7 +6,7 @@
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "ECDH.h"
+#import "WCECDH.h"
 
 #include <openssl/aes.h>
 #include <openssl/rsa.h>
@@ -146,7 +146,7 @@ static bool DoEcdh(int nid, unsigned char *szServerPubKey, int nLenServerPub, un
     return true;
 }
 
-@implementation ECDH
+@implementation WCECDH
 
 + (BOOL)GenEcdhWithNid:(int)nid priKey:(NSData **)pPriKeyData pubKeyData:(NSData **)pPubKeyData
 {

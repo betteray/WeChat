@@ -40,7 +40,7 @@
 
     [WeChatClient postRequest:cgiWrap
                       success:^(SnsTimeLineResponse *_Nullable response) {
-                          LogInfo(@"SnsTimeLine Resp: %@", response);
+                          LogVerbose(@"SnsTimeLine Resp: %@", response);
                       }
                       failure:^(NSError *_Nonnull error){
 

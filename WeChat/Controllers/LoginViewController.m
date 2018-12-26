@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "ECDH.h"
+#import "WCECDH.h"
 #import "FSOpenSSL.h"
 
 @interface LoginViewController ()
@@ -30,12 +30,12 @@
     NSData *priKeyData = nil;
     NSData *pubKeyData = nil;
     
-    BOOL ret = [ECDH GenEcdhWithNid:713 priKey:&priKeyData pubKeyData:&pubKeyData];
+    BOOL ret = [WCECDH GenEcdhWithNid:713 priKey:&priKeyData pubKeyData:&pubKeyData];
     if (ret)
     {
         _priKeyData = priKeyData;
         _pubKeyData = pubKeyData;
-        LogInfo(@"+[ECDH GenEcdh:pubKeyData:] %@, PubKey: %@.", priKeyData, pubKeyData);
+        LogVerbose(@"+[ECDH GenEcdh:pubKeyData:] %@, PubKey: %@.", priKeyData, pubKeyData);
     }
     
     _userNameTextField.text = @"13520806231";
@@ -181,7 +181,7 @@
             unsigned char szSharedKey[2048];
             int szSharedKeyLen = 0;
 
-            BOOL ret = [ECDH DoEcdh:nid
+            BOOL ret = [WCECDH DoEcdh:nid
                      szServerPubKey:(unsigned char *) [ecdhKey bytes]
                       nLenServerPub:ecdhKeyLen
                       szLocalPriKey:(unsigned char *) [_priKeyData bytes]

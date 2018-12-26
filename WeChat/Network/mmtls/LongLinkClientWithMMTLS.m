@@ -12,7 +12,7 @@
 #import "ClientHello.h"
 #import "ServerHello.h"
 #import "WC_SHA256.h"
-#import "ECDH.h"
+#import "WCECDH.h"
 #import "WC_HKDF.h"
 #import "KeyPair.h"
 
@@ -61,7 +61,7 @@
     FastSocket *client = [[FastSocket alloc] initWithHost:@"163.177.81.141" andPort:@"443"]; //long.weixin.qq.com 58.247.204.141
     if ([client connect])
     {
-        LogInfo(@"FastSocket Connected To Server.");
+        LogDebug(@"FastSocket Connected To Server.");
         _client = client;
         [self InitLongLinkMMTLS];
         [self readData];
@@ -86,7 +86,7 @@
         long sent = [self.client sendBytes:[sendData bytes] count:[sendData length]];
         if (sent == sendData.length)
         {
-            LogInfo(@"FastSocket Send all the Data, Len: %ld", sent);
+            LogDebug(@"FastSocket Send all the Data, Len: %ld", sent);
         }
         else
         {
@@ -161,7 +161,7 @@
     NSData *serverPublicKey = [serverHello getServerPublicKey];
     NSData *localPriKey = [_clientHello getLocal1stPrikey];
 
-    NSData *EphemeralSecret = [ECDH DoEcdh2:415 ServerPubKey:serverPublicKey LocalPriKey:localPriKey];
+    NSData *EphemeralSecret = [WCECDH DoEcdh2:415 ServerPubKey:serverPublicKey LocalPriKey:localPriKey];
 
     NSMutableData *HandshakeKeyExpansionHashInfo = [NSMutableData dataWithData:[@"handshake key expansion" dataUsingEncoding:NSUTF8StringEncoding]];
     [HandshakeKeyExpansionHashInfo appendData:HandshakeKeyExpansionHash];

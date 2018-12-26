@@ -54,7 +54,7 @@
 
     [WeChatClient postRequest:cgiWrap
         success:^(id _Nullable response) {
-            LogInfo(@"%@", response);
+            LogVerbose(@"%@", response);
         }
         failure:^(NSError *error) {
             NSLog(@"%@", error);
