@@ -451,7 +451,6 @@
 				71008F3021B674D900DE8DF8 /* Managers */,
 				712C7146214BA35700603022 /* Model */,
 				712C7159214CDA9100603022 /* Others */,
-				7154D51D2196D6BD005064C4 /* Tools */,
 				71D3DAA921AEACD2002ACF1C /* ViewCat */,
 				71D3DAAD21AFCA47002ACF1C /* WXUserDefault.h */,
 				71D3DAAE21AFCA47002ACF1C /* WXUserDefault.m */,
@@ -666,15 +665,6 @@
 			path = HexDump;
 			sourceTree = "<group>";
 		};
-		7154D51D2196D6BD005064C4 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				7154D5212196DFE1005064C4 /* WC_Hex.m */,
-				7154D51E2196D6DA005064C4 /* WC_Hex.h */,
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
 		7155BA492190293B0002CE1D /* mmtls */ = {
 			isa = PBXGroup;
 			children = (
@@ -702,6 +692,8 @@
 				7161985221CB863A00A76F39 /* LongLinkClientWithMMTLS.m */,
 				71008F3421B678F500DE8DF8 /* ShortLinkClientWithMMTLS.h */,
 				71008F3521B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m */,
+				7154D5212196DFE1005064C4 /* WC_Hex.m */,
+				7154D51E2196D6DA005064C4 /* WC_Hex.h */,
 			);
 			path = mmtls;
 			sourceTree = "<group>";
