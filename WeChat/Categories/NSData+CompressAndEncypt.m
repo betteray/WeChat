@@ -26,14 +26,12 @@
 - (NSData *)Compress_And_AES
 {
     NSData *compressedData = [self dataByDeflating];
-    NSData *sessionKey = [DBManager sharedManager].sessionKey;
-    return [compressedData AES_CBC_encryptWithKey:sessionKey];
+    return [compressedData AES_CBC_encryptWithKey:[WeChatStore getStore].sessionKey];
 }
 
 - (NSData *)AES
 {
-    NSData *sessionKey = [DBManager sharedManager].sessionKey;
-    return [self AES_CBC_encryptWithKey:sessionKey];
+    return [self AES_CBC_encryptWithKey:[WeChatStore getStore].sessionKey];
 }
 
 
@@ -44,8 +42,7 @@
 
 - (NSData *)aesDecrypt_then_decompress
 {
-    NSData *sessionKey = [DBManager sharedManager].sessionKey;
-    NSData *decryptedData = [self AES_CBC_decryptWithKey:sessionKey];
+    NSData *decryptedData = [self AES_CBC_decryptWithKey:[WeChatStore getStore].sessionKey];
     return [decryptedData dataByInflatingWithError:nil];
 }
 

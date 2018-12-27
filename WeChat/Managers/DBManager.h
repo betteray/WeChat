@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 //- (BOOL)saveCookie:(NSData *)cookie;
 //- (NSData *)getCookie;
 
-@property (nonatomic, strong) NSData *sessionKey;
+//@property (nonatomic, strong) NSData *sessionKey;
 @property (nonatomic, strong) NSData *cookie;
 
 @property (nonatomic, strong) NSData *shortLinkPSKData;

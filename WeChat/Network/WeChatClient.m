@@ -85,7 +85,6 @@
 
         _tasks = [NSMutableArray array];
 
-        [[DBManager sharedManager] setSessionKey:[FSOpenSSL random128BitAESKey]]; // iPad
 #if USE_MMTLS
         _client = [LongLinkClientWithMMTLS new];
 #else
@@ -289,7 +288,7 @@
     if (cgiWrap.needSetBaseRequest)
     {
         BaseRequest *base = [BaseRequest new];
-        NSData *sessionKey = [DBManager sharedManager].sessionKey;
+        NSData *sessionKey = [WeChatStore getStore].sessionKey;
         [base setSessionKey:sessionKey];
         [base setUin:(int32_t)[WXUserDefault getUIN]];
         [base setScene:0]; // iMac 1
@@ -365,7 +364,7 @@
 - (void)UnPack:(NSData *)data
 {
     ShortPackage *package = [short_pack unpack:data];
-    NSData *sessionKey = [DBManager sharedManager].sessionKey;
+    NSData *sessionKey = [WeChatStore getStore].sessionKey;
     NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress]
                                                      : [package.body aesDecryptWithKey:sessionKey];
     
@@ -429,7 +428,7 @@
             else
             {
                 ShortPackage *package = [short_pack unpack:longLinkPackage.body];
-                NSData *sessionKey = [DBManager sharedManager].sessionKey;
+                NSData *sessionKey = [WeChatStore getStore].sessionKey;
                 NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress]
                                                                  : [package.body aesDecryptWithKey:sessionKey];
                 Task *task = [self getTaskWithTag:package.header.cgi];

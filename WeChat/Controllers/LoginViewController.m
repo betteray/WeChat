@@ -39,6 +39,8 @@
         LogVerbose(@"+[ECDH GenEcdh:pubKeyData:] %@, PubKey: %@.", priKeyData, pubKeyData);
     }
     
+    UPDATE_STORE(sessionKey, [FSOpenSSL random128BitAESKey]);
+    
     _userNameTextField.text = @"13520806231";
 }
 
@@ -50,10 +52,10 @@
 
 - (IBAction)ManualAuth
 {
-    NSData *sessionKey = [DBManager sharedManager].sessionKey;
+    WeChatStore *store = [WeChatStore getStore];
     SKBuiltinBuffer_t *aesKey = [SKBuiltinBuffer_t new];
-    aesKey.iLen = (int32_t)[sessionKey length];
-    aesKey.buffer = sessionKey;
+    aesKey.iLen = (int32_t)[store.sessionKey length];
+    aesKey.buffer = store.sessionKey;
 
     SKBuiltinBuffer_t *ecdhKey = [SKBuiltinBuffer_t new];
     ecdhKey.iLen = (int32_t)[_pubKeyData length];
@@ -113,7 +115,6 @@
     aesReqData.ostype = device.osType;
 
 #if PROTOCOL_FOR_IOS
-    WeChatStore *store = [[WeChatStore allObjects] firstObject];
     SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
     clientCheckData.iLen = (int) [store.clientCheckData length];
     clientCheckData.buffer = store.clientCheckData;
@@ -124,7 +125,7 @@
     authRequest.rsaReqData = rsaReqData;
     
     BaseRequest *baseRequest = [BaseRequest new];
-    [baseRequest setSessionKey:[DBManager sharedManager].sessionKey];
+    [baseRequest setSessionKey:[WeChatStore getStore].sessionKey];
     [baseRequest setUin:0];
 #if PROTOCOL_FOR_IOS
     [baseRequest setScene:0];
@@ -193,10 +194,10 @@
             {
                 NSData *checkEcdhKey = [NSData dataWithBytes:szSharedKey length:szSharedKeyLen];
                 NSData *sessionKey = [FSOpenSSL aesDecryptData:resp.authSectResp.sessionKey.buffer key:checkEcdhKey];
-                [[DBManager sharedManager] setSessionKey:sessionKey];
+                UPDATE_STORE(sessionKey, sessionKey);
                 [WeChatClient sharedClient].checkEcdhKey = checkEcdhKey;
 
-                LogVerbose(@"登陆成功: SessionKey: %@, uin: %ld, wxid: %@, NickName: %@, alias: %@",
+                LogVerbose(@"登陆成功: SessionKey: %@, uin: %d, wxid: %@, NickName: %@, alias: %@",
                            sessionKey,
                            uin,
                            resp.acctSectResp.userName,

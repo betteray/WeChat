@@ -8,6 +8,33 @@
 
 #import "WeChatStore.h"
 
+NSString *const StoreID = @"WeChatStore";
+
 @implementation WeChatStore
+
++ (NSString *)primaryKey {
+    return @"id";
+}
+
++ (NSDictionary *)defaultPropertyValues {
+    return @{@"uin" : @0};
+}
+
++ (WeChatStore *)getStore
+{
+    WeChatStore *store = nil;
+    store = [[WeChatStore allObjects] firstObject];
+    if (!store) {
+        store = [[WeChatStore alloc] init];
+        
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm transactionWithBlock:^{
+            [realm addObject:store];
+        }];
+    }
+    
+    return store;
+}
+
 
 @end
