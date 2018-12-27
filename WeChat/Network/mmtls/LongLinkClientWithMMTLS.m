@@ -190,7 +190,6 @@
     
     {
         NSData *data = [plainText2 subdataWithRange:NSMakeRange(9, 100)];
-        [DBManager sharedManager].shortLinkPSKData = data;
 
         NSData *hashDataTmp = hashData;
         hashDataTmp = [hashDataTmp addDataAtTail:plainText1];
@@ -201,7 +200,7 @@
         [info222 appendData:hashResult];
 
         NSData *ResumptionSecret = [WC_HKDF HKDF_Expand_Prk2:EphemeralSecret Info:info222]; //expanded secret
-        [DBManager sharedManager].resumptionSecret = ResumptionSecret;
+        [_delegate onLongLinkHandShakeFinishedWithPSK:data resumptionSecret:ResumptionSecret];
     }
 
     // Part3 decrypt

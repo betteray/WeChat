@@ -98,8 +98,8 @@
                                                     host:@"szextshort.weixin.qq.com"];
 
     ShortLinkWithMMTLS *slm =
-        [[ShortLinkWithMMTLS alloc] initWithDecryptedPart2:[DBManager sharedManager].shortLinkPSKData
-                                          resumptionSecret:[DBManager sharedManager].resumptionSecret
+        [[ShortLinkWithMMTLS alloc] initWithDecryptedPart2:[WeChatClient sharedClient].pskData
+                                          resumptionSecret:[WeChatClient sharedClient].resumptionSecret
                                                   httpData:httpPayloadData];
 
     NSData *mmtlsData = [slm getSendData];

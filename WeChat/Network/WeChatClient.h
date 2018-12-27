@@ -23,6 +23,9 @@ typedef void (^FailureBlock)(NSError *error);
 @property (nonatomic, strong) NSData *sessionKey;
 @property (nonatomic, strong) NSData *cookie;
 
+@property (nonatomic, strong, readonly) NSData *pskData;
+@property (nonatomic, strong, readonly) NSData *resumptionSecret;
+
 + (instancetype)sharedClient;
 
 - (void)start;

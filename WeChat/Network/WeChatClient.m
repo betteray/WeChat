@@ -52,6 +52,8 @@
 @property (nonatomic, strong) LongLinkClient *client;
 #endif
 
+@property (nonatomic, strong) NSData *pskData;
+@property (nonatomic, strong) NSData *resumptionSecret;
 
 @property (nonatomic, assign) int seq; //封包编号。
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
@@ -386,6 +388,13 @@
     NSData *cookie = [WeChatClient sharedClient].cookie;
     NSData *shortLinkBuf = [short_pack pack:cgi serilizedData:serilizedData type:type uin:_uin cookie:cookie];
     return [long_pack pack:self.seq++ cmdId:cmdId shortData:shortLinkBuf];
+}
+
+- (void)onLongLinkHandShakeFinishedWithPSK:(NSData *)pskData
+                          resumptionSecret:(NSData *)resumptionSecret
+{
+    _pskData = pskData;
+    _resumptionSecret = resumptionSecret;
 }
 
 - (void)onRecivceLongLinkPlainData:(NSData *)plainData
