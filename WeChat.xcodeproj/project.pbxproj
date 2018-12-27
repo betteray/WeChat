@@ -20,7 +20,6 @@
 		71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */; };
 		71076B2621CCF10500570FB1 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71076B2521CCF10500570FB1 /* TestViewController.m */; };
 		7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C35D21C3494300A3E900 /* LoginViewController.m */; };
-		7121C36221C350B700A3E900 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C36121C350B700A3E900 /* DBManager.m */; };
 		7121C36521C3610000A3E900 /* SendMsgController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C36421C3610000A3E900 /* SendMsgController.m */; };
 		712C6E60214A145600603022 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E5F214A145600603022 /* AppDelegate.m */; };
 		712C6E66214A145600603022 /* WeChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712C6E64214A145600603022 /* WeChat.storyboard */; };
@@ -119,8 +118,6 @@
 		71076B2521CCF10500570FB1 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		7121C35C21C3494300A3E900 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7121C35D21C3494300A3E900 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		7121C36021C350B700A3E900 /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
-		7121C36121C350B700A3E900 /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		7121C36321C3610000A3E900 /* SendMsgController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgController.h; sourceTree = "<group>"; };
 		7121C36421C3610000A3E900 /* SendMsgController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgController.m; sourceTree = "<group>"; };
 		712C6E5B214A145600603022 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -416,8 +413,6 @@
 			children = (
 				71008F3121B6750700DE8DF8 /* DNSManager.h */,
 				71008F3221B6750700DE8DF8 /* DNSManager.m */,
-				7121C36021C350B700A3E900 /* DBManager.h */,
-				7121C36121C350B700A3E900 /* DBManager.m */,
 				712F95F321D0B91F00CFE3A0 /* DeviceManager.h */,
 				712F95F421D0B91F00CFE3A0 /* DeviceManager.m */,
 			);
@@ -1018,7 +1013,6 @@
 				464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */,
 				712C714C214BA49300603022 /* LongPackage.m in Sources */,
 				71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */,
-				7121C36221C350B700A3E900 /* DBManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
