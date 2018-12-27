@@ -8,11 +8,10 @@
 
 #import "AppDelegate.h"
 #import "WeChatClient.h"
-#import "DNSManager.h"
+#import "DNSFetcher.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
-
-#import "ClientCheckData.h"
+#import "ClientCheckDataFetcher.h"
 
 @interface AppDelegate ()
 
@@ -30,38 +29,11 @@
     // Configure CocoaLumberjack
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 
-    [self freshClientCheckDataToDB];
     [[WeChatClient sharedClient] start];
-    [DNSManager sharedMgr];
-
+    [[DNSFetcher new] fetchAndSaveToDB];
+    [[ClientCheckDataFetcher new] fetchAndSaveToDB];
+    
     return YES;
-}
-
-- (void)freshClientCheckDataToDB
-{
-    NSURL *url = [NSURL URLWithString:@"http://10.12.87.38:8080/"];
-    NSMutableURLRequest *newGetDNSReq = [NSMutableURLRequest requestWithURL:url];
-    newGetDNSReq.HTTPMethod = @"GET";
-    newGetDNSReq.timeoutInterval = 5;
-    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:newGetDNSReq
-                                                             completionHandler:^(NSData *_Nullable data,
-                                                                                 NSURLResponse *_Nullable response,
-                                                                                 NSError *_Nullable error) {
-                                                                 if (error)
-                                                                 {
-                                                                     LogWarn(@"Get Clinet Check Data Failed: %@", error);
-                                                                 }
-                                                                 else
-                                                                 {
-                                                                     LogVerbose(@"Get Clinet Check Data OK.");
-                                                                     RLMRealm *realm = [RLMRealm defaultRealm];
-                                                                     [realm beginWriteTransaction];
-                                                                     [ClientCheckData createOrUpdateInDefaultRealmWithValue:@[ClientCheckDataID, data]];
-                                                                     [realm commitWriteTransaction];
-                                                                 }
-                                                             }];
-
-    [task resume];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

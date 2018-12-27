@@ -8,11 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DNSManager : NSObject
+@interface DNSFetcher : NSObject
 
-+ (instancetype)sharedMgr;
-
-- (NSString *)getShortLinkIp;
-- (NSString *)getLongLinkIp;
+- (void)fetchAndSaveToDB;
 
 @end

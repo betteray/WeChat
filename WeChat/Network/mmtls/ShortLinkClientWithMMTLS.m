@@ -9,7 +9,7 @@
 //
 
 #import "ShortLinkClientWithMMTLS.h"
-#import "DNSManager.h"
+#import "DNSFetcher.h"
 #import <ASIHTTPRequest.h>
 
 #import "ShortLinkWithMMTLS.h"

@@ -10,6 +10,7 @@
 #import "WCECDH.h"
 #import "FSOpenSSL.h"
 #import "ClientCheckData.h"
+#import "BuiltinIP.h"
 
 @interface LoginViewController ()
 
@@ -153,6 +154,7 @@
         manualAuth:cgiWrap
            success:^(UnifyAuthResponse *_Nullable response) {
                LogVerbose(@"登陆响应 Code: %d, msg: %@", response.baseResponse.ret, response.baseResponse.errMsg);
+               LogVerbose(@"登陆响应: %@", response);
                [self onLoginResponse:response];
            }
            failure:^(NSError *error){
@@ -207,8 +209,31 @@
                            resp.acctSectResp.nickName,
                            resp.acctSectResp.alias);
 
-                //[WeChatClient sharedClient].shortLinkUrl = [[resp.dns.ip.shortlinkArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
+                
+                RLMRealm *realm = [RLMRealm defaultRealm];
+                [realm beginWriteTransaction];
+                for (UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.longConnectIplistArray) {
+                    BuiltinIP *ip = [[BuiltinIP alloc] initWithValue:@{@"isLongIP" : @YES,
+                                                                       @"type": @(longBuiltinIp.type),
+                                                                       @"port": @(longBuiltinIp.port),
+                                                                       @"ip": longBuiltinIp.ip,
+                                                                       @"domain": longBuiltinIp.domain}];
+                    [realm addOrUpdateObject:ip];
+                    
+                };
 
+                for (UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.shortConnectIplistArray) {
+                    BuiltinIP *ip = [[BuiltinIP alloc] initWithValue:@{@"isLongIP" : @NO,
+                                                                       @"type": @(longBuiltinIp.type),
+                                                                       @"port": @(longBuiltinIp.port),
+                                                                       @"ip": longBuiltinIp.ip,
+                                                                       @"domain": longBuiltinIp.domain}];
+                    [realm addOrUpdateObject:ip];
+                    
+                };
+                
+                [realm commitWriteTransaction];
+                
                 [WXUserDefault saveUIN:uin];
                 [WXUserDefault saveWXID:resp.acctSectResp.userName];
                 [WXUserDefault saveNikeName:resp.acctSectResp.nickName];

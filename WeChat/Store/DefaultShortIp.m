@@ -15,4 +15,11 @@
     return @"ip";
 }
 
++ (NSString *)getARandomIp
+{
+    RLMResults *ips = [DefaultShortIp allObjects];
+    NSInteger randomIndex = arc4random() % [ips count];
+    return [ips objectAtIndex:randomIndex];
+}
+
 @end

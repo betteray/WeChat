@@ -12,5 +12,7 @@
 
 @property NSString *ip;
 
++ (NSString *)getARandomIp;
+
 @end
 
