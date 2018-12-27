@@ -29,6 +29,7 @@ PODS:
   - Realm (3.13.0):
     - Realm/Headers (= 3.13.0)
   - Realm/Headers (3.13.0)
+  - RegexKitLite (4.0)
   - SDWebImage (4.4.3):
     - SDWebImage/Core (= 4.4.3)
   - SDWebImage/Core (4.4.3)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - Ono
   - Protobuf
   - Realm
+  - RegexKitLite
   - SDWebImage
   - YYModel (~> 1.0.4)
 
@@ -57,6 +59,7 @@ SPEC REPOS:
     - Protobuf
     - Reachability
     - Realm
+    - RegexKitLite
     - SDWebImage
     - YYModel
 
@@ -70,9 +73,10 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
+  RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 02b9153f7a69656b2a3931e3f3c6d24b807be0a5
+PODFILE CHECKSUM: d5daed4c8bf32b51b06bac613c2b1fb85aab93a6
 
 COCOAPODS: 1.5.3

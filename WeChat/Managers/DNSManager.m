@@ -10,6 +10,7 @@
 #import <Ono.h>
 #import "DefaultLongIp.h"
 #import "DefaultShortIp.h"
+#import "NSString+Regex.h"
 
 @interface NSArray<ObjectType>  (Random)
 - (nullable ObjectType)randomObject;
@@ -62,12 +63,16 @@
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
         for (NSString *longIp in longLinkIpList) {
-            DefaultLongIp *ip = [[DefaultLongIp alloc] initWithValue:@{@"ip": longIp}];
-            [realm addOrUpdateObject:ip];
+            if ([longIp isValidIP]) {
+                DefaultLongIp *ip = [[DefaultLongIp alloc] initWithValue:@{@"ip": longIp}];
+                [realm addOrUpdateObject:ip];
+            }
         }
         for (NSString *shortIp in shortLinkIpList) {
-            DefaultShortIp *ip = [[DefaultShortIp alloc] initWithValue:@{@"ip": shortIp}];
-            [realm addOrUpdateObject:ip];
+            if ([shortIp isValidIP]) {
+                DefaultShortIp *ip = [[DefaultShortIp alloc] initWithValue:@{@"ip": shortIp}];
+                [realm addOrUpdateObject:ip];
+            }
         }
         [realm commitWriteTransaction];
         
@@ -105,5 +110,7 @@
     NSInteger randomIndex = arc4random() % [ips count];
     return [ips objectAtIndex:randomIndex];
 }
+
+
 
 @end

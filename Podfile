@@ -13,6 +13,7 @@ target 'WeChat' do
   pod 'FMDB'
   pod 'Realm'
   pod 'CocoaLumberjack'
+  pod 'RegexKitLite'
   
   pod 'MBProgressHUD', '~> 1.1.0'
   
