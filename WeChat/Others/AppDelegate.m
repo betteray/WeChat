@@ -54,7 +54,6 @@
                                                                  else
                                                                  {
                                                                      LogVerbose(@"Get Clinet Check Data OK.");
-                                                                     
                                                                      RLMRealm *realm = [RLMRealm defaultRealm];
                                                                      [realm beginWriteTransaction];
                                                                      [ClientCheckData createOrUpdateInDefaultRealmWithValue:@[ClientCheckDataID, data]];

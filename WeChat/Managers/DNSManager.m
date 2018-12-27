@@ -8,6 +8,8 @@
 
 #import "DNSManager.h"
 #import <Ono.h>
+#import "DefaultLongIp.h"
+#import "DefaultShortIp.h"
 
 @interface NSArray<ObjectType>  (Random)
 - (nullable ObjectType)randomObject;
@@ -42,12 +44,12 @@
 {
     self  = [super init];
     if (self) {
-        [self getDns];
+        [self fetchDns];
     }
     return self;
 }
 
-- (void)getDns {
+- (void)fetchDns {
     NSURL *url = [NSURL URLWithString:@"http://dns.weixin.qq.com/cgi-bin/micromsg-bin/newgetdns"];
     NSMutableURLRequest *newGetDNSReq = [NSMutableURLRequest requestWithURL:url];
     newGetDNSReq.HTTPMethod = @"GET";
@@ -57,8 +59,17 @@
         NSArray *longLinkIpList = [self getIpListWithDoc:document tag:@"long.weixin.qq.com"];
         NSArray *shortLinkIpList = [self getIpListWithDoc:document tag:@"short.weixin.qq.com"];
         
-        [[DBManager sharedManager] saveShortIpList:shortLinkIpList];
-        [[DBManager sharedManager] saveLongIpList:longLinkIpList];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        for (NSString *longIp in longLinkIpList) {
+            DefaultLongIp *ip = [[DefaultLongIp alloc] initWithValue:@{@"ip": longIp}];
+            [realm addOrUpdateObject:ip];
+        }
+        for (NSString *shortIp in shortLinkIpList) {
+            DefaultShortIp *ip = [[DefaultShortIp alloc] initWithValue:@{@"ip": shortIp}];
+            [realm addOrUpdateObject:ip];
+        }
+        [realm commitWriteTransaction];
         
     }];
     
@@ -73,7 +84,7 @@
     
     for (ONOXMLElement *domains in domainsList) {
         for (ONOXMLElement *e in domains.children) {
-            NSString *ip = [e  stringValue];
+            NSString *ip = [e stringValue];
             [ma addObject:ip];
         }
     }
@@ -83,12 +94,16 @@
 
 - (NSString *)getShortLinkIp
 {
-    return [[[DBManager sharedManager] getShortIpList] randomObject];
+    RLMResults *ips = [DefaultShortIp allObjects];
+    NSInteger randomIndex = arc4random() % [ips count];
+    return [ips objectAtIndex:randomIndex];
 }
 
 - (NSString *)getLongLinkIp
 {
-    return [[[DBManager sharedManager] getLongIpList] randomObject];
+    RLMResults *ips = [DefaultLongIp allObjects];
+    NSInteger randomIndex = arc4random() % [ips count];
+    return [ips objectAtIndex:randomIndex];
 }
 
 @end
