@@ -8,9 +8,7 @@ target 'WeChat' do
   pod 'ASIHTTPRequest'
   pod 'Protobuf'
   pod 'SDWebImage'
-  pod 'YYModel', '~> 1.0.4'
   pod 'Ono' # xml
-  pod 'FMDB'
   pod 'Realm'
   pod 'CocoaLumberjack'
   pod 'RegexKitLite'

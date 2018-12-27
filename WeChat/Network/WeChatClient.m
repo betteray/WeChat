@@ -19,7 +19,6 @@
 #import "NSData+CompressAndEncypt.h"
 #import "NSData+Compression.h"
 #import "NSData+GenRandomData.h"
-#import <YYModel/YYModel.h>
 #import "Varint128.h"
 
 #import "MMTLSShortLinkResponse.h"

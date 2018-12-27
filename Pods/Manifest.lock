@@ -19,9 +19,6 @@ PODS:
   - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
   - FastSocket (1.6)
-  - FMDB (2.7.5):
-    - FMDB/standard (= 2.7.5)
-  - FMDB/standard (2.7.5)
   - MBProgressHUD (1.1.0)
   - Ono (2.1.1)
   - Protobuf (3.6.1)
@@ -33,27 +30,23 @@ PODS:
   - SDWebImage (4.4.3):
     - SDWebImage/Core (= 4.4.3)
   - SDWebImage/Core (4.4.3)
-  - YYModel (1.0.4)
 
 DEPENDENCIES:
   - ASIHTTPRequest
   - CocoaLumberjack
   - FastSocket
-  - FMDB
   - MBProgressHUD (~> 1.1.0)
   - Ono
   - Protobuf
   - Realm
   - RegexKitLite
   - SDWebImage
-  - YYModel (~> 1.0.4)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ASIHTTPRequest
     - CocoaLumberjack
     - FastSocket
-    - FMDB
     - MBProgressHUD
     - Ono
     - Protobuf
@@ -61,13 +54,11 @@ SPEC REPOS:
     - Realm
     - RegexKitLite
     - SDWebImage
-    - YYModel
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   FastSocket: f847d6a85b766dc40f848035e2bf255752c280f1
-  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   Ono: 13c25831a4a66b30df93bd1fa57cf70f13c62699
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
@@ -75,8 +66,7 @@ SPEC CHECKSUMS:
   Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
-  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: d5daed4c8bf32b51b06bac613c2b1fb85aab93a6
+PODFILE CHECKSUM: 886a4432966d4633733323275d3a7b9c75583d06
 
 COCOAPODS: 1.5.3
