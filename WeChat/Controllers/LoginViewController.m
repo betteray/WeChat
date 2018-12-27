@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "WCECDH.h"
 #import "FSOpenSSL.h"
-#import "WeChatStore.h"
+#import "ClientCheckData.h"
 
 @interface LoginViewController ()
 
@@ -39,8 +39,7 @@
         LogVerbose(@"+[ECDH GenEcdh:pubKeyData:] %@, PubKey: %@.", priKeyData, pubKeyData);
     }
     
-    UPDATE_STORE(sessionKey, [FSOpenSSL random128BitAESKey]);
-    
+    [WeChatClient sharedClient].sessionKey = [FSOpenSSL random128BitAESKey];
     _userNameTextField.text = @"13520806231";
 }
 
@@ -52,10 +51,12 @@
 
 - (IBAction)ManualAuth
 {
-    WeChatStore *store = [WeChatStore getStore];
+    NSData *sessionKey = [FSOpenSSL random128BitAESKey];
+    [WeChatClient sharedClient].sessionKey = sessionKey;
+
     SKBuiltinBuffer_t *aesKey = [SKBuiltinBuffer_t new];
-    aesKey.iLen = (int32_t)[store.sessionKey length];
-    aesKey.buffer = store.sessionKey;
+    aesKey.iLen = (int32_t)[sessionKey length];
+    aesKey.buffer = sessionKey;
 
     SKBuiltinBuffer_t *ecdhKey = [SKBuiltinBuffer_t new];
     ecdhKey.iLen = (int32_t)[_pubKeyData length];
@@ -115,9 +116,11 @@
     aesReqData.ostype = device.osType;
 
 #if PROTOCOL_FOR_IOS
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
+    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:pre] firstObject];
     SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
-    clientCheckData.iLen = (int) [store.clientCheckData length];
-    clientCheckData.buffer = store.clientCheckData;
+    clientCheckData.iLen = (int) [ccd.data length];
+    clientCheckData.buffer = ccd.data;
     aesReqData.clientCheckData = clientCheckData;
 #endif
     ManualAuthRequest *authRequest = [ManualAuthRequest new];
@@ -125,7 +128,7 @@
     authRequest.rsaReqData = rsaReqData;
     
     BaseRequest *baseRequest = [BaseRequest new];
-    [baseRequest setSessionKey:[WeChatStore getStore].sessionKey];
+    [baseRequest setSessionKey:[WeChatClient sharedClient].sessionKey];
     [baseRequest setUin:0];
 #if PROTOCOL_FOR_IOS
     [baseRequest setScene:0];
@@ -194,7 +197,7 @@
             {
                 NSData *checkEcdhKey = [NSData dataWithBytes:szSharedKey length:szSharedKeyLen];
                 NSData *sessionKey = [FSOpenSSL aesDecryptData:resp.authSectResp.sessionKey.buffer key:checkEcdhKey];
-                UPDATE_STORE(sessionKey, sessionKey);
+                [WeChatClient sharedClient].sessionKey = sessionKey;
                 [WeChatClient sharedClient].checkEcdhKey = checkEcdhKey;
 
                 LogVerbose(@"登陆成功: SessionKey: %@, uin: %d, wxid: %@, NickName: %@, alias: %@",

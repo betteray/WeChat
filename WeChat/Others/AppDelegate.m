@@ -12,7 +12,7 @@
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
 
-#import "WeChatStore.h"
+#import "ClientCheckData.h"
 
 @interface AppDelegate ()
 
@@ -54,7 +54,11 @@
                                                                  else
                                                                  {
                                                                      LogVerbose(@"Get Clinet Check Data OK.");
-                                                                     UPDATE_STORE(clientCheckData, data);
+                                                                     
+                                                                     RLMRealm *realm = [RLMRealm defaultRealm];
+                                                                     [realm beginWriteTransaction];
+                                                                     [ClientCheckData createOrUpdateInDefaultRealmWithValue:@[ClientCheckDataID, data]];
+                                                                     [realm commitWriteTransaction];
                                                                  }
                                                              }];
 

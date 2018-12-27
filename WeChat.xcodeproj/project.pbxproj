@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2FFBBBF5A4F4493C2BD0EBFB /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE308AEA822A0536476B28E2 /* libPods-WeChat.a */; };
 		3170D26FEE89CCA046B85687 /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WeChat.a */; };
-		463BAD2E21D38F1700847A8B /* WeChatStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 463BAD2D21D38F1700847A8B /* WeChatStore.m */; };
+		463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */ = {isa = PBXBuildFile; fileRef = 463BAD2D21D38F1700847A8B /* ClientCheckData.m */; };
 		469F657D21D3196100C1DC8B /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7141214B5A4B00603022 /* libcrypto.a */; };
 		71008F3321B6750700DE8DF8 /* DNSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3221B6750700DE8DF8 /* DNSManager.m */; };
 		71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3521B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m */; };
@@ -95,8 +95,8 @@
 /* Begin PBXFileReference section */
 		127BAC7036D39AFEE4EAF228 /* Pods-WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChat/Pods-WeChat.release.xcconfig"; sourceTree = "<group>"; };
 		36DB43DD6C2AA522C9401323 /* libPods-WeChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		463BAD2C21D38F1700847A8B /* WeChatStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeChatStore.h; sourceTree = "<group>"; };
-		463BAD2D21D38F1700847A8B /* WeChatStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatStore.m; sourceTree = "<group>"; };
+		463BAD2D21D38F1700847A8B /* ClientCheckData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckData.m; sourceTree = "<group>"; };
+		466CAB8021D4ACED00AF8D2E /* ClientCheckData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientCheckData.h; sourceTree = "<group>"; };
 		49481301164AD3564DCE2106 /* libPods-WeChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E57A8A71D09BB5AB91B774F /* libPods-WeChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70427FEF05DB038F58CB0923 /* Pods-WeChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatUITests/Pods-WeChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -373,8 +373,8 @@
 		463BAD2B21D38EFA00847A8B /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				463BAD2C21D38F1700847A8B /* WeChatStore.h */,
-				463BAD2D21D38F1700847A8B /* WeChatStore.m */,
+				466CAB8021D4ACED00AF8D2E /* ClientCheckData.h */,
+				463BAD2D21D38F1700847A8B /* ClientCheckData.m */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -999,7 +999,7 @@
 				71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */,
 				71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */,
 				712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */,
-				463BAD2E21D38F1700847A8B /* WeChatStore.m in Sources */,
+				463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */,
 				712C7149214BA38900603022 /* LongHeader.m in Sources */,
 				712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */,
 				71848F272150CABD00DB669E /* NSData+Compression.m in Sources */,

@@ -82,7 +82,7 @@
         NSData *cookie = [body subdataWithRange:NSMakeRange(index, cookieLen)];
         LogVerbose(@"Cookie: %@", cookie);
         index += cookieLen;
-        [[DBManager sharedManager] setCookie:cookie];
+        [WeChatClient sharedClient].cookie = cookie;
     }
     else if (cookieLen > 0xf)
     {

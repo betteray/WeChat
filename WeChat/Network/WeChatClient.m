@@ -272,7 +272,7 @@
                           serilizedData:serilizedData
                                    type:5
                                     uin:_uin
-                                 cookie:[DBManager sharedManager].cookie];
+                                 cookie:[WeChatClient sharedClient].cookie];
     
 #if USE_MMTLS
     NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
@@ -288,7 +288,8 @@
     if (cgiWrap.needSetBaseRequest)
     {
         BaseRequest *base = [BaseRequest new];
-        NSData *sessionKey = [WeChatStore getStore].sessionKey;
+        NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
+        LogDebug(@"%@", sessionKey);
         [base setSessionKey:sessionKey];
         [base setUin:(int32_t)[WXUserDefault getUIN]];
         [base setScene:0]; // iMac 1
@@ -364,7 +365,7 @@
 - (void)UnPack:(NSData *)data
 {
     ShortPackage *package = [short_pack unpack:data];
-    NSData *sessionKey = [WeChatStore getStore].sessionKey;
+    NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
     NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress]
                                                      : [package.body aesDecryptWithKey:sessionKey];
     
@@ -382,7 +383,7 @@
 
 - (NSData *)pack:(int)cmdId cgi:(int)cgi serilizedData:(NSData *)serilizedData type:(NSInteger)type
 {
-    NSData *cookie = [DBManager sharedManager].cookie;
+    NSData *cookie = [WeChatClient sharedClient].cookie;
     NSData *shortLinkBuf = [short_pack pack:cgi serilizedData:serilizedData type:type uin:_uin cookie:cookie];
     return [long_pack pack:self.seq++ cmdId:cmdId shortData:shortLinkBuf];
 }
@@ -428,7 +429,7 @@
             else
             {
                 ShortPackage *package = [short_pack unpack:longLinkPackage.body];
-                NSData *sessionKey = [WeChatStore getStore].sessionKey;
+                NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
                 NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress]
                                                                  : [package.body aesDecryptWithKey:sessionKey];
                 Task *task = [self getTaskWithTag:package.header.cgi];
