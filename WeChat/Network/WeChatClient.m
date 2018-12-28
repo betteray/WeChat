@@ -7,9 +7,6 @@
 //
 
 #import "WeChatClient.h"
-#import "NSData+Util.h"
-
-#import "FSOpenSSL.h"
 
 #import "LongHeader.h"
 #import "LongPackage.h"
@@ -17,12 +14,7 @@
 
 #import "Task.h"
 #import "NSData+CompressAndEncypt.h"
-#import "NSData+Compression.h"
-#import "NSData+GenRandomData.h"
-#import "Varint128.h"
 
-#import "MMTLSShortLinkResponse.h"
-#import "ShortLinkWithMMTLS.h"
 #import "ShortLinkClientWithMMTLS.h"
 #import "ShortLinkClient.h"
 
@@ -242,8 +234,14 @@
     LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
-    NSData *sendData = [self pack:[cgiWrap cmdId] cgi:[cgiWrap cgi] serilizedData:serilizedData type:5];
 
+    NSData *sendData = [long_pack packWithUIN:_uin
+                                          seq:_seq++
+                                        CmdId:cgiWrap.cmdId
+                                          cgi:cgiWrap.cgi
+                                serilizedData:serilizedData
+                                         type:5];
+    
     Task *task = [Task new];
     task.sucBlock = successBlock;
     task.failBlock = failureBlock;
@@ -382,13 +380,6 @@
     }
 }
 
-- (NSData *)pack:(int)cmdId cgi:(int)cgi serilizedData:(NSData *)serilizedData type:(NSInteger)type
-{
-    NSData *cookie = [WeChatClient sharedClient].cookie;
-    NSData *shortLinkBuf = [short_pack pack:cgi serilizedData:serilizedData type:type uin:_uin cookie:cookie];
-    return [long_pack pack:self.seq++ cmdId:cmdId shortData:shortLinkBuf];
-}
-
 - (void)onLongLinkHandShakeFinishedWithPSK:(NSData *)pskData
                           resumptionSecret:(NSData *)resumptionSecret
 {
@@ -436,24 +427,7 @@
             }
             else
             {
-                ShortPackage *package = [short_pack unpack:longLinkPackage.body];
-                NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
-                NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress]
-                                                                 : [package.body aesDecryptWithKey:sessionKey];
-                Task *task = [self getTaskWithTag:package.header.cgi];
-                NSError *serializeError = nil;
-                id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:&serializeError];
-                if (serializeError)
-                {
-                    LogError(@"Serialized Error: %@", serializeError);
-                }
-                if (task.sucBlock)
-                {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        ((SuccessBlock) task.sucBlock)(response);
-                    });
-                    [_tasks removeObject:task];
-                }
+                [self UnPack:longLinkPackage.body];
             }
         }
         break;

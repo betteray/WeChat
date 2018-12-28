@@ -7,6 +7,7 @@
 //
 
 #import "long_pack.h"
+#import "short_pack.h"
 
 #define CMDID_NOOP_REQ 6
 #define HEARTBEAT_SEQ 0xFFFFFFFF
@@ -15,6 +16,18 @@
 #define IDENTIFY_SEQ 0xFFFFFFFE
 
 @implementation long_pack
+
++ (NSData *)packWithUIN:(int32_t)uin
+                    seq:(int)seq
+                  CmdId:(int)cmdId
+                    cgi:(int)cgi
+          serilizedData:(NSData *)serilizedData
+                   type:(NSInteger)type
+{
+    NSData *cookie = [WeChatClient sharedClient].cookie;
+    NSData *shortLinkBuf = [short_pack pack:cgi serilizedData:serilizedData type:type uin:uin cookie:cookie];
+    return [long_pack pack:seq cmdId:cmdId shortData:shortLinkBuf];
+}
 
 + (NSData *)pack:(int)seq cmdId:(int)cmdId shortData:(NSData *)shortData
 {
