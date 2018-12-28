@@ -212,7 +212,7 @@
                 
                 RLMRealm *realm = [RLMRealm defaultRealm];
                 [realm beginWriteTransaction];
-                for (UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.longConnectIplistArray) {
+                for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.longConnectIplistArray) {
                     BuiltinIP *ip = [[BuiltinIP alloc] initWithValue:@{@"isLongIP" : @YES,
                                                                        @"type": @(longBuiltinIp.type),
                                                                        @"port": @(longBuiltinIp.port),
@@ -222,7 +222,7 @@
                     
                 };
 
-                for (UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.shortConnectIplistArray) {
+                for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.shortConnectIplistArray) {
                     BuiltinIP *ip = [[BuiltinIP alloc] initWithValue:@{@"isLongIP" : @NO,
                                                                        @"type": @(longBuiltinIp.type),
                                                                        @"port": @(longBuiltinIp.port),

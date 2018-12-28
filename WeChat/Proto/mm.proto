@@ -146,6 +146,34 @@ message ManualAuthRequest
     required ManualAuthAesReqData aesReqData = 2;
 }
 
+message NetworkControl
+{
+    optional string portList        = 1;
+    optional string timeoutList     = 2;
+    optional int32 minNoopInterval  = 3;
+    optional int32 maxNoopInterval  = 4;
+    optional int32 typingInterval   = 5;
+    optional int32 noopIntervalTime = 7;
+}
+
+message BuiltinIPList
+{
+    optional int32 longConnectIpcount  = 1;
+    optional int32 shortConnectIpcount = 2;
+
+    message BuiltinIP
+    {
+        optional int32 type    = 1;
+        optional int32 port    = 2;
+        optional string ip     = 3;
+        optional string domain = 4;
+    }
+
+    repeated BuiltinIP longConnectIplist  = 3;
+    repeated BuiltinIP shortConnectIplist = 4;
+    optional int32 seq                    = 5;
+}
+
 //登录结果
 message UnifyAuthResponse
 {
@@ -216,36 +244,8 @@ message UnifyAuthResponse
         }
         optional HostList newHostList = 1; //域名重定向信息
 
-        message NetworkControl
-        {
-            optional string portList        = 1;
-            optional string timeoutList     = 2;
-            optional int32 minNoopInterval  = 3;
-            optional int32 maxNoopInterval  = 4;
-            optional int32 typingInterval   = 5;
-            optional int32 noopIntervalTime = 7;
-        }
-
         optional NetworkControl networkControl = 2;
-
-        message BuiltinIPList
-        {
-            optional int32 longConnectIpcount  = 1;
-            optional int32 shortConnectIpcount = 2;
-
-            message BuiltinIP
-            {
-                optional int32 type    = 1;
-                optional int32 port    = 2;
-                optional string ip     = 3;
-                optional string domain = 4;
-            }
-
-            repeated BuiltinIP longConnectIplist  = 3;
-            repeated BuiltinIP shortConnectIplist = 4;
-            optional int32 seq                    = 5;
-        }
-        optional BuiltinIPList builtinIplist = 3;
+        optional BuiltinIPList builtinIplist   = 3;
     }
     optional NetworkSectResp networkSectResp = 5; // dns信息
 }
@@ -314,8 +314,9 @@ message contact_info
     optional int32 register_body_type  = 24; // 8=>个人;24=>公司
     optional string register_body      = 25; //注册主体:xx公司或个人
     optional int32 tag26               = 26;
-    optional int32 src                 = 27; //好友来源:(10000XX为对方添加自己)0=>未知;1=>QQ;3=>微信号;6=>名片;13=>手机通讯录;14=>群聊;15=>手机号;30=>扫一扫
-                             //（1000015=>对方手机号;1000030=>对方扫一扫;1000014=>对方群聊......）
+    optional int32 src =
+        27; //好友来源:(10000XX为对方添加自己)0=>未知;1=>QQ;3=>微信号;6=>名片;13=>手机通讯录;14=>群聊;15=>手机号;30=>扫一扫
+            //（1000015=>对方手机号;1000030=>对方扫一扫;1000014=>对方群聊......）
     optional string lastMsgTime       = 29;
     optional string alias             = 30; //微信号(未设置则显示wxid)
     optional string chatroomOwnerWxid = 31;
@@ -509,4 +510,62 @@ message SnsTimeLineResponse
     required int32 recCount               = 9;
     // repeated recList                      = 10;
     optional bytes session = 11;
+}
+
+message BindOpMobileRequest
+{
+    required BaseRequest baseRequest          = 1;
+    optional string userName                  = 2;
+    optional string mobile                    = 3;
+    optional int32 opcode                     = 4;
+    optional string verifycode                = 5;
+    optional int32 dialFlag                   = 6;
+    optional string dialLang                  = 7;
+    optional string authTicket                = 8;
+    optional int32 forceReg                   = 9;
+    optional string safeDeviceName            = 10;
+    optional string safeDeviceType            = 11;
+    optional SKBuiltinBuffer_t randomEncryKey = 12;
+    optional string language                  = 13;
+    optional int32 inputMobileRetrys          = 14; // ios=0
+    optional int32 adjustRet                  = 15; // ios=0
+    optional string clientSeqId               = 16; // ios="8fd2fc510d3fb9bb8e0661b0c6a026cc-1545918644"
+    optional int32 mobileCheckType            = 17;
+    optional string unkownString18            = 18;
+    optional SKBuiltinBuffer_t extSpamInfo    = 20;
+}
+
+message BindOpMobileResponse
+{
+    required BaseResponse baseResponse   = 1;
+    optional string ticket               = 2;
+    optional string smsNo                = 3;
+    optional int32 needSetPwd            = 4;
+    optional string pwd                  = 5;
+    optional string username             = 6;
+    optional BuiltinIPList builtinIplist = 8;
+
+    message NewHostList { optional int32 count = 1; }
+
+    optional NewHostList newHostList       = 7;
+    optional NetworkControl networkControl = 9;
+    optional string authTicket             = 10;
+    optional int32 safeDevice              = 11;
+    optional string cc                     = 12;
+    optional int32 obsoleteItem1           = 13;
+
+    message SafeDeviceList { optional int32 count = 1; }
+
+    optional SafeDeviceList safeDeviceList = 14;
+    optional string pureMobile             = 15;
+    optional string formatedMobile         = 16;
+
+    message ShowStyle { optional int32 keyCount = 1; }
+
+    optional ShowStyle showStyle       = 17;
+    optional int32 mmtlsControlBitFlag = 18;
+    optional string smsUpCode          = 19;
+    optional string smsUpMobile        = 20;
+    optional int32 mobileCheckType     = 21;
+    optional string regSessionId       = 22;
 }

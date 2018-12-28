@@ -1469,6 +1469,279 @@ typedef struct ManualAuthRequest__storage_ {
 
 @end
 
+#pragma mark - NetworkControl
+
+@implementation NetworkControl
+
+@dynamic hasPortList, portList;
+@dynamic hasTimeoutList, timeoutList;
+@dynamic hasMinNoopInterval, minNoopInterval;
+@dynamic hasMaxNoopInterval, maxNoopInterval;
+@dynamic hasTypingInterval, typingInterval;
+@dynamic hasNoopIntervalTime, noopIntervalTime;
+
+typedef struct NetworkControl__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t minNoopInterval;
+  int32_t maxNoopInterval;
+  int32_t typingInterval;
+  int32_t noopIntervalTime;
+  NSString *portList;
+  NSString *timeoutList;
+} NetworkControl__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "portList",
+        .dataTypeSpecific.className = NULL,
+        .number = NetworkControl_FieldNumber_PortList,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(NetworkControl__storage_, portList),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "timeoutList",
+        .dataTypeSpecific.className = NULL,
+        .number = NetworkControl_FieldNumber_TimeoutList,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(NetworkControl__storage_, timeoutList),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "minNoopInterval",
+        .dataTypeSpecific.className = NULL,
+        .number = NetworkControl_FieldNumber_MinNoopInterval,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(NetworkControl__storage_, minNoopInterval),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "maxNoopInterval",
+        .dataTypeSpecific.className = NULL,
+        .number = NetworkControl_FieldNumber_MaxNoopInterval,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(NetworkControl__storage_, maxNoopInterval),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "typingInterval",
+        .dataTypeSpecific.className = NULL,
+        .number = NetworkControl_FieldNumber_TypingInterval,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(NetworkControl__storage_, typingInterval),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "noopIntervalTime",
+        .dataTypeSpecific.className = NULL,
+        .number = NetworkControl_FieldNumber_NoopIntervalTime,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(NetworkControl__storage_, noopIntervalTime),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[NetworkControl class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(NetworkControl__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\006\001\010\000\002\013\000\003\017\000\004\017\000\005\016\000\007\020\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - BuiltinIPList
+
+@implementation BuiltinIPList
+
+@dynamic hasLongConnectIpcount, longConnectIpcount;
+@dynamic hasShortConnectIpcount, shortConnectIpcount;
+@dynamic longConnectIplistArray, longConnectIplistArray_Count;
+@dynamic shortConnectIplistArray, shortConnectIplistArray_Count;
+@dynamic hasSeq, seq;
+
+typedef struct BuiltinIPList__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t longConnectIpcount;
+  int32_t shortConnectIpcount;
+  int32_t seq;
+  NSMutableArray *longConnectIplistArray;
+  NSMutableArray *shortConnectIplistArray;
+} BuiltinIPList__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "longConnectIpcount",
+        .dataTypeSpecific.className = NULL,
+        .number = BuiltinIPList_FieldNumber_LongConnectIpcount,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(BuiltinIPList__storage_, longConnectIpcount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "shortConnectIpcount",
+        .dataTypeSpecific.className = NULL,
+        .number = BuiltinIPList_FieldNumber_ShortConnectIpcount,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(BuiltinIPList__storage_, shortConnectIpcount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "longConnectIplistArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(BuiltinIPList_BuiltinIP),
+        .number = BuiltinIPList_FieldNumber_LongConnectIplistArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(BuiltinIPList__storage_, longConnectIplistArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "shortConnectIplistArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(BuiltinIPList_BuiltinIP),
+        .number = BuiltinIPList_FieldNumber_ShortConnectIplistArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(BuiltinIPList__storage_, shortConnectIplistArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "seq",
+        .dataTypeSpecific.className = NULL,
+        .number = BuiltinIPList_FieldNumber_Seq,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(BuiltinIPList__storage_, seq),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[BuiltinIPList class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(BuiltinIPList__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\004\001\022\000\002\023\000\003\000longConnectIplist\000\004\000shortConnec"
+        "tIplist\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - BuiltinIPList_BuiltinIP
+
+@implementation BuiltinIPList_BuiltinIP
+
+@dynamic hasType, type;
+@dynamic hasPort, port;
+@dynamic hasIp, ip;
+@dynamic hasDomain, domain;
+
+typedef struct BuiltinIPList_BuiltinIP__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t type;
+  int32_t port;
+  NSString *ip;
+  NSString *domain;
+} BuiltinIPList_BuiltinIP__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "type",
+        .dataTypeSpecific.className = NULL,
+        .number = BuiltinIPList_BuiltinIP_FieldNumber_Type,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(BuiltinIPList_BuiltinIP__storage_, type),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "port",
+        .dataTypeSpecific.className = NULL,
+        .number = BuiltinIPList_BuiltinIP_FieldNumber_Port,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(BuiltinIPList_BuiltinIP__storage_, port),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "ip",
+        .dataTypeSpecific.className = NULL,
+        .number = BuiltinIPList_BuiltinIP_FieldNumber_Ip,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(BuiltinIPList_BuiltinIP__storage_, ip),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "domain",
+        .dataTypeSpecific.className = NULL,
+        .number = BuiltinIPList_BuiltinIP_FieldNumber_Domain,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(BuiltinIPList_BuiltinIP__storage_, domain),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[BuiltinIPList_BuiltinIP class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(BuiltinIPList_BuiltinIP__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(BuiltinIPList)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - UnifyAuthResponse
 
 @implementation UnifyAuthResponse
@@ -2039,8 +2312,8 @@ typedef struct UnifyAuthResponse_AcctSectResp__storage_ {
 typedef struct UnifyAuthResponse_NetworkSectResp__storage_ {
   uint32_t _has_storage_[1];
   UnifyAuthResponse_NetworkSectResp_HostList *newHostList;
-  UnifyAuthResponse_NetworkSectResp_NetworkControl *networkControl;
-  UnifyAuthResponse_NetworkSectResp_BuiltinIPList *builtinIplist;
+  NetworkControl *networkControl;
+  BuiltinIPList *builtinIplist;
 } UnifyAuthResponse_NetworkSectResp__storage_;
 
 // This method is threadsafe because it is initially called
@@ -2060,7 +2333,7 @@ typedef struct UnifyAuthResponse_NetworkSectResp__storage_ {
       },
       {
         .name = "networkControl",
-        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_NetworkControl),
+        .dataTypeSpecific.className = GPBStringifySymbol(NetworkControl),
         .number = UnifyAuthResponse_NetworkSectResp_FieldNumber_NetworkControl,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp__storage_, networkControl),
@@ -2069,7 +2342,7 @@ typedef struct UnifyAuthResponse_NetworkSectResp__storage_ {
       },
       {
         .name = "builtinIplist",
-        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_BuiltinIPList),
+        .dataTypeSpecific.className = GPBStringifySymbol(BuiltinIPList),
         .number = UnifyAuthResponse_NetworkSectResp_FieldNumber_BuiltinIplist,
         .hasIndex = 2,
         .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp__storage_, builtinIplist),
@@ -2212,281 +2485,6 @@ typedef struct UnifyAuthResponse_NetworkSectResp_HostList_Host__storage_ {
                                    storageSize:sizeof(UnifyAuthResponse_NetworkSectResp_HostList_Host__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_HostList)];
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - UnifyAuthResponse_NetworkSectResp_NetworkControl
-
-@implementation UnifyAuthResponse_NetworkSectResp_NetworkControl
-
-@dynamic hasPortList, portList;
-@dynamic hasTimeoutList, timeoutList;
-@dynamic hasMinNoopInterval, minNoopInterval;
-@dynamic hasMaxNoopInterval, maxNoopInterval;
-@dynamic hasTypingInterval, typingInterval;
-@dynamic hasNoopIntervalTime, noopIntervalTime;
-
-typedef struct UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_ {
-  uint32_t _has_storage_[1];
-  int32_t minNoopInterval;
-  int32_t maxNoopInterval;
-  int32_t typingInterval;
-  int32_t noopIntervalTime;
-  NSString *portList;
-  NSString *timeoutList;
-} UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "portList",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_PortList,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, portList),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "timeoutList",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_TimeoutList,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, timeoutList),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "minNoopInterval",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_MinNoopInterval,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, minNoopInterval),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "maxNoopInterval",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_MaxNoopInterval,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, maxNoopInterval),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "typingInterval",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_TypingInterval,
-        .hasIndex = 4,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, typingInterval),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "noopIntervalTime",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_NoopIntervalTime,
-        .hasIndex = 5,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_, noopIntervalTime),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_NetworkSectResp_NetworkControl class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(UnifyAuthResponse_NetworkSectResp_NetworkControl__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    static const char *extraTextFormatInfo =
-        "\006\001\010\000\002\013\000\003\017\000\004\017\000\005\016\000\007\020\000";
-    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
-#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp)];
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - UnifyAuthResponse_NetworkSectResp_BuiltinIPList
-
-@implementation UnifyAuthResponse_NetworkSectResp_BuiltinIPList
-
-@dynamic hasLongConnectIpcount, longConnectIpcount;
-@dynamic hasShortConnectIpcount, shortConnectIpcount;
-@dynamic longConnectIplistArray, longConnectIplistArray_Count;
-@dynamic shortConnectIplistArray, shortConnectIplistArray_Count;
-@dynamic hasSeq, seq;
-
-typedef struct UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_ {
-  uint32_t _has_storage_[1];
-  int32_t longConnectIpcount;
-  int32_t shortConnectIpcount;
-  int32_t seq;
-  NSMutableArray *longConnectIplistArray;
-  NSMutableArray *shortConnectIplistArray;
-} UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "longConnectIpcount",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_LongConnectIpcount,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_, longConnectIpcount),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "shortConnectIpcount",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_ShortConnectIpcount,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_, shortConnectIpcount),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "longConnectIplistArray",
-        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP),
-        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_LongConnectIplistArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_, longConnectIplistArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "shortConnectIplistArray",
-        .dataTypeSpecific.className = GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP),
-        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_ShortConnectIplistArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_, shortConnectIplistArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "seq",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_Seq,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_, seq),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_NetworkSectResp_BuiltinIPList class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    static const char *extraTextFormatInfo =
-        "\004\001\022\000\002\023\000\003\000longConnectIplist\000\004\000shortConnec"
-        "tIplist\000";
-    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
-#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp)];
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP
-
-@implementation UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP
-
-@dynamic hasType, type;
-@dynamic hasPort, port;
-@dynamic hasIp, ip;
-@dynamic hasDomain, domain;
-
-typedef struct UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_ {
-  uint32_t _has_storage_[1];
-  int32_t type;
-  int32_t port;
-  NSString *ip;
-  NSString *domain;
-} UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "type",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Type,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_, type),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "port",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Port,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_, port),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "ip",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Ip,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_, ip),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "domain",
-        .dataTypeSpecific.className = NULL,
-        .number = UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Domain,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_, domain),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(UnifyAuthResponse_NetworkSectResp_BuiltinIPList)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -5241,6 +5239,670 @@ typedef struct SnsTimeLineResponse_SnsServerConfig__storage_ {
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(SnsTimeLineResponse)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - BindOpMobileRequest
+
+@implementation BindOpMobileRequest
+
+@dynamic hasBaseRequest, baseRequest;
+@dynamic hasUserName, userName;
+@dynamic hasMobile, mobile;
+@dynamic hasOpcode, opcode;
+@dynamic hasVerifycode, verifycode;
+@dynamic hasDialFlag, dialFlag;
+@dynamic hasDialLang, dialLang;
+@dynamic hasAuthTicket, authTicket;
+@dynamic hasForceReg, forceReg;
+@dynamic hasSafeDeviceName, safeDeviceName;
+@dynamic hasSafeDeviceType, safeDeviceType;
+@dynamic hasRandomEncryKey, randomEncryKey;
+@dynamic hasLanguage, language;
+@dynamic hasInputMobileRetrys, inputMobileRetrys;
+@dynamic hasAdjustRet, adjustRet;
+@dynamic hasClientSeqId, clientSeqId;
+@dynamic hasMobileCheckType, mobileCheckType;
+@dynamic hasUnkownString18, unkownString18;
+@dynamic hasExtSpamInfo, extSpamInfo;
+
+typedef struct BindOpMobileRequest__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t opcode;
+  int32_t dialFlag;
+  int32_t forceReg;
+  int32_t inputMobileRetrys;
+  int32_t adjustRet;
+  int32_t mobileCheckType;
+  BaseRequest *baseRequest;
+  NSString *userName;
+  NSString *mobile;
+  NSString *verifycode;
+  NSString *dialLang;
+  NSString *authTicket;
+  NSString *safeDeviceName;
+  NSString *safeDeviceType;
+  SKBuiltinBuffer_t *randomEncryKey;
+  NSString *language;
+  NSString *clientSeqId;
+  NSString *unkownString18;
+  SKBuiltinBuffer_t *extSpamInfo;
+} BindOpMobileRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseRequest",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseRequest),
+        .number = BindOpMobileRequest_FieldNumber_BaseRequest,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, baseRequest),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "userName",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_UserName,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, userName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "mobile",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_Mobile,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, mobile),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "opcode",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_Opcode,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, opcode),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "verifycode",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_Verifycode,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, verifycode),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "dialFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_DialFlag,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, dialFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "dialLang",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_DialLang,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, dialLang),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "authTicket",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_AuthTicket,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, authTicket),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "forceReg",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_ForceReg,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, forceReg),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "safeDeviceName",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_SafeDeviceName,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, safeDeviceName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "safeDeviceType",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_SafeDeviceType,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, safeDeviceType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "randomEncryKey",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = BindOpMobileRequest_FieldNumber_RandomEncryKey,
+        .hasIndex = 11,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, randomEncryKey),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "language",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_Language,
+        .hasIndex = 12,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, language),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "inputMobileRetrys",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_InputMobileRetrys,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, inputMobileRetrys),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "adjustRet",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_AdjustRet,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, adjustRet),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "clientSeqId",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_ClientSeqId,
+        .hasIndex = 15,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, clientSeqId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "mobileCheckType",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_MobileCheckType,
+        .hasIndex = 16,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, mobileCheckType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "unkownString18",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileRequest_FieldNumber_UnkownString18,
+        .hasIndex = 17,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, unkownString18),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "extSpamInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = BindOpMobileRequest_FieldNumber_ExtSpamInfo,
+        .hasIndex = 18,
+        .offset = (uint32_t)offsetof(BindOpMobileRequest__storage_, extSpamInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[BindOpMobileRequest class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(BindOpMobileRequest__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\017\001\013\000\002\010\000\006\010\000\007\010\000\010\n\000\t\010\000\n\016\000\013\016\000\014\016\000\016\021\000\017\t\000\020\013\000\021\017\000"
+        "\022\016\000\024\013\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - BindOpMobileResponse
+
+@implementation BindOpMobileResponse
+
+@dynamic hasBaseResponse, baseResponse;
+@dynamic hasTicket, ticket;
+@dynamic hasSmsNo, smsNo;
+@dynamic hasNeedSetPwd, needSetPwd;
+@dynamic hasPwd, pwd;
+@dynamic hasUsername, username;
+@dynamic hasBuiltinIplist, builtinIplist;
+@dynamic hasNewHostList, newHostList;
+@dynamic hasNetworkControl, networkControl;
+@dynamic hasAuthTicket, authTicket;
+@dynamic hasSafeDevice, safeDevice;
+@dynamic hasCc, cc;
+@dynamic hasObsoleteItem1, obsoleteItem1;
+@dynamic hasSafeDeviceList, safeDeviceList;
+@dynamic hasPureMobile, pureMobile;
+@dynamic hasFormatedMobile, formatedMobile;
+@dynamic hasShowStyle, showStyle;
+@dynamic hasMmtlsControlBitFlag, mmtlsControlBitFlag;
+@dynamic hasSmsUpCode, smsUpCode;
+@dynamic hasSmsUpMobile, smsUpMobile;
+@dynamic hasMobileCheckType, mobileCheckType;
+@dynamic hasRegSessionId, regSessionId;
+
+typedef struct BindOpMobileResponse__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t needSetPwd;
+  int32_t safeDevice;
+  int32_t obsoleteItem1;
+  int32_t mmtlsControlBitFlag;
+  int32_t mobileCheckType;
+  BaseResponse *baseResponse;
+  NSString *ticket;
+  NSString *smsNo;
+  NSString *pwd;
+  NSString *username;
+  BindOpMobileResponse_NewHostList *newHostList;
+  BuiltinIPList *builtinIplist;
+  NetworkControl *networkControl;
+  NSString *authTicket;
+  NSString *cc;
+  BindOpMobileResponse_SafeDeviceList *safeDeviceList;
+  NSString *pureMobile;
+  NSString *formatedMobile;
+  BindOpMobileResponse_ShowStyle *showStyle;
+  NSString *smsUpCode;
+  NSString *smsUpMobile;
+  NSString *regSessionId;
+} BindOpMobileResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseResponse",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseResponse),
+        .number = BindOpMobileResponse_FieldNumber_BaseResponse,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, baseResponse),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "ticket",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_Ticket,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, ticket),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "smsNo",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_SmsNo,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, smsNo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "needSetPwd",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_NeedSetPwd,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, needSetPwd),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "pwd",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_Pwd,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, pwd),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "username",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_Username,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, username),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "newHostList",
+        .dataTypeSpecific.className = GPBStringifySymbol(BindOpMobileResponse_NewHostList),
+        .number = BindOpMobileResponse_FieldNumber_NewHostList,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, newHostList),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "builtinIplist",
+        .dataTypeSpecific.className = GPBStringifySymbol(BuiltinIPList),
+        .number = BindOpMobileResponse_FieldNumber_BuiltinIplist,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, builtinIplist),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "networkControl",
+        .dataTypeSpecific.className = GPBStringifySymbol(NetworkControl),
+        .number = BindOpMobileResponse_FieldNumber_NetworkControl,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, networkControl),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "authTicket",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_AuthTicket,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, authTicket),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "safeDevice",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_SafeDevice,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, safeDevice),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "cc",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_Cc,
+        .hasIndex = 11,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, cc),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "obsoleteItem1",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_ObsoleteItem1,
+        .hasIndex = 12,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, obsoleteItem1),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "safeDeviceList",
+        .dataTypeSpecific.className = GPBStringifySymbol(BindOpMobileResponse_SafeDeviceList),
+        .number = BindOpMobileResponse_FieldNumber_SafeDeviceList,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, safeDeviceList),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "pureMobile",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_PureMobile,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, pureMobile),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "formatedMobile",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_FormatedMobile,
+        .hasIndex = 15,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, formatedMobile),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "showStyle",
+        .dataTypeSpecific.className = GPBStringifySymbol(BindOpMobileResponse_ShowStyle),
+        .number = BindOpMobileResponse_FieldNumber_ShowStyle,
+        .hasIndex = 16,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, showStyle),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "mmtlsControlBitFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_MmtlsControlBitFlag,
+        .hasIndex = 17,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, mmtlsControlBitFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "smsUpCode",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_SmsUpCode,
+        .hasIndex = 18,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, smsUpCode),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "smsUpMobile",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_SmsUpMobile,
+        .hasIndex = 19,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, smsUpMobile),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "mobileCheckType",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_MobileCheckType,
+        .hasIndex = 20,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, mobileCheckType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "regSessionId",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_FieldNumber_RegSessionId,
+        .hasIndex = 21,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, regSessionId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[BindOpMobileResponse class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(BindOpMobileResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\022\001\014\000\003\005\000\004\n\000\007\013\000\010\r\000\t\016\000\n\n\000\013\n\000\r\r\000\016\016\000\017\n\000\020\016\000\021\t\000"
+        "\022\023\000\023\t\000\024\013\000\025\017\000\026\014\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - BindOpMobileResponse_NewHostList
+
+@implementation BindOpMobileResponse_NewHostList
+
+@dynamic hasCount, count;
+
+typedef struct BindOpMobileResponse_NewHostList__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t count;
+} BindOpMobileResponse_NewHostList__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "count",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_NewHostList_FieldNumber_Count,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse_NewHostList__storage_, count),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[BindOpMobileResponse_NewHostList class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(BindOpMobileResponse_NewHostList__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(BindOpMobileResponse)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - BindOpMobileResponse_SafeDeviceList
+
+@implementation BindOpMobileResponse_SafeDeviceList
+
+@dynamic hasCount, count;
+
+typedef struct BindOpMobileResponse_SafeDeviceList__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t count;
+} BindOpMobileResponse_SafeDeviceList__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "count",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_SafeDeviceList_FieldNumber_Count,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse_SafeDeviceList__storage_, count),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[BindOpMobileResponse_SafeDeviceList class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(BindOpMobileResponse_SafeDeviceList__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(BindOpMobileResponse)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - BindOpMobileResponse_ShowStyle
+
+@implementation BindOpMobileResponse_ShowStyle
+
+@dynamic hasKeyCount, keyCount;
+
+typedef struct BindOpMobileResponse_ShowStyle__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t keyCount;
+} BindOpMobileResponse_ShowStyle__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "keyCount",
+        .dataTypeSpecific.className = NULL,
+        .number = BindOpMobileResponse_ShowStyle_FieldNumber_KeyCount,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(BindOpMobileResponse_ShowStyle__storage_, keyCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[BindOpMobileResponse_ShowStyle class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(BindOpMobileResponse_ShowStyle__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001\010\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(BindOpMobileResponse)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }

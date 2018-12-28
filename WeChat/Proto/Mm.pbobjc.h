@@ -30,6 +30,11 @@ CF_EXTERN_C_BEGIN
 @class BaseAuthReqInfo;
 @class BaseRequest;
 @class BaseResponse;
+@class BindOpMobileResponse_NewHostList;
+@class BindOpMobileResponse_SafeDeviceList;
+@class BindOpMobileResponse_ShowStyle;
+@class BuiltinIPList;
+@class BuiltinIPList_BuiltinIP;
 @class CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg;
 @class CheckResUpdateRequest_ResID;
 @class CheckResUpdateRequest_ResID_SubTypeVector;
@@ -40,6 +45,7 @@ CF_EXTERN_C_BEGIN
 @class MicroMsgRequestNew;
 @class MicroMsgResponseNew;
 @class Msg_RawContent;
+@class NetworkControl;
 @class NewSyncResponse_CmdList;
 @class SKBuiltinBuffer_t;
 @class SKBuiltinString_t;
@@ -49,11 +55,8 @@ CF_EXTERN_C_BEGIN
 @class UnifyAuthResponse_AuthSectResp;
 @class UnifyAuthResponse_AuthSectResp_ShowStyleKey;
 @class UnifyAuthResponse_NetworkSectResp;
-@class UnifyAuthResponse_NetworkSectResp_BuiltinIPList;
-@class UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP;
 @class UnifyAuthResponse_NetworkSectResp_HostList;
 @class UnifyAuthResponse_NetworkSectResp_HostList_Host;
-@class UnifyAuthResponse_NetworkSectResp_NetworkControl;
 @class contact_info_BeiZhu;
 @class contact_info_GroupMemberList;
 @class contact_info_GroupMemberList_MemberInfo;
@@ -639,6 +642,99 @@ typedef GPB_ENUM(ManualAuthRequest_FieldNumber) {
 
 @end
 
+#pragma mark - NetworkControl
+
+typedef GPB_ENUM(NetworkControl_FieldNumber) {
+  NetworkControl_FieldNumber_PortList = 1,
+  NetworkControl_FieldNumber_TimeoutList = 2,
+  NetworkControl_FieldNumber_MinNoopInterval = 3,
+  NetworkControl_FieldNumber_MaxNoopInterval = 4,
+  NetworkControl_FieldNumber_TypingInterval = 5,
+  NetworkControl_FieldNumber_NoopIntervalTime = 7,
+};
+
+@interface NetworkControl : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *portList;
+/** Test to see if @c portList has been set. */
+@property(nonatomic, readwrite) BOOL hasPortList;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *timeoutList;
+/** Test to see if @c timeoutList has been set. */
+@property(nonatomic, readwrite) BOOL hasTimeoutList;
+
+@property(nonatomic, readwrite) int32_t minNoopInterval;
+
+@property(nonatomic, readwrite) BOOL hasMinNoopInterval;
+@property(nonatomic, readwrite) int32_t maxNoopInterval;
+
+@property(nonatomic, readwrite) BOOL hasMaxNoopInterval;
+@property(nonatomic, readwrite) int32_t typingInterval;
+
+@property(nonatomic, readwrite) BOOL hasTypingInterval;
+@property(nonatomic, readwrite) int32_t noopIntervalTime;
+
+@property(nonatomic, readwrite) BOOL hasNoopIntervalTime;
+@end
+
+#pragma mark - BuiltinIPList
+
+typedef GPB_ENUM(BuiltinIPList_FieldNumber) {
+  BuiltinIPList_FieldNumber_LongConnectIpcount = 1,
+  BuiltinIPList_FieldNumber_ShortConnectIpcount = 2,
+  BuiltinIPList_FieldNumber_LongConnectIplistArray = 3,
+  BuiltinIPList_FieldNumber_ShortConnectIplistArray = 4,
+  BuiltinIPList_FieldNumber_Seq = 5,
+};
+
+@interface BuiltinIPList : GPBMessage
+
+@property(nonatomic, readwrite) int32_t longConnectIpcount;
+
+@property(nonatomic, readwrite) BOOL hasLongConnectIpcount;
+@property(nonatomic, readwrite) int32_t shortConnectIpcount;
+
+@property(nonatomic, readwrite) BOOL hasShortConnectIpcount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<BuiltinIPList_BuiltinIP*> *longConnectIplistArray;
+/** The number of items in @c longConnectIplistArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger longConnectIplistArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<BuiltinIPList_BuiltinIP*> *shortConnectIplistArray;
+/** The number of items in @c shortConnectIplistArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger shortConnectIplistArray_Count;
+
+@property(nonatomic, readwrite) int32_t seq;
+
+@property(nonatomic, readwrite) BOOL hasSeq;
+@end
+
+#pragma mark - BuiltinIPList_BuiltinIP
+
+typedef GPB_ENUM(BuiltinIPList_BuiltinIP_FieldNumber) {
+  BuiltinIPList_BuiltinIP_FieldNumber_Type = 1,
+  BuiltinIPList_BuiltinIP_FieldNumber_Port = 2,
+  BuiltinIPList_BuiltinIP_FieldNumber_Ip = 3,
+  BuiltinIPList_BuiltinIP_FieldNumber_Domain = 4,
+};
+
+@interface BuiltinIPList_BuiltinIP : GPBMessage
+
+@property(nonatomic, readwrite) int32_t type;
+
+@property(nonatomic, readwrite) BOOL hasType;
+@property(nonatomic, readwrite) int32_t port;
+
+@property(nonatomic, readwrite) BOOL hasPort;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *ip;
+/** Test to see if @c ip has been set. */
+@property(nonatomic, readwrite) BOOL hasIp;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *domain;
+/** Test to see if @c domain has been set. */
+@property(nonatomic, readwrite) BOOL hasDomain;
+
+@end
+
 #pragma mark - UnifyAuthResponse
 
 typedef GPB_ENUM(UnifyAuthResponse_FieldNumber) {
@@ -865,11 +961,11 @@ typedef GPB_ENUM(UnifyAuthResponse_NetworkSectResp_FieldNumber) {
 /** Test to see if @c newHostList has been set. */
 @property(nonatomic, readwrite) BOOL hasNewHostList;
 
-@property(nonatomic, readwrite, strong, null_resettable) UnifyAuthResponse_NetworkSectResp_NetworkControl *networkControl;
+@property(nonatomic, readwrite, strong, null_resettable) NetworkControl *networkControl;
 /** Test to see if @c networkControl has been set. */
 @property(nonatomic, readwrite) BOOL hasNetworkControl;
 
-@property(nonatomic, readwrite, strong, null_resettable) UnifyAuthResponse_NetworkSectResp_BuiltinIPList *builtinIplist;
+@property(nonatomic, readwrite, strong, null_resettable) BuiltinIPList *builtinIplist;
 /** Test to see if @c builtinIplist has been set. */
 @property(nonatomic, readwrite) BOOL hasBuiltinIplist;
 
@@ -917,99 +1013,6 @@ typedef GPB_ENUM(UnifyAuthResponse_NetworkSectResp_HostList_Host_FieldNumber) {
 @property(nonatomic, readwrite) int32_t priority;
 
 @property(nonatomic, readwrite) BOOL hasPriority;
-@end
-
-#pragma mark - UnifyAuthResponse_NetworkSectResp_NetworkControl
-
-typedef GPB_ENUM(UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber) {
-  UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_PortList = 1,
-  UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_TimeoutList = 2,
-  UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_MinNoopInterval = 3,
-  UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_MaxNoopInterval = 4,
-  UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_TypingInterval = 5,
-  UnifyAuthResponse_NetworkSectResp_NetworkControl_FieldNumber_NoopIntervalTime = 7,
-};
-
-@interface UnifyAuthResponse_NetworkSectResp_NetworkControl : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *portList;
-/** Test to see if @c portList has been set. */
-@property(nonatomic, readwrite) BOOL hasPortList;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *timeoutList;
-/** Test to see if @c timeoutList has been set. */
-@property(nonatomic, readwrite) BOOL hasTimeoutList;
-
-@property(nonatomic, readwrite) int32_t minNoopInterval;
-
-@property(nonatomic, readwrite) BOOL hasMinNoopInterval;
-@property(nonatomic, readwrite) int32_t maxNoopInterval;
-
-@property(nonatomic, readwrite) BOOL hasMaxNoopInterval;
-@property(nonatomic, readwrite) int32_t typingInterval;
-
-@property(nonatomic, readwrite) BOOL hasTypingInterval;
-@property(nonatomic, readwrite) int32_t noopIntervalTime;
-
-@property(nonatomic, readwrite) BOOL hasNoopIntervalTime;
-@end
-
-#pragma mark - UnifyAuthResponse_NetworkSectResp_BuiltinIPList
-
-typedef GPB_ENUM(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber) {
-  UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_LongConnectIpcount = 1,
-  UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_ShortConnectIpcount = 2,
-  UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_LongConnectIplistArray = 3,
-  UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_ShortConnectIplistArray = 4,
-  UnifyAuthResponse_NetworkSectResp_BuiltinIPList_FieldNumber_Seq = 5,
-};
-
-@interface UnifyAuthResponse_NetworkSectResp_BuiltinIPList : GPBMessage
-
-@property(nonatomic, readwrite) int32_t longConnectIpcount;
-
-@property(nonatomic, readwrite) BOOL hasLongConnectIpcount;
-@property(nonatomic, readwrite) int32_t shortConnectIpcount;
-
-@property(nonatomic, readwrite) BOOL hasShortConnectIpcount;
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP*> *longConnectIplistArray;
-/** The number of items in @c longConnectIplistArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger longConnectIplistArray_Count;
-
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP*> *shortConnectIplistArray;
-/** The number of items in @c shortConnectIplistArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger shortConnectIplistArray_Count;
-
-@property(nonatomic, readwrite) int32_t seq;
-
-@property(nonatomic, readwrite) BOOL hasSeq;
-@end
-
-#pragma mark - UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP
-
-typedef GPB_ENUM(UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber) {
-  UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Type = 1,
-  UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Port = 2,
-  UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Ip = 3,
-  UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP_FieldNumber_Domain = 4,
-};
-
-@interface UnifyAuthResponse_NetworkSectResp_BuiltinIPList_BuiltinIP : GPBMessage
-
-@property(nonatomic, readwrite) int32_t type;
-
-@property(nonatomic, readwrite) BOOL hasType;
-@property(nonatomic, readwrite) int32_t port;
-
-@property(nonatomic, readwrite) BOOL hasPort;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *ip;
-/** Test to see if @c ip has been set. */
-@property(nonatomic, readwrite) BOOL hasIp;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *domain;
-/** Test to see if @c domain has been set. */
-@property(nonatomic, readwrite) BOOL hasDomain;
-
 @end
 
 #pragma mark - NewInitRequest
@@ -1300,10 +1303,11 @@ typedef GPB_ENUM(contact_info_FieldNumber) {
 @property(nonatomic, readwrite) int32_t tag26;
 
 @property(nonatomic, readwrite) BOOL hasTag26;
-/** 好友来源:(10000XX为对方添加自己)0=>未知;1=>QQ;3=>微信号;6=>名片;13=>手机通讯录;14=>群聊;15=>手机号;30=>扫一扫  （1000015=>对方手机号;1000030=>对方扫一扫;1000014=>对方群聊......） */
+/** 好友来源:(10000XX为对方添加自己)0=>未知;1=>QQ;3=>微信号;6=>名片;13=>手机通讯录;14=>群聊;15=>手机号;30=>扫一扫 */
 @property(nonatomic, readwrite) int32_t src;
 
 @property(nonatomic, readwrite) BOOL hasSrc;
+/** （1000015=>对方手机号;1000030=>对方扫一扫;1000014=>对方群聊......） */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *lastMsgTime;
 /** Test to see if @c lastMsgTime has been set. */
 @property(nonatomic, readwrite) BOOL hasLastMsgTime;
@@ -2071,6 +2075,260 @@ typedef GPB_ENUM(SnsTimeLineResponse_SnsServerConfig_FieldNumber) {
 @property(nonatomic, readwrite) int32_t copyAndPasteWordLimit;
 
 @property(nonatomic, readwrite) BOOL hasCopyAndPasteWordLimit;
+@end
+
+#pragma mark - BindOpMobileRequest
+
+typedef GPB_ENUM(BindOpMobileRequest_FieldNumber) {
+  BindOpMobileRequest_FieldNumber_BaseRequest = 1,
+  BindOpMobileRequest_FieldNumber_UserName = 2,
+  BindOpMobileRequest_FieldNumber_Mobile = 3,
+  BindOpMobileRequest_FieldNumber_Opcode = 4,
+  BindOpMobileRequest_FieldNumber_Verifycode = 5,
+  BindOpMobileRequest_FieldNumber_DialFlag = 6,
+  BindOpMobileRequest_FieldNumber_DialLang = 7,
+  BindOpMobileRequest_FieldNumber_AuthTicket = 8,
+  BindOpMobileRequest_FieldNumber_ForceReg = 9,
+  BindOpMobileRequest_FieldNumber_SafeDeviceName = 10,
+  BindOpMobileRequest_FieldNumber_SafeDeviceType = 11,
+  BindOpMobileRequest_FieldNumber_RandomEncryKey = 12,
+  BindOpMobileRequest_FieldNumber_Language = 13,
+  BindOpMobileRequest_FieldNumber_InputMobileRetrys = 14,
+  BindOpMobileRequest_FieldNumber_AdjustRet = 15,
+  BindOpMobileRequest_FieldNumber_ClientSeqId = 16,
+  BindOpMobileRequest_FieldNumber_MobileCheckType = 17,
+  BindOpMobileRequest_FieldNumber_UnkownString18 = 18,
+  BindOpMobileRequest_FieldNumber_ExtSpamInfo = 20,
+};
+
+@interface BindOpMobileRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *userName;
+/** Test to see if @c userName has been set. */
+@property(nonatomic, readwrite) BOOL hasUserName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *mobile;
+/** Test to see if @c mobile has been set. */
+@property(nonatomic, readwrite) BOOL hasMobile;
+
+@property(nonatomic, readwrite) int32_t opcode;
+
+@property(nonatomic, readwrite) BOOL hasOpcode;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *verifycode;
+/** Test to see if @c verifycode has been set. */
+@property(nonatomic, readwrite) BOOL hasVerifycode;
+
+@property(nonatomic, readwrite) int32_t dialFlag;
+
+@property(nonatomic, readwrite) BOOL hasDialFlag;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *dialLang;
+/** Test to see if @c dialLang has been set. */
+@property(nonatomic, readwrite) BOOL hasDialLang;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *authTicket;
+/** Test to see if @c authTicket has been set. */
+@property(nonatomic, readwrite) BOOL hasAuthTicket;
+
+@property(nonatomic, readwrite) int32_t forceReg;
+
+@property(nonatomic, readwrite) BOOL hasForceReg;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *safeDeviceName;
+/** Test to see if @c safeDeviceName has been set. */
+@property(nonatomic, readwrite) BOOL hasSafeDeviceName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *safeDeviceType;
+/** Test to see if @c safeDeviceType has been set. */
+@property(nonatomic, readwrite) BOOL hasSafeDeviceType;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *randomEncryKey;
+/** Test to see if @c randomEncryKey has been set. */
+@property(nonatomic, readwrite) BOOL hasRandomEncryKey;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *language;
+/** Test to see if @c language has been set. */
+@property(nonatomic, readwrite) BOOL hasLanguage;
+
+/** ios=0 */
+@property(nonatomic, readwrite) int32_t inputMobileRetrys;
+
+@property(nonatomic, readwrite) BOOL hasInputMobileRetrys;
+/** ios=0 */
+@property(nonatomic, readwrite) int32_t adjustRet;
+
+@property(nonatomic, readwrite) BOOL hasAdjustRet;
+/** ios="8fd2fc510d3fb9bb8e0661b0c6a026cc-1545918644" */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *clientSeqId;
+/** Test to see if @c clientSeqId has been set. */
+@property(nonatomic, readwrite) BOOL hasClientSeqId;
+
+@property(nonatomic, readwrite) int32_t mobileCheckType;
+
+@property(nonatomic, readwrite) BOOL hasMobileCheckType;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *unkownString18;
+/** Test to see if @c unkownString18 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkownString18;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *extSpamInfo;
+/** Test to see if @c extSpamInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasExtSpamInfo;
+
+@end
+
+#pragma mark - BindOpMobileResponse
+
+typedef GPB_ENUM(BindOpMobileResponse_FieldNumber) {
+  BindOpMobileResponse_FieldNumber_BaseResponse = 1,
+  BindOpMobileResponse_FieldNumber_Ticket = 2,
+  BindOpMobileResponse_FieldNumber_SmsNo = 3,
+  BindOpMobileResponse_FieldNumber_NeedSetPwd = 4,
+  BindOpMobileResponse_FieldNumber_Pwd = 5,
+  BindOpMobileResponse_FieldNumber_Username = 6,
+  BindOpMobileResponse_FieldNumber_NewHostList = 7,
+  BindOpMobileResponse_FieldNumber_BuiltinIplist = 8,
+  BindOpMobileResponse_FieldNumber_NetworkControl = 9,
+  BindOpMobileResponse_FieldNumber_AuthTicket = 10,
+  BindOpMobileResponse_FieldNumber_SafeDevice = 11,
+  BindOpMobileResponse_FieldNumber_Cc = 12,
+  BindOpMobileResponse_FieldNumber_ObsoleteItem1 = 13,
+  BindOpMobileResponse_FieldNumber_SafeDeviceList = 14,
+  BindOpMobileResponse_FieldNumber_PureMobile = 15,
+  BindOpMobileResponse_FieldNumber_FormatedMobile = 16,
+  BindOpMobileResponse_FieldNumber_ShowStyle = 17,
+  BindOpMobileResponse_FieldNumber_MmtlsControlBitFlag = 18,
+  BindOpMobileResponse_FieldNumber_SmsUpCode = 19,
+  BindOpMobileResponse_FieldNumber_SmsUpMobile = 20,
+  BindOpMobileResponse_FieldNumber_MobileCheckType = 21,
+  BindOpMobileResponse_FieldNumber_RegSessionId = 22,
+};
+
+@interface BindOpMobileResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *ticket;
+/** Test to see if @c ticket has been set. */
+@property(nonatomic, readwrite) BOOL hasTicket;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *smsNo;
+/** Test to see if @c smsNo has been set. */
+@property(nonatomic, readwrite) BOOL hasSmsNo;
+
+@property(nonatomic, readwrite) int32_t needSetPwd;
+
+@property(nonatomic, readwrite) BOOL hasNeedSetPwd;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *pwd;
+/** Test to see if @c pwd has been set. */
+@property(nonatomic, readwrite) BOOL hasPwd;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *username;
+/** Test to see if @c username has been set. */
+@property(nonatomic, readwrite) BOOL hasUsername;
+
+@property(nonatomic, readwrite, strong, null_resettable) BuiltinIPList *builtinIplist;
+/** Test to see if @c builtinIplist has been set. */
+@property(nonatomic, readwrite) BOOL hasBuiltinIplist;
+
+@property(nonatomic, readwrite, strong, null_resettable) BindOpMobileResponse_NewHostList *newHostList NS_RETURNS_NOT_RETAINED;
+/** Test to see if @c newHostList has been set. */
+@property(nonatomic, readwrite) BOOL hasNewHostList;
+
+@property(nonatomic, readwrite, strong, null_resettable) NetworkControl *networkControl;
+/** Test to see if @c networkControl has been set. */
+@property(nonatomic, readwrite) BOOL hasNetworkControl;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *authTicket;
+/** Test to see if @c authTicket has been set. */
+@property(nonatomic, readwrite) BOOL hasAuthTicket;
+
+@property(nonatomic, readwrite) int32_t safeDevice;
+
+@property(nonatomic, readwrite) BOOL hasSafeDevice;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *cc;
+/** Test to see if @c cc has been set. */
+@property(nonatomic, readwrite) BOOL hasCc;
+
+@property(nonatomic, readwrite) int32_t obsoleteItem1;
+
+@property(nonatomic, readwrite) BOOL hasObsoleteItem1;
+@property(nonatomic, readwrite, strong, null_resettable) BindOpMobileResponse_SafeDeviceList *safeDeviceList;
+/** Test to see if @c safeDeviceList has been set. */
+@property(nonatomic, readwrite) BOOL hasSafeDeviceList;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *pureMobile;
+/** Test to see if @c pureMobile has been set. */
+@property(nonatomic, readwrite) BOOL hasPureMobile;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *formatedMobile;
+/** Test to see if @c formatedMobile has been set. */
+@property(nonatomic, readwrite) BOOL hasFormatedMobile;
+
+@property(nonatomic, readwrite, strong, null_resettable) BindOpMobileResponse_ShowStyle *showStyle;
+/** Test to see if @c showStyle has been set. */
+@property(nonatomic, readwrite) BOOL hasShowStyle;
+
+@property(nonatomic, readwrite) int32_t mmtlsControlBitFlag;
+
+@property(nonatomic, readwrite) BOOL hasMmtlsControlBitFlag;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *smsUpCode;
+/** Test to see if @c smsUpCode has been set. */
+@property(nonatomic, readwrite) BOOL hasSmsUpCode;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *smsUpMobile;
+/** Test to see if @c smsUpMobile has been set. */
+@property(nonatomic, readwrite) BOOL hasSmsUpMobile;
+
+@property(nonatomic, readwrite) int32_t mobileCheckType;
+
+@property(nonatomic, readwrite) BOOL hasMobileCheckType;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *regSessionId;
+/** Test to see if @c regSessionId has been set. */
+@property(nonatomic, readwrite) BOOL hasRegSessionId;
+
+@end
+
+#pragma mark - BindOpMobileResponse_NewHostList
+
+typedef GPB_ENUM(BindOpMobileResponse_NewHostList_FieldNumber) {
+  BindOpMobileResponse_NewHostList_FieldNumber_Count = 1,
+};
+
+@interface BindOpMobileResponse_NewHostList : GPBMessage
+
+@property(nonatomic, readwrite) int32_t count;
+
+@property(nonatomic, readwrite) BOOL hasCount;
+@end
+
+#pragma mark - BindOpMobileResponse_SafeDeviceList
+
+typedef GPB_ENUM(BindOpMobileResponse_SafeDeviceList_FieldNumber) {
+  BindOpMobileResponse_SafeDeviceList_FieldNumber_Count = 1,
+};
+
+@interface BindOpMobileResponse_SafeDeviceList : GPBMessage
+
+@property(nonatomic, readwrite) int32_t count;
+
+@property(nonatomic, readwrite) BOOL hasCount;
+@end
+
+#pragma mark - BindOpMobileResponse_ShowStyle
+
+typedef GPB_ENUM(BindOpMobileResponse_ShowStyle_FieldNumber) {
+  BindOpMobileResponse_ShowStyle_FieldNumber_KeyCount = 1,
+};
+
+@interface BindOpMobileResponse_ShowStyle : GPBMessage
+
+@property(nonatomic, readwrite) int32_t keyCount;
+
+@property(nonatomic, readwrite) BOOL hasKeyCount;
 @end
 
 NS_ASSUME_NONNULL_END
