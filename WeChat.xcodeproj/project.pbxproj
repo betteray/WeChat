@@ -11,7 +11,7 @@
 		3170D26FEE89CCA046B85687 /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WeChat.a */; };
 		462D9C0E21D4EC5700FC5461 /* BuiltinIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C0D21D4EC5700FC5461 /* BuiltinIP.m */; };
 		462D9C1521D509FC00FC5461 /* ClientCheckDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C1421D509FC00FC5461 /* ClientCheckDataFetcher.m */; };
-		462D9C2621D7423600FC5461 /* WeChat_700_Proto.txt in Resources */ = {isa = PBXBuildFile; fileRef = 462D9C2521D7423600FC5461 /* WeChat_700_Proto.txt */; };
+		462D9C2A21D759FD00FC5461 /* WeChat_700_Proto.txt in Resources */ = {isa = PBXBuildFile; fileRef = 462D9C2921D759FD00FC5461 /* WeChat_700_Proto.txt */; };
 		463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */ = {isa = PBXBuildFile; fileRef = 463BAD2D21D38F1700847A8B /* ClientCheckData.m */; };
 		464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82321D4B681003E923F /* DefaultLongIp.m */; };
 		464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82621D4B9DD003E923F /* DefaultShortIp.m */; };
@@ -105,7 +105,7 @@
 		462D9C1221D5096400FC5461 /* DNSFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSFetcher.h; sourceTree = "<group>"; };
 		462D9C1321D509FC00FC5461 /* ClientCheckDataFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClientCheckDataFetcher.h; sourceTree = "<group>"; };
 		462D9C1421D509FC00FC5461 /* ClientCheckDataFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckDataFetcher.m; sourceTree = "<group>"; };
-		462D9C2521D7423600FC5461 /* WeChat_700_Proto.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WeChat_700_Proto.txt; sourceTree = "<group>"; };
+		462D9C2921D759FD00FC5461 /* WeChat_700_Proto.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WeChat_700_Proto.txt; sourceTree = "<group>"; };
 		463BAD2D21D38F1700847A8B /* ClientCheckData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckData.m; sourceTree = "<group>"; };
 		464FB82221D4B681003E923F /* DefaultLongIp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultLongIp.h; sourceTree = "<group>"; };
 		464FB82321D4B681003E923F /* DefaultLongIp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultLongIp.m; sourceTree = "<group>"; };
@@ -516,7 +516,7 @@
 			children = (
 				712C6F1C214A6B5E00603022 /* Mm.pbobjc.h */,
 				712C6F1B214A6B5E00603022 /* Mm.pbobjc.m */,
-				462D9C2521D7423600FC5461 /* WeChat_700_Proto.txt */,
+				462D9C2921D759FD00FC5461 /* WeChat_700_Proto.txt */,
 				712C6F19214A6A5800603022 /* mm.proto */,
 			);
 			path = Proto;
@@ -896,7 +896,7 @@
 				712C6F1A214A6A5800603022 /* mm.proto in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
-				462D9C2621D7423600FC5461 /* WeChat_700_Proto.txt in Resources */,
+				462D9C2A21D759FD00FC5461 /* WeChat_700_Proto.txt in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
 				712C7143214B5A4B00603022 /* LICENSE in Resources */,
 			);
