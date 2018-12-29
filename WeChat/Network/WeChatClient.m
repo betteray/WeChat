@@ -153,7 +153,7 @@
     req.selector = 262151;
     req.keyBuf = self.sync_key_cur;
     req.scene = 7;
-    req.deviceType = [[DeviceManager sharedManager] getCurrentDevice].osType;
+    req.deviceType = [[NSString alloc] initWithData:[[DeviceManager sharedManager] getCurrentDevice].osType encoding:NSUTF8StringEncoding];
     req.syncMsgDigest = 1;
 
     CgiWrap *wrap = [CgiWrap new];
@@ -193,7 +193,7 @@
                            msg.fromId.string,
                            msg.toId.string,
                            msg.type,
-                           msg.raw.content);
+                           msg.raw.string);
             }
         }
         else if (2 == cmdItem.cmdId) //好友列表

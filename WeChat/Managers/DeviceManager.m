@@ -67,7 +67,7 @@
                                                  realCountry:@"CN"
                                                     bundleID:@"com.tencent.xin"
                                                    iphoneVer:@"iPhone9,2"
-                                                      osType:@"iOS11.3.1"
+                                                      osType:[@"iOS11.3.1" dataUsingEncoding:NSUTF8StringEncoding]
                                                     adSource:adSource
                                                  deviceModel:@""
                                                     deviceID:[NSData dataWithHexString:@"49D2FC510D3FB9BB8E0661B0C6A026CC"]];
@@ -141,7 +141,7 @@
                                            realCountry:@"cn"
                                               bundleID:@""  //ios only
                                              iphoneVer:@""  //ios only
-                                                osType:@"android-27"
+                                                osType:[@"android-27" dataUsingEncoding:NSUTF8StringEncoding]
                                               adSource:@""  //ios only
                                            deviceModel:@"MI 3Warmeabi-v7aarmeabi-v7a"  //ios only
                                               deviceID:guidData];

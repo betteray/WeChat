@@ -27,6 +27,8 @@
 
 CF_EXTERN_C_BEGIN
 
+@class AutoAuthAesReqData;
+@class AutoAuthRsaReqData;
 @class BaseAuthReqInfo;
 @class BaseRequest;
 @class BaseResponse;
@@ -44,7 +46,6 @@ CF_EXTERN_C_BEGIN
 @class ManualAuthRsaReqData;
 @class MicroMsgRequestNew;
 @class MicroMsgResponseNew;
-@class Msg_RawContent;
 @class NetworkControl;
 @class NewSyncResponse_CmdList;
 @class SKBuiltinBuffer_t;
@@ -57,14 +58,10 @@ CF_EXTERN_C_BEGIN
 @class UnifyAuthResponse_NetworkSectResp;
 @class UnifyAuthResponse_NetworkSectResp_HostList;
 @class UnifyAuthResponse_NetworkSectResp_HostList_Host;
-@class contact_info_BeiZhu;
+@class WTLoginImgReqInfo;
+@class WxVerifyCodeReqInfo;
 @class contact_info_GroupMemberList;
 @class contact_info_GroupMemberList_MemberInfo;
-@class contact_info_NickName;
-@class contact_info_PY_SHORT;
-@class contact_info_QuanPin;
-@class contact_info_REAL_PY_SHORT;
-@class contact_info_REAL_QuanPin;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -92,7 +89,7 @@ typedef GPB_ENUM(SKBuiltinBuffer_t_FieldNumber) {
 
 @interface SKBuiltinBuffer_t : GPBMessage
 
-@property(nonatomic, readwrite) int32_t iLen;
+@property(nonatomic, readwrite) uint32_t iLen;
 
 @property(nonatomic, readwrite) BOOL hasILen;
 @property(nonatomic, readwrite, copy, null_resettable) NSData *buffer;
@@ -133,7 +130,7 @@ typedef GPB_ENUM(BaseRequest_FieldNumber) {
 /** Test to see if @c sessionKey has been set. */
 @property(nonatomic, readwrite) BOOL hasSessionKey;
 
-@property(nonatomic, readwrite) int32_t uin;
+@property(nonatomic, readwrite) uint32_t uin;
 
 @property(nonatomic, readwrite) BOOL hasUin;
 /** 手机guid长度16,这里取前15字节,以'\\0'结尾 */
@@ -141,14 +138,14 @@ typedef GPB_ENUM(BaseRequest_FieldNumber) {
 /** Test to see if @c deviceId has been set. */
 @property(nonatomic, readwrite) BOOL hasDeviceId;
 
-@property(nonatomic, readwrite) int32_t clientVersion;
+@property(nonatomic, readwrite) uint32_t clientVersion;
 
 @property(nonatomic, readwrite) BOOL hasClientVersion;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceType;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *deviceType;
 /** Test to see if @c deviceType has been set. */
 @property(nonatomic, readwrite) BOOL hasDeviceType;
 
-@property(nonatomic, readwrite) int32_t scene;
+@property(nonatomic, readwrite) uint32_t scene;
 
 @property(nonatomic, readwrite) BOOL hasScene;
 @end
@@ -418,7 +415,7 @@ typedef GPB_ENUM(ECDHKey_FieldNumber) {
 @interface ECDHKey : GPBMessage
 
 /** 椭圆曲线类型 */
-@property(nonatomic, readwrite) int32_t nid;
+@property(nonatomic, readwrite) uint32_t nid;
 
 @property(nonatomic, readwrite) BOOL hasNid;
 @property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *key;
@@ -462,27 +459,6 @@ typedef GPB_ENUM(ManualAuthRsaReqData_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *pwd2;
 /** Test to see if @c pwd2 has been set. */
 @property(nonatomic, readwrite) BOOL hasPwd2;
-
-@end
-
-#pragma mark - BaseAuthReqInfo
-
-typedef GPB_ENUM(BaseAuthReqInfo_FieldNumber) {
-  BaseAuthReqInfo_FieldNumber_CliDbencryptInfo = 5,
-  BaseAuthReqInfo_FieldNumber_AuthReqFlag = 7,
-};
-
-@interface BaseAuthReqInfo : GPBMessage
-
-/** iMac 第一次登陆没有数据，后续登陆会取一个数据。 */
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *cliDbencryptInfo;
-/** Test to see if @c cliDbencryptInfo has been set. */
-@property(nonatomic, readwrite) BOOL hasCliDbencryptInfo;
-
-/** iPad "" iMac 不需要 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *authReqFlag;
-/** Test to see if @c authReqFlag has been set. */
-@property(nonatomic, readwrite) BOOL hasAuthReqFlag;
 
 @end
 
@@ -530,7 +506,7 @@ typedef GPB_ENUM(ManualAuthAesReqData_FieldNumber) {
 /** Test to see if @c imei has been set. */
 @property(nonatomic, readwrite) BOOL hasImei;
 
-/** iPad: <softtype><k3>11.4.1</k3><k9>iPad</k9></softtype> ，iMac不需要此字段 */
+/** iPad: <softtype><k3>11.4.1</k3><k9>iPad</k9></softtype>  ，iMac不需要此字段 */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *softType;
 /** Test to see if @c softType has been set. */
 @property(nonatomic, readwrite) BOOL hasSoftType;
@@ -597,7 +573,7 @@ typedef GPB_ENUM(ManualAuthAesReqData_FieldNumber) {
 /** Test to see if @c realCountry has been set. */
 @property(nonatomic, readwrite) BOOL hasRealCountry;
 
-/** iPad:com.tencent.xin , iMac:com.tencent.xinWeChat **** ios only **** */
+/** iPad:com.tencent.xin , iMac:com.tencent.xinWeChat **** ios only */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *bundleId;
 /** Test to see if @c bundleId has been set. */
 @property(nonatomic, readwrite) BOOL hasBundleId;
@@ -637,6 +613,215 @@ typedef GPB_ENUM(ManualAuthRequest_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasRsaReqData;
 
 @property(nonatomic, readwrite, strong, null_resettable) ManualAuthAesReqData *aesReqData;
+/** Test to see if @c aesReqData has been set. */
+@property(nonatomic, readwrite) BOOL hasAesReqData;
+
+@end
+
+#pragma mark - AutoAuthRsaReqData
+
+typedef GPB_ENUM(AutoAuthRsaReqData_FieldNumber) {
+  AutoAuthRsaReqData_FieldNumber_AesEncryptKey = 2,
+  AutoAuthRsaReqData_FieldNumber_CliPubEcdhkey = 3,
+};
+
+/**
+ * 自动登录rsa部分
+ **/
+@interface AutoAuthRsaReqData : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *aesEncryptKey;
+/** Test to see if @c aesEncryptKey has been set. */
+@property(nonatomic, readwrite) BOOL hasAesEncryptKey;
+
+@property(nonatomic, readwrite, strong, null_resettable) ECDHKey *cliPubEcdhkey;
+/** Test to see if @c cliPubEcdhkey has been set. */
+@property(nonatomic, readwrite) BOOL hasCliPubEcdhkey;
+
+@end
+
+#pragma mark - WTLoginImgReqInfo
+
+typedef GPB_ENUM(WTLoginImgReqInfo_FieldNumber) {
+  WTLoginImgReqInfo_FieldNumber_ImgSid = 1,
+  WTLoginImgReqInfo_FieldNumber_ImgCode = 2,
+  WTLoginImgReqInfo_FieldNumber_ImgEncryptKey = 3,
+  WTLoginImgReqInfo_FieldNumber_Ksid = 4,
+};
+
+@interface WTLoginImgReqInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *imgSid;
+/** Test to see if @c imgSid has been set. */
+@property(nonatomic, readwrite) BOOL hasImgSid;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *imgCode;
+/** Test to see if @c imgCode has been set. */
+@property(nonatomic, readwrite) BOOL hasImgCode;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *imgEncryptKey;
+/** Test to see if @c imgEncryptKey has been set. */
+@property(nonatomic, readwrite) BOOL hasImgEncryptKey;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *ksid;
+/** Test to see if @c ksid has been set. */
+@property(nonatomic, readwrite) BOOL hasKsid;
+
+@end
+
+#pragma mark - WxVerifyCodeReqInfo
+
+typedef GPB_ENUM(WxVerifyCodeReqInfo_FieldNumber) {
+  WxVerifyCodeReqInfo_FieldNumber_VerifySignature = 1,
+  WxVerifyCodeReqInfo_FieldNumber_VerifyContent = 2,
+};
+
+@interface WxVerifyCodeReqInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *verifySignature;
+/** Test to see if @c verifySignature has been set. */
+@property(nonatomic, readwrite) BOOL hasVerifySignature;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *verifyContent;
+/** Test to see if @c verifyContent has been set. */
+@property(nonatomic, readwrite) BOOL hasVerifyContent;
+
+@end
+
+#pragma mark - BaseAuthReqInfo
+
+typedef GPB_ENUM(BaseAuthReqInfo_FieldNumber) {
+  BaseAuthReqInfo_FieldNumber_WtloginReqBuff = 1,
+  BaseAuthReqInfo_FieldNumber_WtloginImgReqInfo = 2,
+  BaseAuthReqInfo_FieldNumber_WxVerifyCodeReqInfo = 3,
+  BaseAuthReqInfo_FieldNumber_CliDbencryptKey = 4,
+  BaseAuthReqInfo_FieldNumber_CliDbencryptInfo = 5,
+  BaseAuthReqInfo_FieldNumber_AuthReqFlag = 6,
+  BaseAuthReqInfo_FieldNumber_AuthTicket = 7,
+};
+
+@interface BaseAuthReqInfo : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *wtloginReqBuff;
+/** Test to see if @c wtloginReqBuff has been set. */
+@property(nonatomic, readwrite) BOOL hasWtloginReqBuff;
+
+@property(nonatomic, readwrite, strong, null_resettable) WTLoginImgReqInfo *wtloginImgReqInfo;
+/** Test to see if @c wtloginImgReqInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasWtloginImgReqInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) WxVerifyCodeReqInfo *wxVerifyCodeReqInfo;
+/** Test to see if @c wxVerifyCodeReqInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasWxVerifyCodeReqInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *cliDbencryptKey;
+/** Test to see if @c cliDbencryptKey has been set. */
+@property(nonatomic, readwrite) BOOL hasCliDbencryptKey;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *cliDbencryptInfo;
+/** Test to see if @c cliDbencryptInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasCliDbencryptInfo;
+
+@property(nonatomic, readwrite) uint32_t authReqFlag;
+
+@property(nonatomic, readwrite) BOOL hasAuthReqFlag;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *authTicket;
+/** Test to see if @c authTicket has been set. */
+@property(nonatomic, readwrite) BOOL hasAuthTicket;
+
+@end
+
+#pragma mark - AutoAuthAesReqData
+
+typedef GPB_ENUM(AutoAuthAesReqData_FieldNumber) {
+  AutoAuthAesReqData_FieldNumber_BaseRequest = 1,
+  AutoAuthAesReqData_FieldNumber_BaseReqInfo = 2,
+  AutoAuthAesReqData_FieldNumber_AutoAuthKey = 3,
+  AutoAuthAesReqData_FieldNumber_Imei = 4,
+  AutoAuthAesReqData_FieldNumber_SoftType = 5,
+  AutoAuthAesReqData_FieldNumber_BuiltinIpseq = 6,
+  AutoAuthAesReqData_FieldNumber_ClientSeqId = 7,
+  AutoAuthAesReqData_FieldNumber_Signature = 8,
+  AutoAuthAesReqData_FieldNumber_DeviceName = 9,
+  AutoAuthAesReqData_FieldNumber_DeviceType = 10,
+  AutoAuthAesReqData_FieldNumber_Language = 11,
+  AutoAuthAesReqData_FieldNumber_TimeZone = 12,
+  AutoAuthAesReqData_FieldNumber_Channel = 13,
+  AutoAuthAesReqData_FieldNumber_ClientCheckData = 14,
+};
+
+@interface AutoAuthAesReqData : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseAuthReqInfo *baseReqInfo;
+/** Test to see if @c baseReqInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseReqInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *autoAuthKey;
+/** Test to see if @c autoAuthKey has been set. */
+@property(nonatomic, readwrite) BOOL hasAutoAuthKey;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *imei;
+/** Test to see if @c imei has been set. */
+@property(nonatomic, readwrite) BOOL hasImei;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *softType;
+/** Test to see if @c softType has been set. */
+@property(nonatomic, readwrite) BOOL hasSoftType;
+
+@property(nonatomic, readwrite) uint32_t builtinIpseq;
+
+@property(nonatomic, readwrite) BOOL hasBuiltinIpseq;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *clientSeqId;
+/** Test to see if @c clientSeqId has been set. */
+@property(nonatomic, readwrite) BOOL hasClientSeqId;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *signature;
+/** Test to see if @c signature has been set. */
+@property(nonatomic, readwrite) BOOL hasSignature;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceName;
+/** Test to see if @c deviceName has been set. */
+@property(nonatomic, readwrite) BOOL hasDeviceName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceType;
+/** Test to see if @c deviceType has been set. */
+@property(nonatomic, readwrite) BOOL hasDeviceType;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *language;
+/** Test to see if @c language has been set. */
+@property(nonatomic, readwrite) BOOL hasLanguage;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *timeZone;
+/** Test to see if @c timeZone has been set. */
+@property(nonatomic, readwrite) BOOL hasTimeZone;
+
+@property(nonatomic, readwrite) uint32_t channel;
+
+@property(nonatomic, readwrite) BOOL hasChannel;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *clientCheckData;
+/** Test to see if @c clientCheckData has been set. */
+@property(nonatomic, readwrite) BOOL hasClientCheckData;
+
+@end
+
+#pragma mark - AutoAuthRequest
+
+typedef GPB_ENUM(AutoAuthRequest_FieldNumber) {
+  AutoAuthRequest_FieldNumber_RsaReqData = 1,
+  AutoAuthRequest_FieldNumber_AesReqData = 2,
+};
+
+@interface AutoAuthRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) AutoAuthRsaReqData *rsaReqData;
+/** Test to see if @c rsaReqData has been set. */
+@property(nonatomic, readwrite) BOOL hasRsaReqData;
+
+@property(nonatomic, readwrite, strong, null_resettable) AutoAuthAesReqData *aesReqData;
 /** Test to see if @c aesReqData has been set. */
 @property(nonatomic, readwrite) BOOL hasAesReqData;
 
@@ -1095,7 +1280,7 @@ typedef GPB_ENUM(Msg_FieldNumber) {
 
 @property(nonatomic, readwrite) BOOL hasType;
 /** 原始消息内容,需要根据不同消息类型解析 */
-@property(nonatomic, readwrite, strong, null_resettable) Msg_RawContent *raw;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *raw;
 /** Test to see if @c raw has been set. */
 @property(nonatomic, readwrite) BOOL hasRaw;
 
@@ -1131,20 +1316,6 @@ typedef GPB_ENUM(Msg_FieldNumber) {
 @property(nonatomic, readwrite) int32_t msgKey;
 
 @property(nonatomic, readwrite) BOOL hasMsgKey;
-@end
-
-#pragma mark - Msg_RawContent
-
-typedef GPB_ENUM(Msg_RawContent_FieldNumber) {
-  Msg_RawContent_FieldNumber_Content = 1,
-};
-
-@interface Msg_RawContent : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *content;
-/** Test to see if @c content has been set. */
-@property(nonatomic, readwrite) BOOL hasContent;
-
 @end
 
 #pragma mark - contact_info
@@ -1210,15 +1381,15 @@ typedef GPB_ENUM(contact_info_FieldNumber) {
 /** Test to see if @c wxid has been set. */
 @property(nonatomic, readwrite) BOOL hasWxid;
 
-@property(nonatomic, readwrite, strong, null_resettable) contact_info_NickName *nickname;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *nickname;
 /** Test to see if @c nickname has been set. */
 @property(nonatomic, readwrite) BOOL hasNickname;
 
-@property(nonatomic, readwrite, strong, null_resettable) contact_info_PY_SHORT *shortPy;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *shortPy;
 /** Test to see if @c shortPy has been set. */
 @property(nonatomic, readwrite) BOOL hasShortPy;
 
-@property(nonatomic, readwrite, strong, null_resettable) contact_info_QuanPin *quanpin;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *quanpin;
 /** Test to see if @c quanpin has been set. */
 @property(nonatomic, readwrite) BOOL hasQuanpin;
 
@@ -1241,15 +1412,15 @@ typedef GPB_ENUM(contact_info_FieldNumber) {
 
 @property(nonatomic, readwrite) BOOL hasTag9;
 /** 备注名:为空则显示nickname */
-@property(nonatomic, readwrite, strong, null_resettable) contact_info_BeiZhu *remarkName;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *remarkName;
 /** Test to see if @c remarkName has been set. */
 @property(nonatomic, readwrite) BOOL hasRemarkName;
 
-@property(nonatomic, readwrite, strong, null_resettable) contact_info_REAL_PY_SHORT *realShortPy;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *realShortPy;
 /** Test to see if @c realShortPy has been set. */
 @property(nonatomic, readwrite) BOOL hasRealShortPy;
 
-@property(nonatomic, readwrite, strong, null_resettable) contact_info_REAL_QuanPin *realQuanpin;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *realQuanpin;
 /** Test to see if @c realQuanpin has been set. */
 @property(nonatomic, readwrite) BOOL hasRealQuanpin;
 
@@ -1303,11 +1474,10 @@ typedef GPB_ENUM(contact_info_FieldNumber) {
 @property(nonatomic, readwrite) int32_t tag26;
 
 @property(nonatomic, readwrite) BOOL hasTag26;
-/** 好友来源:(10000XX为对方添加自己)0=>未知;1=>QQ;3=>微信号;6=>名片;13=>手机通讯录;14=>群聊;15=>手机号;30=>扫一扫 */
+/** 好友来源:(10000XX为对方添加自己)0=>未知;1=>QQ;3=>微信号;6=>名片;13=>手机通讯录;14=>群聊;15=>手机号;30=>扫一扫 （1000015=>对方手机号;1000030=>对方扫一扫;1000014=>对方群聊......） */
 @property(nonatomic, readwrite) int32_t src;
 
 @property(nonatomic, readwrite) BOOL hasSrc;
-/** （1000015=>对方手机号;1000030=>对方扫一扫;1000014=>对方群聊......） */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *lastMsgTime;
 /** Test to see if @c lastMsgTime has been set. */
 @property(nonatomic, readwrite) BOOL hasLastMsgTime;
@@ -1392,90 +1562,6 @@ typedef GPB_ENUM(contact_info_FieldNumber) {
 @property(nonatomic, readwrite) int32_t tag67;
 
 @property(nonatomic, readwrite) BOOL hasTag67;
-@end
-
-#pragma mark - contact_info_NickName
-
-typedef GPB_ENUM(contact_info_NickName_FieldNumber) {
-  contact_info_NickName_FieldNumber_Name = 1,
-};
-
-@interface contact_info_NickName : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *name;
-/** Test to see if @c name has been set. */
-@property(nonatomic, readwrite) BOOL hasName;
-
-@end
-
-#pragma mark - contact_info_PY_SHORT
-
-typedef GPB_ENUM(contact_info_PY_SHORT_FieldNumber) {
-  contact_info_PY_SHORT_FieldNumber_Name = 1,
-};
-
-@interface contact_info_PY_SHORT : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *name;
-/** Test to see if @c name has been set. */
-@property(nonatomic, readwrite) BOOL hasName;
-
-@end
-
-#pragma mark - contact_info_QuanPin
-
-typedef GPB_ENUM(contact_info_QuanPin_FieldNumber) {
-  contact_info_QuanPin_FieldNumber_Name = 1,
-};
-
-@interface contact_info_QuanPin : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *name;
-/** Test to see if @c name has been set. */
-@property(nonatomic, readwrite) BOOL hasName;
-
-@end
-
-#pragma mark - contact_info_BeiZhu
-
-typedef GPB_ENUM(contact_info_BeiZhu_FieldNumber) {
-  contact_info_BeiZhu_FieldNumber_Name = 1,
-};
-
-@interface contact_info_BeiZhu : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *name;
-/** Test to see if @c name has been set. */
-@property(nonatomic, readwrite) BOOL hasName;
-
-@end
-
-#pragma mark - contact_info_REAL_PY_SHORT
-
-typedef GPB_ENUM(contact_info_REAL_PY_SHORT_FieldNumber) {
-  contact_info_REAL_PY_SHORT_FieldNumber_Name = 1,
-};
-
-@interface contact_info_REAL_PY_SHORT : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *name;
-/** Test to see if @c name has been set. */
-@property(nonatomic, readwrite) BOOL hasName;
-
-@end
-
-#pragma mark - contact_info_REAL_QuanPin
-
-typedef GPB_ENUM(contact_info_REAL_QuanPin_FieldNumber) {
-  contact_info_REAL_QuanPin_FieldNumber_Name = 1,
-};
-
-@interface contact_info_REAL_QuanPin : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *name;
-/** Test to see if @c name has been set. */
-@property(nonatomic, readwrite) BOOL hasName;
-
 @end
 
 #pragma mark - contact_info_GroupMemberList
@@ -1795,7 +1881,7 @@ typedef GPB_ENUM(MicroMsgResponseNew_FieldNumber) {
 
 @interface MicroMsgResponseNew : GPBMessage
 
-/** 错误码 0=>发送成功,-44=>对方开启了朋友验证(被删好友),-22=>消息已发出,但被对方拒收了(被拉黑) */
+/** 错误码  0=>发送成功,-44=>对方开启了朋友验证(被删好友),-22=>消息已发出,但被对方拒收了(被拉黑) */
 @property(nonatomic, readwrite) int32_t ret;
 
 @property(nonatomic, readwrite) BOOL hasRet;

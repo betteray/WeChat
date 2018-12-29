@@ -114,7 +114,7 @@
     aesReqData.iphoneVer = device.iphoneVer;
 #endif
     aesReqData.inputType = 2;
-    aesReqData.ostype = device.osType;
+    aesReqData.ostype = [[NSString alloc] initWithData:device.osType encoding:NSUTF8StringEncoding];
 
 #if PROTOCOL_FOR_IOS
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];

@@ -23,7 +23,7 @@
 @property (nonatomic, copy) NSString *realCountry;
 @property (nonatomic, copy) NSString *bundleID;
 @property (nonatomic, copy) NSString *iphoneVer;
-@property (nonatomic, copy) NSString *osType;
+@property (nonatomic, copy) NSData *osType;
 @property (nonatomic, copy) NSString *adSource;
 @property (nonatomic, copy) NSString *deviceModel;
 @property (nonatomic, strong) NSData *deviceID;
@@ -45,7 +45,7 @@
                  realCountry:(NSString *)realCountry
                     bundleID:(NSString *)bundleID
                    iphoneVer:(NSString *)iphoneVer
-                      osType:(NSString *)osType
+                      osType:(NSData *)osType
                     adSource:(NSString *)adSource
                  deviceModel:(NSString *)deviceModel
                     deviceID:(NSData *)deviceID
