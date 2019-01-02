@@ -349,7 +349,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="q8W-S9-Pyb">
             <objects>
-                <tabBarController storyboardIdentifier="WeChatTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="ZjN-jw-dUp" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="WeChatTabBarController" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" id="ZjN-jw-dUp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Qd0-5T-Cda"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s33-li-ceS">
