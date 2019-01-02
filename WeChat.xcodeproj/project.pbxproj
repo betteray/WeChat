@@ -14,6 +14,7 @@
 		462D9C2A21D759FD00FC5461 /* WeChat_700_Proto.txt in Resources */ = {isa = PBXBuildFile; fileRef = 462D9C2921D759FD00FC5461 /* WeChat_700_Proto.txt */; };
 		462D9C2D21DC98E300FC5461 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C2C21DC98E300FC5461 /* AccountInfo.m */; };
 		462D9C3021DCAB6B00FC5461 /* Cookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C2F21DCAB6B00FC5461 /* Cookie.m */; };
+		462D9C3321DCC4FE00FC5461 /* SessionKeyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C3221DCC4FE00FC5461 /* SessionKeyStore.m */; };
 		463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */ = {isa = PBXBuildFile; fileRef = 463BAD2D21D38F1700847A8B /* ClientCheckData.m */; };
 		464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82321D4B681003E923F /* DefaultLongIp.m */; };
 		464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82621D4B9DD003E923F /* DefaultShortIp.m */; };
@@ -113,6 +114,8 @@
 		462D9C2C21DC98E300FC5461 /* AccountInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
 		462D9C2E21DCAB6B00FC5461 /* Cookie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cookie.h; sourceTree = "<group>"; };
 		462D9C2F21DCAB6B00FC5461 /* Cookie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cookie.m; sourceTree = "<group>"; };
+		462D9C3121DCC4FE00FC5461 /* SessionKeyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionKeyStore.h; sourceTree = "<group>"; };
+		462D9C3221DCC4FE00FC5461 /* SessionKeyStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionKeyStore.m; sourceTree = "<group>"; };
 		463BAD2D21D38F1700847A8B /* ClientCheckData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckData.m; sourceTree = "<group>"; };
 		464FB82221D4B681003E923F /* DefaultLongIp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultLongIp.h; sourceTree = "<group>"; };
 		464FB82321D4B681003E923F /* DefaultLongIp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultLongIp.m; sourceTree = "<group>"; };
@@ -412,6 +415,8 @@
 				462D9C2C21DC98E300FC5461 /* AccountInfo.m */,
 				462D9C2E21DCAB6B00FC5461 /* Cookie.h */,
 				462D9C2F21DCAB6B00FC5461 /* Cookie.m */,
+				462D9C3121DCC4FE00FC5461 /* SessionKeyStore.h */,
+				462D9C3221DCC4FE00FC5461 /* SessionKeyStore.m */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -1036,6 +1041,7 @@
 				462D9C3021DCAB6B00FC5461 /* Cookie.m in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
 				7161984921CB6FEA00A76F39 /* header.m in Sources */,
+				462D9C3321DCC4FE00FC5461 /* SessionKeyStore.m in Sources */,
 				464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */,
 				719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */,
 				71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */,

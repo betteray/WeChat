@@ -14,6 +14,7 @@
 #import "AutoAuthKeyStore.h"
 #import "SyncKeyStore.h"
 #import "AccountInfo.h"
+#import "SessionKeyStore.h"
 
 @interface LoginViewController ()
 
@@ -379,22 +380,24 @@
                 
                 [AccountInfo createOrUpdateInDefaultRealmWithValue:@[AccountInfoID, @(uin), resp.acctSectResp.userName, resp.acctSectResp.nickName, resp.acctSectResp.alias]];
                 
+                [SessionKeyStore createOrUpdateInDefaultRealmWithValue:@[SessionKeyStoreID, sessionKey]];
+                
                 [realm commitWriteTransaction];
                 
-//                [WXUserDefault saveUIN:uin];
-//                [WXUserDefault saveWXID:resp.acctSectResp.userName];
-//                [WXUserDefault saveNikeName:resp.acctSectResp.nickName];
-//                [WXUserDefault saveAlias:resp.acctSectResp.alias];
-                
-                UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
-                UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"WeChatTabBarController"];
-                [self presentViewController:nav animated:YES completion:nil];
+                [self enterWeChat];
             }
         }
             break;
         default:
             break;
     }
+}
+
+- (void)enterWeChat
+{
+    UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
+    UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"WeChatTabBarController"];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 @end

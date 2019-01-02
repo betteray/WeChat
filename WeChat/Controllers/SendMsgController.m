@@ -52,7 +52,7 @@
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/newsendmsg";
     cgiWrap.responseClass = [SendMsgResponseNew class];
 
-    [WeChatClient postRequest:cgiWrap
+    [WeChatClient startRequest:cgiWrap
         success:^(id _Nullable response) {
             LogVerbose(@"%@", response);
         }

@@ -28,6 +28,7 @@
 #import "SyncKeyStore.h"
 #import "AccountInfo.h"
 #import "Cookie.h"
+#import "SessionKeyStore.h"
 
 
 #define CMDID_NOOP_REQ 6
@@ -107,9 +108,13 @@
             _sync_key_max = [NSData data];
         }
         
-        NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", SyncKeyStoreID];
+        NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
         Cookie *cookieStore = [[Cookie objectsWithPredicate:cookiePre] firstObject];
         _cookie = cookieStore.data;
+        
+        NSPredicate *sessionKeyStorePre = [NSPredicate predicateWithFormat:@"ID = %@", SessionKeyStoreID];
+        SessionKeyStore *sessionKeyStore = [[SessionKeyStore objectsWithPredicate:sessionKeyStorePre] firstObject];
+        _sessionKey = sessionKeyStore.data;
         
         _heartbeatTimer = [NSTimer timerWithTimeInterval:70*3
                                                   target:self
