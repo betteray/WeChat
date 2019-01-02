@@ -11,6 +11,9 @@
 #import "FSOpenSSL.h"
 #import "ClientCheckData.h"
 #import "BuiltinIP.h"
+#import "AutoAuthKeyStore.h"
+#import "SyncKeyStore.h"
+#import "AccountInfo.h"
 
 @interface LoginViewController ()
 
@@ -41,7 +44,21 @@
     }
     
     [WeChatClient sharedClient].sessionKey = [FSOpenSSL random128BitAESKey];
-    _userNameTextField.text = @"13520806231";
+    
+    //能自动登录自动登录
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self autoAuthIfCould];
+    });
+}
+
+- (void)autoAuthIfCould
+{
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AutoAuthKeyStoreID];
+    AutoAuthKeyStore *autoAuthKeyStore = [[AutoAuthKeyStore objectsWithPredicate:pre] firstObject];
+    if ([autoAuthKeyStore.data length]>0)
+    {
+        [self AutoAuth];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -154,12 +171,138 @@
         manualAuth:cgiWrap
            success:^(UnifyAuthResponse *_Nullable response) {
                LogVerbose(@"登陆响应 Code: %d, msg: %@", response.baseResponse.ret, response.baseResponse.errMsg);
-               LogVerbose(@"登陆响应: %@", response);
                [self onLoginResponse:response];
            }
            failure:^(NSError *error){
 
            }];
+}
+
+- (void)AutoAuth
+{
+    NSData *sessionKey = [FSOpenSSL random128BitAESKey];
+    [WeChatClient sharedClient].sessionKey = sessionKey;
+    
+    SKBuiltinBuffer_t *aesKey = [SKBuiltinBuffer_t new];
+    aesKey.iLen = (int32_t)[sessionKey length];
+    aesKey.buffer = sessionKey;
+    
+    SKBuiltinBuffer_t *ecdhKey = [SKBuiltinBuffer_t new];
+    ecdhKey.iLen = (int32_t)[_pubKeyData length];
+    ecdhKey.buffer = _pubKeyData;
+    
+    ECDHKey *cliPubEcdhkey = [ECDHKey new];
+    cliPubEcdhkey.nid = 713;
+    cliPubEcdhkey.key = ecdhKey;
+    
+    AutoAuthRsaReqData *rsaReqData = [AutoAuthRsaReqData new];
+    rsaReqData.aesEncryptKey = aesKey;
+    rsaReqData.cliPubEcdhkey = cliPubEcdhkey;
+    
+    ////
+    
+    BaseAuthReqInfo *baseReqInfo = [BaseAuthReqInfo new];
+    //第一次登陆没有数据，后续登陆会取一个数据。
+    SKBuiltinBuffer_t *wtloginReqBuff = [SKBuiltinBuffer_t new];
+    wtloginReqBuff.iLen = 0;
+    wtloginReqBuff.buffer = [NSData data];
+    baseReqInfo.wtloginReqBuff = wtloginReqBuff;
+    
+    WxVerifyCodeReqInfo *verifyCodeReqInfo = [WxVerifyCodeReqInfo new];
+    verifyCodeReqInfo.verifySignature = @"";
+    verifyCodeReqInfo.verifyContent = @"";
+    
+    WTLoginImgReqInfo *loginImgReqInfo = [WTLoginImgReqInfo new];
+    loginImgReqInfo.imgSid = @"";
+    loginImgReqInfo.imgCode = @"";
+    loginImgReqInfo.imgEncryptKey = @"";
+    SKBuiltinBuffer_t *ksid = [SKBuiltinBuffer_t new];
+    ksid.iLen = 0;
+    ksid.buffer = [NSData data];
+    loginImgReqInfo.ksid = ksid;
+
+    baseReqInfo.wtloginImgReqInfo = loginImgReqInfo;
+    baseReqInfo.wxVerifyCodeReqInfo = verifyCodeReqInfo;
+    
+    SKBuiltinBuffer_t *cliDbencryptKey = [SKBuiltinBuffer_t new];
+    cliDbencryptKey.iLen = 0;
+    cliDbencryptKey.buffer = [NSData data];
+    
+    baseReqInfo.cliDbencryptKey = cliDbencryptKey;
+    
+    SKBuiltinBuffer_t *cliDbencryptInfo = [SKBuiltinBuffer_t new];
+    cliDbencryptInfo.iLen = 0;
+    cliDbencryptInfo.buffer = [NSData data];
+    
+    baseReqInfo.cliDbencryptInfo = cliDbencryptInfo;
+    baseReqInfo.authReqFlag = 0;
+    
+    
+    WCDevice *device = [[DeviceManager sharedManager] getCurrentDevice];
+    
+    AutoAuthAesReqData *aesReqData = [AutoAuthAesReqData new];
+    aesReqData.baseReqInfo = baseReqInfo;
+    
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AutoAuthKeyStoreID];
+    AutoAuthKeyStore *autoAuthKeyStore = [[AutoAuthKeyStore objectsWithPredicate:pre] firstObject];
+    SKBuiltinBuffer_t *autoAuthKey = [SKBuiltinBuffer_t new];
+    autoAuthKey.iLen = (uint32_t)[autoAuthKeyStore.data length];
+    autoAuthKey.buffer = autoAuthKeyStore.data;
+    aesReqData.autoAuthKey = autoAuthKey;
+    
+    aesReqData.imei = device.imei;
+    aesReqData.softType = device.softType;
+    aesReqData.builtinIpseq = 0;
+    aesReqData.clientSeqId = device.clientSeq;
+    aesReqData.signature = device.clientSeqIdsign;
+    aesReqData.deviceName = device.deviceName;
+    aesReqData.deviceType = device.deviceType;
+    aesReqData.language = device.language;
+    aesReqData.timeZone = device.timeZone;
+    aesReqData.channel = 10003;
+    
+#if PROTOCOL_FOR_IOS
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
+    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:pre] firstObject];
+    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
+    clientCheckData.iLen = (int) [ccd.data length];
+    clientCheckData.buffer = ccd.data;
+    aesReqData.clientCheckData = clientCheckData;
+#endif
+    AutoAuthRequest *authRequest = [AutoAuthRequest new];
+    authRequest.aesReqData = aesReqData;
+    authRequest.rsaReqData = rsaReqData;
+    
+    BaseRequest *baseRequest = [BaseRequest new];
+    [baseRequest setSessionKey:[NSData data]];
+    NSPredicate *accountInfoPre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
+    AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:accountInfoPre] firstObject];
+    [baseRequest setUin:accountInfo.uin];
+    [baseRequest setScene:2];
+    [baseRequest setClientVersion:CLIENT_VERSION];
+    [baseRequest setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].osType];
+    [baseRequest setDeviceId:[[DeviceManager sharedManager] getCurrentDevice].deviceID];
+    
+    [aesReqData setBaseRequest:baseRequest];
+    
+    CgiWrap *cgiWrap = [CgiWrap new];
+    cgiWrap.cgi = 702;
+    cgiWrap.cmdId = 254;
+    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/autoauth";
+    cgiWrap.request = authRequest;
+    cgiWrap.responseClass = [UnifyAuthResponse class];
+    cgiWrap.needSetBaseRequest = NO;
+    
+    [[WeChatClient sharedClient]
+     autoAuth:cgiWrap
+     success:^(UnifyAuthResponse *_Nullable response) {
+         LogVerbose(@"登陆响应 Code: %d, msg: %@", response.baseResponse.ret, response.baseResponse.errMsg);
+//         LogVerbose(@"登陆响应: %@", response);
+         [self onLoginResponse:response];
+     }
+     failure:^(NSError *error){
+         
+     }];
 }
 
 - (void)onLoginResponse:(UnifyAuthResponse *)resp
@@ -209,7 +352,7 @@
                            resp.acctSectResp.nickName,
                            resp.acctSectResp.alias);
 
-                
+                // 存数据到数据库。
                 RLMRealm *realm = [RLMRealm defaultRealm];
                 [realm beginWriteTransaction];
                 for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.longConnectIplistArray) {
@@ -229,16 +372,20 @@
                                                                        @"ip": longBuiltinIp.ip,
                                                                        @"domain": longBuiltinIp.domain}];
                     [realm addOrUpdateObject:ip];
-                    
                 };
+                
+                SKBuiltinBuffer_t *autoAuthkey = resp.authSectResp.autoAuthKey;
+                [AutoAuthKeyStore createOrUpdateInDefaultRealmWithValue:@[AutoAuthKeyStoreID, autoAuthkey.buffer]];
+                
+                [AccountInfo createOrUpdateInDefaultRealmWithValue:@[AccountInfoID, @(uin), resp.acctSectResp.userName, resp.acctSectResp.nickName, resp.acctSectResp.alias]];
                 
                 [realm commitWriteTransaction];
                 
-                [WXUserDefault saveUIN:uin];
-                [WXUserDefault saveWXID:resp.acctSectResp.userName];
-                [WXUserDefault saveNikeName:resp.acctSectResp.nickName];
-                [WXUserDefault saveAlias:resp.acctSectResp.alias];
-
+//                [WXUserDefault saveUIN:uin];
+//                [WXUserDefault saveWXID:resp.acctSectResp.userName];
+//                [WXUserDefault saveNikeName:resp.acctSectResp.nickName];
+//                [WXUserDefault saveAlias:resp.acctSectResp.alias];
+                
                 UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
                 UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"WeChatTabBarController"];
                 [self presentViewController:nav animated:YES completion:nil];

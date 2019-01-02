@@ -12,6 +12,7 @@ typedef NS_ENUM(int, EncryptMethod) {
     NONE = 0x1,
     AES = 0x5,
     RSA = 0x7,
+    AUTOAUTH = 0x9,
 };
 
 @interface header : NSObject
@@ -23,5 +24,13 @@ typedef NS_ENUM(int, EncryptMethod) {
              needCookie:(BOOL)needCookie
                  cookie:(NSData *)cookie
                     uin:(uint32_t)uin;
+
++ (NSData *)make_header2:(int)cgi
+           encryptMethod:(EncryptMethod)encryptMethod
+                bodyData:(NSData *)bodyData
+      compressedBodyData:(NSData *)compressedBodyData
+              needCookie:(BOOL)needCookie
+                  cookie:(NSData *)cookie
+                     uin:(uint32_t)uin;
 
 @end

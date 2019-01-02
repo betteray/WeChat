@@ -128,11 +128,11 @@
         NSString *guid = @"A097b498fcd5207e";
         NSString *clientSeqId = [NSString stringWithFormat:@"%@_%@", guid, ts];
         NSData *guidData = [[NSString stringWithFormat:@"%@\0", [guid substringWithRange:NSMakeRange(0, 15)]] dataUsingEncoding:NSUTF8StringEncoding];
-        WCDevice *mi3 = [[WCDevice alloc] initWithImei:@"1234567890ABCDEF"
+        WCDevice *mi3 = [[WCDevice alloc] initWithImei:@"865645021226341"
                                               softType:sofytype2
                                              clientSeq:clientSeqId
                                        clientSeqIdsign:@"18c867f0717aa67b2ab7347505ba07ed"
-                                            deviceName:@"Xiaomi MI 3Warmeabi-v7a"
+                                            deviceName:@"Xiaomi MI 3W"
                                             deviceType:@"<deviceinfo><MANUFACTURER name=\"Xiaomi\"><MODEL name=\"MI 3W\"><VERSION_RELEASE name=\"8.1.0\"><VERSION_INCREMENTAL name=\"e5e9ee940b\"><DISPLAY name=\"mk_cancro-userdebug 8.1.0 OPM2.171026.006.H1 e5e9ee940b test-keys\"></DISPLAY></VERSION_INCREMENTAL></VERSION_RELEASE></MODEL></MANUFACTURER></deviceinfo>"
                                               language:@"zh_CN"
                                               timeZone:@"8.00"

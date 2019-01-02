@@ -14,6 +14,7 @@
 #import "ShortHeader.h"
 
 #import "FSOpenSSL.h"
+#import "Cookie.h"
 
 @implementation short_pack
 
@@ -82,7 +83,14 @@
         NSData *cookie = [body subdataWithRange:NSMakeRange(index, cookieLen)];
         LogVerbose(@"Cookie: %@", cookie);
         index += cookieLen;
+        
         [WeChatClient sharedClient].cookie = cookie;
+        
+        //更新cookie到数据库
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [Cookie createOrUpdateInDefaultRealmWithValue:@[CookieID, cookie]];
+        [realm commitWriteTransaction];
     }
     else if (cookieLen > 0xf)
     {

@@ -8,6 +8,7 @@
 
 #import "long_pack.h"
 #import "short_pack.h"
+#import "Cookie.h"
 
 #define CMDID_NOOP_REQ 6
 #define HEARTBEAT_SEQ 0xFFFFFFFF
@@ -24,8 +25,9 @@
           serilizedData:(NSData *)serilizedData
                    type:(NSInteger)type
 {
-    NSData *cookie = [WeChatClient sharedClient].cookie;
-    NSData *shortLinkBuf = [short_pack pack:cgi serilizedData:serilizedData type:type uin:uin cookie:cookie];
+    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
+    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
+    NSData *shortLinkBuf = [short_pack pack:cgi serilizedData:serilizedData type:type uin:uin cookie:cookie.data];
     return [long_pack pack:seq cmdId:cmdId shortData:shortLinkBuf];
 }
 

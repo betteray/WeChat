@@ -25,6 +25,11 @@
 #import "short_pack.h"
 #import "long_pack.h"
 
+#import "SyncKeyStore.h"
+#import "AccountInfo.h"
+#import "Cookie.h"
+
+
 #define CMDID_NOOP_REQ 6
 #define CMDID_IDENTIFY_REQ 205
 #define CMDID_MANUALAUTH_REQ 253
@@ -74,7 +79,10 @@
     if (self)
     {
         _seq = 1;
-        _uin = 0;
+        
+        NSPredicate *accountInfoPre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
+        AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:accountInfoPre] firstObject];
+        _uin = accountInfo.uin;
 
         _tasks = [NSMutableArray array];
 
@@ -85,9 +93,24 @@
 #endif
         _client.delegate = self;
         
-        _sync_key_cur = [NSData data];
-        _sync_key_max = [NSData data];
-
+        NSPredicate *syncKeyStorePre = [NSPredicate predicateWithFormat:@"ID = %@", SyncKeyStoreID];
+        SyncKeyStore *store = [[SyncKeyStore objectsWithPredicate:syncKeyStorePre] firstObject];
+        
+        if ([store.data length] > 0)
+        {
+            _sync_key_cur = store.data;
+            _sync_key_max = store.data;
+        }
+        else
+        {
+            _sync_key_cur = [NSData data];
+            _sync_key_max = [NSData data];
+        }
+        
+        NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", SyncKeyStoreID];
+        Cookie *cookieStore = [[Cookie objectsWithPredicate:cookiePre] firstObject];
+        _cookie = cookieStore.data;
+        
         _heartbeatTimer = [NSTimer timerWithTimeInterval:70*3
                                                   target:self
                                                 selector:@selector(heartBeat)
@@ -116,7 +139,9 @@
 - (void)newInitWithSyncKeyCur:(NSData *)syncKeyCur syncKeyMax:(NSData *)syncKeyMax
 {
     NewInitRequest *request = [NewInitRequest new];
-    request.userName = [WXUserDefault getWXID];
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
+    AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:pre] firstObject];
+    request.userName = accountInfo.userName;
     request.currentSynckey = syncKeyCur;
     request.maxSynckey = syncKeyMax;
     request.language = [[DeviceManager sharedManager] getCurrentDevice].language;
@@ -132,7 +157,13 @@
         success:^(NewInitResponse *_Nullable response) {
             self.sync_key_cur = response.currentSynckey;
             self.sync_key_max = response.maxSynckey;
-
+            
+            // 存数据到数据库。
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            [SyncKeyStore createOrUpdateInDefaultRealmWithValue:@[SyncKeyStoreID, self.sync_key_cur]];
+            [realm commitWriteTransaction];
+            
             [self parseCmdList:response.listArray];
 
             LogVerbose(@"newinit cmd count: %d, continue flag: %d", response.count, response.continueFlag);
@@ -166,6 +197,15 @@
     [[WeChatClient sharedClient] startRequest:wrap
         success:^(NewSyncResponse *_Nullable response) {
             self.sync_key_cur = response.keyBuf;
+            
+            // 存数据到数据库。
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            [SyncKeyStore createOrUpdateInDefaultRealmWithValue:@[SyncKeyStoreID, self.sync_key_cur]];
+            [realm commitWriteTransaction];
+            
+            LogVerbose(@"%@", response);
+            
             [self parseCmdList:response.cmdList.listArray];
         }
         failure:^(NSError *error) {
@@ -266,12 +306,15 @@
     
     LogVerbose(@"Start Request: %@", cgiWrap.request);
 
+    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
+    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
+    
     NSData *serilizedData = [[cgiWrap request] data];
     NSData *sendData = [short_pack pack:cgiWrap.cgi
                           serilizedData:serilizedData
                                    type:5
                                     uin:_uin
-                                 cookie:[WeChatClient sharedClient].cookie];
+                                 cookie:cookie.data];
     
 #if USE_MMTLS
     NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
@@ -290,7 +333,9 @@
         NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
         LogDebug(@"%@", sessionKey);
         [base setSessionKey:sessionKey];
-        [base setUin:(int32_t)[WXUserDefault getUIN]];
+        NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
+        AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:pre] firstObject];
+        [base setUin:accountInfo.uin];
         [base setScene:0]; // iMac 1
         [base setClientVersion:CLIENT_VERSION];
         [base setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].osType];
@@ -341,6 +386,58 @@
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
 
+    [_client sendData:sendData];
+}
+
+
+- (void)autoAuth:(CgiWrap *)cgiWrap
+           success:(SuccessBlock)successBlock
+           failure:(FailureBlock)failureBlock
+{
+    ManualAuthRequest *request = (ManualAuthRequest *) [cgiWrap request];
+    ManualAuthRsaReqData *rsaReqData = [request rsaReqData];
+    ManualAuthAesReqData *aesReqData = [request aesReqData];
+    
+    NSData *rsaReqDataSerializedData = [rsaReqData data];
+    NSData *aesReqDataSerializedData = [aesReqData data];
+    
+    NSData *reqAccount = [rsaReqDataSerializedData Compress_And_RSA];
+    NSData *authAesData = [rsaReqDataSerializedData Compress_And_AES];
+    NSData *reqDevice = [aesReqDataSerializedData Compress_And_AES];
+
+    NSMutableData *subHeader = [NSMutableData data];
+    [subHeader appendData:[NSData packInt32:(int32_t)[rsaReqDataSerializedData length] flip:YES]];
+    [subHeader appendData:[NSData packInt32:(int32_t)[aesReqDataSerializedData length] flip:YES]];
+    [subHeader appendData:[NSData packInt32:(int32_t)[reqAccount length] flip:YES]];
+    [subHeader appendData:[NSData packInt32:(int32_t)[authAesData length] flip:YES]];
+
+    NSMutableData *body = [NSMutableData dataWithData:subHeader];
+    [body appendData:reqAccount];
+    [body appendData:authAesData];
+    [body appendData:reqDevice];
+    
+    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
+    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
+    
+    NSData *head = [header make_header2:cgiWrap.cgi
+                         encryptMethod:AUTOAUTH
+                              bodyData:body
+                    compressedBodyData:body
+                            needCookie:YES
+                                cookie:cookie.data
+                                   uin:_uin];
+    
+    NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
+    [longlinkBody appendData:body];
+    
+    NSData *sendData = [long_pack pack:_seq++ cmdId:cgiWrap.cmdId shortData:longlinkBody];
+    
+    Task *task = [Task new];
+    task.sucBlock = successBlock;
+    task.failBlock = failureBlock;
+    task.cgiWrap = cgiWrap;
+    [_tasks addObject:task];
+    
     [_client sendData:sendData];
 }
 
@@ -406,19 +503,16 @@
                 {
                     case CMDID_PUSH_ACK:
                     {
-                        static int push_ack_counter = 0;
-                        if (push_ack_counter == 0)
+                        if ([self.sync_key_cur length] == 0)
                         {
-                            if ([self.sync_key_cur length] == 0)
-                            {
+                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                                 [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
-                            }
+                            });
                         }
-                        else if (push_ack_counter > 1)
+                        else
                         {
                             [self newSync];
                         }
-                        push_ack_counter++;
                         break;
                     }
                     default:

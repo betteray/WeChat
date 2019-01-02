@@ -214,6 +214,8 @@ message AutoAuthRequest
 
 //////////////// 自动登录 请求 End /////////////////
 
+//////////////// 登录 响应 Start /////////////////
+
 message NetworkControl
 {
     optional string portList        = 1;
@@ -273,6 +275,7 @@ message UnifyAuthResponse
         optional string fsurl           = 20;
         optional int32 serverTime       = 22;
     }
+
     required AuthSectResp authSectResp = 3;
 
     message AcctSectResp
@@ -309,13 +312,15 @@ message UnifyAuthResponse
             }
             repeated Host list = 2;
         }
-        optional HostList newHostList = 1; //域名重定向信息
 
+        optional HostList newHostList          = 1; //域名重定向信息
         optional NetworkControl networkControl = 2;
         optional BuiltinIPList builtinIplist   = 3;
     }
     optional NetworkSectResp networkSectResp = 5; // dns信息
 }
+
+//////////////// 登录 响应 End /////////////////
 
 //新设备第一次登录初始化请求
 message NewInitRequest
