@@ -8,6 +8,7 @@
 
 #import "SyncCmdHandler.h"
 #import "WCContact.h"
+#import "WCMessage.h"
 
 @implementation SyncCmdHandler
 
@@ -29,6 +30,16 @@
                        msg.toUserName.string,
                        msg.msgType,
                        msg.content.string);
+            
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            [WCMessage createOrUpdateInDefaultRealmWithValue:@[@(msg.newMsgId),
+                                                               msg.fromUserName.string,
+                                                               msg.toUserName.string,
+                                                               @(msg.msgType),
+                                                               msg.content.string,
+                                                               @(msg.createTime)]];
+            [realm commitWriteTransaction];
         }
         else if (2 == cmdItem.cmdId) //好友列表 ModContact
         {
