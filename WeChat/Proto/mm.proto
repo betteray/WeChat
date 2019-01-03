@@ -86,7 +86,7 @@ message CheckLoginQRCodeResponse
     message LoginQRCodeNotifyPkg
     {
         optional SKBuiltinBuffer_t NotifyData = 1; //是bytes,需notifykey不解压aes解密一次,解密后再序列化成下面的对象
-        optional int32 Opcode                 = 2;
+        optional int32 Opcode = 2;
     }
     optional LoginQRCodeNotifyPkg notifyPkg = 3;
 }
@@ -114,37 +114,38 @@ message ECDHKey
 //登录请求--账号信息
 message ManualAuthRsaReqData
 {
-    required SKBuiltinBuffer_t randomEncryKey = 1; //仅用于本次登录请求,后续通讯使用的aeskey根据服务器返回的数据做ECDH生成
-    optional ECDHKey cliPubEcdhkey            = 2;
-    optional string userName                  = 3;
-    optional string pwd                       = 4;
-    optional string pwd2                      = 5;
+    required SKBuiltinBuffer_t randomEncryKey =
+        1; //仅用于本次登录请求,后续通讯使用的aeskey根据服务器返回的数据做ECDH生成
+    optional ECDHKey cliPubEcdhkey = 2;
+    optional string userName       = 3;
+    optional string pwd            = 4;
+    optional string pwd2           = 5;
 }
 
 //登录请求--设备信息
 message ManualAuthAesReqData
 {
-    required BaseRequest baseRequest           = 1;
-    required BaseAuthReqInfo baseReqInfo       = 2;
-    required string imei                       = 3;
-    required string softType                   = 4;  // iPad: <softtype><k3>11.4.1</k3><k9>iPad</k9></softtype>  ，iMac不需要此字段
-    required int32 builtinIpseq                = 5;  // 0
-    required string clientSeqId                = 6;  // iPad: dd09ae95fe48164451be954cd1871cb7-1537165222, iMac: ""
-    optional string clientSeqIDSign            = 7;  // android only
-    required string deviceName                 = 8;  // iPad:ccc iPad, iMac: ray的iMac
-    required string deviceType                 = 9;  // iPad iMac18,2 android 不一样
-    required string language                   = 10; // zh_CN
-    required string timeZone                   = 11; // 8.00
-    required int32 channel                     = 13; // iPad:3d  iMac:0
-    required int32 timeStamp                   = 14; // 1537178341
-    optional string deviceBrand                = 15; // Apple
-    optional string deviceModel                = 16; // android only
-    optional string ostype                     = 17; // iMac "Version 10.13.6 (Build 17G65)"
-    required string realCountry                = 18; // CN
-    optional string bundleId                   = 19; // iPad:com.tencent.xin , iMac:com.tencent.xinWeChat **** ios only
-    optional string adSource                   = 20; // iPad:"AAA7AE28-7620-431D-8B4C-7FB4F67AA45E", iMad: "" **** ios only ****
-    optional string iphoneVer                  = 21; // iPad:iPad4,4 , iMac:iMac18,2 **** ios only ****
-    required int32 inputType                   = 22; // 2
+    required BaseRequest baseRequest     = 1;
+    required BaseAuthReqInfo baseReqInfo = 2;
+    required string imei                 = 3;
+    required string softType = 4; // iPad: <softtype><k3>11.4.1</k3><k9>iPad</k9></softtype>  ，iMac不需要此字段
+    required int32 builtinIpseq     = 5;  // 0
+    required string clientSeqId     = 6;  // iPad: dd09ae95fe48164451be954cd1871cb7-1537165222, iMac: ""
+    optional string clientSeqIDSign = 7;  // android only
+    required string deviceName      = 8;  // iPad:ccc iPad, iMac: ray的iMac
+    required string deviceType      = 9;  // iPad iMac18,2 android 不一样
+    required string language        = 10; // zh_CN
+    required string timeZone        = 11; // 8.00
+    required int32 channel          = 13; // iPad:3d  iMac:0
+    required int32 timeStamp        = 14; // 1537178341
+    optional string deviceBrand     = 15; // Apple
+    optional string deviceModel     = 16; // android only
+    optional string ostype          = 17; // iMac "Version 10.13.6 (Build 17G65)"
+    required string realCountry     = 18; // CN
+    optional string bundleId        = 19; // iPad:com.tencent.xin , iMac:com.tencent.xinWeChat **** ios only
+    optional string adSource        = 20; // iPad:"AAA7AE28-7620-431D-8B4C-7FB4F67AA45E", iMad: "" **** ios only ****
+    optional string iphoneVer       = 21; // iPad:iPad4,4 , iMac:iMac18,2 **** ios only ****
+    required int32 inputType        = 22; // 2
     optional SKBuiltinBuffer_t clientCheckData = 23; // **** ios only ****
 }
 
@@ -252,9 +253,10 @@ message UnifyAuthResponse
 
     message AuthSectResp
     {
-        required int32 uin                     = 1;
-        required ECDHKey svrPubEcdhkey         = 2;
-        required SKBuiltinBuffer_t sessionKey  = 3; //加密的sessionKey 需要使用ECDH握手后的密钥做AES解密得到最终长16字节的aeskey
+        required int32 uin             = 1;
+        required ECDHKey svrPubEcdhkey = 2;
+        required SKBuiltinBuffer_t sessionKey =
+            3; //加密的sessionKey 需要使用ECDH握手后的密钥做AES解密得到最终长16字节的aeskey
         optional SKBuiltinBuffer_t autoAuthKey = 4;
         optional int32 wtloginRspBuffFlag      = 5;
 
@@ -270,10 +272,10 @@ message UnifyAuthResponse
         }
 
         optional ShowStyleKey showStyle = 15;
-        optional bytes SmsTicket        = 16; //需要短信授权时的ticket,用于后续请求验证码以及发送验证码
-        optional int32 authResultFlag   = 19;
-        optional string fsurl           = 20;
-        optional int32 serverTime       = 22;
+        optional bytes SmsTicket = 16; //需要短信授权时的ticket,用于后续请求验证码以及发送验证码
+        optional int32 authResultFlag = 19;
+        optional string fsurl         = 20;
+        optional int32 serverTime     = 22;
     }
 
     required AuthSectResp authSectResp = 3;
@@ -304,7 +306,7 @@ message UnifyAuthResponse
         message HostList
         {
             optional int32 count = 1; // host cnt
-            message Host
+            message        Host
             {
                 optional string origin     = 1; // host
                 optional string substitute = 2; // redirect_host
@@ -333,93 +335,131 @@ message NewInitRequest
 }
 
 //服务器返回消息(newinit/newsync)
-message Msg
+message AddMsg
 {
-    optional int64 serverid            = 1;
-    optional SKBuiltinString_t from_id = 2; //发送方wxid
-    optional SKBuiltinString_t to_id   = 3; //接收方wxid
-    optional int32 type                = 4; //消息类型:9999==>系统垃圾消息,10002==>sysmsg(系统垃圾消息),49==>appmsg,1==>文字消息,10000==>系统提示
-    optional SKBuiltinString_t raw     = 5; //原始消息内容,需要根据不同消息类型解析
+    optional uint32 msgId                   = 1;
+    optional SKBuiltinString_t fromUserName = 2; //发送方wxid
+    optional SKBuiltinString_t toUserName   = 3; //接收方wxid
+    optional int32 msgType =
+        4; //消息类型:9999==>系统垃圾消息,10002==>sysmsg(系统垃圾消息),49==>appmsg,1==>文字消息,10000==>系统提示
+    optional SKBuiltinString_t content = 5; //原始消息内容,需要根据不同消息类型解析
     optional int32 status              = 6;
-    optional int32 tag7                = 7;
-    optional bytes tag8                = 8;
+    optional int32 imgStatus           = 7;
+    optional SKBuiltinBuffer_t imgBuf  = 8;
     optional int32 createTime          = 9;  //消息发送时间
-    optional string ex_info            = 10; //消息附加内容(群是否屏蔽,群人数,群at功能)
-    optional string xmlContent         = 11; //推送内容(xml格式)
-    optional int64 svrId               = 12; //每条消息的唯一id
-    optional int32 msgKey              = 13; // sync key中的id
+    optional string msgSource          = 10; //消息附加内容(群是否屏蔽,群人数,群at功能)
+    optional string pushContent        = 11; //推送内容(xml格式)
+    optional int64 newMsgId            = 12; //每条消息的唯一id
+    optional int32 msgSeq              = 13; // sync key中的id
+}
+
+message SnsUserInfo
+{
+    optional uint32 snsFlag       = 1;
+    optional string snsBgimgId    = 2;
+    optional uint64 snsBgobjectId = 3;
+    optional uint32 snsFlagEx     = 4;
+}
+
+message CustomizedInfoNew {}
+
+message LinkedinContactItem {}
+
+message ChatRoomMemberInfo
+{
+    optional string userName           = 1;
+    optional string nickName           = 2;
+    optional string displayName        = 3;
+    optional string bigHeadImgUrl      = 4;
+    optional string smallHeadImgUrl    = 5;
+    optional uint32 chatroomMemberFlag = 6;
+    optional string inviterUserName    = 7;
+}
+
+message PhoneNumItem { optional string phoneNum = 1; }
+
+message PhoneNumListInfo
+{
+    optional uint32 count              = 1;
+    repeated PhoneNumItem phoneNumList = 2;
 }
 
 //好友详细信息
-message contact_info
+message ModContact
 {
-    optional SKBuiltinString_t wxid         = 1;
-    optional SKBuiltinString_t nickname     = 2;
-    optional SKBuiltinString_t shortPy      = 3;
-    optional SKBuiltinString_t quanpin      = 4;
-    optional int32 sex                      = 5; //性别：0=>未知,1=>男,2=>女
-    optional string tag6                    = 6;
-    optional int32 tag7                     = 7;
-    optional int32 type                     = 8; //好友状态:
-    optional int32 tag9                     = 9;
-    optional SKBuiltinString_t remark_name  = 10; //备注名:为空则显示nickname
+    optional SKBuiltinString_t userName     = 1;
+    optional SKBuiltinString_t nickName     = 2;
+    optional SKBuiltinString_t pyinitial    = 3;
+    optional SKBuiltinString_t quanPin      = 4;
+    optional uint32 sex                     = 5; //性别：0=>未知,1=>男,2=>女
+    optional SKBuiltinBuffer_t imgBuf       = 6;
+    optional uint32 bitMask                 = 7;
+    optional uint32 bitVal                  = 8; //好友状态:
+    optional uint32 imgFlag                 = 9;
+    optional SKBuiltinString_t remark       = 10; //备注名:为空则显示nickname
     optional SKBuiltinString_t real_shortPy = 11;
     optional SKBuiltinString_t real_quanpin = 12;
-    optional int32 tag13                    = 13;
-    optional int32 tag14                    = 14;
+    optional uint32 contactType             = 13;
+    optional uint32 roomInfoCount           = 14;
     optional string tag16                   = 16;
-    optional int32 bChatRoom                = 17; // todo
-    optional int32 tag18                    = 18;
-    optional string sheng                   = 19;
-    optional string shi                     = 20;
-    optional string qianming                = 21; //签名
-    optional int32 tag22                    = 22; // todo
+    optional uint32 chatRoomNotify          = 17;
+    optional uint32 addContactScene         = 18;
+    optional string province                = 19;
+    optional string city                    = 20;
+    optional string signature               = 21; //签名
+    optional uint32 personalCard            = 22; // todo
     optional int32 tag23                    = 23; // todo
-    optional int32 register_body_type       = 24; // 8=>个人;24=>公司
-    optional string register_body           = 25; //注册主体:xx公司或个人
-    optional int32 tag26                    = 26;
-    optional int32 src                      = 27; //好友来源:(10000XX为对方添加自己)0=>未知;1=>QQ;3=>微信号;6=>名片;13=>手机通讯录;14=>群聊;15=>手机号;30=>扫一扫 （1000015=>对方手机号;1000030=>对方扫一扫;1000014=>对方群聊......）
-    optional string lastMsgTime             = 29;
-    optional string alias                   = 30; //微信号(未设置则显示wxid)
-    optional string chatroomOwnerWxid       = 31;
-    optional int32 tag33                    = 33;
-    optional int32 tag34                    = 34;
-    optional int32 tag35                    = 35;
-    optional bytes tag37                    = 37; //个人相册封面图片
-    optional string country                 = 38;
-    optional string avatar_big              = 39;
-    optional string avatar_small            = 40;
-    optional bytes tag42                    = 42;
-    optional string v1_name                 = 45; // encryptName(等价于wxid,固定不变)
-    optional bytes tag50                    = 50;
+    optional uint32 verifyFlag              = 24; // 8=>个人;24=>公司
+    optional string verifyInfo              = 25; //注册主体:xx公司或个人
+    optional uint32 level                   = 26;
+    optional uint32 source =
+        27; //好友来源:(10000XX为对方添加自己)0=>未知;1=>QQ;3=>微信号;6=>名片;13=>手机通讯录;14=>群聊;15=>手机号;30=>扫一扫
+            //（1000015=>对方手机号;1000030=>对方扫一扫;1000014=>对方群聊......）
+    optional string weibo                     = 28;
+    optional string verifyContent             = 29;
+    optional string alias                     = 30; //微信号(未设置则显示wxid)
+    optional string chatRoomOwner             = 31;
+    optional string weiboNickname             = 32;
+    optional uint32 weiboFlag                 = 33;
+    optional uint32 albumStyle                = 34;
+    optional uint32 albumFlag                 = 35;
+    optional string albumBgimgId              = 36;
+    optional SnsUserInfo snsUserInfo          = 37; //个人相册封面图片
+    optional string country                   = 38;
+    optional string bigHeadImgUrl             = 39;
+    optional string smallHeadImgUrl           = 40;
+    optional string myBrandList               = 41;
+    optional CustomizedInfoNew customizedInfo = 42;
+    optional string chatRoomData              = 43;
+    optional string headImgMd5                = 44;
+    optional string encryptUserName           = 45;
+    optional string realName                  = 47;
+    optional string mobileFullHash            = 49;
+    optional bytes additionalContactList      = 50;
 
-    optional int32 chatroom_serverVer  = 53;
-    optional int32 chatroom_max_member = 55;
-    optional int32 tag56               = 56;
-    message GroupMemberList
+    optional uint32 chatroomVersion    = 53;
+    optional string extInfo            = 54;
+    optional uint32 chatroomMaxCount   = 55;
+    optional uint32 chatroomAccessType = 56;
+    message         GroupMemberList
     {
-        optional int32 cnt = 1;
-        message MemberInfo
-        {
-            optional string wxid          = 1;
-            optional string nick_name     = 2; //昵称(非群昵称)
-            optional int32 tag6           = 6;
-            optional string inviteer_wxid = 7; //邀请入群wxid
-            optional int32 tag8           = 8;
-        }
-
-        repeated MemberInfo member = 2;
-        optional int32 tag3        = 3;
-        optional string tag4       = 4;
+        optional uint32 memberCount                = 1;
+        repeated ChatRoomMemberInfo chatRoomMember = 2;
+        optional uint32 infoMask                   = 3;
+        optional string tag4                       = 4;
     }
 
-    optional GroupMemberList group_member_list = 57;
-    optional int32 tag58                       = 58;
-    optional bytes tag62                       = 62;
-    optional int32 tag64                       = 64;
-    optional int32 tag65                       = 65;
-    optional int32 tag66                       = 66;
-    optional int32 tag67                       = 67;
+    optional GroupMemberList newChatroomData   = 57;
+    optional uint32 deleteFlag                 = 58;
+    optional string description                = 59;
+    optional string cardImgUrl                 = 60;
+    optional string labelIdlist                = 61;
+    optional PhoneNumListInfo phoneNumListInfo = 62;
+    optional string weiDianInfo                = 63;
+    optional uint32 chatroomInfoVersion        = 64;
+    optional uint32 deleteContactScene         = 65;
+    optional uint32 chatroomStatus             = 66;
+    optional uint32 extFlag                    = 67;
 }
 
 //同步消息
@@ -434,10 +474,12 @@ message NewInitResponse
 {
     optional BaseResponse baseResponse = 1;
     optional bytes currentSynckey      = 2; //当前synckey二进制数据
-    optional bytes maxSynckey          = 3; //最新synckey二进制数据(若与sync_key_cur不相同,则continue_flag返回1,表示需要继续初始化)
-    optional int32 continueFlag        = 4; //为1时表示仍要继续调用newinit初始化,直到该标志位返回0停止初始化(联系人或未读消息数据太多,无法一次获取完毕)
-    optional int32 count               = 6; // tag7结构体数量
-    repeated CmdItem list              = 7; //需要根据消息类型解析
+    optional bytes maxSynckey =
+        3; //最新synckey二进制数据(若与sync_key_cur不相同,则continue_flag返回1,表示需要继续初始化)
+    optional int32 continueFlag =
+        4; //为1时表示仍要继续调用newinit初始化,直到该标志位返回0停止初始化(联系人或未读消息数据太多,无法一次获取完毕)
+    optional int32 count  = 6; // tag7结构体数量
+    repeated CmdItem list = 7; //需要根据消息类型解析
 }
 
 //同步消息
@@ -455,7 +497,7 @@ message NewSyncRequest
 message NewSyncResponse
 {
     optional int32 ret = 1;
-    message CmdList
+    message        CmdList
     {
         optional int32 count  = 1; // tag2结构体数量
         repeated CmdItem list = 2; //需要根据消息类型解析
@@ -474,8 +516,8 @@ message MicroMsgRequestNew
     optional string content               = 2; //消息内容
     optional int32 type                   = 3; //消息类型: 文字消息=>1,名片=>42，
     optional int32 createTime             = 4; // 1537268848
-    optional int64 clientMsgId            = 5; //不同消息的utc与client_id必须至少有1个不相同 4287068409, iMac 从1开始？
-    optional string msgSource             = 6; //群聊at功能 iMac: "<msgsource></msgsource>"
+    optional int64 clientMsgId = 5; //不同消息的utc与client_id必须至少有1个不相同 4287068409, iMac 从1开始？
+    optional string msgSource = 6; //群聊at功能 iMac: "<msgsource></msgsource>"
 }
 
 //发送消息请求
@@ -487,7 +529,8 @@ message SendMsgRequestNew
 
 message MicroMsgResponseNew
 {
-    optional int32 ret                    = 1; //错误码  0=>发送成功,-44=>对方开启了朋友验证(被删好友),-22=>消息已发出,但被对方拒收了(被拉黑)
+    optional int32 ret =
+        1; //错误码  0=>发送成功,-44=>对方开启了朋友验证(被删好友),-22=>消息已发出,但被对方拒收了(被拉黑)
     optional SKBuiltinString_t toUserName = 2; // to wxid
     optional int32 msgId                  = 3;
     optional int32 clientMsgId            = 4;
@@ -510,7 +553,7 @@ message CheckResUpdateRequest
     message ResID
     {
         optional int32 type = 1;
-        message SubTypeVector
+        message        SubTypeVector
         {
             optional int32 subType    = 1;
             optional int32 keyVersion = 2;
@@ -557,7 +600,7 @@ message SnsTimeLineResponse
     optional int32 newRequestTime        = 5;
     optional int32 objectCountForSameMd5 = 6;
     optional int32 controlFlag           = 7;
-    message SnsServerConfig
+    message        SnsServerConfig
     {
         required int32 postMentionLimit      = 1;
         required int32 copyAndPasteWordLimit = 2;

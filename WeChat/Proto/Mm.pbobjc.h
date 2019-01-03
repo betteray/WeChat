@@ -37,21 +37,27 @@ CF_EXTERN_C_BEGIN
 @class BindOpMobileResponse_ShowStyle;
 @class BuiltinIPList;
 @class BuiltinIPList_BuiltinIP;
+@class ChatRoomMemberInfo;
 @class CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg;
 @class CheckResUpdateRequest_ResID;
 @class CheckResUpdateRequest_ResID_SubTypeVector;
 @class CmdItem;
+@class CustomizedInfoNew;
 @class ECDHKey;
 @class ManualAuthAesReqData;
 @class ManualAuthRsaReqData;
 @class MicroMsgRequestNew;
 @class MicroMsgResponseNew;
+@class ModContact_GroupMemberList;
 @class NetworkControl;
 @class NewSyncResponse_CmdList;
+@class PhoneNumItem;
+@class PhoneNumListInfo;
 @class SKBuiltinBuffer_t;
 @class SKBuiltinString_t;
 @class SnsObject;
 @class SnsTimeLineResponse_SnsServerConfig;
+@class SnsUserInfo;
 @class UnifyAuthResponse_AcctSectResp;
 @class UnifyAuthResponse_AuthSectResp;
 @class UnifyAuthResponse_AuthSectResp_ShowStyleKey;
@@ -60,8 +66,6 @@ CF_EXTERN_C_BEGIN
 @class UnifyAuthResponse_NetworkSectResp_HostList_Host;
 @class WTLoginImgReqInfo;
 @class WxVerifyCodeReqInfo;
-@class contact_info_GroupMemberList;
-@class contact_info_GroupMemberList_MemberInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -1239,182 +1243,308 @@ typedef GPB_ENUM(NewInitRequest_FieldNumber) {
 
 @end
 
-#pragma mark - Msg
+#pragma mark - AddMsg
 
-typedef GPB_ENUM(Msg_FieldNumber) {
-  Msg_FieldNumber_Serverid = 1,
-  Msg_FieldNumber_FromId = 2,
-  Msg_FieldNumber_ToId = 3,
-  Msg_FieldNumber_Type = 4,
-  Msg_FieldNumber_Raw = 5,
-  Msg_FieldNumber_Status = 6,
-  Msg_FieldNumber_Tag7 = 7,
-  Msg_FieldNumber_Tag8 = 8,
-  Msg_FieldNumber_CreateTime = 9,
-  Msg_FieldNumber_ExInfo = 10,
-  Msg_FieldNumber_XmlContent = 11,
-  Msg_FieldNumber_SvrId = 12,
-  Msg_FieldNumber_MsgKey = 13,
+typedef GPB_ENUM(AddMsg_FieldNumber) {
+  AddMsg_FieldNumber_MsgId = 1,
+  AddMsg_FieldNumber_FromUserName = 2,
+  AddMsg_FieldNumber_ToUserName = 3,
+  AddMsg_FieldNumber_MsgType = 4,
+  AddMsg_FieldNumber_Content = 5,
+  AddMsg_FieldNumber_Status = 6,
+  AddMsg_FieldNumber_ImgStatus = 7,
+  AddMsg_FieldNumber_ImgBuf = 8,
+  AddMsg_FieldNumber_CreateTime = 9,
+  AddMsg_FieldNumber_MsgSource = 10,
+  AddMsg_FieldNumber_PushContent = 11,
+  AddMsg_FieldNumber_NewMsgId = 12,
+  AddMsg_FieldNumber_MsgSeq = 13,
 };
 
 /**
  * 服务器返回消息(newinit/newsync)
  **/
-@interface Msg : GPBMessage
+@interface AddMsg : GPBMessage
 
-@property(nonatomic, readwrite) int64_t serverid;
+@property(nonatomic, readwrite) uint32_t msgId;
 
-@property(nonatomic, readwrite) BOOL hasServerid;
+@property(nonatomic, readwrite) BOOL hasMsgId;
 /** 发送方wxid */
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *fromId;
-/** Test to see if @c fromId has been set. */
-@property(nonatomic, readwrite) BOOL hasFromId;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *fromUserName;
+/** Test to see if @c fromUserName has been set. */
+@property(nonatomic, readwrite) BOOL hasFromUserName;
 
 /** 接收方wxid */
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *toId;
-/** Test to see if @c toId has been set. */
-@property(nonatomic, readwrite) BOOL hasToId;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *toUserName;
+/** Test to see if @c toUserName has been set. */
+@property(nonatomic, readwrite) BOOL hasToUserName;
 
 /** 消息类型:9999==>系统垃圾消息,10002==>sysmsg(系统垃圾消息),49==>appmsg,1==>文字消息,10000==>系统提示 */
-@property(nonatomic, readwrite) int32_t type;
+@property(nonatomic, readwrite) int32_t msgType;
 
-@property(nonatomic, readwrite) BOOL hasType;
+@property(nonatomic, readwrite) BOOL hasMsgType;
 /** 原始消息内容,需要根据不同消息类型解析 */
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *raw;
-/** Test to see if @c raw has been set. */
-@property(nonatomic, readwrite) BOOL hasRaw;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *content;
+/** Test to see if @c content has been set. */
+@property(nonatomic, readwrite) BOOL hasContent;
 
 @property(nonatomic, readwrite) int32_t status;
 
 @property(nonatomic, readwrite) BOOL hasStatus;
-@property(nonatomic, readwrite) int32_t tag7;
+@property(nonatomic, readwrite) int32_t imgStatus;
 
-@property(nonatomic, readwrite) BOOL hasTag7;
-@property(nonatomic, readwrite, copy, null_resettable) NSData *tag8;
-/** Test to see if @c tag8 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag8;
+@property(nonatomic, readwrite) BOOL hasImgStatus;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *imgBuf;
+/** Test to see if @c imgBuf has been set. */
+@property(nonatomic, readwrite) BOOL hasImgBuf;
 
 /** 消息发送时间 */
 @property(nonatomic, readwrite) int32_t createTime;
 
 @property(nonatomic, readwrite) BOOL hasCreateTime;
 /** 消息附加内容(群是否屏蔽,群人数,群at功能) */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *exInfo;
-/** Test to see if @c exInfo has been set. */
-@property(nonatomic, readwrite) BOOL hasExInfo;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *msgSource;
+/** Test to see if @c msgSource has been set. */
+@property(nonatomic, readwrite) BOOL hasMsgSource;
 
 /** 推送内容(xml格式) */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *xmlContent;
-/** Test to see if @c xmlContent has been set. */
-@property(nonatomic, readwrite) BOOL hasXmlContent;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *pushContent;
+/** Test to see if @c pushContent has been set. */
+@property(nonatomic, readwrite) BOOL hasPushContent;
 
 /** 每条消息的唯一id */
-@property(nonatomic, readwrite) int64_t svrId;
+@property(nonatomic, readwrite) int64_t newMsgId;
 
-@property(nonatomic, readwrite) BOOL hasSvrId;
+@property(nonatomic, readwrite) BOOL hasNewMsgId;
 /** sync key中的id */
-@property(nonatomic, readwrite) int32_t msgKey;
+@property(nonatomic, readwrite) int32_t msgSeq;
 
-@property(nonatomic, readwrite) BOOL hasMsgKey;
+@property(nonatomic, readwrite) BOOL hasMsgSeq;
 @end
 
-#pragma mark - contact_info
+#pragma mark - SnsUserInfo
 
-typedef GPB_ENUM(contact_info_FieldNumber) {
-  contact_info_FieldNumber_Wxid = 1,
-  contact_info_FieldNumber_Nickname = 2,
-  contact_info_FieldNumber_ShortPy = 3,
-  contact_info_FieldNumber_Quanpin = 4,
-  contact_info_FieldNumber_Sex = 5,
-  contact_info_FieldNumber_Tag6 = 6,
-  contact_info_FieldNumber_Tag7 = 7,
-  contact_info_FieldNumber_Type = 8,
-  contact_info_FieldNumber_Tag9 = 9,
-  contact_info_FieldNumber_RemarkName = 10,
-  contact_info_FieldNumber_RealShortPy = 11,
-  contact_info_FieldNumber_RealQuanpin = 12,
-  contact_info_FieldNumber_Tag13 = 13,
-  contact_info_FieldNumber_Tag14 = 14,
-  contact_info_FieldNumber_Tag16 = 16,
-  contact_info_FieldNumber_BChatRoom = 17,
-  contact_info_FieldNumber_Tag18 = 18,
-  contact_info_FieldNumber_Sheng = 19,
-  contact_info_FieldNumber_Shi = 20,
-  contact_info_FieldNumber_Qianming = 21,
-  contact_info_FieldNumber_Tag22 = 22,
-  contact_info_FieldNumber_Tag23 = 23,
-  contact_info_FieldNumber_RegisterBodyType = 24,
-  contact_info_FieldNumber_RegisterBody = 25,
-  contact_info_FieldNumber_Tag26 = 26,
-  contact_info_FieldNumber_Src = 27,
-  contact_info_FieldNumber_LastMsgTime = 29,
-  contact_info_FieldNumber_Alias = 30,
-  contact_info_FieldNumber_ChatroomOwnerWxid = 31,
-  contact_info_FieldNumber_Tag33 = 33,
-  contact_info_FieldNumber_Tag34 = 34,
-  contact_info_FieldNumber_Tag35 = 35,
-  contact_info_FieldNumber_Tag37 = 37,
-  contact_info_FieldNumber_Country = 38,
-  contact_info_FieldNumber_AvatarBig = 39,
-  contact_info_FieldNumber_AvatarSmall = 40,
-  contact_info_FieldNumber_Tag42 = 42,
-  contact_info_FieldNumber_V1Name = 45,
-  contact_info_FieldNumber_Tag50 = 50,
-  contact_info_FieldNumber_ChatroomServerVer = 53,
-  contact_info_FieldNumber_ChatroomMaxMember = 55,
-  contact_info_FieldNumber_Tag56 = 56,
-  contact_info_FieldNumber_GroupMemberList = 57,
-  contact_info_FieldNumber_Tag58 = 58,
-  contact_info_FieldNumber_Tag62 = 62,
-  contact_info_FieldNumber_Tag64 = 64,
-  contact_info_FieldNumber_Tag65 = 65,
-  contact_info_FieldNumber_Tag66 = 66,
-  contact_info_FieldNumber_Tag67 = 67,
+typedef GPB_ENUM(SnsUserInfo_FieldNumber) {
+  SnsUserInfo_FieldNumber_SnsFlag = 1,
+  SnsUserInfo_FieldNumber_SnsBgimgId = 2,
+  SnsUserInfo_FieldNumber_SnsBgobjectId = 3,
+  SnsUserInfo_FieldNumber_SnsFlagEx = 4,
+};
+
+@interface SnsUserInfo : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t snsFlag;
+
+@property(nonatomic, readwrite) BOOL hasSnsFlag;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *snsBgimgId;
+/** Test to see if @c snsBgimgId has been set. */
+@property(nonatomic, readwrite) BOOL hasSnsBgimgId;
+
+@property(nonatomic, readwrite) uint64_t snsBgobjectId;
+
+@property(nonatomic, readwrite) BOOL hasSnsBgobjectId;
+@property(nonatomic, readwrite) uint32_t snsFlagEx;
+
+@property(nonatomic, readwrite) BOOL hasSnsFlagEx;
+@end
+
+#pragma mark - CustomizedInfoNew
+
+@interface CustomizedInfoNew : GPBMessage
+
+@end
+
+#pragma mark - LinkedinContactItem
+
+@interface LinkedinContactItem : GPBMessage
+
+@end
+
+#pragma mark - ChatRoomMemberInfo
+
+typedef GPB_ENUM(ChatRoomMemberInfo_FieldNumber) {
+  ChatRoomMemberInfo_FieldNumber_UserName = 1,
+  ChatRoomMemberInfo_FieldNumber_NickName = 2,
+  ChatRoomMemberInfo_FieldNumber_DisplayName = 3,
+  ChatRoomMemberInfo_FieldNumber_BigHeadImgURL = 4,
+  ChatRoomMemberInfo_FieldNumber_SmallHeadImgURL = 5,
+  ChatRoomMemberInfo_FieldNumber_ChatroomMemberFlag = 6,
+  ChatRoomMemberInfo_FieldNumber_InviterUserName = 7,
+};
+
+@interface ChatRoomMemberInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *userName;
+/** Test to see if @c userName has been set. */
+@property(nonatomic, readwrite) BOOL hasUserName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *nickName;
+/** Test to see if @c nickName has been set. */
+@property(nonatomic, readwrite) BOOL hasNickName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *displayName;
+/** Test to see if @c displayName has been set. */
+@property(nonatomic, readwrite) BOOL hasDisplayName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *bigHeadImgURL;
+/** Test to see if @c bigHeadImgURL has been set. */
+@property(nonatomic, readwrite) BOOL hasBigHeadImgURL;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *smallHeadImgURL;
+/** Test to see if @c smallHeadImgURL has been set. */
+@property(nonatomic, readwrite) BOOL hasSmallHeadImgURL;
+
+@property(nonatomic, readwrite) uint32_t chatroomMemberFlag;
+
+@property(nonatomic, readwrite) BOOL hasChatroomMemberFlag;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *inviterUserName;
+/** Test to see if @c inviterUserName has been set. */
+@property(nonatomic, readwrite) BOOL hasInviterUserName;
+
+@end
+
+#pragma mark - PhoneNumItem
+
+typedef GPB_ENUM(PhoneNumItem_FieldNumber) {
+  PhoneNumItem_FieldNumber_PhoneNum = 1,
+};
+
+@interface PhoneNumItem : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *phoneNum;
+/** Test to see if @c phoneNum has been set. */
+@property(nonatomic, readwrite) BOOL hasPhoneNum;
+
+@end
+
+#pragma mark - PhoneNumListInfo
+
+typedef GPB_ENUM(PhoneNumListInfo_FieldNumber) {
+  PhoneNumListInfo_FieldNumber_Count = 1,
+  PhoneNumListInfo_FieldNumber_PhoneNumListArray = 2,
+};
+
+@interface PhoneNumListInfo : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t count;
+
+@property(nonatomic, readwrite) BOOL hasCount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<PhoneNumItem*> *phoneNumListArray;
+/** The number of items in @c phoneNumListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger phoneNumListArray_Count;
+
+@end
+
+#pragma mark - ModContact
+
+typedef GPB_ENUM(ModContact_FieldNumber) {
+  ModContact_FieldNumber_UserName = 1,
+  ModContact_FieldNumber_NickName = 2,
+  ModContact_FieldNumber_Pyinitial = 3,
+  ModContact_FieldNumber_QuanPin = 4,
+  ModContact_FieldNumber_Sex = 5,
+  ModContact_FieldNumber_ImgBuf = 6,
+  ModContact_FieldNumber_BitMask = 7,
+  ModContact_FieldNumber_BitVal = 8,
+  ModContact_FieldNumber_ImgFlag = 9,
+  ModContact_FieldNumber_Remark = 10,
+  ModContact_FieldNumber_RealShortPy = 11,
+  ModContact_FieldNumber_RealQuanpin = 12,
+  ModContact_FieldNumber_ContactType = 13,
+  ModContact_FieldNumber_RoomInfoCount = 14,
+  ModContact_FieldNumber_Tag16 = 16,
+  ModContact_FieldNumber_ChatRoomNotify = 17,
+  ModContact_FieldNumber_AddContactScene = 18,
+  ModContact_FieldNumber_Province = 19,
+  ModContact_FieldNumber_City = 20,
+  ModContact_FieldNumber_Signature = 21,
+  ModContact_FieldNumber_PersonalCard = 22,
+  ModContact_FieldNumber_Tag23 = 23,
+  ModContact_FieldNumber_VerifyFlag = 24,
+  ModContact_FieldNumber_VerifyInfo = 25,
+  ModContact_FieldNumber_Level = 26,
+  ModContact_FieldNumber_Source = 27,
+  ModContact_FieldNumber_Weibo = 28,
+  ModContact_FieldNumber_VerifyContent = 29,
+  ModContact_FieldNumber_Alias = 30,
+  ModContact_FieldNumber_ChatRoomOwner = 31,
+  ModContact_FieldNumber_WeiboNickname = 32,
+  ModContact_FieldNumber_WeiboFlag = 33,
+  ModContact_FieldNumber_AlbumStyle = 34,
+  ModContact_FieldNumber_AlbumFlag = 35,
+  ModContact_FieldNumber_AlbumBgimgId = 36,
+  ModContact_FieldNumber_SnsUserInfo = 37,
+  ModContact_FieldNumber_Country = 38,
+  ModContact_FieldNumber_BigHeadImgURL = 39,
+  ModContact_FieldNumber_SmallHeadImgURL = 40,
+  ModContact_FieldNumber_MyBrandList = 41,
+  ModContact_FieldNumber_CustomizedInfo = 42,
+  ModContact_FieldNumber_ChatRoomData = 43,
+  ModContact_FieldNumber_HeadImgMd5 = 44,
+  ModContact_FieldNumber_EncryptUserName = 45,
+  ModContact_FieldNumber_RealName = 47,
+  ModContact_FieldNumber_MobileFullHash = 49,
+  ModContact_FieldNumber_AdditionalContactList = 50,
+  ModContact_FieldNumber_ChatroomVersion = 53,
+  ModContact_FieldNumber_ExtInfo = 54,
+  ModContact_FieldNumber_ChatroomMaxCount = 55,
+  ModContact_FieldNumber_ChatroomAccessType = 56,
+  ModContact_FieldNumber_NewChatroomData = 57,
+  ModContact_FieldNumber_DeleteFlag = 58,
+  ModContact_FieldNumber_Description_p = 59,
+  ModContact_FieldNumber_CardImgURL = 60,
+  ModContact_FieldNumber_LabelIdlist = 61,
+  ModContact_FieldNumber_PhoneNumListInfo = 62,
+  ModContact_FieldNumber_WeiDianInfo = 63,
+  ModContact_FieldNumber_ChatroomInfoVersion = 64,
+  ModContact_FieldNumber_DeleteContactScene = 65,
+  ModContact_FieldNumber_ChatroomStatus = 66,
+  ModContact_FieldNumber_ExtFlag = 67,
 };
 
 /**
  * 好友详细信息
  **/
-@interface contact_info : GPBMessage
+@interface ModContact : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *wxid;
-/** Test to see if @c wxid has been set. */
-@property(nonatomic, readwrite) BOOL hasWxid;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *userName;
+/** Test to see if @c userName has been set. */
+@property(nonatomic, readwrite) BOOL hasUserName;
 
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *nickname;
-/** Test to see if @c nickname has been set. */
-@property(nonatomic, readwrite) BOOL hasNickname;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *nickName;
+/** Test to see if @c nickName has been set. */
+@property(nonatomic, readwrite) BOOL hasNickName;
 
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *shortPy;
-/** Test to see if @c shortPy has been set. */
-@property(nonatomic, readwrite) BOOL hasShortPy;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *pyinitial;
+/** Test to see if @c pyinitial has been set. */
+@property(nonatomic, readwrite) BOOL hasPyinitial;
 
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *quanpin;
-/** Test to see if @c quanpin has been set. */
-@property(nonatomic, readwrite) BOOL hasQuanpin;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *quanPin;
+/** Test to see if @c quanPin has been set. */
+@property(nonatomic, readwrite) BOOL hasQuanPin;
 
 /** 性别：0=>未知,1=>男,2=>女 */
-@property(nonatomic, readwrite) int32_t sex;
+@property(nonatomic, readwrite) uint32_t sex;
 
 @property(nonatomic, readwrite) BOOL hasSex;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *tag6;
-/** Test to see if @c tag6 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag6;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *imgBuf;
+/** Test to see if @c imgBuf has been set. */
+@property(nonatomic, readwrite) BOOL hasImgBuf;
 
-@property(nonatomic, readwrite) int32_t tag7;
+@property(nonatomic, readwrite) uint32_t bitMask;
 
-@property(nonatomic, readwrite) BOOL hasTag7;
+@property(nonatomic, readwrite) BOOL hasBitMask;
 /** 好友状态: */
-@property(nonatomic, readwrite) int32_t type;
+@property(nonatomic, readwrite) uint32_t bitVal;
 
-@property(nonatomic, readwrite) BOOL hasType;
-@property(nonatomic, readwrite) int32_t tag9;
+@property(nonatomic, readwrite) BOOL hasBitVal;
+@property(nonatomic, readwrite) uint32_t imgFlag;
 
-@property(nonatomic, readwrite) BOOL hasTag9;
+@property(nonatomic, readwrite) BOOL hasImgFlag;
 /** 备注名:为空则显示nickname */
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *remarkName;
-/** Test to see if @c remarkName has been set. */
-@property(nonatomic, readwrite) BOOL hasRemarkName;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *remark;
+/** Test to see if @c remark has been set. */
+@property(nonatomic, readwrite) BOOL hasRemark;
 
 @property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *realShortPy;
 /** Test to see if @c realShortPy has been set. */
@@ -1424,205 +1554,222 @@ typedef GPB_ENUM(contact_info_FieldNumber) {
 /** Test to see if @c realQuanpin has been set. */
 @property(nonatomic, readwrite) BOOL hasRealQuanpin;
 
-@property(nonatomic, readwrite) int32_t tag13;
+@property(nonatomic, readwrite) uint32_t contactType;
 
-@property(nonatomic, readwrite) BOOL hasTag13;
-@property(nonatomic, readwrite) int32_t tag14;
+@property(nonatomic, readwrite) BOOL hasContactType;
+@property(nonatomic, readwrite) uint32_t roomInfoCount;
 
-@property(nonatomic, readwrite) BOOL hasTag14;
+@property(nonatomic, readwrite) BOOL hasRoomInfoCount;
 @property(nonatomic, readwrite, copy, null_resettable) NSString *tag16;
 /** Test to see if @c tag16 has been set. */
 @property(nonatomic, readwrite) BOOL hasTag16;
 
-/** todo */
-@property(nonatomic, readwrite) int32_t bChatRoom;
+@property(nonatomic, readwrite) uint32_t chatRoomNotify;
 
-@property(nonatomic, readwrite) BOOL hasBChatRoom;
-@property(nonatomic, readwrite) int32_t tag18;
+@property(nonatomic, readwrite) BOOL hasChatRoomNotify;
+@property(nonatomic, readwrite) uint32_t addContactScene;
 
-@property(nonatomic, readwrite) BOOL hasTag18;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *sheng;
-/** Test to see if @c sheng has been set. */
-@property(nonatomic, readwrite) BOOL hasSheng;
+@property(nonatomic, readwrite) BOOL hasAddContactScene;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *province;
+/** Test to see if @c province has been set. */
+@property(nonatomic, readwrite) BOOL hasProvince;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *shi;
-/** Test to see if @c shi has been set. */
-@property(nonatomic, readwrite) BOOL hasShi;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *city;
+/** Test to see if @c city has been set. */
+@property(nonatomic, readwrite) BOOL hasCity;
 
 /** 签名 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *qianming;
-/** Test to see if @c qianming has been set. */
-@property(nonatomic, readwrite) BOOL hasQianming;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *signature;
+/** Test to see if @c signature has been set. */
+@property(nonatomic, readwrite) BOOL hasSignature;
 
 /** todo */
-@property(nonatomic, readwrite) int32_t tag22;
+@property(nonatomic, readwrite) uint32_t personalCard;
 
-@property(nonatomic, readwrite) BOOL hasTag22;
+@property(nonatomic, readwrite) BOOL hasPersonalCard;
 /** todo */
 @property(nonatomic, readwrite) int32_t tag23;
 
 @property(nonatomic, readwrite) BOOL hasTag23;
 /** 8=>个人;24=>公司 */
-@property(nonatomic, readwrite) int32_t registerBodyType;
+@property(nonatomic, readwrite) uint32_t verifyFlag;
 
-@property(nonatomic, readwrite) BOOL hasRegisterBodyType;
+@property(nonatomic, readwrite) BOOL hasVerifyFlag;
 /** 注册主体:xx公司或个人 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *registerBody;
-/** Test to see if @c registerBody has been set. */
-@property(nonatomic, readwrite) BOOL hasRegisterBody;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *verifyInfo;
+/** Test to see if @c verifyInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasVerifyInfo;
 
-@property(nonatomic, readwrite) int32_t tag26;
+@property(nonatomic, readwrite) uint32_t level;
 
-@property(nonatomic, readwrite) BOOL hasTag26;
-/** 好友来源:(10000XX为对方添加自己)0=>未知;1=>QQ;3=>微信号;6=>名片;13=>手机通讯录;14=>群聊;15=>手机号;30=>扫一扫 （1000015=>对方手机号;1000030=>对方扫一扫;1000014=>对方群聊......） */
-@property(nonatomic, readwrite) int32_t src;
+@property(nonatomic, readwrite) BOOL hasLevel;
+/** 好友来源:(10000XX为对方添加自己)0=>未知;1=>QQ;3=>微信号;6=>名片;13=>手机通讯录;14=>群聊;15=>手机号;30=>扫一扫 */
+@property(nonatomic, readwrite) uint32_t source;
 
-@property(nonatomic, readwrite) BOOL hasSrc;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *lastMsgTime;
-/** Test to see if @c lastMsgTime has been set. */
-@property(nonatomic, readwrite) BOOL hasLastMsgTime;
+@property(nonatomic, readwrite) BOOL hasSource;
+/** （1000015=>对方手机号;1000030=>对方扫一扫;1000014=>对方群聊......） */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *weibo;
+/** Test to see if @c weibo has been set. */
+@property(nonatomic, readwrite) BOOL hasWeibo;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *verifyContent;
+/** Test to see if @c verifyContent has been set. */
+@property(nonatomic, readwrite) BOOL hasVerifyContent;
 
 /** 微信号(未设置则显示wxid) */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *alias;
 /** Test to see if @c alias has been set. */
 @property(nonatomic, readwrite) BOOL hasAlias;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *chatroomOwnerWxid;
-/** Test to see if @c chatroomOwnerWxid has been set. */
-@property(nonatomic, readwrite) BOOL hasChatroomOwnerWxid;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *chatRoomOwner;
+/** Test to see if @c chatRoomOwner has been set. */
+@property(nonatomic, readwrite) BOOL hasChatRoomOwner;
 
-@property(nonatomic, readwrite) int32_t tag33;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *weiboNickname;
+/** Test to see if @c weiboNickname has been set. */
+@property(nonatomic, readwrite) BOOL hasWeiboNickname;
 
-@property(nonatomic, readwrite) BOOL hasTag33;
-@property(nonatomic, readwrite) int32_t tag34;
+@property(nonatomic, readwrite) uint32_t weiboFlag;
 
-@property(nonatomic, readwrite) BOOL hasTag34;
-@property(nonatomic, readwrite) int32_t tag35;
+@property(nonatomic, readwrite) BOOL hasWeiboFlag;
+@property(nonatomic, readwrite) uint32_t albumStyle;
 
-@property(nonatomic, readwrite) BOOL hasTag35;
+@property(nonatomic, readwrite) BOOL hasAlbumStyle;
+@property(nonatomic, readwrite) uint32_t albumFlag;
+
+@property(nonatomic, readwrite) BOOL hasAlbumFlag;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *albumBgimgId;
+/** Test to see if @c albumBgimgId has been set. */
+@property(nonatomic, readwrite) BOOL hasAlbumBgimgId;
+
 /** 个人相册封面图片 */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *tag37;
-/** Test to see if @c tag37 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag37;
+@property(nonatomic, readwrite, strong, null_resettable) SnsUserInfo *snsUserInfo;
+/** Test to see if @c snsUserInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasSnsUserInfo;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *country;
 /** Test to see if @c country has been set. */
 @property(nonatomic, readwrite) BOOL hasCountry;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *avatarBig;
-/** Test to see if @c avatarBig has been set. */
-@property(nonatomic, readwrite) BOOL hasAvatarBig;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *bigHeadImgURL;
+/** Test to see if @c bigHeadImgURL has been set. */
+@property(nonatomic, readwrite) BOOL hasBigHeadImgURL;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *avatarSmall;
-/** Test to see if @c avatarSmall has been set. */
-@property(nonatomic, readwrite) BOOL hasAvatarSmall;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *smallHeadImgURL;
+/** Test to see if @c smallHeadImgURL has been set. */
+@property(nonatomic, readwrite) BOOL hasSmallHeadImgURL;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSData *tag42;
-/** Test to see if @c tag42 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag42;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *myBrandList;
+/** Test to see if @c myBrandList has been set. */
+@property(nonatomic, readwrite) BOOL hasMyBrandList;
 
-/** encryptName(等价于wxid,固定不变) */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *v1Name;
-/** Test to see if @c v1Name has been set. */
-@property(nonatomic, readwrite) BOOL hasV1Name;
+@property(nonatomic, readwrite, strong, null_resettable) CustomizedInfoNew *customizedInfo;
+/** Test to see if @c customizedInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasCustomizedInfo;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSData *tag50;
-/** Test to see if @c tag50 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag50;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *chatRoomData;
+/** Test to see if @c chatRoomData has been set. */
+@property(nonatomic, readwrite) BOOL hasChatRoomData;
 
-@property(nonatomic, readwrite) int32_t chatroomServerVer;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *headImgMd5;
+/** Test to see if @c headImgMd5 has been set. */
+@property(nonatomic, readwrite) BOOL hasHeadImgMd5;
 
-@property(nonatomic, readwrite) BOOL hasChatroomServerVer;
-@property(nonatomic, readwrite) int32_t chatroomMaxMember;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *encryptUserName;
+/** Test to see if @c encryptUserName has been set. */
+@property(nonatomic, readwrite) BOOL hasEncryptUserName;
 
-@property(nonatomic, readwrite) BOOL hasChatroomMaxMember;
-@property(nonatomic, readwrite) int32_t tag56;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *realName;
+/** Test to see if @c realName has been set. */
+@property(nonatomic, readwrite) BOOL hasRealName;
 
-@property(nonatomic, readwrite) BOOL hasTag56;
-@property(nonatomic, readwrite, strong, null_resettable) contact_info_GroupMemberList *groupMemberList;
-/** Test to see if @c groupMemberList has been set. */
-@property(nonatomic, readwrite) BOOL hasGroupMemberList;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *mobileFullHash;
+/** Test to see if @c mobileFullHash has been set. */
+@property(nonatomic, readwrite) BOOL hasMobileFullHash;
 
-@property(nonatomic, readwrite) int32_t tag58;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *additionalContactList;
+/** Test to see if @c additionalContactList has been set. */
+@property(nonatomic, readwrite) BOOL hasAdditionalContactList;
 
-@property(nonatomic, readwrite) BOOL hasTag58;
-@property(nonatomic, readwrite, copy, null_resettable) NSData *tag62;
-/** Test to see if @c tag62 has been set. */
-@property(nonatomic, readwrite) BOOL hasTag62;
+@property(nonatomic, readwrite) uint32_t chatroomVersion;
 
-@property(nonatomic, readwrite) int32_t tag64;
+@property(nonatomic, readwrite) BOOL hasChatroomVersion;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *extInfo;
+/** Test to see if @c extInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasExtInfo;
 
-@property(nonatomic, readwrite) BOOL hasTag64;
-@property(nonatomic, readwrite) int32_t tag65;
+@property(nonatomic, readwrite) uint32_t chatroomMaxCount;
 
-@property(nonatomic, readwrite) BOOL hasTag65;
-@property(nonatomic, readwrite) int32_t tag66;
+@property(nonatomic, readwrite) BOOL hasChatroomMaxCount;
+@property(nonatomic, readwrite) uint32_t chatroomAccessType;
 
-@property(nonatomic, readwrite) BOOL hasTag66;
-@property(nonatomic, readwrite) int32_t tag67;
+@property(nonatomic, readwrite) BOOL hasChatroomAccessType;
+@property(nonatomic, readwrite, strong, null_resettable) ModContact_GroupMemberList *newChatroomData NS_RETURNS_NOT_RETAINED;
+/** Test to see if @c newChatroomData has been set. */
+@property(nonatomic, readwrite) BOOL hasNewChatroomData;
 
-@property(nonatomic, readwrite) BOOL hasTag67;
+@property(nonatomic, readwrite) uint32_t deleteFlag;
+
+@property(nonatomic, readwrite) BOOL hasDeleteFlag;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *description_p;
+/** Test to see if @c description_p has been set. */
+@property(nonatomic, readwrite) BOOL hasDescription_p;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *cardImgURL;
+/** Test to see if @c cardImgURL has been set. */
+@property(nonatomic, readwrite) BOOL hasCardImgURL;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *labelIdlist;
+/** Test to see if @c labelIdlist has been set. */
+@property(nonatomic, readwrite) BOOL hasLabelIdlist;
+
+@property(nonatomic, readwrite, strong, null_resettable) PhoneNumListInfo *phoneNumListInfo;
+/** Test to see if @c phoneNumListInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasPhoneNumListInfo;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *weiDianInfo;
+/** Test to see if @c weiDianInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasWeiDianInfo;
+
+@property(nonatomic, readwrite) uint32_t chatroomInfoVersion;
+
+@property(nonatomic, readwrite) BOOL hasChatroomInfoVersion;
+@property(nonatomic, readwrite) uint32_t deleteContactScene;
+
+@property(nonatomic, readwrite) BOOL hasDeleteContactScene;
+@property(nonatomic, readwrite) uint32_t chatroomStatus;
+
+@property(nonatomic, readwrite) BOOL hasChatroomStatus;
+@property(nonatomic, readwrite) uint32_t extFlag;
+
+@property(nonatomic, readwrite) BOOL hasExtFlag;
 @end
 
-#pragma mark - contact_info_GroupMemberList
+#pragma mark - ModContact_GroupMemberList
 
-typedef GPB_ENUM(contact_info_GroupMemberList_FieldNumber) {
-  contact_info_GroupMemberList_FieldNumber_Cnt = 1,
-  contact_info_GroupMemberList_FieldNumber_MemberArray = 2,
-  contact_info_GroupMemberList_FieldNumber_Tag3 = 3,
-  contact_info_GroupMemberList_FieldNumber_Tag4 = 4,
+typedef GPB_ENUM(ModContact_GroupMemberList_FieldNumber) {
+  ModContact_GroupMemberList_FieldNumber_MemberCount = 1,
+  ModContact_GroupMemberList_FieldNumber_ChatRoomMemberArray = 2,
+  ModContact_GroupMemberList_FieldNumber_InfoMask = 3,
+  ModContact_GroupMemberList_FieldNumber_Tag4 = 4,
 };
 
-@interface contact_info_GroupMemberList : GPBMessage
+@interface ModContact_GroupMemberList : GPBMessage
 
-@property(nonatomic, readwrite) int32_t cnt;
+@property(nonatomic, readwrite) uint32_t memberCount;
 
-@property(nonatomic, readwrite) BOOL hasCnt;
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<contact_info_GroupMemberList_MemberInfo*> *memberArray;
-/** The number of items in @c memberArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger memberArray_Count;
+@property(nonatomic, readwrite) BOOL hasMemberCount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ChatRoomMemberInfo*> *chatRoomMemberArray;
+/** The number of items in @c chatRoomMemberArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger chatRoomMemberArray_Count;
 
-@property(nonatomic, readwrite) int32_t tag3;
+@property(nonatomic, readwrite) uint32_t infoMask;
 
-@property(nonatomic, readwrite) BOOL hasTag3;
+@property(nonatomic, readwrite) BOOL hasInfoMask;
 @property(nonatomic, readwrite, copy, null_resettable) NSString *tag4;
 /** Test to see if @c tag4 has been set. */
 @property(nonatomic, readwrite) BOOL hasTag4;
 
-@end
-
-#pragma mark - contact_info_GroupMemberList_MemberInfo
-
-typedef GPB_ENUM(contact_info_GroupMemberList_MemberInfo_FieldNumber) {
-  contact_info_GroupMemberList_MemberInfo_FieldNumber_Wxid = 1,
-  contact_info_GroupMemberList_MemberInfo_FieldNumber_NickName = 2,
-  contact_info_GroupMemberList_MemberInfo_FieldNumber_Tag6 = 6,
-  contact_info_GroupMemberList_MemberInfo_FieldNumber_InviteerWxid = 7,
-  contact_info_GroupMemberList_MemberInfo_FieldNumber_Tag8 = 8,
-};
-
-@interface contact_info_GroupMemberList_MemberInfo : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *wxid;
-/** Test to see if @c wxid has been set. */
-@property(nonatomic, readwrite) BOOL hasWxid;
-
-/** 昵称(非群昵称) */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *nickName;
-/** Test to see if @c nickName has been set. */
-@property(nonatomic, readwrite) BOOL hasNickName;
-
-@property(nonatomic, readwrite) int32_t tag6;
-
-@property(nonatomic, readwrite) BOOL hasTag6;
-/** 邀请入群wxid */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *inviteerWxid;
-/** Test to see if @c inviteerWxid has been set. */
-@property(nonatomic, readwrite) BOOL hasInviteerWxid;
-
-@property(nonatomic, readwrite) int32_t tag8;
-
-@property(nonatomic, readwrite) BOOL hasTag8;
 @end
 
 #pragma mark - CmdItem

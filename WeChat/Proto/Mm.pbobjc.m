@@ -3089,40 +3089,40 @@ typedef struct NewInitRequest__storage_ {
 
 @end
 
-#pragma mark - Msg
+#pragma mark - AddMsg
 
-@implementation Msg
+@implementation AddMsg
 
-@dynamic hasServerid, serverid;
-@dynamic hasFromId, fromId;
-@dynamic hasToId, toId;
-@dynamic hasType, type;
-@dynamic hasRaw, raw;
+@dynamic hasMsgId, msgId;
+@dynamic hasFromUserName, fromUserName;
+@dynamic hasToUserName, toUserName;
+@dynamic hasMsgType, msgType;
+@dynamic hasContent, content;
 @dynamic hasStatus, status;
-@dynamic hasTag7, tag7;
-@dynamic hasTag8, tag8;
+@dynamic hasImgStatus, imgStatus;
+@dynamic hasImgBuf, imgBuf;
 @dynamic hasCreateTime, createTime;
-@dynamic hasExInfo, exInfo;
-@dynamic hasXmlContent, xmlContent;
-@dynamic hasSvrId, svrId;
-@dynamic hasMsgKey, msgKey;
+@dynamic hasMsgSource, msgSource;
+@dynamic hasPushContent, pushContent;
+@dynamic hasNewMsgId, newMsgId;
+@dynamic hasMsgSeq, msgSeq;
 
-typedef struct Msg__storage_ {
+typedef struct AddMsg__storage_ {
   uint32_t _has_storage_[1];
-  int32_t type;
+  uint32_t msgId;
+  int32_t msgType;
   int32_t status;
-  int32_t tag7;
+  int32_t imgStatus;
   int32_t createTime;
-  int32_t msgKey;
-  SKBuiltinString_t *fromId;
-  SKBuiltinString_t *toId;
-  SKBuiltinString_t *raw;
-  NSData *tag8;
-  NSString *exInfo;
-  NSString *xmlContent;
-  int64_t serverid;
-  int64_t svrId;
-} Msg__storage_;
+  int32_t msgSeq;
+  SKBuiltinString_t *fromUserName;
+  SKBuiltinString_t *toUserName;
+  SKBuiltinString_t *content;
+  SKBuiltinBuffer_t *imgBuf;
+  NSString *msgSource;
+  NSString *pushContent;
+  int64_t newMsgId;
+} AddMsg__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -3131,134 +3131,134 @@ typedef struct Msg__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "serverid",
+        .name = "msgId",
         .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_Serverid,
+        .number = AddMsg_FieldNumber_MsgId,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Msg__storage_, serverid),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt64,
+        .offset = (uint32_t)offsetof(AddMsg__storage_, msgId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "fromId",
+        .name = "fromUserName",
         .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
-        .number = Msg_FieldNumber_FromId,
+        .number = AddMsg_FieldNumber_FromUserName,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Msg__storage_, fromId),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(AddMsg__storage_, fromUserName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "toId",
+        .name = "toUserName",
         .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
-        .number = Msg_FieldNumber_ToId,
+        .number = AddMsg_FieldNumber_ToUserName,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(Msg__storage_, toId),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(AddMsg__storage_, toUserName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "type",
+        .name = "msgType",
         .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_Type,
+        .number = AddMsg_FieldNumber_MsgType,
         .hasIndex = 3,
-        .offset = (uint32_t)offsetof(Msg__storage_, type),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(AddMsg__storage_, msgType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "raw",
+        .name = "content",
         .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
-        .number = Msg_FieldNumber_Raw,
+        .number = AddMsg_FieldNumber_Content,
         .hasIndex = 4,
-        .offset = (uint32_t)offsetof(Msg__storage_, raw),
+        .offset = (uint32_t)offsetof(AddMsg__storage_, content),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "status",
         .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_Status,
+        .number = AddMsg_FieldNumber_Status,
         .hasIndex = 5,
-        .offset = (uint32_t)offsetof(Msg__storage_, status),
+        .offset = (uint32_t)offsetof(AddMsg__storage_, status),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "tag7",
+        .name = "imgStatus",
         .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_Tag7,
+        .number = AddMsg_FieldNumber_ImgStatus,
         .hasIndex = 6,
-        .offset = (uint32_t)offsetof(Msg__storage_, tag7),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(AddMsg__storage_, imgStatus),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "tag8",
-        .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_Tag8,
+        .name = "imgBuf",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = AddMsg_FieldNumber_ImgBuf,
         .hasIndex = 7,
-        .offset = (uint32_t)offsetof(Msg__storage_, tag8),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeBytes,
+        .offset = (uint32_t)offsetof(AddMsg__storage_, imgBuf),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
       },
       {
         .name = "createTime",
         .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_CreateTime,
+        .number = AddMsg_FieldNumber_CreateTime,
         .hasIndex = 8,
-        .offset = (uint32_t)offsetof(Msg__storage_, createTime),
+        .offset = (uint32_t)offsetof(AddMsg__storage_, createTime),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "exInfo",
+        .name = "msgSource",
         .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_ExInfo,
+        .number = AddMsg_FieldNumber_MsgSource,
         .hasIndex = 9,
-        .offset = (uint32_t)offsetof(Msg__storage_, exInfo),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "xmlContent",
-        .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_XmlContent,
-        .hasIndex = 10,
-        .offset = (uint32_t)offsetof(Msg__storage_, xmlContent),
+        .offset = (uint32_t)offsetof(AddMsg__storage_, msgSource),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "svrId",
+        .name = "pushContent",
         .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_SvrId,
+        .number = AddMsg_FieldNumber_PushContent,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(AddMsg__storage_, pushContent),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "newMsgId",
+        .dataTypeSpecific.className = NULL,
+        .number = AddMsg_FieldNumber_NewMsgId,
         .hasIndex = 11,
-        .offset = (uint32_t)offsetof(Msg__storage_, svrId),
+        .offset = (uint32_t)offsetof(AddMsg__storage_, newMsgId),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt64,
       },
       {
-        .name = "msgKey",
+        .name = "msgSeq",
         .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_MsgKey,
+        .number = AddMsg_FieldNumber_MsgSeq,
         .hasIndex = 12,
-        .offset = (uint32_t)offsetof(Msg__storage_, msgKey),
+        .offset = (uint32_t)offsetof(AddMsg__storage_, msgSeq),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeInt32,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Msg class]
+        [GPBDescriptor allocDescriptorForClass:[AddMsg class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Msg__storage_)
+                                   storageSize:sizeof(AddMsg__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\004\t\n\000\013\n\000\014\005\000\r\006\000";
+        "\013\001\005\000\002\014\000\003\n\000\004\007\000\007\t\000\010\006\000\t\n\000\n\t\000\013\013\000\014\010\000\r\006\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -3269,112 +3269,22 @@ typedef struct Msg__storage_ {
 
 @end
 
-#pragma mark - contact_info
+#pragma mark - SnsUserInfo
 
-@implementation contact_info
+@implementation SnsUserInfo
 
-@dynamic hasWxid, wxid;
-@dynamic hasNickname, nickname;
-@dynamic hasShortPy, shortPy;
-@dynamic hasQuanpin, quanpin;
-@dynamic hasSex, sex;
-@dynamic hasTag6, tag6;
-@dynamic hasTag7, tag7;
-@dynamic hasType, type;
-@dynamic hasTag9, tag9;
-@dynamic hasRemarkName, remarkName;
-@dynamic hasRealShortPy, realShortPy;
-@dynamic hasRealQuanpin, realQuanpin;
-@dynamic hasTag13, tag13;
-@dynamic hasTag14, tag14;
-@dynamic hasTag16, tag16;
-@dynamic hasBChatRoom, bChatRoom;
-@dynamic hasTag18, tag18;
-@dynamic hasSheng, sheng;
-@dynamic hasShi, shi;
-@dynamic hasQianming, qianming;
-@dynamic hasTag22, tag22;
-@dynamic hasTag23, tag23;
-@dynamic hasRegisterBodyType, registerBodyType;
-@dynamic hasRegisterBody, registerBody;
-@dynamic hasTag26, tag26;
-@dynamic hasSrc, src;
-@dynamic hasLastMsgTime, lastMsgTime;
-@dynamic hasAlias, alias;
-@dynamic hasChatroomOwnerWxid, chatroomOwnerWxid;
-@dynamic hasTag33, tag33;
-@dynamic hasTag34, tag34;
-@dynamic hasTag35, tag35;
-@dynamic hasTag37, tag37;
-@dynamic hasCountry, country;
-@dynamic hasAvatarBig, avatarBig;
-@dynamic hasAvatarSmall, avatarSmall;
-@dynamic hasTag42, tag42;
-@dynamic hasV1Name, v1Name;
-@dynamic hasTag50, tag50;
-@dynamic hasChatroomServerVer, chatroomServerVer;
-@dynamic hasChatroomMaxMember, chatroomMaxMember;
-@dynamic hasTag56, tag56;
-@dynamic hasGroupMemberList, groupMemberList;
-@dynamic hasTag58, tag58;
-@dynamic hasTag62, tag62;
-@dynamic hasTag64, tag64;
-@dynamic hasTag65, tag65;
-@dynamic hasTag66, tag66;
-@dynamic hasTag67, tag67;
+@dynamic hasSnsFlag, snsFlag;
+@dynamic hasSnsBgimgId, snsBgimgId;
+@dynamic hasSnsBgobjectId, snsBgobjectId;
+@dynamic hasSnsFlagEx, snsFlagEx;
 
-typedef struct contact_info__storage_ {
-  uint32_t _has_storage_[2];
-  int32_t sex;
-  int32_t tag7;
-  int32_t type;
-  int32_t tag9;
-  int32_t tag13;
-  int32_t tag14;
-  int32_t bChatRoom;
-  int32_t tag18;
-  int32_t tag22;
-  int32_t tag23;
-  int32_t registerBodyType;
-  int32_t tag26;
-  int32_t src;
-  int32_t tag33;
-  int32_t tag34;
-  int32_t tag35;
-  int32_t chatroomServerVer;
-  int32_t chatroomMaxMember;
-  int32_t tag56;
-  int32_t tag58;
-  int32_t tag64;
-  int32_t tag65;
-  int32_t tag66;
-  int32_t tag67;
-  SKBuiltinString_t *wxid;
-  SKBuiltinString_t *nickname;
-  SKBuiltinString_t *shortPy;
-  SKBuiltinString_t *quanpin;
-  NSString *tag6;
-  SKBuiltinString_t *remarkName;
-  SKBuiltinString_t *realShortPy;
-  SKBuiltinString_t *realQuanpin;
-  NSString *tag16;
-  NSString *sheng;
-  NSString *shi;
-  NSString *qianming;
-  NSString *registerBody;
-  NSString *lastMsgTime;
-  NSString *alias;
-  NSString *chatroomOwnerWxid;
-  NSData *tag37;
-  NSString *country;
-  NSString *avatarBig;
-  NSString *avatarSmall;
-  NSData *tag42;
-  NSString *v1Name;
-  NSData *tag50;
-  contact_info_GroupMemberList *groupMemberList;
-  NSData *tag62;
-} contact_info__storage_;
+typedef struct SnsUserInfo__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t snsFlag;
+  uint32_t snsFlagEx;
+  NSString *snsBgimgId;
+  uint64_t snsBgobjectId;
+} SnsUserInfo__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -3383,458 +3293,1056 @@ typedef struct contact_info__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "wxid",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
-        .number = contact_info_FieldNumber_Wxid,
+        .name = "snsFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsUserInfo_FieldNumber_SnsFlag,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(contact_info__storage_, wxid),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
+        .offset = (uint32_t)offsetof(SnsUserInfo__storage_, snsFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "nickname",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
-        .number = contact_info_FieldNumber_Nickname,
+        .name = "snsBgimgId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsUserInfo_FieldNumber_SnsBgimgId,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(contact_info__storage_, nickname),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
+        .offset = (uint32_t)offsetof(SnsUserInfo__storage_, snsBgimgId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
       },
       {
-        .name = "shortPy",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
-        .number = contact_info_FieldNumber_ShortPy,
+        .name = "snsBgobjectId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsUserInfo_FieldNumber_SnsBgobjectId,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(contact_info__storage_, shortPy),
+        .offset = (uint32_t)offsetof(SnsUserInfo__storage_, snsBgobjectId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "snsFlagEx",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsUserInfo_FieldNumber_SnsFlagEx,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(SnsUserInfo__storage_, snsFlagEx),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SnsUserInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SnsUserInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\004\001\007\000\002\n\000\003\r\000\004\t\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - CustomizedInfoNew
+
+@implementation CustomizedInfoNew
+
+
+typedef struct CustomizedInfoNew__storage_ {
+  uint32_t _has_storage_[1];
+} CustomizedInfoNew__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[CustomizedInfoNew class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:NULL
+                                    fieldCount:0
+                                   storageSize:sizeof(CustomizedInfoNew__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - LinkedinContactItem
+
+@implementation LinkedinContactItem
+
+
+typedef struct LinkedinContactItem__storage_ {
+  uint32_t _has_storage_[1];
+} LinkedinContactItem__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[LinkedinContactItem class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:NULL
+                                    fieldCount:0
+                                   storageSize:sizeof(LinkedinContactItem__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ChatRoomMemberInfo
+
+@implementation ChatRoomMemberInfo
+
+@dynamic hasUserName, userName;
+@dynamic hasNickName, nickName;
+@dynamic hasDisplayName, displayName;
+@dynamic hasBigHeadImgURL, bigHeadImgURL;
+@dynamic hasSmallHeadImgURL, smallHeadImgURL;
+@dynamic hasChatroomMemberFlag, chatroomMemberFlag;
+@dynamic hasInviterUserName, inviterUserName;
+
+typedef struct ChatRoomMemberInfo__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t chatroomMemberFlag;
+  NSString *userName;
+  NSString *nickName;
+  NSString *displayName;
+  NSString *bigHeadImgURL;
+  NSString *smallHeadImgURL;
+  NSString *inviterUserName;
+} ChatRoomMemberInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "userName",
+        .dataTypeSpecific.className = NULL,
+        .number = ChatRoomMemberInfo_FieldNumber_UserName,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ChatRoomMemberInfo__storage_, userName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "nickName",
+        .dataTypeSpecific.className = NULL,
+        .number = ChatRoomMemberInfo_FieldNumber_NickName,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ChatRoomMemberInfo__storage_, nickName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "displayName",
+        .dataTypeSpecific.className = NULL,
+        .number = ChatRoomMemberInfo_FieldNumber_DisplayName,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ChatRoomMemberInfo__storage_, displayName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "bigHeadImgURL",
+        .dataTypeSpecific.className = NULL,
+        .number = ChatRoomMemberInfo_FieldNumber_BigHeadImgURL,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(ChatRoomMemberInfo__storage_, bigHeadImgURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "smallHeadImgURL",
+        .dataTypeSpecific.className = NULL,
+        .number = ChatRoomMemberInfo_FieldNumber_SmallHeadImgURL,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(ChatRoomMemberInfo__storage_, smallHeadImgURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "chatroomMemberFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = ChatRoomMemberInfo_FieldNumber_ChatroomMemberFlag,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(ChatRoomMemberInfo__storage_, chatroomMemberFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "inviterUserName",
+        .dataTypeSpecific.className = NULL,
+        .number = ChatRoomMemberInfo_FieldNumber_InviterUserName,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(ChatRoomMemberInfo__storage_, inviterUserName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ChatRoomMemberInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ChatRoomMemberInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\007\001\010\000\002\010\000\003\013\000\004\013!!\000\005\r!!\000\006\022\000\007\017\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - PhoneNumItem
+
+@implementation PhoneNumItem
+
+@dynamic hasPhoneNum, phoneNum;
+
+typedef struct PhoneNumItem__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *phoneNum;
+} PhoneNumItem__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "phoneNum",
+        .dataTypeSpecific.className = NULL,
+        .number = PhoneNumItem_FieldNumber_PhoneNum,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(PhoneNumItem__storage_, phoneNum),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[PhoneNumItem class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(PhoneNumItem__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001\010\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - PhoneNumListInfo
+
+@implementation PhoneNumListInfo
+
+@dynamic hasCount, count;
+@dynamic phoneNumListArray, phoneNumListArray_Count;
+
+typedef struct PhoneNumListInfo__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t count;
+  NSMutableArray *phoneNumListArray;
+} PhoneNumListInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "count",
+        .dataTypeSpecific.className = NULL,
+        .number = PhoneNumListInfo_FieldNumber_Count,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(PhoneNumListInfo__storage_, count),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "phoneNumListArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(PhoneNumItem),
+        .number = PhoneNumListInfo_FieldNumber_PhoneNumListArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(PhoneNumListInfo__storage_, phoneNumListArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[PhoneNumListInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(PhoneNumListInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\002\000phoneNumList\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ModContact
+
+@implementation ModContact
+
+@dynamic hasUserName, userName;
+@dynamic hasNickName, nickName;
+@dynamic hasPyinitial, pyinitial;
+@dynamic hasQuanPin, quanPin;
+@dynamic hasSex, sex;
+@dynamic hasImgBuf, imgBuf;
+@dynamic hasBitMask, bitMask;
+@dynamic hasBitVal, bitVal;
+@dynamic hasImgFlag, imgFlag;
+@dynamic hasRemark, remark;
+@dynamic hasRealShortPy, realShortPy;
+@dynamic hasRealQuanpin, realQuanpin;
+@dynamic hasContactType, contactType;
+@dynamic hasRoomInfoCount, roomInfoCount;
+@dynamic hasTag16, tag16;
+@dynamic hasChatRoomNotify, chatRoomNotify;
+@dynamic hasAddContactScene, addContactScene;
+@dynamic hasProvince, province;
+@dynamic hasCity, city;
+@dynamic hasSignature, signature;
+@dynamic hasPersonalCard, personalCard;
+@dynamic hasTag23, tag23;
+@dynamic hasVerifyFlag, verifyFlag;
+@dynamic hasVerifyInfo, verifyInfo;
+@dynamic hasLevel, level;
+@dynamic hasSource, source;
+@dynamic hasWeibo, weibo;
+@dynamic hasVerifyContent, verifyContent;
+@dynamic hasAlias, alias;
+@dynamic hasChatRoomOwner, chatRoomOwner;
+@dynamic hasWeiboNickname, weiboNickname;
+@dynamic hasWeiboFlag, weiboFlag;
+@dynamic hasAlbumStyle, albumStyle;
+@dynamic hasAlbumFlag, albumFlag;
+@dynamic hasAlbumBgimgId, albumBgimgId;
+@dynamic hasSnsUserInfo, snsUserInfo;
+@dynamic hasCountry, country;
+@dynamic hasBigHeadImgURL, bigHeadImgURL;
+@dynamic hasSmallHeadImgURL, smallHeadImgURL;
+@dynamic hasMyBrandList, myBrandList;
+@dynamic hasCustomizedInfo, customizedInfo;
+@dynamic hasChatRoomData, chatRoomData;
+@dynamic hasHeadImgMd5, headImgMd5;
+@dynamic hasEncryptUserName, encryptUserName;
+@dynamic hasRealName, realName;
+@dynamic hasMobileFullHash, mobileFullHash;
+@dynamic hasAdditionalContactList, additionalContactList;
+@dynamic hasChatroomVersion, chatroomVersion;
+@dynamic hasExtInfo, extInfo;
+@dynamic hasChatroomMaxCount, chatroomMaxCount;
+@dynamic hasChatroomAccessType, chatroomAccessType;
+@dynamic hasNewChatroomData, newChatroomData;
+@dynamic hasDeleteFlag, deleteFlag;
+@dynamic hasDescription_p, description_p;
+@dynamic hasCardImgURL, cardImgURL;
+@dynamic hasLabelIdlist, labelIdlist;
+@dynamic hasPhoneNumListInfo, phoneNumListInfo;
+@dynamic hasWeiDianInfo, weiDianInfo;
+@dynamic hasChatroomInfoVersion, chatroomInfoVersion;
+@dynamic hasDeleteContactScene, deleteContactScene;
+@dynamic hasChatroomStatus, chatroomStatus;
+@dynamic hasExtFlag, extFlag;
+
+typedef struct ModContact__storage_ {
+  uint32_t _has_storage_[2];
+  uint32_t sex;
+  uint32_t bitMask;
+  uint32_t bitVal;
+  uint32_t imgFlag;
+  uint32_t contactType;
+  uint32_t roomInfoCount;
+  uint32_t chatRoomNotify;
+  uint32_t addContactScene;
+  uint32_t personalCard;
+  int32_t tag23;
+  uint32_t verifyFlag;
+  uint32_t level;
+  uint32_t source;
+  uint32_t weiboFlag;
+  uint32_t albumStyle;
+  uint32_t albumFlag;
+  uint32_t chatroomVersion;
+  uint32_t chatroomMaxCount;
+  uint32_t chatroomAccessType;
+  uint32_t deleteFlag;
+  uint32_t chatroomInfoVersion;
+  uint32_t deleteContactScene;
+  uint32_t chatroomStatus;
+  uint32_t extFlag;
+  SKBuiltinString_t *userName;
+  SKBuiltinString_t *nickName;
+  SKBuiltinString_t *pyinitial;
+  SKBuiltinString_t *quanPin;
+  SKBuiltinBuffer_t *imgBuf;
+  SKBuiltinString_t *remark;
+  SKBuiltinString_t *realShortPy;
+  SKBuiltinString_t *realQuanpin;
+  NSString *tag16;
+  NSString *province;
+  NSString *city;
+  NSString *signature;
+  NSString *verifyInfo;
+  NSString *weibo;
+  NSString *verifyContent;
+  NSString *alias;
+  NSString *chatRoomOwner;
+  NSString *weiboNickname;
+  NSString *albumBgimgId;
+  SnsUserInfo *snsUserInfo;
+  NSString *country;
+  NSString *bigHeadImgURL;
+  NSString *smallHeadImgURL;
+  NSString *myBrandList;
+  CustomizedInfoNew *customizedInfo;
+  NSString *chatRoomData;
+  NSString *headImgMd5;
+  NSString *encryptUserName;
+  NSString *realName;
+  NSString *mobileFullHash;
+  NSData *additionalContactList;
+  NSString *extInfo;
+  ModContact_GroupMemberList *newChatroomData;
+  NSString *description_p;
+  NSString *cardImgURL;
+  NSString *labelIdlist;
+  PhoneNumListInfo *phoneNumListInfo;
+  NSString *weiDianInfo;
+} ModContact__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "userName",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = ModContact_FieldNumber_UserName,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ModContact__storage_, userName),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "quanpin",
+        .name = "nickName",
         .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
-        .number = contact_info_FieldNumber_Quanpin,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(contact_info__storage_, quanpin),
+        .number = ModContact_FieldNumber_NickName,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ModContact__storage_, nickName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "pyinitial",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = ModContact_FieldNumber_Pyinitial,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ModContact__storage_, pyinitial),
         .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "quanPin",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = ModContact_FieldNumber_QuanPin,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(ModContact__storage_, quanPin),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "sex",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Sex,
+        .number = ModContact_FieldNumber_Sex,
         .hasIndex = 4,
-        .offset = (uint32_t)offsetof(contact_info__storage_, sex),
+        .offset = (uint32_t)offsetof(ModContact__storage_, sex),
         .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "tag6",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag6,
+        .name = "imgBuf",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = ModContact_FieldNumber_ImgBuf,
         .hasIndex = 5,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag6),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
+        .offset = (uint32_t)offsetof(ModContact__storage_, imgBuf),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "tag7",
+        .name = "bitMask",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag7,
+        .number = ModContact_FieldNumber_BitMask,
         .hasIndex = 6,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag7),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact__storage_, bitMask),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "type",
+        .name = "bitVal",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Type,
+        .number = ModContact_FieldNumber_BitVal,
         .hasIndex = 7,
-        .offset = (uint32_t)offsetof(contact_info__storage_, type),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact__storage_, bitVal),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "tag9",
+        .name = "imgFlag",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag9,
+        .number = ModContact_FieldNumber_ImgFlag,
         .hasIndex = 8,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag9),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact__storage_, imgFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "remarkName",
+        .name = "remark",
         .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
-        .number = contact_info_FieldNumber_RemarkName,
+        .number = ModContact_FieldNumber_Remark,
         .hasIndex = 9,
-        .offset = (uint32_t)offsetof(contact_info__storage_, remarkName),
+        .offset = (uint32_t)offsetof(ModContact__storage_, remark),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "realShortPy",
         .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
-        .number = contact_info_FieldNumber_RealShortPy,
+        .number = ModContact_FieldNumber_RealShortPy,
         .hasIndex = 10,
-        .offset = (uint32_t)offsetof(contact_info__storage_, realShortPy),
+        .offset = (uint32_t)offsetof(ModContact__storage_, realShortPy),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "realQuanpin",
         .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
-        .number = contact_info_FieldNumber_RealQuanpin,
+        .number = ModContact_FieldNumber_RealQuanpin,
         .hasIndex = 11,
-        .offset = (uint32_t)offsetof(contact_info__storage_, realQuanpin),
+        .offset = (uint32_t)offsetof(ModContact__storage_, realQuanpin),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "tag13",
+        .name = "contactType",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag13,
+        .number = ModContact_FieldNumber_ContactType,
         .hasIndex = 12,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag13),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact__storage_, contactType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "tag14",
+        .name = "roomInfoCount",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag14,
+        .number = ModContact_FieldNumber_RoomInfoCount,
         .hasIndex = 13,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag14),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact__storage_, roomInfoCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
         .name = "tag16",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag16,
+        .number = ModContact_FieldNumber_Tag16,
         .hasIndex = 14,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag16),
+        .offset = (uint32_t)offsetof(ModContact__storage_, tag16),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "bChatRoom",
+        .name = "chatRoomNotify",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_BChatRoom,
+        .number = ModContact_FieldNumber_ChatRoomNotify,
         .hasIndex = 15,
-        .offset = (uint32_t)offsetof(contact_info__storage_, bChatRoom),
+        .offset = (uint32_t)offsetof(ModContact__storage_, chatRoomNotify),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "tag18",
+        .name = "addContactScene",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag18,
+        .number = ModContact_FieldNumber_AddContactScene,
         .hasIndex = 16,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag18),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact__storage_, addContactScene),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "sheng",
+        .name = "province",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Sheng,
+        .number = ModContact_FieldNumber_Province,
         .hasIndex = 17,
-        .offset = (uint32_t)offsetof(contact_info__storage_, sheng),
+        .offset = (uint32_t)offsetof(ModContact__storage_, province),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "shi",
+        .name = "city",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Shi,
+        .number = ModContact_FieldNumber_City,
         .hasIndex = 18,
-        .offset = (uint32_t)offsetof(contact_info__storage_, shi),
+        .offset = (uint32_t)offsetof(ModContact__storage_, city),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "qianming",
+        .name = "signature",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Qianming,
+        .number = ModContact_FieldNumber_Signature,
         .hasIndex = 19,
-        .offset = (uint32_t)offsetof(contact_info__storage_, qianming),
+        .offset = (uint32_t)offsetof(ModContact__storage_, signature),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "tag22",
+        .name = "personalCard",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag22,
+        .number = ModContact_FieldNumber_PersonalCard,
         .hasIndex = 20,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag22),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact__storage_, personalCard),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
         .name = "tag23",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag23,
+        .number = ModContact_FieldNumber_Tag23,
         .hasIndex = 21,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag23),
+        .offset = (uint32_t)offsetof(ModContact__storage_, tag23),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "registerBodyType",
+        .name = "verifyFlag",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_RegisterBodyType,
+        .number = ModContact_FieldNumber_VerifyFlag,
         .hasIndex = 22,
-        .offset = (uint32_t)offsetof(contact_info__storage_, registerBodyType),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact__storage_, verifyFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "registerBody",
+        .name = "verifyInfo",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_RegisterBody,
+        .number = ModContact_FieldNumber_VerifyInfo,
         .hasIndex = 23,
-        .offset = (uint32_t)offsetof(contact_info__storage_, registerBody),
+        .offset = (uint32_t)offsetof(ModContact__storage_, verifyInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "level",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_Level,
+        .hasIndex = 24,
+        .offset = (uint32_t)offsetof(ModContact__storage_, level),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "source",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_Source,
+        .hasIndex = 25,
+        .offset = (uint32_t)offsetof(ModContact__storage_, source),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "weibo",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_Weibo,
+        .hasIndex = 26,
+        .offset = (uint32_t)offsetof(ModContact__storage_, weibo),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "tag26",
+        .name = "verifyContent",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag26,
-        .hasIndex = 24,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag26),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "src",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Src,
-        .hasIndex = 25,
-        .offset = (uint32_t)offsetof(contact_info__storage_, src),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "lastMsgTime",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_LastMsgTime,
-        .hasIndex = 26,
-        .offset = (uint32_t)offsetof(contact_info__storage_, lastMsgTime),
+        .number = ModContact_FieldNumber_VerifyContent,
+        .hasIndex = 27,
+        .offset = (uint32_t)offsetof(ModContact__storage_, verifyContent),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "alias",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Alias,
-        .hasIndex = 27,
-        .offset = (uint32_t)offsetof(contact_info__storage_, alias),
+        .number = ModContact_FieldNumber_Alias,
+        .hasIndex = 28,
+        .offset = (uint32_t)offsetof(ModContact__storage_, alias),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "chatroomOwnerWxid",
+        .name = "chatRoomOwner",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_ChatroomOwnerWxid,
-        .hasIndex = 28,
-        .offset = (uint32_t)offsetof(contact_info__storage_, chatroomOwnerWxid),
+        .number = ModContact_FieldNumber_ChatRoomOwner,
+        .hasIndex = 29,
+        .offset = (uint32_t)offsetof(ModContact__storage_, chatRoomOwner),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "tag33",
+        .name = "weiboNickname",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag33,
-        .hasIndex = 29,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag33),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "tag34",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag34,
+        .number = ModContact_FieldNumber_WeiboNickname,
         .hasIndex = 30,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag34),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact__storage_, weiboNickname),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
       },
       {
-        .name = "tag35",
+        .name = "weiboFlag",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag35,
+        .number = ModContact_FieldNumber_WeiboFlag,
         .hasIndex = 31,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag35),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact__storage_, weiboFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "tag37",
+        .name = "albumStyle",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag37,
+        .number = ModContact_FieldNumber_AlbumStyle,
         .hasIndex = 32,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag37),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeBytes,
+        .offset = (uint32_t)offsetof(ModContact__storage_, albumStyle),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "albumFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_AlbumFlag,
+        .hasIndex = 33,
+        .offset = (uint32_t)offsetof(ModContact__storage_, albumFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "albumBgimgId",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_AlbumBgimgId,
+        .hasIndex = 34,
+        .offset = (uint32_t)offsetof(ModContact__storage_, albumBgimgId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "snsUserInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SnsUserInfo),
+        .number = ModContact_FieldNumber_SnsUserInfo,
+        .hasIndex = 35,
+        .offset = (uint32_t)offsetof(ModContact__storage_, snsUserInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
       },
       {
         .name = "country",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Country,
-        .hasIndex = 33,
-        .offset = (uint32_t)offsetof(contact_info__storage_, country),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "avatarBig",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_AvatarBig,
-        .hasIndex = 34,
-        .offset = (uint32_t)offsetof(contact_info__storage_, avatarBig),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "avatarSmall",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_AvatarSmall,
-        .hasIndex = 35,
-        .offset = (uint32_t)offsetof(contact_info__storage_, avatarSmall),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "tag42",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag42,
+        .number = ModContact_FieldNumber_Country,
         .hasIndex = 36,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag42),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeBytes,
-      },
-      {
-        .name = "v1Name",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_V1Name,
-        .hasIndex = 37,
-        .offset = (uint32_t)offsetof(contact_info__storage_, v1Name),
+        .offset = (uint32_t)offsetof(ModContact__storage_, country),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "tag50",
+        .name = "bigHeadImgURL",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag50,
-        .hasIndex = 38,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag50),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeBytes,
-      },
-      {
-        .name = "chatroomServerVer",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_ChatroomServerVer,
-        .hasIndex = 39,
-        .offset = (uint32_t)offsetof(contact_info__storage_, chatroomServerVer),
+        .number = ModContact_FieldNumber_BigHeadImgURL,
+        .hasIndex = 37,
+        .offset = (uint32_t)offsetof(ModContact__storage_, bigHeadImgURL),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
+        .dataType = GPBDataTypeString,
       },
       {
-        .name = "chatroomMaxMember",
+        .name = "smallHeadImgURL",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_ChatroomMaxMember,
+        .number = ModContact_FieldNumber_SmallHeadImgURL,
+        .hasIndex = 38,
+        .offset = (uint32_t)offsetof(ModContact__storage_, smallHeadImgURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "myBrandList",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_MyBrandList,
+        .hasIndex = 39,
+        .offset = (uint32_t)offsetof(ModContact__storage_, myBrandList),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "customizedInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(CustomizedInfoNew),
+        .number = ModContact_FieldNumber_CustomizedInfo,
         .hasIndex = 40,
-        .offset = (uint32_t)offsetof(contact_info__storage_, chatroomMaxMember),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "tag56",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag56,
-        .hasIndex = 41,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag56),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "groupMemberList",
-        .dataTypeSpecific.className = GPBStringifySymbol(contact_info_GroupMemberList),
-        .number = contact_info_FieldNumber_GroupMemberList,
-        .hasIndex = 42,
-        .offset = (uint32_t)offsetof(contact_info__storage_, groupMemberList),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(ModContact__storage_, customizedInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "tag58",
+        .name = "chatRoomData",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag58,
-        .hasIndex = 43,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag58),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .number = ModContact_FieldNumber_ChatRoomData,
+        .hasIndex = 41,
+        .offset = (uint32_t)offsetof(ModContact__storage_, chatRoomData),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
       },
       {
-        .name = "tag62",
+        .name = "headImgMd5",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag62,
+        .number = ModContact_FieldNumber_HeadImgMd5,
+        .hasIndex = 42,
+        .offset = (uint32_t)offsetof(ModContact__storage_, headImgMd5),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "encryptUserName",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_EncryptUserName,
+        .hasIndex = 43,
+        .offset = (uint32_t)offsetof(ModContact__storage_, encryptUserName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "realName",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_RealName,
         .hasIndex = 44,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag62),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(ModContact__storage_, realName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "mobileFullHash",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_MobileFullHash,
+        .hasIndex = 45,
+        .offset = (uint32_t)offsetof(ModContact__storage_, mobileFullHash),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "additionalContactList",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_AdditionalContactList,
+        .hasIndex = 46,
+        .offset = (uint32_t)offsetof(ModContact__storage_, additionalContactList),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
       {
-        .name = "tag64",
+        .name = "chatroomVersion",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag64,
-        .hasIndex = 45,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag64),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "tag65",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag65,
-        .hasIndex = 46,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag65),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "tag66",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag66,
+        .number = ModContact_FieldNumber_ChatroomVersion,
         .hasIndex = 47,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag66),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact__storage_, chatroomVersion),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "tag67",
+        .name = "extInfo",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_FieldNumber_Tag67,
+        .number = ModContact_FieldNumber_ExtInfo,
         .hasIndex = 48,
-        .offset = (uint32_t)offsetof(contact_info__storage_, tag67),
+        .offset = (uint32_t)offsetof(ModContact__storage_, extInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "chatroomMaxCount",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_ChatroomMaxCount,
+        .hasIndex = 49,
+        .offset = (uint32_t)offsetof(ModContact__storage_, chatroomMaxCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "chatroomAccessType",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_ChatroomAccessType,
+        .hasIndex = 50,
+        .offset = (uint32_t)offsetof(ModContact__storage_, chatroomAccessType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "newChatroomData",
+        .dataTypeSpecific.className = GPBStringifySymbol(ModContact_GroupMemberList),
+        .number = ModContact_FieldNumber_NewChatroomData,
+        .hasIndex = 51,
+        .offset = (uint32_t)offsetof(ModContact__storage_, newChatroomData),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "deleteFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_DeleteFlag,
+        .hasIndex = 52,
+        .offset = (uint32_t)offsetof(ModContact__storage_, deleteFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "description_p",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_Description_p,
+        .hasIndex = 53,
+        .offset = (uint32_t)offsetof(ModContact__storage_, description_p),
         .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "cardImgURL",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_CardImgURL,
+        .hasIndex = 54,
+        .offset = (uint32_t)offsetof(ModContact__storage_, cardImgURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "labelIdlist",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_LabelIdlist,
+        .hasIndex = 55,
+        .offset = (uint32_t)offsetof(ModContact__storage_, labelIdlist),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "phoneNumListInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(PhoneNumListInfo),
+        .number = ModContact_FieldNumber_PhoneNumListInfo,
+        .hasIndex = 56,
+        .offset = (uint32_t)offsetof(ModContact__storage_, phoneNumListInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "weiDianInfo",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_WeiDianInfo,
+        .hasIndex = 57,
+        .offset = (uint32_t)offsetof(ModContact__storage_, weiDianInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "chatroomInfoVersion",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_ChatroomInfoVersion,
+        .hasIndex = 58,
+        .offset = (uint32_t)offsetof(ModContact__storage_, chatroomInfoVersion),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "deleteContactScene",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_DeleteContactScene,
+        .hasIndex = 59,
+        .offset = (uint32_t)offsetof(ModContact__storage_, deleteContactScene),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "chatroomStatus",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_ChatroomStatus,
+        .hasIndex = 60,
+        .offset = (uint32_t)offsetof(ModContact__storage_, chatroomStatus),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "extFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = ModContact_FieldNumber_ExtFlag,
+        .hasIndex = 61,
+        .offset = (uint32_t)offsetof(ModContact__storage_, extFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[contact_info class]
+        [GPBDescriptor allocDescriptorForClass:[ModContact class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(contact_info__storage_)
+                                   storageSize:sizeof(ModContact__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\006\003\007\000\013\004\247\000\021\t\000\035\013\000\037\021\0005\010\251\000";
+        "/\001\010\000\002\010\000\004\007\000\006\006\000\007\007\000\010\006\000\t\007\000\013\004\247\000\r\013\000\016\r\000\021\016\000\022\017\000\026\014"
+        "\000\030\n\000\031\n\000\035\r\000\037\r\000 \r\000!\t\000\"\n\000#\t\000$\014\000%\013\000\'\013!!\000(\r!!"
+        "\000)\013\000*\016\000+\014\000,\n\000-\017\000/\010\0001\016\0002\025\0005\017\0006\007\0007\020\0008\022\0009\017\000"
+        ":\n\000<\010!!\000=\013\000>\020\000\?\013\000@\023\000A\022\000B\016\000C\007\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -3845,22 +4353,22 @@ typedef struct contact_info__storage_ {
 
 @end
 
-#pragma mark - contact_info_GroupMemberList
+#pragma mark - ModContact_GroupMemberList
 
-@implementation contact_info_GroupMemberList
+@implementation ModContact_GroupMemberList
 
-@dynamic hasCnt, cnt;
-@dynamic memberArray, memberArray_Count;
-@dynamic hasTag3, tag3;
+@dynamic hasMemberCount, memberCount;
+@dynamic chatRoomMemberArray, chatRoomMemberArray_Count;
+@dynamic hasInfoMask, infoMask;
 @dynamic hasTag4, tag4;
 
-typedef struct contact_info_GroupMemberList__storage_ {
+typedef struct ModContact_GroupMemberList__storage_ {
   uint32_t _has_storage_[1];
-  int32_t cnt;
-  int32_t tag3;
-  NSMutableArray *memberArray;
+  uint32_t memberCount;
+  uint32_t infoMask;
+  NSMutableArray *chatRoomMemberArray;
   NSString *tag4;
-} contact_info_GroupMemberList__storage_;
+} ModContact_GroupMemberList__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -3869,139 +4377,56 @@ typedef struct contact_info_GroupMemberList__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "cnt",
+        .name = "memberCount",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_GroupMemberList_FieldNumber_Cnt,
+        .number = ModContact_GroupMemberList_FieldNumber_MemberCount,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(contact_info_GroupMemberList__storage_, cnt),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact_GroupMemberList__storage_, memberCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "memberArray",
-        .dataTypeSpecific.className = GPBStringifySymbol(contact_info_GroupMemberList_MemberInfo),
-        .number = contact_info_GroupMemberList_FieldNumber_MemberArray,
+        .name = "chatRoomMemberArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(ChatRoomMemberInfo),
+        .number = ModContact_GroupMemberList_FieldNumber_ChatRoomMemberArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(contact_info_GroupMemberList__storage_, memberArray),
-        .flags = GPBFieldRepeated,
+        .offset = (uint32_t)offsetof(ModContact_GroupMemberList__storage_, chatRoomMemberArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "tag3",
+        .name = "infoMask",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_GroupMemberList_FieldNumber_Tag3,
+        .number = ModContact_GroupMemberList_FieldNumber_InfoMask,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(contact_info_GroupMemberList__storage_, tag3),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
+        .offset = (uint32_t)offsetof(ModContact_GroupMemberList__storage_, infoMask),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
         .name = "tag4",
         .dataTypeSpecific.className = NULL,
-        .number = contact_info_GroupMemberList_FieldNumber_Tag4,
+        .number = ModContact_GroupMemberList_FieldNumber_Tag4,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(contact_info_GroupMemberList__storage_, tag4),
+        .offset = (uint32_t)offsetof(ModContact_GroupMemberList__storage_, tag4),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[contact_info_GroupMemberList class]
+        [GPBDescriptor allocDescriptorForClass:[ModContact_GroupMemberList class]
                                      rootClass:[MmRoot class]
                                           file:MmRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(contact_info_GroupMemberList__storage_)
+                                   storageSize:sizeof(ModContact_GroupMemberList__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(contact_info)];
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - contact_info_GroupMemberList_MemberInfo
-
-@implementation contact_info_GroupMemberList_MemberInfo
-
-@dynamic hasWxid, wxid;
-@dynamic hasNickName, nickName;
-@dynamic hasTag6, tag6;
-@dynamic hasInviteerWxid, inviteerWxid;
-@dynamic hasTag8, tag8;
-
-typedef struct contact_info_GroupMemberList_MemberInfo__storage_ {
-  uint32_t _has_storage_[1];
-  int32_t tag6;
-  int32_t tag8;
-  NSString *wxid;
-  NSString *nickName;
-  NSString *inviteerWxid;
-} contact_info_GroupMemberList_MemberInfo__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "wxid",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_GroupMemberList_MemberInfo_FieldNumber_Wxid,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(contact_info_GroupMemberList_MemberInfo__storage_, wxid),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "nickName",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_GroupMemberList_MemberInfo_FieldNumber_NickName,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(contact_info_GroupMemberList_MemberInfo__storage_, nickName),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "tag6",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_GroupMemberList_MemberInfo_FieldNumber_Tag6,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(contact_info_GroupMemberList_MemberInfo__storage_, tag6),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "inviteerWxid",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_GroupMemberList_MemberInfo_FieldNumber_InviteerWxid,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(contact_info_GroupMemberList_MemberInfo__storage_, inviteerWxid),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "tag8",
-        .dataTypeSpecific.className = NULL,
-        .number = contact_info_GroupMemberList_MemberInfo_FieldNumber_Tag8,
-        .hasIndex = 4,
-        .offset = (uint32_t)offsetof(contact_info_GroupMemberList_MemberInfo__storage_, tag8),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt32,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[contact_info_GroupMemberList_MemberInfo class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(contact_info_GroupMemberList_MemberInfo__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(contact_info_GroupMemberList)];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\003\001\013\000\002\000chatRoomMember\000\003\010\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ModContact)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }

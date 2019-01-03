@@ -30,6 +30,7 @@
 #import "Cookie.h"
 #import "SessionKeyStore.h"
 
+#import "SyncCmdHandler.h"
 
 #define CMDID_NOOP_REQ 6
 #define CMDID_IDENTIFY_REQ 205
@@ -169,7 +170,7 @@
             [SyncKeyStore createOrUpdateInDefaultRealmWithValue:@[SyncKeyStoreID, self.sync_key_cur]];
             [realm commitWriteTransaction];
             
-            [self parseCmdList:response.listArray];
+            [SyncCmdHandler parseCmdList:response.listArray];
 
             LogVerbose(@"newinit cmd count: %d, continue flag: %d", response.count, response.continueFlag);
             if (response.continueFlag)
@@ -209,47 +210,11 @@
             [SyncKeyStore createOrUpdateInDefaultRealmWithValue:@[SyncKeyStoreID, self.sync_key_cur]];
             [realm commitWriteTransaction];
             
-            LogVerbose(@"%@", response);
-            
-            [self parseCmdList:response.cmdList.listArray];
+            [SyncCmdHandler parseCmdList:response.cmdList.listArray];
         }
         failure:^(NSError *error) {
             LogError(@"new sync resp error: %@", error);
         }];
-}
-
-- (void)parseCmdList:(NSArray<CmdItem *> *)cmdList
-{
-    for (int i = 0; i < cmdList.count; i++)
-    {
-        CmdItem *cmdItem = [cmdList objectAtIndex:i];
-        if (5 == cmdItem.cmdId)
-        {
-            Msg *msg = [[Msg alloc] initWithData:cmdItem.cmdBuf.buffer error:nil];
-            if (10002 == msg.type || 9999 == msg.type) //系统消息
-            {
-                continue;
-            }
-            else
-            {
-                LogVerbose(@"Serverid: %lld, CreateTime: %d, WXID: %@, TOID: %@, Type: %d, Raw Content: %@",
-                           msg.serverid,
-                           msg.createTime,
-                           msg.fromId.string,
-                           msg.toId.string,
-                           msg.type,
-                           msg.raw.string);
-            }
-        }
-        else if (2 == cmdItem.cmdId) //好友列表
-        {
-            contact_info *cinfo = [[contact_info alloc] initWithData:cmdItem.cmdBuf.buffer error:nil];
-            LogVerbose(@"update contact: Relation[%@], WXID: %@, Alias: %@",
-                       (cinfo.type & 1) ? @"好友" : @"非好友",
-                       cinfo.wxid.string,
-                       cinfo.alias);
-        }
-    }
 }
 
 #pragma mark - Public
@@ -276,7 +241,7 @@
 {
     [self setBaseResquestIfNeed:cgiWrap];
     
-    LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
+//    LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
 
