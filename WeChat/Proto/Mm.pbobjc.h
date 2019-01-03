@@ -168,7 +168,7 @@ typedef GPB_ENUM(BaseResponse_FieldNumber) {
 
 @property(nonatomic, readwrite) BOOL hasRet;
 /** 错误信息 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *errMsg;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *errMsg;
 /** Test to see if @c errMsg has been set. */
 @property(nonatomic, readwrite) BOOL hasErrMsg;
 

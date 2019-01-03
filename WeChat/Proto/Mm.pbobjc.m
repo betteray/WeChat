@@ -257,7 +257,7 @@ typedef struct BaseRequest__storage_ {
 typedef struct BaseResponse__storage_ {
   uint32_t _has_storage_[1];
   int32_t ret;
-  NSString *errMsg;
+  SKBuiltinString_t *errMsg;
 } BaseResponse__storage_;
 
 // This method is threadsafe because it is initially called
@@ -277,12 +277,12 @@ typedef struct BaseResponse__storage_ {
       },
       {
         .name = "errMsg",
-        .dataTypeSpecific.className = NULL,
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
         .number = BaseResponse_FieldNumber_ErrMsg,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(BaseResponse__storage_, errMsg),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeString,
+        .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -6180,7 +6180,7 @@ typedef struct BindOpMobileResponse__storage_ {
         .number = BindOpMobileResponse_FieldNumber_BaseResponse,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, baseResponse),
-        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {

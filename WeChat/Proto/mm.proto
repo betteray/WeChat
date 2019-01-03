@@ -40,7 +40,7 @@ message BaseRequest
 message BaseResponse
 {
     optional int32 ret     = 1; //错误码
-    optional string errMsg = 2; //错误信息
+    optional SKBuiltinString_t errMsg = 2; //错误信息
 }
 
 // QRCode获取
