@@ -7,6 +7,7 @@
 //
 
 #import "TestViewController.h"
+#import "FSOpenSSL.h"
 
 @interface TestViewController ()
 
@@ -48,6 +49,56 @@
     } failure:^(NSError * _Nonnull error) {
         
     }];
+}
+- (IBAction)register:(id)sender {
+    WCDevice *device = [[DeviceManager sharedManager] getCurrentDevice];
+    
+    BaseRequest *baseRequest = [BaseRequest new];
+    baseRequest.sessionKey = [NSData data];
+    baseRequest.uin = 0;
+    baseRequest.deviceId = device.deviceID;
+    baseRequest.clientVersion = CLIENT_VERSION;
+    baseRequest.deviceType = device.osType;
+    baseRequest.scene = 0;
+    
+    NSData *sessionKey = [FSOpenSSL random128BitAESKey];
+    [WeChatClient sharedClient].sessionKey = sessionKey;
+    
+    SKBuiltinBuffer_t *aesKey = [SKBuiltinBuffer_t new];
+    aesKey.iLen = (int32_t)[sessionKey length];
+    aesKey.buffer = sessionKey;
+    
+    BindOpMobileRequest *request = [BindOpMobileRequest new];
+    request.baseRequest = baseRequest;
+    request.mobile = @"+8618631506453";
+    request.opcode = 12;
+    request.verifycode = @"";
+    request.dialFlag = 0;
+    request.dialLang = @"";
+    request.forceReg = 0;
+    request.safeDeviceName = @"Android设备";
+    request.safeDeviceType = @"Xiaomi-MI 3W";
+    request.randomEncryKey = aesKey;
+    request.language = device.language;
+    request.inputMobileRetrys = 0;
+    request.adjustRet = 0;
+    request.clientSeqId = device.clientSeq;
+    request.mobileCheckType = 0;
+    
+    CgiWrap *cgiWrap = [CgiWrap new];
+    cgiWrap.cgi = 145;
+    cgiWrap.cmdId = 0;
+    cgiWrap.request = request;
+    cgiWrap.needSetBaseRequest = NO;
+    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/bindopmobileforreg";
+    cgiWrap.responseClass = [BindOpMobileResponse class];
+    
+    [WeChatClient postRequest:cgiWrap success:^(BindOpMobileResponse *  _Nullable response) {
+        LogVerbose(@"%@", response);
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+
 }
 
 @end

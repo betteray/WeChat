@@ -21,6 +21,9 @@
 		464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82321D4B681003E923F /* DefaultLongIp.m */; };
 		464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82621D4B9DD003E923F /* DefaultShortIp.m */; };
 		464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82921D4E8BD003E923F /* NSString+Regex.m */; };
+		466C4AC321DDBFA800743075 /* WCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C4AC221DDBFA800743075 /* WCButton.m */; };
+		466C4AC621DDD65900743075 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C4AC521DDD65900743075 /* ContactsTableViewController.m */; };
+		466C4ACA21DDD6D200743075 /* ContactsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C4AC921DDD6D200743075 /* ContactsTableViewCell.m */; };
 		469F657D21D3196100C1DC8B /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7141214B5A4B00603022 /* libcrypto.a */; };
 		71008F3321B6750700DE8DF8 /* DNSFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3221B6750700DE8DF8 /* DNSFetcher.m */; };
 		71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3521B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m */; };
@@ -129,6 +132,12 @@
 		464FB82621D4B9DD003E923F /* DefaultShortIp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultShortIp.m; sourceTree = "<group>"; };
 		464FB82821D4E8BD003E923F /* NSString+Regex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Regex.h"; sourceTree = "<group>"; };
 		464FB82921D4E8BD003E923F /* NSString+Regex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Regex.m"; sourceTree = "<group>"; };
+		466C4AC121DDBFA800743075 /* WCButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCButton.h; sourceTree = "<group>"; };
+		466C4AC221DDBFA800743075 /* WCButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCButton.m; sourceTree = "<group>"; };
+		466C4AC421DDD65900743075 /* ContactsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
+		466C4AC521DDD65900743075 /* ContactsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
+		466C4AC821DDD6D200743075 /* ContactsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewCell.h; sourceTree = "<group>"; };
+		466C4AC921DDD6D200743075 /* ContactsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewCell.m; sourceTree = "<group>"; };
 		466CAB8021D4ACED00AF8D2E /* ClientCheckData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientCheckData.h; sourceTree = "<group>"; };
 		49481301164AD3564DCE2106 /* libPods-WeChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E57A8A71D09BB5AB91B774F /* libPods-WeChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -438,6 +447,26 @@
 			path = Store;
 			sourceTree = "<group>";
 		};
+		466C4AC021DDBF8700743075 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				466C4AC121DDBFA800743075 /* WCButton.h */,
+				466C4AC221DDBFA800743075 /* WCButton.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		466C4AC721DDD6A600743075 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				466C4AC421DDD65900743075 /* ContactsTableViewController.h */,
+				466C4AC521DDD65900743075 /* ContactsTableViewController.m */,
+				466C4AC821DDD6D200743075 /* ContactsTableViewCell.h */,
+				466C4AC921DDD6D200743075 /* ContactsTableViewCell.m */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
 		469F657B21D27FCE00C1DC8B /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +505,7 @@
 		7121C35F21C3494A00A3E900 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				466C4AC721DDD6A600743075 /* Contacts */,
 				7121C35C21C3494300A3E900 /* LoginViewController.h */,
 				7121C35D21C3494300A3E900 /* LoginViewController.m */,
 				7121C36321C3610000A3E900 /* SendMsgController.h */,
@@ -514,6 +544,7 @@
 		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				466C4AC021DDBF8700743075 /* Views */,
 				462D9C3721DCD2DF00FC5461 /* Business */,
 				463BAD2B21D38EFA00847A8B /* Store */,
 				712C6F18214A6A5800603022 /* Proto */,
@@ -1026,6 +1057,7 @@
 				712C7152214BAD8900603022 /* ShortHeader.m in Sources */,
 				712F960621D78F0B00CFE3A0 /* AutoAuthKeyStore.m in Sources */,
 				7155BA5821902CDD0002CE1D /* WC_SHA256.m in Sources */,
+				466C4AC621DDD65900743075 /* ContactsTableViewController.m in Sources */,
 				7161984F21CB712900A76F39 /* long_pack.m in Sources */,
 				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,
 				71008F3321B6750700DE8DF8 /* DNSFetcher.m in Sources */,
@@ -1055,6 +1087,7 @@
 				7161985321CB863A00A76F39 /* LongLinkClientWithMMTLS.m in Sources */,
 				464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */,
 				7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */,
+				466C4AC321DDBFA800743075 /* WCButton.m in Sources */,
 				712C714F214BABA500603022 /* ShortPackage.m in Sources */,
 				462D9C3021DCAB6B00FC5461 /* Cookie.m in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
@@ -1068,6 +1101,7 @@
 				7154D5222196DFE1005064C4 /* WC_Hex.m in Sources */,
 				71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */,
 				71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */,
+				466C4ACA21DDD6D200743075 /* ContactsTableViewCell.m in Sources */,
 				71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */,
 				712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */,
 				463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */,
