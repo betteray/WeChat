@@ -43,12 +43,14 @@ CF_EXTERN_C_BEGIN
 @class CheckResUpdateRequest_ResID_SubTypeVector;
 @class CmdItem;
 @class CustomizedInfoNew;
+@class DisturbSetting;
 @class ECDHKey;
 @class ManualAuthAesReqData;
 @class ManualAuthRsaReqData;
 @class MicroMsgRequestNew;
 @class MicroMsgResponseNew;
 @class ModContact_GroupMemberList;
+@class ModUserInfo;
 @class NetworkControl;
 @class NewSyncResponse_CmdList;
 @class PhoneNumItem;
@@ -64,6 +66,7 @@ CF_EXTERN_C_BEGIN
 @class UnifyAuthResponse_NetworkSectResp;
 @class UnifyAuthResponse_NetworkSectResp_HostList;
 @class UnifyAuthResponse_NetworkSectResp_HostList_Host;
+@class UserInfoExt;
 @class WTLoginImgReqInfo;
 @class WxVerifyCodeReqInfo;
 
@@ -2562,6 +2565,160 @@ typedef GPB_ENUM(BindOpMobileResponse_ShowStyle_FieldNumber) {
 @property(nonatomic, readwrite) int32_t keyCount;
 
 @property(nonatomic, readwrite) BOOL hasKeyCount;
+@end
+
+#pragma mark - GetProfileRequest
+
+typedef GPB_ENUM(GetProfileRequest_FieldNumber) {
+  GetProfileRequest_FieldNumber_BaseRequest = 1,
+  GetProfileRequest_FieldNumber_UserName = 2,
+};
+
+@interface GetProfileRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *userName;
+/** Test to see if @c userName has been set. */
+@property(nonatomic, readwrite) BOOL hasUserName;
+
+@end
+
+#pragma mark - DisturbSetting
+
+@interface DisturbSetting : GPBMessage
+
+@end
+
+#pragma mark - ModUserInfo
+
+typedef GPB_ENUM(ModUserInfo_FieldNumber) {
+  ModUserInfo_FieldNumber_BitFlag = 1,
+  ModUserInfo_FieldNumber_UserName = 2,
+  ModUserInfo_FieldNumber_NickName = 3,
+  ModUserInfo_FieldNumber_BindUin = 4,
+  ModUserInfo_FieldNumber_BindMobile = 6,
+  ModUserInfo_FieldNumber_Status = 7,
+  ModUserInfo_FieldNumber_ImgLen = 8,
+  ModUserInfo_FieldNumber_ImgBuf = 9,
+  ModUserInfo_FieldNumber_Sex = 10,
+  ModUserInfo_FieldNumber_Province = 11,
+  ModUserInfo_FieldNumber_City = 12,
+  ModUserInfo_FieldNumber_Signature = 13,
+  ModUserInfo_FieldNumber_PersonalCard = 14,
+  ModUserInfo_FieldNumber_DisturbSetting = 15,
+  ModUserInfo_FieldNumber_PluginFlag = 16,
+  ModUserInfo_FieldNumber_VerifyFlag = 17,
+  ModUserInfo_FieldNumber_VerifyInfo = 18,
+};
+
+@interface ModUserInfo : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t bitFlag;
+
+@property(nonatomic, readwrite) BOOL hasBitFlag;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *userName;
+/** Test to see if @c userName has been set. */
+@property(nonatomic, readwrite) BOOL hasUserName;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *nickName;
+/** Test to see if @c nickName has been set. */
+@property(nonatomic, readwrite) BOOL hasNickName;
+
+@property(nonatomic, readwrite) uint32_t bindUin;
+
+@property(nonatomic, readwrite) BOOL hasBindUin;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *bindMobile;
+/** Test to see if @c bindMobile has been set. */
+@property(nonatomic, readwrite) BOOL hasBindMobile;
+
+@property(nonatomic, readwrite) uint32_t status;
+
+@property(nonatomic, readwrite) BOOL hasStatus;
+@property(nonatomic, readwrite) uint32_t imgLen;
+
+@property(nonatomic, readwrite) BOOL hasImgLen;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *imgBuf;
+/** Test to see if @c imgBuf has been set. */
+@property(nonatomic, readwrite) BOOL hasImgBuf;
+
+@property(nonatomic, readwrite) uint32_t sex;
+
+@property(nonatomic, readwrite) BOOL hasSex;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *province;
+/** Test to see if @c province has been set. */
+@property(nonatomic, readwrite) BOOL hasProvince;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *city;
+/** Test to see if @c city has been set. */
+@property(nonatomic, readwrite) BOOL hasCity;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *signature;
+/** Test to see if @c signature has been set. */
+@property(nonatomic, readwrite) BOOL hasSignature;
+
+@property(nonatomic, readwrite) uint32_t personalCard;
+
+@property(nonatomic, readwrite) BOOL hasPersonalCard;
+@property(nonatomic, readwrite, strong, null_resettable) DisturbSetting *disturbSetting;
+/** Test to see if @c disturbSetting has been set. */
+@property(nonatomic, readwrite) BOOL hasDisturbSetting;
+
+@property(nonatomic, readwrite) uint32_t pluginFlag;
+
+@property(nonatomic, readwrite) BOOL hasPluginFlag;
+@property(nonatomic, readwrite) uint32_t verifyFlag;
+
+@property(nonatomic, readwrite) BOOL hasVerifyFlag;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *verifyInfo;
+/** Test to see if @c verifyInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasVerifyInfo;
+
+@end
+
+#pragma mark - UserInfoExt
+
+typedef GPB_ENUM(UserInfoExt_FieldNumber) {
+  UserInfoExt_FieldNumber_BigHeadImgURL = 9,
+  UserInfoExt_FieldNumber_SmallHeadImgURL = 10,
+};
+
+@interface UserInfoExt : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *bigHeadImgURL;
+/** Test to see if @c bigHeadImgURL has been set. */
+@property(nonatomic, readwrite) BOOL hasBigHeadImgURL;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *smallHeadImgURL;
+/** Test to see if @c smallHeadImgURL has been set. */
+@property(nonatomic, readwrite) BOOL hasSmallHeadImgURL;
+
+@end
+
+#pragma mark - GetProfileResponse
+
+typedef GPB_ENUM(GetProfileResponse_FieldNumber) {
+  GetProfileResponse_FieldNumber_BaseResponse = 1,
+  GetProfileResponse_FieldNumber_UserInfo = 2,
+  GetProfileResponse_FieldNumber_UserInfoExt = 3,
+};
+
+@interface GetProfileResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
+
+@property(nonatomic, readwrite, strong, null_resettable) ModUserInfo *userInfo;
+/** Test to see if @c userInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasUserInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) UserInfoExt *userInfoExt;
+/** Test to see if @c userInfoExt has been set. */
+@property(nonatomic, readwrite) BOOL hasUserInfoExt;
+
 @end
 
 NS_ASSUME_NONNULL_END

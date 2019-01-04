@@ -84,7 +84,7 @@
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
 		719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */ = {isa = PBXBuildFile; fileRef = 719A962C219BD53800E4D077 /* NSData+AddData.m */; };
-		71C9CA5421C4DC1D006C4DDD /* MeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* MeTableViewController.m */; };
+		71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* MeViewController.m */; };
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
 		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
 		71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932F2158AC4900DFEBC8 /* Varint128.m */; };
@@ -146,7 +146,6 @@
 		466CAB8021D4ACED00AF8D2E /* ClientCheckData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientCheckData.h; sourceTree = "<group>"; };
 		46804CDB21DE13B300232229 /* WCMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMessage.h; sourceTree = "<group>"; };
 		46804CDC21DE13B300232229 /* WCMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCMessage.m; sourceTree = "<group>"; };
-		46804CE121DE27C600232229 /* MeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeTableViewController.h; sourceTree = "<group>"; };
 		46804CE221DE280900232229 /* DiscoveryTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoveryTableViewController.h; sourceTree = "<group>"; };
 		46804CE321DE280900232229 /* DiscoveryTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoveryTableViewController.m; sourceTree = "<group>"; };
 		46804CE521DE41BE00232229 /* ChatDetailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatDetailTableViewController.h; sourceTree = "<group>"; };
@@ -155,6 +154,7 @@
 		46804CE921DE5B1800232229 /* ChatsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatsTableViewCell.m; sourceTree = "<group>"; };
 		46804CEB21DE5B2900232229 /* ChatsDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatsDetailTableViewCell.h; sourceTree = "<group>"; };
 		46804CEC21DE5B2900232229 /* ChatsDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatsDetailTableViewCell.m; sourceTree = "<group>"; };
+		4689A17021DF447500E2EA9A /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		49481301164AD3564DCE2106 /* libPods-WeChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E57A8A71D09BB5AB91B774F /* libPods-WeChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70427FEF05DB038F58CB0923 /* Pods-WeChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatUITests/Pods-WeChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -350,7 +350,7 @@
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
 		719A962B219BD53800E4D077 /* NSData+AddData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AddData.h"; sourceTree = "<group>"; };
 		719A962C219BD53800E4D077 /* NSData+AddData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AddData.m"; sourceTree = "<group>"; };
-		71C9CA5321C4DC1D006C4DDD /* MeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeTableViewController.m; sourceTree = "<group>"; };
+		71C9CA5321C4DC1D006C4DDD /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUB.h"; sourceTree = "<group>"; };
 		71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUB.m"; sourceTree = "<group>"; };
 		71D592FF2155247C00DFEBC8 /* NSData+AES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
@@ -511,8 +511,8 @@
 		46804CE021DE267B00232229 /* Me */ = {
 			isa = PBXGroup;
 			children = (
-				46804CE121DE27C600232229 /* MeTableViewController.h */,
-				71C9CA5321C4DC1D006C4DDD /* MeTableViewController.m */,
+				4689A17021DF447500E2EA9A /* MeViewController.h */,
+				71C9CA5321C4DC1D006C4DDD /* MeViewController.m */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1146,7 +1146,7 @@
 				71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */,
 				7154D5172196B721005064C4 /* NSData+HexDump.m in Sources */,
 				7155BA4F21902A0B0002CE1D /* WC_AesGcm128.m in Sources */,
-				71C9CA5421C4DC1D006C4DDD /* MeTableViewController.m in Sources */,
+				71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */,
 				71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */,
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
 				7154D5252197EFB9005064C4 /* WC_HmacSha256.m in Sources */,

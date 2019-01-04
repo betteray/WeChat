@@ -6180,7 +6180,7 @@ typedef struct BindOpMobileResponse__storage_ {
         .number = BindOpMobileResponse_FieldNumber_BaseResponse,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(BindOpMobileResponse__storage_, baseResponse),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
@@ -6524,6 +6524,448 @@ typedef struct BindOpMobileResponse_ShowStyle__storage_ {
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(BindOpMobileResponse)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - GetProfileRequest
+
+@implementation GetProfileRequest
+
+@dynamic hasBaseRequest, baseRequest;
+@dynamic hasUserName, userName;
+
+typedef struct GetProfileRequest__storage_ {
+  uint32_t _has_storage_[1];
+  BaseRequest *baseRequest;
+  NSString *userName;
+} GetProfileRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseRequest",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseRequest),
+        .number = GetProfileRequest_FieldNumber_BaseRequest,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GetProfileRequest__storage_, baseRequest),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "userName",
+        .dataTypeSpecific.className = NULL,
+        .number = GetProfileRequest_FieldNumber_UserName,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GetProfileRequest__storage_, userName),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetProfileRequest class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GetProfileRequest__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\002\001\013\000\002\010\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - DisturbSetting
+
+@implementation DisturbSetting
+
+
+typedef struct DisturbSetting__storage_ {
+  uint32_t _has_storage_[1];
+} DisturbSetting__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[DisturbSetting class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:NULL
+                                    fieldCount:0
+                                   storageSize:sizeof(DisturbSetting__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ModUserInfo
+
+@implementation ModUserInfo
+
+@dynamic hasBitFlag, bitFlag;
+@dynamic hasUserName, userName;
+@dynamic hasNickName, nickName;
+@dynamic hasBindUin, bindUin;
+@dynamic hasBindMobile, bindMobile;
+@dynamic hasStatus, status;
+@dynamic hasImgLen, imgLen;
+@dynamic hasImgBuf, imgBuf;
+@dynamic hasSex, sex;
+@dynamic hasProvince, province;
+@dynamic hasCity, city;
+@dynamic hasSignature, signature;
+@dynamic hasPersonalCard, personalCard;
+@dynamic hasDisturbSetting, disturbSetting;
+@dynamic hasPluginFlag, pluginFlag;
+@dynamic hasVerifyFlag, verifyFlag;
+@dynamic hasVerifyInfo, verifyInfo;
+
+typedef struct ModUserInfo__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t bitFlag;
+  uint32_t bindUin;
+  uint32_t status;
+  uint32_t imgLen;
+  uint32_t sex;
+  uint32_t personalCard;
+  uint32_t pluginFlag;
+  uint32_t verifyFlag;
+  SKBuiltinString_t *userName;
+  SKBuiltinString_t *nickName;
+  SKBuiltinString_t *bindMobile;
+  NSData *imgBuf;
+  NSString *province;
+  NSString *city;
+  NSString *signature;
+  DisturbSetting *disturbSetting;
+  NSString *verifyInfo;
+} ModUserInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "bitFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_BitFlag,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, bitFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "userName",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = ModUserInfo_FieldNumber_UserName,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, userName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "nickName",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = ModUserInfo_FieldNumber_NickName,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, nickName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "bindUin",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_BindUin,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, bindUin),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "bindMobile",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = ModUserInfo_FieldNumber_BindMobile,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, bindMobile),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "status",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_Status,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, status),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "imgLen",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_ImgLen,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, imgLen),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "imgBuf",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_ImgBuf,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, imgBuf),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "sex",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_Sex,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, sex),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "province",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_Province,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, province),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "city",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_City,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, city),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "signature",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_Signature,
+        .hasIndex = 11,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, signature),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "personalCard",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_PersonalCard,
+        .hasIndex = 12,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, personalCard),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "disturbSetting",
+        .dataTypeSpecific.className = GPBStringifySymbol(DisturbSetting),
+        .number = ModUserInfo_FieldNumber_DisturbSetting,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, disturbSetting),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "pluginFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_PluginFlag,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, pluginFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "verifyFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_VerifyFlag,
+        .hasIndex = 15,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, verifyFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "verifyInfo",
+        .dataTypeSpecific.className = NULL,
+        .number = ModUserInfo_FieldNumber_VerifyInfo,
+        .hasIndex = 16,
+        .offset = (uint32_t)offsetof(ModUserInfo__storage_, verifyInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ModUserInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ModUserInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\014\001\007\000\002\010\000\003\010\000\004\007\000\006\n\000\010\006\000\t\006\000\016\014\000\017\016\000\020\n\000\021\n\000\022\n\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - UserInfoExt
+
+@implementation UserInfoExt
+
+@dynamic hasBigHeadImgURL, bigHeadImgURL;
+@dynamic hasSmallHeadImgURL, smallHeadImgURL;
+
+typedef struct UserInfoExt__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *bigHeadImgURL;
+  NSString *smallHeadImgURL;
+} UserInfoExt__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "bigHeadImgURL",
+        .dataTypeSpecific.className = NULL,
+        .number = UserInfoExt_FieldNumber_BigHeadImgURL,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(UserInfoExt__storage_, bigHeadImgURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "smallHeadImgURL",
+        .dataTypeSpecific.className = NULL,
+        .number = UserInfoExt_FieldNumber_SmallHeadImgURL,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(UserInfoExt__storage_, smallHeadImgURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[UserInfoExt class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(UserInfoExt__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\002\t\013!!\000\n\r!!\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - GetProfileResponse
+
+@implementation GetProfileResponse
+
+@dynamic hasBaseResponse, baseResponse;
+@dynamic hasUserInfo, userInfo;
+@dynamic hasUserInfoExt, userInfoExt;
+
+typedef struct GetProfileResponse__storage_ {
+  uint32_t _has_storage_[1];
+  BaseResponse *baseResponse;
+  ModUserInfo *userInfo;
+  UserInfoExt *userInfoExt;
+} GetProfileResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseResponse",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseResponse),
+        .number = GetProfileResponse_FieldNumber_BaseResponse,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GetProfileResponse__storage_, baseResponse),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "userInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(ModUserInfo),
+        .number = GetProfileResponse_FieldNumber_UserInfo,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GetProfileResponse__storage_, userInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "userInfoExt",
+        .dataTypeSpecific.className = GPBStringifySymbol(UserInfoExt),
+        .number = GetProfileResponse_FieldNumber_UserInfoExt,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GetProfileResponse__storage_, userInfoExt),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetProfileResponse class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GetProfileResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\003\001\014\000\002\010\000\003\013\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }

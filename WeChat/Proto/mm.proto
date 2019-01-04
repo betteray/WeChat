@@ -39,7 +39,7 @@ message BaseRequest
 
 message BaseResponse
 {
-    optional int32 ret     = 1; //错误码
+    optional int32 ret                = 1; //错误码
     optional SKBuiltinString_t errMsg = 2; //错误信息
 }
 
@@ -668,3 +668,50 @@ message BindOpMobileResponse
     optional int32 mobileCheckType     = 21;
     optional string regSessionId       = 22;
 }
+
+//
+
+message GetProfileRequest
+{
+    required BaseRequest baseRequest = 1;
+    required string userName         = 2;
+}
+
+message DisturbSetting {}
+
+message ModUserInfo
+{
+    optional uint32 bitFlag             = 1;
+    optional SKBuiltinString_t userName = 2;
+    optional SKBuiltinString_t nickName = 3;
+    optional uint32 bindUin             = 4;
+
+    optional SKBuiltinString_t bindMobile  = 6;
+    optional uint32 status                 = 7;
+    optional uint32 imgLen                 = 8;
+    optional bytes imgBuf                  = 9;
+    optional uint32 sex                    = 10;
+    optional string province               = 11;
+    optional string city                   = 12;
+    optional string signature              = 13;
+    optional uint32 personalCard           = 14;
+    optional DisturbSetting disturbSetting = 15;
+    optional uint32 pluginFlag             = 16;
+    optional uint32 verifyFlag             = 17;
+    optional string verifyInfo             = 18;
+}
+
+message UserInfoExt
+{
+    optional string bigHeadImgUrl   = 9;
+    optional string smallHeadImgUrl = 10;
+}
+
+message GetProfileResponse
+{
+    required BaseResponse baseResponse = 1;
+    optional ModUserInfo userInfo      = 2;
+    optional UserInfoExt userInfoExt   = 3;
+}
+
+//

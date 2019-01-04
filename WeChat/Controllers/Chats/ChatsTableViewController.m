@@ -35,9 +35,7 @@
 
 - (void)refreshChats
 {
-    _chats = [[[WCMessage allObjects] distinctResultsUsingKeyPaths:@[@"fromUser.userName"]] sortedResultsUsingKeyPath:@"createTime" ascending:YES];
-    LogVerbose(@"%@", _chats);
-    
+    _chats = [[[WCMessage allObjects] distinctResultsUsingKeyPaths:@[@"fromUser.userName"]] sortedResultsUsingKeyPath:@"createTime" ascending:YES];    
     [self.tableView reloadData];
 }
 
