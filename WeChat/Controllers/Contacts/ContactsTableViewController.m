@@ -10,6 +10,8 @@
 #import "ContactsTableViewCell.h"
 #import "WCContact.h"
 
+#import "ChatDetailTableViewController.h"
+
 @interface ContactsTableViewController ()
 
 @property (nonatomic, strong) RLMResults *contacts;
@@ -62,6 +64,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    WCContact *contact = [_contacts objectAtIndex:indexPath.row];
+
+    ChatDetailTableViewController *chatDetailVC = segue.destinationViewController;
+    chatDetailVC.curUser = contact;
 }
 
 @end

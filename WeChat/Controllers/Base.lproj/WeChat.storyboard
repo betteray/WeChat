@@ -494,7 +494,7 @@
         <scene sceneID="DZs-HL-qHa">
             <objects>
                 <tableViewController id="xNv-VL-1GD" customClass="ContactsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5GM-Gm-dxg">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5GM-Gm-dxg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -531,6 +531,7 @@
                                 <connections>
                                     <outlet property="avatarImageView" destination="Azn-2B-GVV" id="n30-EV-MHW"/>
                                     <outlet property="nickNameLabel" destination="bdW-aG-FW1" id="X6o-8r-awa"/>
+                                    <segue destination="MjI-5X-eGc" kind="show" id="cP2-oa-8v0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -664,4 +665,7 @@
             <point key="canvasLocation" x="2863" y="2551"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cP2-oa-8v0"/>
+    </inferredMetricsTieBreakers>
 </document>
