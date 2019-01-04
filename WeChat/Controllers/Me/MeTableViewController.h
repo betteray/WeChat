@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SnsTimeLineViewController : UIViewController
+@interface MeTableViewController : UITableViewController
 
 @end

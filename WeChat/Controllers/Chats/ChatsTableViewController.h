@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SendMsgController : UIViewController
+@interface ChatsTableViewController : UITableViewController
 
 @end

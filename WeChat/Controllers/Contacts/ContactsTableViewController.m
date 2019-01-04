@@ -13,6 +13,7 @@
 @interface ContactsTableViewController ()
 
 @property (nonatomic, strong) RLMResults *contacts;
+@property (nonatomic) RLMNotificationToken *token;
 
 @end
 
@@ -24,7 +25,18 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 60;
     
+    [self refreshContacts];
+    
+    __weak typeof(self) weakSelf = self;
+    self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString * _Nonnull notification, RLMRealm * _Nonnull realm) {
+        [weakSelf refreshContacts];
+    }];
+}
+
+- (void)refreshContacts
+{
     _contacts = [WCContact allObjects];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

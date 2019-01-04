@@ -31,15 +31,23 @@
                        msg.msgType,
                        msg.content.string);
             
-            RLMRealm *realm = [RLMRealm defaultRealm];
-            [realm beginWriteTransaction];
-            [WCMessage createOrUpdateInDefaultRealmWithValue:@[@(msg.newMsgId),
-                                                               msg.fromUserName.string,
-                                                               msg.toUserName.string,
-                                                               @(msg.msgType),
-                                                               msg.content.string,
-                                                               @(msg.createTime)]];
-            [realm commitWriteTransaction];
+            WCContact *contact = [[WCContact objectsWhere:@"userName = %@", msg.fromUserName.string] firstObject];
+            
+            if (contact) {
+                RLMRealm *realm = [RLMRealm defaultRealm];
+                [realm beginWriteTransaction];
+                [WCMessage createOrUpdateInDefaultRealmWithValue:@[@(msg.newMsgId),
+                                                                   contact,
+                                                                   @(msg.msgType),
+                                                                   msg.content.string,
+                                                                   @(msg.createTime)]];
+                [realm commitWriteTransaction];
+            }
+            else
+            {
+                LogError(@"Can not find contact with username: %@", msg.fromUserName.string);
+            }
+            
         }
         else if (2 == cmdItem.cmdId) //好友列表 ModContact
         {
