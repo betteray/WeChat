@@ -35,7 +35,7 @@
 
 - (void)refreshChats
 {
-    _chats = [[[WCMessage allObjects] distinctResultsUsingKeyPaths:@[@"fromUser.userName"]] sortedResultsUsingKeyPath:@"createTime" ascending:YES];    
+    _chats = [[[WCMessage allObjects] sortedResultsUsingKeyPath:@"createTime" ascending:NO] distinctResultsUsingKeyPaths:@[@"fromUser.userName"]];    
     [self.tableView reloadData];
 }
 
