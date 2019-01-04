@@ -263,8 +263,8 @@
     aesReqData.channel = 10003;
     
 #if PROTOCOL_FOR_IOS
-    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
-    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:pre] firstObject];
+    NSPredicate *clientCheckDataPre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
+    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:clientCheckDataPre] firstObject];
     SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
     clientCheckData.iLen = (int) [ccd.data length];
     clientCheckData.buffer = ccd.data;
