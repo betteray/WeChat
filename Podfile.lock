@@ -19,6 +19,7 @@ PODS:
   - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
   - FastSocket (1.6)
+  - IQKeyboardManager (6.2.0)
   - MBProgressHUD (1.1.0)
   - Ono (2.1.1)
   - Protobuf (3.6.1)
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - ASIHTTPRequest
   - CocoaLumberjack
   - FastSocket
+  - IQKeyboardManager
   - MBProgressHUD (~> 1.1.0)
   - Ono
   - Protobuf
@@ -47,6 +49,7 @@ SPEC REPOS:
     - ASIHTTPRequest
     - CocoaLumberjack
     - FastSocket
+    - IQKeyboardManager
     - MBProgressHUD
     - Ono
     - Protobuf
@@ -59,6 +62,7 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   FastSocket: f847d6a85b766dc40f848035e2bf255752c280f1
+  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   Ono: 13c25831a4a66b30df93bd1fa57cf70f13c62699
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
@@ -67,6 +71,6 @@ SPEC CHECKSUMS:
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
 
-PODFILE CHECKSUM: 886a4432966d4633733323275d3a7b9c75583d06
+PODFILE CHECKSUM: 516a53a00a0a8d10f75c822f18a392aa4629112f
 
 COCOAPODS: 1.5.3

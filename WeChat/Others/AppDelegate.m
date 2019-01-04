@@ -12,6 +12,7 @@
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
 #import "ClientCheckDataFetcher.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface AppDelegate ()
 
@@ -32,6 +33,8 @@
     [[WeChatClient sharedClient] start];
     [[DNSFetcher new] fetchAndSaveToDB];
     [[ClientCheckDataFetcher new] fetchAndSaveToDB];
+    
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     
     return YES;
 }

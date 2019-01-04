@@ -10,9 +10,10 @@
 #import "WCMessage.h"
 #import "ChatsDetailTableViewCell.h"
 
-@interface ChatDetailTableViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ChatDetailTableViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITextField *msgTextField;
 
 @property (nonatomic, strong) RLMResults *messages;
 @property (nonatomic) RLMNotificationToken *token;
@@ -25,6 +26,8 @@
     [super viewDidLoad];
 
     self.title = _curUser.nickName;
+    
+    _msgTextField.delegate = self;
     
     [self refreshChats];
     
@@ -43,14 +46,18 @@
                                   animated:YES];
 }
 
-- (void)SendMsg
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if ([textField.text length] == 0) {
+        return NO;
+    }
+    
     SKBuiltinString_t *toUserName = [SKBuiltinString_t new];
-    toUserName.string = @"rowhongwei";
+    toUserName.string = _curUser.userName;
     
     MicroMsgRequestNew *mmRequestNew = [MicroMsgRequestNew new];
     mmRequestNew.toUserName = toUserName;
-    mmRequestNew.content = @"hello";
+    mmRequestNew.content = textField.text;
     mmRequestNew.type = 1;
     mmRequestNew.createTime = [[NSDate date] timeIntervalSince1970];
     mmRequestNew.clientMsgId = [[NSDate date] timeIntervalSince1970] + arc4random(); //_clientMsgId++;
@@ -70,12 +77,27 @@
     cgiWrap.responseClass = [SendMsgResponseNew class];
     
     [WeChatClient startRequest:cgiWrap
-                       success:^(id _Nullable response) {
+                       success:^(SendMsgResponseNew * _Nullable response) {
                            LogVerbose(@"%@", response);
+                           
+//                           RLMRealm *realm = [RLMRealm defaultRealm];
+//                           [realm beginWriteTransaction];
+//                           [WCMessage createOrUpdateInDefaultRealmWithValue:@[@([[response listArray] firstObject].newMsgId),
+//                                                                              self.curUser,
+//                                                                              @(1),
+//                                                                              textField.text,
+//                                                                              @((NSInteger)[[NSDate date] timeIntervalSince1970])]];
+//                           [realm commitWriteTransaction];
+                           
                        }
                        failure:^(NSError *error) {
                            NSLog(@"%@", error);
                        }];
+    
+    textField.text = nil;
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 #pragma mark - Table view data source

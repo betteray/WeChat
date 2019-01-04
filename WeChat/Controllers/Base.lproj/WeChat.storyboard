@@ -452,29 +452,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xH0-ZZ-JFX">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wXq-Zq-9NA">
-                                        <rect key="frame" x="0.0" y="0.0" width="339" height="44"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发个消息试试？" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wXq-Zq-9NA">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjD-oB-vBm">
-                                        <rect key="frame" x="339" y="0.0" width="36" height="44"/>
-                                        <color key="backgroundColor" red="0.26831150054931641" green="0.74030959606170654" blue="0.08365226536989212" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Send">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="wXq-Zq-9NA" secondAttribute="bottom" id="9g1-0S-vWi"/>
-                                    <constraint firstItem="AjD-oB-vBm" firstAttribute="top" secondItem="xH0-ZZ-JFX" secondAttribute="top" id="CaM-HJ-dtR"/>
+                                    <constraint firstAttribute="trailing" secondItem="wXq-Zq-9NA" secondAttribute="trailing" id="CjV-XM-ONJ"/>
                                     <constraint firstItem="wXq-Zq-9NA" firstAttribute="leading" secondItem="xH0-ZZ-JFX" secondAttribute="leading" id="JLt-cV-h6I"/>
-                                    <constraint firstAttribute="trailing" secondItem="AjD-oB-vBm" secondAttribute="trailing" id="etU-km-c4J"/>
                                     <constraint firstItem="wXq-Zq-9NA" firstAttribute="top" secondItem="xH0-ZZ-JFX" secondAttribute="top" id="jXQ-oq-ehl"/>
-                                    <constraint firstItem="AjD-oB-vBm" firstAttribute="leading" secondItem="wXq-Zq-9NA" secondAttribute="trailing" id="uAe-ak-bvd"/>
-                                    <constraint firstAttribute="bottom" secondItem="AjD-oB-vBm" secondAttribute="bottom" id="vU9-7N-ONo"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -492,6 +482,7 @@
                         <viewLayoutGuide key="safeArea" id="X8B-8D-E5v"/>
                     </view>
                     <connections>
+                        <outlet property="msgTextField" destination="wXq-Zq-9NA" id="vfp-6j-UVv"/>
                         <outlet property="tableView" destination="sHY-vv-KzS" id="2CH-Y8-tFS"/>
                     </connections>
                 </viewController>

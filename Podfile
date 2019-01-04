@@ -12,6 +12,7 @@ target 'WeChat' do
   pod 'Realm'
   pod 'CocoaLumberjack'
   pod 'RegexKitLite'
+  pod 'IQKeyboardManager'
   
   pod 'MBProgressHUD', '~> 1.1.0'
   
