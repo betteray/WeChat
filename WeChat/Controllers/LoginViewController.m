@@ -15,6 +15,7 @@
 #import "SyncKeyStore.h"
 #import "AccountInfo.h"
 #import "SessionKeyStore.h"
+#import "WCContact.h"
 
 @interface LoginViewController ()
 
@@ -379,6 +380,15 @@
                 [AutoAuthKeyStore createOrUpdateInDefaultRealmWithValue:@[AutoAuthKeyStoreID, autoAuthkey.buffer]];
                 
                 [AccountInfo createOrUpdateInDefaultRealmWithValue:@[AccountInfoID, @(uin), resp.acctSectResp.userName, resp.acctSectResp.nickName, resp.acctSectResp.alias]];
+                
+                [WCContact createOrUpdateInDefaultRealmWithValue:@[resp.acctSectResp.userName,
+                                                                   resp.acctSectResp.nickName,
+                                                                   @"",
+                                                                   @"",
+                                                                   @"",
+                                                                   @"",
+                                                                   @"",
+                                                                   @""]];
                 
                 [SessionKeyStore createOrUpdateInDefaultRealmWithValue:@[SessionKeyStoreID, sessionKey]];
                 

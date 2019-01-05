@@ -7,6 +7,7 @@
 //
 
 #import "MeViewController.h"
+#import "WCContact.h"
 
 @interface MeViewController ()
 
@@ -45,6 +46,18 @@
                           
                           self.nickNameLabel.text = response.userInfo.nickName.string;
                           self.signatureLabel.text = response.userInfo.signature;
+                          
+                          RLMRealm *realm = [RLMRealm defaultRealm];
+                          [realm beginWriteTransaction];
+                          [WCContact createOrUpdateInDefaultRealmWithValue:@[response.userInfo.userName.string,
+                                                                             response.userInfo.nickName.string,
+                                                                             response.userInfo.province,
+                                                                             response.userInfo.city,
+                                                                             response.userInfo.signature,
+                                                                             @"",
+                                                                             response.userInfoExt.bigHeadImgURL,
+                                                                             response.userInfoExt.smallHeadImgURL]];
+                          [realm commitWriteTransaction];
                       }
                       failure:^(NSError *_Nonnull error){
                           

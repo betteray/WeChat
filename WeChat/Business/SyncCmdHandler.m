@@ -31,13 +31,15 @@
                        msg.msgType,
                        msg.content.string);
             
-            WCContact *contact = [[WCContact objectsWhere:@"userName = %@", msg.fromUserName.string] firstObject];
-            
-            if (contact) {
+            WCContact *fromUser = [[WCContact objectsWhere:@"userName = %@", msg.fromUserName.string] firstObject];
+            WCContact *toUser = [[WCContact objectsWhere:@"userName = %@", msg.toUserName.string] firstObject];
+
+            if (fromUser && toUser) {
                 RLMRealm *realm = [RLMRealm defaultRealm];
                 [realm beginWriteTransaction];
                 [WCMessage createOrUpdateInDefaultRealmWithValue:@[@(msg.newMsgId),
-                                                                   contact,
+                                                                   fromUser,
+                                                                   toUser,
                                                                    @(msg.msgType),
                                                                    msg.content.string,
                                                                    @(msg.createTime)]];

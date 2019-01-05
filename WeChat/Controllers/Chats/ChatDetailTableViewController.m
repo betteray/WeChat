@@ -9,6 +9,7 @@
 #import "ChatDetailTableViewController.h"
 #import "WCMessage.h"
 #import "ChatsDetailTableViewCell.h"
+#import "AccountInfo.h"
 
 @interface ChatDetailTableViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
@@ -45,13 +46,13 @@
 
 - (void)refreshChats:(BOOL)animated
 {
-    _messages = [WCMessage objectsWhere:@"fromUser = %@", _curUser];
+    _messages = [WCMessage objectsWhere:@"fromUser = %@ OR toUser = %@", _curUser, _curUser];
     [self.tableView reloadData];
     if ([_messages count] == 0) return;
     
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_messages.count-1 inSection:0]
                           atScrollPosition:UITableViewScrollPositionBottom
-                                  animated:animated];
+                                  animated:NO];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -88,21 +89,26 @@
                        success:^(SendMsgResponseNew * _Nullable response) {
                            LogVerbose(@"%@", response);
                            
-//                           RLMRealm *realm = [RLMRealm defaultRealm];
-//                           [realm beginWriteTransaction];
-//                           [WCMessage createOrUpdateInDefaultRealmWithValue:@[@([[response listArray] firstObject].newMsgId),
-//                                                                              self.curUser,
-//                                                                              @(1),
-//                                                                              textField.text,
-//                                                                              @((NSInteger)[[NSDate date] timeIntervalSince1970])]];
-//                           [realm commitWriteTransaction];
+                           NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
+                           AccountInfo *info = [[AccountInfo objectsWithPredicate:pre] firstObject];
+                           WCContact *slf = [[WCContact objectsWhere:@"userName = %@", info.userName] firstObject];
                            
+                           RLMRealm *realm = [RLMRealm defaultRealm];
+                           [realm beginWriteTransaction];
+                           [WCMessage createOrUpdateInDefaultRealmWithValue:@[@([[response listArray] firstObject].newMsgId),
+                                                                              slf,
+                                                                              self.curUser,
+                                                                              @(1),
+                                                                              textField.text,
+                                                                              @((NSInteger)[[NSDate date] timeIntervalSince1970])]];
+                           [realm commitWriteTransaction];
+                           
+                           textField.text = nil;
                        }
                        failure:^(NSError *error) {
                            NSLog(@"%@", error);
                        }];
     
-    textField.text = nil;
     [textField resignFirstResponder];
     
     return YES;
