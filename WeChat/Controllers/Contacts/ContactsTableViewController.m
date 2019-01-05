@@ -55,7 +55,7 @@
     WCContact *contact = [_contacts objectAtIndex:indexPath.row];
     
     ContactsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContactsTableViewCell" forIndexPath:indexPath];
-    cell.avatarUrl = contact.bigHeadImgUrl;
+    cell.avatarUrl = contact.smallHeadImgUrl;
     cell.nickName = contact.nickName;
     
     return cell;

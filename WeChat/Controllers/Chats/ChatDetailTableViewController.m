@@ -29,21 +29,29 @@
     
     _msgTextField.delegate = self;
     
-    [self refreshChats];
     
     __weak typeof(self) weakSelf = self;
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString * _Nonnull notification, RLMRealm * _Nonnull realm) {
-        [weakSelf refreshChats];
+        [weakSelf refreshChats:YES];
     }];
 }
 
-- (void)refreshChats
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self refreshChats:YES];
+}
+
+- (void)refreshChats:(BOOL)animated
 {
     _messages = [WCMessage objectsWhere:@"fromUser = %@", _curUser];
     [self.tableView reloadData];
+    if ([_messages count] == 0) return;
+    
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_messages.count-1 inSection:0]
                           atScrollPosition:UITableViewScrollPositionBottom
-                                  animated:YES];
+                                  animated:animated];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -117,7 +125,7 @@
     ChatsDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatsDetailTableViewCell"
                                                                      forIndexPath:indexPath];
     WCMessage *msg = [_messages objectAtIndex:indexPath.row];
-    cell.avatarImageUrl = msg.fromUser.bigHeadImgUrl;
+    cell.avatarImageUrl = msg.fromUser.smallHeadImgUrl;
     cell.msgContent = msg.content;
         
     return cell;

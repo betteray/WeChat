@@ -53,7 +53,7 @@
      ChatsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatsTableViewCell" forIndexPath:indexPath];
      
      WCMessage *msg = [_chats objectAtIndex:indexPath.row];
-     cell.avatarImageUrl = msg.fromUser.bigHeadImgUrl;
+     cell.avatarImageUrl = msg.fromUser.smallHeadImgUrl;
      cell.userName = msg.fromUser.nickName;
      cell.lastMsg = msg.content;
      
