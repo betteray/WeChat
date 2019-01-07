@@ -567,17 +567,7 @@ message CheckResUpdateRequest
     repeated ResID resId = 1;
 }
 
-message SnsObject
-{
-    required uint64 id                          = 1; // 12944632620798980176
-    required string username                    = 2; // wxid_19py48yw39qw22
-    required string nickname                    = 3; // xiaohao
-    required int32 createTime                   = 4; // 1543120458
-    required SKBuiltinBuffer_t objectDesc       = 5;
-    optional int32 extFlag                      = 16;
-    required SKBuiltinString_t objectOperations = 28;
-}
-
+//朋友圈 Start
 message SnsTimeLineRequest
 {
     optional BaseRequest baseRequest   = 1;
@@ -589,6 +579,17 @@ message SnsTimeLineRequest
     optional SKBuiltinBuffer_t session = 7;
     required int32 networkType         = 8;
     optional string adexpinfo          = 10; //""
+}
+
+message SnsObject
+{
+    required uint64 id                          = 1; // 12944632620798980176
+    required string username                    = 2; // wxid_19py48yw39qw22
+    required string nickname                    = 3; // xiaohao
+    required int32 createTime                   = 4; // 1543120458
+    required SKBuiltinBuffer_t objectDesc       = 5;
+    optional int32 extFlag                      = 16;
+    required SKBuiltinString_t objectOperations = 28;
 }
 
 message SnsTimeLineResponse
@@ -610,6 +611,8 @@ message SnsTimeLineResponse
     // repeated recList                      = 10;
     optional bytes session = 11;
 }
+
+//朋友圈 Start
 
 message BindOpMobileRequest
 {

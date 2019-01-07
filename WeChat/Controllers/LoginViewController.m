@@ -340,6 +340,8 @@
                          szShareKey:szSharedKey
                        pLenShareKey:&szSharedKeyLen];
 
+            WCContact *slf = [[WCContact objectsWhere:@"userName = %@", resp.acctSectResp.userName] firstObject];
+            
             if (ret)
             {
                 NSData *checkEcdhKey = [NSData dataWithBytes:szSharedKey length:szSharedKeyLen];
@@ -381,14 +383,16 @@
                 
                 [AccountInfo createOrUpdateInDefaultRealmWithValue:@[AccountInfoID, @(uin), resp.acctSectResp.userName, resp.acctSectResp.nickName, resp.acctSectResp.alias]];
                 
-                [WCContact createOrUpdateInDefaultRealmWithValue:@[resp.acctSectResp.userName,
-                                                                   resp.acctSectResp.nickName,
-                                                                   @"",
-                                                                   @"",
-                                                                   @"",
-                                                                   @"",
-                                                                   @"",
-                                                                   @""]];
+                if (!slf) {
+                    [WCContact createOrUpdateInDefaultRealmWithValue:@[resp.acctSectResp.userName,
+                                                                       resp.acctSectResp.nickName,
+                                                                       @"",
+                                                                       @"",
+                                                                       @"",
+                                                                       @"",
+                                                                       @"",
+                                                                       @""]];
+                }
                 
                 [SessionKeyStore createOrUpdateInDefaultRealmWithValue:@[SessionKeyStoreID, sessionKey]];
                 
