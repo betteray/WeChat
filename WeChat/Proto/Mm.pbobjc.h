@@ -45,6 +45,7 @@ CF_EXTERN_C_BEGIN
 @class CustomizedInfoNew;
 @class DisturbSetting;
 @class ECDHKey;
+@class KeyVal;
 @class ManualAuthAesReqData;
 @class ManualAuthRsaReqData;
 @class MicroMsgRequestNew;
@@ -2146,6 +2147,59 @@ typedef GPB_ENUM(CheckResUpdateRequest_ResID_SubTypeVector_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasEid;
 @end
 
+#pragma mark - SnsTimeLineRequest
+
+typedef GPB_ENUM(SnsTimeLineRequest_FieldNumber) {
+  SnsTimeLineRequest_FieldNumber_BaseRequest = 1,
+  SnsTimeLineRequest_FieldNumber_FirstPageMd5 = 2,
+  SnsTimeLineRequest_FieldNumber_MinFilterId = 3,
+  SnsTimeLineRequest_FieldNumber_MaxId = 4,
+  SnsTimeLineRequest_FieldNumber_LastRequestTime = 5,
+  SnsTimeLineRequest_FieldNumber_ClientLatestId = 6,
+  SnsTimeLineRequest_FieldNumber_Session = 7,
+  SnsTimeLineRequest_FieldNumber_NetworkType = 8,
+  SnsTimeLineRequest_FieldNumber_Adexpinfo = 10,
+};
+
+/**
+ * 朋友圈 Start
+ **/
+@interface SnsTimeLineRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *firstPageMd5;
+/** Test to see if @c firstPageMd5 has been set. */
+@property(nonatomic, readwrite) BOOL hasFirstPageMd5;
+
+@property(nonatomic, readwrite) int32_t minFilterId;
+
+@property(nonatomic, readwrite) BOOL hasMinFilterId;
+@property(nonatomic, readwrite) int32_t maxId;
+
+@property(nonatomic, readwrite) BOOL hasMaxId;
+@property(nonatomic, readwrite) int32_t lastRequestTime;
+
+@property(nonatomic, readwrite) BOOL hasLastRequestTime;
+@property(nonatomic, readwrite) int64_t clientLatestId;
+
+@property(nonatomic, readwrite) BOOL hasClientLatestId;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *session;
+/** Test to see if @c session has been set. */
+@property(nonatomic, readwrite) BOOL hasSession;
+
+@property(nonatomic, readwrite) int32_t networkType;
+
+@property(nonatomic, readwrite) BOOL hasNetworkType;
+/** "" */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *adexpinfo;
+/** Test to see if @c adexpinfo has been set. */
+@property(nonatomic, readwrite) BOOL hasAdexpinfo;
+
+@end
+
 #pragma mark - SnsObject
 
 typedef GPB_ENUM(SnsObject_FieldNumber) {
@@ -2188,56 +2242,6 @@ typedef GPB_ENUM(SnsObject_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *objectOperations;
 /** Test to see if @c objectOperations has been set. */
 @property(nonatomic, readwrite) BOOL hasObjectOperations;
-
-@end
-
-#pragma mark - SnsTimeLineRequest
-
-typedef GPB_ENUM(SnsTimeLineRequest_FieldNumber) {
-  SnsTimeLineRequest_FieldNumber_BaseRequest = 1,
-  SnsTimeLineRequest_FieldNumber_FirstPageMd5 = 2,
-  SnsTimeLineRequest_FieldNumber_MinFilterId = 3,
-  SnsTimeLineRequest_FieldNumber_MaxId = 4,
-  SnsTimeLineRequest_FieldNumber_LastRequestTime = 5,
-  SnsTimeLineRequest_FieldNumber_ClientLatestId = 6,
-  SnsTimeLineRequest_FieldNumber_Session = 7,
-  SnsTimeLineRequest_FieldNumber_NetworkType = 8,
-  SnsTimeLineRequest_FieldNumber_Adexpinfo = 10,
-};
-
-@interface SnsTimeLineRequest : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
-/** Test to see if @c baseRequest has been set. */
-@property(nonatomic, readwrite) BOOL hasBaseRequest;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *firstPageMd5;
-/** Test to see if @c firstPageMd5 has been set. */
-@property(nonatomic, readwrite) BOOL hasFirstPageMd5;
-
-@property(nonatomic, readwrite) int32_t minFilterId;
-
-@property(nonatomic, readwrite) BOOL hasMinFilterId;
-@property(nonatomic, readwrite) int32_t maxId;
-
-@property(nonatomic, readwrite) BOOL hasMaxId;
-@property(nonatomic, readwrite) int32_t lastRequestTime;
-
-@property(nonatomic, readwrite) BOOL hasLastRequestTime;
-@property(nonatomic, readwrite) int64_t clientLatestId;
-
-@property(nonatomic, readwrite) BOOL hasClientLatestId;
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *session;
-/** Test to see if @c session has been set. */
-@property(nonatomic, readwrite) BOOL hasSession;
-
-@property(nonatomic, readwrite) int32_t networkType;
-
-@property(nonatomic, readwrite) BOOL hasNetworkType;
-/** "" */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *adexpinfo;
-/** Test to see if @c adexpinfo has been set. */
-@property(nonatomic, readwrite) BOOL hasAdexpinfo;
 
 @end
 
@@ -2718,6 +2722,41 @@ typedef GPB_ENUM(GetProfileResponse_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) UserInfoExt *userInfoExt;
 /** Test to see if @c userInfoExt has been set. */
 @property(nonatomic, readwrite) BOOL hasUserInfoExt;
+
+@end
+
+#pragma mark - KeyVal
+
+typedef GPB_ENUM(KeyVal_FieldNumber) {
+  KeyVal_FieldNumber_Key = 1,
+  KeyVal_FieldNumber_Val = 2,
+};
+
+@interface KeyVal : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t key;
+
+@property(nonatomic, readwrite) BOOL hasKey;
+@property(nonatomic, readwrite) uint32_t val;
+
+@property(nonatomic, readwrite) BOOL hasVal;
+@end
+
+#pragma mark - SyncKey
+
+typedef GPB_ENUM(SyncKey_FieldNumber) {
+  SyncKey_FieldNumber_KeyCount = 1,
+  SyncKey_FieldNumber_KeyArray = 2,
+};
+
+@interface SyncKey : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t keyCount;
+
+@property(nonatomic, readwrite) BOOL hasKeyCount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<KeyVal*> *keyArray;
+/** The number of items in @c keyArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger keyArray_Count;
 
 @end
 

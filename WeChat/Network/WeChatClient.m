@@ -32,6 +32,8 @@
 
 #import "SyncCmdHandler.h"
 
+#import "SyncKeyCompare.h"
+
 #define CMDID_NOOP_REQ 6
 #define CMDID_IDENTIFY_REQ 205
 #define CMDID_MANUALAUTH_REQ 253
@@ -185,6 +187,7 @@
 
 - (void)newSync
 {
+    LogDebug(@"Request NewSync With Key: %@", self.sync_key_cur);
     NewSyncRequest *req = [NewSyncRequest new];
     req.oplog = @"";
     req.selector = 262151;
@@ -202,8 +205,21 @@
 
     [[WeChatClient sharedClient] startRequest:wrap
         success:^(NewSyncResponse *_Nullable response) {
-            self.sync_key_cur = response.keyBuf;
             
+            NSError *error = nil;
+            SKBuiltinBuffer_t *buffer1 = [SKBuiltinBuffer_t parseFromData:self.sync_key_cur error:nil];
+            SyncKey *oldSyncKey = [[SyncKey alloc] initWithData:buffer1.buffer error:&error];
+            if (error) {
+                LogError("%@", error);
+            }
+            self.sync_key_cur = response.keyBuf;
+            SKBuiltinBuffer_t *buffer2 = [SKBuiltinBuffer_t parseFromData:self.sync_key_cur error:nil];
+            SyncKey *newSyncKey = [SyncKey parseFromData:buffer2.buffer error:&error];
+            if (error) {
+                LogError("%@", error);
+            }
+            [SyncKeyCompare compaireOldSyncKey:oldSyncKey newSyncKey:newSyncKey];
+
             // 存数据到数据库。
             RLMRealm *realm = [RLMRealm defaultRealm];
             [realm beginWriteTransaction];
@@ -437,8 +453,18 @@
     
     
     Task *task = [self getTaskWithTag:package.header.cgi];
-    id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:nil];
-    if (task.sucBlock)
+    NSError *error = nil;
+    id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:&error];
+    if (error) {
+        LogError("ProtoBuf Serilized Error: %@", error);
+        if (task.failBlock) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                ((FailureBlock) task.failBlock)(error);
+            });
+            [_tasks removeObject:task];
+        }
+    }
+    else if (task.sucBlock && response)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             ((SuccessBlock) task.sucBlock)(response);

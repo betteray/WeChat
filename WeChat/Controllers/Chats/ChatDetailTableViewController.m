@@ -86,9 +86,7 @@
     cgiWrap.responseClass = [SendMsgResponseNew class];
     
     [WeChatClient startRequest:cgiWrap
-                       success:^(SendMsgResponseNew * _Nullable response) {
-                           LogVerbose(@"%@", response);
-                           
+                       success:^(SendMsgResponseNew * _Nullable response) {                           
                            NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
                            AccountInfo *info = [[AccountInfo objectsWithPredicate:pre] firstObject];
                            WCContact *slf = [[WCContact objectsWhere:@"userName = %@", info.userName] firstObject];

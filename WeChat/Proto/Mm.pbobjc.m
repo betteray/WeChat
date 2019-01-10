@@ -5411,120 +5411,6 @@ typedef struct CheckResUpdateRequest_ResID_SubTypeVector__storage_ {
 
 @end
 
-#pragma mark - SnsObject
-
-@implementation SnsObject
-
-@dynamic hasId_p, id_p;
-@dynamic hasUsername, username;
-@dynamic hasNickname, nickname;
-@dynamic hasCreateTime, createTime;
-@dynamic hasObjectDesc, objectDesc;
-@dynamic hasExtFlag, extFlag;
-@dynamic hasObjectOperations, objectOperations;
-
-typedef struct SnsObject__storage_ {
-  uint32_t _has_storage_[1];
-  int32_t createTime;
-  int32_t extFlag;
-  NSString *username;
-  NSString *nickname;
-  SKBuiltinBuffer_t *objectDesc;
-  SKBuiltinString_t *objectOperations;
-  uint64_t id_p;
-} SnsObject__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "id_p",
-        .dataTypeSpecific.className = NULL,
-        .number = SnsObject_FieldNumber_Id_p,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(SnsObject__storage_, id_p),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeUInt64,
-      },
-      {
-        .name = "username",
-        .dataTypeSpecific.className = NULL,
-        .number = SnsObject_FieldNumber_Username,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(SnsObject__storage_, username),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "nickname",
-        .dataTypeSpecific.className = NULL,
-        .number = SnsObject_FieldNumber_Nickname,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(SnsObject__storage_, nickname),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "createTime",
-        .dataTypeSpecific.className = NULL,
-        .number = SnsObject_FieldNumber_CreateTime,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(SnsObject__storage_, createTime),
-        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "objectDesc",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
-        .number = SnsObject_FieldNumber_ObjectDesc,
-        .hasIndex = 4,
-        .offset = (uint32_t)offsetof(SnsObject__storage_, objectDesc),
-        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "extFlag",
-        .dataTypeSpecific.className = NULL,
-        .number = SnsObject_FieldNumber_ExtFlag,
-        .hasIndex = 5,
-        .offset = (uint32_t)offsetof(SnsObject__storage_, extFlag),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "objectOperations",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
-        .number = SnsObject_FieldNumber_ObjectOperations,
-        .hasIndex = 6,
-        .offset = (uint32_t)offsetof(SnsObject__storage_, objectOperations),
-        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeMessage,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[SnsObject class]
-                                     rootClass:[MmRoot class]
-                                          file:MmRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(SnsObject__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    static const char *extraTextFormatInfo =
-        "\004\004\n\000\005\n\000\020\007\000\034\020\000";
-    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
-#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    NSAssert(descriptor == nil, @"Startup recursed!");
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
 #pragma mark - SnsTimeLineRequest
 
 @implementation SnsTimeLineRequest
@@ -5651,6 +5537,120 @@ typedef struct SnsTimeLineRequest__storage_ {
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
         "\007\001\013\000\002\014\000\003\013\000\004\005\000\005\017\000\006\016\000\010\013\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - SnsObject
+
+@implementation SnsObject
+
+@dynamic hasId_p, id_p;
+@dynamic hasUsername, username;
+@dynamic hasNickname, nickname;
+@dynamic hasCreateTime, createTime;
+@dynamic hasObjectDesc, objectDesc;
+@dynamic hasExtFlag, extFlag;
+@dynamic hasObjectOperations, objectOperations;
+
+typedef struct SnsObject__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t createTime;
+  int32_t extFlag;
+  NSString *username;
+  NSString *nickname;
+  SKBuiltinBuffer_t *objectDesc;
+  SKBuiltinString_t *objectOperations;
+  uint64_t id_p;
+} SnsObject__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "id_p",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_Id_p,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, id_p),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "username",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_Username,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, username),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "nickname",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_Nickname,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, nickname),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "createTime",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_CreateTime,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, createTime),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "objectDesc",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = SnsObject_FieldNumber_ObjectDesc,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, objectDesc),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "extFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_ExtFlag,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, extFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "objectOperations",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = SnsObject_FieldNumber_ObjectOperations,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, objectOperations),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SnsObject class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SnsObject__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\004\004\n\000\005\n\000\020\007\000\034\020\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -6964,6 +6964,119 @@ typedef struct GetProfileResponse__storage_ {
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
         "\003\001\014\000\002\010\000\003\013\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - KeyVal
+
+@implementation KeyVal
+
+@dynamic hasKey, key;
+@dynamic hasVal, val;
+
+typedef struct KeyVal__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t key;
+  uint32_t val;
+} KeyVal__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "key",
+        .dataTypeSpecific.className = NULL,
+        .number = KeyVal_FieldNumber_Key,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(KeyVal__storage_, key),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "val",
+        .dataTypeSpecific.className = NULL,
+        .number = KeyVal_FieldNumber_Val,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(KeyVal__storage_, val),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[KeyVal class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(KeyVal__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - SyncKey
+
+@implementation SyncKey
+
+@dynamic hasKeyCount, keyCount;
+@dynamic keyArray, keyArray_Count;
+
+typedef struct SyncKey__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t keyCount;
+  NSMutableArray *keyArray;
+} SyncKey__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "keyCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SyncKey_FieldNumber_KeyCount,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SyncKey__storage_, keyCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "keyArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(KeyVal),
+        .number = SyncKey_FieldNumber_KeyArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(SyncKey__storage_, keyArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SyncKey class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SyncKey__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001\010\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");

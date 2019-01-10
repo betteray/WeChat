@@ -12,7 +12,6 @@
 #import "ClientCheckData.h"
 #import "BuiltinIP.h"
 #import "AutoAuthKeyStore.h"
-#import "SyncKeyStore.h"
 #import "AccountInfo.h"
 #import "SessionKeyStore.h"
 #import "WCContact.h"

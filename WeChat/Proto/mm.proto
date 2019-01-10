@@ -718,3 +718,15 @@ message GetProfileResponse
 }
 
 //
+
+message KeyVal
+{
+    optional uint32 key = 1;
+    optional uint32 val = 2;
+}
+
+message SyncKey
+{
+    optional uint32 keyCount = 1;
+    repeated KeyVal key = 2;
+}

@@ -29,6 +29,7 @@
 		46804CE721DE41BE00232229 /* ChatDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46804CE621DE41BE00232229 /* ChatDetailTableViewController.m */; };
 		46804CEA21DE5B1800232229 /* ChatsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46804CE921DE5B1800232229 /* ChatsTableViewCell.m */; };
 		46804CED21DE5B2900232229 /* ChatsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46804CEC21DE5B2900232229 /* ChatsDetailTableViewCell.m */; };
+		4689A17821E4C01800E2EA9A /* SyncKeyCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */; };
 		469F657D21D3196100C1DC8B /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7141214B5A4B00603022 /* libcrypto.a */; };
 		71008F3321B6750700DE8DF8 /* DNSFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3221B6750700DE8DF8 /* DNSFetcher.m */; };
 		71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3521B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m */; };
@@ -157,6 +158,8 @@
 		46804CEB21DE5B2900232229 /* ChatsDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatsDetailTableViewCell.h; sourceTree = "<group>"; };
 		46804CEC21DE5B2900232229 /* ChatsDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatsDetailTableViewCell.m; sourceTree = "<group>"; };
 		4689A17021DF447500E2EA9A /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
+		4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncKeyCompare.h; sourceTree = "<group>"; };
+		4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncKeyCompare.m; sourceTree = "<group>"; };
 		49481301164AD3564DCE2106 /* libPods-WeChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E57A8A71D09BB5AB91B774F /* libPods-WeChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70427FEF05DB038F58CB0923 /* Pods-WeChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatUITests/Pods-WeChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -527,9 +530,19 @@
 			path = Me;
 			sourceTree = "<group>";
 		};
+		4689A17521E4BFD200E2EA9A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */,
+				4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		469F657B21D27FCE00C1DC8B /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				4689A17521E4BFD200E2EA9A /* Helpers */,
 				712C6E91214A1E8900603022 /* WeChatClient.h */,
 				712C6E92214A1E8900603022 /* WeChatClient.m */,
 				7161985021CB79E000A76F39 /* pack */,
@@ -1187,6 +1200,7 @@
 				7154D5222196DFE1005064C4 /* WC_Hex.m in Sources */,
 				71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */,
 				46804CE721DE41BE00232229 /* ChatDetailTableViewController.m in Sources */,
+				4689A17821E4C01800E2EA9A /* SyncKeyCompare.m in Sources */,
 				71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */,
 				46804CED21DE5B2900232229 /* ChatsDetailTableViewCell.m in Sources */,
 				466C4ACA21DDD6D200743075 /* ContactsTableViewCell.m in Sources */,
