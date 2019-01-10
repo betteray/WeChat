@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXS-BV-ygU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXS-BV-ygU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -546,7 +546,7 @@
             </objects>
             <point key="canvasLocation" x="340" y="3312.5937031484259"/>
         </scene>
-        <!--Moments Table View Controller-->
+        <!--Moments-->
         <scene sceneID="bEA-zY-ho2">
             <objects>
                 <tableViewController id="zAx-mS-kob" customClass="MomentsTableViewController" sceneMemberID="viewController">
@@ -569,6 +569,13 @@
                             <outlet property="delegate" destination="zAx-mS-kob" id="s7F-UZ-nSe"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Moments" id="diH-EG-g8t">
+                        <barButtonItem key="rightBarButtonItem" title="发送" id="Wco-7S-MR2">
+                            <connections>
+                                <action selector="sendSnsPostRequest:" destination="zAx-mS-kob" id="iqh-SJ-m6v"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZl-oL-vVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

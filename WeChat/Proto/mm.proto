@@ -581,15 +581,46 @@ message SnsTimeLineRequest
     optional string adexpinfo          = 10; //""
 }
 
+message PreDownloadInfo
+{
+    optional uint32 preDownloadPercent = 1;
+    optional uint32 preDownloadNetType = 2;
+    optional string noPreDownloadRange = 3;
+}
+
 message SnsObject
 {
-    required uint64 id                          = 1; // 12944632620798980176
-    required string username                    = 2; // wxid_19py48yw39qw22
-    required string nickname                    = 3; // xiaohao
-    required int32 createTime                   = 4; // 1543120458
-    required SKBuiltinBuffer_t objectDesc       = 5;
-    optional int32 extFlag                      = 16;
-    required SKBuiltinString_t objectOperations = 28;
+    required uint64 id                    = 1; // 12944632620798980176
+    required string username              = 2; // wxid_19py48yw39qw22
+    required string nickname              = 3; // xiaohao
+    required uint32 createTime            = 4; // 1543120458
+    required SKBuiltinBuffer_t objectDesc = 5;
+    required uint32 likeFlag              = 6;
+    required uint32 likeCount             = 7;
+    required uint32 likeUserListCount     = 8;
+    //    repeated likeUserList = 9;
+    required uint32 commentCount         = 10;
+    required uint32 commentUserListCount = 11;
+    //    repeated commentUserList = 12;
+    required uint32 withUserCount     = 13;
+    required uint32 withUserListCount = 14;
+    //    repeated withUserList = 15;
+    required uint32 extFlag    = 16;
+    required uint32 noChange   = 17;
+    required uint32 groupCount = 18;
+    //    repeated groupList = 19;
+    required uint32 isNotRichText  = 20;
+    optional string referUsername  = 21;
+    required uint32 referId        = 22;
+    required uint32 blackListCount = 23;
+    //    repeated blackList = 24;
+    required uint32 deleteFlag     = 25;
+    required uint32 groupUserCount = 26;
+    //    required groupUser = 27;
+    optional SKBuiltinBuffer_t objectOperations = 28;
+    optional SnsRedEnvelops snsRedEnvelops      = 29;
+    optional PreDownloadInfo preDownloadInfo    = 30;
+    optional SnsWeAppInfo weAppInfo             = 31;
 }
 
 message SnsTimeLineResponse
@@ -612,7 +643,97 @@ message SnsTimeLineResponse
     optional bytes session = 11;
 }
 
-//朋友圈 Start
+// ======== 发朋友圈 ========
+
+message TwitterInfo
+{
+    optional string oauthToken       = 1;
+    optional string oauthTokenSecret = 2;
+}
+
+message SnsPostCtocUploadInfo
+{
+    optional uint32 flag       = 1;
+    optional uint32 photoCount = 2;
+}
+
+message SnsPostOperationFields
+{
+    optional string shareUrlOriginal = 1;
+    optional string shareUrlOpen     = 2;
+    optional string jsAppId          = 3;
+    optional uint32 contactTagCount  = 4;
+    optional uint32 tempUserCount    = 5;
+}
+
+message SnsRedEnvelops
+{
+    optional uint32 rewardCount = 1;
+    optional uint32 resourceId  = 2;
+    optional uint32 reportId    = 4;
+    optional uint32 reportKey   = 5;
+}
+
+message CanvasInfo { optional string dataBuffer = 1; }
+
+message SnsWeAppInfo
+{
+    optional string mapPoiId    = 1;
+    optional uint32 appId       = 2;
+    optional string userName    = 3;
+    optional string redirectUrl = 4;
+    optional uint32 showType    = 5;
+    optional uint32 score       = 6;
+}
+
+message MediaInfo
+{
+    optional uint32 source          = 1;
+    optional uint32 mediaType       = 2;
+    optional uint32 videoPlayLength = 3;
+    optional string sessionId       = 4;
+    optional uint32 startTime       = 5;
+}
+
+message SnsPostRequest
+{
+    required BaseRequest baseRequest        = 1;
+    optional SKBuiltinBuffer_t objectDesc   = 2;
+    optional uint32 withUserListCount       = 3;
+    repeated SKBuiltinString_t withUserList = 4;
+    optional uint32 privacy                 = 5;
+    optional uint32 syncFlag                = 6;
+    optional string clientId                = 7;
+    optional uint32 postBgimgType           = 8;
+    optional uint32 groupCount              = 9;
+    //    repeated SKBuiltinString_t groupUser                   = 10; //分享给谁
+    optional uint32 objectSource                           = 11;
+    optional uint32 referId                                = 12;
+    optional uint32 blackListCount                         = 13;
+    repeated SKBuiltinString_t blackList                   = 14; //不让谁看
+    optional TwitterInfo twitterInfo                       = 15;
+    optional uint32 groupUserCount                         = 16;
+    repeated SKBuiltinString_t groupUser                   = 17; //分享给谁看
+    optional SnsPostCtocUploadInfo ctocUploadInfo          = 18;
+    optional SnsPostOperationFields snsPostOperationFields = 19;
+    optional SnsRedEnvelops snsRedEnvelops                 = 20;
+    optional SKBuiltinBuffer_t poiInfo                     = 21;
+    optional string fromScene                              = 22;
+    optional CanvasInfo canvasInfo                         = 23;
+    optional uint32 mediaInfoCount                         = 24;
+    repeated MediaInfo mediaInfo                           = 25;
+    optional SnsWeAppInfo weAppInfo                        = 26;
+    optional SKBuiltinBuffer_t clientCheckData             = 27;
+}
+
+message SnsPostResponse
+{
+    required BaseResponse baseResponse = 1;
+    optional SnsObject snsObject       = 2;
+    optional string spamTips           = 3;
+}
+
+//朋友圈 End
 
 message BindOpMobileRequest
 {
@@ -728,5 +849,5 @@ message KeyVal
 message SyncKey
 {
     optional uint32 keyCount = 1;
-    repeated KeyVal key = 2;
+    repeated KeyVal key      = 2;
 }

@@ -37,6 +37,7 @@ CF_EXTERN_C_BEGIN
 @class BindOpMobileResponse_ShowStyle;
 @class BuiltinIPList;
 @class BuiltinIPList_BuiltinIP;
+@class CanvasInfo;
 @class ChatRoomMemberInfo;
 @class CheckLoginQRCodeResponse_LoginQRCodeNotifyPkg;
 @class CheckResUpdateRequest_ResID;
@@ -48,6 +49,7 @@ CF_EXTERN_C_BEGIN
 @class KeyVal;
 @class ManualAuthAesReqData;
 @class ManualAuthRsaReqData;
+@class MediaInfo;
 @class MicroMsgRequestNew;
 @class MicroMsgResponseNew;
 @class ModContact_GroupMemberList;
@@ -56,11 +58,17 @@ CF_EXTERN_C_BEGIN
 @class NewSyncResponse_CmdList;
 @class PhoneNumItem;
 @class PhoneNumListInfo;
+@class PreDownloadInfo;
 @class SKBuiltinBuffer_t;
 @class SKBuiltinString_t;
 @class SnsObject;
+@class SnsPostCtocUploadInfo;
+@class SnsPostOperationFields;
+@class SnsRedEnvelops;
 @class SnsTimeLineResponse_SnsServerConfig;
 @class SnsUserInfo;
+@class SnsWeAppInfo;
+@class TwitterInfo;
 @class UnifyAuthResponse_AcctSectResp;
 @class UnifyAuthResponse_AuthSectResp;
 @class UnifyAuthResponse_AuthSectResp_ShowStyleKey;
@@ -2200,6 +2208,28 @@ typedef GPB_ENUM(SnsTimeLineRequest_FieldNumber) {
 
 @end
 
+#pragma mark - PreDownloadInfo
+
+typedef GPB_ENUM(PreDownloadInfo_FieldNumber) {
+  PreDownloadInfo_FieldNumber_PreDownloadPercent = 1,
+  PreDownloadInfo_FieldNumber_PreDownloadNetType = 2,
+  PreDownloadInfo_FieldNumber_NoPreDownloadRange = 3,
+};
+
+@interface PreDownloadInfo : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t preDownloadPercent;
+
+@property(nonatomic, readwrite) BOOL hasPreDownloadPercent;
+@property(nonatomic, readwrite) uint32_t preDownloadNetType;
+
+@property(nonatomic, readwrite) BOOL hasPreDownloadNetType;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *noPreDownloadRange;
+/** Test to see if @c noPreDownloadRange has been set. */
+@property(nonatomic, readwrite) BOOL hasNoPreDownloadRange;
+
+@end
+
 #pragma mark - SnsObject
 
 typedef GPB_ENUM(SnsObject_FieldNumber) {
@@ -2208,8 +2238,26 @@ typedef GPB_ENUM(SnsObject_FieldNumber) {
   SnsObject_FieldNumber_Nickname = 3,
   SnsObject_FieldNumber_CreateTime = 4,
   SnsObject_FieldNumber_ObjectDesc = 5,
+  SnsObject_FieldNumber_LikeFlag = 6,
+  SnsObject_FieldNumber_LikeCount = 7,
+  SnsObject_FieldNumber_LikeUserListCount = 8,
+  SnsObject_FieldNumber_CommentCount = 10,
+  SnsObject_FieldNumber_CommentUserListCount = 11,
+  SnsObject_FieldNumber_WithUserCount = 13,
+  SnsObject_FieldNumber_WithUserListCount = 14,
   SnsObject_FieldNumber_ExtFlag = 16,
+  SnsObject_FieldNumber_NoChange = 17,
+  SnsObject_FieldNumber_GroupCount = 18,
+  SnsObject_FieldNumber_IsNotRichText = 20,
+  SnsObject_FieldNumber_ReferUsername = 21,
+  SnsObject_FieldNumber_ReferId = 22,
+  SnsObject_FieldNumber_BlackListCount = 23,
+  SnsObject_FieldNumber_DeleteFlag = 25,
+  SnsObject_FieldNumber_GroupUserCount = 26,
   SnsObject_FieldNumber_ObjectOperations = 28,
+  SnsObject_FieldNumber_SnsRedEnvelops = 29,
+  SnsObject_FieldNumber_PreDownloadInfo = 30,
+  SnsObject_FieldNumber_WeAppInfo = 31,
 };
 
 @interface SnsObject : GPBMessage
@@ -2229,19 +2277,83 @@ typedef GPB_ENUM(SnsObject_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasNickname;
 
 /** 1543120458 */
-@property(nonatomic, readwrite) int32_t createTime;
+@property(nonatomic, readwrite) uint32_t createTime;
 
 @property(nonatomic, readwrite) BOOL hasCreateTime;
 @property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *objectDesc;
 /** Test to see if @c objectDesc has been set. */
 @property(nonatomic, readwrite) BOOL hasObjectDesc;
 
-@property(nonatomic, readwrite) int32_t extFlag;
+@property(nonatomic, readwrite) uint32_t likeFlag;
+
+@property(nonatomic, readwrite) BOOL hasLikeFlag;
+@property(nonatomic, readwrite) uint32_t likeCount;
+
+@property(nonatomic, readwrite) BOOL hasLikeCount;
+@property(nonatomic, readwrite) uint32_t likeUserListCount;
+
+@property(nonatomic, readwrite) BOOL hasLikeUserListCount;
+/**    repeated likeUserList = 9; */
+@property(nonatomic, readwrite) uint32_t commentCount;
+
+@property(nonatomic, readwrite) BOOL hasCommentCount;
+@property(nonatomic, readwrite) uint32_t commentUserListCount;
+
+@property(nonatomic, readwrite) BOOL hasCommentUserListCount;
+/**    repeated commentUserList = 12; */
+@property(nonatomic, readwrite) uint32_t withUserCount;
+
+@property(nonatomic, readwrite) BOOL hasWithUserCount;
+@property(nonatomic, readwrite) uint32_t withUserListCount;
+
+@property(nonatomic, readwrite) BOOL hasWithUserListCount;
+/**    repeated withUserList = 15; */
+@property(nonatomic, readwrite) uint32_t extFlag;
 
 @property(nonatomic, readwrite) BOOL hasExtFlag;
-@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *objectOperations;
+@property(nonatomic, readwrite) uint32_t noChange;
+
+@property(nonatomic, readwrite) BOOL hasNoChange;
+@property(nonatomic, readwrite) uint32_t groupCount;
+
+@property(nonatomic, readwrite) BOOL hasGroupCount;
+/**    repeated groupList = 19; */
+@property(nonatomic, readwrite) uint32_t isNotRichText;
+
+@property(nonatomic, readwrite) BOOL hasIsNotRichText;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *referUsername;
+/** Test to see if @c referUsername has been set. */
+@property(nonatomic, readwrite) BOOL hasReferUsername;
+
+@property(nonatomic, readwrite) uint32_t referId;
+
+@property(nonatomic, readwrite) BOOL hasReferId;
+@property(nonatomic, readwrite) uint32_t blackListCount;
+
+@property(nonatomic, readwrite) BOOL hasBlackListCount;
+/**    repeated blackList = 24; */
+@property(nonatomic, readwrite) uint32_t deleteFlag;
+
+@property(nonatomic, readwrite) BOOL hasDeleteFlag;
+@property(nonatomic, readwrite) uint32_t groupUserCount;
+
+@property(nonatomic, readwrite) BOOL hasGroupUserCount;
+/**    required groupUser = 27; */
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *objectOperations;
 /** Test to see if @c objectOperations has been set. */
 @property(nonatomic, readwrite) BOOL hasObjectOperations;
+
+@property(nonatomic, readwrite, strong, null_resettable) SnsRedEnvelops *snsRedEnvelops;
+/** Test to see if @c snsRedEnvelops has been set. */
+@property(nonatomic, readwrite) BOOL hasSnsRedEnvelops;
+
+@property(nonatomic, readwrite, strong, null_resettable) PreDownloadInfo *preDownloadInfo;
+/** Test to see if @c preDownloadInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasPreDownloadInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) SnsWeAppInfo *weAppInfo;
+/** Test to see if @c weAppInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasWeAppInfo;
 
 @end
 
@@ -2315,6 +2427,335 @@ typedef GPB_ENUM(SnsTimeLineResponse_SnsServerConfig_FieldNumber) {
 @property(nonatomic, readwrite) int32_t copyAndPasteWordLimit;
 
 @property(nonatomic, readwrite) BOOL hasCopyAndPasteWordLimit;
+@end
+
+#pragma mark - TwitterInfo
+
+typedef GPB_ENUM(TwitterInfo_FieldNumber) {
+  TwitterInfo_FieldNumber_OauthToken = 1,
+  TwitterInfo_FieldNumber_OauthTokenSecret = 2,
+};
+
+@interface TwitterInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *oauthToken;
+/** Test to see if @c oauthToken has been set. */
+@property(nonatomic, readwrite) BOOL hasOauthToken;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *oauthTokenSecret;
+/** Test to see if @c oauthTokenSecret has been set. */
+@property(nonatomic, readwrite) BOOL hasOauthTokenSecret;
+
+@end
+
+#pragma mark - SnsPostCtocUploadInfo
+
+typedef GPB_ENUM(SnsPostCtocUploadInfo_FieldNumber) {
+  SnsPostCtocUploadInfo_FieldNumber_Flag = 1,
+  SnsPostCtocUploadInfo_FieldNumber_PhotoCount = 2,
+};
+
+@interface SnsPostCtocUploadInfo : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t flag;
+
+@property(nonatomic, readwrite) BOOL hasFlag;
+@property(nonatomic, readwrite) uint32_t photoCount;
+
+@property(nonatomic, readwrite) BOOL hasPhotoCount;
+@end
+
+#pragma mark - SnsPostOperationFields
+
+typedef GPB_ENUM(SnsPostOperationFields_FieldNumber) {
+  SnsPostOperationFields_FieldNumber_ShareURLOriginal = 1,
+  SnsPostOperationFields_FieldNumber_ShareURLOpen = 2,
+  SnsPostOperationFields_FieldNumber_JsAppId = 3,
+  SnsPostOperationFields_FieldNumber_ContactTagCount = 4,
+  SnsPostOperationFields_FieldNumber_TempUserCount = 5,
+};
+
+@interface SnsPostOperationFields : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *shareURLOriginal;
+/** Test to see if @c shareURLOriginal has been set. */
+@property(nonatomic, readwrite) BOOL hasShareURLOriginal;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *shareURLOpen;
+/** Test to see if @c shareURLOpen has been set. */
+@property(nonatomic, readwrite) BOOL hasShareURLOpen;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *jsAppId;
+/** Test to see if @c jsAppId has been set. */
+@property(nonatomic, readwrite) BOOL hasJsAppId;
+
+@property(nonatomic, readwrite) uint32_t contactTagCount;
+
+@property(nonatomic, readwrite) BOOL hasContactTagCount;
+@property(nonatomic, readwrite) uint32_t tempUserCount;
+
+@property(nonatomic, readwrite) BOOL hasTempUserCount;
+@end
+
+#pragma mark - SnsRedEnvelops
+
+typedef GPB_ENUM(SnsRedEnvelops_FieldNumber) {
+  SnsRedEnvelops_FieldNumber_RewardCount = 1,
+  SnsRedEnvelops_FieldNumber_ResourceId = 2,
+  SnsRedEnvelops_FieldNumber_ReportId = 4,
+  SnsRedEnvelops_FieldNumber_ReportKey = 5,
+};
+
+@interface SnsRedEnvelops : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t rewardCount;
+
+@property(nonatomic, readwrite) BOOL hasRewardCount;
+@property(nonatomic, readwrite) uint32_t resourceId;
+
+@property(nonatomic, readwrite) BOOL hasResourceId;
+@property(nonatomic, readwrite) uint32_t reportId;
+
+@property(nonatomic, readwrite) BOOL hasReportId;
+@property(nonatomic, readwrite) uint32_t reportKey;
+
+@property(nonatomic, readwrite) BOOL hasReportKey;
+@end
+
+#pragma mark - CanvasInfo
+
+typedef GPB_ENUM(CanvasInfo_FieldNumber) {
+  CanvasInfo_FieldNumber_DataBuffer = 1,
+};
+
+@interface CanvasInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *dataBuffer;
+/** Test to see if @c dataBuffer has been set. */
+@property(nonatomic, readwrite) BOOL hasDataBuffer;
+
+@end
+
+#pragma mark - SnsWeAppInfo
+
+typedef GPB_ENUM(SnsWeAppInfo_FieldNumber) {
+  SnsWeAppInfo_FieldNumber_MapPoiId = 1,
+  SnsWeAppInfo_FieldNumber_AppId = 2,
+  SnsWeAppInfo_FieldNumber_UserName = 3,
+  SnsWeAppInfo_FieldNumber_RedirectURL = 4,
+  SnsWeAppInfo_FieldNumber_ShowType = 5,
+  SnsWeAppInfo_FieldNumber_Score = 6,
+};
+
+@interface SnsWeAppInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *mapPoiId;
+/** Test to see if @c mapPoiId has been set. */
+@property(nonatomic, readwrite) BOOL hasMapPoiId;
+
+@property(nonatomic, readwrite) uint32_t appId;
+
+@property(nonatomic, readwrite) BOOL hasAppId;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *userName;
+/** Test to see if @c userName has been set. */
+@property(nonatomic, readwrite) BOOL hasUserName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *redirectURL;
+/** Test to see if @c redirectURL has been set. */
+@property(nonatomic, readwrite) BOOL hasRedirectURL;
+
+@property(nonatomic, readwrite) uint32_t showType;
+
+@property(nonatomic, readwrite) BOOL hasShowType;
+@property(nonatomic, readwrite) uint32_t score;
+
+@property(nonatomic, readwrite) BOOL hasScore;
+@end
+
+#pragma mark - MediaInfo
+
+typedef GPB_ENUM(MediaInfo_FieldNumber) {
+  MediaInfo_FieldNumber_Source = 1,
+  MediaInfo_FieldNumber_MediaType = 2,
+  MediaInfo_FieldNumber_VideoPlayLength = 3,
+  MediaInfo_FieldNumber_SessionId = 4,
+  MediaInfo_FieldNumber_StartTime = 5,
+};
+
+@interface MediaInfo : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t source;
+
+@property(nonatomic, readwrite) BOOL hasSource;
+@property(nonatomic, readwrite) uint32_t mediaType;
+
+@property(nonatomic, readwrite) BOOL hasMediaType;
+@property(nonatomic, readwrite) uint32_t videoPlayLength;
+
+@property(nonatomic, readwrite) BOOL hasVideoPlayLength;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *sessionId;
+/** Test to see if @c sessionId has been set. */
+@property(nonatomic, readwrite) BOOL hasSessionId;
+
+@property(nonatomic, readwrite) uint32_t startTime;
+
+@property(nonatomic, readwrite) BOOL hasStartTime;
+@end
+
+#pragma mark - SnsPostRequest
+
+typedef GPB_ENUM(SnsPostRequest_FieldNumber) {
+  SnsPostRequest_FieldNumber_BaseRequest = 1,
+  SnsPostRequest_FieldNumber_ObjectDesc = 2,
+  SnsPostRequest_FieldNumber_WithUserListCount = 3,
+  SnsPostRequest_FieldNumber_WithUserListArray = 4,
+  SnsPostRequest_FieldNumber_Privacy = 5,
+  SnsPostRequest_FieldNumber_SyncFlag = 6,
+  SnsPostRequest_FieldNumber_ClientId = 7,
+  SnsPostRequest_FieldNumber_PostBgimgType = 8,
+  SnsPostRequest_FieldNumber_GroupCount = 9,
+  SnsPostRequest_FieldNumber_ObjectSource = 11,
+  SnsPostRequest_FieldNumber_ReferId = 12,
+  SnsPostRequest_FieldNumber_BlackListCount = 13,
+  SnsPostRequest_FieldNumber_BlackListArray = 14,
+  SnsPostRequest_FieldNumber_TwitterInfo = 15,
+  SnsPostRequest_FieldNumber_GroupUserCount = 16,
+  SnsPostRequest_FieldNumber_GroupUserArray = 17,
+  SnsPostRequest_FieldNumber_CtocUploadInfo = 18,
+  SnsPostRequest_FieldNumber_SnsPostOperationFields = 19,
+  SnsPostRequest_FieldNumber_SnsRedEnvelops = 20,
+  SnsPostRequest_FieldNumber_PoiInfo = 21,
+  SnsPostRequest_FieldNumber_FromScene = 22,
+  SnsPostRequest_FieldNumber_CanvasInfo = 23,
+  SnsPostRequest_FieldNumber_MediaInfoCount = 24,
+  SnsPostRequest_FieldNumber_MediaInfoArray = 25,
+  SnsPostRequest_FieldNumber_WeAppInfo = 26,
+  SnsPostRequest_FieldNumber_ClientCheckData = 27,
+};
+
+@interface SnsPostRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *objectDesc;
+/** Test to see if @c objectDesc has been set. */
+@property(nonatomic, readwrite) BOOL hasObjectDesc;
+
+@property(nonatomic, readwrite) uint32_t withUserListCount;
+
+@property(nonatomic, readwrite) BOOL hasWithUserListCount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SKBuiltinString_t*> *withUserListArray;
+/** The number of items in @c withUserListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger withUserListArray_Count;
+
+@property(nonatomic, readwrite) uint32_t privacy;
+
+@property(nonatomic, readwrite) BOOL hasPrivacy;
+@property(nonatomic, readwrite) uint32_t syncFlag;
+
+@property(nonatomic, readwrite) BOOL hasSyncFlag;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *clientId;
+/** Test to see if @c clientId has been set. */
+@property(nonatomic, readwrite) BOOL hasClientId;
+
+@property(nonatomic, readwrite) uint32_t postBgimgType;
+
+@property(nonatomic, readwrite) BOOL hasPostBgimgType;
+@property(nonatomic, readwrite) uint32_t groupCount;
+
+@property(nonatomic, readwrite) BOOL hasGroupCount;
+/**    repeated SKBuiltinString_t groupUser                   = 10; //分享给谁 */
+@property(nonatomic, readwrite) uint32_t objectSource;
+
+@property(nonatomic, readwrite) BOOL hasObjectSource;
+@property(nonatomic, readwrite) uint32_t referId;
+
+@property(nonatomic, readwrite) BOOL hasReferId;
+@property(nonatomic, readwrite) uint32_t blackListCount;
+
+@property(nonatomic, readwrite) BOOL hasBlackListCount;
+/** 不让谁看 */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SKBuiltinString_t*> *blackListArray;
+/** The number of items in @c blackListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger blackListArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) TwitterInfo *twitterInfo;
+/** Test to see if @c twitterInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasTwitterInfo;
+
+@property(nonatomic, readwrite) uint32_t groupUserCount;
+
+@property(nonatomic, readwrite) BOOL hasGroupUserCount;
+/** 分享给谁看 */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SKBuiltinString_t*> *groupUserArray;
+/** The number of items in @c groupUserArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger groupUserArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) SnsPostCtocUploadInfo *ctocUploadInfo;
+/** Test to see if @c ctocUploadInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasCtocUploadInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) SnsPostOperationFields *snsPostOperationFields;
+/** Test to see if @c snsPostOperationFields has been set. */
+@property(nonatomic, readwrite) BOOL hasSnsPostOperationFields;
+
+@property(nonatomic, readwrite, strong, null_resettable) SnsRedEnvelops *snsRedEnvelops;
+/** Test to see if @c snsRedEnvelops has been set. */
+@property(nonatomic, readwrite) BOOL hasSnsRedEnvelops;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *poiInfo;
+/** Test to see if @c poiInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasPoiInfo;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *fromScene;
+/** Test to see if @c fromScene has been set. */
+@property(nonatomic, readwrite) BOOL hasFromScene;
+
+@property(nonatomic, readwrite, strong, null_resettable) CanvasInfo *canvasInfo;
+/** Test to see if @c canvasInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasCanvasInfo;
+
+@property(nonatomic, readwrite) uint32_t mediaInfoCount;
+
+@property(nonatomic, readwrite) BOOL hasMediaInfoCount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<MediaInfo*> *mediaInfoArray;
+/** The number of items in @c mediaInfoArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger mediaInfoArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) SnsWeAppInfo *weAppInfo;
+/** Test to see if @c weAppInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasWeAppInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *clientCheckData;
+/** Test to see if @c clientCheckData has been set. */
+@property(nonatomic, readwrite) BOOL hasClientCheckData;
+
+@end
+
+#pragma mark - SnsPostResponse
+
+typedef GPB_ENUM(SnsPostResponse_FieldNumber) {
+  SnsPostResponse_FieldNumber_BaseResponse = 1,
+  SnsPostResponse_FieldNumber_SnsObject = 2,
+  SnsPostResponse_FieldNumber_SpamTips = 3,
+};
+
+@interface SnsPostResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
+
+@property(nonatomic, readwrite, strong, null_resettable) SnsObject *snsObject;
+/** Test to see if @c snsObject has been set. */
+@property(nonatomic, readwrite) BOOL hasSnsObject;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *spamTips;
+/** Test to see if @c spamTips has been set. */
+@property(nonatomic, readwrite) BOOL hasSpamTips;
+
 @end
 
 #pragma mark - BindOpMobileRequest

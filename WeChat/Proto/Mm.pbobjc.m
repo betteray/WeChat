@@ -5547,6 +5547,76 @@ typedef struct SnsTimeLineRequest__storage_ {
 
 @end
 
+#pragma mark - PreDownloadInfo
+
+@implementation PreDownloadInfo
+
+@dynamic hasPreDownloadPercent, preDownloadPercent;
+@dynamic hasPreDownloadNetType, preDownloadNetType;
+@dynamic hasNoPreDownloadRange, noPreDownloadRange;
+
+typedef struct PreDownloadInfo__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t preDownloadPercent;
+  uint32_t preDownloadNetType;
+  NSString *noPreDownloadRange;
+} PreDownloadInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "preDownloadPercent",
+        .dataTypeSpecific.className = NULL,
+        .number = PreDownloadInfo_FieldNumber_PreDownloadPercent,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(PreDownloadInfo__storage_, preDownloadPercent),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "preDownloadNetType",
+        .dataTypeSpecific.className = NULL,
+        .number = PreDownloadInfo_FieldNumber_PreDownloadNetType,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(PreDownloadInfo__storage_, preDownloadNetType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "noPreDownloadRange",
+        .dataTypeSpecific.className = NULL,
+        .number = PreDownloadInfo_FieldNumber_NoPreDownloadRange,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(PreDownloadInfo__storage_, noPreDownloadRange),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[PreDownloadInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(PreDownloadInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\003\001\022\000\002\022\000\003\022\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - SnsObject
 
 @implementation SnsObject
@@ -5556,17 +5626,53 @@ typedef struct SnsTimeLineRequest__storage_ {
 @dynamic hasNickname, nickname;
 @dynamic hasCreateTime, createTime;
 @dynamic hasObjectDesc, objectDesc;
+@dynamic hasLikeFlag, likeFlag;
+@dynamic hasLikeCount, likeCount;
+@dynamic hasLikeUserListCount, likeUserListCount;
+@dynamic hasCommentCount, commentCount;
+@dynamic hasCommentUserListCount, commentUserListCount;
+@dynamic hasWithUserCount, withUserCount;
+@dynamic hasWithUserListCount, withUserListCount;
 @dynamic hasExtFlag, extFlag;
+@dynamic hasNoChange, noChange;
+@dynamic hasGroupCount, groupCount;
+@dynamic hasIsNotRichText, isNotRichText;
+@dynamic hasReferUsername, referUsername;
+@dynamic hasReferId, referId;
+@dynamic hasBlackListCount, blackListCount;
+@dynamic hasDeleteFlag, deleteFlag;
+@dynamic hasGroupUserCount, groupUserCount;
 @dynamic hasObjectOperations, objectOperations;
+@dynamic hasSnsRedEnvelops, snsRedEnvelops;
+@dynamic hasPreDownloadInfo, preDownloadInfo;
+@dynamic hasWeAppInfo, weAppInfo;
 
 typedef struct SnsObject__storage_ {
   uint32_t _has_storage_[1];
-  int32_t createTime;
-  int32_t extFlag;
+  uint32_t createTime;
+  uint32_t likeFlag;
+  uint32_t likeCount;
+  uint32_t likeUserListCount;
+  uint32_t commentCount;
+  uint32_t commentUserListCount;
+  uint32_t withUserCount;
+  uint32_t withUserListCount;
+  uint32_t extFlag;
+  uint32_t noChange;
+  uint32_t groupCount;
+  uint32_t isNotRichText;
+  uint32_t referId;
+  uint32_t blackListCount;
+  uint32_t deleteFlag;
+  uint32_t groupUserCount;
   NSString *username;
   NSString *nickname;
   SKBuiltinBuffer_t *objectDesc;
-  SKBuiltinString_t *objectOperations;
+  NSString *referUsername;
+  SKBuiltinBuffer_t *objectOperations;
+  SnsRedEnvelops *snsRedEnvelops;
+  PreDownloadInfo *preDownloadInfo;
+  SnsWeAppInfo *weAppInfo;
   uint64_t id_p;
 } SnsObject__storage_;
 
@@ -5610,7 +5716,7 @@ typedef struct SnsObject__storage_ {
         .hasIndex = 3,
         .offset = (uint32_t)offsetof(SnsObject__storage_, createTime),
         .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
+        .dataType = GPBDataTypeUInt32,
       },
       {
         .name = "objectDesc",
@@ -5622,21 +5728,183 @@ typedef struct SnsObject__storage_ {
         .dataType = GPBDataTypeMessage,
       },
       {
+        .name = "likeFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_LikeFlag,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, likeFlag),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "likeCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_LikeCount,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, likeCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "likeUserListCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_LikeUserListCount,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, likeUserListCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "commentCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_CommentCount,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, commentCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "commentUserListCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_CommentUserListCount,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, commentUserListCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "withUserCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_WithUserCount,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, withUserCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "withUserListCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_WithUserListCount,
+        .hasIndex = 11,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, withUserListCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
         .name = "extFlag",
         .dataTypeSpecific.className = NULL,
         .number = SnsObject_FieldNumber_ExtFlag,
-        .hasIndex = 5,
+        .hasIndex = 12,
         .offset = (uint32_t)offsetof(SnsObject__storage_, extFlag),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "noChange",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_NoChange,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, noChange),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "groupCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_GroupCount,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, groupCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "isNotRichText",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_IsNotRichText,
+        .hasIndex = 15,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, isNotRichText),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "referUsername",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_ReferUsername,
+        .hasIndex = 16,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, referUsername),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeInt32,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "referId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_ReferId,
+        .hasIndex = 17,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, referId),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "blackListCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_BlackListCount,
+        .hasIndex = 18,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, blackListCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "deleteFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_DeleteFlag,
+        .hasIndex = 19,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, deleteFlag),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "groupUserCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsObject_FieldNumber_GroupUserCount,
+        .hasIndex = 20,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, groupUserCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
       {
         .name = "objectOperations",
-        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
         .number = SnsObject_FieldNumber_ObjectOperations,
-        .hasIndex = 6,
+        .hasIndex = 21,
         .offset = (uint32_t)offsetof(SnsObject__storage_, objectOperations),
-        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "snsRedEnvelops",
+        .dataTypeSpecific.className = GPBStringifySymbol(SnsRedEnvelops),
+        .number = SnsObject_FieldNumber_SnsRedEnvelops,
+        .hasIndex = 22,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, snsRedEnvelops),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "preDownloadInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(PreDownloadInfo),
+        .number = SnsObject_FieldNumber_PreDownloadInfo,
+        .hasIndex = 23,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, preDownloadInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "weAppInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SnsWeAppInfo),
+        .number = SnsObject_FieldNumber_WeAppInfo,
+        .hasIndex = 24,
+        .offset = (uint32_t)offsetof(SnsObject__storage_, weAppInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
     };
@@ -5650,7 +5918,8 @@ typedef struct SnsObject__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\004\004\n\000\005\n\000\020\007\000\034\020\000";
+        "\026\004\n\000\005\n\000\006\010\000\007\t\000\010\021\000\n\014\000\013\024\000\r\r\000\016\021\000\020\007\000\021\010\000\022\n\000\024\r\000"
+        "\025\r\000\026\007\000\027\016\000\031\n\000\032\016\000\034\020\000\035\016\000\036\017\000\037\t\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -5860,6 +6129,935 @@ typedef struct SnsTimeLineResponse_SnsServerConfig__storage_ {
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(SnsTimeLineResponse)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - TwitterInfo
+
+@implementation TwitterInfo
+
+@dynamic hasOauthToken, oauthToken;
+@dynamic hasOauthTokenSecret, oauthTokenSecret;
+
+typedef struct TwitterInfo__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *oauthToken;
+  NSString *oauthTokenSecret;
+} TwitterInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "oauthToken",
+        .dataTypeSpecific.className = NULL,
+        .number = TwitterInfo_FieldNumber_OauthToken,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(TwitterInfo__storage_, oauthToken),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "oauthTokenSecret",
+        .dataTypeSpecific.className = NULL,
+        .number = TwitterInfo_FieldNumber_OauthTokenSecret,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(TwitterInfo__storage_, oauthTokenSecret),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[TwitterInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(TwitterInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\002\001\n\000\002\020\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - SnsPostCtocUploadInfo
+
+@implementation SnsPostCtocUploadInfo
+
+@dynamic hasFlag, flag;
+@dynamic hasPhotoCount, photoCount;
+
+typedef struct SnsPostCtocUploadInfo__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t flag;
+  uint32_t photoCount;
+} SnsPostCtocUploadInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "flag",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostCtocUploadInfo_FieldNumber_Flag,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SnsPostCtocUploadInfo__storage_, flag),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "photoCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostCtocUploadInfo_FieldNumber_PhotoCount,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(SnsPostCtocUploadInfo__storage_, photoCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SnsPostCtocUploadInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SnsPostCtocUploadInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\002\n\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - SnsPostOperationFields
+
+@implementation SnsPostOperationFields
+
+@dynamic hasShareURLOriginal, shareURLOriginal;
+@dynamic hasShareURLOpen, shareURLOpen;
+@dynamic hasJsAppId, jsAppId;
+@dynamic hasContactTagCount, contactTagCount;
+@dynamic hasTempUserCount, tempUserCount;
+
+typedef struct SnsPostOperationFields__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t contactTagCount;
+  uint32_t tempUserCount;
+  NSString *shareURLOriginal;
+  NSString *shareURLOpen;
+  NSString *jsAppId;
+} SnsPostOperationFields__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "shareURLOriginal",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostOperationFields_FieldNumber_ShareURLOriginal,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SnsPostOperationFields__storage_, shareURLOriginal),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "shareURLOpen",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostOperationFields_FieldNumber_ShareURLOpen,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(SnsPostOperationFields__storage_, shareURLOpen),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "jsAppId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostOperationFields_FieldNumber_JsAppId,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(SnsPostOperationFields__storage_, jsAppId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "contactTagCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostOperationFields_FieldNumber_ContactTagCount,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(SnsPostOperationFields__storage_, contactTagCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tempUserCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostOperationFields_FieldNumber_TempUserCount,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(SnsPostOperationFields__storage_, tempUserCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SnsPostOperationFields class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SnsPostOperationFields__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\005\001\006!)\000\002\006!%\000\003\007\000\004\017\000\005\r\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - SnsRedEnvelops
+
+@implementation SnsRedEnvelops
+
+@dynamic hasRewardCount, rewardCount;
+@dynamic hasResourceId, resourceId;
+@dynamic hasReportId, reportId;
+@dynamic hasReportKey, reportKey;
+
+typedef struct SnsRedEnvelops__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t rewardCount;
+  uint32_t resourceId;
+  uint32_t reportId;
+  uint32_t reportKey;
+} SnsRedEnvelops__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "rewardCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsRedEnvelops_FieldNumber_RewardCount,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SnsRedEnvelops__storage_, rewardCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "resourceId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsRedEnvelops_FieldNumber_ResourceId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(SnsRedEnvelops__storage_, resourceId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "reportId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsRedEnvelops_FieldNumber_ReportId,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(SnsRedEnvelops__storage_, reportId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "reportKey",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsRedEnvelops_FieldNumber_ReportKey,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(SnsRedEnvelops__storage_, reportKey),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SnsRedEnvelops class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SnsRedEnvelops__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\004\001\013\000\002\n\000\004\010\000\005\t\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - CanvasInfo
+
+@implementation CanvasInfo
+
+@dynamic hasDataBuffer, dataBuffer;
+
+typedef struct CanvasInfo__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *dataBuffer;
+} CanvasInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "dataBuffer",
+        .dataTypeSpecific.className = NULL,
+        .number = CanvasInfo_FieldNumber_DataBuffer,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(CanvasInfo__storage_, dataBuffer),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[CanvasInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(CanvasInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001\n\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - SnsWeAppInfo
+
+@implementation SnsWeAppInfo
+
+@dynamic hasMapPoiId, mapPoiId;
+@dynamic hasAppId, appId;
+@dynamic hasUserName, userName;
+@dynamic hasRedirectURL, redirectURL;
+@dynamic hasShowType, showType;
+@dynamic hasScore, score;
+
+typedef struct SnsWeAppInfo__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t appId;
+  uint32_t showType;
+  uint32_t score;
+  NSString *mapPoiId;
+  NSString *userName;
+  NSString *redirectURL;
+} SnsWeAppInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "mapPoiId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsWeAppInfo_FieldNumber_MapPoiId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SnsWeAppInfo__storage_, mapPoiId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "appId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsWeAppInfo_FieldNumber_AppId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(SnsWeAppInfo__storage_, appId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "userName",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsWeAppInfo_FieldNumber_UserName,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(SnsWeAppInfo__storage_, userName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "redirectURL",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsWeAppInfo_FieldNumber_RedirectURL,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(SnsWeAppInfo__storage_, redirectURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "showType",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsWeAppInfo_FieldNumber_ShowType,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(SnsWeAppInfo__storage_, showType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "score",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsWeAppInfo_FieldNumber_Score,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(SnsWeAppInfo__storage_, score),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SnsWeAppInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SnsWeAppInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\005\001\010\000\002\005\000\003\010\000\004\t!!\000\005\010\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - MediaInfo
+
+@implementation MediaInfo
+
+@dynamic hasSource, source;
+@dynamic hasMediaType, mediaType;
+@dynamic hasVideoPlayLength, videoPlayLength;
+@dynamic hasSessionId, sessionId;
+@dynamic hasStartTime, startTime;
+
+typedef struct MediaInfo__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t source;
+  uint32_t mediaType;
+  uint32_t videoPlayLength;
+  uint32_t startTime;
+  NSString *sessionId;
+} MediaInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "source",
+        .dataTypeSpecific.className = NULL,
+        .number = MediaInfo_FieldNumber_Source,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(MediaInfo__storage_, source),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "mediaType",
+        .dataTypeSpecific.className = NULL,
+        .number = MediaInfo_FieldNumber_MediaType,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(MediaInfo__storage_, mediaType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "videoPlayLength",
+        .dataTypeSpecific.className = NULL,
+        .number = MediaInfo_FieldNumber_VideoPlayLength,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(MediaInfo__storage_, videoPlayLength),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "sessionId",
+        .dataTypeSpecific.className = NULL,
+        .number = MediaInfo_FieldNumber_SessionId,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(MediaInfo__storage_, sessionId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "startTime",
+        .dataTypeSpecific.className = NULL,
+        .number = MediaInfo_FieldNumber_StartTime,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(MediaInfo__storage_, startTime),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[MediaInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(MediaInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\004\002\t\000\003\017\000\004\t\000\005\t\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - SnsPostRequest
+
+@implementation SnsPostRequest
+
+@dynamic hasBaseRequest, baseRequest;
+@dynamic hasObjectDesc, objectDesc;
+@dynamic hasWithUserListCount, withUserListCount;
+@dynamic withUserListArray, withUserListArray_Count;
+@dynamic hasPrivacy, privacy;
+@dynamic hasSyncFlag, syncFlag;
+@dynamic hasClientId, clientId;
+@dynamic hasPostBgimgType, postBgimgType;
+@dynamic hasGroupCount, groupCount;
+@dynamic hasObjectSource, objectSource;
+@dynamic hasReferId, referId;
+@dynamic hasBlackListCount, blackListCount;
+@dynamic blackListArray, blackListArray_Count;
+@dynamic hasTwitterInfo, twitterInfo;
+@dynamic hasGroupUserCount, groupUserCount;
+@dynamic groupUserArray, groupUserArray_Count;
+@dynamic hasCtocUploadInfo, ctocUploadInfo;
+@dynamic hasSnsPostOperationFields, snsPostOperationFields;
+@dynamic hasSnsRedEnvelops, snsRedEnvelops;
+@dynamic hasPoiInfo, poiInfo;
+@dynamic hasFromScene, fromScene;
+@dynamic hasCanvasInfo, canvasInfo;
+@dynamic hasMediaInfoCount, mediaInfoCount;
+@dynamic mediaInfoArray, mediaInfoArray_Count;
+@dynamic hasWeAppInfo, weAppInfo;
+@dynamic hasClientCheckData, clientCheckData;
+
+typedef struct SnsPostRequest__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t withUserListCount;
+  uint32_t privacy;
+  uint32_t syncFlag;
+  uint32_t postBgimgType;
+  uint32_t groupCount;
+  uint32_t objectSource;
+  uint32_t referId;
+  uint32_t blackListCount;
+  uint32_t groupUserCount;
+  uint32_t mediaInfoCount;
+  BaseRequest *baseRequest;
+  SKBuiltinBuffer_t *objectDesc;
+  NSMutableArray *withUserListArray;
+  NSString *clientId;
+  NSMutableArray *blackListArray;
+  TwitterInfo *twitterInfo;
+  NSMutableArray *groupUserArray;
+  SnsPostCtocUploadInfo *ctocUploadInfo;
+  SnsPostOperationFields *snsPostOperationFields;
+  SnsRedEnvelops *snsRedEnvelops;
+  SKBuiltinBuffer_t *poiInfo;
+  NSString *fromScene;
+  CanvasInfo *canvasInfo;
+  NSMutableArray *mediaInfoArray;
+  SnsWeAppInfo *weAppInfo;
+  SKBuiltinBuffer_t *clientCheckData;
+} SnsPostRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseRequest",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseRequest),
+        .number = SnsPostRequest_FieldNumber_BaseRequest,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, baseRequest),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "objectDesc",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = SnsPostRequest_FieldNumber_ObjectDesc,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, objectDesc),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "withUserListCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_WithUserListCount,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, withUserListCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "withUserListArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = SnsPostRequest_FieldNumber_WithUserListArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, withUserListArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "privacy",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_Privacy,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, privacy),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "syncFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_SyncFlag,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, syncFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "clientId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_ClientId,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, clientId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "postBgimgType",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_PostBgimgType,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, postBgimgType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "groupCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_GroupCount,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, groupCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "objectSource",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_ObjectSource,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, objectSource),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "referId",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_ReferId,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, referId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "blackListCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_BlackListCount,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, blackListCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "blackListArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = SnsPostRequest_FieldNumber_BlackListArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, blackListArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "twitterInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(TwitterInfo),
+        .number = SnsPostRequest_FieldNumber_TwitterInfo,
+        .hasIndex = 11,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, twitterInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "groupUserCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_GroupUserCount,
+        .hasIndex = 12,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, groupUserCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "groupUserArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = SnsPostRequest_FieldNumber_GroupUserArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, groupUserArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "ctocUploadInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SnsPostCtocUploadInfo),
+        .number = SnsPostRequest_FieldNumber_CtocUploadInfo,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, ctocUploadInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "snsPostOperationFields",
+        .dataTypeSpecific.className = GPBStringifySymbol(SnsPostOperationFields),
+        .number = SnsPostRequest_FieldNumber_SnsPostOperationFields,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, snsPostOperationFields),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "snsRedEnvelops",
+        .dataTypeSpecific.className = GPBStringifySymbol(SnsRedEnvelops),
+        .number = SnsPostRequest_FieldNumber_SnsRedEnvelops,
+        .hasIndex = 15,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, snsRedEnvelops),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "poiInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = SnsPostRequest_FieldNumber_PoiInfo,
+        .hasIndex = 16,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, poiInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "fromScene",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_FromScene,
+        .hasIndex = 17,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, fromScene),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "canvasInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(CanvasInfo),
+        .number = SnsPostRequest_FieldNumber_CanvasInfo,
+        .hasIndex = 18,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, canvasInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "mediaInfoCount",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostRequest_FieldNumber_MediaInfoCount,
+        .hasIndex = 19,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, mediaInfoCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "mediaInfoArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(MediaInfo),
+        .number = SnsPostRequest_FieldNumber_MediaInfoArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, mediaInfoArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "weAppInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SnsWeAppInfo),
+        .number = SnsPostRequest_FieldNumber_WeAppInfo,
+        .hasIndex = 20,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, weAppInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "clientCheckData",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = SnsPostRequest_FieldNumber_ClientCheckData,
+        .hasIndex = 21,
+        .offset = (uint32_t)offsetof(SnsPostRequest__storage_, clientCheckData),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SnsPostRequest class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SnsPostRequest__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\031\001\013\000\002\n\000\003\021\000\004\000withUserList\000\006\010\000\007\010\000\010\r\000\t\n\000\013\014\000"
+        "\014\007\000\r\016\000\016\000blackList\000\017\013\000\020\016\000\021\000groupUser\000\022\016\000\023"
+        "\026\000\024\016\000\025\007\000\026\t\000\027\n\000\030\016\000\031\000mediaInfo\000\032\t\000\033\017\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - SnsPostResponse
+
+@implementation SnsPostResponse
+
+@dynamic hasBaseResponse, baseResponse;
+@dynamic hasSnsObject, snsObject;
+@dynamic hasSpamTips, spamTips;
+
+typedef struct SnsPostResponse__storage_ {
+  uint32_t _has_storage_[1];
+  BaseResponse *baseResponse;
+  SnsObject *snsObject;
+  NSString *spamTips;
+} SnsPostResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseResponse",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseResponse),
+        .number = SnsPostResponse_FieldNumber_BaseResponse,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SnsPostResponse__storage_, baseResponse),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "snsObject",
+        .dataTypeSpecific.className = GPBStringifySymbol(SnsObject),
+        .number = SnsPostResponse_FieldNumber_SnsObject,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(SnsPostResponse__storage_, snsObject),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "spamTips",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsPostResponse_FieldNumber_SpamTips,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(SnsPostResponse__storage_, spamTips),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SnsPostResponse class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SnsPostResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\003\001\014\000\002\t\000\003\010\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
