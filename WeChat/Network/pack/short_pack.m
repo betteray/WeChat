@@ -15,6 +15,7 @@
 
 #import "FSOpenSSL.h"
 #import "Cookie.h"
+#import "Varint128.h"
 
 @implementation short_pack
 
@@ -60,12 +61,13 @@
         return nil;
     }
     
-    NSInteger index = 0;
+    UInt32 index = 0;
     int mark = (int) [body toInt8ofRange:index];
     if (mark == 0xbf)
     {
         index++;
     }
+    
     int32_t headLength = (int) [body toInt8ofRange:index] >> 2;
     shortHeader.compressed = (1 == ((int) [body toInt8ofRange:index] & 0x3));
     index++;
@@ -98,20 +100,9 @@
         return nil;
     }
     
-    int cgi = 0;
-    int dwLen = [self decode:&cgi bytes:[body subdataWithRange:NSMakeRange(index, 5)] off:0];
-    shortHeader.cgi = cgi;
-    index += dwLen;
-    
-    int protobufLen = 0;
-    dwLen = [self decode:&protobufLen bytes:[body subdataWithRange:NSMakeRange(index, 5)] off:0];
-    index += dwLen;
-    
-    int compressedLen = 0;
-    dwLen = [self decode:&compressedLen bytes:[body subdataWithRange:NSMakeRange(index, 5)] off:0];
-    //后面的数据无视。
-    
-    //解包完毕，取包体。
+    shortHeader.cgi = [Varint128 decode32FromBytes:[body bytes] offset:&index];
+    int protobufLen = [Varint128 decode32FromBytes:[body bytes] offset:&index];
+    int compressedLen = [Varint128 decode32FromBytes:[body bytes] offset:&index];
     
     if (headLength < [body length])
     {
@@ -119,27 +110,6 @@
     }
     
     return package;
-}
-
-//
-+ (int)decode:(int *)apuValue bytes:(NSData *)apcBuffer off:(int)off
-{
-    int num3;
-    int num = 0;
-    int num2 = 0;
-    int num4 = 0;
-    int num5 = *(int *) [[apcBuffer subdataWithRange:NSMakeRange(off + num++, 1)] bytes];
-    while ((num5 & 0xff) >= 0x80)
-    {
-        num3 = num5 & 0x7f;
-        num4 += num3 << num2;
-        num2 += 7;
-        num5 = *(int *) [[apcBuffer subdataWithRange:NSMakeRange(off + num++, 1)] bytes];
-    }
-    num3 = num5;
-    num4 += num3 << num2;
-    *apuValue = num4;
-    return num;
 }
 
 @end
