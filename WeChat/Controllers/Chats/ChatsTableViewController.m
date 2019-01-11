@@ -10,6 +10,7 @@
 #import "ChatsTableViewCell.h"
 #import "WCMessage.h"
 #import "ChatDetailTableViewController.h"
+#import "AccountInfo.h"
 
 @interface ChatsTableViewController ()
 
@@ -35,7 +36,11 @@
 
 - (void)refreshChats
 {
-    _chats = [[[WCMessage allObjects] sortedResultsUsingKeyPath:@"createTime" ascending:NO] distinctResultsUsingKeyPaths:@[@"fromUser.userName"]];    
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
+    AccountInfo *info = [[AccountInfo objectsWithPredicate:pre] firstObject];
+    WCContact *slf = [[WCContact objectsWhere:@"userName = %@", info.userName] firstObject];
+    
+    _chats = [[[WCMessage objectsWhere:@"fromUser != %@", slf] sortedResultsUsingKeyPath:@"createTime" ascending:NO] distinctResultsUsingKeyPaths:@[@"fromUser.userName"]];
     [self.tableView reloadData];
 }
 

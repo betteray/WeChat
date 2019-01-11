@@ -30,18 +30,12 @@
     
     _msgTextField.delegate = self;
     
-    
+    [self refreshChats:YES];
+
     __weak typeof(self) weakSelf = self;
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString * _Nonnull notification, RLMRealm * _Nonnull realm) {
         [weakSelf refreshChats:YES];
     }];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [self refreshChats:YES];
 }
 
 - (void)refreshChats:(BOOL)animated
