@@ -101,8 +101,8 @@
     }
     
     shortHeader.cgi = [Varint128 decode32FromBytes:[body bytes] offset:&index];
-    int protobufLen = [Varint128 decode32FromBytes:[body bytes] offset:&index];
-    int compressedLen = [Varint128 decode32FromBytes:[body bytes] offset:&index];
+    [Varint128 decode32FromBytes:[body bytes] offset:&index];   //int protobufLen
+    [Varint128 decode32FromBytes:[body bytes] offset:&index];   //int compressedLen =
     
     if (headLength < [body length])
     {

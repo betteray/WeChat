@@ -8285,6 +8285,982 @@ typedef struct SyncKey__storage_ {
 
 @end
 
+#pragma mark - GetA8KeyReq
+
+@implementation GetA8KeyReq
+
+@dynamic hasBaseRequest, baseRequest;
+@dynamic hasOpCode, opCode;
+@dynamic hasA2Key, a2Key;
+@dynamic hasAppId, appId;
+@dynamic hasScope, scope;
+@dynamic hasState, state;
+@dynamic hasReqURL, reqURL;
+@dynamic hasFriendUserName, friendUserName;
+@dynamic hasFriendQq, friendQq;
+@dynamic hasScene, scene;
+@dynamic hasUserName, userName;
+@dynamic hasBundleId, bundleId;
+@dynamic hasA2KeyNew, a2KeyNew;
+@dynamic hasReason, reason;
+@dynamic hasFontScale, fontScale;
+@dynamic hasFlag, flag;
+@dynamic hasNetType, netType;
+@dynamic hasCodeType, codeType;
+@dynamic hasCodeVersion, codeVersion;
+@dynamic hasRequestId, requestId;
+@dynamic hasFunctionId, functionId;
+@dynamic hasWalletRegion, walletRegion;
+@dynamic hasCookie, cookie;
+@dynamic hasOuterURL, outerURL;
+@dynamic hasSubScene, subScene;
+
+typedef struct GetA8KeyReq__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t opCode;
+  uint32_t friendQq;
+  uint32_t scene;
+  uint32_t reason;
+  uint32_t fontScale;
+  uint32_t flag;
+  uint32_t codeType;
+  uint32_t codeVersion;
+  uint32_t requestId;
+  uint32_t walletRegion;
+  uint32_t subScene;
+  BaseRequest *baseRequest;
+  SKBuiltinBuffer_t *a2Key;
+  SKBuiltinString_t *appId;
+  SKBuiltinString_t *scope;
+  SKBuiltinString_t *state;
+  SKBuiltinString_t *reqURL;
+  NSString *friendUserName;
+  NSString *userName;
+  NSString *bundleId;
+  SKBuiltinBuffer_t *a2KeyNew;
+  NSString *netType;
+  NSString *functionId;
+  SKBuiltinBuffer_t *cookie;
+  NSString *outerURL;
+} GetA8KeyReq__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseRequest",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseRequest),
+        .number = GetA8KeyReq_FieldNumber_BaseRequest,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, baseRequest),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "opCode",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_OpCode,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, opCode),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "a2Key",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = GetA8KeyReq_FieldNumber_A2Key,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, a2Key),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "appId",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = GetA8KeyReq_FieldNumber_AppId,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, appId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "scope",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = GetA8KeyReq_FieldNumber_Scope,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, scope),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "state",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = GetA8KeyReq_FieldNumber_State,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, state),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "reqURL",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinString_t),
+        .number = GetA8KeyReq_FieldNumber_ReqURL,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, reqURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "friendUserName",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_FriendUserName,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, friendUserName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "friendQq",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_FriendQq,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, friendQq),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "scene",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_Scene,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, scene),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "userName",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_UserName,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, userName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "bundleId",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_BundleId,
+        .hasIndex = 11,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, bundleId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "a2KeyNew",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = GetA8KeyReq_FieldNumber_A2KeyNew,
+        .hasIndex = 12,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, a2KeyNew),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "reason",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_Reason,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, reason),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "fontScale",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_FontScale,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, fontScale),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "flag",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_Flag,
+        .hasIndex = 15,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, flag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "netType",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_NetType,
+        .hasIndex = 16,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, netType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "codeType",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_CodeType,
+        .hasIndex = 17,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, codeType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "codeVersion",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_CodeVersion,
+        .hasIndex = 18,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, codeVersion),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "requestId",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_RequestId,
+        .hasIndex = 19,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, requestId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "functionId",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_FunctionId,
+        .hasIndex = 20,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, functionId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "walletRegion",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_WalletRegion,
+        .hasIndex = 21,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, walletRegion),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "cookie",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = GetA8KeyReq_FieldNumber_Cookie,
+        .hasIndex = 22,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, cookie),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "outerURL",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_OuterURL,
+        .hasIndex = 23,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, outerURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "subScene",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyReq_FieldNumber_SubScene,
+        .hasIndex = 24,
+        .offset = (uint32_t)offsetof(GetA8KeyReq__storage_, subScene),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetA8KeyReq class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GetA8KeyReq__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\030\001K\000\002F\000\003E\000\004DA\000\005E\000\006E\000\007D!!\000\010N\000\tGA\000\nE\000\013H\000\014G"
+        "A\000\rH\000\016F\000\017I\000\020D\000\021G\000\022\010\000\023\013\000\024\t\000\025\n\000\026\014\000\030\006!!\000\031\010\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - JSAPIPermissionBitSet
+
+@implementation JSAPIPermissionBitSet
+
+@dynamic hasBitValue, bitValue;
+@dynamic hasBitValue2, bitValue2;
+@dynamic hasBitValue3, bitValue3;
+@dynamic hasBitValue4, bitValue4;
+
+typedef struct JSAPIPermissionBitSet__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t bitValue;
+  uint32_t bitValue2;
+  uint32_t bitValue3;
+  uint32_t bitValue4;
+} JSAPIPermissionBitSet__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "bitValue",
+        .dataTypeSpecific.className = NULL,
+        .number = JSAPIPermissionBitSet_FieldNumber_BitValue,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(JSAPIPermissionBitSet__storage_, bitValue),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "bitValue2",
+        .dataTypeSpecific.className = NULL,
+        .number = JSAPIPermissionBitSet_FieldNumber_BitValue2,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(JSAPIPermissionBitSet__storage_, bitValue2),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "bitValue3",
+        .dataTypeSpecific.className = NULL,
+        .number = JSAPIPermissionBitSet_FieldNumber_BitValue3,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(JSAPIPermissionBitSet__storage_, bitValue3),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "bitValue4",
+        .dataTypeSpecific.className = NULL,
+        .number = JSAPIPermissionBitSet_FieldNumber_BitValue4,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(JSAPIPermissionBitSet__storage_, bitValue4),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[JSAPIPermissionBitSet class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(JSAPIPermissionBitSet__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\004\001H\000\002I\000\003I\000\004I\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - GeneralControlBitSet
+
+@implementation GeneralControlBitSet
+
+@dynamic hasBitValue, bitValue;
+
+typedef struct GeneralControlBitSet__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t bitValue;
+} GeneralControlBitSet__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "bitValue",
+        .dataTypeSpecific.className = NULL,
+        .number = GeneralControlBitSet_FieldNumber_BitValue,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GeneralControlBitSet__storage_, bitValue),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GeneralControlBitSet class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GeneralControlBitSet__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001H\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - BizApiInfo
+
+@implementation BizApiInfo
+
+@dynamic hasApiName, apiName;
+
+typedef struct BizApiInfo__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *apiName;
+} BizApiInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "apiName",
+        .dataTypeSpecific.className = NULL,
+        .number = BizApiInfo_FieldNumber_ApiName,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(BizApiInfo__storage_, apiName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[BizApiInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(BizApiInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001G\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - BizScopeInfo
+
+@implementation BizScopeInfo
+
+@dynamic hasScope, scope;
+@dynamic hasScopeStatus, scopeStatus;
+@dynamic hasScopeDesc, scopeDesc;
+@dynamic hasApiCount, apiCount;
+@dynamic apiListArray, apiListArray_Count;
+
+typedef struct BizScopeInfo__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t scopeStatus;
+  uint32_t apiCount;
+  NSString *scope;
+  NSString *scopeDesc;
+  NSMutableArray *apiListArray;
+} BizScopeInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "scope",
+        .dataTypeSpecific.className = NULL,
+        .number = BizScopeInfo_FieldNumber_Scope,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(BizScopeInfo__storage_, scope),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "scopeStatus",
+        .dataTypeSpecific.className = NULL,
+        .number = BizScopeInfo_FieldNumber_ScopeStatus,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(BizScopeInfo__storage_, scopeStatus),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "scopeDesc",
+        .dataTypeSpecific.className = NULL,
+        .number = BizScopeInfo_FieldNumber_ScopeDesc,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(BizScopeInfo__storage_, scopeDesc),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "apiCount",
+        .dataTypeSpecific.className = NULL,
+        .number = BizScopeInfo_FieldNumber_ApiCount,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(BizScopeInfo__storage_, apiCount),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "apiListArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(BizApiInfo),
+        .number = BizScopeInfo_FieldNumber_ApiListArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(BizScopeInfo__storage_, apiListArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[BizScopeInfo class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(BizScopeInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\005\001E\000\002K\000\003I\000\004H\000\005\000ApiList\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - DeepLinkBitSet
+
+@implementation DeepLinkBitSet
+
+@dynamic hasBitValue, bitValue;
+
+typedef struct DeepLinkBitSet__storage_ {
+  uint32_t _has_storage_[1];
+  uint64_t bitValue;
+} DeepLinkBitSet__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "bitValue",
+        .dataTypeSpecific.className = NULL,
+        .number = DeepLinkBitSet_FieldNumber_BitValue,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(DeepLinkBitSet__storage_, bitValue),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[DeepLinkBitSet class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(DeepLinkBitSet__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001H\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - HttpHeader
+
+@implementation HttpHeader
+
+@dynamic hasKey, key;
+@dynamic hasValue, value;
+
+typedef struct HttpHeader__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *key;
+  NSString *value;
+} HttpHeader__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "key",
+        .dataTypeSpecific.className = NULL,
+        .number = HttpHeader_FieldNumber_Key,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(HttpHeader__storage_, key),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "value",
+        .dataTypeSpecific.className = NULL,
+        .number = HttpHeader_FieldNumber_Value,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(HttpHeader__storage_, value),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[HttpHeader class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(HttpHeader__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - GetA8KeyResp
+
+@implementation GetA8KeyResp
+
+@dynamic hasBaseResponse, baseResponse;
+@dynamic hasFullURL, fullURL;
+@dynamic hasA8Key, a8Key;
+@dynamic hasActionCode, actionCode;
+@dynamic hasTitle, title;
+@dynamic hasContent, content;
+@dynamic hasJsapipermission, jsapipermission;
+@dynamic hasGeneralControlBitSet, generalControlBitSet;
+@dynamic hasUserName, userName;
+@dynamic hasShareURL, shareURL;
+@dynamic hasScopeCount, scopeCount;
+@dynamic scopeListArray, scopeListArray_Count;
+@dynamic hasAntispamTicket, antispamTicket;
+@dynamic hasSsid, ssid;
+@dynamic hasMid, mid;
+@dynamic hasDeepLinkBitSet, deepLinkBitSet;
+@dynamic hasJsapicontrolBytes, jsapicontrolBytes;
+@dynamic hasHTTPHeaderCount, HTTPHeaderCount;
+@dynamic HTTPHeaderArray, HTTPHeaderArray_Count;
+@dynamic hasWording, wording;
+@dynamic hasHeadImg, headImg;
+@dynamic hasCookie, cookie;
+@dynamic hasMenuWording, menuWording;
+
+typedef struct GetA8KeyResp__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t actionCode;
+  uint32_t scopeCount;
+  uint32_t HTTPHeaderCount;
+  BaseResponse *baseResponse;
+  NSString *fullURL;
+  NSString *a8Key;
+  NSString *title;
+  NSString *content;
+  JSAPIPermissionBitSet *jsapipermission;
+  GeneralControlBitSet *generalControlBitSet;
+  NSString *userName;
+  NSString *shareURL;
+  NSMutableArray *scopeListArray;
+  NSString *antispamTicket;
+  NSString *ssid;
+  NSString *mid;
+  DeepLinkBitSet *deepLinkBitSet;
+  SKBuiltinBuffer_t *jsapicontrolBytes;
+  NSMutableArray *HTTPHeaderArray;
+  NSString *wording;
+  NSString *headImg;
+  SKBuiltinBuffer_t *cookie;
+  NSString *menuWording;
+} GetA8KeyResp__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseResponse",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseResponse),
+        .number = GetA8KeyResp_FieldNumber_BaseResponse,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, baseResponse),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "fullURL",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_FullURL,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, fullURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "a8Key",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_A8Key,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, a8Key),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "actionCode",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_ActionCode,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, actionCode),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "title",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_Title,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, title),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "content",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_Content,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, content),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "jsapipermission",
+        .dataTypeSpecific.className = GPBStringifySymbol(JSAPIPermissionBitSet),
+        .number = GetA8KeyResp_FieldNumber_Jsapipermission,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, jsapipermission),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "generalControlBitSet",
+        .dataTypeSpecific.className = GPBStringifySymbol(GeneralControlBitSet),
+        .number = GetA8KeyResp_FieldNumber_GeneralControlBitSet,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, generalControlBitSet),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "userName",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_UserName,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, userName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "shareURL",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_ShareURL,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, shareURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "scopeCount",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_ScopeCount,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, scopeCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "scopeListArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(BizScopeInfo),
+        .number = GetA8KeyResp_FieldNumber_ScopeListArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, scopeListArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "antispamTicket",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_AntispamTicket,
+        .hasIndex = 11,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, antispamTicket),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "ssid",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_Ssid,
+        .hasIndex = 12,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, ssid),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "mid",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_Mid,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, mid),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "deepLinkBitSet",
+        .dataTypeSpecific.className = GPBStringifySymbol(DeepLinkBitSet),
+        .number = GetA8KeyResp_FieldNumber_DeepLinkBitSet,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, deepLinkBitSet),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "jsapicontrolBytes",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = GetA8KeyResp_FieldNumber_JsapicontrolBytes,
+        .hasIndex = 15,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, jsapicontrolBytes),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "HTTPHeaderCount",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_HTTPHeaderCount,
+        .hasIndex = 16,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, HTTPHeaderCount),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "HTTPHeaderArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(HttpHeader),
+        .number = GetA8KeyResp_FieldNumber_HTTPHeaderArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, HTTPHeaderArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "wording",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_Wording,
+        .hasIndex = 17,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, wording),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "headImg",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_HeadImg,
+        .hasIndex = 18,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, headImg),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "cookie",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = GetA8KeyResp_FieldNumber_Cookie,
+        .hasIndex = 19,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, cookie),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "menuWording",
+        .dataTypeSpecific.className = NULL,
+        .number = GetA8KeyResp_FieldNumber_MenuWording,
+        .hasIndex = 20,
+        .offset = (uint32_t)offsetof(GetA8KeyResp__storage_, menuWording),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetA8KeyResp class]
+                                     rootClass:[MmRoot class]
+                                          file:MmRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GetA8KeyResp__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\025\001L\000\002G\000\003E\000\004J\000\005E\000\006G\000\007f\t\000\010T\000\tH\000\017H\000\020J\000\021\000Sco"
+        "peList\000\022N\000\024d\000\025c\000\026N\000\027f\013\000\030!!!,\000\031\000httpHeade"
+        "r\000\033\007\000\035\013\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 
 #pragma clang diagnostic pop
 

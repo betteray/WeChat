@@ -21,6 +21,8 @@ target 'WeChat' do
   target 'WeChatTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Protobuf'
+    
   end
 
   target 'WeChatUITests' do

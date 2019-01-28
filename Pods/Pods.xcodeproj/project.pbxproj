@@ -112,9 +112,9 @@
 		404B465F2F33A9F210302F69586C8E29 /* UIImage+GIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 4708C2EAF043BE0DDBACE16652486803 /* UIImage+GIF.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		40B7938062FFDAAD3AFEB92A54CC146A /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3908D11997492FA91FC0BEBE855CDD /* DDContextFilterLogFormatter.m */; };
 		40DCF90E924A8CFFFF83F8612139E841 /* list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA36B2B3C5F3DF0C46517E9AE9A7322 /* list.cpp */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"3.13.0\"' -D__ASSERTMACROS__ -DREALM_ENABLE_SYNC"; }; };
+		41719418A619734540D8C06B9F563080 /* Pods-WeChatTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D32D1B671ADD0ECD4E0663A84C9301 /* Pods-WeChatTests-dummy.m */; };
 		422A5C7126E31072F4851D9E18694506 /* SDWebImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7E3F88C32A83576B10AAB5E2101A6B /* SDWebImageFrame.m */; };
 		434D2384A1CB440994C00F67B6370559 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7DE5EBD330E37984A9577483C1A4A /* IQUIView+IQKeyboardToolbar.m */; };
-		442DB588B32CFA42A521AFA78B2D33CE /* Pods-WeChatTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D32D1B671ADD0ECD4E0663A84C9301 /* Pods-WeChatTests-dummy.m */; };
 		444CBA8E5DF9050B2614B3105C303903 /* ASIS3ObjectRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7152A3029574D6CCCF302C569E5CF5C0 /* ASIS3ObjectRequest.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4689FCF918A457192F96B0EF3894CB8E /* RLMObjectStore.mm in Sources */ = {isa = PBXBuildFile; fileRef = C691EEF2AEF093E9F1273BB05DB4D081 /* RLMObjectStore.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"3.13.0\"' -D__ASSERTMACROS__ -DREALM_ENABLE_SYNC"; }; };
 		46D93AAAD865EB58334261268EE4220E /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E00CD320C97963EBE9528B86F00BCE8 /* SDWebImageManager.m */; };
@@ -423,7 +423,7 @@
 			remoteGlobalIDString = 17A961B2C9B06CBE7B39A8FDE222FD33;
 			remoteInfo = FastSocket;
 		};
-		5F64AC960270778FAC631FE0F019F7D3 /* PBXContainerItemProxy */ = {
+		5570F11D5743BC3707A4E543676AC897 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -450,6 +450,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5C45410DCA82C5230273FCECF4EB1C14;
 			remoteInfo = RegexKitLite;
+		};
+		B307828C6DFEA6AE24BB1D5DEA874458 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A682C6D3B7E2F7D4ADA8312F245BEB9C;
+			remoteInfo = Protobuf;
 		};
 		CA8E2179E1DB1259CDF45BF87D854FC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -931,6 +938,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		078D5F654ECCD564AC549CB72EA460BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E606030CE134E57810BBBFED77183C5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -951,13 +965,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2BFF98B87810F04DD68DBCE3FCC8C802 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		342E7DA3589EE9EBA41ED3792FE76B87 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1882,6 +1889,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		227AF1407B2616C286DF6B84A69FF1A2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		505EDB59D2CE05D77B07EEEECE21F475 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1970,13 +1984,6 @@
 				FEADA8514EA9431843358B1E0A30D549 /* Timestamp.pbobjc.h in Headers */,
 				4D0D7E45FEFFD7918789FDC02F595FEB /* Type.pbobjc.h in Headers */,
 				B163E667909418F88E450FD9397CDC75 /* Wrappers.pbobjc.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B67CBACFBF7DBE1C168D47CB8C14FAEB /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2096,18 +2103,19 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0F3AD34B0B46829C9D486A02C2F502D1 /* Pods-WeChatTests */ = {
+		007072FFC3696FB88261C8BCF22A0776 /* Pods-WeChatTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B10D49057C0886426395BEB6034E5C59 /* Build configuration list for PBXNativeTarget "Pods-WeChatTests" */;
+			buildConfigurationList = 66393EB7317F47491BF364725C102EC5 /* Build configuration list for PBXNativeTarget "Pods-WeChatTests" */;
 			buildPhases = (
-				B67CBACFBF7DBE1C168D47CB8C14FAEB /* Headers */,
-				DD795F28B58F70047AE70BBF12B4EBF6 /* Sources */,
-				342E7DA3589EE9EBA41ED3792FE76B87 /* Frameworks */,
+				227AF1407B2616C286DF6B84A69FF1A2 /* Headers */,
+				B5878B87A2D2920D1104D82B9A656899 /* Sources */,
+				078D5F654ECCD564AC549CB72EA460BA /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8F2086F4D5E3ECD59E0B79402B3EAE24 /* PBXTargetDependency */,
+				74262E57D9237ACBCD510156F851C0B2 /* PBXTargetDependency */,
+				B9475821323A8BB2CCE994A54AF454F8 /* PBXTargetDependency */,
 			);
 			name = "Pods-WeChatTests";
 			productName = "Pods-WeChatTests";
@@ -2376,7 +2384,7 @@
 				42A7253AB320D1E231714F26E361DFBB /* MBProgressHUD */,
 				22EC4A80098A4615CC23D41353D9D212 /* Ono */,
 				6FFBDD2D5247DA57A6A997293932070D /* Pods-WeChat */,
-				0F3AD34B0B46829C9D486A02C2F502D1 /* Pods-WeChatTests */,
+				007072FFC3696FB88261C8BCF22A0776 /* Pods-WeChatTests */,
 				E791D345DA497BDA4B7A160EFC3C0270 /* Pods-WeChatUITests */,
 				A682C6D3B7E2F7D4ADA8312F245BEB9C /* Protobuf */,
 				2D692A40F06CCDD9D717B4A450FC6F5C /* Reachability */,
@@ -2528,11 +2536,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD795F28B58F70047AE70BBF12B4EBF6 /* Sources */ = {
+		B5878B87A2D2920D1104D82B9A656899 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				442DB588B32CFA42A521AFA78B2D33CE /* Pods-WeChatTests-dummy.m in Sources */,
+				41719418A619734540D8C06B9F563080 /* Pods-WeChatTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2729,17 +2737,23 @@
 			target = A682C6D3B7E2F7D4ADA8312F245BEB9C /* Protobuf */;
 			targetProxy = F398B7C1DAF75D224F534196A8860EAE /* PBXContainerItemProxy */;
 		};
-		8F2086F4D5E3ECD59E0B79402B3EAE24 /* PBXTargetDependency */ = {
+		74262E57D9237ACBCD510156F851C0B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-WeChat";
 			target = 6FFBDD2D5247DA57A6A997293932070D /* Pods-WeChat */;
-			targetProxy = 5F64AC960270778FAC631FE0F019F7D3 /* PBXContainerItemProxy */;
+			targetProxy = 5570F11D5743BC3707A4E543676AC897 /* PBXContainerItemProxy */;
 		};
 		9E332E7669BE85A9FB4E92140B4F18F2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MBProgressHUD;
 			target = 42A7253AB320D1E231714F26E361DFBB /* MBProgressHUD */;
 			targetProxy = 7F629C8A5AD41C088E1D545958357B9E /* PBXContainerItemProxy */;
+		};
+		B9475821323A8BB2CCE994A54AF454F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Protobuf;
+			target = A682C6D3B7E2F7D4ADA8312F245BEB9C /* Protobuf */;
+			targetProxy = B307828C6DFEA6AE24BB1D5DEA874458 /* PBXContainerItemProxy */;
 		};
 		CAB6C6EB29F3EAE8C472D637E0704053 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3087,28 +3101,6 @@
 			};
 			name = Release;
 		};
-		6264460A25F077952ABE5D5E2CC46952 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CDB1636E9B347D8DBC8F8E774F3E2E1 /* Pods-WeChatTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		6B55C68AA26B41AB1A72EA48E2FDB8D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ACB19E236A0DB062E1E0534E8BA7C9B0 /* Pods-WeChat.release.xcconfig */;
@@ -3179,6 +3171,28 @@
 			};
 			name = Release;
 		};
+		7FFBFA7A5BDA2CA05094F5C1CB402788 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CDB1636E9B347D8DBC8F8E774F3E2E1 /* Pods-WeChatTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		81DF5B5D8952B719049FFD464E3F88A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A141FA1813004E3CE62E860CDFBA61EB /* MBProgressHUD.xcconfig */;
@@ -3225,6 +3239,27 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		83DFC61B88D1348D5178BA03F13C1060 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51492EF6E6A36C1D45CB44CCD05C50A1 /* Pods-WeChatTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
 		};
 		858D01EEFE984249A9581D18DBEA53F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -3503,27 +3538,6 @@
 			};
 			name = Debug;
 		};
-		EEA7276FDF312B0595CDDC7CA75B7028 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51492EF6E6A36C1D45CB44CCD05C50A1 /* Pods-WeChatTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 		FFA7B4EE0DCFEA916A706E2ADABE9E4A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0ED790F7DE56435064202931BD79EFBD /* Ono.xcconfig */;
@@ -3632,6 +3646,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		66393EB7317F47491BF364725C102EC5 /* Build configuration list for PBXNativeTarget "Pods-WeChatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83DFC61B88D1348D5178BA03F13C1060 /* Debug */,
+				7FFBFA7A5BDA2CA05094F5C1CB402788 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6BF3CB4F54D01F9C0B336CC27C22DA95 /* Build configuration list for PBXNativeTarget "RegexKitLite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3655,15 +3678,6 @@
 			buildConfigurations = (
 				B0BD31D68B8DA22E9B268E41C54B3829 /* Debug */,
 				82D065B7FA37FBC2923BB9B7532F0107 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B10D49057C0886426395BEB6034E5C59 /* Build configuration list for PBXNativeTarget "Pods-WeChatTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EEA7276FDF312B0595CDDC7CA75B7028 /* Debug */,
-				6264460A25F077952ABE5D5E2CC46952 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

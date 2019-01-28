@@ -13,6 +13,7 @@
 #import "DDTTYLogger.h"
 #import "ClientCheckDataFetcher.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import "CUtility.h"
 
 @interface AppDelegate ()
 
@@ -35,6 +36,12 @@
     [[ClientCheckDataFetcher new] fetchAndSaveToDB];
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+    
+#if PROTOCOL_FOR_IOS
+    LogVerbose(@"PROTOCOL_FOR_IOS Client Version: %@(%d)", IVERSION, [CUtility numberVersionOf:IVERSION]);
+#elif PROTOCOL_FOR_ANDROID
+    LogVerbose(@"PROTOCOL_FOR_ANDROID Client Version: %d", AVERSION);
+#endif
     
     return YES;
 }

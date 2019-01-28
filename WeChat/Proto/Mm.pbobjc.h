@@ -35,6 +35,8 @@ CF_EXTERN_C_BEGIN
 @class BindOpMobileResponse_NewHostList;
 @class BindOpMobileResponse_SafeDeviceList;
 @class BindOpMobileResponse_ShowStyle;
+@class BizApiInfo;
+@class BizScopeInfo;
 @class BuiltinIPList;
 @class BuiltinIPList_BuiltinIP;
 @class CanvasInfo;
@@ -44,8 +46,12 @@ CF_EXTERN_C_BEGIN
 @class CheckResUpdateRequest_ResID_SubTypeVector;
 @class CmdItem;
 @class CustomizedInfoNew;
+@class DeepLinkBitSet;
 @class DisturbSetting;
 @class ECDHKey;
+@class GeneralControlBitSet;
+@class HttpHeader;
+@class JSAPIPermissionBitSet;
 @class KeyVal;
 @class ManualAuthAesReqData;
 @class ManualAuthRsaReqData;
@@ -3198,6 +3204,369 @@ typedef GPB_ENUM(SyncKey_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<KeyVal*> *keyArray;
 /** The number of items in @c keyArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger keyArray_Count;
+
+@end
+
+#pragma mark - GetA8KeyReq
+
+typedef GPB_ENUM(GetA8KeyReq_FieldNumber) {
+  GetA8KeyReq_FieldNumber_BaseRequest = 1,
+  GetA8KeyReq_FieldNumber_OpCode = 2,
+  GetA8KeyReq_FieldNumber_A2Key = 3,
+  GetA8KeyReq_FieldNumber_AppId = 4,
+  GetA8KeyReq_FieldNumber_Scope = 5,
+  GetA8KeyReq_FieldNumber_State = 6,
+  GetA8KeyReq_FieldNumber_ReqURL = 7,
+  GetA8KeyReq_FieldNumber_FriendUserName = 8,
+  GetA8KeyReq_FieldNumber_FriendQq = 9,
+  GetA8KeyReq_FieldNumber_Scene = 10,
+  GetA8KeyReq_FieldNumber_UserName = 11,
+  GetA8KeyReq_FieldNumber_BundleId = 12,
+  GetA8KeyReq_FieldNumber_A2KeyNew = 13,
+  GetA8KeyReq_FieldNumber_Reason = 14,
+  GetA8KeyReq_FieldNumber_FontScale = 15,
+  GetA8KeyReq_FieldNumber_Flag = 16,
+  GetA8KeyReq_FieldNumber_NetType = 17,
+  GetA8KeyReq_FieldNumber_CodeType = 18,
+  GetA8KeyReq_FieldNumber_CodeVersion = 19,
+  GetA8KeyReq_FieldNumber_RequestId = 20,
+  GetA8KeyReq_FieldNumber_FunctionId = 21,
+  GetA8KeyReq_FieldNumber_WalletRegion = 22,
+  GetA8KeyReq_FieldNumber_Cookie = 23,
+  GetA8KeyReq_FieldNumber_OuterURL = 24,
+  GetA8KeyReq_FieldNumber_SubScene = 25,
+};
+
+/**
+ * geta8key
+ **/
+@interface GetA8KeyReq : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite) uint32_t opCode;
+
+@property(nonatomic, readwrite) BOOL hasOpCode;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *a2Key;
+/** Test to see if @c a2Key has been set. */
+@property(nonatomic, readwrite) BOOL hasA2Key;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *appId;
+/** Test to see if @c appId has been set. */
+@property(nonatomic, readwrite) BOOL hasAppId;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *scope;
+/** Test to see if @c scope has been set. */
+@property(nonatomic, readwrite) BOOL hasScope;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *state;
+/** Test to see if @c state has been set. */
+@property(nonatomic, readwrite) BOOL hasState;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinString_t *reqURL;
+/** Test to see if @c reqURL has been set. */
+@property(nonatomic, readwrite) BOOL hasReqURL;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *friendUserName;
+/** Test to see if @c friendUserName has been set. */
+@property(nonatomic, readwrite) BOOL hasFriendUserName;
+
+@property(nonatomic, readwrite) uint32_t friendQq;
+
+@property(nonatomic, readwrite) BOOL hasFriendQq;
+@property(nonatomic, readwrite) uint32_t scene;
+
+@property(nonatomic, readwrite) BOOL hasScene;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *userName;
+/** Test to see if @c userName has been set. */
+@property(nonatomic, readwrite) BOOL hasUserName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *bundleId;
+/** Test to see if @c bundleId has been set. */
+@property(nonatomic, readwrite) BOOL hasBundleId;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *a2KeyNew;
+/** Test to see if @c a2KeyNew has been set. */
+@property(nonatomic, readwrite) BOOL hasA2KeyNew;
+
+@property(nonatomic, readwrite) uint32_t reason;
+
+@property(nonatomic, readwrite) BOOL hasReason;
+@property(nonatomic, readwrite) uint32_t fontScale;
+
+@property(nonatomic, readwrite) BOOL hasFontScale;
+@property(nonatomic, readwrite) uint32_t flag;
+
+@property(nonatomic, readwrite) BOOL hasFlag;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *netType;
+/** Test to see if @c netType has been set. */
+@property(nonatomic, readwrite) BOOL hasNetType;
+
+@property(nonatomic, readwrite) uint32_t codeType;
+
+@property(nonatomic, readwrite) BOOL hasCodeType;
+@property(nonatomic, readwrite) uint32_t codeVersion;
+
+@property(nonatomic, readwrite) BOOL hasCodeVersion;
+@property(nonatomic, readwrite) uint32_t requestId;
+
+@property(nonatomic, readwrite) BOOL hasRequestId;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *functionId;
+/** Test to see if @c functionId has been set. */
+@property(nonatomic, readwrite) BOOL hasFunctionId;
+
+@property(nonatomic, readwrite) uint32_t walletRegion;
+
+@property(nonatomic, readwrite) BOOL hasWalletRegion;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *cookie;
+/** Test to see if @c cookie has been set. */
+@property(nonatomic, readwrite) BOOL hasCookie;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *outerURL;
+/** Test to see if @c outerURL has been set. */
+@property(nonatomic, readwrite) BOOL hasOuterURL;
+
+@property(nonatomic, readwrite) uint32_t subScene;
+
+@property(nonatomic, readwrite) BOOL hasSubScene;
+@end
+
+#pragma mark - JSAPIPermissionBitSet
+
+typedef GPB_ENUM(JSAPIPermissionBitSet_FieldNumber) {
+  JSAPIPermissionBitSet_FieldNumber_BitValue = 1,
+  JSAPIPermissionBitSet_FieldNumber_BitValue2 = 2,
+  JSAPIPermissionBitSet_FieldNumber_BitValue3 = 3,
+  JSAPIPermissionBitSet_FieldNumber_BitValue4 = 4,
+};
+
+@interface JSAPIPermissionBitSet : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t bitValue;
+
+@property(nonatomic, readwrite) BOOL hasBitValue;
+@property(nonatomic, readwrite) uint32_t bitValue2;
+
+@property(nonatomic, readwrite) BOOL hasBitValue2;
+@property(nonatomic, readwrite) uint32_t bitValue3;
+
+@property(nonatomic, readwrite) BOOL hasBitValue3;
+@property(nonatomic, readwrite) uint32_t bitValue4;
+
+@property(nonatomic, readwrite) BOOL hasBitValue4;
+@end
+
+#pragma mark - GeneralControlBitSet
+
+typedef GPB_ENUM(GeneralControlBitSet_FieldNumber) {
+  GeneralControlBitSet_FieldNumber_BitValue = 1,
+};
+
+@interface GeneralControlBitSet : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t bitValue;
+
+@property(nonatomic, readwrite) BOOL hasBitValue;
+@end
+
+#pragma mark - BizApiInfo
+
+typedef GPB_ENUM(BizApiInfo_FieldNumber) {
+  BizApiInfo_FieldNumber_ApiName = 1,
+};
+
+@interface BizApiInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *apiName;
+/** Test to see if @c apiName has been set. */
+@property(nonatomic, readwrite) BOOL hasApiName;
+
+@end
+
+#pragma mark - BizScopeInfo
+
+typedef GPB_ENUM(BizScopeInfo_FieldNumber) {
+  BizScopeInfo_FieldNumber_Scope = 1,
+  BizScopeInfo_FieldNumber_ScopeStatus = 2,
+  BizScopeInfo_FieldNumber_ScopeDesc = 3,
+  BizScopeInfo_FieldNumber_ApiCount = 4,
+  BizScopeInfo_FieldNumber_ApiListArray = 5,
+};
+
+@interface BizScopeInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *scope;
+/** Test to see if @c scope has been set. */
+@property(nonatomic, readwrite) BOOL hasScope;
+
+@property(nonatomic, readwrite) uint32_t scopeStatus;
+
+@property(nonatomic, readwrite) BOOL hasScopeStatus;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *scopeDesc;
+/** Test to see if @c scopeDesc has been set. */
+@property(nonatomic, readwrite) BOOL hasScopeDesc;
+
+@property(nonatomic, readwrite) uint32_t apiCount;
+
+@property(nonatomic, readwrite) BOOL hasApiCount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<BizApiInfo*> *apiListArray;
+/** The number of items in @c apiListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger apiListArray_Count;
+
+@end
+
+#pragma mark - DeepLinkBitSet
+
+typedef GPB_ENUM(DeepLinkBitSet_FieldNumber) {
+  DeepLinkBitSet_FieldNumber_BitValue = 1,
+};
+
+@interface DeepLinkBitSet : GPBMessage
+
+@property(nonatomic, readwrite) uint64_t bitValue;
+
+@property(nonatomic, readwrite) BOOL hasBitValue;
+@end
+
+#pragma mark - HttpHeader
+
+typedef GPB_ENUM(HttpHeader_FieldNumber) {
+  HttpHeader_FieldNumber_Key = 1,
+  HttpHeader_FieldNumber_Value = 2,
+};
+
+@interface HttpHeader : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *key;
+/** Test to see if @c key has been set. */
+@property(nonatomic, readwrite) BOOL hasKey;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *value;
+/** Test to see if @c value has been set. */
+@property(nonatomic, readwrite) BOOL hasValue;
+
+@end
+
+#pragma mark - GetA8KeyResp
+
+typedef GPB_ENUM(GetA8KeyResp_FieldNumber) {
+  GetA8KeyResp_FieldNumber_BaseResponse = 1,
+  GetA8KeyResp_FieldNumber_FullURL = 2,
+  GetA8KeyResp_FieldNumber_A8Key = 3,
+  GetA8KeyResp_FieldNumber_ActionCode = 4,
+  GetA8KeyResp_FieldNumber_Title = 5,
+  GetA8KeyResp_FieldNumber_Content = 6,
+  GetA8KeyResp_FieldNumber_Jsapipermission = 7,
+  GetA8KeyResp_FieldNumber_GeneralControlBitSet = 8,
+  GetA8KeyResp_FieldNumber_UserName = 9,
+  GetA8KeyResp_FieldNumber_ShareURL = 15,
+  GetA8KeyResp_FieldNumber_ScopeCount = 16,
+  GetA8KeyResp_FieldNumber_ScopeListArray = 17,
+  GetA8KeyResp_FieldNumber_AntispamTicket = 18,
+  GetA8KeyResp_FieldNumber_Ssid = 20,
+  GetA8KeyResp_FieldNumber_Mid = 21,
+  GetA8KeyResp_FieldNumber_DeepLinkBitSet = 22,
+  GetA8KeyResp_FieldNumber_JsapicontrolBytes = 23,
+  GetA8KeyResp_FieldNumber_HTTPHeaderCount = 24,
+  GetA8KeyResp_FieldNumber_HTTPHeaderArray = 25,
+  GetA8KeyResp_FieldNumber_Wording = 26,
+  GetA8KeyResp_FieldNumber_HeadImg = 27,
+  GetA8KeyResp_FieldNumber_Cookie = 28,
+  GetA8KeyResp_FieldNumber_MenuWording = 29,
+};
+
+@interface GetA8KeyResp : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *fullURL;
+/** Test to see if @c fullURL has been set. */
+@property(nonatomic, readwrite) BOOL hasFullURL;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *a8Key;
+/** Test to see if @c a8Key has been set. */
+@property(nonatomic, readwrite) BOOL hasA8Key;
+
+@property(nonatomic, readwrite) uint32_t actionCode;
+
+@property(nonatomic, readwrite) BOOL hasActionCode;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *title;
+/** Test to see if @c title has been set. */
+@property(nonatomic, readwrite) BOOL hasTitle;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *content;
+/** Test to see if @c content has been set. */
+@property(nonatomic, readwrite) BOOL hasContent;
+
+@property(nonatomic, readwrite, strong, null_resettable) JSAPIPermissionBitSet *jsapipermission;
+/** Test to see if @c jsapipermission has been set. */
+@property(nonatomic, readwrite) BOOL hasJsapipermission;
+
+@property(nonatomic, readwrite, strong, null_resettable) GeneralControlBitSet *generalControlBitSet;
+/** Test to see if @c generalControlBitSet has been set. */
+@property(nonatomic, readwrite) BOOL hasGeneralControlBitSet;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *userName;
+/** Test to see if @c userName has been set. */
+@property(nonatomic, readwrite) BOOL hasUserName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *shareURL;
+/** Test to see if @c shareURL has been set. */
+@property(nonatomic, readwrite) BOOL hasShareURL;
+
+@property(nonatomic, readwrite) uint32_t scopeCount;
+
+@property(nonatomic, readwrite) BOOL hasScopeCount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<BizScopeInfo*> *scopeListArray;
+/** The number of items in @c scopeListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger scopeListArray_Count;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *antispamTicket;
+/** Test to see if @c antispamTicket has been set. */
+@property(nonatomic, readwrite) BOOL hasAntispamTicket;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *ssid;
+/** Test to see if @c ssid has been set. */
+@property(nonatomic, readwrite) BOOL hasSsid;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *mid;
+/** Test to see if @c mid has been set. */
+@property(nonatomic, readwrite) BOOL hasMid;
+
+@property(nonatomic, readwrite, strong, null_resettable) DeepLinkBitSet *deepLinkBitSet;
+/** Test to see if @c deepLinkBitSet has been set. */
+@property(nonatomic, readwrite) BOOL hasDeepLinkBitSet;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *jsapicontrolBytes;
+/** Test to see if @c jsapicontrolBytes has been set. */
+@property(nonatomic, readwrite) BOOL hasJsapicontrolBytes;
+
+@property(nonatomic, readwrite) uint32_t HTTPHeaderCount;
+
+@property(nonatomic, readwrite) BOOL hasHTTPHeaderCount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<HttpHeader*> *HTTPHeaderArray;
+/** The number of items in @c HTTPHeaderArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger HTTPHeaderArray_Count;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *wording;
+/** Test to see if @c wording has been set. */
+@property(nonatomic, readwrite) BOOL hasWording;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *headImg;
+/** Test to see if @c headImg has been set. */
+@property(nonatomic, readwrite) BOOL hasHeadImg;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *cookie;
+/** Test to see if @c cookie has been set. */
+@property(nonatomic, readwrite) BOOL hasCookie;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *menuWording;
+/** Test to see if @c menuWording has been set. */
+@property(nonatomic, readwrite) BOOL hasMenuWording;
 
 @end
 

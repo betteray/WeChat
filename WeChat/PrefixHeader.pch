@@ -34,6 +34,9 @@
 
     #import "DebugKit.h"
     #import "DDLog.h"
+
+    #import "CUtility.h"
+
     //DEBUG
     #define LogError(fmt, ...) DDLogError((@"[E][👹] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
     #define LogWarn(fmt, ...) DDLogWarn((@"[W][⚠️] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)

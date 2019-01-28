@@ -851,3 +851,96 @@ message SyncKey
     optional uint32 keyCount = 1;
     repeated KeyVal key      = 2;
 }
+
+// geta8key
+message GetA8KeyReq
+{
+    optional BaseRequest BaseRequest = 1;
+    required uint32 OpCode = 2;
+    optional SKBuiltinBuffer_t A2Key = 3;
+    optional SKBuiltinString_t AppID = 4;
+    optional SKBuiltinString_t Scope = 5;
+    optional SKBuiltinString_t State = 6;
+    optional SKBuiltinString_t ReqUrl = 7;
+    optional string FriendUserName = 8;
+    optional uint32 FriendQQ = 9;
+    optional uint32 Scene = 10;
+    optional string UserName = 11;
+    optional string BundleID = 12;
+    optional SKBuiltinBuffer_t A2KeyNew = 13;
+    optional uint32 Reason = 14;
+    optional uint32 FontScale = 15;
+    optional uint32 Flag = 16;
+    optional string NetType = 17;
+    optional uint32 codeType = 18;
+    optional uint32 codeVersion = 19;
+    optional uint32 requestId = 20;
+    optional string functionId = 21;
+    optional uint32 walletRegion = 22;
+    optional SKBuiltinBuffer_t cookie = 23;
+    optional string outerUrl = 24;
+    optional uint32 subScene = 25;
+}
+
+message JSAPIPermissionBitSet
+{
+    required uint32 BitValue = 1;
+    optional uint32 BitValue2 = 2;
+    optional uint32 BitValue3 = 3;
+    optional uint32 BitValue4 = 4;
+}
+
+message GeneralControlBitSet {
+    required uint32 BitValue = 1;
+}
+
+message BizApiInfo {
+    optional string ApiName = 1;
+}
+
+message BizScopeInfo {
+    optional string Scope = 1;
+    required uint32 ScopeStatus = 2;
+    optional string ScopeDesc = 3;
+    required uint32 ApiCount = 4;
+    repeated BizApiInfo ApiList = 5;
+}
+
+message DeepLinkBitSet {
+    required uint64 BitValue = 1;
+}
+
+message HttpHeader
+{
+    required string key = 1;
+    optional string value = 2;
+}
+
+message GetA8KeyResp
+{
+    required BaseResponse BaseResponse = 1;
+    optional string FullURL = 2;
+    optional string A8Key = 3;
+    optional uint32 ActionCode = 4;
+    optional string Title = 5;
+    optional string Content = 6;
+    optional JSAPIPermissionBitSet JSAPIPermission = 7;
+    optional GeneralControlBitSet GeneralControlBitSet = 8;
+    optional string UserName = 9;
+    optional string ShareURL = 15;
+    optional uint32 ScopeCount = 16;
+    repeated BizScopeInfo ScopeList = 17;
+    optional string AntispamTicket = 18;
+    optional string SSID = 20;
+    optional string MID = 21;
+    optional DeepLinkBitSet DeepLinkBitSet = 22;
+    optional SKBuiltinBuffer_t JSAPIControlBytes = 23;
+    optional uint32 httpHeaderCount = 24;
+    repeated HttpHeader httpHeader = 25;
+    optional string wording = 26;
+    optional string headImg = 27;
+    optional SKBuiltinBuffer_t cookie = 28;
+    optional string menuWording = 29;
+}
+
+// end geta8key

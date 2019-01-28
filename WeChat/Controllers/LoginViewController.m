@@ -50,6 +50,12 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self autoAuthIfCould];
     });
+    
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"62" ofType:@"bin"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    id obj = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    LogVerbose(@"%@", obj);
 }
 
 - (void)autoAuthIfCould
@@ -164,6 +170,12 @@
     cgiWrap.cgi = 701;
     cgiWrap.cmdId = 253;
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/manualauth";
+#if (PROTOCOL_FOR_ANDROID)
+    if (CLIENT_VERSION==A700) {
+        cgiWrap.cgi = 252;
+        cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/secmanualauth";
+    }
+#endif
     cgiWrap.request = authRequest;
     cgiWrap.responseClass = [UnifyAuthResponse class];
     cgiWrap.needSetBaseRequest = NO;

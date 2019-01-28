@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2FFBBBF5A4F4493C2BD0EBFB /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE308AEA822A0536476B28E2 /* libPods-WeChat.a */; };
 		3170D26FEE89CCA046B85687 /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WeChat.a */; };
+		46206F5821E7906B00BF0B82 /* secmanualauth-type-252.bin in Resources */ = {isa = PBXBuildFile; fileRef = 46206F5721E7906B00BF0B82 /* secmanualauth-type-252.bin */; };
+		46206F6021E9EA1E00BF0B82 /* CUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 46206F5F21E9EA1E00BF0B82 /* CUtility.m */; };
 		462D9C0E21D4EC5700FC5461 /* BuiltinIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C0D21D4EC5700FC5461 /* BuiltinIP.m */; };
 		462D9C1521D509FC00FC5461 /* ClientCheckDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C1421D509FC00FC5461 /* ClientCheckDataFetcher.m */; };
 		462D9C2A21D759FD00FC5461 /* WeChat_700_Proto.txt in Resources */ = {isa = PBXBuildFile; fileRef = 462D9C2921D759FD00FC5461 /* WeChat_700_Proto.txt */; };
@@ -18,6 +20,7 @@
 		462D9C3621DCD2D000FC5461 /* SyncCmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */; };
 		462D9C3A21DDA60F00FC5461 /* WCContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C3921DDA60F00FC5461 /* WCContact.m */; };
 		463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */ = {isa = PBXBuildFile; fileRef = 463BAD2D21D38F1700847A8B /* ClientCheckData.m */; };
+		4649DD6821ED8660006315DC /* 62.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4649DD6721ED8660006315DC /* 62.bin */; };
 		464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82321D4B681003E923F /* DefaultLongIp.m */; };
 		464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82621D4B9DD003E923F /* DefaultShortIp.m */; };
 		464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82921D4E8BD003E923F /* NSString+Regex.m */; };
@@ -31,6 +34,43 @@
 		46804CED21DE5B2900232229 /* ChatsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46804CEC21DE5B2900232229 /* ChatsDetailTableViewCell.m */; };
 		4689A17821E4C01800E2EA9A /* SyncKeyCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */; };
 		469F657D21D3196100C1DC8B /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7141214B5A4B00603022 /* libcrypto.a */; };
+		46EB61D221F6EFB800760593 /* st_angler_1.bin in Resources */ = {isa = PBXBuildFile; fileRef = 46EB61D121F6EFB800760593 /* st_angler_1.bin */; };
+		46EB61F521F98E1100760593 /* mmbottle.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D621F98E1000760593 /* mmbottle.proto */; };
+		46EB61F621F98E1100760593 /* mmlogin.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D721F98E1000760593 /* mmlogin.proto */; };
+		46EB61F721F98E1100760593 /* mmtrack.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D821F98E1000760593 /* mmtrack.proto */; };
+		46EB61F821F98E1100760593 /* mmcontact.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D921F98E1000760593 /* mmcontact.proto */; };
+		46EB61F921F98E1100760593 /* mmvoip.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DA21F98E1000760593 /* mmvoip.proto */; };
+		46EB61FA21F98E1100760593 /* mmemotion.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DB21F98E1000760593 /* mmemotion.proto */; };
+		46EB61FB21F98E1100760593 /* mmimg.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DC21F98E1000760593 /* mmimg.proto */; };
+		46EB61FC21F98E1100760593 /* mmemotionstore.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DD21F98E1000760593 /* mmemotionstore.proto */; };
+		46EB61FD21F98E1100760593 /* mmbase.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DE21F98E1000760593 /* mmbase.proto */; };
+		46EB61FE21F98E1100760593 /* mmweb.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DF21F98E1000760593 /* mmweb.proto */; };
+		46EB61FF21F98E1100760593 /* mmfav.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E021F98E1000760593 /* mmfav.proto */; };
+		46EB620021F98E1100760593 /* mmextdevice.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E121F98E1000760593 /* mmextdevice.proto */; };
+		46EB620121F98E1100760593 /* mmappmsg.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E221F98E1000760593 /* mmappmsg.proto */; };
+		46EB620221F98E1100760593 /* mmbackup.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E321F98E1000760593 /* mmbackup.proto */; };
+		46EB620321F98E1100760593 /* mmcard.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E421F98E1000760593 /* mmcard.proto */; };
+		46EB620421F98E1100760593 /* mmprimsend.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E521F98E1000760593 /* mmprimsend.proto */; };
+		46EB620521F98E1100760593 /* mmremind.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E621F98E1000760593 /* mmremind.proto */; };
+		46EB620621F98E1100760593 /* mmsns.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E721F98E1000760593 /* mmsns.proto */; };
+		46EB620721F98E1100760593 /* mmvoiceprint.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E821F98E1000760593 /* mmvoiceprint.proto */; };
+		46EB620821F98E1100760593 /* mmsync.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E921F98E1000760593 /* mmsync.proto */; };
+		46EB620921F98E1100760593 /* mmopenapi.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61EA21F98E1000760593 /* mmopenapi.proto */; };
+		46EB620A21F98E1100760593 /* mmpay.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61EB21F98E1000760593 /* mmpay.proto */; };
+		46EB620B21F98E1100760593 /* mmgame.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61EC21F98E1000760593 /* mmgame.proto */; };
+		46EB620C21F98E1100760593 /* mmvoiceaddr.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61ED21F98E1000760593 /* mmvoiceaddr.proto */; };
+		46EB620D21F98E1100760593 /* mmvoiphw.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61EE21F98E1000760593 /* mmvoiphw.proto */; };
+		46EB620E21F98E1100760593 /* mmlbs.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61EF21F98E1000760593 /* mmlbs.proto */; };
+		46EB620F21F98E1100760593 /* BlockDumpList.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61F021F98E1000760593 /* BlockDumpList.proto */; };
+		46EB621021F98E1100760593 /* mmextsend.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61F121F98E1000760593 /* mmextsend.proto */; };
+		46EB621121F98E1100760593 /* mmutils.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61F221F98E1000760593 /* mmutils.proto */; };
+		46EB621221F98E1100760593 /* mmbuiltintype.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61F321F98E1000760593 /* mmbuiltintype.proto */; };
+		46EB621321F98E1100760593 /* mmtalk.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61F421F98E1000760593 /* mmtalk.proto */; };
+		46EB621521F993AA00760593 /* WeChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB621421F993A900760593 /* WeChatTests.m */; };
+		46EB621721F993B900760593 /* WXDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB621621F993B800760593 /* WXDemoTests.m */; };
+		46EB621921F9943C00760593 /* WeChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB621821F9943C00760593 /* WeChatUITests.m */; };
+		46EB621B21F9944F00760593 /* WXDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB621A21F9944F00760593 /* WXDemoUITests.m */; };
+		46EB621E21F99C6F00760593 /* MMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB621D21F99C6F00760593 /* MMWebViewController.m */; };
 		71008F3321B6750700DE8DF8 /* DNSFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3221B6750700DE8DF8 /* DNSFetcher.m */; };
 		71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3521B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m */; };
 		71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */; };
@@ -44,7 +84,6 @@
 		712C6E68214A145700603022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C6E67214A145700603022 /* Assets.xcassets */; };
 		712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712C6E69214A145700603022 /* LaunchScreen.storyboard */; };
 		712C6E6E214A145700603022 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E6D214A145700603022 /* main.m */; };
-		712C6E78214A145700603022 /* WeChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E77214A145700603022 /* WeChatTests.m */; };
 		712C6E83214A145700603022 /* WeChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E82214A145700603022 /* WeChatUITests.m */; };
 		712C6E93214A1E8900603022 /* WeChatClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E92214A1E8900603022 /* WeChatClient.m */; };
 		712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E98214A2F9C00603022 /* NSData+Util.m */; };
@@ -117,6 +156,9 @@
 /* Begin PBXFileReference section */
 		127BAC7036D39AFEE4EAF228 /* Pods-WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChat/Pods-WeChat.release.xcconfig"; sourceTree = "<group>"; };
 		36DB43DD6C2AA522C9401323 /* libPods-WeChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46206F5721E7906B00BF0B82 /* secmanualauth-type-252.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "secmanualauth-type-252.bin"; sourceTree = "<group>"; };
+		46206F5E21E9EA1E00BF0B82 /* CUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CUtility.h; sourceTree = "<group>"; };
+		46206F5F21E9EA1E00BF0B82 /* CUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CUtility.m; sourceTree = "<group>"; };
 		462D9C0C21D4EC5700FC5461 /* BuiltinIP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuiltinIP.h; sourceTree = "<group>"; };
 		462D9C0D21D4EC5700FC5461 /* BuiltinIP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuiltinIP.m; sourceTree = "<group>"; };
 		462D9C1221D5096400FC5461 /* DNSFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSFetcher.h; sourceTree = "<group>"; };
@@ -134,6 +176,7 @@
 		462D9C3821DDA60F00FC5461 /* WCContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCContact.h; sourceTree = "<group>"; };
 		462D9C3921DDA60F00FC5461 /* WCContact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCContact.m; sourceTree = "<group>"; };
 		463BAD2D21D38F1700847A8B /* ClientCheckData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckData.m; sourceTree = "<group>"; };
+		4649DD6721ED8660006315DC /* 62.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = 62.bin; sourceTree = "<group>"; };
 		464FB82221D4B681003E923F /* DefaultLongIp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultLongIp.h; sourceTree = "<group>"; };
 		464FB82321D4B681003E923F /* DefaultLongIp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultLongIp.m; sourceTree = "<group>"; };
 		464FB82521D4B9DD003E923F /* DefaultShortIp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultShortIp.h; sourceTree = "<group>"; };
@@ -160,6 +203,44 @@
 		4689A17021DF447500E2EA9A /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncKeyCompare.h; sourceTree = "<group>"; };
 		4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncKeyCompare.m; sourceTree = "<group>"; };
+		46EB61D121F6EFB800760593 /* st_angler_1.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = st_angler_1.bin; sourceTree = "<group>"; };
+		46EB61D621F98E1000760593 /* mmbottle.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmbottle.proto; sourceTree = "<group>"; };
+		46EB61D721F98E1000760593 /* mmlogin.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmlogin.proto; sourceTree = "<group>"; };
+		46EB61D821F98E1000760593 /* mmtrack.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmtrack.proto; sourceTree = "<group>"; };
+		46EB61D921F98E1000760593 /* mmcontact.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmcontact.proto; sourceTree = "<group>"; };
+		46EB61DA21F98E1000760593 /* mmvoip.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmvoip.proto; sourceTree = "<group>"; };
+		46EB61DB21F98E1000760593 /* mmemotion.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmemotion.proto; sourceTree = "<group>"; };
+		46EB61DC21F98E1000760593 /* mmimg.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmimg.proto; sourceTree = "<group>"; };
+		46EB61DD21F98E1000760593 /* mmemotionstore.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmemotionstore.proto; sourceTree = "<group>"; };
+		46EB61DE21F98E1000760593 /* mmbase.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmbase.proto; sourceTree = "<group>"; };
+		46EB61DF21F98E1000760593 /* mmweb.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmweb.proto; sourceTree = "<group>"; };
+		46EB61E021F98E1000760593 /* mmfav.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmfav.proto; sourceTree = "<group>"; };
+		46EB61E121F98E1000760593 /* mmextdevice.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmextdevice.proto; sourceTree = "<group>"; };
+		46EB61E221F98E1000760593 /* mmappmsg.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmappmsg.proto; sourceTree = "<group>"; };
+		46EB61E321F98E1000760593 /* mmbackup.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmbackup.proto; sourceTree = "<group>"; };
+		46EB61E421F98E1000760593 /* mmcard.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmcard.proto; sourceTree = "<group>"; };
+		46EB61E521F98E1000760593 /* mmprimsend.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmprimsend.proto; sourceTree = "<group>"; };
+		46EB61E621F98E1000760593 /* mmremind.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmremind.proto; sourceTree = "<group>"; };
+		46EB61E721F98E1000760593 /* mmsns.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmsns.proto; sourceTree = "<group>"; };
+		46EB61E821F98E1000760593 /* mmvoiceprint.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmvoiceprint.proto; sourceTree = "<group>"; };
+		46EB61E921F98E1000760593 /* mmsync.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmsync.proto; sourceTree = "<group>"; };
+		46EB61EA21F98E1000760593 /* mmopenapi.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmopenapi.proto; sourceTree = "<group>"; };
+		46EB61EB21F98E1000760593 /* mmpay.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmpay.proto; sourceTree = "<group>"; };
+		46EB61EC21F98E1000760593 /* mmgame.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmgame.proto; sourceTree = "<group>"; };
+		46EB61ED21F98E1000760593 /* mmvoiceaddr.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmvoiceaddr.proto; sourceTree = "<group>"; };
+		46EB61EE21F98E1000760593 /* mmvoiphw.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmvoiphw.proto; sourceTree = "<group>"; };
+		46EB61EF21F98E1000760593 /* mmlbs.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmlbs.proto; sourceTree = "<group>"; };
+		46EB61F021F98E1000760593 /* BlockDumpList.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = BlockDumpList.proto; sourceTree = "<group>"; };
+		46EB61F121F98E1000760593 /* mmextsend.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmextsend.proto; sourceTree = "<group>"; };
+		46EB61F221F98E1000760593 /* mmutils.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmutils.proto; sourceTree = "<group>"; };
+		46EB61F321F98E1000760593 /* mmbuiltintype.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmbuiltintype.proto; sourceTree = "<group>"; };
+		46EB61F421F98E1000760593 /* mmtalk.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmtalk.proto; sourceTree = "<group>"; };
+		46EB621421F993A900760593 /* WeChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatTests.m; sourceTree = "<group>"; };
+		46EB621621F993B800760593 /* WXDemoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDemoTests.m; sourceTree = "<group>"; };
+		46EB621821F9943C00760593 /* WeChatUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatUITests.m; sourceTree = "<group>"; };
+		46EB621A21F9944F00760593 /* WXDemoUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDemoUITests.m; sourceTree = "<group>"; };
+		46EB621C21F99C6F00760593 /* MMWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMWebViewController.h; sourceTree = "<group>"; };
+		46EB621D21F99C6F00760593 /* MMWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMWebViewController.m; sourceTree = "<group>"; };
 		49481301164AD3564DCE2106 /* libPods-WeChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E57A8A71D09BB5AB91B774F /* libPods-WeChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70427FEF05DB038F58CB0923 /* Pods-WeChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatUITests/Pods-WeChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,7 +267,6 @@
 		712C6E6C214A145700603022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		712C6E6D214A145700603022 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		712C6E73214A145700603022 /* WeChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		712C6E77214A145700603022 /* WeChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatTests.m; sourceTree = "<group>"; };
 		712C6E79214A145700603022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		712C6E7E214A145700603022 /* WeChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		712C6E82214A145700603022 /* WeChatUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatUITests.m; sourceTree = "<group>"; };
@@ -435,6 +515,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		46206F5621E7904300BF0B82 /* DumpedBin */ = {
+			isa = PBXGroup;
+			children = (
+				46206F5721E7906B00BF0B82 /* secmanualauth-type-252.bin */,
+			);
+			path = DumpedBin;
+			sourceTree = "<group>";
+		};
 		462D9C3721DCD2DF00FC5461 /* Business */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +559,15 @@
 				46804CDC21DE13B300232229 /* WCMessage.m */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		4649DD6621ED864F006315DC /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				4649DD6721ED8660006315DC /* 62.bin */,
+				46EB61D121F6EFB800760593 /* st_angler_1.bin */,
+			);
+			path = Res;
 			sourceTree = "<group>";
 		};
 		466C4AC021DDBF8700743075 /* Views */ = {
@@ -562,6 +659,44 @@
 			path = Vendor;
 			sourceTree = "<group>";
 		};
+		46EB61D521F98E1000760593 /* proto */ = {
+			isa = PBXGroup;
+			children = (
+				46EB61D621F98E1000760593 /* mmbottle.proto */,
+				46EB61D721F98E1000760593 /* mmlogin.proto */,
+				46EB61D821F98E1000760593 /* mmtrack.proto */,
+				46EB61D921F98E1000760593 /* mmcontact.proto */,
+				46EB61DA21F98E1000760593 /* mmvoip.proto */,
+				46EB61DB21F98E1000760593 /* mmemotion.proto */,
+				46EB61DC21F98E1000760593 /* mmimg.proto */,
+				46EB61DD21F98E1000760593 /* mmemotionstore.proto */,
+				46EB61DE21F98E1000760593 /* mmbase.proto */,
+				46EB61DF21F98E1000760593 /* mmweb.proto */,
+				46EB61E021F98E1000760593 /* mmfav.proto */,
+				46EB61E121F98E1000760593 /* mmextdevice.proto */,
+				46EB61E221F98E1000760593 /* mmappmsg.proto */,
+				46EB61E321F98E1000760593 /* mmbackup.proto */,
+				46EB61E421F98E1000760593 /* mmcard.proto */,
+				46EB61E521F98E1000760593 /* mmprimsend.proto */,
+				46EB61E621F98E1000760593 /* mmremind.proto */,
+				46EB61E721F98E1000760593 /* mmsns.proto */,
+				46EB61E821F98E1000760593 /* mmvoiceprint.proto */,
+				46EB61E921F98E1000760593 /* mmsync.proto */,
+				46EB61EA21F98E1000760593 /* mmopenapi.proto */,
+				46EB61EB21F98E1000760593 /* mmpay.proto */,
+				46EB61EC21F98E1000760593 /* mmgame.proto */,
+				46EB61ED21F98E1000760593 /* mmvoiceaddr.proto */,
+				46EB61EE21F98E1000760593 /* mmvoiphw.proto */,
+				46EB61EF21F98E1000760593 /* mmlbs.proto */,
+				46EB61F021F98E1000760593 /* BlockDumpList.proto */,
+				46EB61F121F98E1000760593 /* mmextsend.proto */,
+				46EB61F221F98E1000760593 /* mmutils.proto */,
+				46EB61F321F98E1000760593 /* mmbuiltintype.proto */,
+				46EB61F421F98E1000760593 /* mmtalk.proto */,
+			);
+			path = proto;
+			sourceTree = "<group>";
+		};
 		71008F3021B674D900DE8DF8 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +722,8 @@
 				716197F821C7A36200A76F39 /* TestViewController.h */,
 				71076B2521CCF10500570FB1 /* TestViewController.m */,
 				712C6E64214A145600603022 /* WeChat.storyboard */,
+				46EB621C21F99C6F00760593 /* MMWebViewController.h */,
+				46EB621D21F99C6F00760593 /* MMWebViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -616,6 +753,7 @@
 		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				4649DD6621ED864F006315DC /* Res */,
 				466C4AC021DDBF8700743075 /* Views */,
 				462D9C3721DCD2DF00FC5461 /* Business */,
 				463BAD2B21D38EFA00847A8B /* Store */,
@@ -630,6 +768,8 @@
 				71D3DAA921AEACD2002ACF1C /* ViewCat */,
 				712C7065214A9A8B00603022 /* Constants.h */,
 				7154D5192196B8DF005064C4 /* PrefixHeader.pch */,
+				46206F5E21E9EA1E00BF0B82 /* CUtility.h */,
+				46206F5F21E9EA1E00BF0B82 /* CUtility.m */,
 			);
 			path = WeChat;
 			sourceTree = "<group>";
@@ -637,8 +777,9 @@
 		712C6E76214A145700603022 /* WeChatTests */ = {
 			isa = PBXGroup;
 			children = (
-				712C6E77214A145700603022 /* WeChatTests.m */,
+				46EB621621F993B800760593 /* WXDemoTests.m */,
 				712C6E79214A145700603022 /* Info.plist */,
+				46EB621421F993A900760593 /* WeChatTests.m */,
 			);
 			path = WeChatTests;
 			sourceTree = "<group>";
@@ -646,8 +787,10 @@
 		712C6E81214A145700603022 /* WeChatUITests */ = {
 			isa = PBXGroup;
 			children = (
+				46EB621A21F9944F00760593 /* WXDemoUITests.m */,
 				712C6E82214A145700603022 /* WeChatUITests.m */,
 				712C6E84214A145700603022 /* Info.plist */,
+				46EB621821F9943C00760593 /* WeChatUITests.m */,
 			);
 			path = WeChatUITests;
 			sourceTree = "<group>";
@@ -655,6 +798,8 @@
 		712C6F18214A6A5800603022 /* Proto */ = {
 			isa = PBXGroup;
 			children = (
+				46EB61D521F98E1000760593 /* proto */,
+				46206F5621E7904300BF0B82 /* DumpedBin */,
 				712C6F1C214A6B5E00603022 /* Mm.pbobjc.h */,
 				712C6F1B214A6B5E00603022 /* Mm.pbobjc.m */,
 				462D9C2921D759FD00FC5461 /* WeChat_700_Proto.txt */,
@@ -1036,9 +1181,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				712C6F1A214A6A5800603022 /* mm.proto in Resources */,
+				46EB61D221F6EFB800760593 /* st_angler_1.bin in Resources */,
+				46206F5821E7906B00BF0B82 /* secmanualauth-type-252.bin in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				462D9C2A21D759FD00FC5461 /* WeChat_700_Proto.txt in Resources */,
+				4649DD6821ED8660006315DC /* 62.bin in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
 				712C7143214B5A4B00603022 /* LICENSE in Resources */,
 			);
@@ -1146,16 +1294,24 @@
 			files = (
 				462D9C0E21D4EC5700FC5461 /* BuiltinIP.m in Sources */,
 				712C6E93214A1E8900603022 /* WeChatClient.m in Sources */,
+				46EB620B21F98E1100760593 /* mmgame.proto in Sources */,
+				46EB620021F98E1100760593 /* mmextdevice.proto in Sources */,
 				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
 				712F95F221D0981B00CFE3A0 /* WCDevice.m in Sources */,
+				46EB61FB21F98E1100760593 /* mmimg.proto in Sources */,
 				712F960021D20A7800CFE3A0 /* ShortLinkClient.m in Sources */,
 				46804CDD21DE13B300232229 /* WCMessage.m in Sources */,
 				712C7152214BAD8900603022 /* ShortHeader.m in Sources */,
+				46EB620621F98E1100760593 /* mmsns.proto in Sources */,
 				712F960621D78F0B00CFE3A0 /* AutoAuthKeyStore.m in Sources */,
 				7155BA5821902CDD0002CE1D /* WC_SHA256.m in Sources */,
 				466C4AC621DDD65900743075 /* ContactsTableViewController.m in Sources */,
+				46EB61FD21F98E1100760593 /* mmbase.proto in Sources */,
 				71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */,
+				46EB620921F98E1100760593 /* mmopenapi.proto in Sources */,
+				46EB61FC21F98E1100760593 /* mmemotionstore.proto in Sources */,
 				7161984F21CB712900A76F39 /* long_pack.m in Sources */,
+				46EB620E21F98E1100760593 /* mmlbs.proto in Sources */,
 				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,
 				71008F3321B6750700DE8DF8 /* DNSFetcher.m in Sources */,
 				7155BA5B219033BF0002CE1D /* WC_HKDF.m in Sources */,
@@ -1163,13 +1319,20 @@
 				7154D51C2196CC1A005064C4 /* KeyPair.m in Sources */,
 				462D9C1521D509FC00FC5461 /* ClientCheckDataFetcher.m in Sources */,
 				712C7158214BFB1600603022 /* Task.m in Sources */,
+				46206F6021E9EA1E00BF0B82 /* CUtility.m in Sources */,
 				71076B2621CCF10500570FB1 /* TestViewController.m in Sources */,
 				71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */,
+				46EB620321F98E1100760593 /* mmcard.proto in Sources */,
+				46EB61FA21F98E1100760593 /* mmemotion.proto in Sources */,
 				7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */,
 				7121C36521C3610000A3E900 /* ChatsTableViewController.m in Sources */,
+				46EB621E21F99C6F00760593 /* MMWebViewController.m in Sources */,
 				712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */,
 				71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */,
+				46EB621221F98E1100760593 /* mmbuiltintype.proto in Sources */,
+				46EB620A21F98E1100760593 /* mmpay.proto in Sources */,
 				7154D5172196B721005064C4 /* NSData+HexDump.m in Sources */,
+				46EB620521F98E1100760593 /* mmremind.proto in Sources */,
 				7155BA4F21902A0B0002CE1D /* WC_AesGcm128.m in Sources */,
 				71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */,
 				71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */,
@@ -1182,39 +1345,57 @@
 				7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */,
 				7161984C21CB704F00A76F39 /* short_pack.m in Sources */,
 				712F95F521D0B91F00CFE3A0 /* DeviceManager.m in Sources */,
+				46EB621321F98E1100760593 /* mmtalk.proto in Sources */,
 				7161985321CB863A00A76F39 /* LongLinkClientWithMMTLS.m in Sources */,
 				464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */,
 				7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */,
+				46EB620F21F98E1100760593 /* BlockDumpList.proto in Sources */,
+				46EB61F521F98E1100760593 /* mmbottle.proto in Sources */,
 				466C4AC321DDBFA800743075 /* WCButton.m in Sources */,
+				46EB620221F98E1100760593 /* mmbackup.proto in Sources */,
 				46804CE421DE280900232229 /* DiscoveryTableViewController.m in Sources */,
 				712C714F214BABA500603022 /* ShortPackage.m in Sources */,
 				462D9C3021DCAB6B00FC5461 /* Cookie.m in Sources */,
+				46EB61FE21F98E1100760593 /* mmweb.proto in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
+				46EB620D21F98E1100760593 /* mmvoiphw.proto in Sources */,
 				7161984921CB6FEA00A76F39 /* header.m in Sources */,
 				462D9C3A21DDA60F00FC5461 /* WCContact.m in Sources */,
 				462D9C3321DCC4FE00FC5461 /* SessionKeyStore.m in Sources */,
 				464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */,
+				46EB621121F98E1100760593 /* mmutils.proto in Sources */,
 				719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */,
 				71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */,
+				46EB61F621F98E1100760593 /* mmlogin.proto in Sources */,
 				712F960921D78F9300CFE3A0 /* SyncKeyStore.m in Sources */,
+				46EB61F821F98E1100760593 /* mmcontact.proto in Sources */,
 				7154D5222196DFE1005064C4 /* WC_Hex.m in Sources */,
 				71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */,
 				46804CE721DE41BE00232229 /* ChatDetailTableViewController.m in Sources */,
 				4689A17821E4C01800E2EA9A /* SyncKeyCompare.m in Sources */,
 				71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */,
+				46EB61F921F98E1100760593 /* mmvoip.proto in Sources */,
+				46EB61FF21F98E1100760593 /* mmfav.proto in Sources */,
 				46804CED21DE5B2900232229 /* ChatsDetailTableViewCell.m in Sources */,
+				46EB620421F98E1100760593 /* mmprimsend.proto in Sources */,
 				466C4ACA21DDD6D200743075 /* ContactsTableViewCell.m in Sources */,
 				71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */,
 				712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */,
 				463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */,
 				712C7149214BA38900603022 /* LongHeader.m in Sources */,
 				712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */,
+				46EB621021F98E1100760593 /* mmextsend.proto in Sources */,
 				462D9C3621DCD2D000FC5461 /* SyncCmdHandler.m in Sources */,
+				46EB620C21F98E1100760593 /* mmvoiceaddr.proto in Sources */,
 				71848F272150CABD00DB669E /* NSData+Compression.m in Sources */,
 				7154D5162196B721005064C4 /* HexDump.m in Sources */,
+				46EB620721F98E1100760593 /* mmvoiceprint.proto in Sources */,
 				464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */,
 				46804CEA21DE5B1800232229 /* ChatsTableViewCell.m in Sources */,
 				712C714C214BA49300603022 /* LongPackage.m in Sources */,
+				46EB61F721F98E1100760593 /* mmtrack.proto in Sources */,
+				46EB620821F98E1100760593 /* mmsync.proto in Sources */,
+				46EB620121F98E1100760593 /* mmappmsg.proto in Sources */,
 				71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1223,7 +1404,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				712C6E78214A145700603022 /* WeChatTests.m in Sources */,
+				46EB621521F993AA00760593 /* WeChatTests.m in Sources */,
+				46EB621721F993B900760593 /* WXDemoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1231,7 +1413,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46EB621B21F9944F00760593 /* WXDemoUITests.m in Sources */,
 				712C6E83214A145700603022 /* WeChatUITests.m in Sources */,
+				46EB621921F9943C00760593 /* WeChatUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

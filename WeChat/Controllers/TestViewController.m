@@ -9,6 +9,7 @@
 #import "TestViewController.h"
 #import "FSOpenSSL.h"
 #import "SyncKeyCompare.h"
+#import "Varint128.h"
 
 @interface TestViewController ()
 
@@ -103,11 +104,27 @@
 
 - (IBAction)register:(id)sender
 {
+    NSData *data = [NSData dataWithHexString:@"8A01B6109D"];
+    
+    
+    NSString *binPath = [[NSBundle mainBundle] pathForResource:@"secmanualauth-type-252" ofType:@"bin"];
+    NSData *secManualAuth = [NSData dataWithContentsOfFile:binPath];
+    ManualAuthRequest *request = [ManualAuthRequest parseFromData:secManualAuth error:nil];
+    
     SyncKey *resp = [[SyncKey alloc] initWithData:[NSData dataWithHexString:[@"081f1208 080110c6 f9d69e02 12080802 10a2f9d6 9e021208 080310cd f6d69e02 12040804 10001204 08051000 12040807 10001208 080810a3 f8d69e02 12080809 10b0f7d6 9e021204 080a1000 1208080b 10fde6d6 9e021208 080d10f1 dcd59e02 1208080e 10f1dcd5 9e021208 081010f1 dcd59e02 12080811 10f1dcd5 9e021204 08651000 12040866 10001204 08671000 12040868 10001204 08691000 1204086b 10001204 086d1000 1204086f 10001204 08701000 12040872 10001209 08c90110 f3f3cae1 05120508 cb011000 120508cc 01100012 0508cd01 10001209 08e80710 a4d1bbe1 05120908 e907108c d3bbe105 120908d1 0f108593 c1e105" stringByReplacingOccurrencesOfString:@" " withString:@""]] error:nil];
     
     SyncKey *req = [[SyncKey alloc] initWithData:[NSData dataWithHexString:[@"081f1208 080110c6 f9d69e02 12040865 10001208 080210be f9d69e02 12040866 10001208 080d10f1 dcd59e02 120508cc 01100012 08080310 cdf6d69e 02120408 67100012 08080b10 fde6d69e 02120408 6f100012 04080410 00120408 68100012 04080510 00120408 69100012 04080710 00120408 6b100012 08080810 a3f8d69e 02120808 0910b0f7 d69e0212 08081010 f1dcd59e 02120808 1110f1dc d59e0212 04087210 00120808 0e10f1dc d59e0212 04087010 00120408 6d100012 04080a10 00120908 c90110fc 88cce105 120508cd 01100012 0508cb01 10001209 08e80710 a4d1bbe1 05120908 e907108c d3bbe105 120908d1 0f108593 c1e105" stringByReplacingOccurrencesOfString:@" " withString:@""]] error:nil];
     
     [SyncKeyCompare compaireOldSyncKey:resp newSyncKey:req];
+}
+- (IBAction)test:(id)sender {
+NSString *path = [[NSBundle mainBundle] pathForResource:@"st_angler_1" ofType:@"bin"];
+    
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@", str);
 }
 
 @end
