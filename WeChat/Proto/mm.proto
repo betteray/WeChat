@@ -28,3 +28,8 @@ syntax = "proto2";
 
 //cgi 763
 //path secautoauth
+
+
+//现在统一一下了  702 = 763 。 用  AutoAuthRequest  和  UnifyAuthResponse
+
+//771-reportclientcheck

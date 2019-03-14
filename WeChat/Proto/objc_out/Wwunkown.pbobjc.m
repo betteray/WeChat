@@ -198,6 +198,201 @@ typedef struct Cpucardgetconfig2Resp__storage_ {
 
 @end
 
+#pragma mark - ReportclientcheckRequest
+
+@implementation ReportclientcheckRequest
+
+@dynamic hasBaseRequest, baseRequest;
+@dynamic hasClientCheckData, clientCheckData;
+@dynamic hasTag3, tag3;
+
+typedef struct ReportclientcheckRequest__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t tag3;
+  BaseRequest *baseRequest;
+  ReportclientcheckRequest_ClientCheckData *clientCheckData;
+} ReportclientcheckRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseRequest",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseRequest),
+        .number = ReportclientcheckRequest_FieldNumber_BaseRequest,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ReportclientcheckRequest__storage_, baseRequest),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "clientCheckData",
+        .dataTypeSpecific.className = GPBStringifySymbol(ReportclientcheckRequest_ClientCheckData),
+        .number = ReportclientcheckRequest_FieldNumber_ClientCheckData,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ReportclientcheckRequest__storage_, clientCheckData),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "tag3",
+        .dataTypeSpecific.className = NULL,
+        .number = ReportclientcheckRequest_FieldNumber_Tag3,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ReportclientcheckRequest__storage_, tag3),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ReportclientcheckRequest class]
+                                     rootClass:[WwunkownRoot class]
+                                          file:WwunkownRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ReportclientcheckRequest__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\002\001K\000\002\017\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ReportclientcheckRequest_ClientCheckData
+
+@implementation ReportclientcheckRequest_ClientCheckData
+
+@dynamic hasEnType, enType;
+@dynamic hasTag2, tag2;
+@dynamic hasData_p, data_p;
+
+typedef struct ReportclientcheckRequest_ClientCheckData__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t tag2;
+  NSString *enType;
+  NSData *data_p;
+} ReportclientcheckRequest_ClientCheckData__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "enType",
+        .dataTypeSpecific.className = NULL,
+        .number = ReportclientcheckRequest_ClientCheckData_FieldNumber_EnType,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ReportclientcheckRequest_ClientCheckData__storage_, enType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "tag2",
+        .dataTypeSpecific.className = NULL,
+        .number = ReportclientcheckRequest_ClientCheckData_FieldNumber_Tag2,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ReportclientcheckRequest_ClientCheckData__storage_, tag2),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "data_p",
+        .dataTypeSpecific.className = NULL,
+        .number = ReportclientcheckRequest_ClientCheckData_FieldNumber_Data_p,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ReportclientcheckRequest_ClientCheckData__storage_, data_p),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ReportclientcheckRequest_ClientCheckData class]
+                                     rootClass:[WwunkownRoot class]
+                                          file:WwunkownRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ReportclientcheckRequest_ClientCheckData__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001\006\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ReportclientcheckRequest)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ReportclientcheckResp
+
+@implementation ReportclientcheckResp
+
+@dynamic hasBaseResponse, baseResponse;
+
+typedef struct ReportclientcheckResp__storage_ {
+  uint32_t _has_storage_[1];
+  BaseResponse *baseResponse;
+} ReportclientcheckResp__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseResponse",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseResponse),
+        .number = ReportclientcheckResp_FieldNumber_BaseResponse,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ReportclientcheckResp__storage_, baseResponse),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ReportclientcheckResp class]
+                                     rootClass:[WwunkownRoot class]
+                                          file:WwunkownRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ReportclientcheckResp__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001L\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 
 #pragma clang diagnostic pop
 

@@ -69,10 +69,11 @@
 
 - (void)testNeedRSAPack
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"1552443627000-10-20-27-type-1060" ofType:@"bin"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"1552407001442-00-10-01-reportclientcheck-type-771" ofType:@"bin"];
     NSData *data = [NSData dataWithContentsOfFile:path];
-    MMBizCommApiGetServiceAppListResp *req = [[MMBizCommApiGetServiceAppListResp alloc] initWithData:data error:nil];
-    LogVerbose(@"%@", req);
+    NSError *error = nil;
+    ReportclientcheckRequest *req = [[ReportclientcheckRequest alloc] initWithData:data error:&error];
+    LogVerbose(@"proto: %@, error = %@", req, error);
     
     char arr[] = {124, 94, 66, 90, 69, 82, 107, 120, 72, 64, 72, 75, 81};
     int length = ARRAY_SIZE(arr);

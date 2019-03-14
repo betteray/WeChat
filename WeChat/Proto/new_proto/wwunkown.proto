@@ -19,3 +19,18 @@ message Cpucardgetconfig2Resp {
     optional uint32 tag5 = 5;
     optional string tag6 = 6;
 }
+
+message ReportclientcheckRequest {
+    required BaseRequest BaseRequest = 1;
+    message ClientCheckData {
+        optional string enType = 1;
+        optional uint32 tag2 = 2;
+        optional bytes data = 3;
+    }
+    optional ClientCheckData clientCheckData = 2;
+    optional uint32 tag3 = 3;
+}
+
+message ReportclientcheckResp {
+    required BaseResponse BaseResponse = 1;
+}

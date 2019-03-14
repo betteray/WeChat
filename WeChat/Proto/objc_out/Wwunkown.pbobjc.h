@@ -29,6 +29,7 @@ CF_EXTERN_C_BEGIN
 
 @class BaseRequest;
 @class BaseResponse;
+@class ReportclientcheckRequest_ClientCheckData;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -93,6 +94,66 @@ typedef GPB_ENUM(Cpucardgetconfig2Resp_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *tag6;
 /** Test to see if @c tag6 has been set. */
 @property(nonatomic, readwrite) BOOL hasTag6;
+
+@end
+
+#pragma mark - ReportclientcheckRequest
+
+typedef GPB_ENUM(ReportclientcheckRequest_FieldNumber) {
+  ReportclientcheckRequest_FieldNumber_BaseRequest = 1,
+  ReportclientcheckRequest_FieldNumber_ClientCheckData = 2,
+  ReportclientcheckRequest_FieldNumber_Tag3 = 3,
+};
+
+@interface ReportclientcheckRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite, strong, null_resettable) ReportclientcheckRequest_ClientCheckData *clientCheckData;
+/** Test to see if @c clientCheckData has been set. */
+@property(nonatomic, readwrite) BOOL hasClientCheckData;
+
+@property(nonatomic, readwrite) uint32_t tag3;
+
+@property(nonatomic, readwrite) BOOL hasTag3;
+@end
+
+#pragma mark - ReportclientcheckRequest_ClientCheckData
+
+typedef GPB_ENUM(ReportclientcheckRequest_ClientCheckData_FieldNumber) {
+  ReportclientcheckRequest_ClientCheckData_FieldNumber_EnType = 1,
+  ReportclientcheckRequest_ClientCheckData_FieldNumber_Tag2 = 2,
+  ReportclientcheckRequest_ClientCheckData_FieldNumber_Data_p = 3,
+};
+
+@interface ReportclientcheckRequest_ClientCheckData : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *enType;
+/** Test to see if @c enType has been set. */
+@property(nonatomic, readwrite) BOOL hasEnType;
+
+@property(nonatomic, readwrite) uint32_t tag2;
+
+@property(nonatomic, readwrite) BOOL hasTag2;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *data_p;
+/** Test to see if @c data_p has been set. */
+@property(nonatomic, readwrite) BOOL hasData_p;
+
+@end
+
+#pragma mark - ReportclientcheckResp
+
+typedef GPB_ENUM(ReportclientcheckResp_FieldNumber) {
+  ReportclientcheckResp_FieldNumber_BaseResponse = 1,
+};
+
+@interface ReportclientcheckResp : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
 
 @end
 

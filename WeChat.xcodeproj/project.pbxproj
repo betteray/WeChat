@@ -64,6 +64,7 @@
 		46D2CA7A223A5A440053C4A6 /* Wwux.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA77223A5A440053C4A6 /* Wwux.pbobjc.m */; };
 		46D2CA7C223A5DF30053C4A6 /* wwunkown.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA7B223A5DF30053C4A6 /* wwunkown.proto */; };
 		46D2CA7F223A5F720053C4A6 /* Wwunkown.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA7D223A5F720053C4A6 /* Wwunkown.pbobjc.m */; };
+		46D2CA81223A6B790053C4A6 /* 1552407001442-00-10-01-reportclientcheck-type-771.bin in Resources */ = {isa = PBXBuildFile; fileRef = 46D2CA80223A6B790053C4A6 /* 1552407001442-00-10-01-reportclientcheck-type-771.bin */; };
 		46EB61D221F6EFB800760593 /* st_angler_1.bin in Resources */ = {isa = PBXBuildFile; fileRef = 46EB61D121F6EFB800760593 /* st_angler_1.bin */; };
 		46EB61F521F98E1100760593 /* mmbottle.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D621F98E1000760593 /* mmbottle.proto */; };
 		46EB61F621F98E1100760593 /* mmlogin.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D721F98E1000760593 /* mmlogin.proto */; };
@@ -284,6 +285,7 @@
 		46D2CA7B223A5DF30053C4A6 /* wwunkown.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = wwunkown.proto; sourceTree = "<group>"; };
 		46D2CA7D223A5F720053C4A6 /* Wwunkown.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wwunkown.pbobjc.m; sourceTree = "<group>"; };
 		46D2CA7E223A5F720053C4A6 /* Wwunkown.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wwunkown.pbobjc.h; sourceTree = "<group>"; };
+		46D2CA80223A6B790053C4A6 /* 1552407001442-00-10-01-reportclientcheck-type-771.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1552407001442-00-10-01-reportclientcheck-type-771.bin"; sourceTree = "<group>"; };
 		46EB61D121F6EFB800760593 /* st_angler_1.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = st_angler_1.bin; sourceTree = "<group>"; };
 		46EB61D621F98E1000760593 /* mmbottle.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmbottle.proto; sourceTree = "<group>"; };
 		46EB61D721F98E1000760593 /* mmlogin.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmlogin.proto; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 		4649DD6621ED864F006315DC /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				46D2CA80223A6B790053C4A6 /* 1552407001442-00-10-01-reportclientcheck-type-771.bin */,
 				4649DD6721ED8660006315DC /* 62.bin */,
 				46EB61D121F6EFB800760593 /* st_angler_1.bin */,
 			);
@@ -1330,6 +1333,7 @@
 				46EB61D221F6EFB800760593 /* st_angler_1.bin in Resources */,
 				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
 				460CDE50220088CE0075F3E5 /* cgi.json in Resources */,
+				46D2CA81223A6B790053C4A6 /* 1552407001442-00-10-01-reportclientcheck-type-771.bin in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				462D9C2A21D759FD00FC5461 /* WeChat_700_Proto.txt in Resources */,
