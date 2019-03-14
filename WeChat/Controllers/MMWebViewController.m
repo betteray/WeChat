@@ -8,7 +8,7 @@
 
 #import "MMWebViewController.h"
 
-@interface MMWebViewController ()
+@interface MMWebViewController () <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
@@ -20,7 +20,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
     [self.webView loadRequest:[NSURLRequest requestWithURL:_url]];
+}
+
+#pragma mark -- UIWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    LogVerbose(@"%@", request);
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    LogVerbose(@"WebViewDidStartLoad.");
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    LogVerbose(@"WebViewDidFinishLoad.");
 }
 
 /*

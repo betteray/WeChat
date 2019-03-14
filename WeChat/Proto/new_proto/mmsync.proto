@@ -1,7 +1,8 @@
+syntax = "proto2";
+
 package micromsg;
 
 import "mmbuiltintype.proto";
-
 import "mmbase.proto";
 
 message InitBuffer {
@@ -86,6 +87,7 @@ message NewSyncRequest {
 	required SKBuiltinBuffer_t KeyBuf = 3;
 	optional uint32 Scene = 4;
 	optional string DeviceType = 5;
+    required int32 syncMsgDigest = 6; // unknown,just set 1
 }
 
 message NewSyncResponse {
@@ -95,6 +97,8 @@ message NewSyncResponse {
 	required SKBuiltinBuffer_t KeyBuf = 4;
 	optional uint32 Status = 5;
 	optional uint32 OnlineVersion = 6;
+    
+    optional int32 svrTime       = 7;
 }
 
 message SyncFriendRequest {
@@ -184,17 +188,19 @@ message ModChatRoomMemberFlag {
 
 message AddMsg {
 	required int32 MsgId = 1;
-	required SKBuiltinString_t FromUserName = 2;
-	required SKBuiltinString_t ToUserName = 3;
-	required int32 MsgType = 4;
-	required SKBuiltinString_t Content = 5;
-	required uint32 Status = 6;
+	required SKBuiltinString_t FromUserName = 2;//发送方wxid
+	required SKBuiltinString_t ToUserName = 3; //接收方wxid
+	required int32 MsgType = 4;//消息类型:9999==>系统垃圾消息,10002==>sysmsg(系统垃圾消息),49==>appmsg,1==>文字消息,10000==>系统提示
+	required SKBuiltinString_t Content = 5;//原始消息内容,需要根据不同消息类型解析
+	required uint32 Status = 6;//消息发送时间
 	required uint32 ImgStatus = 7;
 	required SKBuiltinBuffer_t ImgBuf = 8;
 	required uint32 CreateTime = 9;
-	optional string MsgSource = 10;
-	optional string PushContent = 11;
-	optional int64 NewMsgId = 12;
+	optional string MsgSource = 10;//消息附加内容(群是否屏蔽,群人数,群at功能)
+	optional string PushContent = 11;//推送内容(xml格式)
+	optional int64 NewMsgId = 12;//每条消息的唯一id
+    
+    optional int32 msgSeq              = 13; // sync key中的id
 }
 
 message ModMsgStatus {

@@ -1,7 +1,8 @@
+syntax = "proto2";
+
 package micromsg;
 
 import "mmbuiltintype.proto";
-
 import "mmbase.proto";
 
 message BaseResponseErrMsg {

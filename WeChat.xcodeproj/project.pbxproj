@@ -9,9 +9,15 @@
 /* Begin PBXBuildFile section */
 		2FFBBBF5A4F4493C2BD0EBFB /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE308AEA822A0536476B28E2 /* libPods-WeChat.a */; };
 		3170D26FEE89CCA046B85687 /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WeChat.a */; };
-		46206F5821E7906B00BF0B82 /* secmanualauth-type-252.bin in Resources */ = {isa = PBXBuildFile; fileRef = 46206F5721E7906B00BF0B82 /* secmanualauth-type-252.bin */; };
+		4602CC7E2212AAFC005FB94F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4602CC7D2212AAFC005FB94F /* RegisterViewController.m */; };
+		460CDE4821FEB08C0075F3E5 /* mmpack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460CDE4721FEB08C0075F3E5 /* mmpack.cpp */; };
+		460CDE4B21FEB0FB0075F3E5 /* autobuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460CDE4A21FEB0FB0075F3E5 /* autobuffer.cpp */; };
+		460CDE4E220041CB0075F3E5 /* NeedRSAEncodePack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460CDE4D220041CB0075F3E5 /* NeedRSAEncodePack.cpp */; };
+		460CDE50220088CE0075F3E5 /* cgi.json in Resources */ = {isa = PBXBuildFile; fileRef = 460CDE4F220088CE0075F3E5 /* cgi.json */; };
+		46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */ = {isa = PBXBuildFile; fileRef = 46145F96221D9BF6003DC115 /* newwxjs-compiled.js */; };
+		46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */ = {isa = PBXBuildFile; fileRef = 46145F9F221E7AA9003DC115 /* UserScript3.js */; };
 		46206F6021E9EA1E00BF0B82 /* CUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 46206F5F21E9EA1E00BF0B82 /* CUtility.m */; };
-		462D9C0E21D4EC5700FC5461 /* BuiltinIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C0D21D4EC5700FC5461 /* BuiltinIP.m */; };
+		462D9C0E21D4EC5700FC5461 /* WCBuiltinIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C0D21D4EC5700FC5461 /* WCBuiltinIP.m */; };
 		462D9C1521D509FC00FC5461 /* ClientCheckDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C1421D509FC00FC5461 /* ClientCheckDataFetcher.m */; };
 		462D9C2A21D759FD00FC5461 /* WeChat_700_Proto.txt in Resources */ = {isa = PBXBuildFile; fileRef = 462D9C2921D759FD00FC5461 /* WeChat_700_Proto.txt */; };
 		462D9C2D21DC98E300FC5461 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C2C21DC98E300FC5461 /* AccountInfo.m */; };
@@ -20,6 +26,7 @@
 		462D9C3621DCD2D000FC5461 /* SyncCmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */; };
 		462D9C3A21DDA60F00FC5461 /* WCContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C3921DDA60F00FC5461 /* WCContact.m */; };
 		463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */ = {isa = PBXBuildFile; fileRef = 463BAD2D21D38F1700847A8B /* ClientCheckData.m */; };
+		463D13442212E4D5007C1DBD /* MMWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D13432212E4D5007C1DBD /* MMWKWebViewController.m */; };
 		4649DD6821ED8660006315DC /* 62.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4649DD6721ED8660006315DC /* 62.bin */; };
 		464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82321D4B681003E923F /* DefaultLongIp.m */; };
 		464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82621D4B9DD003E923F /* DefaultShortIp.m */; };
@@ -34,6 +41,19 @@
 		46804CED21DE5B2900232229 /* ChatsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46804CEC21DE5B2900232229 /* ChatsDetailTableViewCell.m */; };
 		4689A17821E4C01800E2EA9A /* SyncKeyCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */; };
 		469F657D21D3196100C1DC8B /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7141214B5A4B00603022 /* libcrypto.a */; };
+		46D2CA3A223A0A620053C4A6 /* mmreport.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA38223A0A610053C4A6 /* mmreport.proto */; };
+		46D2CA3B223A0A620053C4A6 /* mmthinker.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA39223A0A620053C4A6 /* mmthinker.proto */; };
+		46D2CA52223A0C630053C4A6 /* Mmsync.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA3E223A0C620053C4A6 /* Mmsync.pbobjc.m */; };
+		46D2CA53223A0C630053C4A6 /* Mmbase.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA3F223A0C620053C4A6 /* Mmbase.pbobjc.m */; };
+		46D2CA54223A0C630053C4A6 /* Mmreport.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA41223A0C620053C4A6 /* Mmreport.pbobjc.m */; };
+		46D2CA55223A0C630053C4A6 /* Mmthinker.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA42223A0C620053C4A6 /* Mmthinker.pbobjc.m */; };
+		46D2CA56223A0C630053C4A6 /* Mmlogin.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA44223A0C620053C4A6 /* Mmlogin.pbobjc.m */; };
+		46D2CA57223A0C630053C4A6 /* Mmopenapi.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA45223A0C620053C4A6 /* Mmopenapi.pbobjc.m */; };
+		46D2CA58223A0C630053C4A6 /* Mmprimsend.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA47223A0C620053C4A6 /* Mmprimsend.pbobjc.m */; };
+		46D2CA59223A0C630053C4A6 /* Mmutils.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA4D223A0C630053C4A6 /* Mmutils.pbobjc.m */; };
+		46D2CA5A223A0C630053C4A6 /* Mmbuiltintype.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA4F223A0C630053C4A6 /* Mmbuiltintype.pbobjc.m */; };
+		46D2CA5B223A0C630053C4A6 /* Mmsns.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA50223A0C630053C4A6 /* Mmsns.pbobjc.m */; };
+		46D2CA5D223A0E8F0053C4A6 /* mm_backup.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA5C223A0E8F0053C4A6 /* mm_backup.proto */; };
 		46EB61D221F6EFB800760593 /* st_angler_1.bin in Resources */ = {isa = PBXBuildFile; fileRef = 46EB61D121F6EFB800760593 /* st_angler_1.bin */; };
 		46EB61F521F98E1100760593 /* mmbottle.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D621F98E1000760593 /* mmbottle.proto */; };
 		46EB61F621F98E1100760593 /* mmlogin.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D721F98E1000760593 /* mmlogin.proto */; };
@@ -76,7 +96,7 @@
 		71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */; };
 		71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3E21B6CBB400DE8DF8 /* ShortLinkKey.m */; };
 		71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */; };
-		71076B2621CCF10500570FB1 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71076B2521CCF10500570FB1 /* TestViewController.m */; };
+		71076B2621CCF10500570FB1 /* TestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71076B2521CCF10500570FB1 /* TestViewController.mm */; };
 		7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C35D21C3494300A3E900 /* LoginViewController.m */; };
 		7121C36521C3610000A3E900 /* ChatsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C36421C3610000A3E900 /* ChatsTableViewController.m */; };
 		712C6E60214A145600603022 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E5F214A145600603022 /* AppDelegate.m */; };
@@ -89,7 +109,6 @@
 		712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E98214A2F9C00603022 /* NSData+Util.m */; };
 		712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6EFE214A5D8200603022 /* FSOpenSSL.m */; };
 		712C6F1A214A6A5800603022 /* mm.proto in Resources */ = {isa = PBXBuildFile; fileRef = 712C6F19214A6A5800603022 /* mm.proto */; };
-		712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6F1B214A6B5E00603022 /* Mm.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		712C70E8214AB2BC00603022 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C70E7214AB2BC00603022 /* libc++.1.tbd */; };
 		712C7143214B5A4B00603022 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 712C70EB214B5A4B00603022 /* LICENSE */; };
 		712C7149214BA38900603022 /* LongHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7148214BA38900603022 /* LongHeader.m */; };
@@ -156,11 +175,22 @@
 /* Begin PBXFileReference section */
 		127BAC7036D39AFEE4EAF228 /* Pods-WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChat/Pods-WeChat.release.xcconfig"; sourceTree = "<group>"; };
 		36DB43DD6C2AA522C9401323 /* libPods-WeChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		46206F5721E7906B00BF0B82 /* secmanualauth-type-252.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "secmanualauth-type-252.bin"; sourceTree = "<group>"; };
+		4602CC7C2212AAFC005FB94F /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		4602CC7D2212AAFC005FB94F /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		460CDE4521FEB0710075F3E5 /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
+		460CDE4621FEB08B0075F3E5 /* mmpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mmpack.h; sourceTree = "<group>"; };
+		460CDE4721FEB08C0075F3E5 /* mmpack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mmpack.cpp; sourceTree = "<group>"; };
+		460CDE4921FEB0FB0075F3E5 /* autobuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autobuffer.h; sourceTree = "<group>"; };
+		460CDE4A21FEB0FB0075F3E5 /* autobuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = autobuffer.cpp; sourceTree = "<group>"; };
+		460CDE4C220041CB0075F3E5 /* NeedRSAEncodePack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeedRSAEncodePack.h; sourceTree = "<group>"; };
+		460CDE4D220041CB0075F3E5 /* NeedRSAEncodePack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NeedRSAEncodePack.cpp; sourceTree = "<group>"; };
+		460CDE4F220088CE0075F3E5 /* cgi.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cgi.json; sourceTree = "<group>"; };
+		46145F96221D9BF6003DC115 /* newwxjs-compiled.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "newwxjs-compiled.js"; sourceTree = "<group>"; };
+		46145F9F221E7AA9003DC115 /* UserScript3.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = UserScript3.js; sourceTree = "<group>"; };
 		46206F5E21E9EA1E00BF0B82 /* CUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CUtility.h; sourceTree = "<group>"; };
 		46206F5F21E9EA1E00BF0B82 /* CUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CUtility.m; sourceTree = "<group>"; };
-		462D9C0C21D4EC5700FC5461 /* BuiltinIP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuiltinIP.h; sourceTree = "<group>"; };
-		462D9C0D21D4EC5700FC5461 /* BuiltinIP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuiltinIP.m; sourceTree = "<group>"; };
+		462D9C0C21D4EC5700FC5461 /* WCBuiltinIP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCBuiltinIP.h; sourceTree = "<group>"; };
+		462D9C0D21D4EC5700FC5461 /* WCBuiltinIP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCBuiltinIP.m; sourceTree = "<group>"; };
 		462D9C1221D5096400FC5461 /* DNSFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSFetcher.h; sourceTree = "<group>"; };
 		462D9C1321D509FC00FC5461 /* ClientCheckDataFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClientCheckDataFetcher.h; sourceTree = "<group>"; };
 		462D9C1421D509FC00FC5461 /* ClientCheckDataFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckDataFetcher.m; sourceTree = "<group>"; };
@@ -176,6 +206,8 @@
 		462D9C3821DDA60F00FC5461 /* WCContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCContact.h; sourceTree = "<group>"; };
 		462D9C3921DDA60F00FC5461 /* WCContact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCContact.m; sourceTree = "<group>"; };
 		463BAD2D21D38F1700847A8B /* ClientCheckData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckData.m; sourceTree = "<group>"; };
+		463D13422212E4D5007C1DBD /* MMWKWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMWKWebViewController.h; sourceTree = "<group>"; };
+		463D13432212E4D5007C1DBD /* MMWKWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMWKWebViewController.m; sourceTree = "<group>"; };
 		4649DD6721ED8660006315DC /* 62.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = 62.bin; sourceTree = "<group>"; };
 		464FB82221D4B681003E923F /* DefaultLongIp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultLongIp.h; sourceTree = "<group>"; };
 		464FB82321D4B681003E923F /* DefaultLongIp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultLongIp.m; sourceTree = "<group>"; };
@@ -203,6 +235,29 @@
 		4689A17021DF447500E2EA9A /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncKeyCompare.h; sourceTree = "<group>"; };
 		4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncKeyCompare.m; sourceTree = "<group>"; };
+		46D2CA38223A0A610053C4A6 /* mmreport.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmreport.proto; sourceTree = "<group>"; };
+		46D2CA39223A0A620053C4A6 /* mmthinker.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmthinker.proto; sourceTree = "<group>"; };
+		46D2CA3E223A0C620053C4A6 /* Mmsync.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmsync.pbobjc.m; sourceTree = "<group>"; };
+		46D2CA3F223A0C620053C4A6 /* Mmbase.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmbase.pbobjc.m; sourceTree = "<group>"; };
+		46D2CA40223A0C620053C4A6 /* Mmlogin.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mmlogin.pbobjc.h; sourceTree = "<group>"; };
+		46D2CA41223A0C620053C4A6 /* Mmreport.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmreport.pbobjc.m; sourceTree = "<group>"; };
+		46D2CA42223A0C620053C4A6 /* Mmthinker.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmthinker.pbobjc.m; sourceTree = "<group>"; };
+		46D2CA43223A0C620053C4A6 /* Mmprimsend.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mmprimsend.pbobjc.h; sourceTree = "<group>"; };
+		46D2CA44223A0C620053C4A6 /* Mmlogin.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmlogin.pbobjc.m; sourceTree = "<group>"; };
+		46D2CA45223A0C620053C4A6 /* Mmopenapi.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmopenapi.pbobjc.m; sourceTree = "<group>"; };
+		46D2CA46223A0C620053C4A6 /* Mmthinker.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mmthinker.pbobjc.h; sourceTree = "<group>"; };
+		46D2CA47223A0C620053C4A6 /* Mmprimsend.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmprimsend.pbobjc.m; sourceTree = "<group>"; };
+		46D2CA48223A0C620053C4A6 /* Mmutils.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mmutils.pbobjc.h; sourceTree = "<group>"; };
+		46D2CA49223A0C620053C4A6 /* Mmbuiltintype.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mmbuiltintype.pbobjc.h; sourceTree = "<group>"; };
+		46D2CA4A223A0C620053C4A6 /* Mmreport.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mmreport.pbobjc.h; sourceTree = "<group>"; };
+		46D2CA4B223A0C630053C4A6 /* Mmopenapi.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mmopenapi.pbobjc.h; sourceTree = "<group>"; };
+		46D2CA4C223A0C630053C4A6 /* Mmsync.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mmsync.pbobjc.h; sourceTree = "<group>"; };
+		46D2CA4D223A0C630053C4A6 /* Mmutils.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmutils.pbobjc.m; sourceTree = "<group>"; };
+		46D2CA4E223A0C630053C4A6 /* Mmbase.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mmbase.pbobjc.h; sourceTree = "<group>"; };
+		46D2CA4F223A0C630053C4A6 /* Mmbuiltintype.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmbuiltintype.pbobjc.m; sourceTree = "<group>"; };
+		46D2CA50223A0C630053C4A6 /* Mmsns.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmsns.pbobjc.m; sourceTree = "<group>"; };
+		46D2CA51223A0C630053C4A6 /* Mmsns.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mmsns.pbobjc.h; sourceTree = "<group>"; };
+		46D2CA5C223A0E8F0053C4A6 /* mm_backup.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_backup.proto; sourceTree = "<group>"; };
 		46EB61D121F6EFB800760593 /* st_angler_1.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = st_angler_1.bin; sourceTree = "<group>"; };
 		46EB61D621F98E1000760593 /* mmbottle.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmbottle.proto; sourceTree = "<group>"; };
 		46EB61D721F98E1000760593 /* mmlogin.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmlogin.proto; sourceTree = "<group>"; };
@@ -253,7 +308,7 @@
 		71008F3E21B6CBB400DE8DF8 /* ShortLinkKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortLinkKey.m; sourceTree = "<group>"; };
 		71008F4021B7A36200DE8DF8 /* MMTLSShortLinkResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMTLSShortLinkResponse.h; sourceTree = "<group>"; };
 		71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMTLSShortLinkResponse.m; sourceTree = "<group>"; };
-		71076B2521CCF10500570FB1 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		71076B2521CCF10500570FB1 /* TestViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestViewController.mm; sourceTree = "<group>"; };
 		7121C35C21C3494300A3E900 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7121C35D21C3494300A3E900 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7121C36321C3610000A3E900 /* ChatsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatsTableViewController.h; sourceTree = "<group>"; };
@@ -278,8 +333,6 @@
 		712C6EFE214A5D8200603022 /* FSOpenSSL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOpenSSL.m; sourceTree = "<group>"; };
 		712C6EFF214A5D8200603022 /* FSOpenSSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOpenSSL.h; sourceTree = "<group>"; };
 		712C6F19214A6A5800603022 /* mm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mm.proto; sourceTree = "<group>"; };
-		712C6F1B214A6B5E00603022 /* Mm.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mm.pbobjc.m; sourceTree = "<group>"; };
-		712C6F1C214A6B5E00603022 /* Mm.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mm.pbobjc.h; sourceTree = "<group>"; };
 		712C7065214A9A8B00603022 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		712C70E7214AB2BC00603022 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		712C70EB214B5A4B00603022 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -515,12 +568,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		46206F5621E7904300BF0B82 /* DumpedBin */ = {
+		460CDE4421FEAFC80075F3E5 /* IDACode */ = {
 			isa = PBXGroup;
 			children = (
-				46206F5721E7906B00BF0B82 /* secmanualauth-type-252.bin */,
+				460CDE4521FEB0710075F3E5 /* defs.h */,
+				460CDE4721FEB08C0075F3E5 /* mmpack.cpp */,
+				460CDE4621FEB08B0075F3E5 /* mmpack.h */,
+				460CDE4A21FEB0FB0075F3E5 /* autobuffer.cpp */,
+				460CDE4921FEB0FB0075F3E5 /* autobuffer.h */,
+				460CDE4C220041CB0075F3E5 /* NeedRSAEncodePack.h */,
+				460CDE4D220041CB0075F3E5 /* NeedRSAEncodePack.cpp */,
 			);
-			path = DumpedBin;
+			path = IDACode;
 			sourceTree = "<group>";
 		};
 		462D9C3721DCD2DF00FC5461 /* Business */ = {
@@ -541,8 +600,8 @@
 				464FB82321D4B681003E923F /* DefaultLongIp.m */,
 				464FB82521D4B9DD003E923F /* DefaultShortIp.h */,
 				464FB82621D4B9DD003E923F /* DefaultShortIp.m */,
-				462D9C0C21D4EC5700FC5461 /* BuiltinIP.h */,
-				462D9C0D21D4EC5700FC5461 /* BuiltinIP.m */,
+				462D9C0C21D4EC5700FC5461 /* WCBuiltinIP.h */,
+				462D9C0D21D4EC5700FC5461 /* WCBuiltinIP.m */,
 				712F960421D78F0B00CFE3A0 /* AutoAuthKeyStore.h */,
 				712F960521D78F0B00CFE3A0 /* AutoAuthKeyStore.m */,
 				712F960721D78F9300CFE3A0 /* SyncKeyStore.h */,
@@ -659,30 +718,68 @@
 			path = Vendor;
 			sourceTree = "<group>";
 		};
+		46D2CA322239F1CE0053C4A6 /* objc_out */ = {
+			isa = PBXGroup;
+			children = (
+				46D2CA4E223A0C630053C4A6 /* Mmbase.pbobjc.h */,
+				46D2CA3F223A0C620053C4A6 /* Mmbase.pbobjc.m */,
+				46D2CA49223A0C620053C4A6 /* Mmbuiltintype.pbobjc.h */,
+				46D2CA4F223A0C630053C4A6 /* Mmbuiltintype.pbobjc.m */,
+				46D2CA40223A0C620053C4A6 /* Mmlogin.pbobjc.h */,
+				46D2CA44223A0C620053C4A6 /* Mmlogin.pbobjc.m */,
+				46D2CA4B223A0C630053C4A6 /* Mmopenapi.pbobjc.h */,
+				46D2CA45223A0C620053C4A6 /* Mmopenapi.pbobjc.m */,
+				46D2CA43223A0C620053C4A6 /* Mmprimsend.pbobjc.h */,
+				46D2CA47223A0C620053C4A6 /* Mmprimsend.pbobjc.m */,
+				46D2CA4A223A0C620053C4A6 /* Mmreport.pbobjc.h */,
+				46D2CA41223A0C620053C4A6 /* Mmreport.pbobjc.m */,
+				46D2CA51223A0C630053C4A6 /* Mmsns.pbobjc.h */,
+				46D2CA50223A0C630053C4A6 /* Mmsns.pbobjc.m */,
+				46D2CA4C223A0C630053C4A6 /* Mmsync.pbobjc.h */,
+				46D2CA3E223A0C620053C4A6 /* Mmsync.pbobjc.m */,
+				46D2CA46223A0C620053C4A6 /* Mmthinker.pbobjc.h */,
+				46D2CA42223A0C620053C4A6 /* Mmthinker.pbobjc.m */,
+				46D2CA48223A0C620053C4A6 /* Mmutils.pbobjc.h */,
+				46D2CA4D223A0C630053C4A6 /* Mmutils.pbobjc.m */,
+			);
+			path = objc_out;
+			sourceTree = "<group>";
+		};
+		46D2CA332239F1F30053C4A6 /* new_proto */ = {
+			isa = PBXGroup;
+			children = (
+				46D2CA38223A0A610053C4A6 /* mmreport.proto */,
+				46D2CA39223A0A620053C4A6 /* mmthinker.proto */,
+				46EB61F321F98E1000760593 /* mmbuiltintype.proto */,
+				46EB61DE21F98E1000760593 /* mmbase.proto */,
+				46EB61D721F98E1000760593 /* mmlogin.proto */,
+				46EB61E921F98E1000760593 /* mmsync.proto */,
+				46EB61E521F98E1000760593 /* mmprimsend.proto */,
+				46EB61E721F98E1000760593 /* mmsns.proto */,
+				46EB61F221F98E1000760593 /* mmutils.proto */,
+				46EB61EA21F98E1000760593 /* mmopenapi.proto */,
+			);
+			path = new_proto;
+			sourceTree = "<group>";
+		};
 		46EB61D521F98E1000760593 /* proto */ = {
 			isa = PBXGroup;
 			children = (
 				46EB61D621F98E1000760593 /* mmbottle.proto */,
-				46EB61D721F98E1000760593 /* mmlogin.proto */,
 				46EB61D821F98E1000760593 /* mmtrack.proto */,
 				46EB61D921F98E1000760593 /* mmcontact.proto */,
 				46EB61DA21F98E1000760593 /* mmvoip.proto */,
 				46EB61DB21F98E1000760593 /* mmemotion.proto */,
 				46EB61DC21F98E1000760593 /* mmimg.proto */,
 				46EB61DD21F98E1000760593 /* mmemotionstore.proto */,
-				46EB61DE21F98E1000760593 /* mmbase.proto */,
 				46EB61DF21F98E1000760593 /* mmweb.proto */,
 				46EB61E021F98E1000760593 /* mmfav.proto */,
 				46EB61E121F98E1000760593 /* mmextdevice.proto */,
 				46EB61E221F98E1000760593 /* mmappmsg.proto */,
 				46EB61E321F98E1000760593 /* mmbackup.proto */,
 				46EB61E421F98E1000760593 /* mmcard.proto */,
-				46EB61E521F98E1000760593 /* mmprimsend.proto */,
 				46EB61E621F98E1000760593 /* mmremind.proto */,
-				46EB61E721F98E1000760593 /* mmsns.proto */,
 				46EB61E821F98E1000760593 /* mmvoiceprint.proto */,
-				46EB61E921F98E1000760593 /* mmsync.proto */,
-				46EB61EA21F98E1000760593 /* mmopenapi.proto */,
 				46EB61EB21F98E1000760593 /* mmpay.proto */,
 				46EB61EC21F98E1000760593 /* mmgame.proto */,
 				46EB61ED21F98E1000760593 /* mmvoiceaddr.proto */,
@@ -690,8 +787,6 @@
 				46EB61EF21F98E1000760593 /* mmlbs.proto */,
 				46EB61F021F98E1000760593 /* BlockDumpList.proto */,
 				46EB61F121F98E1000760593 /* mmextsend.proto */,
-				46EB61F221F98E1000760593 /* mmutils.proto */,
-				46EB61F321F98E1000760593 /* mmbuiltintype.proto */,
 				46EB61F421F98E1000760593 /* mmtalk.proto */,
 			);
 			path = proto;
@@ -720,10 +815,16 @@
 				7121C35C21C3494300A3E900 /* LoginViewController.h */,
 				7121C35D21C3494300A3E900 /* LoginViewController.m */,
 				716197F821C7A36200A76F39 /* TestViewController.h */,
-				71076B2521CCF10500570FB1 /* TestViewController.m */,
+				71076B2521CCF10500570FB1 /* TestViewController.mm */,
 				712C6E64214A145600603022 /* WeChat.storyboard */,
 				46EB621C21F99C6F00760593 /* MMWebViewController.h */,
 				46EB621D21F99C6F00760593 /* MMWebViewController.m */,
+				4602CC7C2212AAFC005FB94F /* RegisterViewController.h */,
+				4602CC7D2212AAFC005FB94F /* RegisterViewController.m */,
+				463D13422212E4D5007C1DBD /* MMWKWebViewController.h */,
+				463D13432212E4D5007C1DBD /* MMWKWebViewController.m */,
+				46145F9F221E7AA9003DC115 /* UserScript3.js */,
+				46145F96221D9BF6003DC115 /* newwxjs-compiled.js */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -753,6 +854,7 @@
 		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				460CDE4421FEAFC80075F3E5 /* IDACode */,
 				4649DD6621ED864F006315DC /* Res */,
 				466C4AC021DDBF8700743075 /* Views */,
 				462D9C3721DCD2DF00FC5461 /* Business */,
@@ -798,12 +900,13 @@
 		712C6F18214A6A5800603022 /* Proto */ = {
 			isa = PBXGroup;
 			children = (
+				46D2CA5C223A0E8F0053C4A6 /* mm_backup.proto */,
+				46D2CA332239F1F30053C4A6 /* new_proto */,
+				46D2CA322239F1CE0053C4A6 /* objc_out */,
 				46EB61D521F98E1000760593 /* proto */,
-				46206F5621E7904300BF0B82 /* DumpedBin */,
-				712C6F1C214A6B5E00603022 /* Mm.pbobjc.h */,
-				712C6F1B214A6B5E00603022 /* Mm.pbobjc.m */,
 				462D9C2921D759FD00FC5461 /* WeChat_700_Proto.txt */,
 				712C6F19214A6A5800603022 /* mm.proto */,
+				460CDE4F220088CE0075F3E5 /* cgi.json */,
 			);
 			path = Proto;
 			sourceTree = "<group>";
@@ -1180,9 +1283,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */,
 				712C6F1A214A6A5800603022 /* mm.proto in Resources */,
 				46EB61D221F6EFB800760593 /* st_angler_1.bin in Resources */,
-				46206F5821E7906B00BF0B82 /* secmanualauth-type-252.bin in Resources */,
+				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
+				460CDE50220088CE0075F3E5 /* cgi.json in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				462D9C2A21D759FD00FC5461 /* WeChat_700_Proto.txt in Resources */,
@@ -1292,21 +1397,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				462D9C0E21D4EC5700FC5461 /* BuiltinIP.m in Sources */,
+				462D9C0E21D4EC5700FC5461 /* WCBuiltinIP.m in Sources */,
 				712C6E93214A1E8900603022 /* WeChatClient.m in Sources */,
 				46EB620B21F98E1100760593 /* mmgame.proto in Sources */,
 				46EB620021F98E1100760593 /* mmextdevice.proto in Sources */,
 				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
 				712F95F221D0981B00CFE3A0 /* WCDevice.m in Sources */,
+				46D2CA54223A0C630053C4A6 /* Mmreport.pbobjc.m in Sources */,
 				46EB61FB21F98E1100760593 /* mmimg.proto in Sources */,
 				712F960021D20A7800CFE3A0 /* ShortLinkClient.m in Sources */,
 				46804CDD21DE13B300232229 /* WCMessage.m in Sources */,
 				712C7152214BAD8900603022 /* ShortHeader.m in Sources */,
 				46EB620621F98E1100760593 /* mmsns.proto in Sources */,
 				712F960621D78F0B00CFE3A0 /* AutoAuthKeyStore.m in Sources */,
+				46D2CA59223A0C630053C4A6 /* Mmutils.pbobjc.m in Sources */,
 				7155BA5821902CDD0002CE1D /* WC_SHA256.m in Sources */,
 				466C4AC621DDD65900743075 /* ContactsTableViewController.m in Sources */,
 				46EB61FD21F98E1100760593 /* mmbase.proto in Sources */,
+				463D13442212E4D5007C1DBD /* MMWKWebViewController.m in Sources */,
 				71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */,
 				46EB620921F98E1100760593 /* mmopenapi.proto in Sources */,
 				46EB61FC21F98E1100760593 /* mmemotionstore.proto in Sources */,
@@ -1320,25 +1428,30 @@
 				462D9C1521D509FC00FC5461 /* ClientCheckDataFetcher.m in Sources */,
 				712C7158214BFB1600603022 /* Task.m in Sources */,
 				46206F6021E9EA1E00BF0B82 /* CUtility.m in Sources */,
-				71076B2621CCF10500570FB1 /* TestViewController.m in Sources */,
+				71076B2621CCF10500570FB1 /* TestViewController.mm in Sources */,
 				71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */,
+				46D2CA3B223A0A620053C4A6 /* mmthinker.proto in Sources */,
+				460CDE4821FEB08C0075F3E5 /* mmpack.cpp in Sources */,
 				46EB620321F98E1100760593 /* mmcard.proto in Sources */,
 				46EB61FA21F98E1100760593 /* mmemotion.proto in Sources */,
 				7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */,
 				7121C36521C3610000A3E900 /* ChatsTableViewController.m in Sources */,
 				46EB621E21F99C6F00760593 /* MMWebViewController.m in Sources */,
-				712C6F1D214A6B5E00603022 /* Mm.pbobjc.m in Sources */,
 				71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */,
+				46D2CA53223A0C630053C4A6 /* Mmbase.pbobjc.m in Sources */,
 				46EB621221F98E1100760593 /* mmbuiltintype.proto in Sources */,
 				46EB620A21F98E1100760593 /* mmpay.proto in Sources */,
 				7154D5172196B721005064C4 /* NSData+HexDump.m in Sources */,
 				46EB620521F98E1100760593 /* mmremind.proto in Sources */,
 				7155BA4F21902A0B0002CE1D /* WC_AesGcm128.m in Sources */,
 				71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */,
+				4602CC7E2212AAFC005FB94F /* RegisterViewController.m in Sources */,
+				46D2CA58223A0C630053C4A6 /* Mmprimsend.pbobjc.m in Sources */,
 				71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */,
 				712C6E60214A145600603022 /* AppDelegate.m in Sources */,
 				7154D5252197EFB9005064C4 /* WC_HmacSha256.m in Sources */,
 				712C7166214D2BFD00603022 /* WCECDH.m in Sources */,
+				46D2CA55223A0C630053C4A6 /* Mmthinker.pbobjc.m in Sources */,
 				462D9C2D21DC98E300FC5461 /* AccountInfo.m in Sources */,
 				7155BA5221902AB30002CE1D /* ClientHello.m in Sources */,
 				712F95FA21D1E71600CFE3A0 /* LongLinkClient.m in Sources */,
@@ -1350,7 +1463,9 @@
 				464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */,
 				7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */,
 				46EB620F21F98E1100760593 /* BlockDumpList.proto in Sources */,
+				460CDE4E220041CB0075F3E5 /* NeedRSAEncodePack.cpp in Sources */,
 				46EB61F521F98E1100760593 /* mmbottle.proto in Sources */,
+				46D2CA57223A0C630053C4A6 /* Mmopenapi.pbobjc.m in Sources */,
 				466C4AC321DDBFA800743075 /* WCButton.m in Sources */,
 				46EB620221F98E1100760593 /* mmbackup.proto in Sources */,
 				46804CE421DE280900232229 /* DiscoveryTableViewController.m in Sources */,
@@ -1364,13 +1479,16 @@
 				462D9C3321DCC4FE00FC5461 /* SessionKeyStore.m in Sources */,
 				464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */,
 				46EB621121F98E1100760593 /* mmutils.proto in Sources */,
+				46D2CA5A223A0C630053C4A6 /* Mmbuiltintype.pbobjc.m in Sources */,
 				719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */,
+				46D2CA3A223A0A620053C4A6 /* mmreport.proto in Sources */,
 				71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */,
 				46EB61F621F98E1100760593 /* mmlogin.proto in Sources */,
 				712F960921D78F9300CFE3A0 /* SyncKeyStore.m in Sources */,
 				46EB61F821F98E1100760593 /* mmcontact.proto in Sources */,
 				7154D5222196DFE1005064C4 /* WC_Hex.m in Sources */,
 				71008F3F21B6CBB400DE8DF8 /* ShortLinkKey.m in Sources */,
+				46D2CA5B223A0C630053C4A6 /* Mmsns.pbobjc.m in Sources */,
 				46804CE721DE41BE00232229 /* ChatDetailTableViewController.m in Sources */,
 				4689A17821E4C01800E2EA9A /* SyncKeyCompare.m in Sources */,
 				71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */,
@@ -1387,16 +1505,20 @@
 				46EB621021F98E1100760593 /* mmextsend.proto in Sources */,
 				462D9C3621DCD2D000FC5461 /* SyncCmdHandler.m in Sources */,
 				46EB620C21F98E1100760593 /* mmvoiceaddr.proto in Sources */,
+				46D2CA5D223A0E8F0053C4A6 /* mm_backup.proto in Sources */,
 				71848F272150CABD00DB669E /* NSData+Compression.m in Sources */,
+				46D2CA56223A0C630053C4A6 /* Mmlogin.pbobjc.m in Sources */,
 				7154D5162196B721005064C4 /* HexDump.m in Sources */,
 				46EB620721F98E1100760593 /* mmvoiceprint.proto in Sources */,
 				464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */,
 				46804CEA21DE5B1800232229 /* ChatsTableViewCell.m in Sources */,
+				460CDE4B21FEB0FB0075F3E5 /* autobuffer.cpp in Sources */,
 				712C714C214BA49300603022 /* LongPackage.m in Sources */,
 				46EB61F721F98E1100760593 /* mmtrack.proto in Sources */,
 				46EB620821F98E1100760593 /* mmsync.proto in Sources */,
 				46EB620121F98E1100760593 /* mmappmsg.proto in Sources */,
 				71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */,
+				46D2CA52223A0C630053C4A6 /* Mmsync.pbobjc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1580,7 +1702,7 @@
 					"${SRC_ROOT}WeChat/Vendor/openssl/include",
 				);
 				INFOPLIST_FILE = WeChat/Others/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1628,7 +1750,7 @@
 					"${SRC_ROOT}WeChat/Vendor/openssl/include",
 				);
 				INFOPLIST_FILE = WeChat/Others/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

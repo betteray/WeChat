@@ -6,9 +6,9 @@
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "BuiltinIP.h"
+#import "WCBuiltinIP.h"
 
-@implementation BuiltinIP
+@implementation WCBuiltinIP
 
 + (NSString *)primaryKey
 {

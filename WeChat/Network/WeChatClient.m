@@ -150,8 +150,19 @@
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
     AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:pre] firstObject];
     request.userName = accountInfo.userName;
-    request.currentSynckey = syncKeyCur;
-    request.maxSynckey = syncKeyMax;
+    SKBuiltinBuffer_t *currentSynckey = nil;
+    SKBuiltinBuffer_t *maxSynckey = nil;
+    if (syncKeyCur.length == 0) {
+        currentSynckey = [SKBuiltinBuffer_t new];
+        currentSynckey.iLen = 0;
+        maxSynckey = [SKBuiltinBuffer_t new];
+        maxSynckey.iLen = 0;
+     } else {
+         currentSynckey = [[SKBuiltinBuffer_t alloc] initWithData:syncKeyCur error:nil];
+         maxSynckey =  [[SKBuiltinBuffer_t alloc] initWithData:syncKeyMax error:nil];
+     }
+    request.currentSynckey = currentSynckey;
+    request.maxSynckey = maxSynckey;
     request.language = [[DeviceManager sharedManager] getCurrentDevice].language;
 
     CgiWrap *wrap = [CgiWrap new];
@@ -163,8 +174,8 @@
 
     [[WeChatClient sharedClient] startRequest:wrap
         success:^(NewInitResponse *_Nullable response) {
-            self.sync_key_cur = response.currentSynckey;
-            self.sync_key_max = response.maxSynckey;
+            self.sync_key_cur = [response.currentSynckey data];
+            self.sync_key_max = [response.maxSynckey data];
             
             // 存数据到数据库。
             RLMRealm *realm = [RLMRealm defaultRealm];
@@ -172,9 +183,9 @@
             [SyncKeyStore createOrUpdateInDefaultRealmWithValue:@[SyncKeyStoreID, self.sync_key_cur]];
             [realm commitWriteTransaction];
             
-            [SyncCmdHandler parseCmdList:response.listArray];
+            [SyncCmdHandler parseCmdList:response.cmdListArray];
 
-            LogVerbose(@"newinit cmd count: %d, continue flag: %d", response.count, response.continueFlag);
+            LogVerbose(@"newinit cmd count: %d, continue flag: %d", response.cmdCount, response.continueFlag);
             if (response.continueFlag)
             {
                 [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
@@ -189,9 +200,12 @@
 {
     LogDebug(@"Request NewSync With Key: %@", self.sync_key_cur);
     NewSyncRequest *req = [NewSyncRequest new];
-    req.oplog = @"";
+    
+    CmdList *oplog = [CmdList new];
+    oplog.count = 0;
+    req.oplog = oplog;
     req.selector = 262151;
-    req.keyBuf = self.sync_key_cur;
+    req.keyBuf = [[SKBuiltinBuffer_t alloc] initWithData:self.sync_key_cur error:nil];
     req.scene = 7;
     req.deviceType = [[NSString alloc] initWithData:[[DeviceManager sharedManager] getCurrentDevice].osType encoding:NSUTF8StringEncoding];
     req.syncMsgDigest = 1;
@@ -212,7 +226,7 @@
             if (error) {
                 LogError("%@", error);
             }
-            self.sync_key_cur = response.keyBuf;
+            self.sync_key_cur = [response.keyBuf data];
             SKBuiltinBuffer_t *buffer2 = [SKBuiltinBuffer_t parseFromData:self.sync_key_cur error:nil];
             SyncKey *newSyncKey = [SyncKey parseFromData:buffer2.buffer error:&error];
             if (error) {
@@ -257,7 +271,7 @@
 {
     [self setBaseResquestIfNeed:cgiWrap];
     
-//    LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
+    LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
 
@@ -375,6 +389,35 @@
     [_client sendData:sendData];
 }
 
+- (void)registerWeChat:(CgiWrap *)cgiWrap
+           success:(SuccessBlock)successBlock
+           failure:(FailureBlock)failureBlock
+{
+    [self setBaseResquestIfNeed:cgiWrap];
+    
+    Task *task = [Task new];
+    task.sucBlock = successBlock;
+    task.failBlock = failureBlock;
+    task.cgiWrap = cgiWrap;
+    [_tasks addObject:task];
+    
+    LogVerbose(@"Start Request: %@", cgiWrap.request);
+    
+    NSData *serilizedData = [[cgiWrap request] data];
+    NSData *sendData = [short_pack pack:cgiWrap.cgi
+                          serilizedData:serilizedData
+                                   type:1
+                                    uin:0
+                                 cookie:nil];
+    
+#if USE_MMTLS
+    NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
+#else
+    NSData *packData = [ShortLinkClient post:sendData toCgiPath:cgiWrap.cgiPath];
+#endif
+    
+    [self UnPack:packData];
+}
 
 - (void)autoAuth:(CgiWrap *)cgiWrap
            success:(SuccessBlock)successBlock

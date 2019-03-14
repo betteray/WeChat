@@ -10,7 +10,7 @@
 #import "WCECDH.h"
 #import "FSOpenSSL.h"
 #import "ClientCheckData.h"
-#import "BuiltinIP.h"
+#import "WCBuiltinIP.h"
 #import "AutoAuthKeyStore.h"
 #import "AccountInfo.h"
 #import "SessionKeyStore.h"
@@ -371,21 +371,25 @@
                 RLMRealm *realm = [RLMRealm defaultRealm];
                 [realm beginWriteTransaction];
                 for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.longConnectIplistArray) {
-                    BuiltinIP *ip = [[BuiltinIP alloc] initWithValue:@{@"isLongIP" : @YES,
+                    NSString *domain = [[NSString alloc] initWithData:longBuiltinIp.domain encoding:NSUTF8StringEncoding];
+                    NSString *ipString = [[NSString alloc] initWithData:longBuiltinIp.ip encoding:NSUTF8StringEncoding];
+                    WCBuiltinIP *ip = [[WCBuiltinIP alloc] initWithValue:@{@"isLongIP" : @YES,
                                                                        @"type": @(longBuiltinIp.type),
                                                                        @"port": @(longBuiltinIp.port),
-                                                                       @"ip": longBuiltinIp.ip,
-                                                                       @"domain": longBuiltinIp.domain}];
+                                                                       @"ip": ipString,
+                                                                       @"domain": domain}];
                     [realm addOrUpdateObject:ip];
                     
                 };
 
                 for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.shortConnectIplistArray) {
-                    BuiltinIP *ip = [[BuiltinIP alloc] initWithValue:@{@"isLongIP" : @NO,
+                    NSString *domain = [[NSString alloc] initWithData:longBuiltinIp.domain encoding:NSUTF8StringEncoding];
+                    NSString *ipString = [[NSString alloc] initWithData:longBuiltinIp.ip encoding:NSUTF8StringEncoding];
+                    WCBuiltinIP *ip = [[WCBuiltinIP alloc] initWithValue:@{@"isLongIP" : @NO,
                                                                        @"type": @(longBuiltinIp.type),
                                                                        @"port": @(longBuiltinIp.port),
-                                                                       @"ip": longBuiltinIp.ip,
-                                                                       @"domain": longBuiltinIp.domain}];
+                                                                       @"ip": ipString,
+                                                                       @"domain": domain}];
                     [realm addOrUpdateObject:ip];
                 };
                 

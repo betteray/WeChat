@@ -17,6 +17,16 @@ message BuiltinIPList {
 	repeated BuiltinIP ShortConnectIPList = 4;
 }
 
+//TODO: 哪个是对的，注释的是我的。
+//message BuiltinIPList
+//{
+//    optional int32 longConnectIpcount  = 1;
+//    optional int32 shortConnectIpcount = 2;
+//    repeated BuiltinIP longConnectIplist  = 3;
+//    repeated BuiltinIP shortConnectIplist = 4;
+//    optional int32 seq                    = 5;
+//}
+
 message NetworkControl {
 	optional string PortList = 1;
 	optional string TimeoutList = 2;
@@ -238,6 +248,7 @@ message ChatRoomMemberInfo {
 	optional string BigHeadImgUrl = 4;
 	optional string SmallHeadImgUrl = 5;
 	required uint32 ChatroomMemberFlag = 6;
+    optional string InviterUserName    = 7;
 }
 
 message ChatRoomMemberData {
@@ -323,6 +334,16 @@ message UserInfoExt {
 	optional uint32 PayWalletType = 27;
 }
 
+message PhoneNumItem {
+    optional string phoneNum = 1;
+}
+
+message PhoneNumListInfo
+{
+    optional uint32 count              = 1;
+    repeated PhoneNumItem phoneNumList = 2;
+}
+
 message ModContact {
 	required SKBuiltinString_t UserName = 1;
 	required SKBuiltinString_t NickName = 2;
@@ -383,6 +404,12 @@ message ModContact {
 	optional string Description = 59;
 	optional string CardImgUrl = 60;
 	optional string LabelIDList = 61;
+    optional PhoneNumListInfo phoneNumListInfo = 62;
+    optional string weiDianInfo                = 63;
+    optional uint32 chatroomInfoVersion        = 64;
+    optional uint32 deleteContactScene         = 65;
+    optional uint32 chatroomStatus             = 66;
+    optional uint32 extFlag                    = 67;
 }
 
 message HardDevice {

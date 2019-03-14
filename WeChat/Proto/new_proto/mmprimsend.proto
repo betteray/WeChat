@@ -1,0 +1,38 @@
+syntax = "proto2";
+
+package micromsg;
+
+import "mmbuiltintype.proto";
+
+message MicroMsgRequestNew {
+	required SKBuiltinString_t ToUserName = 1;// to wxid
+	optional string Content = 2; //消息内容
+	required uint32 Type = 3;//消息类型: 文字消息=>1,名片=>42
+	required uint32 CreateTime = 4;
+	required uint32 ClientMsgId = 5;//不同消息的utc与client_id必须至少有1个不相同 4287068409, iMac 从1开始？
+	optional string MsgSource = 6;//群聊at功能 iMac: "<msgsource></msgsource>"
+	optional uint32 CtrlBit = 7;
+}
+
+message SendMsgRequestNew {
+	required uint32 Count = 1;
+	repeated MicroMsgRequestNew List = 2;
+}
+
+message MicroMsgResponseNew {
+	required int32 Ret = 1;//错误码  0=>发送成功,-44=>对方开启了朋友验证(被删好友),-22=>消息已发出,但被对方拒收了(被拉黑)
+	required SKBuiltinString_t ToUserName = 2;
+	required uint32 MsgId = 3;
+	required uint32 ClientMsgId = 4;
+	required uint32 CreateTime = 5;
+	required uint32 ServerTime = 6;
+	required uint32 Type = 7;//消息类型
+	optional uint64 NewMsgId = 8;//消息唯一id
+}
+
+message SendMsgResponseNew {
+	required BaseResponse BaseResponse = 1;
+	required uint32 Count = 2;
+	repeated MicroMsgResponseNew List = 3;
+}
+

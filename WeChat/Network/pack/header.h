@@ -33,4 +33,12 @@ typedef NS_ENUM(int, EncryptMethod) {
                   cookie:(NSData *)cookie
                      uin:(uint32_t)uin;
 
++ (NSData *)make_header3:(int)cgi
+           encryptMethod:(EncryptMethod)encryptMethod
+                bodyData:(NSData *)bodyData
+      compressedBodyData:(NSData *)compressedBodyData
+              needCookie:(BOOL)needCookie
+                  cookie:(NSData *)cookie
+                     uin:(uint32_t)uin;
+
 @end

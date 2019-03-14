@@ -1,10 +1,15 @@
+syntax = "proto2";
+
 package micromsg;
+
 import "mmbuiltintype.proto";
 import "mmbase.proto";
+
 message ECDHKey {
 	required int32 Nid = 1;
 	required SKBuiltinBuffer_t Key = 2;
 }
+
 message NewRegRequest {
 	required BaseRequest BaseRequest = 1;
 	optional string UserName = 2;
@@ -36,6 +41,13 @@ message NewRegRequest {
 	optional ECDHKey CliPubECDHKey = 37;
 	optional string GoogleAid = 38;
 	optional string BundleID = 39;
+    
+    optional string bioSigTicket = 41;
+    optional uint32 bioSigCheckType = 42;
+    optional string clientCheckData = 43;
+    optional uint32 mobileCheckType = 44;
+    optional string regSessionId = 45;
+    optional string privacyPolicyCountry = 46;
 }
 
 message SecAuthRegKeySect {
@@ -77,6 +89,9 @@ message NewRegResponse {
 	optional CDNDnsInfo SnsDnsInfo = 32;
 	optional CDNDnsInfo AppDnsInfo = 33;
 	optional SecAuthRegKeySect SecAuthRegKeySect = 34;
+    
+    optional uint32 mmtlsControlBitFlag = 35;
+    optional uint32 serverTime = 36;
 }
 
 message GetSuggestAliasRequest {
@@ -119,6 +134,11 @@ message BindOpMobileRequest {
 	optional uint32 InputMobileRetrys = 14;
 	optional uint32 AdjustRet = 15;
 	optional string ClientSeqID = 16;
+    
+    optional int32 mobileCheckType            = 17;
+    optional string regSessionId              = 18;
+    optional SKBuiltinBuffer_t spamBuffer     = 19;
+    optional SKBuiltinBuffer_t extSpamInfo    = 20;
 }
 
 message BindOpMobileResponse {
@@ -139,6 +159,12 @@ message BindOpMobileResponse {
 	optional string PureMobile = 15;
 	optional string FormatedMobile = 16;
 	optional ShowStyleKey ShowStyle = 17;
+    
+    optional int32 mmtlsControlBitFlag = 18;
+    optional string smsUpCode          = 19;
+    optional string smsUpMobile        = 20;
+    optional int32 mobileCheckType     = 21;
+    optional string regSessionId       = 22;
 }
 
 message EmailRegRequest {
@@ -708,7 +734,11 @@ message GetLoginQRCodeRequest {
 	optional uint32 OPCode = 3;
 	optional string DeviceName = 4;
 	optional string UserName = 5;
-	optional uint32 ExtDevLoginType = 6;
+	optional uint32 hardwareExtra = 6;
+    
+    optional string softType                    = 7;
+    optional int32 extDevLoginType              = 8; // 0
+    optional SKBuiltinBuffer_t msgContextPubKey = 9; // iMac
 }
 
 message GetLoginQRCodeResponse {
@@ -932,7 +962,7 @@ message ManualAuthAesReqData {
 	optional string SoftType = 4;
 	required uint32 BuiltinIPSeq = 5;
 	optional string ClientSeqID = 6;
-	optional string Signature = 7;
+	optional string clientSeqIDSign = 7;
 	optional string DeviceName = 8;
 	optional string DeviceType = 9;
 	optional string Language = 10;
@@ -947,6 +977,7 @@ message ManualAuthAesReqData {
 	optional string AdSource = 20;
 	optional string IPhoneVer = 21;
 	required uint32 InputType = 22;
+    optional SKBuiltinBuffer_t clientCheckData = 23;
 }
 
 message ManualAuthRequest {
@@ -979,8 +1010,10 @@ message AutoAuthAesReqData {
 	optional string DeviceName = 9;
 	optional string DeviceType = 10;
 	optional string Language = 11;
-	optional TimeZoneInfo TimeZone = 12;
-	required int32 	Status = 13; 
+	optional string TimeZone = 12;
+	required int32 	Channel = 13; //channel
+    
+    optional SKBuiltinBuffer_t clientCheckData = 14;
 }
 
 message AutoAuthRequest {
@@ -1014,6 +1047,8 @@ message AuthSectResp {
 	optional uint32 UpdateFlag = 18;
 	optional uint32 AuthResultFlag = 19;
 	optional string FSURL = 20;
+    
+    optional int32 serverTime     = 22;
 }
 
 message AcctSectResp {

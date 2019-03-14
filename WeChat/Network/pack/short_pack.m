@@ -25,7 +25,7 @@
     {
         case 1:
         {
-            NSData *head = [header make_header:cgi encryptMethod:NONE bodyData:serilizedData compressedBodyData:serilizedData needCookie:NO cookie:nil uin:uin];
+            NSData *head = [header make_header3:cgi encryptMethod:RSA bodyData:serilizedData compressedBodyData:serilizedData needCookie:NO cookie:nil uin:uin];
             NSData *body = [FSOpenSSL RSA_PUB_EncryptData:serilizedData modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
             NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
             [longlinkBody appendData:body];

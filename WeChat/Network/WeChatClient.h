@@ -38,6 +38,10 @@ typedef void (^FailureBlock)(NSError *error);
          success:(SuccessBlock)successBlock
          failure:(FailureBlock)failureBlock;
 
+- (void)registerWeChat:(CgiWrap *)cgiWrap
+               success:(SuccessBlock)successBlock
+               failure:(FailureBlock)failureBlock;
+
 + (void)startRequest:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock;

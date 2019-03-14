@@ -1,8 +1,8 @@
+syntax = "proto2";
+
 package micromsg;
 
 import "mmbuiltintype.proto";
-
-import "mmbase.proto";
 
 message GetA8KeyReq {
     required BaseRequest BaseRequest = 1;
@@ -22,6 +22,15 @@ message GetA8KeyReq {
     optional uint32 FontScale = 15;
     optional uint32 Flag = 16;
     optional string NetType = 17;
+    
+    optional uint32 codeType = 18;
+    optional uint32 codeVersion = 19;
+    optional uint32 requestId = 20;
+    optional string functionId = 21;
+    optional uint32 walletRegion = 22;
+    optional SKBuiltinBuffer_t cookie = 23;
+    optional string outerUrl = 24;
+    optional uint32 subScene = 25;
 }
 
 message JSAPIPermissionBitSet {
@@ -61,6 +70,12 @@ message YYBStruct {
 	optional int32 SupportedVersionCode = 7;
 }
 
+message HttpHeader
+{
+    required string key = 1;
+    optional string value = 2;
+}
+
 message GetA8KeyResp {
 	required BaseResponse BaseResponse = 1;
 	optional string FullURL = 2;
@@ -79,6 +94,13 @@ message GetA8KeyResp {
 	optional string MID = 21;
 	optional DeepLinkBitSet DeepLinkBitSet = 22;
 	optional SKBuiltinBuffer_t JSAPIControlBytes = 23;
+    
+    optional uint32 httpHeaderCount = 24;
+    repeated HttpHeader httpHeader = 25;
+    optional string wording = 26;
+    optional string headImg = 27;
+    optional SKBuiltinBuffer_t cookie = 28;
+    optional string menuWording = 29;
 }
 
 message AdAppList {

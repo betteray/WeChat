@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SyncKeyCompare : NSObject
 
-+ (void)compaireOldSyncKey:(SyncKey *)old newSyncKey:(SyncKey *)new;
++ (void)compaireOldSyncKey:(SyncKey *)old newSyncKey:(SyncKey *)newkey;
 
 @end
 

@@ -42,11 +42,12 @@
 //    GetA8KeyReq *req = [[GetA8KeyReq alloc] initWithData:data error:&error];
 //    NSLog(@"%@", req);
     
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    NSInteger reqeustID = ((274877907LL * tv.tv_usec >> 38) + ((274877907LL * tv.tv_usec) >> 63) + 1000 * LODWORD(tv.tv_sec));
+//    struct timeval tv;
+//    gettimeofday(&tv, NULL);
+//    NSInteger reqeustID = ((274877907LL * tv.tv_usec >> 38) + ((274877907LL * tv.tv_usec) >> 63) + 1000 * LODWORD(tv.tv_sec));
+//    
+//    NSLog(@"%ld", reqeustID);
     
-    NSLog(@"%ld", reqeustID);
 }
 
 - (void)testPerformanceExample {

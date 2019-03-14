@@ -1,7 +1,8 @@
+syntax = "proto2";
+
 package micromsg;
 
 import "mmbuiltintype.proto";
-
 import "mmbase.proto";
 
 
@@ -83,6 +84,31 @@ message SnsGroup {
 	required uint64 GroupId = 1;
 }
 
+message SnsRedEnvelops
+{
+    optional uint32 rewardCount = 1;
+    optional uint32 resourceId  = 2;
+    optional uint32 reportId    = 4;
+    optional uint32 reportKey   = 5;
+}
+
+message SnsWeAppInfo
+{
+    optional string mapPoiId    = 1;
+    optional uint32 appId       = 2;
+    optional string userName    = 3;
+    optional string redirectUrl = 4;
+    optional uint32 showType    = 5;
+    optional uint32 score       = 6;
+}
+
+message PreDownloadInfo
+{
+    optional uint32 preDownloadPercent = 1;
+    optional uint32 preDownloadNetType = 2;
+    optional string noPreDownloadRange = 3;
+}
+
 message SnsObject {
 	required uint64 Id = 1;
 	optional string Username = 2;
@@ -111,6 +137,11 @@ message SnsObject {
 	optional uint32 DeleteFlag = 25;
 	optional uint32 GroupUserCount = 26;
 	repeated SKBuiltinString_t GroupUser = 27;
+    
+    optional SKBuiltinBuffer_t objectOperations = 28;
+    optional SnsRedEnvelops snsRedEnvelops      = 29;
+    optional PreDownloadInfo preDownloadInfo    = 30;
+    optional SnsWeAppInfo weAppInfo             = 31;
 }
 
 message SnsADObject {
@@ -126,6 +157,28 @@ message AdvertiseObject {
 message SnsPostCtocUploadInfo {
 	required uint32 Flag = 1;
 	required uint32 PhotoCount = 2;
+}
+
+message MediaInfo
+{
+    optional uint32 source          = 1;
+    optional uint32 mediaType       = 2;
+    optional uint32 videoPlayLength = 3;
+    optional string sessionId       = 4;
+    optional uint32 startTime       = 5;
+}
+
+message CanvasInfo {
+    optional string dataBuffer = 1;
+}
+
+message SnsPostOperationFields
+{
+    optional string shareUrlOriginal = 1;
+    optional string shareUrlOpen     = 2;
+    optional string jsAppId          = 3;
+    optional uint32 contactTagCount  = 4;
+    optional uint32 tempUserCount    = 5;
 }
 
 message SnsPostRequest {
@@ -147,11 +200,23 @@ message SnsPostRequest {
 	optional uint32 GroupUserCount = 16;
 	repeated SKBuiltinString_t GroupUser = 17;
 	optional SnsPostCtocUploadInfo CtocUploadInfo = 18;
+    
+    optional SnsPostOperationFields snsPostOperationFields = 19;
+    optional SnsRedEnvelops snsRedEnvelops                 = 20;
+    optional SKBuiltinBuffer_t poiInfo                     = 21;
+    optional string fromScene                              = 22;
+    optional CanvasInfo canvasInfo                         = 23;
+    optional uint32 mediaInfoCount                         = 24;
+    repeated MediaInfo mediaInfo                           = 25;
+    optional SnsWeAppInfo weAppInfo                        = 26;
+    optional SKBuiltinBuffer_t clientCheckData             = 27;
 }
 
 message SnsPostResponse {
 	required BaseResponse BaseResponse = 1;
 	required SnsObject SnsObject = 2;
+    
+    optional string SpamTips  = 3;
 }
 
 message SnsObjectDetailRequest {
@@ -191,6 +256,9 @@ message SnsTimeLineRequest {
 	optional uint32 LastRequestTime = 5;
 	optional uint64 ClientLatestId = 6;
 	optional SKBuiltinBuffer_t Session = 7;
+    
+    required int32 networkType         = 8;
+    optional string adexpinfo          = 10; //""
 }
 
 message SnsTimeLineResponse {
