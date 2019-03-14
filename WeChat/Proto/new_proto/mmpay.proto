@@ -1,8 +1,8 @@
+syntax = "proto2";
+
 package micromsg;
 
 import "mmbuiltintype.proto";
-
-import "mmbase.proto";
 
 message RcptInfoNode {
 	optional uint32 id = 1;
@@ -361,3 +361,15 @@ message SendC2cSecMsgResponse {
     optional string MsgId = 4;
 }
 
+// ray add
+
+message GetCardEntranceStyleRequest {
+    required BaseRequest BaseRequest = 1;
+}
+
+message GetCardEntranceStyleResponse {
+    required BaseResponse BaseResponse = 1;
+    optional uint32 retCode = 2;
+    optional string retMsg = 3;
+    optional bool cardHomePageIsNewVersion = 4;
+}

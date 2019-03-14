@@ -1166,6 +1166,11 @@ message CDNDnsInfo {
     required int32 ZoneID = 9;
     required int32 ZoneIPCount = 10;
     repeated SKBuiltinString_t ZoneIPList = 11;
+    
+    optional uint32 frontIpportCount = 14;
+    optional uint32 zoneIpportCount = 15;
+    optional uint32 fakeUin = 16;
+    optional SKBuiltinBuffer_t newAuthKey = 17;
 }
 
 message StyleKeyVal {

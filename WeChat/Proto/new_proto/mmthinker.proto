@@ -25,6 +25,7 @@ message ResIDWrap {
     repeated ResID resId                        = 1;
 }
 
+// cgi: 721
 message CheckResUpdateRequest {
     required BaseRequest baseRequest            = 1;
     optional ResIDWrap wrap = 2;
@@ -44,18 +45,19 @@ message SecEncryptCheckResUpdateRequest {
     optional CheckResUpdateRequest req = 2;
 }
 
+message ResourceMeta {
+    optional string md5 = 1;
+    optional uint32 resVersion = 2;
+    optional string url = 3;
+    optional uint32 fileFlag = 4;
+    //        eccmd5SignatureList = 5;
+    optional bytes data = 6;
+    optional string originalMd5 = 7;
+    optional uint32 fileSize = 8;
+}
+
 message Resource {
     optional uint32 subType = 1;
-    message ResourceMeta {
-        optional string md5 = 1;
-        optional uint32 resVersion = 2;
-        optional string url = 3;
-        optional uint32 fileFlag = 4;
-        //        eccmd5SignatureList = 5;
-        optional bytes data = 6;
-        optional string originalMd5 = 7;
-        optional uint32 fileSize = 8;
-    }
     optional ResourceMeta info = 2;
     
     message ResourceKey {
@@ -82,6 +84,35 @@ message ResourceType
 }
 
 message SecEncryptCheckResUpdateResponse {
-    required BaseResponse baseResponse = 1;
-    repeated ResourceType resourceType = 2;
+    required BaseResponse BaseResponse = 1;
+    repeated ResourceType ResourceType = 2;
+}
+
+message TinkerCondition {
+    optional string key = 1;
+    optional string value = 2;
+    optional string op = 3;
+//    repeated values = 4;
+}
+
+message CheckTinkerUpdateRequest {
+    optional string baseid = 1;
+    optional string patchid = 2;
+    repeated TinkerCondition condition = 3;
+}
+
+message TinkerPatchNode {
+    optional string patchid = 1;
+    optional uint32 state = 2;
+    optional uint32 packagetype = 4;
+    optional uint32 network = 5;
+    optional ResourceMeta info = 6;
+    optional uint32 maxdown = 7;
+//    repeated custom = 8;
+    optional bool releaseall = 9;
+}
+
+message CheckTinkerUpdateResponse {
+    required BaseResponse BaseResponse = 1;
+    optional TinkerPatchNode patch = 2;
 }

@@ -34,11 +34,13 @@ CF_EXTERN_C_BEGIN
 @class ResID;
 @class ResIDWrap;
 @class Resource;
+@class ResourceMeta;
 @class ResourceType;
 @class Resource_ResourceKey;
-@class Resource_ResourceMeta;
 @class SKBuiltinBuffer_t;
 @class SubTypeVector;
+@class TinkerCondition;
+@class TinkerPatchNode;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -121,6 +123,9 @@ typedef GPB_ENUM(CheckResUpdateRequest_FieldNumber) {
   CheckResUpdateRequest_FieldNumber_Wrap = 2,
 };
 
+/**
+ * cgi: 721
+ **/
 @interface CheckResUpdateRequest : GPBMessage
 
 @property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
@@ -183,6 +188,48 @@ typedef GPB_ENUM(SecEncryptCheckResUpdateRequest_FieldNumber) {
 
 @end
 
+#pragma mark - ResourceMeta
+
+typedef GPB_ENUM(ResourceMeta_FieldNumber) {
+  ResourceMeta_FieldNumber_Md5 = 1,
+  ResourceMeta_FieldNumber_ResVersion = 2,
+  ResourceMeta_FieldNumber_URL = 3,
+  ResourceMeta_FieldNumber_FileFlag = 4,
+  ResourceMeta_FieldNumber_Data_p = 6,
+  ResourceMeta_FieldNumber_OriginalMd5 = 7,
+  ResourceMeta_FieldNumber_FileSize = 8,
+};
+
+@interface ResourceMeta : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *md5;
+/** Test to see if @c md5 has been set. */
+@property(nonatomic, readwrite) BOOL hasMd5;
+
+@property(nonatomic, readwrite) uint32_t resVersion;
+
+@property(nonatomic, readwrite) BOOL hasResVersion;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *URL;
+/** Test to see if @c URL has been set. */
+@property(nonatomic, readwrite) BOOL hasURL;
+
+@property(nonatomic, readwrite) uint32_t fileFlag;
+
+@property(nonatomic, readwrite) BOOL hasFileFlag;
+/**        eccmd5SignatureList = 5; */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *data_p;
+/** Test to see if @c data_p has been set. */
+@property(nonatomic, readwrite) BOOL hasData_p;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *originalMd5;
+/** Test to see if @c originalMd5 has been set. */
+@property(nonatomic, readwrite) BOOL hasOriginalMd5;
+
+@property(nonatomic, readwrite) uint32_t fileSize;
+
+@property(nonatomic, readwrite) BOOL hasFileSize;
+@end
+
 #pragma mark - Resource
 
 typedef GPB_ENUM(Resource_FieldNumber) {
@@ -205,7 +252,7 @@ typedef GPB_ENUM(Resource_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t subType;
 
 @property(nonatomic, readwrite) BOOL hasSubType;
-@property(nonatomic, readwrite, strong, null_resettable) Resource_ResourceMeta *info;
+@property(nonatomic, readwrite, strong, null_resettable) ResourceMeta *info;
 /** Test to see if @c info has been set. */
 @property(nonatomic, readwrite) BOOL hasInfo;
 
@@ -241,48 +288,6 @@ typedef GPB_ENUM(Resource_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t priority;
 
 @property(nonatomic, readwrite) BOOL hasPriority;
-@end
-
-#pragma mark - Resource_ResourceMeta
-
-typedef GPB_ENUM(Resource_ResourceMeta_FieldNumber) {
-  Resource_ResourceMeta_FieldNumber_Md5 = 1,
-  Resource_ResourceMeta_FieldNumber_ResVersion = 2,
-  Resource_ResourceMeta_FieldNumber_URL = 3,
-  Resource_ResourceMeta_FieldNumber_FileFlag = 4,
-  Resource_ResourceMeta_FieldNumber_Data_p = 6,
-  Resource_ResourceMeta_FieldNumber_OriginalMd5 = 7,
-  Resource_ResourceMeta_FieldNumber_FileSize = 8,
-};
-
-@interface Resource_ResourceMeta : GPBMessage
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *md5;
-/** Test to see if @c md5 has been set. */
-@property(nonatomic, readwrite) BOOL hasMd5;
-
-@property(nonatomic, readwrite) uint32_t resVersion;
-
-@property(nonatomic, readwrite) BOOL hasResVersion;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *URL;
-/** Test to see if @c URL has been set. */
-@property(nonatomic, readwrite) BOOL hasURL;
-
-@property(nonatomic, readwrite) uint32_t fileFlag;
-
-@property(nonatomic, readwrite) BOOL hasFileFlag;
-/**        eccmd5SignatureList = 5; */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *data_p;
-/** Test to see if @c data_p has been set. */
-@property(nonatomic, readwrite) BOOL hasData_p;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *originalMd5;
-/** Test to see if @c originalMd5 has been set. */
-@property(nonatomic, readwrite) BOOL hasOriginalMd5;
-
-@property(nonatomic, readwrite) uint32_t fileSize;
-
-@property(nonatomic, readwrite) BOOL hasFileSize;
 @end
 
 #pragma mark - Resource_ResourceKey
@@ -337,6 +342,114 @@ typedef GPB_ENUM(SecEncryptCheckResUpdateResponse_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ResourceType*> *resourceTypeArray;
 /** The number of items in @c resourceTypeArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger resourceTypeArray_Count;
+
+@end
+
+#pragma mark - TinkerCondition
+
+typedef GPB_ENUM(TinkerCondition_FieldNumber) {
+  TinkerCondition_FieldNumber_Key = 1,
+  TinkerCondition_FieldNumber_Value = 2,
+  TinkerCondition_FieldNumber_Op = 3,
+};
+
+@interface TinkerCondition : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *key;
+/** Test to see if @c key has been set. */
+@property(nonatomic, readwrite) BOOL hasKey;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *value;
+/** Test to see if @c value has been set. */
+@property(nonatomic, readwrite) BOOL hasValue;
+
+/**    repeated values = 4; */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *op;
+/** Test to see if @c op has been set. */
+@property(nonatomic, readwrite) BOOL hasOp;
+
+@end
+
+#pragma mark - CheckTinkerUpdateRequest
+
+typedef GPB_ENUM(CheckTinkerUpdateRequest_FieldNumber) {
+  CheckTinkerUpdateRequest_FieldNumber_Baseid = 1,
+  CheckTinkerUpdateRequest_FieldNumber_Patchid = 2,
+  CheckTinkerUpdateRequest_FieldNumber_ConditionArray = 3,
+};
+
+@interface CheckTinkerUpdateRequest : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *baseid;
+/** Test to see if @c baseid has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseid;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *patchid;
+/** Test to see if @c patchid has been set. */
+@property(nonatomic, readwrite) BOOL hasPatchid;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<TinkerCondition*> *conditionArray;
+/** The number of items in @c conditionArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger conditionArray_Count;
+
+@end
+
+#pragma mark - TinkerPatchNode
+
+typedef GPB_ENUM(TinkerPatchNode_FieldNumber) {
+  TinkerPatchNode_FieldNumber_Patchid = 1,
+  TinkerPatchNode_FieldNumber_State = 2,
+  TinkerPatchNode_FieldNumber_Packagetype = 4,
+  TinkerPatchNode_FieldNumber_Network = 5,
+  TinkerPatchNode_FieldNumber_Info = 6,
+  TinkerPatchNode_FieldNumber_Maxdown = 7,
+  TinkerPatchNode_FieldNumber_Releaseall = 9,
+};
+
+@interface TinkerPatchNode : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *patchid;
+/** Test to see if @c patchid has been set. */
+@property(nonatomic, readwrite) BOOL hasPatchid;
+
+@property(nonatomic, readwrite) uint32_t state;
+
+@property(nonatomic, readwrite) BOOL hasState;
+@property(nonatomic, readwrite) uint32_t packagetype;
+
+@property(nonatomic, readwrite) BOOL hasPackagetype;
+@property(nonatomic, readwrite) uint32_t network;
+
+@property(nonatomic, readwrite) BOOL hasNetwork;
+@property(nonatomic, readwrite, strong, null_resettable) ResourceMeta *info;
+/** Test to see if @c info has been set. */
+@property(nonatomic, readwrite) BOOL hasInfo;
+
+@property(nonatomic, readwrite) uint32_t maxdown;
+
+@property(nonatomic, readwrite) BOOL hasMaxdown;
+/**    repeated custom = 8; */
+@property(nonatomic, readwrite) BOOL releaseall;
+
+@property(nonatomic, readwrite) BOOL hasReleaseall;
+@end
+
+#pragma mark - CheckTinkerUpdateResponse
+
+typedef GPB_ENUM(CheckTinkerUpdateResponse_FieldNumber) {
+  CheckTinkerUpdateResponse_FieldNumber_BaseResponse = 1,
+  CheckTinkerUpdateResponse_FieldNumber_Patch = 2,
+};
+
+@interface CheckTinkerUpdateResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
+
+@property(nonatomic, readwrite, strong, null_resettable) TinkerPatchNode *patch;
+/** Test to see if @c patch has been set. */
+@property(nonatomic, readwrite) BOOL hasPatch;
 
 @end
 

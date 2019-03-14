@@ -454,6 +454,122 @@ typedef struct SecEncryptCheckResUpdateRequest__storage_ {
 
 @end
 
+#pragma mark - ResourceMeta
+
+@implementation ResourceMeta
+
+@dynamic hasMd5, md5;
+@dynamic hasResVersion, resVersion;
+@dynamic hasURL, URL;
+@dynamic hasFileFlag, fileFlag;
+@dynamic hasData_p, data_p;
+@dynamic hasOriginalMd5, originalMd5;
+@dynamic hasFileSize, fileSize;
+
+typedef struct ResourceMeta__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t resVersion;
+  uint32_t fileFlag;
+  uint32_t fileSize;
+  NSString *md5;
+  NSString *URL;
+  NSData *data_p;
+  NSString *originalMd5;
+} ResourceMeta__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "md5",
+        .dataTypeSpecific.className = NULL,
+        .number = ResourceMeta_FieldNumber_Md5,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ResourceMeta__storage_, md5),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "resVersion",
+        .dataTypeSpecific.className = NULL,
+        .number = ResourceMeta_FieldNumber_ResVersion,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ResourceMeta__storage_, resVersion),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "URL",
+        .dataTypeSpecific.className = NULL,
+        .number = ResourceMeta_FieldNumber_URL,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ResourceMeta__storage_, URL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "fileFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = ResourceMeta_FieldNumber_FileFlag,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(ResourceMeta__storage_, fileFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "data_p",
+        .dataTypeSpecific.className = NULL,
+        .number = ResourceMeta_FieldNumber_Data_p,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(ResourceMeta__storage_, data_p),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "originalMd5",
+        .dataTypeSpecific.className = NULL,
+        .number = ResourceMeta_FieldNumber_OriginalMd5,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(ResourceMeta__storage_, originalMd5),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "fileSize",
+        .dataTypeSpecific.className = NULL,
+        .number = ResourceMeta_FieldNumber_FileSize,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(ResourceMeta__storage_, fileSize),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ResourceMeta class]
+                                     rootClass:[MmthinkerRoot class]
+                                          file:MmthinkerRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ResourceMeta__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\005\002\n\000\003!!!\000\004\010\000\007\013\000\010\010\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - Resource
 
 @implementation Resource
@@ -482,7 +598,7 @@ typedef struct Resource__storage_ {
   uint32_t downloadNetType;
   uint32_t retryInterval;
   uint32_t priority;
-  Resource_ResourceMeta *info;
+  ResourceMeta *info;
   Resource_ResourceKey *key;
   NSString *sampleId;
 } Resource__storage_;
@@ -504,7 +620,7 @@ typedef struct Resource__storage_ {
       },
       {
         .name = "info",
-        .dataTypeSpecific.className = GPBStringifySymbol(Resource_ResourceMeta),
+        .dataTypeSpecific.className = GPBStringifySymbol(ResourceMeta),
         .number = Resource_FieldNumber_Info,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(Resource__storage_, info),
@@ -615,123 +731,6 @@ typedef struct Resource__storage_ {
         "\007\001\007\000\005\010\000\006\010\000\007\n\000\010\t\000\n\017\000\013\r\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    #if defined(DEBUG) && DEBUG
-      NSAssert(descriptor == nil, @"Startup recursed!");
-    #endif  // DEBUG
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - Resource_ResourceMeta
-
-@implementation Resource_ResourceMeta
-
-@dynamic hasMd5, md5;
-@dynamic hasResVersion, resVersion;
-@dynamic hasURL, URL;
-@dynamic hasFileFlag, fileFlag;
-@dynamic hasData_p, data_p;
-@dynamic hasOriginalMd5, originalMd5;
-@dynamic hasFileSize, fileSize;
-
-typedef struct Resource_ResourceMeta__storage_ {
-  uint32_t _has_storage_[1];
-  uint32_t resVersion;
-  uint32_t fileFlag;
-  uint32_t fileSize;
-  NSString *md5;
-  NSString *URL;
-  NSData *data_p;
-  NSString *originalMd5;
-} Resource_ResourceMeta__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "md5",
-        .dataTypeSpecific.className = NULL,
-        .number = Resource_ResourceMeta_FieldNumber_Md5,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Resource_ResourceMeta__storage_, md5),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "resVersion",
-        .dataTypeSpecific.className = NULL,
-        .number = Resource_ResourceMeta_FieldNumber_ResVersion,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Resource_ResourceMeta__storage_, resVersion),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeUInt32,
-      },
-      {
-        .name = "URL",
-        .dataTypeSpecific.className = NULL,
-        .number = Resource_ResourceMeta_FieldNumber_URL,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(Resource_ResourceMeta__storage_, URL),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "fileFlag",
-        .dataTypeSpecific.className = NULL,
-        .number = Resource_ResourceMeta_FieldNumber_FileFlag,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(Resource_ResourceMeta__storage_, fileFlag),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeUInt32,
-      },
-      {
-        .name = "data_p",
-        .dataTypeSpecific.className = NULL,
-        .number = Resource_ResourceMeta_FieldNumber_Data_p,
-        .hasIndex = 4,
-        .offset = (uint32_t)offsetof(Resource_ResourceMeta__storage_, data_p),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeBytes,
-      },
-      {
-        .name = "originalMd5",
-        .dataTypeSpecific.className = NULL,
-        .number = Resource_ResourceMeta_FieldNumber_OriginalMd5,
-        .hasIndex = 5,
-        .offset = (uint32_t)offsetof(Resource_ResourceMeta__storage_, originalMd5),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "fileSize",
-        .dataTypeSpecific.className = NULL,
-        .number = Resource_ResourceMeta_FieldNumber_FileSize,
-        .hasIndex = 6,
-        .offset = (uint32_t)offsetof(Resource_ResourceMeta__storage_, fileSize),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeUInt32,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Resource_ResourceMeta class]
-                                     rootClass:[MmthinkerRoot class]
-                                          file:MmthinkerRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Resource_ResourceMeta__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    static const char *extraTextFormatInfo =
-        "\005\002\n\000\003!!!\000\004\010\000\007\013\000\010\010\000";
-    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
-#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
-    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(Resource)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");
     #endif  // DEBUG
@@ -908,7 +907,312 @@ typedef struct SecEncryptCheckResUpdateResponse__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\002\001\014\000\002\000resourceType\000";
+        "\002\001L\000\002\000ResourceType\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - TinkerCondition
+
+@implementation TinkerCondition
+
+@dynamic hasKey, key;
+@dynamic hasValue, value;
+@dynamic hasOp, op;
+
+typedef struct TinkerCondition__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *key;
+  NSString *value;
+  NSString *op;
+} TinkerCondition__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "key",
+        .dataTypeSpecific.className = NULL,
+        .number = TinkerCondition_FieldNumber_Key,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(TinkerCondition__storage_, key),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "value",
+        .dataTypeSpecific.className = NULL,
+        .number = TinkerCondition_FieldNumber_Value,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(TinkerCondition__storage_, value),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "op",
+        .dataTypeSpecific.className = NULL,
+        .number = TinkerCondition_FieldNumber_Op,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(TinkerCondition__storage_, op),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[TinkerCondition class]
+                                     rootClass:[MmthinkerRoot class]
+                                          file:MmthinkerRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(TinkerCondition__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - CheckTinkerUpdateRequest
+
+@implementation CheckTinkerUpdateRequest
+
+@dynamic hasBaseid, baseid;
+@dynamic hasPatchid, patchid;
+@dynamic conditionArray, conditionArray_Count;
+
+typedef struct CheckTinkerUpdateRequest__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *baseid;
+  NSString *patchid;
+  NSMutableArray *conditionArray;
+} CheckTinkerUpdateRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseid",
+        .dataTypeSpecific.className = NULL,
+        .number = CheckTinkerUpdateRequest_FieldNumber_Baseid,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(CheckTinkerUpdateRequest__storage_, baseid),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "patchid",
+        .dataTypeSpecific.className = NULL,
+        .number = CheckTinkerUpdateRequest_FieldNumber_Patchid,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(CheckTinkerUpdateRequest__storage_, patchid),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "conditionArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(TinkerCondition),
+        .number = CheckTinkerUpdateRequest_FieldNumber_ConditionArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(CheckTinkerUpdateRequest__storage_, conditionArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[CheckTinkerUpdateRequest class]
+                                     rootClass:[MmthinkerRoot class]
+                                          file:MmthinkerRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(CheckTinkerUpdateRequest__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - TinkerPatchNode
+
+@implementation TinkerPatchNode
+
+@dynamic hasPatchid, patchid;
+@dynamic hasState, state;
+@dynamic hasPackagetype, packagetype;
+@dynamic hasNetwork, network;
+@dynamic hasInfo, info;
+@dynamic hasMaxdown, maxdown;
+@dynamic hasReleaseall, releaseall;
+
+typedef struct TinkerPatchNode__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t state;
+  uint32_t packagetype;
+  uint32_t network;
+  uint32_t maxdown;
+  NSString *patchid;
+  ResourceMeta *info;
+} TinkerPatchNode__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "patchid",
+        .dataTypeSpecific.className = NULL,
+        .number = TinkerPatchNode_FieldNumber_Patchid,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(TinkerPatchNode__storage_, patchid),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "state",
+        .dataTypeSpecific.className = NULL,
+        .number = TinkerPatchNode_FieldNumber_State,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(TinkerPatchNode__storage_, state),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "packagetype",
+        .dataTypeSpecific.className = NULL,
+        .number = TinkerPatchNode_FieldNumber_Packagetype,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(TinkerPatchNode__storage_, packagetype),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "network",
+        .dataTypeSpecific.className = NULL,
+        .number = TinkerPatchNode_FieldNumber_Network,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(TinkerPatchNode__storage_, network),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "info",
+        .dataTypeSpecific.className = GPBStringifySymbol(ResourceMeta),
+        .number = TinkerPatchNode_FieldNumber_Info,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(TinkerPatchNode__storage_, info),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "maxdown",
+        .dataTypeSpecific.className = NULL,
+        .number = TinkerPatchNode_FieldNumber_Maxdown,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(TinkerPatchNode__storage_, maxdown),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "releaseall",
+        .dataTypeSpecific.className = NULL,
+        .number = TinkerPatchNode_FieldNumber_Releaseall,
+        .hasIndex = 6,
+        .offset = 7,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[TinkerPatchNode class]
+                                     rootClass:[MmthinkerRoot class]
+                                          file:MmthinkerRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(TinkerPatchNode__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - CheckTinkerUpdateResponse
+
+@implementation CheckTinkerUpdateResponse
+
+@dynamic hasBaseResponse, baseResponse;
+@dynamic hasPatch, patch;
+
+typedef struct CheckTinkerUpdateResponse__storage_ {
+  uint32_t _has_storage_[1];
+  BaseResponse *baseResponse;
+  TinkerPatchNode *patch;
+} CheckTinkerUpdateResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseResponse",
+        .dataTypeSpecific.className = GPBStringifySymbol(BaseResponse),
+        .number = CheckTinkerUpdateResponse_FieldNumber_BaseResponse,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(CheckTinkerUpdateResponse__storage_, baseResponse),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "patch",
+        .dataTypeSpecific.className = GPBStringifySymbol(TinkerPatchNode),
+        .number = CheckTinkerUpdateResponse_FieldNumber_Patch,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(CheckTinkerUpdateResponse__storage_, patch),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[CheckTinkerUpdateResponse class]
+                                     rootClass:[MmthinkerRoot class]
+                                          file:MmthinkerRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(CheckTinkerUpdateResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001L\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG

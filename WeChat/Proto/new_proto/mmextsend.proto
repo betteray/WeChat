@@ -1,7 +1,8 @@
+syntax = "proto2";
+
 package micromsg;
 
 import "mmbuiltintype.proto";
-
 import "mmbase.proto";
 
 message GetCDNDnsRequest {
@@ -17,6 +18,9 @@ message GetCDNDnsResponse {
 	optional SKBuiltinBuffer_t CDNDnsRuleBuf = 5;
 	optional SKBuiltinBuffer_t FakeCDNDnsRuleBuf = 6;
 	optional CDNDnsInfo FakeDnsInfo = 7;
+    optional uint32 getCdnDnsIntervalMs = 8;
+    optional CDNClientConfig defaultConfig = 9;
+    optional CDNClientConfig disasterConfig = 10;
 }
 
 message EmojiUploadInfoReq {

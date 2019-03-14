@@ -27,6 +27,8 @@
     #import "Mmsync.pbobjc.h"
     #import "Mmthinker.pbobjc.h"
     #import "Mmutils.pbobjc.h"
+    #import "Wwbiz.pbobjc.h"
+    #import "Wwopenim.pbobjc.h"
 
 
     #import "UIViewController+ProgressHUB.h"

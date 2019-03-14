@@ -1,0 +1,39 @@
+syntax = "proto2";
+
+package micromsg;
+
+import "mmbuiltintype.proto";
+
+message MMBizCommApiGetServiceAppListReq {
+    required BaseRequest BaseRequest = 1;
+    optional uint32 Offset = 2;
+    optional uint32 Limit = 3;
+    optional string Lang = 4;
+    optional string TpaCountry = 5;
+}
+
+message MMBizCommApiServiceAppInfo {
+    optional string appid = 1;
+    
+    optional string appIconUrlPanel = 22;
+    optional string appIconUrlList = 23;
+    optional string appName = 31;
+    optional uint32 appType = 32;
+    optional uint32 appInfoFlag = 33;
+    optional string appForwardUrl = 34;
+    optional uint32 appJumpType = 35;
+    optional uint32 appShowFlag = 36;
+    optional string appShowLang = 37;
+    optional uint32 appUin = 200;
+    optional uint32 appDisable = 201;
+    optional uint32 groupId = 202;
+    optional string regCountryList = 203;
+    optional string appIconUrlPanelOld = 204;
+    optional string appIconUrlPanelNew = 205;
+    optional string prefixCondition = 206;
+}
+
+message MMBizCommApiGetServiceAppListResp {
+    required BaseResponse BaseResponse = 1;
+    repeated MMBizCommApiServiceAppInfo serviceAppinfo = 2;
+}

@@ -12,20 +12,10 @@ message BuiltinIP {
 message BuiltinIPList {
 	required uint32 LongConnectIPCount = 1;
 	required uint32 ShortConnectIPCount = 2;
-	required uint32 Seq = 5;
 	repeated BuiltinIP LongConnectIPList = 3;
 	repeated BuiltinIP ShortConnectIPList = 4;
+    required uint32 Seq = 5;
 }
-
-//TODO: 哪个是对的，注释的是我的。
-//message BuiltinIPList
-//{
-//    optional int32 longConnectIpcount  = 1;
-//    optional int32 shortConnectIpcount = 2;
-//    repeated BuiltinIP longConnectIplist  = 3;
-//    repeated BuiltinIP shortConnectIplist = 4;
-//    optional int32 seq                    = 5;
-//}
 
 message NetworkControl {
 	optional string PortList = 1;
@@ -152,6 +142,15 @@ message CDNDnsInfo {
 	required int32 ZoneID = 9;
 	required int32 ZoneIPCount = 10;
 	repeated SKBuiltinString_t ZoneIPList = 11;
+}
+
+message CDNClientConfig {
+    optional uint32 c2CshowErrorDelayMs = 1;
+    optional uint32 snsshowErrorDelayMs = 2;
+    optional uint32 c2CretryInterval = 3;
+    optional uint32 snsretryInterval = 4;
+    optional uint32 c2Crwtimeout = 5;
+    optional uint32 snsrwtimeout = 6;
 }
 
 message StyleKeyVal {

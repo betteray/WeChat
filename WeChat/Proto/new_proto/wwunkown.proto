@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+package micromsg;
+
+import "mmbuiltintype.proto";
+
+// 在iOS上找不到对应的接口，自己编的字段。
+// path: /cgi-bin/mmpay-bin/cpucardgetconfig2 cgi: 1561
+
+message Cpucardgetconfig2Req {
+    required BaseRequest BaseRequest = 1;
+    optional uint32 tag2 = 2;
+}
+
+message Cpucardgetconfig2Resp {
+    required BaseResponse BaseResponse = 1;
+    optional uint32 tag3 = 3;
+    optional uint32 tag4 = 4;
+    optional uint32 tag5 = 5;
+    optional string tag6 = 6;
+}

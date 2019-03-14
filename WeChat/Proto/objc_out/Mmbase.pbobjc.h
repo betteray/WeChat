@@ -115,9 +115,6 @@ typedef GPB_ENUM(BuiltinIPList_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t shortConnectIpcount;
 
 @property(nonatomic, readwrite) BOOL hasShortConnectIpcount;
-@property(nonatomic, readwrite) uint32_t seq;
-
-@property(nonatomic, readwrite) BOOL hasSeq;
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<BuiltinIP*> *longConnectIplistArray;
 /** The number of items in @c longConnectIplistArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger longConnectIplistArray_Count;
@@ -126,6 +123,9 @@ typedef GPB_ENUM(BuiltinIPList_FieldNumber) {
 /** The number of items in @c shortConnectIplistArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger shortConnectIplistArray_Count;
 
+@property(nonatomic, readwrite) uint32_t seq;
+
+@property(nonatomic, readwrite) BOOL hasSeq;
 @end
 
 #pragma mark - NetworkControl
@@ -613,6 +613,39 @@ typedef GPB_ENUM(CDNDnsInfo_FieldNumber) {
 /** The number of items in @c zoneIplistArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger zoneIplistArray_Count;
 
+@end
+
+#pragma mark - CDNClientConfig
+
+typedef GPB_ENUM(CDNClientConfig_FieldNumber) {
+  CDNClientConfig_FieldNumber_C2CshowErrorDelayMs = 1,
+  CDNClientConfig_FieldNumber_SnsshowErrorDelayMs = 2,
+  CDNClientConfig_FieldNumber_C2CretryInterval = 3,
+  CDNClientConfig_FieldNumber_SnsretryInterval = 4,
+  CDNClientConfig_FieldNumber_C2Crwtimeout = 5,
+  CDNClientConfig_FieldNumber_Snsrwtimeout = 6,
+};
+
+@interface CDNClientConfig : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t c2CshowErrorDelayMs;
+
+@property(nonatomic, readwrite) BOOL hasC2CshowErrorDelayMs;
+@property(nonatomic, readwrite) uint32_t snsshowErrorDelayMs;
+
+@property(nonatomic, readwrite) BOOL hasSnsshowErrorDelayMs;
+@property(nonatomic, readwrite) uint32_t c2CretryInterval;
+
+@property(nonatomic, readwrite) BOOL hasC2CretryInterval;
+@property(nonatomic, readwrite) uint32_t snsretryInterval;
+
+@property(nonatomic, readwrite) BOOL hasSnsretryInterval;
+@property(nonatomic, readwrite) uint32_t c2Crwtimeout;
+
+@property(nonatomic, readwrite) BOOL hasC2Crwtimeout;
+@property(nonatomic, readwrite) uint32_t snsrwtimeout;
+
+@property(nonatomic, readwrite) BOOL hasSnsrwtimeout;
 @end
 
 #pragma mark - StyleKeyVal

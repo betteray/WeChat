@@ -69,9 +69,9 @@
 
 - (void)testNeedRSAPack
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"1552397760612-21-36-00-rtkvreport-type-716" ofType:@"bin"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"1552443627000-10-20-27-type-1060" ofType:@"bin"];
     NSData *data = [NSData dataWithContentsOfFile:path];
-    RealTimeKVReportReq *req = [[RealTimeKVReportReq alloc] initWithData:data error:nil];
+    MMBizCommApiGetServiceAppListResp *req = [[MMBizCommApiGetServiceAppListResp alloc] initWithData:data error:nil];
     LogVerbose(@"%@", req);
     
     char arr[] = {124, 94, 66, 90, 69, 82, 107, 120, 72, 64, 72, 75, 81};

@@ -1,0 +1,24 @@
+syntax = "proto2";
+
+package micromsg;
+
+import "mmbuiltintype.proto";
+
+message ExpItem {
+    optional uint32 expid = 1;
+    optional uint32 priority = 2;
+}
+
+message GetABTestRequest {
+    optional uint32 lastTimestamp = 1;
+    repeated ExpItem clientexplist = 2;
+    optional uint32 clientTimestamp = 3;
+    optional uint32 flag = 4;
+}
+
+message GetABTestResponse {
+    required BaseResponse BaseResponse = 1;
+    repeated string experimentList = 2;
+    optional uint32 internalTime = 3;
+    optional uint32 timestamp = 4;
+}

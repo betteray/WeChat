@@ -132,9 +132,9 @@ typedef struct BuiltinIP__storage_ {
 
 @dynamic hasLongConnectIpcount, longConnectIpcount;
 @dynamic hasShortConnectIpcount, shortConnectIpcount;
-@dynamic hasSeq, seq;
 @dynamic longConnectIplistArray, longConnectIplistArray_Count;
 @dynamic shortConnectIplistArray, shortConnectIplistArray_Count;
+@dynamic hasSeq, seq;
 
 typedef struct BuiltinIPList__storage_ {
   uint32_t _has_storage_[1];
@@ -1715,6 +1715,111 @@ typedef struct CDNDnsInfo__storage_ {
     static const char *extraTextFormatInfo =
         "\013\001C\000\002C\000\003J\000\004FA\000\005Fb\004\000\006\000FrontIPList\000\007J\000\010G\000\t"
         "EA\000\nEb\004\000\013\000ZoneIPList\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - CDNClientConfig
+
+@implementation CDNClientConfig
+
+@dynamic hasC2CshowErrorDelayMs, c2CshowErrorDelayMs;
+@dynamic hasSnsshowErrorDelayMs, snsshowErrorDelayMs;
+@dynamic hasC2CretryInterval, c2CretryInterval;
+@dynamic hasSnsretryInterval, snsretryInterval;
+@dynamic hasC2Crwtimeout, c2Crwtimeout;
+@dynamic hasSnsrwtimeout, snsrwtimeout;
+
+typedef struct CDNClientConfig__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t c2CshowErrorDelayMs;
+  uint32_t snsshowErrorDelayMs;
+  uint32_t c2CretryInterval;
+  uint32_t snsretryInterval;
+  uint32_t c2Crwtimeout;
+  uint32_t snsrwtimeout;
+} CDNClientConfig__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "c2CshowErrorDelayMs",
+        .dataTypeSpecific.className = NULL,
+        .number = CDNClientConfig_FieldNumber_C2CshowErrorDelayMs,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(CDNClientConfig__storage_, c2CshowErrorDelayMs),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "snsshowErrorDelayMs",
+        .dataTypeSpecific.className = NULL,
+        .number = CDNClientConfig_FieldNumber_SnsshowErrorDelayMs,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(CDNClientConfig__storage_, snsshowErrorDelayMs),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "c2CretryInterval",
+        .dataTypeSpecific.className = NULL,
+        .number = CDNClientConfig_FieldNumber_C2CretryInterval,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(CDNClientConfig__storage_, c2CretryInterval),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "snsretryInterval",
+        .dataTypeSpecific.className = NULL,
+        .number = CDNClientConfig_FieldNumber_SnsretryInterval,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(CDNClientConfig__storage_, snsretryInterval),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "c2Crwtimeout",
+        .dataTypeSpecific.className = NULL,
+        .number = CDNClientConfig_FieldNumber_C2Crwtimeout,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(CDNClientConfig__storage_, c2Crwtimeout),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "snsrwtimeout",
+        .dataTypeSpecific.className = NULL,
+        .number = CDNClientConfig_FieldNumber_Snsrwtimeout,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(CDNClientConfig__storage_, snsrwtimeout),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[CDNClientConfig class]
+                                     rootClass:[MmbaseRoot class]
+                                          file:MmbaseRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(CDNClientConfig__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\005\001\023\000\002\023\000\003\020\000\004\020\000\005\014\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG

@@ -21,16 +21,10 @@
 
 syntax = "proto2";
 
-message NotifyMsg
-{
-    optional string uuid                   = 1;
-    optional int32 state                   = 2;
-    optional string wxid                   = 3;
-    optional string wxnewpass              = 4;
-    optional string avatar                 = 5;
-    optional int32 pushLoginUrlExpiredTime = 6;
-    optional string nickName               = 7;
-    optional int32 effectiveTime           = 8;
-    optional int32 t10                     = 10;
-    optional string devices                = 11;
-}
+//{
+//"cgi": 1561,
+//"path": "/cgi-bin/mmpay-bin/cpucardgetconfig2"
+//}
+
+//cgi 763
+//path secautoauth
