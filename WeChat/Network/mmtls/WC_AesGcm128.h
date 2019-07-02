@@ -15,7 +15,17 @@
                          key:(NSData *)key
                         ivec:(NSData *)ivec;
 
++ (NSData *)aes192gcmEncrypt:(NSData *)plaintext
+                         aad:(NSData *)aad
+                         key:(NSData *)key
+                        ivec:(NSData *)ivec;
+
 + (NSData *)aes128gcmDecrypt:(NSData *)ciphertext
+                         aad:(NSData *)aad
+                         key:(NSData *)key
+                        ivec:(NSData *)ivec;
+
++ (NSData *)aes192gcmDecrypt:(NSData *)ciphertext
                          aad:(NSData *)aad
                          key:(NSData *)key
                         ivec:(NSData *)ivec;

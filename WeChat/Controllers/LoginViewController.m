@@ -16,6 +16,9 @@
 #import "SessionKeyStore.h"
 #import "WCContact.h"
 
+#import "WC_AesGcm128.h"
+#import "WC_HKDF.h"
+
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
@@ -50,12 +53,6 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self autoAuthIfCould];
     });
-    
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"62" ofType:@"bin"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    id obj = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    LogVerbose(@"%@", obj);
 }
 
 - (void)autoAuthIfCould
@@ -171,7 +168,7 @@
     cgiWrap.cmdId = 253;
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/manualauth";
 #if (PROTOCOL_FOR_ANDROID)
-    if (CLIENT_VERSION==A700) {
+    if (CLIENT_VERSION>=A700) {
         cgiWrap.cgi = 252;
         cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/secmanualauth";
     }
@@ -180,15 +177,22 @@
     cgiWrap.responseClass = [UnifyAuthResponse class];
     cgiWrap.needSetBaseRequest = NO;
 
-    [[WeChatClient sharedClient]
-        manualAuth:cgiWrap
-           success:^(UnifyAuthResponse *_Nullable response) {
-               LogVerbose(@"登陆响应 Code: %d, msg: %@", response.baseResponse.ret, response.baseResponse.errMsg);
-               [self onLoginResponse:response];
-           }
-           failure:^(NSError *error){
-
-           }];
+//    [[WeChatClient sharedClient]
+//        manualAuth2:cgiWrap
+//            success:^(UnifyAuthResponse *_Nullable response) {
+//                LogVerbose(@"登陆响应: %@", response);
+//                [self onLoginResponse:response];
+//            }
+//            failure:^(NSError *error){
+//
+//            }];
+    
+    [WeChatClient postRequest:cgiWrap success:^(id  _Nullable response) {
+        LogVerbose(@"登陆响应: %@", response);
+        [self onLoginResponse:response];
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 - (void)AutoAuth

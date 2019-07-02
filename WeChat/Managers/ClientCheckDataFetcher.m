@@ -12,7 +12,7 @@
 @implementation ClientCheckDataFetcher
 
 - (void)fetchAndSaveToDB {
-    NSURL *url = [NSURL URLWithString:@"http://10.12.87.38:8080/"];
+    NSURL *url = [NSURL URLWithString:@"http://192.168.1.108:8080/"];
     NSMutableURLRequest *newGetDNSReq = [NSMutableURLRequest requestWithURL:url];
     newGetDNSReq.HTTPMethod = @"GET";
     newGetDNSReq.timeoutInterval = 5;

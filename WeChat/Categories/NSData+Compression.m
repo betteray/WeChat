@@ -96,7 +96,7 @@ static const size_t CHUNK = 65536;
     stream.zfree = Z_NULL;
     stream.opaque = Z_NULL;
 
-    int ret = deflateInit(&stream, 9);
+    int ret = deflateInit(&stream, Z_DEFAULT_COMPRESSION); //9
     NSCAssert(ret == Z_OK, @"Could not init deflate");
     Bytef *source = (Bytef *) [self bytes]; // yay
     uInt offset = 0;

@@ -1,0 +1,22 @@
+
+syntax = "proto2";
+
+message UtileJniECDHKey {
+    optional uint32 nid = 1;
+    optional bytes key = 2;
+}
+
+message UtileJniSendPackage {
+    optional uint32 tag1 = 1;
+    optional UtileJniECDHKey ECDHKey = 2;
+    optional bytes data1 = 3;
+    optional bytes tag4 = 4;
+    optional bytes data2 = 5;
+}
+
+message UtileJniReceivePackage {
+    optional UtileJniECDHKey ECDHKey = 1;
+    optional uint32 tag2 = 2;
+    optional bytes tag3 = 3;
+    optional bytes tag4 = 4;
+}

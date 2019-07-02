@@ -25,6 +25,8 @@
 #import "short_pack.h"
 #import "long_pack.h"
 
+#import "UtilsJni.h"
+
 #import "SyncKeyStore.h"
 #import "AccountInfo.h"
 #import "Cookie.h"
@@ -33,6 +35,7 @@
 #import "SyncCmdHandler.h"
 
 #import "SyncKeyCompare.h"
+#import "Varint128.h"
 
 #define CMDID_NOOP_REQ 6
 #define CMDID_IDENTIFY_REQ 205
@@ -260,7 +263,7 @@
             success:(SuccessBlock)successBlock
             failure:(FailureBlock)failureBlock
 {
-    [[self sharedClient] postRequest:cgiWrap success:successBlock failure:failureBlock];
+    [[self sharedClient] postRequest2:cgiWrap success:successBlock failure:failureBlock];
 }
 
 #pragma mark - Internal
@@ -325,6 +328,59 @@
     [self UnPack:packData];
 }
 
+- (void)postRequest2:(CgiWrap *)cgiWrap
+            success:(SuccessBlock)successBlock
+            failure:(FailureBlock)failureBlock
+{
+    
+//    [self setBaseResquestIfNeed:cgiWrap];
+    
+//    Task *task = [Task new];
+//    task.sucBlock = successBlock;
+//    task.failBlock = failureBlock;
+//    task.cgiWrap = cgiWrap;
+//    [_tasks addObject:task];
+    
+    LogVerbose(@"Start Request: %@", cgiWrap.request);
+    
+    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
+    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
+    
+    NSData *serilizedData = [[cgiWrap request] data];
+    
+    UtilsJni *Jni = [UtilsJni new];
+    NSData *HybridEcdhEncryptData = [Jni HybridEcdhEncrypt:serilizedData];
+    LogVerbose(@"HybridEcdhEncryptData: %@", HybridEcdhEncryptData);
+    
+//    NSData *sendData = [short_pack pack:cgiWrap.cgi
+//                          serilizedData:HybridEcdhEncryptData
+//                                   type:5
+//                                    uin:_uin
+//                                 cookie:cookie.data];
+    
+    NSData *sendData = [NSData dataWithHexString:@"4ec0"];
+    sendData = [sendData addDataAtTail:[NSData packInt32:CLIENT_VERSION flip:YES]];
+    sendData = [sendData addDataAtTail:[NSData dataWithHexString:@"00000000fc01"]];
+    sendData = [sendData addDataAtTail:[Varint128 dataWithUInt32:(int32_t)[HybridEcdhEncryptData length]]];
+    sendData = [sendData addDataAtTail:[Varint128 dataWithUInt32:(int32_t)[HybridEcdhEncryptData length]]];
+    sendData = [sendData addDataAtTail:[NSData dataWithHexString:@"924e02"]];
+    sendData = [sendData addDataAtTail:HybridEcdhEncryptData];
+    
+#if USE_MMTLS
+    NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
+#else
+    NSData *packData = [ShortLinkClient post:sendData toCgiPath:cgiWrap.cgiPath];
+#endif
+    
+    packData = [packData subdataWithRange:NSMakeRange(24, [packData length] - 24)];
+    
+    NSData *response = [Jni HybridEcdhDecrypt:packData];
+    
+    LogVerbose(@"response: %@", response);
+    
+    successBlock([[cgiWrap.responseClass alloc] initWithData:response error:nil]);
+}
+
 - (void)setBaseResquestIfNeed:(CgiWrap *)cgiWrap
 {
     if (cgiWrap.needSetBaseRequest)
@@ -351,6 +407,8 @@
     ManualAuthRequest *request = (ManualAuthRequest *) [cgiWrap request];
     ManualAuthRsaReqData *rsaReqData = [request rsaReqData];
     ManualAuthAesReqData *aesReqData = [request aesReqData];
+
+    LogVerbose(@"%@", request);
 
     NSData *rsaReqDataSerializedData = [rsaReqData data];
     NSData *aesReqDataSerializedData = [aesReqData data];
