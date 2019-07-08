@@ -36,6 +36,7 @@
 
 #import "SyncKeyCompare.h"
 #import "Varint128.h"
+#import "MMProtocalJni.h"
 
 #define CMDID_NOOP_REQ 6
 #define CMDID_IDENTIFY_REQ 205
@@ -65,6 +66,8 @@
 
 @property (nonatomic, strong) NSData *sync_key_cur;
 @property (nonatomic, strong) NSData *sync_key_max;
+
+@property (nonatomic, strong) UtilsJni *Jni;
 
 @end
 
@@ -263,6 +266,13 @@
             success:(SuccessBlock)successBlock
             failure:(FailureBlock)failureBlock
 {
+    [[self sharedClient] postRequest:cgiWrap success:successBlock failure:failureBlock];
+}
+
++ (void)manualauth2:(CgiWrap *)cgiWrap
+            success:(SuccessBlock)successBlock
+            failure:(FailureBlock)failureBlock
+{
     [[self sharedClient] postRequest2:cgiWrap success:successBlock failure:failureBlock];
 }
 
@@ -313,11 +323,15 @@
     Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
     
     NSData *serilizedData = [[cgiWrap request] data];
-    NSData *sendData = [short_pack pack:cgiWrap.cgi
-                          serilizedData:serilizedData
-                                   type:5
-                                    uin:_uin
-                                 cookie:cookie.data];
+    
+//    NSData *sendData = [short_pack pack:cgiWrap.cgi
+//                          serilizedData:serilizedData
+//                                   type:5
+//                                    uin:_uin
+//                                 cookie:cookie.data];
+
+    int signature = [MMProtocalJni genSignatureWithUin:_uin ecdhKey:_checkEcdhKey protofufData:serilizedData];
+    NSData *sendData = [short_pack EncodePack:cgiWrap.cgi serilizedData:serilizedData uin:_uin aesKey:_sessionKey cookie:cookie.data signature:signature];
     
 #if USE_MMTLS
     NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
@@ -335,36 +349,25 @@
     
 //    [self setBaseResquestIfNeed:cgiWrap];
     
-//    Task *task = [Task new];
-//    task.sucBlock = successBlock;
-//    task.failBlock = failureBlock;
-//    task.cgiWrap = cgiWrap;
-//    [_tasks addObject:task];
+    Task *task = [Task new];
+    task.sucBlock = successBlock;
+    task.failBlock = failureBlock;
+    task.cgiWrap = cgiWrap;
+    [_tasks addObject:task];
     
     LogVerbose(@"Start Request: %@", cgiWrap.request);
     
-    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
-    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
-    
+//    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
+//    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
+//
     NSData *serilizedData = [[cgiWrap request] data];
     
     UtilsJni *Jni = [UtilsJni new];
+    _Jni = Jni;
     NSData *HybridEcdhEncryptData = [Jni HybridEcdhEncrypt:serilizedData];
     LogVerbose(@"HybridEcdhEncryptData: %@", HybridEcdhEncryptData);
     
-//    NSData *sendData = [short_pack pack:cgiWrap.cgi
-//                          serilizedData:HybridEcdhEncryptData
-//                                   type:5
-//                                    uin:_uin
-//                                 cookie:cookie.data];
-    
-    NSData *sendData = [NSData dataWithHexString:@"4ec0"];
-    sendData = [sendData addDataAtTail:[NSData packInt32:CLIENT_VERSION flip:YES]];
-    sendData = [sendData addDataAtTail:[NSData dataWithHexString:@"00000000fc01"]];
-    sendData = [sendData addDataAtTail:[Varint128 dataWithUInt32:(int32_t)[HybridEcdhEncryptData length]]];
-    sendData = [sendData addDataAtTail:[Varint128 dataWithUInt32:(int32_t)[HybridEcdhEncryptData length]]];
-    sendData = [sendData addDataAtTail:[NSData dataWithHexString:@"924e02"]];
-    sendData = [sendData addDataAtTail:HybridEcdhEncryptData];
+    NSData *sendData = [short_pack EncodeHybirdEcdhEncryptPack:cgiWrap.cgi serilizedData:HybridEcdhEncryptData uin:0 cookie:nil rsaVersion:10002];
     
 #if USE_MMTLS
     NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
@@ -372,13 +375,8 @@
     NSData *packData = [ShortLinkClient post:sendData toCgiPath:cgiWrap.cgiPath];
 #endif
     
-    packData = [packData subdataWithRange:NSMakeRange(24, [packData length] - 24)];
-    
-    NSData *response = [Jni HybridEcdhDecrypt:packData];
-    
-    LogVerbose(@"response: %@", response);
-    
-    successBlock([[cgiWrap.responseClass alloc] initWithData:response error:nil]);
+    // todo: unpack
+    [self UnPack:packData];
 }
 
 - (void)setBaseResquestIfNeed:(CgiWrap *)cgiWrap
@@ -549,11 +547,16 @@
 {
     ShortPackage *package = [short_pack unpack:data];
     NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
-    NSData *protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress]
-                                                     : [package.body aesDecryptWithKey:sessionKey];
-    
+    NSData *protobufData = nil;
     
     Task *task = [self getTaskWithTag:package.header.cgi];
+    
+    if (package.header.cgi == 252) {
+        protobufData =  [_Jni HybridEcdhDecrypt:package.body];
+    } else {
+        protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:sessionKey];
+    }
+    
     NSError *error = nil;
     id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:&error];
     if (error) {

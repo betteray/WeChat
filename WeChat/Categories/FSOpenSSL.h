@@ -38,6 +38,7 @@ enum
 + (NSData *)random128BitAESKey;
 
 + (NSString *)md5FromString:(NSString *)string;
++ (NSData *)md5FromData:(NSData *)data;
 
 + (NSString *)sha256FromString:(NSString *)string;
 

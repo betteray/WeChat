@@ -484,6 +484,17 @@ static GenRsaKeyResult generate_rsa_key_pair_1024(char *_pem_public_key_buf, con
     return [outStrg copy];
 }
 
++ (NSData *)md5FromData:(NSData *)data
+{
+    unsigned char *inStrg = (unsigned char *) [data bytes];
+    unsigned long lngth = [data length];
+    unsigned char result[MD5_DIGEST_LENGTH];
+    
+    MD5(inStrg, lngth, result);
+    
+    return [NSData dataWithBytes:result length:MD5_DIGEST_LENGTH];
+}
+
 + (NSString *)sha256FromString:(NSString *)string
 {
     unsigned char *inStrg = (unsigned char *) [[string dataUsingEncoding:NSASCIIStringEncoding] bytes];

@@ -1,0 +1,211 @@
+1562148769.277 29110-29122/com.tencent.mm D/PackDataHook: MMProtocalJni::packHybridEcdh 1: 
+1562148769.277 29110-29122/com.tencent.mm D/PackDataHook: MMProtocalJni::packHybridEcdh 2: Ab09e660e8e48c2e
+1562148769.278 29110-29122/com.tencent.mm D/PackDataHook: MMProtocalJni::packHybridEcdh 3: 0
+1562148769.278 29110-29122/com.tencent.mm D/PackDataHook: MMProtocalJni::packHybridEcdh 4: 252
+1562148769.278 29110-29122/com.tencent.mm D/PackDataHook: MMProtocalJni::packHybridEcdh 5: 10002
+1562148769.278 29110-29122/com.tencent.mm D/PackDataHook: MMProtocalJni::packHybridEcdh 6: 08011246089f031241049541c2802120f835467714017e96f1b3bf2270cc1fae7f37133c653824eceeec7df0d72c05af7ea992af5ebd9f5b2d707f3ea7722c6add192f86e4c0d512c86b1a45d192229e6f583352197836c19d0f4731d3c24b4c926830e9b66e7c08beead08fe4940c08059e2fb307b5855d389d02882a056948cbc3da4c61c0d0f54ae577c5d5ebcfec0922002ad208f1c8d1ad1a46b464239b6df4cbf1ef40362049aa503555713ee290942bc06107de9f7f205931b399a06df490e7134d3e28a6c4077049050c2ad07b5b696d30148e5066c3b2638ddb9bc74efcaa6508d5e7aa77d8eee6c7d839dcb48d9466261c6dee456fa202c1acfaa6eeebf04e21b13d0c0db0639b723a0c0328464daab3fd16cca9e241f57c41e833f10f73bcef35a744a040021b950101b4391be60c80fec3594ef4034243f8f0ae525a9a30040ecdc2108dc5d6336da4c06544802f1141f5e2ed35868fe498c9acc7f52410a870b0fc7211ff49e72344125d000ebe00cd8d0f81db69447c5d0f1bc52698b7b1ae4801a4718eb58921062bd86f9b1617e6e85b40bb0e053ca26618904a8448fca5f7e54bbbd41f74ed9ea1f9322b7d68e76cbd614a7bef9f79c5c0e0376c79a7d4b650dadf99f0c43fd93b631232c92b15d2bb1bb2472b00c56f07a01bfd5e96a4206e084e3c7ee13b940ed0af7cd94ae52af5aac494800685401fda37091af7a054a42ae59d673bea33d28d44546d34e1fcb7c4da10d897ddced9242b58aea49f9f0771b302cba577afcb1ebb4c3568b63f0c22dbd521e0789a424a36cc7fe0b2f86947504a0352e0ce5d22ca353aea78c6d6dd16644dfb9a42c89dbfc32192463ae0fdd68132eb60ad24ce15ab474744bf9ef51ac3983dda78dc60eb32aa1fa773d50dc37f6c8d878e8bc13477253d402d2aa3a132f9837c316c7a3ea8e60a44c1f32721407026a05c22bec153070696f56920e33a8e13778fe896e909c9aaa1816e78c881092c30b73815aec3aeac38d9cd6b36a99ea4abd42280cde59d8c92b6eedcd2a4fe4b1d838de30ffe959a9bc7cbe2c598209b0cd018ccca37c9bdcb5e952c27b534c0b30d30b9c332901bcb1d33b57451d4a012f8b329c374d974833fccc06462adca25073672369ad688c39af3e1c94f2286fab04dab65b08cee8845a281fa56a274156f0b8685fcbc217c2985ac88ba3fd68a39704705e3b5885de28268e82cd1008897b8d5e722254c056333444ac0464db4e5e818c172a810b645748b6631cfc1cdd7aa063c3b0d250eb6b0457f3e55e9bb7edb2f5244a2cbfbfbb2a1941d1508e1c2d787c9f66718d741c8d9fd9dfec30b1d7b3b646d478f535b185d87ff04041285ac067ce0e52cf4fb17699247cd85e4098d3607cdf4366e14d06c20f024365e83632771a333f19aebc836d093aa34041186c00a91fcb6878d6788abeee0b8fb6f20f792490094b4fda558d2e3a1762e3b3995797b43ddefeca1adfb0e1b5da234fd5081fcf00e753f3774578e540059e8edddb1447962174ca943205fd76fcb0d58600d4916a9120fcb216bba5347964c60b760ce47dbf5e409f334b19433667df6f7d67768caef23623580b84579d9567d026084d0a1fb675fe182cd380b8c5388badac10ec5d000a88bd48a3eeb07a5418f0ecb6b9b31c28710b642ef0b335453e7a52a01f302bb3f90be6b0eda2190a092a662ec7cbf9538b31fe7dab3a1b48a91ac2f0ba72b9efb00cf0871febf27957a6bbba61c9907ee
+1562148769.278 29110-29122/com.tencent.mm D/PackDataHook: MMProtocalJni::packHybridEcdh 7: 6
+1562148769.278 29110-29122/com.tencent.mm D/PackDataHook: MMProtocalJni::packHybridEcdh 8: 0
+1562148769.279 29110-29122/com.tencent.mm D/PackDataHook: MMProtocalJni::packHybrid result : 4ec0 27000334 00000000 fc01 e809 e809 924e 02 08011246089f031241049541c2802120f835467714017e96f1b3bf2270cc1fae7f37133c653824eceeec7df0d72c05af7ea992af5ebd9f5b2d707f3ea7722c6add192f86e4c0d512c86b1a45d192229e6f583352197836c19d0f4731d3c24b4c926830e9b66e7c08beead08fe4940c08059e2fb307b5855d389d02882a056948cbc3da4c61c0d0f54ae577c5d5ebcfec0922002ad208f1c8d1ad1a46b464239b6df4cbf1ef40362049aa503555713ee290942bc06107de9f7f205931b399a06df490e7134d3e28a6c4077049050c2ad07b5b696d30148e5066c3b2638ddb9bc74efcaa6508d5e7aa77d8eee6c7d839dcb48d9466261c6dee456fa202c1acfaa6eeebf04e21b13d0c0db0639b723a0c0328464daab3fd16cca9e241f57c41e833f10f73bcef35a744a040021b950101b4391be60c80fec3594ef4034243f8f0ae525a9a30040ecdc2108dc5d6336da4c06544802f1141f5e2ed35868fe498c9acc7f52410a870b0fc7211ff49e72344125d000ebe00cd8d0f81db69447c5d0f1bc52698b7b1ae4801a4718eb58921062bd86f9b1617e6e85b40bb0e053ca26618904a8448fca5f7e54bbbd41f74ed9ea1f9322b7d68e76cbd614a7bef9f79c5c0e0376c79a7d4b650dadf99f0c43fd93b631232c92b15d2bb1bb2472b00c56f07a01bfd5e96a4206e084e3c7ee13b940ed0af7cd94ae52af5aac494800685401fda37091af7a054a42ae59d673bea33d28d44546d34e1fcb7c4da10d897ddced9242b58aea49f9f0771b302cba577afcb1ebb4c3568b63f0c22dbd521e0789a424a36cc7fe0b2f86947504a0352e0ce5d22ca353aea78c6d6dd16644dfb9a42c89dbfc32192463ae0fdd68132eb60ad24ce15ab474744bf9ef51ac3983dda78dc60eb32aa1fa773d50dc37f6c8d878e8bc13477253d402d2aa3a132f9837c316c7a3ea8e60a44c1f32721407026a05c22bec153070696f56920e33a8e13778fe896e909c9aaa1816e78c881092c30b73815aec3aeac38d9cd6b36a99ea4abd42280cde59d8c92b6eedcd2a4fe4b1d838de30ffe959a9bc7cbe2c598209b0cd018ccca37c9bdcb5e952c27b534c0b30d30b9c332901bcb1d33b57451d4a012f8b329c374d974833fccc06462adca25073672369ad688c39af3e1c94f2286fab04dab65b08cee8845a281fa56a274156f0b8685fcbc217c2985ac88ba3fd68a39704705e3b5885de28268e82cd1008897b8d5e722254c056333444ac0464db4e5e818c172a810b645748b6631cfc1cdd7aa063c3b0d250eb6b0457f3e55e9bb7edb2f5244a2cbfbfbb2a1941d1508e1c2d787c9f66718d741c8d9fd9dfec30b1d7b3b646d478f535b185d87ff04041285ac067ce0e52cf4fb17699247cd85e4098d3607cdf4366e14d06c20f024365e83632771a333f19aebc836d093aa34041186c00a91fcb6878d6788abeee0b8fb6f20f792490094b4fda558d2e3a1762e3b3995797b43ddefeca1adfb0e1b5da234fd5081fcf00e753f3774578e540059e8edddb1447962174ca943205fd76fcb0d58600d4916a9120fcb216bba5347964c60b760ce47dbf5e409f334b19433667df6f7d67768caef23623580b84579d9567d026084d0a1fb675fe182cd380b8c5388badac10ec5d000a88bd48a3eeb07a5418f0ecb6b9b31c28710b642ef0b335453e7a52a01f302bb3f90be6b0eda2190a092a662ec7cbf9538b31fe7dab3a1b48a91ac2f0ba72b9efb00cf0871febf27957a6bbba61c9907ee
+
+EncodeHybirdEcdhEncryptPack
+第一字节 4e（8 bits）： 包头长(左移两位给压缩信息) （后两位为0b11=2）是否使用压缩
+第二字节 c0（8 bits）： 前 4 bit 加密方法，后 4 bit 是否有 cookie （f为有，0没有）
+四字节 版本号 27000334
+四字节 uin
+15字节 cookie 如果有
+整数压缩 cgi
+protobuf 长度
+压缩后probuf 长度
+(924e)整数压缩 10002
+02
+
+1562311436.569 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 0: 10c2a293261a057a685f434e20142800320477696669
+1562311436.569 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 2: 4737793a5f595a454b58714977557342
+1562311436.569 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 3: 0
+1562311436.570 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 4: a102080200000000564a29fd834c00
+1562311436.570 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 5: Ac2244b25ac8aefc
+1562311436.571 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 6: 1055139082 //uin => 3ee4250a
+1562311436.572 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 7: 1948
+1562311436.572 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 8: 0
+1562311436.572 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 9: 
+1562311436.573 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 10: 
+1562311436.573 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 11: 1089015374 整数压缩 ce9ca48704
+1562311436.574 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 12: 7
+1562311436.574 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 13: 0
+1562311436.575 9680-9692/com.tencent.mm D/PackDataHook: MMProtocalJni::pack result : bf a25f 27000334 3ee4250a a102080200000000564a29fd834c00 9c0f 16 16 0002 ce9ca48704 0100008fb792d78e 066f4617d90bfbcb6d01f572a3350bacfd6bd935b01eafc6a9284b
+
+EncodePack:
+
+1562321057.855 9680-9712/com.tencent.mm D/ProtobufHook: xxxxx Protobuf::send() uri: /cgi-bin/micromsg-bin/mmsnstimeline, type: 211
+1562321057.856 9780-11045/com.tencent.mm:push I/MicroMsg.WakerLock: [, , 11045]:lock [217540253,17348370] traceMsg:[MMAutoAuth.send] @[com.tencent.mm.network.t.<init>(SourceFile:208)] limit time:1000
+1562321057.857 9780-11045/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 11045]:sync task exec...
+1562321057.857 9780-11045/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 11045]:sync task exec at synchronized
+1562321057.857 9780-9780/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 9780]:task run manualFinish = false
+1562321057.858 9780-9780/com.tencent.mm:push I/MicroMsg.MMAutoAuth: [, , 9780]:dkcgi sendImp rr.type:211 callback:84773261
+1562321057.864 9780-9780/com.tencent.mm:push I/MicroMsg.MMNativeNetTaskAdapter: [, , 9780]:mmcgi startTask inQueue netid:0 hash[180,97923018] net:3 cgi:/cgi-bin/micromsg-bin/mmsnstimeline needAuthed:true
+1562321057.865 9780-9780/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 9780]:setResultFinish 
+1562321057.865 9780-9780/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 9780]:setResultFinish synchronized
+1562321057.866 9780-9898/com.tencent.mm:push I/mars::mmext: [host_redirect.cc, FixHostRedirect, 236]:other cgi:/cgi-bin/micromsg-bin/mmsnstimeline, networkType:1, md5:f199e7825f58a958780b1d7653b18553, host:extshort.weixin.qq.com
+1562321057.866 9780-9898/com.tencent.mm:push I/mars::stn: [net_core.cc, operator, 298]:task start long short taskid:180, cmdid:98, need_authed:true, cgi:/cgi-bin/micromsg-bin/mmsnstimeline, channel_select:3, limit_flow:true, host:, send_only:false, cmdid:98, server_process_cost:0, retrycount:-1,  channel_strategy:0,  total_timetout:0, network_status_sensitive:false, priority:0, report_arg:211
+1562321057.866 9780-11045/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 11045]:sync task done, return=0, cost=10(wait=9, run=1)
+1562321057.867 9680-9712/com.tencent.mm I/MicroMsg.NetSceneBase: [, , 9712]:dispatcher send, 0
+1562321057.867 9680-9712/com.tencent.mm I/MicroMsg.NetSceneQueue: [, , 9712]:On doscene  mmcgi type:211 hash[142967929,97923018] run:1 wait:0 ret:0 autoauth:240653610
+1562321057.868 9780-9898/com.tencent.mm:push I/MicroMsg.MMNativeNetTaskAdapter: [, , 9898]:link: 1 req2Buf somr isfg:true  cookie: a102080200000000564a29fd834c00, type: 211
+1562321057.870 9680-10010/com.tencent.mm D/MicroMsg.Jni: [common_function.h, CLogScope, 78]:--> Enter genSignature
+1562321057.870 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_genSignature, 800]:genSignature ecdhkey length=16, buf length=269, signature=42763820
+1562321057.871 9680-10010/com.tencent.mm D/MicroMsg.Jni: [common_function.h, ~CLogScope, 83]:<-- Exit genSignature
+1562321057.871 9680-10010/com.tencent.mm I/MicroMsg.RemoteReq: [, , 10010]:summerauths dkrsa use session :[B@3493458  type:211, flag:7, ecdh:[16] signature[42763820]
+1562321057.871 9680-10010/com.tencent.mm D/MicroMsg.Jni: [common_function.h, CLogScope, 78]:--> Enter protocal_pack
+1562321057.872 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 111]:key []=G7y:_YZEKXqIwUsB
+1562321057.872 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 112]:key length=16
+1562321057.872 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 114]:key attached
+1562321057.872 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 121]:cookie []=�
+1562321057.872 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 122]:cookie length=15
+1562321057.872 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 124]:cookie attached
+1562321057.873 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 131]:cookie []=(null)
+1562321057.873 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 132]:cookie length=0
+1562321057.873 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 134]:cookie attached
+1562321057.873 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 141]:cookie []=(null)
+1562321057.873 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 142]:cookie length=0
+1562321057.873 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 144]:cookie attached
+1562321057.873 9680-10010/com.tencent.mm D/TLV_LOG: [common_function.h, CLogScope, 78]:--> Enter EncodePack
+1562321057.874 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 50]:writing head, g_clientVer: 654312244, type:2, flag:7 noticeid:0
+1562321057.874 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 89]:checksum signature=42763820
+1562321057.874 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 92]:compressing, length=269 => 8d02
+1562321057.874 9680-10010/com.tencent.mm D/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 104]:EncodePack fgflag:1, cver：1001, calgo:1, clen:269, cdlen:220, ealog:0, routeInfo:0
+1562321057.875 9680-10010/com.tencent.mm D/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 107]:EncodePack fgflag:1, cver：1001, calgo:1, clen:269, cdlen:220, ealog:0
+1562321057.875 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, int EncryptPack(RBBuffer&, RBBuffer&, Comm::SKBuffer&, int, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&), 404]:encrypting using AES, length=220 => dc01
+1562321057.875 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 149]:writing body length=224
+1562321057.876 9680-10010/com.tencent.mm I/TLV_LOG: [skbuffer.cpp, EnsureExpandSize, 58]:EnsureExpandSize 41 to 265 increase 224
+1562321057.876 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 159]:packing done, uin=1055139082, func=211, ret=0
+1562321057.876 9680-10010/com.tencent.mm D/TLV_LOG: [common_function.h, ~CLogScope, 83]:<-- Exit EncodePack
+1562321057.876 9680-10010/com.tencent.mm D/MicroMsg.Jni: [common_function.h, ~CLogScope, 83]:<-- Exit protocal_pack
+1562321057.877 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 0: 0a3e0a104737793a5f595a454b58714977557342108aca90f7031a104163323234346232356163386165660020b48680b8022a0a616e64726f69642d3237300012103464353863363337333938386664346218002092e1b08fafbeb7e6b50128fdc4fce80530f0e090b294f0f3efb5013a7f087b127b08b8c5fce805100118f0e090b294f0f3efb50120f0e090b294f0f3efb50130b8c5fce8054a4f08dec4fe8cbc2d100a18b8c5fce805222208ecae80a6d9d1b3deb5011004180420f0e090b294f0f3efb50128b9c5fce80530012a1a08f0e090b294f0f3efb5011092e1b08fafbeb7e6b501180a200150b8c5fce80540015802621481e1fc8af9f8edefb501f0e090b294f0f3efb5016802
+1562321057.878 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 2: 4737793a5f595a454b58714977557342 aes key
+1562321057.879 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 3: 0
+1562321057.879 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 4: a102080200000000564a29fd834c00
+1562321057.880 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 5: Ac2244b25ac8aefc
+1562321057.881 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 6: 1055139082 uin
+1562321057.882 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 7: 211 整数压缩 d301
+1562321057.882 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 8: 0
+1562321057.883 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 9: 
+1562321057.884 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 10: 
+1562321057.884 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 11: 42763820 整数压缩 ac8cb214 checksum
+1562321057.884 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 12: 7
+1562321057.885 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 13: 0
+1562321057.889 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack result : bf a55f 27000334 3ee4250 aa102080200000000564a29fd834c00 d301 8d02 dc01 0002 ac8cb214 010000 (压缩aes加密)5922c59db2f8e2d77c08dc6a189f56bcf3836fabbdae997171e4e84b3219adb164383b6752961090f5ac89b09848c450cf0e0181aec605ef5c5e815d272769b39f22df3d7b73b1e78f1c15fcefff57c8e3d4f1a82a1491483691ad9ddfa4dda7086df4e66ad22040b46dcdd4ca030f513be436ecf91617f8cd5ab0af41155647c5cb972d1706d463de5a8b92c9cc669a50c0d176c0bf882a999e695fc93ecd303e981e01c964b032ee8a9016864a93b778b9c739db7527b8c30b0bb2390f9d78ef9deecd130f69ccf9d24d8815b90301004c833e1603c21899ead4692067a50e
+
+
+1562325956.501 9680-9712/com.tencent.mm D/ProtobufHook: xxxxx Protobuf::send() uri: /cgi-bin/micromsg-bin/oplog, type: 681
+1562325956.565 9680-9712/com.tencent.mm I/chatty: uid=10084(com.tencent.mm) [GT]worker identical 20 lines
+1562325956.565 9680-9712/com.tencent.mm D/ProtobufHook: xxxxx Protobuf::send() uri: /cgi-bin/micromsg-bin/oplog, type: 681
+1562325956.566 9780-11045/com.tencent.mm:push I/MicroMsg.WakerLock: [, , 11045]:lock [217540253,17348370] traceMsg:[MMAutoAuth.send] @[com.tencent.mm.network.t.<init>(SourceFile:208)] limit time:1000
+1562325956.567 9780-11045/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 11045]:sync task exec...
+1562325956.567 9780-11045/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 11045]:sync task exec at synchronized
+1562325956.567 9780-9780/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 9780]:task run manualFinish = false
+1562325956.568 9780-9780/com.tencent.mm:push I/MicroMsg.MMAutoAuth: [, , 9780]:dkcgi sendImp rr.type:681 callback:244014265
+1562325956.571 9780-9780/com.tencent.mm:push I/MicroMsg.MMNativeNetTaskAdapter: [, , 9780]:mmcgi startTask inQueue netid:0 hash[190,232420806] net:1 cgi:/cgi-bin/micromsg-bin/oplog needAuthed:true
+1562325956.572 9780-9780/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 9780]:setResultFinish 
+1562325956.572 9780-9780/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 9780]:setResultFinish synchronized
+1562325956.572 9780-9898/com.tencent.mm:push I/mars::mmext: [host_redirect.cc, FixHostRedirect, 236]:other cgi:/cgi-bin/micromsg-bin/oplog, networkType:1, md5:f199e7825f58a958780b1d7653b18553, host:extshort.weixin.qq.com
+1562325956.572 9780-11045/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 11045]:sync task done, return=0, cost=5(wait=5, run=0)
+1562325956.573 9780-9898/com.tencent.mm:push I/mars::stn: [net_core.cc, operator, 298]:task start long short taskid:190, cmdid:0, need_authed:true, cgi:/cgi-bin/micromsg-bin/oplog, channel_select:1, limit_flow:true, host:, send_only:false, cmdid:0, server_process_cost:0, retrycount:-1,  channel_strategy:0,  total_timetout:0, network_status_sensitive:false, priority:0, report_arg:681
+1562325956.573 9680-9712/com.tencent.mm I/MicroMsg.NetSceneBase: [, , 9712]:dispatcher send, 0
+1562325956.574 9680-9712/com.tencent.mm I/MicroMsg.NetSceneQueue: [, , 9712]:On doscene  mmcgi type:681 hash[141798408,232420806] run:1 wait:0 ret:0 autoauth:240653610
+1562325956.574 9780-9898/com.tencent.mm:push I/MicroMsg.MMNativeNetTaskAdapter: [, , 9898]:link: 1 req2Buf somr isfg:true  cookie: a102080200000000564a29fd834c00, type: 681
+1562325956.577 9680-10010/com.tencent.mm D/MicroMsg.Jni: [common_function.h, CLogScope, 78]:--> Enter genSignature
+1562325956.577 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_genSignature, 800]:genSignature ecdhkey length=16, buf length=278, signature=-1365415506
+1562325956.578 9680-10010/com.tencent.mm D/MicroMsg.Jni: [common_function.h, ~CLogScope, 83]:<-- Exit genSignature
+1562325956.578 9680-10010/com.tencent.mm I/MicroMsg.RemoteReq: [, , 10010]:summerauths dkrsa use session :[B@9b80b4  type:681, flag:7, ecdh:[16] signature[-1365415506]
+1562325956.579 9680-10010/com.tencent.mm D/MicroMsg.Jni: [common_function.h, CLogScope, 78]:--> Enter protocal_pack
+1562325956.579 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 111]:key []=G7y:_YZEKXqIwUsB
+1562325956.579 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 112]:key length=16
+1562325956.579 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 114]:key attached
+1562325956.579 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 121]:cookie []=�
+1562325956.579 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 122]:cookie length=15
+1562325956.579 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 124]:cookie attached
+1562325956.579 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 131]:cookie []=(null)
+1562325956.580 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 132]:cookie length=0
+1562325956.580 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 134]:cookie attached
+1562325956.580 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 141]:cookie []=(null)
+1562325956.580 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 142]:cookie length=0
+1562325956.580 9680-10010/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 144]:cookie attached
+1562325956.580 9680-10010/com.tencent.mm D/TLV_LOG: [common_function.h, CLogScope, 78]:--> Enter EncodePack
+1562325956.580 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 50]:writing head, g_clientVer: 654312244, type:2, flag:7 noticeid:0
+1562325956.580 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 89]:checksum signature=-1365415506
+1562325956.580 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 92]:compressing, length=278
+1562325956.580 9680-10010/com.tencent.mm D/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 104]:EncodePack fgflag:1, cver：1001, calgo:1, clen:278, cdlen:128, ealog:0, routeInfo:0
+1562325956.581 9680-10010/com.tencent.mm D/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 107]:EncodePack fgflag:1, cver：1001, calgo:1, clen:278, cdlen:128, ealog:0
+1562325956.581 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, int EncryptPack(RBBuffer&, RBBuffer&, Comm::SKBuffer&, int, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&), 404]:encrypting using AES, length=128
+1562325956.581 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 149]:writing body length=144
+1562325956.581 9680-10010/com.tencent.mm I/TLV_LOG: [skbuffer.cpp, EnsureExpandSize, 58]:EnsureExpandSize 42 to 186 increase 144
+1562325956.581 9680-10010/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 159]:packing done, uin=1055139082, func=681, ret=0
+1562325956.581 9680-10010/com.tencent.mm D/TLV_LOG: [common_function.h, ~CLogScope, 83]:<-- Exit EncodePack
+1562325956.581 9680-10010/com.tencent.mm D/MicroMsg.Jni: [common_function.h, ~CLogScope, 83]:<-- Exit protocal_pack
+1562325956.582 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 0: 0a93020801128e0208ca011288020882021282020808121e0801100218b9be1a20babe1a280630c6f803388aca90f70340b48680b802121e0801100218babe1a20babe1a281830caf803388aca90f70340b48680b802121e0802100118babe1a20babe1a283c30d5f803388aca90f70340b48680b802121e0801100118babe1a20babe1a280330faf803388aca90f70340b48680b802121e0802100218b9be1a20babe1a2804308ef903388aca90f70340b48680b802121e0802100218babe1a20babe1a28593092f903388aca90f70340b48680b802121e0802100118bbbe1a20bbbe1a280d30f4f903388aca90f70340b48680b802121e0801100118bbbe1a20bbbe1a28013081fa03388aca90f70340b48680b802
+1562325956.582 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 2: 4737793a5f595a454b58714977557342
+1562325956.582 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 3: 0
+1562325956.582 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 4: a102080200000000564a29fd834c00
+1562325956.582 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 5: Ac2244b25ac8aefc
+1562325956.583 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 6: 1055139082
+1562325956.583 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 7: 681
+1562325956.583 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 8: 0
+1562325956.583 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 9: 
+1562325956.584 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 10: 
+1562325956.584 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 11: -1365415506 => aed3f5f40a
+1562325956.584 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 12: 7
+1562325956.584 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 13: 0
+1562325956.584 9680-10010/com.tencent.mm D/PackDataHook: MMProtocalJni::pack result : bf a95f 27000334 3ee4250a a102080200000000564a29fd834c00 a905 9602 8001 0002 aed3f5f40a 010000 062e058a3a5df27788236b802e521ab6335ee5b5b0c05d640dfd6a5ab60b79849b65a9daef54012e2bac4946c81c976457a1d832a478030f03134f9c6dd29b2e705247616a78b56b323d302ed120239287d759ca5abb12b57c01fcc5207f31eec01cb5197d67f8d0afdf17da820ca0fd65ad06bbe5d5ed7477e4303369febfcef4ff34e7869e1ff10bc29e8616311c99
+
+
+
+1562326679.515 9780-9898/com.tencent.mm:push I/mars::mmext: [host_redirect.cc, FixHostRedirect, 146]:cgi:/cgi-bin/micromsg-bin/newreportidkey, networkType:1, md5:f199e7825f58a958780b1d7653b18553
+1562326679.515 9780-9898/com.tencent.mm:push I/mars::stn: [net_core.cc, operator, 298]:task start long short taskid:197, cmdid:0, need_authed:true, cgi:/cgi-bin/micromsg-bin/newreportidkey, channel_select:1, limit_flow:true, host:, send_only:false, cmdid:0, server_process_cost:0, retrycount:-1,  channel_strategy:0,  total_timetout:0, network_status_sensitive:false, priority:0, report_arg:986
+1562326679.515 9780-9794/com.tencent.mm:push I/MicroMsg.SDK.SyncTask: [, , 9794]:sync task done, return=0, cost=5(wait=5, run=0)
+1562326679.516 9680-9712/com.tencent.mm I/MicroMsg.NetSceneBase: [, , 9712]:dispatcher send, 0
+1562326679.517 9780-9898/com.tencent.mm:push I/MicroMsg.MMNativeNetTaskAdapter: [, , 9898]:link: 1 req2Buf somr isfg:true  cookie: a102080200000000564a29fd834c00, type: 986
+1562326679.517 9680-9712/com.tencent.mm I/MicroMsg.NetSceneQueue: [, , 9712]:On doscene  mmcgi type:986 hash[94415055,11076331] run:1 wait:0 ret:0 autoauth:240653610
+1562326679.519 9680-10009/com.tencent.mm D/MicroMsg.Jni: [common_function.h, CLogScope, 78]:--> Enter genSignature
+1562326679.519 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_genSignature, 800]:genSignature ecdhkey length=16, buf length=64, signature=11018639
+1562326679.519 9680-10009/com.tencent.mm D/MicroMsg.Jni: [common_function.h, ~CLogScope, 83]:<-- Exit genSignature
+1562326679.520 9680-10009/com.tencent.mm I/MicroMsg.RemoteReq: [, , 10009]:summerauths dkrsa use session :[B@3a5a6e1  type:986, flag:7, ecdh:[16] signature[11018639]
+1562326679.520 9680-10009/com.tencent.mm D/MicroMsg.Jni: [common_function.h, CLogScope, 78]:--> Enter protocal_pack
+1562326679.520 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 111]:key []=G7y:_YZEKXqIwUsB
+1562326679.520 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 112]:key length=16
+1562326679.520 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 114]:key attached
+1562326679.521 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 121]:cookie []=�
+1562326679.521 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 122]:cookie length=15
+1562326679.521 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 124]:cookie attached
+1562326679.521 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 131]:cookie []=(null)
+1562326679.521 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 132]:cookie length=0
+1562326679.521 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 134]:cookie attached
+1562326679.521 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 141]:cookie []=(null)
+1562326679.521 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 142]:cookie length=0
+1562326679.522 9680-10009/com.tencent.mm V/MicroMsg.Jni: [MMProtocalJniImpl.cpp, protocal_pack, 144]:cookie attached
+1562326679.522 9680-10009/com.tencent.mm D/TLV_LOG: [common_function.h, CLogScope, 78]:--> Enter EncodePack
+1562326679.522 9680-10009/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 50]:writing head, g_clientVer: 654312244, type:2, flag:7 noticeid:0
+1562326679.522 9680-10009/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 89]:checksum signature=11018639
+1562326679.522 9680-10009/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 92]:compressing, length=64
+1562326679.522 9680-10009/com.tencent.mm D/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 104]:EncodePack fgflag:1, cver：1001, calgo:2, clen:64, cdlen:64, ealog:0, routeInfo:0
+1562326679.522 9680-10009/com.tencent.mm D/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 107]:EncodePack fgflag:1, cver：1001, calgo:2, clen:64, cdlen:64, ealog:0
+1562326679.522 9680-10009/com.tencent.mm V/TLV_LOG: [mmpack.cpp, int EncryptPack(RBBuffer&, RBBuffer&, Comm::SKBuffer&, int, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&), 404]:encrypting using AES, length=64
+1562326679.522 9680-10009/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 149]:writing body length=80
+1562326679.522 9680-10009/com.tencent.mm I/TLV_LOG: [skbuffer.cpp, EnsureExpandSize, 58]:EnsureExpandSize 39 to 119 increase 80
+1562326679.523 9680-10009/com.tencent.mm V/TLV_LOG: [mmpack.cpp, bool EncodePack(JNIEnv*, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, Comm::SKBuffer&, unsigned int, unsigned char*, emMM, 159]:packing done, uin=1055139082, func=986, ret=0
+1562326679.523 9680-10009/com.tencent.mm D/TLV_LOG: [common_function.h, ~CLogScope, 83]:<-- Exit EncodePack
+1562326679.523 9680-10009/com.tencent.mm D/MicroMsg.Jni: [common_function.h, ~CLogScope, 83]:<-- Exit protocal_pack
+1562326679.523 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 0: 08dcf8e6e8051080998ae30518002228088aca90f70310b48680b802180122160880dc8f80f8ffffffff011201311800200028013000500032060889a5d9d805
+1562326679.523 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 2: 4737793a5f595a454b58714977557342
+1562326679.524 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 3: 0
+1562326679.524 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 4: a102080200000000564a29fd834c00
+1562326679.524 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 5: Ac2244b25ac8aefc
+1562326679.524 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 6: 1055139082
+1562326679.524 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 7: 986
+1562326679.525 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 8: 0
+1562326679.525 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 9: 
+1562326679.525 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 10: 
+1562326679.526 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 12: 11018639
+1562326679.526 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 13: 7
+1562326679.526 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack 13: 0
+1562326679.526 9680-10009/com.tencent.mm D/PackDataHook: MMProtocalJni::pack result : bf 9e5f 27000334 3ee4250a a102080200000000564a29fd834c00 da07 4040 0002 8fc3a005 010000 20ac57145b308cd0a040f175d452a0084c764963b03f0cef1cf6fb86c9dbca269491a8feced25ccda1c6b2c550cd1aeed3dc11a9c822f51b29732b893826462210176e1fda9ec1f20fbd2c6a901cf444

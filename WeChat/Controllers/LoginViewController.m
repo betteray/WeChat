@@ -18,6 +18,12 @@
 
 #import "WC_AesGcm128.h"
 #import "WC_HKDF.h"
+#import "Varint128.h"
+#import "header.h"
+#import "NSData+AES.h"
+#import "NSData+Compression.h"
+#import "short_pack.h"
+#import "MMProtocalJni.h"
 
 @interface LoginViewController ()
 
@@ -53,6 +59,10 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self autoAuthIfCould];
     });
+    
+//    NSData *data = [NSData dataWithHexString:@"bfa95f270003343ee4250aa102080200000000564a29fd834c00a905960280010002aed3f5f40a"];
+//    NSData *headerLen = [NSData dataWithHexString:[NSString stringWithFormat:@"%2x", (int) (([data length] << 2) + 0x2)]]; //0x2 !use_compress
+//    LogVerbose(@"%@", headerLen);
 }
 
 - (void)autoAuthIfCould
@@ -187,7 +197,7 @@
 //
 //            }];
     
-    [WeChatClient postRequest:cgiWrap success:^(id  _Nullable response) {
+    [WeChatClient manualauth2:cgiWrap success:^(id  _Nullable response) {
         LogVerbose(@"登陆响应: %@", response);
         [self onLoginResponse:response];
     } failure:^(NSError * _Nonnull error) {

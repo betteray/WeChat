@@ -10,6 +10,7 @@
 		2FFBBBF5A4F4493C2BD0EBFB /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE308AEA822A0536476B28E2 /* libPods-WeChat.a */; };
 		3170D26FEE89CCA046B85687 /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WeChat.a */; };
 		4602CC7E2212AAFC005FB94F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4602CC7D2212AAFC005FB94F /* RegisterViewController.m */; };
+		460429AA22D0911900F9BB94 /* MMProtocalJni.m in Sources */ = {isa = PBXBuildFile; fileRef = 460429A922D0911900F9BB94 /* MMProtocalJni.m */; };
 		460CDE4821FEB08C0075F3E5 /* mmpack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460CDE4721FEB08C0075F3E5 /* mmpack.cpp */; };
 		460CDE4B21FEB0FB0075F3E5 /* autobuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460CDE4A21FEB0FB0075F3E5 /* autobuffer.cpp */; };
 		460CDE4E220041CB0075F3E5 /* NeedRSAEncodePack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460CDE4D220041CB0075F3E5 /* NeedRSAEncodePack.cpp */; };
@@ -193,6 +194,9 @@
 		36DB43DD6C2AA522C9401323 /* libPods-WeChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4602CC7C2212AAFC005FB94F /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		4602CC7D2212AAFC005FB94F /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		460429A722CF84DF00F9BB94 /* weixin_703_pack.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = weixin_703_pack.txt; sourceTree = "<group>"; };
+		460429A822D0911900F9BB94 /* MMProtocalJni.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMProtocalJni.h; sourceTree = "<group>"; };
+		460429A922D0911900F9BB94 /* MMProtocalJni.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMProtocalJni.m; sourceTree = "<group>"; };
 		460CDE4521FEB0710075F3E5 /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
 		460CDE4621FEB08B0075F3E5 /* mmpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mmpack.h; sourceTree = "<group>"; };
 		460CDE4721FEB08C0075F3E5 /* mmpack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mmpack.cpp; sourceTree = "<group>"; };
@@ -757,6 +761,8 @@
 				712C7160214D231C00603022 /* ecdh */,
 				712F95F721D1E6D700CFE3A0 /* without_mmtls */,
 				7155BA492190293B0002CE1D /* mmtls */,
+				460429A822D0911900F9BB94 /* MMProtocalJni.h */,
+				460429A922D0911900F9BB94 /* MMProtocalJni.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1206,6 +1212,7 @@
 		7161985021CB79E000A76F39 /* pack */ = {
 			isa = PBXGroup;
 			children = (
+				460429A722CF84DF00F9BB94 /* weixin_703_pack.txt */,
 				712C7147214BA38900603022 /* LongHeader.h */,
 				712C7148214BA38900603022 /* LongHeader.m */,
 				712C714A214BA49300603022 /* LongPackage.h */,
@@ -1557,6 +1564,7 @@
 				464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */,
 				7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */,
 				46EB620F21F98E1100760593 /* BlockDumpList.proto in Sources */,
+				460429AA22D0911900F9BB94 /* MMProtocalJni.m in Sources */,
 				460CDE4E220041CB0075F3E5 /* NeedRSAEncodePack.cpp in Sources */,
 				46EB61F521F98E1100760593 /* mmbottle.proto in Sources */,
 				46D2CA57223A0C630053C4A6 /* Mmopenapi.pbobjc.m in Sources */,

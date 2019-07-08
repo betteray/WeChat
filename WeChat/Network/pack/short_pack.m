@@ -16,6 +16,8 @@
 #import "FSOpenSSL.h"
 #import "Cookie.h"
 #import "Varint128.h"
+#import "NSData+Compression.h"
+#import "NSData+AES.h"
 
 @implementation short_pack
 
@@ -47,6 +49,80 @@
     }
     
     return nil;
+}
+
++ (NSData *)EncodeHybirdEcdhEncryptPack:(int)cgi
+                          serilizedData:(NSData *)serilizedData
+                                    uin:(uint32_t)uin
+                                 cookie:(NSData *)cookie
+                             rsaVersion:(int)rsaVersion
+{
+    
+    int bodyDataLen = (int) [serilizedData length];
+    int compressedBodyDataLen = (int) [serilizedData length];
+    
+    NSMutableData *header = [NSMutableData data];
+    
+    [header appendData:[NSData dataWithHexString:@"00"]];   //包头长度及是否使用压缩，最后计算。
+    int len = (0xc << 4) + (cookie != nil ? 0xf : 0x0);     //加密算法及是否使用cookie： 0xc=HybirdEcdhEncrypt
+    [header appendData:[NSData dataWithHexString:[NSString stringWithFormat:@"%2x", len]]];
+    [header appendData:[NSData packInt32:CLIENT_VERSION flip:YES]];
+    [header appendData:[NSData packInt32:uin flip:YES]];
+    
+    if (cookie) [header appendData:cookie];
+    
+    [header appendData:[Varint128 dataWithUInt32:cgi]];
+    [header appendData:[Varint128 dataWithUInt32:bodyDataLen]];
+    [header appendData:[Varint128 dataWithUInt32:compressedBodyDataLen]];
+    [header appendData:[Varint128 dataWithUInt32:rsaVersion]];
+    
+    [header appendData:[NSData dataWithHexString:@"02"]];
+
+    NSData *headerLen = [NSData dataWithHexString:[NSString stringWithFormat:@"%2x", (int) (([header length] << 2) + 0x2)]]; //0x2 !use_compress
+    [header replaceBytesInRange:NSMakeRange(0, 1) withBytes:[headerLen bytes]];
+    
+    [header appendData:serilizedData];
+    
+    return [header copy];
+}
+
++ (NSData *)EncodePack:(int)cgi
+         serilizedData:(NSData *)serilizedData
+                   uin:(uint32_t)uin
+                aesKey:(NSData *)aesKey
+                cookie:(NSData *)cookie
+             signature:(int)signature
+{
+    
+    int bodyDataLen = (int) [serilizedData length];
+    NSData *compressData = [serilizedData dataByDeflating];
+    int compressedBodyDataLen = (int) [compressData length];
+    NSData *aesedData = [compressData AES_CBC_encryptWithKey:aesKey];
+
+    NSMutableData *header = [NSMutableData data];
+    
+    [header appendData:[NSData dataWithHexString:@"bf"]];   //固定
+    [header appendData:[NSData dataWithHexString:@"00"]];   //包头长度及是否使用压缩，最后计算。
+    int len = (0x5 << 4) + (cookie != nil ? 0xf : 0x0);     //加密算法及是否使用cookie： 0x5=aes
+    [header appendData:[NSData dataWithHexString:[NSString stringWithFormat:@"%2x", len]]];
+    [header appendData:[NSData packInt32:CLIENT_VERSION flip:YES]];
+    [header appendData:[NSData packInt32:uin flip:YES]];
+    
+    if (cookie) [header appendData:cookie];
+    
+    [header appendData:[Varint128 dataWithUInt32:cgi]];
+    [header appendData:[Varint128 dataWithUInt32:bodyDataLen]];
+    [header appendData:[Varint128 dataWithUInt32:compressedBodyDataLen]];
+    
+    [header appendData:[NSData dataWithHexString:@"0002"]];
+    [header appendData:[Varint128 dataWithUInt32:signature]];//checksum
+    [header appendData:[NSData dataWithHexString:@"010000"]];
+
+    NSData *headerLen = [NSData dataWithHexString:[NSString stringWithFormat:@"%2x", (int) (([header length] << 2) + 0x2)]]; //0x2 !use_compress
+    [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[headerLen bytes]];
+    [header appendData:aesedData];
+    
+    return [header copy];
 }
 
 + (ShortPackage *)unpack:(NSData *)body

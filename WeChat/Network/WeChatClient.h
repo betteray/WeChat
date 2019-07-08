@@ -50,6 +50,10 @@ typedef void (^FailureBlock)(NSError *error);
             success:(SuccessBlock)successBlock
             failure:(FailureBlock)failureBlock;
 
++ (void)manualauth2:(CgiWrap *)cgiWrap
+            success:(SuccessBlock)successBlock
+            failure:(FailureBlock)failureBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

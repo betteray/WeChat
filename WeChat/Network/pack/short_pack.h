@@ -18,6 +18,19 @@
              uin:(uint32_t)uin
           cookie:(NSData *)cookie;
 
++ (NSData *)EncodeHybirdEcdhEncryptPack:(int)cgi
+                          serilizedData:(NSData *)serilizedData
+                                    uin:(uint32_t)uin
+                                 cookie:(NSData *)cookie
+                             rsaVersion:(int)rsaVersion;
+
++ (NSData *)EncodePack:(int)cgi
+         serilizedData:(NSData *)serilizedData
+                   uin:(uint32_t)uin
+                aesKey:(NSData *)aesKey
+                cookie:(NSData *)cookie
+             signature:(int)signature;
+
 + (ShortPackage *)unpack:(NSData *)body;
 
 @end
