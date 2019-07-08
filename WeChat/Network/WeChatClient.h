@@ -13,18 +13,19 @@ NS_ASSUME_NONNULL_BEGIN
 @class GPBMessage, CgiWrap;
 
 typedef void (^SuccessBlock)(id _Nullable response);
+
 typedef void (^FailureBlock)(NSError *error);
 
 @interface WeChatClient : NSObject
 
-@property (nonatomic, strong) NSData * checkEcdhKey;
-@property (nonatomic, assign) int32_t uin;
+@property(nonatomic, strong) NSData *checkEcdhKey;
+@property(nonatomic, assign) int32_t uin;
 
-@property (nonatomic, strong) NSData *sessionKey;
-@property (nonatomic, strong) NSData *cookie;
+@property(nonatomic, strong) NSData *sessionKey;
+@property(nonatomic, strong) NSData *cookie;
 
-@property (nonatomic, strong, readonly) NSData *pskData;
-@property (nonatomic, strong, readonly) NSData *resumptionSecret;
+@property(nonatomic, strong, readonly) NSData *pskData;
+@property(nonatomic, strong, readonly) NSData *resumptionSecret;
 
 + (instancetype)sharedClient;
 

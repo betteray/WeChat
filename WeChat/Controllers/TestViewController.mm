@@ -10,7 +10,6 @@
 #import "SyncKeyCompare.h"
 #import "WCECDH.h"
 #import "WC_SHA256.h"
-#import "WC_AesGcm128.h"
 #import "WC_HKDF.h"
 #import "Varint128.h"
 
