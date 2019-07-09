@@ -1,5 +1,5 @@
 //
-//  short_pack.h
+//  mmpack.h
 //  WeChat
 //
 //  Created by ray on 2018/12/20.
@@ -10,7 +10,7 @@
 
 @class ShortPackage;
 
-@interface short_pack : NSObject
+@interface mmpack : NSObject
 
 + (NSData *)pack:(int)cgi
    serilizedData:(NSData *)serilizedData
@@ -31,6 +31,6 @@
                 cookie:(NSData *)cookie
              signature:(int)signature;
 
-+ (ShortPackage *)unpack:(NSData *)body;
++ (ShortPackage *)DecodePack:(NSData *)body;
 
 @end

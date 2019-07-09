@@ -11,9 +11,6 @@
 		3170D26FEE89CCA046B85687 /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WeChat.a */; };
 		4602CC7E2212AAFC005FB94F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4602CC7D2212AAFC005FB94F /* RegisterViewController.m */; };
 		460429AA22D0911900F9BB94 /* MMProtocalJni.m in Sources */ = {isa = PBXBuildFile; fileRef = 460429A922D0911900F9BB94 /* MMProtocalJni.m */; };
-		460CDE4821FEB08C0075F3E5 /* mmpack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460CDE4721FEB08C0075F3E5 /* mmpack.cpp */; };
-		460CDE4B21FEB0FB0075F3E5 /* autobuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460CDE4A21FEB0FB0075F3E5 /* autobuffer.cpp */; };
-		460CDE4E220041CB0075F3E5 /* NeedRSAEncodePack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460CDE4D220041CB0075F3E5 /* NeedRSAEncodePack.cpp */; };
 		460CDE50220088CE0075F3E5 /* cgi.json in Resources */ = {isa = PBXBuildFile; fileRef = 460CDE4F220088CE0075F3E5 /* cgi.json */; };
 		46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */ = {isa = PBXBuildFile; fileRef = 46145F96221D9BF6003DC115 /* newwxjs-compiled.js */; };
 		46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */ = {isa = PBXBuildFile; fileRef = 46145F9F221E7AA9003DC115 /* UserScript3.js */; };
@@ -153,7 +150,7 @@
 		7155BA5821902CDD0002CE1D /* WC_SHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5721902CDD0002CE1D /* WC_SHA256.m */; };
 		7155BA5B219033BF0002CE1D /* WC_HKDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5A219033BF0002CE1D /* WC_HKDF.m */; };
 		7161984921CB6FEA00A76F39 /* header.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984821CB6FEA00A76F39 /* header.m */; };
-		7161984C21CB704F00A76F39 /* short_pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984B21CB704F00A76F39 /* short_pack.m */; };
+		7161984C21CB704F00A76F39 /* mmpack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984B21CB704F00A76F39 /* mmpack.m */; };
 		7161984F21CB712900A76F39 /* long_pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984E21CB712900A76F39 /* long_pack.m */; };
 		7161985321CB863A00A76F39 /* LongLinkClientWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161985221CB863A00A76F39 /* LongLinkClientWithMMTLS.m */; };
 		716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */; };
@@ -198,12 +195,6 @@
 		460429A822D0911900F9BB94 /* MMProtocalJni.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMProtocalJni.h; sourceTree = "<group>"; };
 		460429A922D0911900F9BB94 /* MMProtocalJni.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMProtocalJni.m; sourceTree = "<group>"; };
 		460CDE4521FEB0710075F3E5 /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
-		460CDE4621FEB08B0075F3E5 /* mmpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mmpack.h; sourceTree = "<group>"; };
-		460CDE4721FEB08C0075F3E5 /* mmpack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mmpack.cpp; sourceTree = "<group>"; };
-		460CDE4921FEB0FB0075F3E5 /* autobuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autobuffer.h; sourceTree = "<group>"; };
-		460CDE4A21FEB0FB0075F3E5 /* autobuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = autobuffer.cpp; sourceTree = "<group>"; };
-		460CDE4C220041CB0075F3E5 /* NeedRSAEncodePack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeedRSAEncodePack.h; sourceTree = "<group>"; };
-		460CDE4D220041CB0075F3E5 /* NeedRSAEncodePack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NeedRSAEncodePack.cpp; sourceTree = "<group>"; };
 		460CDE4F220088CE0075F3E5 /* cgi.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cgi.json; sourceTree = "<group>"; };
 		46145F96221D9BF6003DC115 /* newwxjs-compiled.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "newwxjs-compiled.js"; sourceTree = "<group>"; };
 		46145F9F221E7AA9003DC115 /* UserScript3.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = UserScript3.js; sourceTree = "<group>"; };
@@ -519,8 +510,8 @@
 		716197F821C7A36200A76F39 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		7161984721CB6FEA00A76F39 /* header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = header.h; sourceTree = "<group>"; };
 		7161984821CB6FEA00A76F39 /* header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = header.m; sourceTree = "<group>"; };
-		7161984A21CB704F00A76F39 /* short_pack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = short_pack.h; sourceTree = "<group>"; };
-		7161984B21CB704F00A76F39 /* short_pack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = short_pack.m; sourceTree = "<group>"; };
+		7161984A21CB704F00A76F39 /* mmpack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mmpack.h; sourceTree = "<group>"; };
+		7161984B21CB704F00A76F39 /* mmpack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mmpack.m; sourceTree = "<group>"; };
 		7161984D21CB712900A76F39 /* long_pack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = long_pack.h; sourceTree = "<group>"; };
 		7161984E21CB712900A76F39 /* long_pack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = long_pack.m; sourceTree = "<group>"; };
 		7161985121CB863A00A76F39 /* LongLinkClientWithMMTLS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongLinkClientWithMMTLS.h; sourceTree = "<group>"; };
@@ -617,12 +608,6 @@
 			isa = PBXGroup;
 			children = (
 				460CDE4521FEB0710075F3E5 /* defs.h */,
-				460CDE4721FEB08C0075F3E5 /* mmpack.cpp */,
-				460CDE4621FEB08B0075F3E5 /* mmpack.h */,
-				460CDE4A21FEB0FB0075F3E5 /* autobuffer.cpp */,
-				460CDE4921FEB0FB0075F3E5 /* autobuffer.h */,
-				460CDE4C220041CB0075F3E5 /* NeedRSAEncodePack.h */,
-				460CDE4D220041CB0075F3E5 /* NeedRSAEncodePack.cpp */,
 			);
 			path = IDACode;
 			sourceTree = "<group>";
@@ -1223,8 +1208,8 @@
 				712C7151214BAD8900603022 /* ShortHeader.m */,
 				7161984721CB6FEA00A76F39 /* header.h */,
 				7161984821CB6FEA00A76F39 /* header.m */,
-				7161984A21CB704F00A76F39 /* short_pack.h */,
-				7161984B21CB704F00A76F39 /* short_pack.m */,
+				7161984A21CB704F00A76F39 /* mmpack.h */,
+				7161984B21CB704F00A76F39 /* mmpack.m */,
 				7161984D21CB712900A76F39 /* long_pack.h */,
 				7161984E21CB712900A76F39 /* long_pack.m */,
 			);
@@ -1529,7 +1514,6 @@
 				71076B2621CCF10500570FB1 /* TestViewController.mm in Sources */,
 				71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */,
 				46D2CA3B223A0A620053C4A6 /* mmthinker.proto in Sources */,
-				460CDE4821FEB08C0075F3E5 /* mmpack.cpp in Sources */,
 				46EB620321F98E1100760593 /* mmcard.proto in Sources */,
 				46EB61FA21F98E1100760593 /* mmemotion.proto in Sources */,
 				7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */,
@@ -1556,7 +1540,7 @@
 				712F95FA21D1E71600CFE3A0 /* LongLinkClient.m in Sources */,
 				7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */,
 				46ED97BC22C9F5A500978C0D /* UtilsJni.m in Sources */,
-				7161984C21CB704F00A76F39 /* short_pack.m in Sources */,
+				7161984C21CB704F00A76F39 /* mmpack.m in Sources */,
 				46D2CA6F223A493C0053C4A6 /* Wwopenim.pbobjc.m in Sources */,
 				712F95F521D0B91F00CFE3A0 /* DeviceManager.m in Sources */,
 				46EB621321F98E1100760593 /* mmtalk.proto in Sources */,
@@ -1565,7 +1549,6 @@
 				7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */,
 				46EB620F21F98E1100760593 /* BlockDumpList.proto in Sources */,
 				460429AA22D0911900F9BB94 /* MMProtocalJni.m in Sources */,
-				460CDE4E220041CB0075F3E5 /* NeedRSAEncodePack.cpp in Sources */,
 				46EB61F521F98E1100760593 /* mmbottle.proto in Sources */,
 				46D2CA57223A0C630053C4A6 /* Mmopenapi.pbobjc.m in Sources */,
 				466C4AC321DDBFA800743075 /* WCButton.m in Sources */,
@@ -1618,7 +1601,6 @@
 				46EB620721F98E1100760593 /* mmvoiceprint.proto in Sources */,
 				464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */,
 				46804CEA21DE5B1800232229 /* ChatsTableViewCell.m in Sources */,
-				460CDE4B21FEB0FB0075F3E5 /* autobuffer.cpp in Sources */,
 				712C714C214BA49300603022 /* LongPackage.m in Sources */,
 				46EB61F721F98E1100760593 /* mmtrack.proto in Sources */,
 				46EB620821F98E1100760593 /* mmsync.proto in Sources */,

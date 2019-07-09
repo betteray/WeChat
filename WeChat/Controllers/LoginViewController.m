@@ -14,6 +14,7 @@
 #import "AccountInfo.h"
 #import "SessionKeyStore.h"
 #import "WCContact.h"
+#import "mmpack.h"
 
 @interface LoginViewController ()
 
@@ -44,9 +45,20 @@
     [WeChatClient sharedClient].sessionKey = [FSOpenSSL random128BitAESKey];
 
     //能自动登录自动登录
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self autoAuthIfCould];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self autoAuthIfCould];
+//    });
+    
+//    NSData *data = [NSData dataWithHexString:@"08dcf8e6e8051080998ae30518002228088aca90f70310b48680b802180122160880dc8f80f8ffffffff011201311800200028013000500032060889a5d9d805"];
+//    
+//    data = [mmpack EncodePack:986
+//                serilizedData:data
+//                          uin:1055139082
+//                       aesKey:[NSData dataWithHexString:@"4737793a5f595a454b58714977557342"]
+//                       cookie:[NSData dataWithHexString:@"a102080200000000564a29fd834c00"]
+//                    signature:11018639];
+//    
+//    LogVerbose(@"%@", data);
 }
 
 - (void)autoAuthIfCould {

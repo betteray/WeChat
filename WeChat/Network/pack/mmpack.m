@@ -1,12 +1,12 @@
 //
-//  short_pack.m
+//  mmpack.m
 //  WeChat
 //
 //  Created by ray on 2018/12/20.
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "short_pack.h"
+#import "mmpack.h"
 #import "header.h"
 #import "NSData+CompressAndEncypt.h"
 
@@ -19,7 +19,7 @@
 #import "NSData+Compression.h"
 #import "NSData+AES.h"
 
-@implementation short_pack
+@implementation mmpack
 
 + (NSData *)pack:(int)cgi serilizedData:(NSData *)serilizedData type:(NSInteger)type uin:(uint32_t)uin cookie:(NSData *)cookie
 {
@@ -93,11 +93,19 @@
                 cookie:(NSData *)cookie
              signature:(int)signature
 {
-    
     int bodyDataLen = (int) [serilizedData length];
     NSData *compressData = [serilizedData dataByDeflating];
     int compressedBodyDataLen = (int) [compressData length];
-    NSData *aesedData = [compressData AES_CBC_encryptWithKey:aesKey];
+    
+    BOOL useCompress = NO;
+    NSData *aesedData = nil;
+    if (compressedBodyDataLen >= bodyDataLen) {
+        useCompress = NO;
+        aesedData = [serilizedData AES_CBC_encryptWithKey:aesKey];
+    } else {
+        useCompress = YES;
+        aesedData = [compressData AES_CBC_encryptWithKey:aesKey];
+    }
 
     NSMutableData *header = [NSMutableData data];
     
@@ -112,28 +120,30 @@
     
     [header appendData:[Varint128 dataWithUInt32:cgi]];
     [header appendData:[Varint128 dataWithUInt32:bodyDataLen]];
-    [header appendData:[Varint128 dataWithUInt32:compressedBodyDataLen]];
+    [header appendData:[Varint128 dataWithUInt32:(useCompress ? compressedBodyDataLen : bodyDataLen)]];
     
     [header appendData:[NSData dataWithHexString:@"0002"]];
     [header appendData:[Varint128 dataWithUInt32:signature]];//checksum
     [header appendData:[NSData dataWithHexString:@"010000"]];
 
-    NSData *headerLen = [NSData dataWithHexString:[NSString stringWithFormat:@"%2x", (int) (([header length] << 2) + 0x2)]]; //0x2 !use_compress
+    NSData *headerLen = [NSData dataWithHexString:[NSString stringWithFormat:@"%2x", (int) (([header length] << 2) + (useCompress ? 1 : 2))]];
     [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[headerLen bytes]];
     [header appendData:aesedData];
     
     return [header copy];
 }
 
-+ (ShortPackage *)unpack:(NSData *)body
++ (ShortPackage *)DecodePack:(NSData *)body
 {
+    LogVerbose(@"DecodePack body: %@", body);
+
     ShortPackage *package = [ShortPackage new];
     ShortHeader *shortHeader = [ShortHeader new];
     
     package.header = shortHeader;
     if ([body length] < 0x20)
     {
-        LogError(@"UnPack BF Fail, Body too short.");
+        LogError(@"DecodePack BF Fail, Body too short.");
         return nil;
     }
     

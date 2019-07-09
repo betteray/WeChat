@@ -19,7 +19,7 @@
 #import "LongLinkClient.h"
 
 #import "header.h"
-#import "short_pack.h"
+#import "mmpack.h"
 #import "long_pack.h"
 
 #import "UtilsJni.h"
@@ -304,14 +304,14 @@
 
     NSData *serilizedData = [[cgiWrap request] data];
 
-//    NSData *sendData = [short_pack pack:cgiWrap.cgi
+//    NSData *sendData = [mmpack pack:cgiWrap.cgi
 //                          serilizedData:serilizedData
 //                                   type:5
 //                                    uin:_uin
 //                                 cookie:cookie.data];
 
     int signature = [MMProtocalJni genSignatureWithUin:_uin ecdhKey:_checkEcdhKey protofufData:serilizedData];
-    NSData *sendData = [short_pack EncodePack:cgiWrap.cgi serilizedData:serilizedData uin:_uin aesKey:_sessionKey cookie:cookie.data signature:signature];
+    NSData *sendData = [mmpack EncodePack:cgiWrap.cgi serilizedData:serilizedData uin:_uin aesKey:_sessionKey cookie:cookie.data signature:signature];
 
 #if USE_MMTLS
     NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
@@ -346,7 +346,7 @@
     NSData *HybridEcdhEncryptData = [Jni HybridEcdhEncrypt:serilizedData];
     LogVerbose(@"HybridEcdhEncryptData: %@", HybridEcdhEncryptData);
 
-    NSData *sendData = [short_pack EncodeHybirdEcdhEncryptPack:cgiWrap.cgi serilizedData:HybridEcdhEncryptData uin:0 cookie:nil rsaVersion:10002];
+    NSData *sendData = [mmpack EncodeHybirdEcdhEncryptPack:cgiWrap.cgi serilizedData:HybridEcdhEncryptData uin:0 cookie:nil rsaVersion:10002];
 
 #if USE_MMTLS
     NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
@@ -435,7 +435,7 @@
     LogVerbose(@"Start Request: %@", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
-    NSData *sendData = [short_pack pack:cgiWrap.cgi
+    NSData *sendData = [mmpack pack:cgiWrap.cgi
                           serilizedData:serilizedData
                                    type:1
                                     uin:0
@@ -515,7 +515,7 @@
 }
 
 - (void)UnPack:(NSData *)data {
-    ShortPackage *package = [short_pack unpack:data];
+    ShortPackage *package = [mmpack DecodePack:data];
     NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
     NSData *protobufData = nil;
 
@@ -523,6 +523,13 @@
 
     if (package.header.cgi == 252) {
         protobufData = [_Jni HybridEcdhDecrypt:package.body];
+        if ([self.sync_key_cur length] == 0) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
+            });
+        } else {
+            [self newSync];
+        }
     } else {
         protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:sessionKey];
     }

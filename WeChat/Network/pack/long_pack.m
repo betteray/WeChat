@@ -7,8 +7,9 @@
 //
 
 #import "long_pack.h"
-#import "short_pack.h"
+#import "mmpack.h"
 #import "Cookie.h"
+#import "MMProtocalJni.h"
 
 #define CMDID_NOOP_REQ 6
 #define HEARTBEAT_SEQ 0xFFFFFFFF
@@ -27,7 +28,18 @@
 {
     NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
     Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
-    NSData *shortLinkBuf = [short_pack pack:cgi serilizedData:serilizedData type:type uin:uin cookie:cookie.data];
+    
+    int signature = [MMProtocalJni genSignatureWithUin:uin
+                                               ecdhKey:[WeChatClient sharedClient].checkEcdhKey
+                                          protofufData:serilizedData];
+    
+    NSData *shortLinkBuf = [mmpack EncodePack:cgi
+                                serilizedData:serilizedData
+                                          uin:uin
+                                       aesKey:[WeChatClient sharedClient].sessionKey
+                                       cookie:cookie.data
+                                    signature:signature];
+    
     return [long_pack pack:seq cmdId:cmdId shortData:shortLinkBuf];
 }
 
