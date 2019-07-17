@@ -991,9 +991,10 @@ message AutoAuthRsaReqData {
 }
 
 message AutoAuthKey {
-	required SKBuiltinBuffer_t EncryptKey = 1;
-	required SKBuiltinBuffer_t Key = 2;
+    required SKBuiltinBuffer_t EncryptKey = 1;
+    required SKBuiltinBuffer_t Key = 2;
 }
+
 message TimeZoneInfo {
 	required int32 a = 6;
 	required int32 b = 7;

@@ -41,7 +41,7 @@
     srand((unsigned int) t);
     unsigned long long r = rand();
 
-    NSString *host = [NSString stringWithFormat:@"http://%@", @"183.192.199.147"];//183.192.199.147 //163.177.81.139
+    NSString *host = [NSString stringWithFormat:@"http://%@", @"183.3.224.141"];//183.192.199.147 //163.177.81.139
     NSString *urlstr = [NSString stringWithFormat:@"%@/%@", host, [NSString stringWithFormat:@"mmtls/%08llx", r]];
 
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlstr]];

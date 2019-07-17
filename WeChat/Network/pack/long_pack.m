@@ -19,29 +19,6 @@
 
 @implementation long_pack
 
-+ (NSData *)packWithUIN:(int32_t)uin
-                    seq:(int)seq
-                  CmdId:(int)cmdId
-                    cgi:(int)cgi
-          serilizedData:(NSData *)serilizedData
-                   type:(NSInteger)type
-{
-    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
-    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
-    
-    int signature = [MMProtocalJni genSignatureWithUin:uin
-                                               ecdhKey:[WeChatClient sharedClient].checkEcdhKey
-                                          protofufData:serilizedData];
-    
-    NSData *shortLinkBuf = [mmpack EncodePack:cgi
-                                serilizedData:serilizedData
-                                          uin:uin
-                                       aesKey:[WeChatClient sharedClient].sessionKey
-                                       cookie:cookie.data
-                                    signature:signature];
-    
-    return [long_pack pack:seq cmdId:cmdId shortData:shortLinkBuf];
-}
 
 + (NSData *)pack:(int)seq cmdId:(int)cmdId shortData:(NSData *)shortData
 {

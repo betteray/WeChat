@@ -33,6 +33,7 @@
 
 #import "SyncKeyCompare.h"
 #import "MMProtocalJni.h"
+#import "Business.h"
 
 #define CMDID_NOOP_REQ 6
 #define CMDID_IDENTIFY_REQ 205
@@ -59,9 +60,6 @@
 @property(nonatomic, strong) NSTimer *heartbeatTimer;
 
 @property(nonatomic, strong) NSMutableArray *tasks;
-
-@property(nonatomic, strong) NSData *sync_key_cur;
-@property(nonatomic, strong) NSData *sync_key_max;
 
 @property(nonatomic, strong) UtilsJni *Jni;
 
@@ -136,108 +134,6 @@
     [_client sendData:heart];
 }
 
-#pragma mark - Clinet Misc
-
-- (void)newInitWithSyncKeyCur:(NSData *)syncKeyCur syncKeyMax:(NSData *)syncKeyMax {
-    NewInitRequest *request = [NewInitRequest new];
-    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
-    AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:pre] firstObject];
-    request.userName = accountInfo.userName;
-    SKBuiltinBuffer_t *currentSynckey = nil;
-    SKBuiltinBuffer_t *maxSynckey = nil;
-    if (syncKeyCur.length == 0) {
-        currentSynckey = [SKBuiltinBuffer_t new];
-        currentSynckey.iLen = 0;
-        maxSynckey = [SKBuiltinBuffer_t new];
-        maxSynckey.iLen = 0;
-    } else {
-        currentSynckey = [[SKBuiltinBuffer_t alloc] initWithData:syncKeyCur error:nil];
-        maxSynckey = [[SKBuiltinBuffer_t alloc] initWithData:syncKeyMax error:nil];
-    }
-    request.currentSynckey = currentSynckey;
-    request.maxSynckey = maxSynckey;
-    request.language = [[DeviceManager sharedManager] getCurrentDevice].language;
-
-    CgiWrap *wrap = [CgiWrap new];
-    wrap.cgi = 139;
-    wrap.cmdId = 27;
-    wrap.request = request;
-    wrap.cgiPath = @"/cgi-bin/micromsg-bin/newinit";
-    wrap.responseClass = [NewInitResponse class];
-
-    [[WeChatClient sharedClient] startRequest:wrap
-                                      success:^(NewInitResponse *_Nullable response) {
-                                          self.sync_key_cur = [response.currentSynckey data];
-                                          self.sync_key_max = [response.maxSynckey data];
-
-                                          // 存数据到数据库。
-                                          RLMRealm *realm = [RLMRealm defaultRealm];
-                                          [realm beginWriteTransaction];
-                                          [SyncKeyStore createOrUpdateInDefaultRealmWithValue:@[SyncKeyStoreID, self.sync_key_cur]];
-                                          [realm commitWriteTransaction];
-
-                                          [SyncCmdHandler parseCmdList:response.cmdListArray];
-
-                                          LogVerbose(@"newinit cmd count: %d, continue flag: %d", response.cmdCount, response.continueFlag);
-                                          if (response.continueFlag) {
-                                              [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
-                                          }
-                                      }
-                                      failure:^(NSError *error) {
-                                          LogError(@"%@", error);
-                                      }];
-}
-
-- (void)newSync {
-    LogDebug(@"Request NewSync With Key: %@", self.sync_key_cur);
-    NewSyncRequest *req = [NewSyncRequest new];
-
-    CmdList *oplog = [CmdList new];
-    oplog.count = 0;
-    req.oplog = oplog;
-    req.selector = 262151;
-    req.keyBuf = [[SKBuiltinBuffer_t alloc] initWithData:self.sync_key_cur error:nil];
-    req.scene = 7;
-    req.deviceType = [[NSString alloc] initWithData:[[DeviceManager sharedManager] getCurrentDevice].osType encoding:NSUTF8StringEncoding];
-    req.syncMsgDigest = 1;
-
-    CgiWrap *wrap = [CgiWrap new];
-    wrap.cgi = 138;
-    wrap.cmdId = 121;
-    wrap.request = req;
-    wrap.needSetBaseRequest = NO;
-    wrap.responseClass = [NewSyncResponse class];
-
-    [[WeChatClient sharedClient] startRequest:wrap
-                                      success:^(NewSyncResponse *_Nullable response) {
-
-                                          NSError *error = nil;
-                                          SKBuiltinBuffer_t *buffer1 = [SKBuiltinBuffer_t parseFromData:self.sync_key_cur error:nil];
-                                          SyncKey *oldSyncKey = [[SyncKey alloc] initWithData:buffer1.buffer error:&error];
-                                          if (error) {
-                                              LogError("%@", error);
-                                          }
-                                          self.sync_key_cur = [response.keyBuf data];
-                                          SKBuiltinBuffer_t *buffer2 = [SKBuiltinBuffer_t parseFromData:self.sync_key_cur error:nil];
-                                          SyncKey *newSyncKey = [SyncKey parseFromData:buffer2.buffer error:&error];
-                                          if (error) {
-                                              LogError("%@", error);
-                                          }
-                                          [SyncKeyCompare compaireOldSyncKey:oldSyncKey newSyncKey:newSyncKey];
-
-                                          // 存数据到数据库。
-                                          RLMRealm *realm = [RLMRealm defaultRealm];
-                                          [realm beginWriteTransaction];
-                                          [SyncKeyStore createOrUpdateInDefaultRealmWithValue:@[SyncKeyStoreID, self.sync_key_cur]];
-                                          [realm commitWriteTransaction];
-
-                                          [SyncCmdHandler parseCmdList:response.cmdList.listArray];
-                                      }
-                                      failure:^(NSError *error) {
-                                          LogError(@"new sync resp error: %@", error);
-                                      }];
-}
-
 #pragma mark - Public
 
 + (void)startRequest:(CgiWrap *)cgiWrap
@@ -252,10 +148,10 @@
     [[self sharedClient] postRequest:cgiWrap success:successBlock failure:failureBlock];
 }
 
-+ (void)manualauth2:(CgiWrap *)cgiWrap
-            success:(SuccessBlock)successBlock
-            failure:(FailureBlock)failureBlock {
-    [[self sharedClient] postRequest2:cgiWrap success:successBlock failure:failureBlock];
++ (void)android700manualAuth:(CgiWrap *)cgiWrap
+                     success:(SuccessBlock)successBlock
+                     failure:(FailureBlock)failureBlock {
+    [[self sharedClient] android700manualAuth:cgiWrap success:successBlock failure:failureBlock];
 }
 
 #pragma mark - Internal
@@ -265,17 +161,26 @@
              failure:(FailureBlock)failureBlock {
     [self setBaseResquestIfNeed:cgiWrap];
 
-    LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
+//    LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
 
-    NSData *sendData = [long_pack packWithUIN:_uin
-                                          seq:_seq++
-                                        CmdId:cgiWrap.cmdId
-                                          cgi:cgiWrap.cgi
+    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
+    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
+    
+    int signature = [MMProtocalJni genSignatureWithUin:_uin
+                                               ecdhKey:[WeChatClient sharedClient].checkEcdhKey
+                                          protofufData:serilizedData];
+    
+    NSData *shortLinkBuf = [mmpack EncodePack:cgiWrap.cgi
                                 serilizedData:serilizedData
-                                         type:5];
-
+                                          uin:_uin
+                                       aesKey:[WeChatClient sharedClient].sessionKey
+                                       cookie:cookie.data
+                                    signature:signature];
+    
+    NSData *sendData = [long_pack pack:_seq++ cmdId:cgiWrap.cmdId shortData:shortLinkBuf];
+    
     Task *task = [Task new];
     task.sucBlock = successBlock;
     task.failBlock = failureBlock;
@@ -304,14 +209,16 @@
 
     NSData *serilizedData = [[cgiWrap request] data];
 
-//    NSData *sendData = [mmpack pack:cgiWrap.cgi
-//                          serilizedData:serilizedData
-//                                   type:5
-//                                    uin:_uin
-//                                 cookie:cookie.data];
-
-    int signature = [MMProtocalJni genSignatureWithUin:_uin ecdhKey:_checkEcdhKey protofufData:serilizedData];
-    NSData *sendData = [mmpack EncodePack:cgiWrap.cgi serilizedData:serilizedData uin:_uin aesKey:_sessionKey cookie:cookie.data signature:signature];
+    int signature = [MMProtocalJni genSignatureWithUin:_uin
+                                               ecdhKey:_checkEcdhKey
+                                          protofufData:serilizedData];
+    
+    NSData *sendData = [mmpack EncodePack:cgiWrap.cgi
+                            serilizedData:serilizedData
+                                      uin:_uin
+                                   aesKey:_sessionKey
+                                   cookie:cookie.data
+                                signature:signature];
 
 #if USE_MMTLS
     NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
@@ -322,11 +229,11 @@
     [self UnPack:packData];
 }
 
-- (void)postRequest2:(CgiWrap *)cgiWrap
-             success:(SuccessBlock)successBlock
-             failure:(FailureBlock)failureBlock {
+#pragma mark -
 
-//    [self setBaseResquestIfNeed:cgiWrap];
+- (void)android700manualAuth:(CgiWrap *)cgiWrap
+                     success:(SuccessBlock)successBlock
+                     failure:(FailureBlock)failureBlock {
 
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -334,27 +241,35 @@
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
 
-    LogVerbose(@"Start Request: %@", cgiWrap.request);
-
-//    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
-//    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
-//
     NSData *serilizedData = [[cgiWrap request] data];
 
     UtilsJni *Jni = [UtilsJni new];
     _Jni = Jni;
+    
     NSData *HybridEcdhEncryptData = [Jni HybridEcdhEncrypt:serilizedData];
-    LogVerbose(@"HybridEcdhEncryptData: %@", HybridEcdhEncryptData);
 
-    NSData *sendData = [mmpack EncodeHybirdEcdhEncryptPack:cgiWrap.cgi serilizedData:HybridEcdhEncryptData uin:0 cookie:nil rsaVersion:10002];
+    NSPredicate *accountInfoPre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
+    AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:accountInfoPre] firstObject];
+    
+    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
+    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
+    NSData *cookieData = nil;
+    if (cookie.data.length) cookieData = cookie.data;
+    
+    NSData *sendData = [mmpack EncodeHybirdEcdhEncryptPack:cgiWrap.cgi
+                                             serilizedData:HybridEcdhEncryptData
+                                                       uin:accountInfo.uin
+                                                    cookie:cookieData
+                                                rsaVersion:10002];
 
 #if USE_MMTLS
-    NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
+    NSData *packData = [ShortLinkClientWithMMTLS post:sendData
+                                            toCgiPath:cgiWrap.cgiPath];
 #else
-    NSData *packData = [ShortLinkClient post:sendData toCgiPath:cgiWrap.cgiPath];
+    NSData *packData = [ShortLinkClient post:sendData
+                                   toCgiPath:cgiWrap.cgiPath];
 #endif
 
-    // todo: unpack
     [self UnPack:packData];
 }
 
@@ -521,14 +436,18 @@
 
     Task *task = [self getTaskWithTag:package.header.cgi];
 
-    if (package.header.cgi == 252) {
+    if (package.header.cgi == 252 || package.header.cgi == 763) {
         protobufData = [_Jni HybridEcdhDecrypt:package.body];
+        
+//        [_client restart];
+//        [self heartBeat];
+        
         if ([self.sync_key_cur length] == 0) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
+                [Business newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
             });
         } else {
-            [self newSync];
+            [Business newSync];
         }
     } else {
         protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:sessionKey];
@@ -573,10 +492,10 @@
                     case CMDID_PUSH_ACK: {
                         if ([self.sync_key_cur length] == 0) {
                             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                [self newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
+                                [Business newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
                             });
                         } else {
-                            [self newSync];
+                            [Business newSync];
                         }
                         break;
                     }

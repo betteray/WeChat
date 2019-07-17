@@ -33,14 +33,14 @@
     request.userName = @"";
     
     CgiWrap *cgiWrap = [CgiWrap new];
-    cgiWrap.cmdId = 0;
+    cgiWrap.cmdId = 118;
     cgiWrap.cgi = 302;
     cgiWrap.request = request;
     cgiWrap.needSetBaseRequest = YES;
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/getprofile";
     cgiWrap.responseClass = [GetProfileResponse class];
     
-    [WeChatClient postRequest:cgiWrap
+    [WeChatClient startRequest:cgiWrap
                       success:^(GetProfileResponse *_Nullable response) {
                           [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:response.userInfoExt.bigHeadImgURL]];
                           

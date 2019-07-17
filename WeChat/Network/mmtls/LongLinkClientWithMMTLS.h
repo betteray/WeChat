@@ -20,6 +20,7 @@
 @property (nonatomic, weak) id<LongLinkClientWithMMTLSDelegate> delegate;
 
 - (void)start;
+- (void)restart;
 - (void)sendData:(NSData *)sendData;
 
 @end

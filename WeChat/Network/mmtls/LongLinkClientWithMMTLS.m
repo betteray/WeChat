@@ -58,7 +58,7 @@
 
 - (void)start
 {
-    FastSocket *client = [[FastSocket alloc] initWithHost:@"163.177.81.141" andPort:@"443"]; //long.weixin.qq.com 58.247.204.141
+    FastSocket *client = [[FastSocket alloc] initWithHost:@"58.247.204.141" andPort:@"443"]; //long.weixin.qq.com 58.247.204.141 //163.177.81.141
     if ([client connect])
     {
         LogDebug(@"FastSocket Connected To Server.");
@@ -69,6 +69,17 @@
     else
     {
         LogError(@"FastSocket Can Not Connect.");
+    }
+}
+
+- (void)restart
+{
+    if ([_client close]) {
+        _writeSeq = 1;
+        _readSeq = 1;
+        _serverHelloData = [NSMutableData data];
+        
+        [self start];
     }
 }
 

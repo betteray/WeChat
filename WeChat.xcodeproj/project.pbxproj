@@ -30,6 +30,7 @@
 		464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82321D4B681003E923F /* DefaultLongIp.m */; };
 		464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82621D4B9DD003E923F /* DefaultShortIp.m */; };
 		464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82921D4E8BD003E923F /* NSString+Regex.m */; };
+		465B39B422D5EFAD001FDE53 /* Business.m in Sources */ = {isa = PBXBuildFile; fileRef = 465B39B322D5EFAD001FDE53 /* Business.m */; };
 		466C4AC321DDBFA800743075 /* WCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C4AC221DDBFA800743075 /* WCButton.m */; };
 		466C4AC621DDD65900743075 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C4AC521DDD65900743075 /* ContactsTableViewController.m */; };
 		466C4ACA21DDD6D200743075 /* ContactsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C4AC921DDD6D200743075 /* ContactsTableViewCell.m */; };
@@ -42,6 +43,7 @@
 		4681939722CB31D400839EB0 /* UtileJni.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 4681939522CB31D400839EB0 /* UtileJni.pbobjc.m */; };
 		4689A17821E4C01800E2EA9A /* SyncKeyCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */; };
 		469F657D21D3196100C1DC8B /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7141214B5A4B00603022 /* libcrypto.a */; };
+		46CD1A8522DED2FE0023C585 /* error.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46CD1A8422DED2FE0023C585 /* error.txt */; };
 		46D2CA3A223A0A620053C4A6 /* mmreport.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA38223A0A610053C4A6 /* mmreport.proto */; };
 		46D2CA3B223A0A620053C4A6 /* mmthinker.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA39223A0A620053C4A6 /* mmthinker.proto */; };
 		46D2CA52223A0C630053C4A6 /* Mmsync.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA3E223A0C620053C4A6 /* Mmsync.pbobjc.m */; };
@@ -228,6 +230,8 @@
 		464FB82621D4B9DD003E923F /* DefaultShortIp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultShortIp.m; sourceTree = "<group>"; };
 		464FB82821D4E8BD003E923F /* NSString+Regex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Regex.h"; sourceTree = "<group>"; };
 		464FB82921D4E8BD003E923F /* NSString+Regex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Regex.m"; sourceTree = "<group>"; };
+		465B39B222D5EFAD001FDE53 /* Business.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Business.h; sourceTree = "<group>"; };
+		465B39B322D5EFAD001FDE53 /* Business.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Business.m; sourceTree = "<group>"; };
 		466C4AC121DDBFA800743075 /* WCButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCButton.h; sourceTree = "<group>"; };
 		466C4AC221DDBFA800743075 /* WCButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCButton.m; sourceTree = "<group>"; };
 		466C4AC421DDD65900743075 /* ContactsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 		4689A17021DF447500E2EA9A /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncKeyCompare.h; sourceTree = "<group>"; };
 		4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncKeyCompare.m; sourceTree = "<group>"; };
+		46CD1A8422DED2FE0023C585 /* error.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = error.txt; sourceTree = "<group>"; };
 		46D2CA38223A0A610053C4A6 /* mmreport.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmreport.proto; sourceTree = "<group>"; };
 		46D2CA39223A0A620053C4A6 /* mmthinker.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmthinker.proto; sourceTree = "<group>"; };
 		46D2CA3E223A0C620053C4A6 /* Mmsync.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmsync.pbobjc.m; sourceTree = "<group>"; };
@@ -748,6 +753,9 @@
 				7155BA492190293B0002CE1D /* mmtls */,
 				460429A822D0911900F9BB94 /* MMProtocalJni.h */,
 				460429A922D0911900F9BB94 /* MMProtocalJni.m */,
+				465B39B222D5EFAD001FDE53 /* Business.h */,
+				465B39B322D5EFAD001FDE53 /* Business.m */,
+				46CD1A8422DED2FE0023C585 /* error.txt */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1362,6 +1370,7 @@
 				46EB61D221F6EFB800760593 /* st_angler_1.bin in Resources */,
 				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
 				460CDE50220088CE0075F3E5 /* cgi.json in Resources */,
+				46CD1A8522DED2FE0023C585 /* error.txt in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				462D9C2A21D759FD00FC5461 /* WeChat_700_Proto.txt in Resources */,
@@ -1518,6 +1527,7 @@
 				46EB61FA21F98E1100760593 /* mmemotion.proto in Sources */,
 				7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */,
 				7121C36521C3610000A3E900 /* ChatsTableViewController.m in Sources */,
+				465B39B422D5EFAD001FDE53 /* Business.m in Sources */,
 				46D2CA7C223A5DF30053C4A6 /* wwunkown.proto in Sources */,
 				46EB621E21F99C6F00760593 /* MMWebViewController.m in Sources */,
 				71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */,

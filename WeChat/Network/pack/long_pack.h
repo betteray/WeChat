@@ -12,13 +12,6 @@
 
 @interface long_pack : NSObject
 
-+ (NSData *)packWithUIN:(int32_t)uin
-                    seq:(int)seq
-                  CmdId:(int)cmdId
-                    cgi:(int)cgi
-          serilizedData:(NSData *)serilizedData
-                   type:(NSInteger)type;
-
 + (NSData *)pack:(int)seq
            cmdId:(int)cmdId
        shortData:(NSData *)shortData;

@@ -24,6 +24,9 @@ typedef void (^FailureBlock)(NSError *error);
 @property(nonatomic, strong) NSData *sessionKey;
 @property(nonatomic, strong) NSData *cookie;
 
+@property(nonatomic, strong) NSData *sync_key_cur;
+@property(nonatomic, strong) NSData *sync_key_max;
+
 @property(nonatomic, strong, readonly) NSData *pskData;
 @property(nonatomic, strong, readonly) NSData *resumptionSecret;
 
@@ -51,9 +54,9 @@ typedef void (^FailureBlock)(NSError *error);
             success:(SuccessBlock)successBlock
             failure:(FailureBlock)failureBlock;
 
-+ (void)manualauth2:(CgiWrap *)cgiWrap
-            success:(SuccessBlock)successBlock
-            failure:(FailureBlock)failureBlock;
++ (void)android700manualAuth:(CgiWrap *)cgiWrap
+                     success:(SuccessBlock)successBlock
+                     failure:(FailureBlock)failureBlock;
 
 @end
 

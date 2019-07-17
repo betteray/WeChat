@@ -37,7 +37,7 @@
         NSData *pubkey = nil;
         
         if ([WCECDH GenEcdhWithNid:415 priKey:&prikey pubKeyData:&pubkey]) {
-            LogVerbose(@"HybridEcdhEncrypt prikey: %@, pubkey: %@", _prikey, _pubkey);
+//            LogVerbose(@"HybridEcdhEncrypt prikey: %@, pubkey: %@", _prikey, _pubkey);
             self.prikey = prikey;
             self.pubkey = pubkey;
             //    _pubkey = [NSData dataWithHexString:@"0476CA71203D58826DFAD77D575CB19223E3DA62346D6B78072BD7A0EC8E669F610A6CDC22CDF2BF166924A84D976BA51011B5EF7BB24231EC5D20DDF8BEF07F9A"];
@@ -54,7 +54,7 @@
     NSData *localPriKey = [NSData dataWithHexString:LOCAL_PRIKEY];
     NSData *ecdhResult = [WCECDH DoEcdh2:415 ServerPubKey:localPriKey LocalPriKey:_prikey];
     
-    LogVerbose(@"ecdhResult: %@", ecdhResult);
+//    LogVerbose(@"ecdhResult: %@", ecdhResult);
     
     NSData *hashData = [NSData dataWithHexString:@"31"]; //1
     hashData = [hashData addDataAtTail:[NSData dataWithHexString:@"343135"]]; //415
@@ -62,18 +62,18 @@
     
     NSData *hashDataResult = [WC_SHA256 sha256:hashData];
     
-    LogVerbose(@"hashDataResult: %@", hashDataResult);
+//    LogVerbose(@"hashDataResult: %@", hashDataResult);
 
     NSData *ikmData = [NSData GenRandomDataWithSize:32]; //random
 //    ikmData = [NSData dataWithHexString:@"D2CA9AD2F718E30EFA580984C2B3BFAD538A2986B424499897C44C00E99426AA"];
     NSData *compressedData = [ikmData dataByDeflating];
     
-    LogVerbose(@"compressedData: %@", compressedData);
+//    LogVerbose(@"compressedData: %@", compressedData);
 
     NSData *ivData = [NSData dataWithHexString:[@"63612D5D FA042DD1 877F70B9" stringByReplacingOccurrencesOfString:@" " withString:@""]];  // ？
     NSData *encryptedData = [WC_AesGcm128 aes192gcmEncrypt:compressedData aad:hashDataResult key:[ecdhResult subdataWithRange:NSMakeRange(0, 24)] ivec:ivData];
 
-    LogVerbose(@"encryptedData: %@", encryptedData);
+//    LogVerbose(@"encryptedData: %@", encryptedData);
 
     NSData *saltData = [NSData dataWithHexString:[@"73656375 72697479 2068646B 66206578 70616E64" stringByReplacingOccurrencesOfString:@" " withString:@""]]; //固定字符串: security hdkf expand
     unsigned char okm[56];
@@ -82,7 +82,7 @@
     
     _receivedHashData = [hkdfData subdataWithRange:NSMakeRange(24, [hkdfData length] - 24)];
     
-    LogVerbose(@"WC_HKDF result: %@", hkdfData);
+//    LogVerbose(@"WC_HKDF result: %@", hkdfData);
     
     
     
@@ -103,7 +103,7 @@
     NSData *aad = [hkdfData subdataWithRange:NSMakeRange(0, 24)];
     NSData *encryptedData2 = [WC_AesGcm128 aes192gcmEncrypt:compressedData2 aad:hashDataResult2 key:aad ivec:ivData2];
 
-    LogVerbose(@"encryptedData2: %@", [encryptedData2 hexDump]);
+//    LogVerbose(@"encryptedData2: %@", [encryptedData2 hexDump]);
     
     UtileJniSendPackage *package = [UtileJniSendPackage new];
     package.tag1 = 1;
@@ -115,7 +115,7 @@
     package.data1 = encryptedData;
     package.data2 = encryptedData2;
     
-    LogVerbose(@"%@", package);
+//    LogVerbose(@"%@", package);
 
     return [package data];
 }
@@ -126,7 +126,7 @@
     
     UtileJniReceivePackage *package = [[UtileJniReceivePackage alloc] initWithData:encryptedData error:nil];
     
-    LogVerbose(@"%@", package);
+//    LogVerbose(@"%@", package);
     
     /////
     // ecdh
@@ -136,7 +136,7 @@
     NSData *ecdhResult = [WCECDH DoEcdh2:package.ecdhkey.nid ServerPubKey:package.ecdhkey.key LocalPriKey:_prikey];
 //    NSData *ecdhResult = [WCECDH DoEcdh2:package.ecdhkey.nid ServerPubKey:prikey LocalPriKey:pubkey];
 
-    LogVerbose(@"ecdhResult: %@", ecdhResult);
+//    LogVerbose(@"ecdhResult: %@", ecdhResult);
 
     //////
     // hash256
@@ -154,7 +154,7 @@
 
     NSData *hashDataResult = [WC_SHA256 sha256:_receivedHashData];
 
-    LogVerbose(@"hashDataResult: %@", hashDataResult);
+//    LogVerbose(@"hashDataResult: %@", hashDataResult);
 
     /////
     
@@ -167,11 +167,11 @@
                                                    key:[ecdhResult subdataWithRange:NSMakeRange(0, 24)]
                                                   ivec:ivData];
 
-    LogVerbose(@"%@", plainData);
+//    LogVerbose(@"%@", plainData);
     
     NSData *protofubData = [plainData dataByInflatingWithError:nil];
 
-    LogVerbose(@"protofubData: %@", protofubData);
+//    LogVerbose(@"protofubData: %@", protofubData);
 
     return protofubData;
 }
