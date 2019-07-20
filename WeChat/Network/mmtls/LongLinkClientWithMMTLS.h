@@ -10,8 +10,10 @@
 
 @protocol LongLinkClientWithMMTLSDelegate <NSObject>
 
-- (void)onLongLinkHandShakeFinishedWithPSK:(NSData *)pskData resumptionSecret:(NSData *)resumptionSecret;
-- (void)onRecivceLongLinkPlainData:(NSData *)plainData;
+- (void)onLongLinkHandShakeFinishedWithPSK:(NSData *)pskData
+                          resumptionSecret:(NSData *)resumptionSecret;
+
+- (void)onRcvData:(NSData *)plainData;
 
 @end
 
@@ -21,6 +23,7 @@
 
 - (void)start;
 - (void)restart;
+
 - (void)sendData:(NSData *)sendData;
 
 @end

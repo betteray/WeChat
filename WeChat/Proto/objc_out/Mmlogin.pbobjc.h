@@ -3998,6 +3998,29 @@ typedef GPB_ENUM(ManualAuthRsaReqData_FieldNumber) {
 
 @end
 
+#pragma mark - MMClientCheckData
+
+typedef GPB_ENUM(MMClientCheckData_FieldNumber) {
+  MMClientCheckData_FieldNumber_EnType = 1,
+  MMClientCheckData_FieldNumber_Tag2 = 2,
+  MMClientCheckData_FieldNumber_Content = 3,
+};
+
+@interface MMClientCheckData : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *enType;
+/** Test to see if @c enType has been set. */
+@property(nonatomic, readwrite) BOOL hasEnType;
+
+@property(nonatomic, readwrite) int32_t tag2;
+
+@property(nonatomic, readwrite) BOOL hasTag2;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *content;
+/** Test to see if @c content has been set. */
+@property(nonatomic, readwrite) BOOL hasContent;
+
+@end
+
 #pragma mark - ManualAuthAesReqData
 
 typedef GPB_ENUM(ManualAuthAesReqData_FieldNumber) {

@@ -10,7 +10,7 @@
 
 @protocol LongLinkClientDelegate <NSObject>
 
-- (void)onRecivceLongLinkPlainData:(NSData *)longlinkData;
+- (void)onRcvData:(NSData *)longlinkData;
 
 @end
 

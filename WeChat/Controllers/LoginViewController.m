@@ -49,9 +49,6 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self autoAuthIfCould];
     });
-    
-//    NSData *data = [Varint128 dataWithUInt32:10002];
-//    LogVerbose(@"%@", data);
 }
 
 - (void)autoAuthIfCould {

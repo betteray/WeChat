@@ -217,7 +217,7 @@
                             serilizedData:serilizedData
                                       uin:_uin
                                    aesKey:_sessionKey
-                                   cookie:cookie.data
+                                   cookie:cookie.data   
                                 signature:signature];
 
 #if USE_MMTLS
@@ -477,7 +477,7 @@
     _resumptionSecret = resumptionSecret;
 }
 
-- (void)onRecivceLongLinkPlainData:(NSData *)plainData {
+- (void)onRcvData:(NSData *)plainData {
     LongPackage *longLinkPackage = [long_pack unpack:plainData];
 
     switch (longLinkPackage.result) {

@@ -312,7 +312,7 @@
 - (void)onReceive:(NSData *)data
 {
     NSData *plainText = [self mmtlsDeCryptData:data];
-    [_delegate onRecivceLongLinkPlainData:plainText];
+    [_delegate onRcvData:plainText];
 }
 
 @end

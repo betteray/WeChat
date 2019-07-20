@@ -63,7 +63,7 @@
         [clientHelloData appendData:[NSData dataWithHexString:@"000000D00103F101C02B"]];         //fix
         [clientHelloData appendData:_clientRandom];                                              //client random
 
-        NSUInteger timeStamp = [[NSDate date] timeIntervalSince1970];
+        NSUInteger timeStamp = (NSUInteger) [[NSDate date] timeIntervalSince1970];
         NSData *timeStampData = [NSData packInt32:(int32_t) timeStamp flip:YES];
         [clientHelloData appendData:timeStampData];         //time
         [clientHelloData appendData:[NSData dataWithHexString:@"000000A2010000009D001002"]]; //fix

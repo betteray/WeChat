@@ -955,6 +955,12 @@ message ManualAuthRsaReqData {
 	optional string Pwd2 = 5;
 }
 
+message MMClientCheckData {
+    required string enType = 1;
+    required int32 tag2 = 2;
+    required bytes content = 3;
+}
+
 message ManualAuthAesReqData {
 	required BaseRequest BaseRequest = 1;
 	optional BaseAuthReqInfo BaseReqInfo = 2;
@@ -995,10 +1001,6 @@ message AutoAuthKey {
     required SKBuiltinBuffer_t Key = 2;
 }
 
-message TimeZoneInfo {
-	required int32 a = 6;
-	required int32 b = 7;
-}
 message AutoAuthAesReqData {
 	required BaseRequest BaseRequest = 1;
 	optional BaseAuthReqInfo BaseReqInfo = 2;

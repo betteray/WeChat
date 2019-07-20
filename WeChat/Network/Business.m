@@ -142,7 +142,7 @@
     wrap.needSetBaseRequest = NO;
     wrap.responseClass = [NewSyncResponse class];
     
-    [WeChatClient  startRequest:wrap
+    [WeChatClient  postRequest:wrap
                         success:^(NewSyncResponse *_Nullable response) {
                             
                             NSError *error = nil;

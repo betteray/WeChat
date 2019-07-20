@@ -65,7 +65,7 @@
         while (1)
         {
             NSData *dataPackage = [self readLongPackage];
-            [self.delegate onRecivceLongLinkPlainData:dataPackage];
+            [self.delegate onRcvData:dataPackage];
         }
     });
 }

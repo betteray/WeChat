@@ -11117,6 +11117,78 @@ typedef struct ManualAuthRsaReqData__storage_ {
 
 @end
 
+#pragma mark - MMClientCheckData
+
+@implementation MMClientCheckData
+
+@dynamic hasEnType, enType;
+@dynamic hasTag2, tag2;
+@dynamic hasContent, content;
+
+typedef struct MMClientCheckData__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t tag2;
+  NSString *enType;
+  NSData *content;
+} MMClientCheckData__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "enType",
+        .dataTypeSpecific.className = NULL,
+        .number = MMClientCheckData_FieldNumber_EnType,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(MMClientCheckData__storage_, enType),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "tag2",
+        .dataTypeSpecific.className = NULL,
+        .number = MMClientCheckData_FieldNumber_Tag2,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(MMClientCheckData__storage_, tag2),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "content",
+        .dataTypeSpecific.className = NULL,
+        .number = MMClientCheckData_FieldNumber_Content,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(MMClientCheckData__storage_, content),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeBytes,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[MMClientCheckData class]
+                                     rootClass:[MmloginRoot class]
+                                          file:MmloginRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(MMClientCheckData__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001\006\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - ManualAuthAesReqData
 
 @implementation ManualAuthAesReqData
