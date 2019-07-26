@@ -14,8 +14,6 @@
 #import "AccountInfo.h"
 #import "SessionKeyStore.h"
 #import "WCContact.h"
-#import "mmpack.h"
-#import "Varint128.h"
 
 @interface LoginViewController ()
 
@@ -31,7 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 
     NSData *priKeyData = nil;
     NSData *pubKeyData = nil;
@@ -169,20 +166,10 @@
     cgiWrap.responseClass = [UnifyAuthResponse class];
     cgiWrap.needSetBaseRequest = NO;
 
-//    [[WeChatClient sharedClient]
-//        manualAuth2:cgiWrap
-//            success:^(UnifyAuthResponse *_Nullable response) {
-//                LogVerbose(@"登陆响应: %@", response);
-//                [self onLoginResponse:response];
-//            }
-//            failure:^(NSError *error){
-//
-//            }];
-
     [WeChatClient android700manualAuth:cgiWrap success:^(id _Nullable response) {
         LogVerbose(@"登陆响应: %@", response);
         [self onLoginResponse:response];
-    }                 failure:^(NSError *_Nonnull error) {
+    }                          failure:^(NSError *_Nonnull error) {
 
     }];
 }
@@ -191,7 +178,7 @@
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AutoAuthKeyStoreID];
     AutoAuthKeyStore *autoAuthKeyStore = [[AutoAuthKeyStore objectsWithPredicate:pre] firstObject];
     AutoAuthKey *autoAuthKey = [[AutoAuthKey alloc] initWithData:autoAuthKeyStore.data error:nil];
-    
+
     NSData *sessionKey = [autoAuthKey.encryptKey data];
     [WeChatClient sharedClient].sessionKey = sessionKey;
 
@@ -254,7 +241,7 @@
 
     AutoAuthAesReqData *aesReqData = [AutoAuthAesReqData new];
     aesReqData.baseReqInfo = baseReqInfo;
-    
+
     SKBuiltinBuffer_t *buff = [SKBuiltinBuffer_t new];
     buff.iLen = (uint32_t) [[autoAuthKey data] length];
     buff.buffer = [autoAuthKey data];
@@ -310,35 +297,24 @@
     cgiWrap.responseClass = [UnifyAuthResponse class];
     cgiWrap.needSetBaseRequest = NO;
 
-//    [[WeChatClient sharedClient]
-//            autoAuth:cgiWrap
-//             success:^(UnifyAuthResponse *_Nullable response) {
-//                 LogVerbose(@"登陆响应 Code: %d, msg: %@", response.baseResponse.ret, response.baseResponse.errMsg);
-////         LogVerbose(@"登陆响应: %@", response);
-//                 [self onLoginResponse:response];
-//             }
-//             failure:^(NSError *error) {
-//
-//             }];
-
     [WeChatClient android700manualAuth:cgiWrap success:^(id _Nullable response) {
         LogVerbose(@"登陆响应: %@", response);
         [self onLoginResponse:response];
-    }                 failure:^(NSError *_Nonnull error) {
-        
+    }                          failure:^(NSError *_Nonnull error) {
+
     }];
 }
 
 - (void)onLoginResponse:(UnifyAuthResponse *)resp {
     switch (resp.baseResponse.ret) {
-        case -301: { //需要重定向
+        case MM_ERR_MmErrIdcRedirect: { //需要重定向
             if (resp.networkSectResp.builtinIplist.longConnectIpcount > 0) {
                 //NSString *longlinkIp = [[resp.networkSectResp.builtinIplist.longConnectIplistArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
                 //[[WeChatClient sharedClient] restartUsingIpAddress:longlinkIp];
             }
         }
             break;
-        case 0: {
+        case MM_ERR_MmOk: {
             int32_t uin = resp.authSectResp.uin;
             [WeChatClient sharedClient].uin = uin;
 

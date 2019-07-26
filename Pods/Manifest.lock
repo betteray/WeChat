@@ -20,6 +20,8 @@ PODS:
     - CocoaLumberjack/Default
   - FastSocket (1.6)
   - IQKeyboardManager (6.2.0)
+  - Json2pb (1.0.0):
+    - Protobuf
   - MBProgressHUD (1.1.0)
   - Ono (2.1.1)
   - Protobuf (3.6.1)
@@ -37,6 +39,7 @@ DEPENDENCIES:
   - CocoaLumberjack
   - FastSocket
   - IQKeyboardManager
+  - Json2pb (from `https://github.com/henrayluo/json2pb.git`)
   - MBProgressHUD (~> 1.1.0)
   - Ono
   - Protobuf
@@ -58,11 +61,21 @@ SPEC REPOS:
     - RegexKitLite
     - SDWebImage
 
+EXTERNAL SOURCES:
+  Json2pb:
+    :git: https://github.com/henrayluo/json2pb.git
+
+CHECKOUT OPTIONS:
+  Json2pb:
+    :commit: 49030ddf4a7f210267163e2ecf3d2bb9f3312fe8
+    :git: https://github.com/henrayluo/json2pb.git
+
 SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   FastSocket: f847d6a85b766dc40f848035e2bf255752c280f1
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  Json2pb: 9db91c01e3c51dce89820f2874843ec63303d111
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   Ono: 13c25831a4a66b30df93bd1fa57cf70f13c62699
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
@@ -71,6 +84,6 @@ SPEC CHECKSUMS:
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
 
-PODFILE CHECKSUM: a6410d222a7eb18db98f19a41a838fe1594fa979
+PODFILE CHECKSUM: dabb1a6092355f5814c851c5bc4d02ed7fcd336e
 
 COCOAPODS: 1.5.3

@@ -4193,23 +4193,6 @@ typedef GPB_ENUM(AutoAuthKey_FieldNumber) {
 
 @end
 
-#pragma mark - TimeZoneInfo
-
-typedef GPB_ENUM(TimeZoneInfo_FieldNumber) {
-  TimeZoneInfo_FieldNumber_A = 6,
-  TimeZoneInfo_FieldNumber_B = 7,
-};
-
-@interface TimeZoneInfo : GPBMessage
-
-@property(nonatomic, readwrite) int32_t a;
-
-@property(nonatomic, readwrite) BOOL hasA;
-@property(nonatomic, readwrite) int32_t b;
-
-@property(nonatomic, readwrite) BOOL hasB;
-@end
-
 #pragma mark - AutoAuthAesReqData
 
 typedef GPB_ENUM(AutoAuthAesReqData_FieldNumber) {

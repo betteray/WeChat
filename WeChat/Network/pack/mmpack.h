@@ -12,12 +12,6 @@
 
 @interface mmpack : NSObject
 
-+ (NSData *)pack:(int)cgi
-   serilizedData:(NSData *)serilizedData
-            type:(NSInteger)type
-             uin:(uint32_t)uin
-          cookie:(NSData *)cookie;
-
 + (NSData *)EncodeHybirdEcdhEncryptPack:(int)cgi
                           serilizedData:(NSData *)serilizedData
                                     uin:(uint32_t)uin

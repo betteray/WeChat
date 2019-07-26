@@ -9,8 +9,8 @@
 #import "ShortLinkWithMMTLS.h"
 #import "NSData+GenRandomData.h"
 
-#import "WC_SHA256.h"
-#import "WC_HKDF.h"
+#import "Cryption/WC_SHA256.h"
+#import "Cryption/WC_HKDF.h"
 #import "ShortLinkKey.h"
 
 #import "MMTLSShortLinkResponse.h"

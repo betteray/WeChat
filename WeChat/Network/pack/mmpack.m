@@ -7,49 +7,14 @@
 //
 
 #import "mmpack.h"
-#import "header.h"
-#import "NSData+CompressAndEncypt.h"
 
 #import "ShortPackage.h"
-#import "ShortHeader.h"
-
-#import "FSOpenSSL.h"
 #import "Cookie.h"
 #import "Varint128.h"
 #import "NSData+Compression.h"
 #import "NSData+AES.h"
 
 @implementation mmpack
-
-+ (NSData *)pack:(int)cgi
-   serilizedData:(NSData *)serilizedData
-            type:(NSInteger)type
-             uin:(uint32_t)uin
-          cookie:(NSData *)cookie {
-    switch (type) {
-        case 1: {
-            NSData *head = [header make_header3:cgi encryptMethod:RSA bodyData:serilizedData compressedBodyData:serilizedData needCookie:NO cookie:nil uin:uin];
-            NSData *body = [FSOpenSSL RSA_PUB_EncryptData:serilizedData modulus:LOGIN_RSA_VER172_KEY_N exponent:LOGIN_RSA_VER172_KEY_E];
-            NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
-            [longlinkBody appendData:body];
-
-            return [longlinkBody copy];
-        }
-            break;
-        case 5: {
-            NSData *head = [header make_header:cgi encryptMethod:AES bodyData:serilizedData compressedBodyData:serilizedData needCookie:YES cookie:cookie uin:uin];
-            NSData *body = [serilizedData AES];
-            NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
-            [longlinkBody appendData:body];
-            return [longlinkBody copy];
-        }
-            break;
-        default:
-            break;
-    }
-
-    return nil;
-}
 
 + (NSData *)EncodeHybirdEcdhEncryptPack:(int)cgi
                           serilizedData:(NSData *)serilizedData

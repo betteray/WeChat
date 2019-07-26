@@ -16,6 +16,23 @@
 
 @implementation Business
 
++ (void)setBaseResquestIfNeed:(CgiWrap *)cgiWrap {
+    if (cgiWrap.needSetBaseRequest) {
+        BaseRequest *base = [BaseRequest new];
+        NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
+        LogDebug(@"%@", sessionKey);
+        [base setSessionKey:sessionKey];
+        NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
+        AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:pre] firstObject];
+        [base setUin:accountInfo.uin];
+        [base setScene:0]; // iMac 1
+        [base setClientVersion:CLIENT_VERSION];
+        [base setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].osType];
+        [base setDeviceId:[[DeviceManager sharedManager] getCurrentDevice].deviceID];
+        [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
+    }
+}
+
 + (NSData *)identifyReq2bufWithSyncKey:(NSData *)syncKey
                                    uin:(int)uin
 {
@@ -140,6 +157,8 @@
     wrap.cmdId = 121;
     wrap.request = req;
     wrap.needSetBaseRequest = NO;
+    wrap.cgiPath = @"/cgi-bin/micromsg-bin/newsync";
+
     wrap.responseClass = [NewSyncResponse class];
     
     [WeChatClient  postRequest:wrap

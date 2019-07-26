@@ -8,7 +8,6 @@
 
 #import "WCECDH.h"
 
-#include <openssl/aes.h>
 #include <openssl/rsa.h>
 #include <openssl/ec.h>
 #include <openssl/ecdh.h>

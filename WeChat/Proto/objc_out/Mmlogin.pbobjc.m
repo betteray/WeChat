@@ -11654,62 +11654,6 @@ typedef struct AutoAuthKey__storage_ {
 
 @end
 
-#pragma mark - TimeZoneInfo
-
-@implementation TimeZoneInfo
-
-@dynamic hasA, a;
-@dynamic hasB, b;
-
-typedef struct TimeZoneInfo__storage_ {
-  uint32_t _has_storage_[1];
-  int32_t a;
-  int32_t b;
-} TimeZoneInfo__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "a",
-        .dataTypeSpecific.className = NULL,
-        .number = TimeZoneInfo_FieldNumber_A,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(TimeZoneInfo__storage_, a),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "b",
-        .dataTypeSpecific.className = NULL,
-        .number = TimeZoneInfo_FieldNumber_B,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(TimeZoneInfo__storage_, b),
-        .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeInt32,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[TimeZoneInfo class]
-                                     rootClass:[MmloginRoot class]
-                                          file:MmloginRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(TimeZoneInfo__storage_)
-                                         flags:GPBDescriptorInitializationFlag_None];
-    #if defined(DEBUG) && DEBUG
-      NSAssert(descriptor == nil, @"Startup recursed!");
-    #endif  // DEBUG
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
 #pragma mark - AutoAuthAesReqData
 
 @implementation AutoAuthAesReqData

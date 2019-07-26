@@ -12,8 +12,8 @@ target 'WeChat' do
   pod 'Realm'
   pod 'CocoaLumberjack'
   pod 'RegexKitLite'
+  pod 'Json2pb' , :git => 'https://github.com/henrayluo/json2pb.git'
   pod 'IQKeyboardManager'
-  
   pod 'MBProgressHUD', '~> 1.1.0'
   
   # Pods for WeChat

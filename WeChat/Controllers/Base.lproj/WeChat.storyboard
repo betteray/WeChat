@@ -577,7 +577,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZl-oL-vVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="4128"/>
+            <point key="canvasLocation" x="879" y="4143"/>
         </scene>
         <!--Peaple Near By Table View Controller-->
         <scene sceneID="IaE-Iz-VEy">
@@ -605,7 +605,33 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ltW-zU-XOT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2183" y="4128"/>
+            <point key="canvasLocation" x="1574" y="4143"/>
+        </scene>
+        <!--Report-->
+        <scene sceneID="cXb-Af-NQ9">
+            <objects>
+                <viewController id="sUG-qz-Ufr" customClass="ReportViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nc2-5d-4bx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="poM-5H-bHB">
+                                <rect key="frame" x="55" y="106" width="43" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="report"/>
+                                <connections>
+                                    <action selector="startReport:" destination="sUG-qz-Ufr" eventType="touchUpInside" id="sHl-l8-5mg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3Yp-Hd-s4Y"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Report" id="QtM-dq-r0j"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wh4-f1-Zn6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="4143"/>
         </scene>
         <!--Discovery-->
         <scene sceneID="S1a-am-Axw">
@@ -660,6 +686,30 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="a84-xJ-ZF9" kind="show" id="O6Q-4T-Ivw"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="fWO-kF-cgG">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Gtf-D1-0KY" style="IBUITableViewCellStyleDefault" id="Pv5-G4-vp5">
+                                        <rect key="frame" x="0.0" y="195" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pv5-G4-vp5" id="rZg-wv-0RZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Report" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gtf-D1-0KY">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="sUG-qz-Ufr" kind="show" id="bx0-5k-P8r"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -773,7 +823,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="kaelyn2923" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6tw-cI-dlT">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="13810933889" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6tw-cI-dlT">
                                 <rect key="frame" x="42" y="151" width="291" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="k5g-uH-TVj"/>
@@ -782,7 +832,7 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="8E575829" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mr5-8c-SK8">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xiao@123" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mr5-8c-SK8">
                                 <rect key="frame" x="42" y="231" width="291" height="40"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>

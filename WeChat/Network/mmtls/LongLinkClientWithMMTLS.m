@@ -11,9 +11,9 @@
 
 #import "ClientHello.h"
 #import "ServerHello.h"
-#import "WC_SHA256.h"
+#import "Cryption/WC_SHA256.h"
 #import "WCECDH.h"
-#import "WC_HKDF.h"
+#import "Cryption/WC_HKDF.h"
 #import "KeyPair.h"
 
 #import "long_pack.h"

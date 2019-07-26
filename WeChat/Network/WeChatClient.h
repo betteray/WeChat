@@ -34,14 +34,6 @@ typedef void (^FailureBlock)(NSError *error);
 
 - (void)start;
 
-- (void)manualAuth:(CgiWrap *)cgiWrap
-           success:(SuccessBlock)successBlock
-           failure:(FailureBlock)failureBlock;
-
-- (void)autoAuth:(CgiWrap *)cgiWrap
-         success:(SuccessBlock)successBlock
-         failure:(FailureBlock)failureBlock;
-
 - (void)registerWeChat:(CgiWrap *)cgiWrap
                success:(SuccessBlock)successBlock
                failure:(FailureBlock)failureBlock;

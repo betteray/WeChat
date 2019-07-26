@@ -18,7 +18,6 @@
 #import "LongLinkClientWithMMTLS.h"
 #import "LongLinkClient.h"
 
-#import "header.h"
 #import "mmpack.h"
 #import "long_pack.h"
 
@@ -29,9 +28,6 @@
 #import "Cookie.h"
 #import "SessionKeyStore.h"
 
-#import "SyncCmdHandler.h"
-
-#import "SyncKeyCompare.h"
 #import "MMProtocalJni.h"
 #import "Business.h"
 
@@ -159,28 +155,28 @@
 - (void)startRequest:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock {
-    [self setBaseResquestIfNeed:cgiWrap];
+    [Business setBaseResquestIfNeed:cgiWrap];
 
-//    LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
+    LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
 
     NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
     Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
-    
+
     int signature = [MMProtocalJni genSignatureWithUin:_uin
                                                ecdhKey:[WeChatClient sharedClient].checkEcdhKey
                                           protofufData:serilizedData];
-    
+
     NSData *shortLinkBuf = [mmpack EncodePack:cgiWrap.cgi
                                 serilizedData:serilizedData
                                           uin:_uin
                                        aesKey:[WeChatClient sharedClient].sessionKey
                                        cookie:cookie.data
                                     signature:signature];
-    
+
     NSData *sendData = [long_pack pack:_seq++ cmdId:cgiWrap.cmdId shortData:shortLinkBuf];
-    
+
     Task *task = [Task new];
     task.sucBlock = successBlock;
     task.failBlock = failureBlock;
@@ -194,7 +190,7 @@
             success:(SuccessBlock)successBlock
             failure:(FailureBlock)failureBlock {
 
-    [self setBaseResquestIfNeed:cgiWrap];
+    [Business setBaseResquestIfNeed:cgiWrap];
 
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -212,12 +208,12 @@
     int signature = [MMProtocalJni genSignatureWithUin:_uin
                                                ecdhKey:_checkEcdhKey
                                           protofufData:serilizedData];
-    
+
     NSData *sendData = [mmpack EncodePack:cgiWrap.cgi
                             serilizedData:serilizedData
                                       uin:_uin
                                    aesKey:_sessionKey
-                                   cookie:cookie.data   
+                                   cookie:cookie.data
                                 signature:signature];
 
 #if USE_MMTLS
@@ -245,17 +241,17 @@
 
     UtilsJni *Jni = [UtilsJni new];
     _Jni = Jni;
-    
+
     NSData *HybridEcdhEncryptData = [Jni HybridEcdhEncrypt:serilizedData];
 
     NSPredicate *accountInfoPre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
     AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:accountInfoPre] firstObject];
-    
+
     NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
     Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
     NSData *cookieData = nil;
     if (cookie.data.length) cookieData = cookie.data;
-    
+
     NSData *sendData = [mmpack EncodeHybirdEcdhEncryptPack:cgiWrap.cgi
                                              serilizedData:HybridEcdhEncryptData
                                                        uin:accountInfo.uin
@@ -273,73 +269,10 @@
     [self UnPack:packData];
 }
 
-- (void)setBaseResquestIfNeed:(CgiWrap *)cgiWrap {
-    if (cgiWrap.needSetBaseRequest) {
-        BaseRequest *base = [BaseRequest new];
-        NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
-        LogDebug(@"%@", sessionKey);
-        [base setSessionKey:sessionKey];
-        NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
-        AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:pre] firstObject];
-        [base setUin:accountInfo.uin];
-        [base setScene:0]; // iMac 1
-        [base setClientVersion:CLIENT_VERSION];
-        [base setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].osType];
-        [base setDeviceId:[[DeviceManager sharedManager] getCurrentDevice].deviceID];
-        [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
-    }
-}
-
-- (void)manualAuth:(CgiWrap *)cgiWrap
-           success:(SuccessBlock)successBlock
-           failure:(FailureBlock)failureBlock {
-    ManualAuthRequest *request = (ManualAuthRequest *) [cgiWrap request];
-    ManualAuthRsaReqData *rsaReqData = [request rsaReqData];
-    ManualAuthAesReqData *aesReqData = [request aesReqData];
-
-    LogVerbose(@"%@", request);
-
-    NSData *rsaReqDataSerializedData = [rsaReqData data];
-    NSData *aesReqDataSerializedData = [aesReqData data];
-
-    NSData *reqAccount = [rsaReqDataSerializedData Compress_And_RSA];
-    NSData *reqDevice = [aesReqDataSerializedData Compress_And_AES];
-
-    NSMutableData *subHeader = [NSMutableData data];
-    [subHeader appendData:[NSData packInt32:(int32_t) [rsaReqDataSerializedData length] flip:YES]];
-    [subHeader appendData:[NSData packInt32:(int32_t) [aesReqDataSerializedData length] flip:YES]];
-    [subHeader appendData:[NSData packInt32:(int32_t) [reqAccount length] flip:YES]];
-
-    NSMutableData *body = [NSMutableData dataWithData:subHeader];
-    [body appendData:reqAccount];
-    [body appendData:reqDevice];
-
-    NSData *head = [header make_header:cgiWrap.cgi
-                         encryptMethod:RSA
-                              bodyData:body
-                    compressedBodyData:body
-                            needCookie:NO
-                                cookie:nil
-                                   uin:_uin];
-
-    NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
-    [longlinkBody appendData:body];
-
-    NSData *sendData = [long_pack pack:_seq++ cmdId:cgiWrap.cmdId shortData:longlinkBody];
-
-    Task *task = [Task new];
-    task.sucBlock = successBlock;
-    task.failBlock = failureBlock;
-    task.cgiWrap = cgiWrap;
-    [_tasks addObject:task];
-
-    [_client sendData:sendData];
-}
-
 - (void)registerWeChat:(CgiWrap *)cgiWrap
                success:(SuccessBlock)successBlock
                failure:(FailureBlock)failureBlock {
-    [self setBaseResquestIfNeed:cgiWrap];
+    [Business setBaseResquestIfNeed:cgiWrap];
 
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -350,11 +283,8 @@
     LogVerbose(@"Start Request: %@", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
-    NSData *sendData = [mmpack pack:cgiWrap.cgi
-                          serilizedData:serilizedData
-                                   type:1
-                                    uin:0
-                                 cookie:nil];
+    //TODO
+    NSData *sendData = nil;
 
 #if USE_MMTLS
     NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
@@ -365,62 +295,12 @@
     [self UnPack:packData];
 }
 
-- (void)autoAuth:(CgiWrap *)cgiWrap
-         success:(SuccessBlock)successBlock
-         failure:(FailureBlock)failureBlock {
-    ManualAuthRequest *request = (ManualAuthRequest *) [cgiWrap request];
-    ManualAuthRsaReqData *rsaReqData = [request rsaReqData];
-    ManualAuthAesReqData *aesReqData = [request aesReqData];
-
-    NSData *rsaReqDataSerializedData = [rsaReqData data];
-    NSData *aesReqDataSerializedData = [aesReqData data];
-
-    NSData *reqAccount = [rsaReqDataSerializedData Compress_And_RSA];
-    NSData *authAesData = [rsaReqDataSerializedData Compress_And_AES];
-    NSData *reqDevice = [aesReqDataSerializedData Compress_And_AES];
-
-    NSMutableData *subHeader = [NSMutableData data];
-    [subHeader appendData:[NSData packInt32:(int32_t) [rsaReqDataSerializedData length] flip:YES]];
-    [subHeader appendData:[NSData packInt32:(int32_t) [aesReqDataSerializedData length] flip:YES]];
-    [subHeader appendData:[NSData packInt32:(int32_t) [reqAccount length] flip:YES]];
-    [subHeader appendData:[NSData packInt32:(int32_t) [authAesData length] flip:YES]];
-
-    NSMutableData *body = [NSMutableData dataWithData:subHeader];
-    [body appendData:reqAccount];
-    [body appendData:authAesData];
-    [body appendData:reqDevice];
-
-    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
-    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
-
-    NSData *head = [header make_header2:cgiWrap.cgi
-                          encryptMethod:AUTOAUTH
-                               bodyData:body
-                     compressedBodyData:body
-                             needCookie:YES
-                                 cookie:cookie.data
-                                    uin:_uin];
-
-    NSMutableData *longlinkBody = [NSMutableData dataWithData:head];
-    [longlinkBody appendData:body];
-
-    NSData *sendData = [long_pack pack:_seq++ cmdId:cgiWrap.cmdId shortData:longlinkBody];
-
-    Task *task = [Task new];
-    task.sucBlock = successBlock;
-    task.failBlock = failureBlock;
-    task.cgiWrap = cgiWrap;
-    [_tasks addObject:task];
-
-    [_client sendData:sendData];
-}
-
 #pragma mark - Pack
 
 - (Task *)getTaskWithTag:(NSInteger)tag {
     Task *result = nil;
-    for (int i = 0; i < [_tasks count]; i++) {
-        Task *task = [_tasks objectAtIndex:i];
+    for (NSUInteger i = 0; i < [_tasks count]; i++) {
+        Task *task = _tasks[i];
         if (task.cgiWrap.cgi == tag) {
             result = task;
         }
@@ -432,16 +312,11 @@
 - (void)UnPack:(NSData *)data {
     ShortPackage *package = [mmpack DecodePack:data];
     NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
-    NSData *protobufData = nil;
-
     Task *task = [self getTaskWithTag:package.header.cgi];
 
+    NSData *protobufData = nil;
     if (package.header.cgi == 252 || package.header.cgi == 763) {
         protobufData = [_Jni HybridEcdhDecrypt:package.body];
-        
-//        [_client restart];
-//        [self heartBeat];
-        
         if ([self.sync_key_cur length] == 0) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [Business newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
@@ -454,7 +329,7 @@
     }
 
     NSError *error = nil;
-    id response = [[task.cgiWrap.responseClass alloc] initWithData:protobufData error:&error];
+    id response = [(GPBMessage *) [task.cgiWrap.responseClass alloc] initWithData:protobufData error:&error];
     if (error) {
         LogError("ProtoBuf Serilized Error: %@", error);
         if (task.failBlock) {
