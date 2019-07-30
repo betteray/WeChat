@@ -308,6 +308,14 @@ message SnsUserPageResponse {
 	optional SnsServerConfig ServerConfig = 9;
 }
 
+message RemindFriendsInfo {
+    optional uint32 AdgroupId = 1;
+    optional SKBuiltinBuffer_t SourceInfo = 2;
+    optional SKBuiltinBuffer_t SelfInfo = 3;
+    optional SKBuiltinBuffer_t PaidInfo = 4;
+    optional SKBuiltinBuffer_t ExtraInfo = 5;
+}
+
 message SnsAction {
 	optional string FromUsername = 1;
 	optional string ToUsername = 2;
@@ -321,7 +329,10 @@ message SnsAction {
 	optional int32 CommentId = 10;
 	optional uint32 IsNotRichText = 11;
 	optional uint64 ReplyCommentId2 = 12;
-	optional uint64 CommentId2 = 13;
+    optional uint64 CommentId2 = 13;
+    optional SKBuiltinBuffer_t Hbbuffer = 14;
+    optional uint32 CommentFlag = 15;
+    optional RemindFriendsInfo RemindFriendsInfo = 16;
 }
 
 message SnsActionGroup {

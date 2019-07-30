@@ -2383,16 +2383,28 @@ typedef struct NewGetInviteFriendResponse__storage_ {
 @dynamic hasChatRoomUserName, chatRoomUserName;
 @dynamic hasSourceUserName, sourceUserName;
 @dynamic hasSourceNickName, sourceNickName;
+@dynamic hasScanQrcodeFromScene, scanQrcodeFromScene;
+@dynamic hasReportInfo, reportInfo;
+@dynamic hasShareCardForwardLevel, shareCardForwardLevel;
+@dynamic hasShareCardForwardInfo, shareCardForwardInfo;
+@dynamic hasOuterURL, outerURL;
+@dynamic hasSubScene, subScene;
 
 typedef struct VerifyUser__storage_ {
   uint32_t _has_storage_[1];
   uint32_t friendFlag;
+  uint32_t scanQrcodeFromScene;
+  uint32_t shareCardForwardLevel;
+  uint32_t subScene;
   NSString *value;
   NSString *verifyUserTicket;
   NSString *antispamTicket;
   NSString *chatRoomUserName;
   NSString *sourceUserName;
   NSString *sourceNickName;
+  NSString *reportInfo;
+  SKBuiltinBuffer_t *shareCardForwardInfo;
+  NSString *outerURL;
 } VerifyUser__storage_;
 
 // This method is threadsafe because it is initially called
@@ -2464,6 +2476,60 @@ typedef struct VerifyUser__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
+      {
+        .name = "scanQrcodeFromScene",
+        .dataTypeSpecific.className = NULL,
+        .number = VerifyUser_FieldNumber_ScanQrcodeFromScene,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(VerifyUser__storage_, scanQrcodeFromScene),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "reportInfo",
+        .dataTypeSpecific.className = NULL,
+        .number = VerifyUser_FieldNumber_ReportInfo,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(VerifyUser__storage_, reportInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "shareCardForwardLevel",
+        .dataTypeSpecific.className = NULL,
+        .number = VerifyUser_FieldNumber_ShareCardForwardLevel,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(VerifyUser__storage_, shareCardForwardLevel),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "shareCardForwardInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = VerifyUser_FieldNumber_ShareCardForwardInfo,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(VerifyUser__storage_, shareCardForwardInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "outerURL",
+        .dataTypeSpecific.className = NULL,
+        .number = VerifyUser_FieldNumber_OuterURL,
+        .hasIndex = 11,
+        .offset = (uint32_t)offsetof(VerifyUser__storage_, outerURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "subScene",
+        .dataTypeSpecific.className = NULL,
+        .number = VerifyUser_FieldNumber_SubScene,
+        .hasIndex = 12,
+        .offset = (uint32_t)offsetof(VerifyUser__storage_, subScene),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[VerifyUser class]
@@ -2475,7 +2541,8 @@ typedef struct VerifyUser__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\007\001E\000\002P\000\003N\000\004J\000\005P\000\006N\000\007N\000";
+        "\r\001E\000\002P\000\003N\000\004J\000\005P\000\006N\000\007N\000\010S\000\tJ\000\n\025\000\013T\000\014F!!\000\r"
+        "H\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG
@@ -2562,6 +2629,9 @@ typedef struct VerifyUserInfo__storage_ {
 @dynamic sceneListArray, sceneListArray_Count;
 @dynamic hasVerifyInfoListCount, verifyInfoListCount;
 @dynamic verifyInfoListArray, verifyInfoListArray_Count;
+@dynamic hasClientCheckData, clientCheckData;
+@dynamic hasExtSpamInfo, extSpamInfo;
+@dynamic hasNeedConfirm, needConfirm;
 
 typedef struct VerifyUserRequest__storage_ {
   uint32_t _has_storage_[1];
@@ -2569,11 +2639,14 @@ typedef struct VerifyUserRequest__storage_ {
   uint32_t verifyUserListSize;
   uint32_t sceneListCount;
   uint32_t verifyInfoListCount;
+  uint32_t needConfirm;
   BaseRequest *baseRequest;
   NSMutableArray *verifyUserListArray;
   NSString *verifyContent;
   GPBUInt32Array *sceneListArray;
   NSMutableArray *verifyInfoListArray;
+  SKBuiltinBuffer_t *clientCheckData;
+  SKBuiltinBuffer_t *extSpamInfo;
 } VerifyUserRequest__storage_;
 
 // This method is threadsafe because it is initially called
@@ -2663,6 +2736,33 @@ typedef struct VerifyUserRequest__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
+      {
+        .name = "clientCheckData",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = VerifyUserRequest_FieldNumber_ClientCheckData,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(VerifyUserRequest__storage_, clientCheckData),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "extSpamInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = VerifyUserRequest_FieldNumber_ExtSpamInfo,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(VerifyUserRequest__storage_, extSpamInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "needConfirm",
+        .dataTypeSpecific.className = NULL,
+        .number = VerifyUserRequest_FieldNumber_NeedConfirm,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(VerifyUserRequest__storage_, needConfirm),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[VerifyUserRequest class]
@@ -2674,8 +2774,8 @@ typedef struct VerifyUserRequest__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\t\001K\000\002F\000\003R\000\004\000VerifyUserList\000\005M\000\006N\000\007\000Scene"
-        "List\000\010S\000\t\000VerifyInfoList\000";
+        "\014\001K\000\002F\000\003R\000\004\000VerifyUserList\000\005M\000\006N\000\007\000Scene"
+        "List\000\010S\000\t\000VerifyInfoList\000\nO\000\013K\000\014K\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG

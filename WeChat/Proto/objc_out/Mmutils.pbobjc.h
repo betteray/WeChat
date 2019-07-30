@@ -884,6 +884,12 @@ typedef GPB_ENUM(VerifyUser_FieldNumber) {
   VerifyUser_FieldNumber_ChatRoomUserName = 5,
   VerifyUser_FieldNumber_SourceUserName = 6,
   VerifyUser_FieldNumber_SourceNickName = 7,
+  VerifyUser_FieldNumber_ScanQrcodeFromScene = 8,
+  VerifyUser_FieldNumber_ReportInfo = 9,
+  VerifyUser_FieldNumber_ShareCardForwardLevel = 10,
+  VerifyUser_FieldNumber_ShareCardForwardInfo = 11,
+  VerifyUser_FieldNumber_OuterURL = 12,
+  VerifyUser_FieldNumber_SubScene = 13,
 };
 
 @interface VerifyUser : GPBMessage
@@ -915,6 +921,27 @@ typedef GPB_ENUM(VerifyUser_FieldNumber) {
 /** Test to see if @c sourceNickName has been set. */
 @property(nonatomic, readwrite) BOOL hasSourceNickName;
 
+@property(nonatomic, readwrite) uint32_t scanQrcodeFromScene;
+
+@property(nonatomic, readwrite) BOOL hasScanQrcodeFromScene;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *reportInfo;
+/** Test to see if @c reportInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasReportInfo;
+
+@property(nonatomic, readwrite) uint32_t shareCardForwardLevel;
+
+@property(nonatomic, readwrite) BOOL hasShareCardForwardLevel;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *shareCardForwardInfo;
+/** Test to see if @c shareCardForwardInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasShareCardForwardInfo;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *outerURL;
+/** Test to see if @c outerURL has been set. */
+@property(nonatomic, readwrite) BOOL hasOuterURL;
+
+@property(nonatomic, readwrite) uint32_t subScene;
+
+@property(nonatomic, readwrite) BOOL hasSubScene;
 @end
 
 #pragma mark - VerifyUserInfo
@@ -948,6 +975,9 @@ typedef GPB_ENUM(VerifyUserRequest_FieldNumber) {
   VerifyUserRequest_FieldNumber_SceneListArray = 7,
   VerifyUserRequest_FieldNumber_VerifyInfoListCount = 8,
   VerifyUserRequest_FieldNumber_VerifyInfoListArray = 9,
+  VerifyUserRequest_FieldNumber_ClientCheckData = 10,
+  VerifyUserRequest_FieldNumber_ExtSpamInfo = 11,
+  VerifyUserRequest_FieldNumber_NeedConfirm = 12,
 };
 
 @interface VerifyUserRequest : GPBMessage
@@ -984,6 +1014,17 @@ typedef GPB_ENUM(VerifyUserRequest_FieldNumber) {
 /** The number of items in @c verifyInfoListArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger verifyInfoListArray_Count;
 
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *clientCheckData;
+/** Test to see if @c clientCheckData has been set. */
+@property(nonatomic, readwrite) BOOL hasClientCheckData;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *extSpamInfo;
+/** Test to see if @c extSpamInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasExtSpamInfo;
+
+@property(nonatomic, readwrite) uint32_t needConfirm;
+
+@property(nonatomic, readwrite) BOOL hasNeedConfirm;
 @end
 
 #pragma mark - VerifyUserResponse

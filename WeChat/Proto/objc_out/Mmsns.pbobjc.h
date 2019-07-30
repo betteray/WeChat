@@ -34,6 +34,7 @@ CF_EXTERN_C_BEGIN
 @class CmdList;
 @class MediaInfo;
 @class PreDownloadInfo;
+@class RemindFriendsInfo;
 @class SKBuiltinBuffer_t;
 @class SKBuiltinString_t;
 @class SnsADObject;
@@ -1250,6 +1251,39 @@ typedef GPB_ENUM(SnsUserPageResponse_FieldNumber) {
 
 @end
 
+#pragma mark - RemindFriendsInfo
+
+typedef GPB_ENUM(RemindFriendsInfo_FieldNumber) {
+  RemindFriendsInfo_FieldNumber_AdgroupId = 1,
+  RemindFriendsInfo_FieldNumber_SourceInfo = 2,
+  RemindFriendsInfo_FieldNumber_SelfInfo = 3,
+  RemindFriendsInfo_FieldNumber_PaidInfo = 4,
+  RemindFriendsInfo_FieldNumber_ExtraInfo = 5,
+};
+
+@interface RemindFriendsInfo : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t adgroupId;
+
+@property(nonatomic, readwrite) BOOL hasAdgroupId;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *sourceInfo;
+/** Test to see if @c sourceInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasSourceInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *selfInfo;
+/** Test to see if @c selfInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasSelfInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *paidInfo;
+/** Test to see if @c paidInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasPaidInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *extraInfo;
+/** Test to see if @c extraInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasExtraInfo;
+
+@end
+
 #pragma mark - SnsAction
 
 typedef GPB_ENUM(SnsAction_FieldNumber) {
@@ -1266,6 +1300,9 @@ typedef GPB_ENUM(SnsAction_FieldNumber) {
   SnsAction_FieldNumber_IsNotRichText = 11,
   SnsAction_FieldNumber_ReplyCommentId2 = 12,
   SnsAction_FieldNumber_CommentId2 = 13,
+  SnsAction_FieldNumber_Hbbuffer = 14,
+  SnsAction_FieldNumber_CommentFlag = 15,
+  SnsAction_FieldNumber_RemindFriendsInfo = 16,
 };
 
 @interface SnsAction : GPBMessage
@@ -1314,6 +1351,17 @@ typedef GPB_ENUM(SnsAction_FieldNumber) {
 @property(nonatomic, readwrite) uint64_t commentId2;
 
 @property(nonatomic, readwrite) BOOL hasCommentId2;
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *hbbuffer;
+/** Test to see if @c hbbuffer has been set. */
+@property(nonatomic, readwrite) BOOL hasHbbuffer;
+
+@property(nonatomic, readwrite) uint32_t commentFlag;
+
+@property(nonatomic, readwrite) BOOL hasCommentFlag;
+@property(nonatomic, readwrite, strong, null_resettable) RemindFriendsInfo *remindFriendsInfo;
+/** Test to see if @c remindFriendsInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasRemindFriendsInfo;
+
 @end
 
 #pragma mark - SnsActionGroup

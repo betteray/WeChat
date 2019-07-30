@@ -209,6 +209,12 @@ message VerifyUser {
 	optional string ChatRoomUserName = 5;
 	optional string SourceUserName = 6;
 	optional string SourceNickName = 7;
+    optional uint32 ScanQrcodeFromScene = 8;
+    optional string ReportInfo = 9;
+    optional uint32 shareCardForwardLevel = 10;
+    optional SKBuiltinBuffer_t ShareCardForwardInfo = 11;
+    optional string OuterUrl = 12;
+    optional uint32 SubScene = 13;
 }
 
 message VerifyUserInfo {
@@ -226,6 +232,9 @@ message VerifyUserRequest {
 	repeated uint32 SceneList = 7[packed=true];
 	optional uint32 VerifyInfoListCount = 8;
 	repeated VerifyUserInfo VerifyInfoList = 9;
+    optional SKBuiltinBuffer_t ClientCheckData = 10;
+    optional SKBuiltinBuffer_t ExtSpamInfo = 11;
+    optional uint32 NeedConfirm = 12;
 }
 
 message VerifyUserResponse {

@@ -3463,6 +3463,100 @@ typedef struct SnsUserPageResponse__storage_ {
 
 @end
 
+#pragma mark - RemindFriendsInfo
+
+@implementation RemindFriendsInfo
+
+@dynamic hasAdgroupId, adgroupId;
+@dynamic hasSourceInfo, sourceInfo;
+@dynamic hasSelfInfo, selfInfo;
+@dynamic hasPaidInfo, paidInfo;
+@dynamic hasExtraInfo, extraInfo;
+
+typedef struct RemindFriendsInfo__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t adgroupId;
+  SKBuiltinBuffer_t *sourceInfo;
+  SKBuiltinBuffer_t *selfInfo;
+  SKBuiltinBuffer_t *paidInfo;
+  SKBuiltinBuffer_t *extraInfo;
+} RemindFriendsInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "adgroupId",
+        .dataTypeSpecific.className = NULL,
+        .number = RemindFriendsInfo_FieldNumber_AdgroupId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RemindFriendsInfo__storage_, adgroupId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "sourceInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = RemindFriendsInfo_FieldNumber_SourceInfo,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(RemindFriendsInfo__storage_, sourceInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "selfInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = RemindFriendsInfo_FieldNumber_SelfInfo,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(RemindFriendsInfo__storage_, selfInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "paidInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = RemindFriendsInfo_FieldNumber_PaidInfo,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(RemindFriendsInfo__storage_, paidInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "extraInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = RemindFriendsInfo_FieldNumber_ExtraInfo,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(RemindFriendsInfo__storage_, extraInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RemindFriendsInfo class]
+                                     rootClass:[MmsnsRoot class]
+                                          file:MmsnsRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RemindFriendsInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\005\001I\000\002J\000\003H\000\004H\000\005I\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - SnsAction
 
 @implementation SnsAction
@@ -3480,6 +3574,9 @@ typedef struct SnsUserPageResponse__storage_ {
 @dynamic hasIsNotRichText, isNotRichText;
 @dynamic hasReplyCommentId2, replyCommentId2;
 @dynamic hasCommentId2, commentId2;
+@dynamic hasHbbuffer, hbbuffer;
+@dynamic hasCommentFlag, commentFlag;
+@dynamic hasRemindFriendsInfo, remindFriendsInfo;
 
 typedef struct SnsAction__storage_ {
   uint32_t _has_storage_[1];
@@ -3489,11 +3586,14 @@ typedef struct SnsAction__storage_ {
   int32_t replyCommentId;
   int32_t commentId;
   uint32_t isNotRichText;
+  uint32_t commentFlag;
   NSString *fromUsername;
   NSString *toUsername;
   NSString *fromNickname;
   NSString *toNickname;
   NSString *content;
+  SKBuiltinBuffer_t *hbbuffer;
+  RemindFriendsInfo *remindFriendsInfo;
   uint64_t replyCommentId2;
   uint64_t commentId2;
 } SnsAction__storage_;
@@ -3621,6 +3721,33 @@ typedef struct SnsAction__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt64,
       },
+      {
+        .name = "hbbuffer",
+        .dataTypeSpecific.className = GPBStringifySymbol(SKBuiltinBuffer_t),
+        .number = SnsAction_FieldNumber_Hbbuffer,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(SnsAction__storage_, hbbuffer),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "commentFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = SnsAction_FieldNumber_CommentFlag,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(SnsAction__storage_, commentFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "remindFriendsInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(RemindFriendsInfo),
+        .number = SnsAction_FieldNumber_RemindFriendsInfo,
+        .hasIndex = 15,
+        .offset = (uint32_t)offsetof(SnsAction__storage_, remindFriendsInfo),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[SnsAction class]
@@ -3632,7 +3759,8 @@ typedef struct SnsAction__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\r\001L\000\002J\000\003L\000\004J\000\005D\000\006F\000\007J\000\010G\000\tN\000\nI\000\013M\000\014O\000\rJ\000";
+        "\020\001L\000\002J\000\003L\000\004J\000\005D\000\006F\000\007J\000\010G\000\tN\000\nI\000\013M\000\014O\000\rJ\000"
+        "\016H\000\017K\000\020Q\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG
