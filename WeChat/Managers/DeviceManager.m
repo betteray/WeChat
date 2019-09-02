@@ -35,9 +35,9 @@
         NSString *ts = [NSString stringWithFormat:@"%ld", (long) [[NSDate date] timeIntervalSince1970]];
         
         //NSString *k19 = @"16F3CF44-DC31-4038-A219-3111C3F71FA8";
-        NSString *k19 = @"856AA466-8098-4C90-9D6A-3EF6AFF6BC04";
+        NSString *k19 = @"856AA466-8098-4C90-9D6A-3EF6AFF6BC04"; //k19 = idfv
 
-        NSString *adSource = @"15C0A21B-78A1-4D4C-B7D7-77FEFA23AA35";
+        NSString *adSource = @"15C0A21B-78A1-4D4C-B7D7-77FEFA23AA35"; //k20 = idfa
         
         NSString *sofyType = [NSString stringWithFormat:@"<softtype>"
                               "<k3>11.3.1</k3>"
