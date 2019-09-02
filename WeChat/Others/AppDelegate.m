@@ -38,9 +38,9 @@
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     
 #if PROTOCOL_FOR_IOS
-    LogVerbose(@"PROTOCOL_FOR_IOS Client Version: %@(%d)", IVERSION, [CUtility numberVersionOf:IVERSION]);
+    LogVerbose(@"PROTOCOL_FOR_IOS Client Version: %@(%x)", IVERSION, [CUtility numberVersionOf:IVERSION]);
 #elif PROTOCOL_FOR_ANDROID
-    LogVerbose(@"PROTOCOL_FOR_ANDROID Client Version: %d", AVERSION);
+    LogVerbose(@"PROTOCOL_FOR_ANDROID Client Version: %x", AVERSION);
 #endif
     
     return YES;
