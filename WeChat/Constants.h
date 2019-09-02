@@ -38,6 +38,8 @@
 #define A703  0x27000334
 #define A704  0x27000437
 #define A705  0x27000530
+#define A706  0x27000634
+
 #define AVERSION A703
 
 #if PROTOCOL_FOR_IOS
