@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+import "mmbuiltintype.proto";
+
+message WCExtInfo
+{
+    optional SKBuiltinBuffer_t wcstf = 1;
+    optional SKBuiltinBuffer_t wcste = 2;
+    optional SKBuiltinBuffer_t ccData = 3;
+    optional SKBuiltinBuffer_t userAttrInfo = 4;
+}

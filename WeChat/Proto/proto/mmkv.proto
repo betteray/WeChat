@@ -1,0 +1,36 @@
+// Added by Ray
+syntax = "proto2";
+
+import "mmbuiltintype.proto";
+
+import "mmbase.proto";
+
+// logid 15452 这个接口的返回结果
+//"cgi": 2738,
+//"path": "/cgi-bin/mmexptappsvr-bin/getexptconfig"
+
+message ExptItem {
+    required uint32 ExptId = 1;
+    required uint32 GroupId = 2;
+    required uint32 ExptSequence = 3;
+    optional string ExptContent = 4;
+    optional uint32 ExptType = 5;
+    required string ExptCheckSum = 6;
+}
+
+message GetExptRequest {
+    required BaseRequest BaseRequest = 1;
+    required uint32 LastGetSvrSecond = 2;
+    required uint32 Scene = 3;
+    repeated ExptItem LocalExptList = 4;
+}
+
+message GetExptResponse {
+    required BaseResponse BaseResponse = 1;
+    required uint32 CurrSvrSecond = 2;
+    required uint32 IntervalSecond = 3;
+    repeated ExptItem DeleteExptList  = 4;
+    repeated ExptItem ReplaceExptList= 5;
+    required uint32 ExptFlag = 6;
+    //items
+}
