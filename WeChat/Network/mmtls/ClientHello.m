@@ -59,7 +59,7 @@
 {
     if (!_clientHelloData)
     {
-        NSMutableData *clientHelloData = [[NSData dataWithHexString:@"16F10300D4"] mutableCopy]; //mmtls head [16F10300D4: 0xD4为后面包长度]
+        NSMutableData *clientHelloData = [[NSData dataWithHexString:@"16F10300D4"] mutableCopy]; //mmtls head [16F10300D4: 0xD4(212)为后面包长度]
         [clientHelloData appendData:[NSData dataWithHexString:@"000000D00103F101C02B"]];         //fix
         [clientHelloData appendData:_clientRandom];                                              //client random
 
@@ -68,10 +68,10 @@
         [clientHelloData appendData:timeStampData];         //time
         [clientHelloData appendData:[NSData dataWithHexString:@"000000A2010000009D001002"]]; //fix
 
-        [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000010041"]]; //fix
+        [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000010041"]]; //fix 0x41 = 65 pubkey len, 00000001 第一个序号（字段）， 0x47 = 0x41 + 6
         [clientHelloData appendData:_pubkey1];                                           //pubkey
 
-        [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000020041"]]; //fix
+        [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000020041"]]; //fix 0x41 = 65 pubkey len, 00000001 第二个序号（字段），0x47 = 0x41 + 6
         [clientHelloData appendData:_pubkey2];                                           //pubkey
 
         [clientHelloData appendData:[NSData dataWithHexString:@"00000001"]]; //fix
@@ -85,7 +85,7 @@
 - (NSData *)getHashPart
 {
     NSData *header = [NSData dataWithHexString:@"16F10300D4"];
-    return [_clientHelloData subdataWithRange:NSMakeRange([header length], 0xD4)];
+    return [_clientHelloData subdataWithRange:NSMakeRange([header length], 0xD4)]; // 取包体内容
 }
 
 - (NSData *)getLocal1stPrikey
