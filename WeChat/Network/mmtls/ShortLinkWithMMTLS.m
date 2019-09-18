@@ -46,12 +46,14 @@
         _readSeq = 1;
         
         _clientRandom = [NSData GenRandomDataWithSize:32];
+//        _clientRandom = [NSData dataWithHexString:@"AABA156458E600D96C8658A439D9173FA780378041E64714EF5E539184D17E79"];
         _decryptedPart2 = decryptedPart2;
         _resumptionSecret = resumptionSecret;
         _httpData = httpData;
         
         NSUInteger timeStamp = [[NSDate date] timeIntervalSince1970];
         _timeStampData = [NSData packInt32:(int32_t) timeStamp flip:YES];
+//        _timeStampData = [NSData dataWithHexString:@"5D78D74B"];
     }
     return self;
 }

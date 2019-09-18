@@ -23,6 +23,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#if PROTOCOL_FOR_IOS
+    LogVerbose(@"PROTOCOL_FOR_IOS Client Version: %@(%x)", IVERSION, [CUtility numberVersionOf:IVERSION]);
+#elif PROTOCOL_FOR_ANDROID
+    LogVerbose(@"PROTOCOL_FOR_ANDROID Client Version: %x", AVERSION);
+#endif
+    
     // Override point for customization after application launch.
 
 //    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
@@ -33,15 +39,9 @@
 
     [[WeChatClient sharedClient] start];
     [[DNSFetcher new] fetchAndSaveToDB];
-    [[ClientCheckDataFetcher new] fetchAndSaveToDB];
+//    [[ClientCheckDataFetcher new] fetchAndSaveToDB];
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
-    
-#if PROTOCOL_FOR_IOS
-    LogVerbose(@"PROTOCOL_FOR_IOS Client Version: %@(%x)", IVERSION, [CUtility numberVersionOf:IVERSION]);
-#elif PROTOCOL_FOR_ANDROID
-    LogVerbose(@"PROTOCOL_FOR_ANDROID Client Version: %x", AVERSION);
-#endif
     
     return YES;
 }
