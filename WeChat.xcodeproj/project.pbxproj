@@ -28,7 +28,6 @@
 		46285D5C22EEFDD1000841BA /* Mmutils.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46285D5B22EEFDD1000841BA /* Mmutils.pbobjc.m */; };
 		46285D6122EFFD58000841BA /* mmkv.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46285D6022EFFD58000841BA /* mmkv.proto */; };
 		46285D6722F019D2000841BA /* Mmkv.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46285D6522F019D2000841BA /* Mmkv.pbobjc.m */; };
-		46285D6A22F01DB2000841BA /* 1564458117_getexptconfig_2738_GetExptRequest.bin in Resources */ = {isa = PBXBuildFile; fileRef = 46285D6922F01DB2000841BA /* 1564458117_getexptconfig_2738_GetExptRequest.bin */; };
 		462D9C0E21D4EC5700FC5461 /* WCBuiltinIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C0D21D4EC5700FC5461 /* WCBuiltinIP.m */; };
 		462D9C1521D509FC00FC5461 /* ClientCheckDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C1421D509FC00FC5461 /* ClientCheckDataFetcher.m */; };
 		462D9C2D21DC98E300FC5461 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C2C21DC98E300FC5461 /* AccountInfo.m */; };
@@ -42,8 +41,6 @@
 		464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82321D4B681003E923F /* DefaultLongIp.m */; };
 		464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82621D4B9DD003E923F /* DefaultShortIp.m */; };
 		464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82921D4E8BD003E923F /* NSString+Regex.m */; };
-		465A630022E3274000711C60 /* 1563573964980_cgi-bin_micromsg-bin_newreportidkey.bin in Resources */ = {isa = PBXBuildFile; fileRef = 465A62FE22E3274000711C60 /* 1563573964980_cgi-bin_micromsg-bin_newreportidkey.bin */; };
-		465A630122E3274000711C60 /* 1563575420244_cgi-bin_micromsg-bin_rtkvreport.bin in Resources */ = {isa = PBXBuildFile; fileRef = 465A62FF22E3274000711C60 /* 1563575420244_cgi-bin_micromsg-bin_rtkvreport.bin */; };
 		465A634B22E7FCBA00711C60 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A634A22E7FCBA00711C60 /* ReportViewController.m */; };
 		465A64DB22EEDBBE00711C60 /* mmhongbao.proto in Sources */ = {isa = PBXBuildFile; fileRef = 465A64DA22EEDBBE00711C60 /* mmhongbao.proto */; };
 		465A64E022EEDC9B00711C60 /* Mmcontact.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A64DD22EEDC9B00711C60 /* Mmcontact.pbobjc.m */; };
@@ -60,12 +57,8 @@
 		46804CED21DE5B2900232229 /* ChatsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46804CEC21DE5B2900232229 /* ChatsDetailTableViewCell.m */; };
 		4681939422CB2E8C00839EB0 /* UtileJni.proto in Sources */ = {isa = PBXBuildFile; fileRef = 4681939322CB2E8C00839EB0 /* UtileJni.proto */; };
 		4681939722CB31D400839EB0 /* UtileJni.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 4681939522CB31D400839EB0 /* UtileJni.pbobjc.m */; };
-		4685A4B122E024CB00DE95BE /* ClientCheckData.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4685A4B022E024CB00DE95BE /* ClientCheckData.bin */; };
 		4685A4B322E06E4E00DE95BE /* 703_login_2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4685A4B222E06E4D00DE95BE /* 703_login_2.txt */; };
 		4685A4B522E06FFF00DE95BE /* 703_login_3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4685A4B422E06FFF00DE95BE /* 703_login_3.txt */; };
-		4685A4B722E2E4F300DE95BE /* newreportkvcomm.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4685A4B622E2E4F300DE95BE /* newreportkvcomm.bin */; };
-		4685A4BA22E3199E00DE95BE /* newreportkvcomm-2.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4685A4B822E3199D00DE95BE /* newreportkvcomm-2.bin */; };
-		4685A4BB22E3199E00DE95BE /* newreportkvcomm-1.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4685A4B922E3199E00DE95BE /* newreportkvcomm-1.bin */; };
 		4689A17821E4C01800E2EA9A /* SyncKeyCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */; };
 		469F657D21D3196100C1DC8B /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7141214B5A4B00603022 /* libcrypto.a */; };
 		46CD1A8522DED2FE0023C585 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 46CD1A8422DED2FE0023C585 /* TODO.md */; };
@@ -90,8 +83,6 @@
 		46D2CA7A223A5A440053C4A6 /* Wwux.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA77223A5A440053C4A6 /* Wwux.pbobjc.m */; };
 		46D2CA7C223A5DF30053C4A6 /* wwunkown.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA7B223A5DF30053C4A6 /* wwunkown.proto */; };
 		46D2CA7F223A5F720053C4A6 /* Wwunkown.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA7D223A5F720053C4A6 /* Wwunkown.pbobjc.m */; };
-		46DD93CB228D5795009F4F6A /* st.bin in Resources */ = {isa = PBXBuildFile; fileRef = 46DD93CA228D5795009F4F6A /* st.bin */; };
-		46EB61D221F6EFB800760593 /* st_angler_1.bin in Resources */ = {isa = PBXBuildFile; fileRef = 46EB61D121F6EFB800760593 /* st_angler_1.bin */; };
 		46EB61F521F98E1100760593 /* mmbottle.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D621F98E1000760593 /* mmbottle.proto */; };
 		46EB61F621F98E1100760593 /* mmlogin.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D721F98E1000760593 /* mmlogin.proto */; };
 		46EB61F721F98E1100760593 /* mmtrack.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D821F98E1000760593 /* mmtrack.proto */; };
@@ -128,7 +119,6 @@
 		46EB621921F9943C00760593 /* WeChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB621821F9943C00760593 /* WeChatUITests.m */; };
 		46EB621B21F9944F00760593 /* WXDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB621A21F9944F00760593 /* WXDemoUITests.m */; };
 		46EB621E21F99C6F00760593 /* MMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB621D21F99C6F00760593 /* MMWebViewController.m */; };
-		46ED97B922C9F19F00978C0D /* login.bin in Resources */ = {isa = PBXBuildFile; fileRef = 46ED97B822C9F19F00978C0D /* login.bin */; };
 		46ED97BC22C9F5A500978C0D /* UtilsJni.m in Sources */ = {isa = PBXBuildFile; fileRef = 46ED97BB22C9F5A500978C0D /* UtilsJni.m */; };
 		71008F3321B6750700DE8DF8 /* DNSFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3221B6750700DE8DF8 /* DNSFetcher.m */; };
 		71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3521B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m */; };
@@ -183,9 +173,6 @@
 		71E1C19B230549F100F5032A /* WeChat_Proto_705.txt in Resources */ = {isa = PBXBuildFile; fileRef = 71E1C19A230549F100F5032A /* WeChat_Proto_705.txt */; };
 		71E1C19D230657E900F5032A /* safe.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71E1C19C230657E900F5032A /* safe.proto */; };
 		71E1C1A02306593300F5032A /* Safe.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E1C19E2306593300F5032A /* Safe.pbobjc.m */; };
-		71E1C1A423065A6200F5032A /* WCExtInfo.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71E1C1A323065A6200F5032A /* WCExtInfo.bin */; };
-		71E1C2002307EABA00F5032A /* 2.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71E1C1FE2307EABA00F5032A /* 2.bin */; };
-		71E1C2012307EABA00F5032A /* 1.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71E1C1FF2307EABA00F5032A /* 1.bin */; };
 		8A6B7E6AD0B44DCDF3A4DADB /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD18BBDEB2F4000E11CEB5B0 /* libPods-WeChatTests.a */; };
 		A171A24009C24E78AD226EE0 /* libPods-WeChatUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB43DD6C2AA522C9401323 /* libPods-WeChatUITests.a */; };
 		B29AF48CDFF2BFFF255F71A2 /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 814381742B1C4841306B49D3 /* libPods-WeChatTests.a */; };
@@ -247,7 +234,6 @@
 		46285D6022EFFD58000841BA /* mmkv.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mmkv.proto; sourceTree = "<group>"; };
 		46285D6522F019D2000841BA /* Mmkv.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mmkv.pbobjc.m; sourceTree = "<group>"; };
 		46285D6622F019D2000841BA /* Mmkv.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mmkv.pbobjc.h; sourceTree = "<group>"; };
-		46285D6922F01DB2000841BA /* 1564458117_getexptconfig_2738_GetExptRequest.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = 1564458117_getexptconfig_2738_GetExptRequest.bin; sourceTree = "<group>"; };
 		462D9C0C21D4EC5700FC5461 /* WCBuiltinIP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCBuiltinIP.h; sourceTree = "<group>"; };
 		462D9C0D21D4EC5700FC5461 /* WCBuiltinIP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCBuiltinIP.m; sourceTree = "<group>"; };
 		462D9C1221D5096400FC5461 /* DNSFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSFetcher.h; sourceTree = "<group>"; };
@@ -273,8 +259,6 @@
 		464FB82621D4B9DD003E923F /* DefaultShortIp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultShortIp.m; sourceTree = "<group>"; };
 		464FB82821D4E8BD003E923F /* NSString+Regex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Regex.h"; sourceTree = "<group>"; };
 		464FB82921D4E8BD003E923F /* NSString+Regex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Regex.m"; sourceTree = "<group>"; };
-		465A62FE22E3274000711C60 /* 1563573964980_cgi-bin_micromsg-bin_newreportidkey.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1563573964980_cgi-bin_micromsg-bin_newreportidkey.bin"; sourceTree = "<group>"; };
-		465A62FF22E3274000711C60 /* 1563575420244_cgi-bin_micromsg-bin_rtkvreport.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1563575420244_cgi-bin_micromsg-bin_rtkvreport.bin"; sourceTree = "<group>"; };
 		465A634922E7FCBA00711C60 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		465A634A22E7FCBA00711C60 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
 		465A64DA22EEDBBE00711C60 /* mmhongbao.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mmhongbao.proto; sourceTree = "<group>"; };
@@ -305,12 +289,8 @@
 		4681939322CB2E8C00839EB0 /* UtileJni.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = UtileJni.proto; sourceTree = "<group>"; };
 		4681939522CB31D400839EB0 /* UtileJni.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtileJni.pbobjc.m; sourceTree = "<group>"; };
 		4681939622CB31D400839EB0 /* UtileJni.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtileJni.pbobjc.h; sourceTree = "<group>"; };
-		4685A4B022E024CB00DE95BE /* ClientCheckData.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = ClientCheckData.bin; sourceTree = "<group>"; };
 		4685A4B222E06E4D00DE95BE /* 703_login_2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 703_login_2.txt; sourceTree = "<group>"; };
 		4685A4B422E06FFF00DE95BE /* 703_login_3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 703_login_3.txt; sourceTree = "<group>"; };
-		4685A4B622E2E4F300DE95BE /* newreportkvcomm.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = newreportkvcomm.bin; sourceTree = "<group>"; };
-		4685A4B822E3199D00DE95BE /* newreportkvcomm-2.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "newreportkvcomm-2.bin"; sourceTree = "<group>"; };
-		4685A4B922E3199E00DE95BE /* newreportkvcomm-1.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "newreportkvcomm-1.bin"; sourceTree = "<group>"; };
 		4689A17021DF447500E2EA9A /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncKeyCompare.h; sourceTree = "<group>"; };
 		4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncKeyCompare.m; sourceTree = "<group>"; };
@@ -351,8 +331,6 @@
 		46D2CA7B223A5DF30053C4A6 /* wwunkown.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = wwunkown.proto; sourceTree = "<group>"; };
 		46D2CA7D223A5F720053C4A6 /* Wwunkown.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wwunkown.pbobjc.m; sourceTree = "<group>"; };
 		46D2CA7E223A5F720053C4A6 /* Wwunkown.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wwunkown.pbobjc.h; sourceTree = "<group>"; };
-		46DD93CA228D5795009F4F6A /* st.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = st.bin; sourceTree = "<group>"; };
-		46EB61D121F6EFB800760593 /* st_angler_1.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = st_angler_1.bin; sourceTree = "<group>"; };
 		46EB61D621F98E1000760593 /* mmbottle.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmbottle.proto; sourceTree = "<group>"; };
 		46EB61D721F98E1000760593 /* mmlogin.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmlogin.proto; sourceTree = "<group>"; };
 		46EB61D821F98E1000760593 /* mmtrack.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mmtrack.proto; sourceTree = "<group>"; };
@@ -390,7 +368,6 @@
 		46EB621A21F9944F00760593 /* WXDemoUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDemoUITests.m; sourceTree = "<group>"; };
 		46EB621C21F99C6F00760593 /* MMWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMWebViewController.h; sourceTree = "<group>"; };
 		46EB621D21F99C6F00760593 /* MMWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMWebViewController.m; sourceTree = "<group>"; };
-		46ED97B822C9F19F00978C0D /* login.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = login.bin; sourceTree = "<group>"; };
 		46ED97BA22C9F5A500978C0D /* UtilsJni.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UtilsJni.h; sourceTree = "<group>"; };
 		46ED97BB22C9F5A500978C0D /* UtilsJni.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UtilsJni.m; sourceTree = "<group>"; };
 		49481301164AD3564DCE2106 /* libPods-WeChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -584,9 +561,6 @@
 		71E1C19C230657E900F5032A /* safe.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = safe.proto; sourceTree = "<group>"; };
 		71E1C19E2306593300F5032A /* Safe.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Safe.pbobjc.m; sourceTree = "<group>"; };
 		71E1C19F2306593300F5032A /* Safe.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Safe.pbobjc.h; sourceTree = "<group>"; };
-		71E1C1A323065A6200F5032A /* WCExtInfo.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = WCExtInfo.bin; sourceTree = "<group>"; };
-		71E1C1FE2307EABA00F5032A /* 2.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = 2.bin; sourceTree = "<group>"; };
-		71E1C1FF2307EABA00F5032A /* 1.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = 1.bin; sourceTree = "<group>"; };
 		814381742B1C4841306B49D3 /* libPods-WeChatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8435ACA679E3636C36C7D47C /* Pods-WeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChat/Pods-WeChat.debug.xcconfig"; sourceTree = "<group>"; };
 		A8AE4D42890ED7488CA924E7 /* Pods-WeChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatUITests/Pods-WeChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -726,20 +700,7 @@
 		4649DD6621ED864F006315DC /* Res */ = {
 			isa = PBXGroup;
 			children = (
-				71E1C1FF2307EABA00F5032A /* 1.bin */,
-				71E1C1FE2307EABA00F5032A /* 2.bin */,
-				71E1C1A323065A6200F5032A /* WCExtInfo.bin */,
-				46285D6922F01DB2000841BA /* 1564458117_getexptconfig_2738_GetExptRequest.bin */,
-				465A62FE22E3274000711C60 /* 1563573964980_cgi-bin_micromsg-bin_newreportidkey.bin */,
-				465A62FF22E3274000711C60 /* 1563575420244_cgi-bin_micromsg-bin_rtkvreport.bin */,
-				4685A4B922E3199E00DE95BE /* newreportkvcomm-1.bin */,
-				4685A4B822E3199D00DE95BE /* newreportkvcomm-2.bin */,
-				4685A4B622E2E4F300DE95BE /* newreportkvcomm.bin */,
-				4685A4B022E024CB00DE95BE /* ClientCheckData.bin */,
-				46ED97B822C9F19F00978C0D /* login.bin */,
-				46DD93CA228D5795009F4F6A /* st.bin */,
 				4649DD6721ED8660006315DC /* 62.bin */,
-				46EB61D121F6EFB800760593 /* st_angler_1.bin */,
 			);
 			path = Res;
 			sourceTree = "<group>";
@@ -1430,32 +1391,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71E1C2002307EABA00F5032A /* 2.bin in Resources */,
 				465A64E622EEEFCD00711C60 /* WeChat_Proto_704.txt in Resources */,
 				4685A4B322E06E4E00DE95BE /* 703_login_2.txt in Resources */,
-				4685A4B722E2E4F300DE95BE /* newreportkvcomm.bin in Resources */,
 				46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */,
 				71E1C19B230549F100F5032A /* WeChat_Proto_705.txt in Resources */,
-				4685A4BB22E3199E00DE95BE /* newreportkvcomm-1.bin in Resources */,
-				465A630022E3274000711C60 /* 1563573964980_cgi-bin_micromsg-bin_newreportidkey.bin in Resources */,
 				712C6F1A214A6A5800603022 /* PROTO_README.md in Resources */,
-				46EB61D221F6EFB800760593 /* st_angler_1.bin in Resources */,
 				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
 				460CDE50220088CE0075F3E5 /* cgi.json in Resources */,
-				4685A4B122E024CB00DE95BE /* ClientCheckData.bin in Resources */,
 				46CD1A8522DED2FE0023C585 /* TODO.md in Resources */,
-				4685A4BA22E3199E00DE95BE /* newreportkvcomm-2.bin in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
-				46DD93CB228D5795009F4F6A /* st.bin in Resources */,
-				46285D6A22F01DB2000841BA /* 1564458117_getexptconfig_2738_GetExptRequest.bin in Resources */,
 				4649DD6821ED8660006315DC /* 62.bin in Resources */,
 				4685A4B522E06FFF00DE95BE /* 703_login_3.txt in Resources */,
-				46ED97B922C9F19F00978C0D /* login.bin in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
-				71E1C1A423065A6200F5032A /* WCExtInfo.bin in Resources */,
-				71E1C2012307EABA00F5032A /* 1.bin in Resources */,
-				465A630122E3274000711C60 /* 1563575420244_cgi-bin_micromsg-bin_rtkvreport.bin in Resources */,
 				712C7143214B5A4B00603022 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
