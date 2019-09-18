@@ -23,12 +23,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#if PROTOCOL_FOR_IOS
-    LogVerbose(@"PROTOCOL_FOR_IOS Client Version: %@(%x)", IVERSION, [CUtility numberVersionOf:IVERSION]);
-#elif PROTOCOL_FOR_ANDROID
-    LogVerbose(@"PROTOCOL_FOR_ANDROID Client Version: %x", AVERSION);
-#endif
-    
     // Override point for customization after application launch.
 
 //    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
@@ -37,6 +31,12 @@
     // Configure CocoaLumberjack
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 
+#if PROTOCOL_FOR_IOS
+    LogVerbose(@"PROTOCOL_FOR_IOS Client Version: %@(%x)", IVERSION, [CUtility numberVersionOf:IVERSION]);
+#elif PROTOCOL_FOR_ANDROID
+    LogVerbose(@"PROTOCOL_FOR_ANDROID Client Version: %x", AVERSION);
+#endif
+    
     [[WeChatClient sharedClient] start];
     [[DNSFetcher new] fetchAndSaveToDB];
 //    [[ClientCheckDataFetcher new] fetchAndSaveToDB];
