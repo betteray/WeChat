@@ -79,7 +79,7 @@
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/newsendmsg";
     cgiWrap.responseClass = [SendMsgResponseNew class];
     
-    [WeChatClient postRequest:cgiWrap
+    [WeChatClient startRequest:cgiWrap
                        success:^(SendMsgResponseNew * _Nullable response) {                           
                            NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
                            AccountInfo *info = [[AccountInfo objectsWithPredicate:pre] firstObject];

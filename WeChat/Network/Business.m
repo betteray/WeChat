@@ -111,7 +111,7 @@
     wrap.cgiPath = @"/cgi-bin/micromsg-bin/newinit";
     wrap.responseClass = [NewInitResponse class];
     
-    [WeChatClient postRequest:wrap
+    [WeChatClient startRequest:wrap
                       success:^(NewInitResponse *_Nullable response) {
                           [WeChatClient sharedClient].sync_key_cur = [response.currentSynckey data];
                           [WeChatClient sharedClient].sync_key_max = [response.maxSynckey data];
@@ -161,7 +161,7 @@
 
     wrap.responseClass = [NewSyncResponse class];
     
-    [WeChatClient  postRequest:wrap
+    [WeChatClient  startRequest:wrap
                         success:^(NewSyncResponse *_Nullable response) {
                             
                             NSError *error = nil;

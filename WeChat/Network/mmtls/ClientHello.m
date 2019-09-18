@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSData *pubkey2;
 @property (nonatomic, strong) NSData *prikey2;
 
+@property (nonatomic, strong) NSData *psk2Data;
+
 @property (nonatomic, strong) NSData *clientHelloData;
 
 @end
@@ -55,28 +57,64 @@
     return self;
 }
 
+- (BOOL)hasLocalPsk {
+    NSString *pskFilePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"psk.key"];
+    return [[NSFileManager defaultManager] fileExistsAtPath:pskFilePath];
+}
+
 - (NSData *)CreateClientHello
 {
     if (!_clientHelloData)
     {
-        NSMutableData *clientHelloData = [[NSData dataWithHexString:@"16F10300D4"] mutableCopy]; //mmtls head [16F10300D4: 0xD4(212)为后面包长度]
-        [clientHelloData appendData:[NSData dataWithHexString:@"000000D00103F101C02B"]];         //fix
-        [clientHelloData appendData:_clientRandom];                                              //client random
-
-        NSUInteger timeStamp = (NSUInteger) [[NSDate date] timeIntervalSince1970];
-        NSData *timeStampData = [NSData packInt32:(int32_t) timeStamp flip:YES];
-        [clientHelloData appendData:timeStampData];         //time
-        [clientHelloData appendData:[NSData dataWithHexString:@"000000A2010000009D001002"]]; //fix
-
-        [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000010041"]]; //fix 0x41 = 65 pubkey len, 00000001 第一个序号（字段）， 0x47 = 0x41 + 6
-        [clientHelloData appendData:_pubkey1];                                           //pubkey
-
-        [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000020041"]]; //fix 0x41 = 65 pubkey len, 00000001 第二个序号（字段），0x47 = 0x41 + 6
-        [clientHelloData appendData:_pubkey2];                                           //pubkey
-
-        [clientHelloData appendData:[NSData dataWithHexString:@"00000001"]]; //fix
-
-        _clientHelloData = [clientHelloData copy];
+        
+        if ([self hasLocalPsk]) {
+            NSString *pskFilePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"psk.key"];
+            _psk2Data = [NSData dataWithContentsOfFile:pskFilePath];
+            LogVerbose(@"Got PSK File.");
+            
+            NSMutableData *clientHelloData = [[NSData dataWithHexString:@"16F1030165"] mutableCopy]; //mmtls head [16F10300D4: 0xD4(212)为后面包长度]
+            [clientHelloData appendData:[NSData dataWithHexString:@"000001610103F102C02B00A8"]];         //fix
+            [clientHelloData appendData:_clientRandom];                                              //client random
+            
+            NSUInteger timeStamp = (NSUInteger) [[NSDate date] timeIntervalSince1970];
+            NSData *timeStampData = [NSData packInt32:(int32_t) timeStamp flip:YES];
+            [clientHelloData appendData:timeStampData];         //time
+            
+            // begin add
+            [clientHelloData appendData:[NSData dataWithHexString:@"00000131020000008B000F01000000840200278D00000000"]]; //fix
+            [clientHelloData appendData:_psk2Data];
+            [clientHelloData appendData:[NSData dataWithHexString:@"0000009D001002"]];
+            // end add
+            [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000010041"]]; //fix 0x41 = 65 pubkey len, 00000001 第一个序号（字段）， 0x47 = 0x41 + 6
+            [clientHelloData appendData:_pubkey1];                                           //pubkey
+            
+            [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000020041"]]; //fix 0x41 = 65 pubkey len, 00000001 第二个序号（字段），0x47 = 0x41 + 6
+            [clientHelloData appendData:_pubkey2];                                           //pubkey
+            
+            [clientHelloData appendData:[NSData dataWithHexString:@"00000001"]]; //fix
+            
+            _clientHelloData = [clientHelloData copy];
+            
+        } else {
+            NSMutableData *clientHelloData = [[NSData dataWithHexString:@"16F10300D4"] mutableCopy]; //mmtls head [16F10300D4: 0xD4(212)为后面包长度]
+            [clientHelloData appendData:[NSData dataWithHexString:@"000000D00103F101C02B"]];         //fix
+            [clientHelloData appendData:_clientRandom];                                              //client random
+            
+            NSUInteger timeStamp = (NSUInteger) [[NSDate date] timeIntervalSince1970];
+            NSData *timeStampData = [NSData packInt32:(int32_t) timeStamp flip:YES];
+            [clientHelloData appendData:timeStampData];         //time
+            [clientHelloData appendData:[NSData dataWithHexString:@"000000A2010000009D001002"]]; //fix
+            
+            [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000010041"]]; //fix 0x41 = 65 pubkey len, 00000001 第一个序号（字段）， 0x47 = 0x41 + 6
+            [clientHelloData appendData:_pubkey1];                                           //pubkey
+            
+            [clientHelloData appendData:[NSData dataWithHexString:@"00000047000000020041"]]; //fix 0x41 = 65 pubkey len, 00000001 第二个序号（字段），0x47 = 0x41 + 6
+            [clientHelloData appendData:_pubkey2];                                           //pubkey
+            
+            [clientHelloData appendData:[NSData dataWithHexString:@"00000001"]]; //fix
+            
+            _clientHelloData = [clientHelloData copy];
+        }
     }
 
     return _clientHelloData;
@@ -85,7 +123,11 @@
 - (NSData *)getHashPart
 {
     NSData *header = [NSData dataWithHexString:@"16F10300D4"];
-    return [_clientHelloData subdataWithRange:NSMakeRange([header length], 0xD4)]; // 取包体内容
+    if ([self hasLocalPsk]) {
+        return [_clientHelloData subdataWithRange:NSMakeRange([header length], 0x165)]; // 取包体内容
+    } else {
+        return [_clientHelloData subdataWithRange:NSMakeRange([header length], 0xD4)]; // 取包体内容
+    }
 }
 
 - (NSData *)getLocal1stPrikey

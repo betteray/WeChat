@@ -36,6 +36,8 @@
 @property (nonatomic, assign) NSInteger writeSeq;
 @property (nonatomic, assign) NSInteger readSeq;
 
+@property (nonatomic, copy) NSString *pskFilePath;
+
 @end
 
 @implementation LongLinkClientWithMMTLS
@@ -52,13 +54,15 @@
 
         _readSerialQueue = dispatch_queue_create("me.ray.FastSocket.Read", DISPATCH_QUEUE_SERIAL);
         _writeSerialQueue = dispatch_queue_create("me.ray.FastSocket.Write", DISPATCH_QUEUE_SERIAL);
+        
+        _pskFilePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"psk.key"];
     }
     return self;
 }
 
 - (void)start
 {
-    FastSocket *client = [[FastSocket alloc] initWithHost:@"58.247.204.141" andPort:@"443"]; //long.weixin.qq.com 58.247.204.141 //163.177.81.141
+    FastSocket *client = [[FastSocket alloc] initWithHost:@"121.51.130.111" andPort:@"80"]; //long.weixin.qq.com 58.247.204.141:443 //163.177.81.141 //121.51.130.111:80
     if ([client connect])
     {
         LogDebug(@"FastSocket Connected To Server.");
@@ -161,6 +165,10 @@
 
 #pragma mark - Deal Server Hello
 
+- (BOOL)hasPskFile {
+    return [[NSFileManager defaultManager] fileExistsAtPath:_pskFilePath];
+}
+
 - (void)onReviceServerHello:(ServerHello *)serverHello
 {
     NSData *hashPart1 = [_clientHello getHashPart];
@@ -200,8 +208,8 @@
     NSData *plainText2 = [WC_AesGcm128 aes128gcmDecrypt:part2 aad:[aad2 copy] key:keyPair.readKEY ivec:readIV2];
     
     {
-        NSData *data = [plainText2 subdataWithRange:NSMakeRange(9, 100)];
-
+        NSData *psk1 = [plainText2 subdataWithRange:NSMakeRange(9, 100)];
+        
         NSData *hashDataTmp = hashData;
         hashDataTmp = [hashDataTmp addDataAtTail:plainText1];
         NSData *hashResult = [WC_SHA256 sha256:hashDataTmp];
@@ -209,9 +217,23 @@
         // 需要密钥扩展一次结果。
         NSMutableData *info222 = [NSMutableData dataWithData:[@"PSK_ACCESS" dataUsingEncoding:NSUTF8StringEncoding]];
         [info222 appendData:hashResult];
-
         NSData *ResumptionSecret = [WC_HKDF HKDF_Expand_Prk2:EphemeralSecret Info:info222]; //expanded secret
-        [_delegate onLongLinkHandShakeFinishedWithPSK:data resumptionSecret:ResumptionSecret];
+        
+        if ([self hasPskFile]) {
+            // psk fresh 第二次连接
+            NSMutableData *info333 = [NSMutableData dataWithData:[@"PSK_REFRESH" dataUsingEncoding:NSUTF8StringEncoding]];
+            [info333 appendData:hashResult];
+//            ResumptionSecret = [WC_HKDF HKDF_Expand_Prk2:EphemeralSecret Info:info333]; //expanded secret
+        }
+        
+        [_delegate onLongLinkHandShakeFinishedWithPSK:psk1 resumptionSecret:ResumptionSecret];
+        
+        ////
+        
+        // save psk2
+        NSData *psk2 = [plainText2 subdataWithRange:NSMakeRange(9 + 100, [plainText2 length] - 9 - 100)];
+        psk2 = [psk2 subdataWithRange:NSMakeRange(0x30 - 4, [psk2 length] - 0x30 + 4)];
+        [psk2 writeToFile:_pskFilePath atomically:YES];
     }
 
     // Part3 decrypt
@@ -221,7 +243,7 @@
     [aad3 appendData:[NSData packInt32:(int32_t)[part3 length] flip:NO]];
 
     NSData *readIV3 = [WC_Hex IV:keyPair.readIV XORSeq:_readSeq++]; //序号从1开始，每次+1；
-    NSData *plainText3 = [WC_AesGcm128 aes128gcmDecrypt:part3 aad:[aad3 copy] key:keyPair.readKEY ivec:readIV3];
+    NSData *plainText3 = [WC_AesGcm128 aes128gcmDecrypt:part3 aad:[aad3 copy] key:keyPair.readKEY ivec:readIV3]; //[:20]字节应该等于server finished hmac256 用于校验？
     
     /******************************** 解密PSK结束 (OK) ****************************************/
 
