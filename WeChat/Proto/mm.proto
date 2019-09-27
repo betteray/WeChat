@@ -2999,8 +2999,8 @@ message BuiltinIP {
 message BuiltinIPList {
     required  uint32  longConnectIpcount  = 1;
     required  uint32  shortConnectIpcount  = 2;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  longConnectIplist  = 3;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  shortConnectIplist  = 4;
+    repeated  BuiltinIP  longConnectIplist  = 3;
+    repeated  BuiltinIP  shortConnectIplist  = 4;
     required  uint32  seq  = 5;
 }
 
@@ -4709,7 +4709,7 @@ message CmdItem {
 
 message CmdList {
     required  uint32  count  = 1;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  list  = 2;
+    repeated  CmdItem  list  = 2;
 }
 
 message ColikeAppInfo {
@@ -13557,7 +13557,7 @@ message NewInitResponse {
     required  uint32  continueFlag  = 4;
     required  uint32  selectBitmap  = 5;
     required  uint32  cmdCount  = 6;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  cmdList  = 7;
+    repeated  CmdItem  cmdList  = 7;
     required  uint32  ratio  = 8;
 }
 
@@ -17931,13 +17931,13 @@ message SendHardDeviceMsgResponse {
 
 message SendMsgRequestNew {
     required  uint32  count  = 1;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  list  = 2;
+    repeated  MicroMsgRequestNew  list  = 2;
 }
 
 message SendMsgResponseNew {
     required  BaseResponse  baseResponse  = 1;
     required  uint32  count  = 2;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  list  = 3;
+    repeated  MicroMsgResponseNew  list  = 3;
 }
 
 message SendOpenIMVerifyReplyReq {
