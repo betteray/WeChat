@@ -14,6 +14,7 @@
 #import "AccountInfo.h"
 #import "SessionKeyStore.h"
 #import "WCContact.h"
+#import <ASIFormDataRequest.h>
 
 @interface LoginViewController ()
 
@@ -46,6 +47,50 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self autoAuthIfCould];
     });
+    
+    // test for 003.
+    {
+        NSData *data = [self get003FromLocalServer];
+        LogVerbose(@"data: %@", data);
+    }
+    
+    {
+        NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"secmanualauth_706" ofType:@"bin"]];
+        ManualAuthRequest *request = [ManualAuthRequest parseFromData:data error:nil];
+        
+        WCExtInfo *info = [WCExtInfo parseFromData:request.aesReqData.extSpamInfo.buffer error:nil];
+        LogVerbose(@"info: %@", info);
+    }
+    
+    {
+        NSData* data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"secautoauth" ofType:@"bin"]];
+        AutoAuthRequest *request = [AutoAuthRequest parseFromData:data error:nil];
+        
+        WCExtInfo *info = [WCExtInfo parseFromData:request.aesReqData.extSpamInfo.buffer error:nil];
+        LogVerbose(@"reqeust: %@", info);
+    }
+    
+    {
+        NSData* data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"verifyuser" ofType:@"bin"]];
+        VerifyUserRequest *request = [VerifyUserRequest parseFromData:data error:nil];
+        
+        WCExtInfo *info = [WCExtInfo parseFromData:request.extSpamInfo.buffer error:nil];
+        LogVerbose(@"reqeust: %@", info);
+    }
+}
+
+- (NSData *)get003FromLocalServer {
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://10.20.10.22:8099"]];
+    [request addPostValue:@"123455" forKey:@"postData"];
+    [request startSynchronous];
+    
+    NSError *error = [request error];
+    if (error)
+    {
+        LogError(@"Error: %@", error);
+    }
+    
+    return [request responseData];
 }
 
 - (void)autoAuthIfCould {
@@ -101,7 +146,7 @@
     aesReqData.builtinIpseq = 0;
     aesReqData.clientSeqId = device.clientSeq;
 #if PROTOCOL_FOR_ANDROID
-    aesReqData.clientSeqIdsign = device.clientSeqIdsign;
+    aesReqData.signature = device.clientSeqIdsign;
 #endif
     aesReqData.deviceName = device.deviceName;
     aesReqData.deviceType = device.deviceType;
@@ -307,14 +352,14 @@
 
 - (void)onLoginResponse:(UnifyAuthResponse *)resp {
     switch (resp.baseResponse.ret) {
-        case MM_ERR_MmErrIdcRedirect: { //需要重定向
+        case -301: { //需要重定向
             if (resp.networkSectResp.builtinIplist.longConnectIpcount > 0) {
                 //NSString *longlinkIp = [[resp.networkSectResp.builtinIplist.longConnectIplistArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
                 //[[WeChatClient sharedClient] restartUsingIpAddress:longlinkIp];
             }
         }
             break;
-        case MM_ERR_MmOk: {
+        case 0: {
             int32_t uin = resp.authSectResp.uin;
             [WeChatClient sharedClient].uin = uin;
 

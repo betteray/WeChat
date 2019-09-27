@@ -17,21 +17,7 @@
     #import <Realm/Realm.h>
     #import <SDWebImage/UIImageView+WebCache.h>
 
-    #import "Mmbase.pbobjc.h"
-    #import "Mmbuiltintype.pbobjc.h"
-    #import "Mmlogin.pbobjc.h"
-    #import "Mmopenapi.pbobjc.h"
-    #import "Mmprimsend.pbobjc.h"
-    #import "Mmreport.pbobjc.h"
-    #import "Mmsns.pbobjc.h"
-    #import "Mmsync.pbobjc.h"
-    #import "Mmthinker.pbobjc.h"
-    #import "Mmutils.pbobjc.h"
-    #import "Wwbiz.pbobjc.h"
-    #import "Wwopenim.pbobjc.h"
-    #import "Wwunkown.pbobjc.h"
-    #import "Mmerror.pbobjc.h"
-    #import "Safe.pbobjc.h"
+    #import "MM.pbobjc.h"
 
     #import "UIViewController+ProgressHUB.h"
     #import "Constants.h"
