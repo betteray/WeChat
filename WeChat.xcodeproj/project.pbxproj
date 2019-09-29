@@ -156,6 +156,7 @@
 		71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A421E1A12E00B77500 /* MomentsTableViewController.m */; };
 		71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A721E1A32100B77500 /* PeapleNearByTableViewController.m */; };
 		71E1C19D230657E900F5032A /* safe.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71E1C19C230657E900F5032A /* safe.proto */; };
+		71E9EAC1234068FA00353DBD /* CalSpamAlg.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E9EAC0234068FA00353DBD /* CalSpamAlg.m */; };
 		8A6B7E6AD0B44DCDF3A4DADB /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD18BBDEB2F4000E11CEB5B0 /* libPods-WeChatTests.a */; };
 		A171A24009C24E78AD226EE0 /* libPods-WeChatUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB43DD6C2AA522C9401323 /* libPods-WeChatUITests.a */; };
 		B29AF48CDFF2BFFF255F71A2 /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 814381742B1C4841306B49D3 /* libPods-WeChatTests.a */; };
@@ -507,6 +508,8 @@
 		71DE10A621E1A32100B77500 /* PeapleNearByTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeapleNearByTableViewController.h; sourceTree = "<group>"; };
 		71DE10A721E1A32100B77500 /* PeapleNearByTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeapleNearByTableViewController.m; sourceTree = "<group>"; };
 		71E1C19C230657E900F5032A /* safe.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = safe.proto; sourceTree = "<group>"; };
+		71E9EABF234068FA00353DBD /* CalSpamAlg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalSpamAlg.h; sourceTree = "<group>"; };
+		71E9EAC0234068FA00353DBD /* CalSpamAlg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalSpamAlg.m; sourceTree = "<group>"; };
 		814381742B1C4841306B49D3 /* libPods-WeChatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8435ACA679E3636C36C7D47C /* Pods-WeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChat/Pods-WeChat.debug.xcconfig"; sourceTree = "<group>"; };
 		A8AE4D42890ED7488CA924E7 /* Pods-WeChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatUITests/Pods-WeChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -905,6 +908,8 @@
 				46206F5E21E9EA1E00BF0B82 /* CUtility.h */,
 				46206F5F21E9EA1E00BF0B82 /* CUtility.m */,
 				46CD1A8422DED2FE0023C585 /* TODO.md */,
+				71E9EABF234068FA00353DBD /* CalSpamAlg.h */,
+				71E9EAC0234068FA00353DBD /* CalSpamAlg.m */,
 			);
 			path = WeChat;
 			sourceTree = "<group>";
@@ -1439,6 +1444,7 @@
 				46D2CA67223A44EC0053C4A6 /* wwbiz.proto in Sources */,
 				46EB620921F98E1100760593 /* mmopenapi.proto in Sources */,
 				46EB61FC21F98E1100760593 /* mmemotionstore.proto in Sources */,
+				71E9EAC1234068FA00353DBD /* CalSpamAlg.m in Sources */,
 				7161984F21CB712900A76F39 /* long_pack.m in Sources */,
 				46EB620E21F98E1100760593 /* mmlbs.proto in Sources */,
 				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,

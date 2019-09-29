@@ -16,6 +16,8 @@
 #import "WCContact.h"
 #import <ASIFormDataRequest.h>
 
+#import "CalSpamAlg.h"
+
 @interface LoginViewController ()
 
 @property(weak, nonatomic) IBOutlet UITextField *userNameTextField;
@@ -48,6 +50,7 @@
         [self autoAuthIfCould];
     });
     
+    /*
     // test for 003.
     {
         NSData *data = [self get003FromLocalServer];
@@ -77,6 +80,11 @@
         WCExtInfo *info = [WCExtInfo parseFromData:request.extSpamInfo.buffer error:nil];
         LogVerbose(@"reqeust: %@", info);
     }
+    
+     */
+    
+    NSString * result = [CalSpamAlg calwcste:0.63889456];
+    LogVerbose(@"%@", result);
 }
 
 - (NSData *)get003FromLocalServer {
