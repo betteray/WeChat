@@ -34,7 +34,6 @@
 		462D9C3A21DDA60F00FC5461 /* WCContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C3921DDA60F00FC5461 /* WCContact.m */; };
 		463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */ = {isa = PBXBuildFile; fileRef = 463BAD2D21D38F1700847A8B /* ClientCheckData.m */; };
 		463D13442212E4D5007C1DBD /* MMWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D13432212E4D5007C1DBD /* MMWKWebViewController.m */; };
-		4649DD6821ED8660006315DC /* 62.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4649DD6721ED8660006315DC /* 62.bin */; };
 		464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82321D4B681003E923F /* DefaultLongIp.m */; };
 		464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82621D4B9DD003E923F /* DefaultShortIp.m */; };
 		464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82921D4E8BD003E923F /* NSString+Regex.m */; };
@@ -104,7 +103,6 @@
 		71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */; };
 		71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */; };
 		71076B2621CCF10500570FB1 /* TestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71076B2521CCF10500570FB1 /* TestViewController.mm */; };
-		711061502334886D006DE404 /* wx_st_ios_705.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7110614F2334886D006DE404 /* wx_st_ios_705.bin */; };
 		7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C35D21C3494300A3E900 /* LoginViewController.m */; };
 		7121C36521C3610000A3E900 /* ChatsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C36421C3610000A3E900 /* ChatsTableViewController.m */; };
 		712C6E60214A145600603022 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E5F214A145600603022 /* AppDelegate.m */; };
@@ -134,9 +132,6 @@
 		712F960921D78F9300CFE3A0 /* SyncKeyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F960821D78F9300CFE3A0 /* SyncKeyStore.m */; };
 		71456CA4233E1B0600986437 /* mm.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71456CA3233E1B0600986437 /* mm.proto */; };
 		71456CA7233E1B3200986437 /* Mm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 71456CA5233E1B3200986437 /* Mm.pbobjc.m */; };
-		71456CA9233E225F00986437 /* secmanualauth_706.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71456CA8233E225F00986437 /* secmanualauth_706.bin */; };
-		71456CAB233E273B00986437 /* secautoauth.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71456CAA233E273A00986437 /* secautoauth.bin */; };
-		71456CAD233E40F700986437 /* verifyuser.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71456CAC233E40F700986437 /* verifyuser.bin */; };
 		7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5102196B720005064C4 /* NSString+HexDump.m */; };
 		7154D5162196B721005064C4 /* HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5132196B720005064C4 /* HexDump.m */; };
 		7154D5172196B721005064C4 /* NSData+HexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 7154D5142196B721005064C4 /* NSData+HexDump.m */; };
@@ -157,6 +152,8 @@
 		71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A721E1A32100B77500 /* PeapleNearByTableViewController.m */; };
 		71E1C19D230657E900F5032A /* safe.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71E1C19C230657E900F5032A /* safe.proto */; };
 		71E9EAC1234068FA00353DBD /* CalSpamAlg.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E9EAC0234068FA00353DBD /* CalSpamAlg.m */; };
+		71F9F599235088EF00C6C736 /* Safe.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F597235088EF00C6C736 /* Safe.pbobjc.m */; };
+		71F9F5AA235459AD00C6C736 /* PersonalInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */; };
 		8A6B7E6AD0B44DCDF3A4DADB /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD18BBDEB2F4000E11CEB5B0 /* libPods-WeChatTests.a */; };
 		A171A24009C24E78AD226EE0 /* libPods-WeChatUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB43DD6C2AA522C9401323 /* libPods-WeChatUITests.a */; };
 		B29AF48CDFF2BFFF255F71A2 /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 814381742B1C4841306B49D3 /* libPods-WeChatTests.a */; };
@@ -230,7 +227,6 @@
 		463BAD2D21D38F1700847A8B /* ClientCheckData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckData.m; sourceTree = "<group>"; };
 		463D13422212E4D5007C1DBD /* MMWKWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMWKWebViewController.h; sourceTree = "<group>"; };
 		463D13432212E4D5007C1DBD /* MMWKWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMWKWebViewController.m; sourceTree = "<group>"; };
-		4649DD6721ED8660006315DC /* 62.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = 62.bin; sourceTree = "<group>"; };
 		464FB82221D4B681003E923F /* DefaultLongIp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultLongIp.h; sourceTree = "<group>"; };
 		464FB82321D4B681003E923F /* DefaultLongIp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultLongIp.m; sourceTree = "<group>"; };
 		464FB82521D4B9DD003E923F /* DefaultShortIp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultShortIp.h; sourceTree = "<group>"; };
@@ -324,7 +320,6 @@
 		71008F4021B7A36200DE8DF8 /* MMTLSShortLinkResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMTLSShortLinkResponse.h; sourceTree = "<group>"; };
 		71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMTLSShortLinkResponse.m; sourceTree = "<group>"; };
 		71076B2521CCF10500570FB1 /* TestViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestViewController.mm; sourceTree = "<group>"; };
-		7110614F2334886D006DE404 /* wx_st_ios_705.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = wx_st_ios_705.bin; sourceTree = "<group>"; };
 		7121C35C21C3494300A3E900 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7121C35D21C3494300A3E900 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7121C36321C3610000A3E900 /* ChatsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatsTableViewController.h; sourceTree = "<group>"; };
@@ -466,9 +461,6 @@
 		71456CA3233E1B0600986437 /* mm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm.proto; sourceTree = "<group>"; };
 		71456CA5233E1B3200986437 /* Mm.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mm.pbobjc.m; sourceTree = "<group>"; };
 		71456CA6233E1B3200986437 /* Mm.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mm.pbobjc.h; sourceTree = "<group>"; };
-		71456CA8233E225F00986437 /* secmanualauth_706.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = secmanualauth_706.bin; sourceTree = "<group>"; };
-		71456CAA233E273A00986437 /* secautoauth.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = secautoauth.bin; sourceTree = "<group>"; };
-		71456CAC233E40F700986437 /* verifyuser.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = verifyuser.bin; sourceTree = "<group>"; };
 		7154D50F2196B720005064C4 /* HexDump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexDump.h; sourceTree = "<group>"; };
 		7154D5102196B720005064C4 /* NSString+HexDump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HexDump.m"; sourceTree = "<group>"; };
 		7154D5112196B720005064C4 /* NSData+HexDump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+HexDump.h"; sourceTree = "<group>"; };
@@ -510,6 +502,10 @@
 		71E1C19C230657E900F5032A /* safe.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = safe.proto; sourceTree = "<group>"; };
 		71E9EABF234068FA00353DBD /* CalSpamAlg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalSpamAlg.h; sourceTree = "<group>"; };
 		71E9EAC0234068FA00353DBD /* CalSpamAlg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalSpamAlg.m; sourceTree = "<group>"; };
+		71F9F597235088EF00C6C736 /* Safe.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Safe.pbobjc.m; sourceTree = "<group>"; };
+		71F9F598235088EF00C6C736 /* Safe.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Safe.pbobjc.h; sourceTree = "<group>"; };
+		71F9F5A8235459AD00C6C736 /* PersonalInfoService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalInfoService.h; sourceTree = "<group>"; };
+		71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoService.m; sourceTree = "<group>"; };
 		814381742B1C4841306B49D3 /* libPods-WeChatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8435ACA679E3636C36C7D47C /* Pods-WeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChat/Pods-WeChat.debug.xcconfig"; sourceTree = "<group>"; };
 		A8AE4D42890ED7488CA924E7 /* Pods-WeChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatUITests/Pods-WeChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -613,6 +609,8 @@
 			children = (
 				462D9C3421DCD2D000FC5461 /* SyncCmdHandler.h */,
 				462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */,
+				71F9F5A8235459AD00C6C736 /* PersonalInfoService.h */,
+				71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -649,11 +647,6 @@
 		4649DD6621ED864F006315DC /* Res */ = {
 			isa = PBXGroup;
 			children = (
-				71456CAA233E273A00986437 /* secautoauth.bin */,
-				71456CA8233E225F00986437 /* secmanualauth_706.bin */,
-				71456CAC233E40F700986437 /* verifyuser.bin */,
-				7110614F2334886D006DE404 /* wx_st_ios_705.bin */,
-				4649DD6721ED8660006315DC /* 62.bin */,
 			);
 			path = Res;
 			sourceTree = "<group>";
@@ -757,6 +750,8 @@
 		46D2CA322239F1CE0053C4A6 /* objc_out */ = {
 			isa = PBXGroup;
 			children = (
+				71F9F598235088EF00C6C736 /* Safe.pbobjc.h */,
+				71F9F597235088EF00C6C736 /* Safe.pbobjc.m */,
 				71456CA6233E1B3200986437 /* Mm.pbobjc.h */,
 				71456CA5233E1B3200986437 /* Mm.pbobjc.m */,
 			);
@@ -806,7 +801,6 @@
 				46EB61F021F98E1000760593 /* BlockDumpList.proto */,
 				46EB61F421F98E1000760593 /* mmtalk.proto */,
 				46285D6022EFFD58000841BA /* mmkv.proto */,
-				71E1C19C230657E900F5032A /* safe.proto */,
 			);
 			path = proto;
 			sourceTree = "<group>";
@@ -939,6 +933,7 @@
 			isa = PBXGroup;
 			children = (
 				71456CA3233E1B0600986437 /* mm.proto */,
+				71E1C19C230657E900F5032A /* safe.proto */,
 				46D2CA332239F1F30053C4A6 /* proto */,
 				46D2CA322239F1CE0053C4A6 /* objc_out */,
 				712C6F19214A6A5800603022 /* PROTO_README.md */,
@@ -1305,19 +1300,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				711061502334886D006DE404 /* wx_st_ios_705.bin in Resources */,
 				4685A4B322E06E4E00DE95BE /* 703_login_2.txt in Resources */,
 				46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */,
 				712C6F1A214A6A5800603022 /* PROTO_README.md in Resources */,
-				71456CAB233E273B00986437 /* secautoauth.bin in Resources */,
 				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
 				460CDE50220088CE0075F3E5 /* cgi.json in Resources */,
 				46CD1A8522DED2FE0023C585 /* TODO.md in Resources */,
-				71456CA9233E225F00986437 /* secmanualauth_706.bin in Resources */,
-				71456CAD233E40F700986437 /* verifyuser.bin in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
-				4649DD6821ED8660006315DC /* 62.bin in Resources */,
 				4685A4B522E06FFF00DE95BE /* 703_login_3.txt in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
 				712C7143214B5A4B00603022 /* LICENSE in Resources */,
@@ -1429,6 +1419,7 @@
 				46EB620B21F98E1100760593 /* mmgame.proto in Sources */,
 				46EB620021F98E1100760593 /* mmextdevice.proto in Sources */,
 				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
+				71F9F599235088EF00C6C736 /* Safe.pbobjc.m in Sources */,
 				712F95F221D0981B00CFE3A0 /* WCDevice.m in Sources */,
 				46EB61FB21F98E1100760593 /* mmimg.proto in Sources */,
 				712F960021D20A7800CFE3A0 /* ShortLinkClient.m in Sources */,
@@ -1462,6 +1453,7 @@
 				46EB620321F98E1100760593 /* mmcard.proto in Sources */,
 				465A64DB22EEDBBE00711C60 /* mmhongbao.proto in Sources */,
 				46EB61FA21F98E1100760593 /* mmemotion.proto in Sources */,
+				71F9F5AA235459AD00C6C736 /* PersonalInfoService.m in Sources */,
 				7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */,
 				7121C36521C3610000A3E900 /* ChatsTableViewController.m in Sources */,
 				71E1C19D230657E900F5032A /* safe.proto in Sources */,

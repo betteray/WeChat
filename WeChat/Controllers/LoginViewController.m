@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "AppDelegate.h"
+
 #import "WCECDH.h"
 #import "FSOpenSSL.h"
 #import "WCBuiltinIP.h"
@@ -17,11 +19,15 @@
 #import <ASIFormDataRequest.h>
 
 #import "CalSpamAlg.h"
+#import "NSData+Compression.h"
+#import "Safe.pbobjc.h"
 
 @interface LoginViewController ()
 
 @property(weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property(weak, nonatomic) IBOutlet UITextField *pwdTextField;
+
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 @property(nonatomic, strong) NSData *priKeyData;
 @property(nonatomic, strong) NSData *pubKeyData;
@@ -33,6 +39,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+#if PROTOCOL_FOR_ANDROID
+    _versionLabel.text = [NSString stringWithFormat:@"Android (0x%x)", CLIENT_VERSION];
+#elif PROTOCOL_FOR_IOS
+    _versionLabel.text = [NSString stringWithFormat:@"iOS (0x%x)", CLIENT_VERSION];
+#endif
+    
     NSData *priKeyData = nil;
     NSData *pubKeyData = nil;
 
@@ -82,9 +94,6 @@
     }
     
      */
-    
-    NSString * result = [CalSpamAlg calwcste:0.63889456];
-    LogVerbose(@"%@", result);
 }
 
 - (NSData *)get003FromLocalServer {
@@ -180,12 +189,12 @@
     aesReqData.ostype = [[NSString alloc] initWithData:device.osType encoding:NSUTF8StringEncoding];
 
 #if PROTOCOL_FOR_IOS
-    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
-    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:pre] firstObject];
-    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
-    clientCheckData.iLen = (int) [ccd.data length];
-    clientCheckData.buffer = ccd.data;
-    aesReqData.clientCheckData = clientCheckData;
+//    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
+//    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:pre] firstObject];
+//    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
+//    clientCheckData.iLen = (int) [ccd.data length];
+//    clientCheckData.buffer = ccd.data;
+//    aesReqData.clientCheckData = clientCheckData;
 #endif
     ManualAuthRequest *authRequest = [ManualAuthRequest new];
     authRequest.aesReqData = aesReqData;
@@ -312,12 +321,12 @@
     aesReqData.channel = 10003;
 
 #if PROTOCOL_FOR_IOS
-    NSPredicate *clientCheckDataPre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
-    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:clientCheckDataPre] firstObject];
-    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
-    clientCheckData.iLen = (int) [ccd.data length];
-    clientCheckData.buffer = ccd.data;
-    aesReqData.clientCheckData = clientCheckData;
+//    NSPredicate *clientCheckDataPre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
+//    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:clientCheckDataPre] firstObject];
+//    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
+//    clientCheckData.iLen = (int) [ccd.data length];
+//    clientCheckData.buffer = ccd.data;
+//    aesReqData.clientCheckData = clientCheckData;
 #endif
     AutoAuthRequest *authRequest = [AutoAuthRequest new];
     authRequest.aesReqData = aesReqData;
@@ -459,7 +468,10 @@
 - (void)enterWeChat {
     UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
     UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"WeChatTabBarController"];
-    [self presentViewController:nav animated:YES completion:nil];
+//    [self presentViewController:nav animated:YES completion:nil];
+    
+    AppDelegate *delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
+    delegate.window.rootViewController = nav;
 }
 
 @end

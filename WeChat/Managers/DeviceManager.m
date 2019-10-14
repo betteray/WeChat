@@ -11,6 +11,7 @@
 @interface DeviceManager ()
 @property (nonatomic, strong) WCDevice *sevenPuls;
 @property (nonatomic, strong) WCDevice *mi3;
+@property (nonatomic, strong) WCDevice *huawei6p;
 @end
 
 @implementation DeviceManager
@@ -125,6 +126,9 @@
         "<k61>true</k61>"
         "</softtype>";
         
+        
+        /// mi3
+        
         NSString *sofyXml3 = @"<softtype>"
         "<lctmoc>0</lctmoc>"
         "<level>1</level>"
@@ -198,6 +202,32 @@
                                               deviceID:guidData];
         
         _mi3 = mi3;
+        
+        
+        /// huawei 6p
+        NSString *sofytype4 = @"<softtype><lctmoc>0</lctmoc><level>1</level><k1>0 </k1><k2>angler-03.87</k2><k3>8.1.0</k3><k4>867979021665986</k4><k5></k5><k6></k6><k7>0f2e799e321a92a0</k7><k8>8XV7N16125001121</k8><k9>Nexus 6P</k9><k10>8</k10><k11>Qualcomm Technologies, Inc MSM8994</k11><k12></k12><k13></k13><k14>02:00:00:00:00:00</k14><k15>02:00:00:00:00:00</k15><k16>half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt evtstrm aes pmull sha1 sha2 crc32</k16><k18>18c867f0717aa67b2ab7347505ba07ed</k18><k21>ray&#8217;s Mac Pro</k21><k22></k22><k24>b8:e8:56:29:fd:8c</k24><k26>0</k26><k30>&quot;ray&#8217;s Mac Pro&quot;</k30><k33>com.tencent.mm</k33><k34>google/angler/angler:8.1.0/OPM7.181205.001/5080180:user/release-keys</k34><k35>angler</k35><k36>angler-03.79</k36><k37>google</k37><k38>angler</k38><k39>angler</k39><k40>angler</k40><k41>0</k41><k42>Huawei</k42><k43>null</k43><k44>0</k44><k45></k45><k46></k46><k47>wifi</k47><k48>867979021665986</k48><k49>/data/user/0/com.tencent.mm/</k49><k52>0</k52><k53>0</k53><k57>1460</k57><k58></k58><k59>3</k59><k60></k60><k61>true</k61><k62></k62><k63>A2fba8d86e7d1e66</k63><k64>13b8e25d-ce4f-3caa-a14a-9f4511a25e85</k64></softtype>";
+        
+        NSString *guid2 = @"A2fba8d86e7d1e6";
+        NSString *clientSeqId2 = [NSString stringWithFormat:@"%@_%@", guid2, ts];
+        NSData *guidData2 = [[NSString stringWithFormat:@"%@\0", [guid substringWithRange:NSMakeRange(0, 15)]] dataUsingEncoding:NSUTF8StringEncoding];
+        WCDevice *huawei6p = [[WCDevice alloc] initWithImei:@"867979021665986"
+                                              softType:sofytype4
+                                             clientSeq:clientSeqId2
+                                       clientSeqIdsign:@"18c867f0717aa67b2ab7347505ba07ed"
+                                            deviceName:@"Huawei-Nexus 6P"
+                                            deviceType:@"<deviceinfo><MANUFACTURER name=\"Huawei\"><MODEL name=\"Nexus 6P\"><VERSION_RELEASE name=\"8.1.0\"><VERSION_INCREMENTAL name=\"d3467592df\"><DISPLAY name=\"lineage_angler-userdebug 8.1.0 OPM7.181205.001 d3467592df\"></DISPLAY></VERSION_INCREMENTAL></VERSION_RELEASE></MODEL></MANUFACTURER></deviceinfo>"
+                                              language:@"zh_CN"
+                                              timeZone:@"8.00"
+                                           deviceBrand:@"google"
+                                                chanel:0
+                                           realCountry:@"cn"
+                                              bundleID:@""  //ios only
+                                             iphoneVer:@""  //ios only
+                                                osType:[@"android-27" dataUsingEncoding:NSUTF8StringEncoding]
+                                              adSource:@""  //ios only
+                                           deviceModel:@"Nexus 6Parmeabi-v7a"  //ios only
+                                              deviceID:guidData2];
+        _huawei6p = huawei6p;
     }
 
     return self;
@@ -208,7 +238,7 @@
 #if PROTOCOL_FOR_IOS
     return _sevenPuls;
 #elif PROTOCOL_FOR_ANDROID
-    return _mi3;
+    return _huawei6p;
 #endif
 }
 

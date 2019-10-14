@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+//message BaseRequest {
+//    required  bytes  sessionKey  = 1;
+//    required  uint32  uin  = 2;
+//    required  bytes  deviceId  = 3;
+//    required  int32  clientVersion  = 4;
+//    required  bytes  deviceType  = 5;
+//    optional  uint32  scene  = 6;
+//}
+
+message ReportClientCheckReq
+{
+//    required BaseRequest baseRequest = 1;
+    required string st = 2; // <st><Manufacturer>Huawei</Manufacturer><Model>Nexus 6P</Model><VersionRelease>8.1.0</VersionRelease><VersionIncremental>d3467592df</VersionIncremental><Display>lineage_angler-userdebug 8.1.0 OPM7.181205.001 d3467592df</Display><FingerPrint>google/angler/angler:8.1.0/OPM7.181205.001/5080180:user/release-keys</FingerPrint><NDM>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</NDM></st>
+    required uint64 msgId = 3; // 18446744071562067970
+}
+
+message tette {
+    message tttt {
+        optional string tag11 = 11;
+        optional string tag12 = 12;
+    }
+    
+    optional tttt tag3 = 3;
+}

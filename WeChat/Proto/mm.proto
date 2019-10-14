@@ -21574,12 +21574,12 @@ message VerifyUserRequest {
     required  BaseRequest  baseRequest  = 1;
     required  uint32  opcode  = 2;
     required  uint32  verifyUserListSize  = 3;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  verifyUserList  = 4;
+    repeated  VerifyUser  verifyUserList  = 4;
     optional  string  verifyContent  = 5;
     optional  uint32  sceneListCount  = 6;
     repeated  uint32  sceneList  = 7;
     optional  uint32  verifyInfoListCount  = 8;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  verifyInfoList  = 9;
+    repeated  VerifyUserInfo  verifyInfoList  = 9;
     optional  SKBuiltinBuffer_t  clientCheckData  = 10;
     optional  SKBuiltinBuffer_t  extSpamInfo  = 11;
     optional  uint32  needConfirm  = 12;
