@@ -281,11 +281,11 @@
             </objects>
             <point key="canvasLocation" x="950" y="1577"/>
         </scene>
-        <!--Chats-->
+        <!--Navigation Controller-->
         <scene sceneID="rYd-fJ-5Dw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yc9-e8-1KO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chats" id="Ovp-wP-l1x"/>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="Ovp-wP-l1x"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Js1-KQ-urW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -300,11 +300,11 @@
             </objects>
             <point key="canvasLocation" x="-985" y="2551"/>
         </scene>
-        <!--Contacts-->
+        <!--Navigation Controller-->
         <scene sceneID="GJt-3I-Ek0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vb3-9f-1FC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Contacts" id="Z48-D2-Inl"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="Z48-D2-Inl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rg8-TF-ioQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -774,11 +774,11 @@
             </objects>
             <point key="canvasLocation" x="2861.5999999999999" y="3312.5937031484259"/>
         </scene>
-        <!--Discover-->
+        <!--Navigation Controller-->
         <scene sceneID="bnu-nf-sd5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dG8-aT-OgA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" id="VLY-04-lSF"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="VLY-04-lSF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g6v-FC-3Ng">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -793,11 +793,11 @@
             </objects>
             <point key="canvasLocation" x="1575" y="2551"/>
         </scene>
-        <!--Me-->
+        <!--Navigation Controller-->
         <scene sceneID="kR6-Py-X0Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0an-Qa-p4O" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Me" id="5OQ-kL-Krn"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="5OQ-kL-Krn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yFs-cl-L6z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
