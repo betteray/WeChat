@@ -23,6 +23,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     [self getprofile];
 }
@@ -42,22 +46,27 @@
     
     [WeChatClient startRequest:cgiWrap
                       success:^(GetProfileResponse *_Nullable response) {
-                          [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:response.userInfoExt.bigHeadImgURL]];
-                          
-                          self.nickNameLabel.text = response.userInfo.nickName.string;
-                          self.signatureLabel.text = response.userInfo.signature;
-                          
-                          RLMRealm *realm = [RLMRealm defaultRealm];
-                          [realm beginWriteTransaction];
-                          [WCContact createOrUpdateInDefaultRealmWithValue:@[response.userInfo.userName.string,
-                                                                             response.userInfo.nickName.string,
-                                                                             response.userInfo.province,
-                                                                             response.userInfo.city,
-                                                                             response.userInfo.signature,
-                                                                             @"",
-                                                                             response.userInfoExt.bigHeadImgURL,
-                                                                             response.userInfoExt.smallHeadImgURL]];
-                          [realm commitWriteTransaction];
+                        
+        LogDebug(@"%@", response);
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:response.userInfoExt.bigHeadImgURL]];
+
+        self.nickNameLabel.text = [NSString stringWithFormat:@"%@-%d",
+                                   response.userInfo.nickName.string,
+                                   response.userInfo.sex];
+        
+        self.signatureLabel.text = response.userInfo.signature;
+
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [WCContact createOrUpdateInDefaultRealmWithValue:@[response.userInfo.userName.string,
+                                                         response.userInfo.nickName.string,
+                                                         response.userInfo.province,
+                                                         response.userInfo.city,
+                                                         response.userInfo.signature,
+                                                         @"",
+                                                         response.userInfoExt.bigHeadImgURL,
+                                                         response.userInfoExt.smallHeadImgURL]];
+        [realm commitWriteTransaction];
                       }
                       failure:^(NSError *_Nonnull error){
                           

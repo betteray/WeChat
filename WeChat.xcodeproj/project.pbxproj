@@ -154,6 +154,8 @@
 		71E9EAC1234068FA00353DBD /* CalSpamAlg.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E9EAC0234068FA00353DBD /* CalSpamAlg.m */; };
 		71F9F599235088EF00C6C736 /* Safe.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F597235088EF00C6C736 /* Safe.pbobjc.m */; };
 		71F9F5AA235459AD00C6C736 /* PersonalInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */; };
+		71F9F5BB235576B500C6C736 /* mmregion4client_zh_CN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 71F9F5BA235576B500C6C736 /* mmregion4client_zh_CN.txt */; };
+		71F9F5BD2355774700C6C736 /* mmregion4client_en.txt in Resources */ = {isa = PBXBuildFile; fileRef = 71F9F5BC2355774700C6C736 /* mmregion4client_en.txt */; };
 		8A6B7E6AD0B44DCDF3A4DADB /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD18BBDEB2F4000E11CEB5B0 /* libPods-WeChatTests.a */; };
 		A171A24009C24E78AD226EE0 /* libPods-WeChatUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB43DD6C2AA522C9401323 /* libPods-WeChatUITests.a */; };
 		B29AF48CDFF2BFFF255F71A2 /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 814381742B1C4841306B49D3 /* libPods-WeChatTests.a */; };
@@ -506,6 +508,8 @@
 		71F9F598235088EF00C6C736 /* Safe.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Safe.pbobjc.h; sourceTree = "<group>"; };
 		71F9F5A8235459AD00C6C736 /* PersonalInfoService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalInfoService.h; sourceTree = "<group>"; };
 		71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoService.m; sourceTree = "<group>"; };
+		71F9F5BA235576B500C6C736 /* mmregion4client_zh_CN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mmregion4client_zh_CN.txt; sourceTree = "<group>"; };
+		71F9F5BC2355774700C6C736 /* mmregion4client_en.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mmregion4client_en.txt; sourceTree = "<group>"; };
 		814381742B1C4841306B49D3 /* libPods-WeChatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8435ACA679E3636C36C7D47C /* Pods-WeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChat/Pods-WeChat.debug.xcconfig"; sourceTree = "<group>"; };
 		A8AE4D42890ED7488CA924E7 /* Pods-WeChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatUITests/Pods-WeChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -883,6 +887,7 @@
 		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				71F9F5B9235576AA00C6C736 /* mmres */,
 				460CDE4421FEAFC80075F3E5 /* IDACode */,
 				4649DD6621ED864F006315DC /* Res */,
 				466C4AC021DDBF8700743075 /* Views */,
@@ -1193,6 +1198,15 @@
 			path = ViewCat;
 			sourceTree = "<group>";
 		};
+		71F9F5B9235576AA00C6C736 /* mmres */ = {
+			isa = PBXGroup;
+			children = (
+				71F9F5BC2355774700C6C736 /* mmregion4client_en.txt */,
+				71F9F5BA235576B500C6C736 /* mmregion4client_zh_CN.txt */,
+			);
+			path = mmres;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1305,12 +1319,14 @@
 				712C6F1A214A6A5800603022 /* PROTO_README.md in Resources */,
 				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
 				460CDE50220088CE0075F3E5 /* cgi.json in Resources */,
+				71F9F5BB235576B500C6C736 /* mmregion4client_zh_CN.txt in Resources */,
 				46CD1A8522DED2FE0023C585 /* TODO.md in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				4685A4B522E06FFF00DE95BE /* 703_login_3.txt in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
 				712C7143214B5A4B00603022 /* LICENSE in Resources */,
+				71F9F5BD2355774700C6C736 /* mmregion4client_en.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

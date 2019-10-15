@@ -8,6 +8,7 @@
 
 #import "ReportViewController.h"
 #import "Business.h"
+#import "FSOpenSSL.h"
 
 @interface ReportViewController ()
 
@@ -32,25 +33,18 @@
 //    cgiWrap.needSetBaseRequest = NO;
 //
 
+//    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1564458117_getexptconfig_2738_GetExptRequest" ofType:@"bin"]];
+//    GetExptRequest *req = [[GetExptRequest alloc] initWithData:data error:nil];
+//
+//    CgiWrap *cgiWrap = [CgiWrap new];
+//    cgiWrap.cgi = 2738;
+//    cgiWrap.cgiPath = @"/cgi-bin/mmexptappsvr-bin/getexptconfig";
+//    cgiWrap.request = req;
+//    cgiWrap.responseClass = [GetExptResponse class];
+//    cgiWrap.needSetBaseRequest = NO;
     
-    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1564458117_getexptconfig_2738_GetExptRequest" ofType:@"bin"]];
-    GetExptRequest *req = [[GetExptRequest alloc] initWithData:data error:nil];
 
-    CgiWrap *cgiWrap = [CgiWrap new];
-    cgiWrap.cgi = 2738;
-    cgiWrap.cgiPath = @"/cgi-bin/mmexptappsvr-bin/getexptconfig";
-    cgiWrap.request = req;
-    cgiWrap.responseClass = [GetExptResponse class];
-    cgiWrap.needSetBaseRequest = NO;
     
-    [WeChatClient postRequest:cgiWrap success:^(CliReportKVResp * _Nullable response) {
-        LogVerbose(@"%@", response);
-    } failure:^(NSError * _Nonnull error) {
-
-    }];
-
-
-//    [Business newSync];
 }
 
 /*

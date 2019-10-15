@@ -1,0 +1,3922 @@
+en|AF|Afghanistan
+en|AX|Åland Islands
+en|AL|Albania
+en|DZ|Algeria
+en|AS|American Samoa
+en|AD|Andorra
+en|AO|Angola
+en|AO_Bengo|Bengo
+en|AO_Benguela|Benguela
+en|AO_Bie|Bie
+en|AO_Cabinda|Cabinda
+en|AO_Cuando Cubango|Cuando Cubango
+en|AO_Cuanza Norte|Cuanza Norte
+en|AO_Cuanza Sul|Cuanza Sul
+en|AO_Cunene|Cunene
+en|AO_Huambo|Huambo
+en|AO_Huila|Huila
+en|AO_Luanda|Luanda
+en|AO_Lunda Norte|Lunda Norte
+en|AO_Lunda Sul|Lunda Sul
+en|AO_Malanje|Malanje
+en|AO_Moxico|Moxico
+en|AO_Namibe|Namibe
+en|AO_Uige|Uige
+en|AO_Zaire|Zaire
+en|AI|Anguilla
+en|AQ|Antarctica
+en|AG|Antigua & Barbuda
+en|AR|Argentina
+en|AR_Bahia Blanca|Bahia Blanca
+en|AR_Buenos Aires|Buenos Aires
+en|AR_Catamarca|Catamarca
+en|AR_Comodoro Rivadavia|Comodoro Rivadavia
+en|AR_Concordia|Concordia
+en|AR_Cordoba|Cordoba
+en|AR_Corrientes|Corrientes
+en|AR_Formosa|Formosa
+en|AR_Jujuy|Jujuy
+en|AR_La Plata|La Plata
+en|AR_La Rioja|La Rioja
+en|AR_Mar del Plata|Mar del Plata
+en|AR_Mendoza|Mendoza
+en|AR_Neuquen|Neuquen
+en|AR_Parana|Parana
+en|AR_Posadas|Posadas
+en|AR_Rawson|Rawson
+en|AR_Resistencia|Resistencia
+en|AR_Rio Cuarto|Rio Cuarto
+en|AR_Rio Gallegos|Rio Gallegos
+en|AR_Rosario|Rosario
+en|AR_Salta|Salta
+en|AR_San Juan|San Juan
+en|AR_San Luis|San Luis
+en|AR_San Miguel de Tucuman|San Miguel de Tucuman
+en|AR_San Nicolas|San Nicolas
+en|AR_San Rafael|San Rafael
+en|AR_Santa Fe|Santa Fe
+en|AR_Santa Rosa|Santa Rosa
+en|AR_Santiago del Estero|Santiago del Estero
+en|AR_Trelew|Trelew
+en|AR_Ushuaia|Ushuaia
+en|AR_Viedma|Viedma
+en|AR_Villa Krause|Villa Krause
+en|AM|Armenia
+en|AW|Aruba
+en|AU|Australia
+en|AU_Australian Capital Territory|Australian Capital Territory
+en|AU_Australian Capital Territory_Canberra|Canberra
+en|AU_Australian Capital Territory_Others|Other
+en|AU_New South Wales|New South Wales
+en|AU_New South Wales_Maitland|Maitland
+en|AU_New South Wales_Newcastle|Newcastle
+en|AU_New South Wales_Sydney|Sydney
+en|AU_New South Wales_Wollongong|Wollongong
+en|AU_New South Wales_Others|Other
+en|AU_Northern Territory|Northern Territory
+en|AU_Northern Territory_Darwin|Darwin
+en|AU_Northern Territory_Palmerston|Palmerston
+en|AU_Northern Territory_Others|Other
+en|AU_Queensland|Queensland
+en|AU_Queensland_Brisbane|Brisbane
+en|AU_Queensland_Bundaberg|Bundaberg
+en|AU_Queensland_Cairns|Cairns
+en|AU_Queensland_Caloundra|Caloundra
+en|AU_Queensland_Gold Coast|Gold Coast
+en|AU_Queensland_Logan City|Logan City
+en|AU_Queensland_Mackay|Mackay
+en|AU_Queensland_Rockhampton|Rockhampton
+en|AU_Queensland_South Brisbane|South Brisbane
+en|AU_Queensland_Toowoomba|Toowoomba
+en|AU_Queensland_Townsville|Townsville
+en|AU_Queensland_Others|Other
+en|AU_South Australia|South Australia
+en|AU_South Australia_Adelaide|Adelaide
+en|AU_South Australia_Mount Gambier|Mount Gambier
+en|AU_South Australia_Murray Bridge|Murray Bridge
+en|AU_South Australia_Port Augusta|Port Augusta
+en|AU_South Australia_Port Lincoln|Port Lincoln
+en|AU_South Australia_Port Pirie|Port Pirie
+en|AU_South Australia_Victor Harbor|Victor Harbor
+en|AU_South Australia_Whyalla|Whyalla
+en|AU_South Australia_Others|Other
+en|AU_Tasmania|Tasmania
+en|AU_Tasmania_Burnie|Burnie
+en|AU_Tasmania_Devonport|Devonport
+en|AU_Tasmania_Hobart|Hobart
+en|AU_Tasmania_Launceston|Launceston
+en|AU_Tasmania_Others|Other
+en|AU_Victoria|Victoria
+en|AU_Victoria_Ballarat|Ballarat
+en|AU_Victoria_Bendigo|Bendigo
+en|AU_Victoria_Geelong|Geelong
+en|AU_Victoria_Melbourne|Melbourne
+en|AU_Victoria_Others|Other
+en|AU_Western Australia|Western Australia
+en|AU_Western Australia_Albany|Albany
+en|AU_Western Australia_Armadale|Armadale
+en|AU_Western Australia_Bunbury|Bunbury
+en|AU_Western Australia_Fremantle|Fremantle
+en|AU_Western Australia_Geraldton|Geraldton
+en|AU_Western Australia_Kalgoorlie|Kalgoorlie
+en|AU_Western Australia_Mandurah|Mandurah
+en|AU_Western Australia_Perth|Perth
+en|AU_Western Australia_Others|Other
+en|AT|Austria
+en|AT_Burgenland|Burgenland
+en|AT_Carinthia|Carinthia
+en|AT_Lower Austria|Lower Austria
+en|AT_Salzburg|Salzburg
+en|AT_Styria|Styria
+en|AT_Tyrol|Tyrol
+en|AT_Upper Austria|Upper Austria
+en|AT_Vienna|Vienna
+en|AT_Vorarlberg|Vorarlberg
+en|AZ|Azerbaijan
+en|BS|Bahamas
+en|BH|Bahrain
+en|BD|Bangladesh
+en|BB|Barbados
+en|BY|Belarus
+en|BE|Belgium
+en|BZ|Belize
+en|BJ|Benin
+en|BM|Bermuda
+en|BT|Bhutan
+en|BO|Bolivia
+en|BA|Bosnia & Herzegovina
+en|BW|Botswana
+en|BV|Bouvet Island
+en|BR|Brazil
+en|BR_Acre|Acre
+en|BR_Alagoas|Alagoas
+en|BR_Amapa|Amapa
+en|BR_Amazonas|Amazonas
+en|BR_Bahia|Bahia
+en|BR_Brasilia|Brasilia
+en|BR_Ceara|Ceara
+en|BR_Espirito Santo|Espirito Santo
+en|BR_Goias|Goias
+en|BR_Maranhao|Maranhao
+en|BR_Mato Grosso|Mato Grosso
+en|BR_Mato Grosso do Sul|Mato Grosso do Sul
+en|BR_Minas Gerais|Minas Gerais
+en|BR_Para|Para
+en|BR_Paraiba|Paraiba
+en|BR_Parana|Parana
+en|BR_Pernambuco|Pernambuco
+en|BR_Piaui|Piaui
+en|BR_Rio de Janeiro|Rio de Janeiro
+en|BR_Rio Grande do Norte|Rio Grande do Norte
+en|BR_Rio Grande do Sul|Rio Grande do Sul
+en|BR_Rondonia|Rondonia
+en|BR_Roraima|Roraima
+en|BR_Santa Catarina|Santa Catarina
+en|BR_Sao Paulo|Sao Paulo
+en|BR_Sergipe|Sergipe
+en|BR_Tocantins|Tocantins
+en|IO|British Indian Ocean Territory
+en|VG|British Virgin Islands
+en|BN|Brunei
+en|BG|Bulgaria
+en|BF|Burkina Faso
+en|BI|Burundi
+en|KH|Cambodia
+en|KH_Banteay Mean Chey|Banteay Mean Chey
+en|KH_Bat Dambang|Bat Dambang
+en|KH_Kampong Cham|Kampong Cham
+en|KH_Kampong Chhnang|Kampong Chhnang
+en|KH_Kampong Spoe|Kampong Spoe
+en|KH_Kampong Thum|Kampong Thum
+en|KH_Kampot|Kampot
+en|KH_Kandal|Kandal
+en|KH_Kaoh Kong|Kaoh Kong
+en|KH_Kracheh|Kracheh
+en|KH_Krong Keb|Krong Keb
+en|KH_Krong Pailin|Krong Pailin
+en|KH_Krong Preah|Krong Preah
+en|KH_Mondol Kiri|Mondol Kiri
+en|KH_Otdar Mean Chey|Otdar  Mean  Chey
+en|KH_Phnum Penh|Phnum Penh
+en|KH_Pouth sat|Pouth  sat
+en|KH_Preah Vihear|Preah Vihear
+en|KH_Prey Veng|Prey Veng
+en|KH_Rotanak Kiri|Rotanak Kiri
+en|KH_Siem Reab|Siem Reab
+en|KH_Stoeng Treng|Stoeng Treng
+en|KH_Svay Rieng|Svay Rieng
+en|KH_Takev|Takev
+en|CM|Cameroon
+en|CA|Canada
+en|CA_Alberta|Alberta
+en|CA_Alberta_Airdrie|Airdrie
+en|CA_Alberta_Brooks|Brooks
+en|CA_Alberta_Calgary|Calgary
+en|CA_Alberta_Camrose|Camrose
+en|CA_Alberta_Chestermere|Chestermere
+en|CA_Alberta_Cold Lake|Cold Lake
+en|CA_Alberta_Edmonton|Edmonton
+en|CA_Alberta_Fort McMurray|Fort McMurray
+en|CA_Alberta_Fort Saskatchewan|Fort Saskatchewan
+en|CA_Alberta_Grande Prairie|Grande Prairie
+en|CA_Alberta_Lacombe|Lacombe
+en|CA_Alberta_Leduc|Leduc
+en|CA_Alberta_Lethbridge|Lethbridge
+en|CA_Alberta_Lloydminster|Lloydminster
+en|CA_Alberta_Medicine Hat|Medicine Hat
+en|CA_Alberta_Red Deer|Red Deer
+en|CA_Alberta_Sherwood Park|Sherwood Park
+en|CA_Alberta_Spruce Grove|Spruce Grove
+en|CA_Alberta_St. Albert|St. Albert
+en|CA_Alberta_Wetaskiwin|Wetaskiwin
+en|CA_Alberta_Others|Other
+en|CA_British Columbia|British Columbia
+en|CA_British Columbia_Abbotsford|Abbotsford
+en|CA_British Columbia_Anmore|Anmore
+en|CA_British Columbia_Armstrong|Armstrong
+en|CA_British Columbia_Burnaby|Burnaby
+en|CA_British Columbia_Campbell River|Campbell River
+en|CA_British Columbia_Castlegar|Castlegar
+en|CA_British Columbia_Chilliwack|Chilliwack
+en|CA_British Columbia_Colwood|Colwood
+en|CA_British Columbia_Coquitlam|Coquitlam
+en|CA_British Columbia_Courtenay|Courtenay
+en|CA_British Columbia_Cranbrook|Cranbrook
+en|CA_British Columbia_Dawson Creek|Dawson Creek
+en|CA_British Columbia_Delta|Delta
+en|CA_British Columbia_Duncan|Duncan
+en|CA_British Columbia_Enderby|Enderby
+en|CA_British Columbia_Fernie|Fernie
+en|CA_British Columbia_Fort St. John|Fort St. John
+en|CA_British Columbia_Grand Forks|Grand Forks
+en|CA_British Columbia_Greenwood|Greenwood
+en|CA_British Columbia_Kamloops|Kamloops
+en|CA_British Columbia_Kelowna|Kelowna
+en|CA_British Columbia_Kimberley|Kimberley
+en|CA_British Columbia_Kitimat|Kitimat
+en|CA_British Columbia_Ladner|Ladner
+en|CA_British Columbia_Langford|Langford
+en|CA_British Columbia_Langley|Langley
+en|CA_British Columbia_Maple Ridge|Maple Ridge
+en|CA_British Columbia_Merritt|Merritt
+en|CA_British Columbia_Nanaimo|Nanaimo
+en|CA_British Columbia_Nelson|Nelson
+en|CA_British Columbia_New Westminster|New Westminster
+en|CA_British Columbia_North Vancouver|North Vancouver
+en|CA_British Columbia_Okanagan|Okanagan
+en|CA_British Columbia_Parksville|Parksville
+en|CA_British Columbia_Penticton|Penticton
+en|CA_British Columbia_Pitt Meadows|Pitt Meadows
+en|CA_British Columbia_Port Alberni|Port Alberni
+en|CA_British Columbia_Port Coquitlam|Port Coquitlam
+en|CA_British Columbia_Port Moody|Port Moody
+en|CA_British Columbia_Powell River|Powell River
+en|CA_British Columbia_Prince George|Prince George
+en|CA_British Columbia_Prince Rupert|Prince Rupert
+en|CA_British Columbia_Quesnel|Quesnel
+en|CA_British Columbia_Revelstoke|Revelstoke
+en|CA_British Columbia_Richmond|Richmond
+en|CA_British Columbia_Rossland|Rossland
+en|CA_British Columbia_Salmon Arm|Salmon Arm
+en|CA_British Columbia_Surrey|Surrey
+en|CA_British Columbia_Terrace|Terrace
+en|CA_British Columbia_Trail|Trail
+en|CA_British Columbia_Vancouver|Vancouver
+en|CA_British Columbia_Vernon|Vernon
+en|CA_British Columbia_Victoria|Victoria
+en|CA_British Columbia_White Rock|White Rock
+en|CA_British Columbia_Williams Lake|Williams Lake
+en|CA_British Columbia_Others|Other
+en|CA_Manitoba|Manitoba
+en|CA_Manitoba_Brandon|Brandon
+en|CA_Manitoba_Dauphin|Dauphin
+en|CA_Manitoba_Flin Flon|Flin Flon
+en|CA_Manitoba_Morden|Morden
+en|CA_Manitoba_Portage la Prairie|Portage la Prairie
+en|CA_Manitoba_Selkirk|Selkirk
+en|CA_Manitoba_Steinbach|Steinbach
+en|CA_Manitoba_Thompson|Thompson
+en|CA_Manitoba_Winkler|Winkler
+en|CA_Manitoba_Winnipeg|Winnipeg
+en|CA_Manitoba_Others|Other
+en|CA_New Brunswick|New Brunswick
+en|CA_New Brunswick_Fredericton|Fredericton
+en|CA_New Brunswick_Moncton|Moncton
+en|CA_New Brunswick_Sackville|Sackville
+en|CA_New Brunswick_Saint John|Saint John
+en|CA_New Brunswick_Others|Other
+en|CA_Newfoundland and Labrador|Newfoundland and Labrador
+en|CA_Newfoundland and Labrador_Cartwright|Cartwright
+en|CA_Newfoundland and Labrador_Corner Brook|Corner Brook
+en|CA_Newfoundland and Labrador_Davis Inlet|Davis Inlet
+en|CA_Newfoundland and Labrador_Gander|Gander
+en|CA_Newfoundland and Labrador_Goose Bay|Goose Bay
+en|CA_Newfoundland and Labrador_Hopedale|Hopedale
+en|CA_Newfoundland and Labrador_Indian Harbour|Indian Harbour
+en|CA_Newfoundland and Labrador_Nain|Nain
+en|CA_Newfoundland and Labrador_Port-aux-Basques|Port-aux-Basques
+en|CA_Newfoundland and Labrador_St. Anthony|St. Anthony
+en|CA_Newfoundland and Labrador_St. John's|St. John's
+en|CA_Newfoundland and Labrador_Others|Other
+en|CA_Northwest Territories|Northwest Territories
+en|CA_Northwest Territories_Arctic Red River|Arctic Red River
+en|CA_Northwest Territories_Fort Franklin|Fort Franklin
+en|CA_Northwest Territories_Fort Good Hope|Fort Good Hope
+en|CA_Northwest Territories_Fort Resolution|Fort Resolution
+en|CA_Northwest Territories_Hay River|Hay River
+en|CA_Northwest Territories_Holman|Holman
+en|CA_Northwest Territories_Inuvik|Inuvik
+en|CA_Northwest Territories_Nahanni Butte|Nahanni Butte
+en|CA_Northwest Territories_Reindeer Station|Reindeer Station
+en|CA_Northwest Territories_Sachs Harbour|Sachs Harbour
+en|CA_Northwest Territories_Sawmill Bay|Sawmill Bay
+en|CA_Northwest Territories_Wrigley|Wrigley
+en|CA_Northwest Territories_Yellowknife|Yellowknife
+en|CA_Northwest Territories_Others|Other
+en|CA_Nova Scotia|Nova Scotia
+en|CA_Nova Scotia_Antigonish|Antigonish
+en|CA_Nova Scotia_Dartmouth|Dartmouth
+en|CA_Nova Scotia_Glace Bay|Glace Bay
+en|CA_Nova Scotia_Halifax|Halifax
+en|CA_Nova Scotia_Prince George|Prince George
+en|CA_Nova Scotia_Sydney|Sydney
+en|CA_Nova Scotia_Wolfville|Wolfville
+en|CA_Nova Scotia_Yarmouth|Yarmouth
+en|CA_Nova Scotia_Others|Other
+en|CA_Nunavut|Nunavut
+en|CA_Nunavut_Alert|Alert
+en|CA_Nunavut_Arctic Bay|Arctic Bay
+en|CA_Nunavut_Baker Lake|Baker Lake
+en|CA_Nunavut_Bathurst Inlet|Bathurst Inlet
+en|CA_Nunavut_Broughton Island|Broughton Island
+en|CA_Nunavut_Cambridge Bay|Cambridge Bay
+en|CA_Nunavut_Cape Dyer|Cape Dyer
+en|CA_Nunavut_Chesterfield Inlet|Chesterfield Inlet
+en|CA_Nunavut_Clyde River|Clyde River
+en|CA_Nunavut_Coral Harbour|Coral Harbour
+en|CA_Nunavut_Eureka|Eureka
+en|CA_Nunavut_Gjoa Harbour|Gjoa Harbour
+en|CA_Nunavut_Grise Fiord|Grise Fiord
+en|CA_Nunavut_Hall Beach|Hall Beach
+en|CA_Nunavut_Igloolik|Igloolik
+en|CA_Nunavut_Iqaluit|Iqaluit
+en|CA_Nunavut_Pond Inlet|Pond Inlet
+en|CA_Nunavut_Rankin Inlet|Rankin Inlet
+en|CA_Nunavut_Resolute|Resolute
+en|CA_Nunavut_Umingmaktuuq|Umingmaktuuq
+en|CA_Nunavut_Others|Other
+en|CA_Ontario|Ontario
+en|CA_Ontario_Ajax|Ajax
+en|CA_Ontario_Barrie|Barrie
+en|CA_Ontario_Belleville|Belleville
+en|CA_Ontario_Brampton|Brampton
+en|CA_Ontario_Brant|Brant
+en|CA_Ontario_Brantford|Brantford
+en|CA_Ontario_Brockville|Brockville
+en|CA_Ontario_Burlington|Burlington
+en|CA_Ontario_Cambridge|Cambridge
+en|CA_Ontario_Clarence-Rockland|Clarence-Rockland
+en|CA_Ontario_Cornwall|Cornwall
+en|CA_Ontario_Dryden|Dryden
+en|CA_Ontario_East York|East York
+en|CA_Ontario_Elliot Lake|Elliot Lake
+en|CA_Ontario_Etobicoke|Etobicoke
+en|CA_Ontario_Greater Sudbury|Greater Sudbury
+en|CA_Ontario_Guelph|Guelph
+en|CA_Ontario_Haldimand County|Haldimand County
+en|CA_Ontario_Hamilton|Hamilton
+en|CA_Ontario_Kenora|Kenora
+en|CA_Ontario_Kingston|Kingston
+en|CA_Ontario_Kirkland Lake|Kirkland Lake
+en|CA_Ontario_Kitchener|Kitchener
+en|CA_Ontario_London|London
+en|CA_Ontario_Markham|Markham
+en|CA_Ontario_Milton|Milton
+en|CA_Ontario_Mississauga|Mississauga
+en|CA_Ontario_Newmarket|Newmarket
+en|CA_Ontario_Niagara Falls|Niagara Falls
+en|CA_Ontario_Norfolk County|Norfolk County
+en|CA_Ontario_North Bay|North Bay
+en|CA_Ontario_North York|North York
+en|CA_Ontario_Oakville|Oakville
+en|CA_Ontario_Orillia|Orillia
+en|CA_Ontario_Oshawa|Oshawa
+en|CA_Ontario_Ottawa|Ottawa
+en|CA_Ontario_Owen Sound|Owen Sound
+en|CA_Ontario_Pembroke|Pembroke
+en|CA_Ontario_Peterborough|Peterborough
+en|CA_Ontario_Pickering|Pickering
+en|CA_Ontario_Port Colborne|Port Colborne
+en|CA_Ontario_Prince Edward County|Prince Edward County
+en|CA_Ontario_Quinte West|Quinte West
+en|CA_Ontario_Richmond Hill|Richmond Hill
+en|CA_Ontario_Sarnia|Sarnia
+en|CA_Ontario_Sault Ste. Marie|Sault Ste. Marie
+en|CA_Ontario_Scarborough|Scarborough
+en|CA_Ontario_St. Catharines|St. Catharines
+en|CA_Ontario_St. Thomas|St. Thomas
+en|CA_Ontario_Stratford|Stratford
+en|CA_Ontario_Temiskaming Shores|Temiskaming Shores
+en|CA_Ontario_Thorold|Thorold
+en|CA_Ontario_Thunder Bay|Thunder Bay
+en|CA_Ontario_Timmins|Timmins
+en|CA_Ontario_Toronto|Toronto
+en|CA_Ontario_Vaughan|Vaughan
+en|CA_Ontario_Waterloo|Waterloo
+en|CA_Ontario_Welland|Welland
+en|CA_Ontario_Willowdale|Willowdale
+en|CA_Ontario_Windsor|Windsor
+en|CA_Ontario_Woodstock|Woodstock
+en|CA_Ontario_Others|Other
+en|CA_Prince Edward Island|Prince Edward Island
+en|CA_Prince Edward Island_Charlottetow|Charlottetow
+en|CA_Prince Edward Island_Summerside|Summerside
+en|CA_Prince Edward Island_Others|Other
+en|CA_Quebec|Quebec
+en|CA_Quebec_Alma|Alma
+en|CA_Quebec_Brossard|Brossard
+en|CA_Quebec_Châteauguay|Châteauguay
+en|CA_Quebec_Chibougamau|Chibougamau
+en|CA_Quebec_Chicoutimi|Chicoutimi
+en|CA_Quebec_Drummondville|Drummondville
+en|CA_Quebec_Eastmain|Eastmain
+en|CA_Quebec_Gaspe|Gaspe
+en|CA_Quebec_Gatineau|Gatineau
+en|CA_Quebec_Granby|Granby
+en|CA_Quebec_Inukjuak|Inukjuak
+en|CA_Quebec_Ivujivik|Ivujivik
+en|CA_Quebec_Jonquiere|Jonquiere
+en|CA_Quebec_Kangiqsujuaq|Kangiqsujuaq
+en|CA_Quebec_Kuujjuaq|Kuujjuaq
+en|CA_Quebec_Kuujjuarapik|Kuujjuarapik
+en|CA_Quebec_Laval|Laval
+en|CA_Quebec_Levis|Levis
+en|CA_Quebec_Longueuil|Longueuil
+en|CA_Quebec_Montreal|Montreal
+en|CA_Quebec_Natashquan|Natashquan
+en|CA_Quebec_Quebec|Quebec
+en|CA_Quebec_Repentigny|Repentigny
+en|CA_Quebec_Riviere-du-Loup|Riviere-du-Loup
+en|CA_Quebec_Saguenay|Saguenay
+en|CA_Quebec_Saint-Hyacinthe|Saint-Hyacinthe
+en|CA_Quebec_Saint-Jean-sur-Richelieu|Saint-Jean-sur-Richelieu
+en|CA_Quebec_Saint-Jerome|Saint-Jerome
+en|CA_Quebec_Saint-Laurent|Saint-Laurent
+en|CA_Quebec_Saint-Leonard|Saint-Leonard
+en|CA_Quebec_Schefferville|Schefferville
+en|CA_Quebec_Sept-Îles|Sept-Îles
+en|CA_Quebec_Sherbrooke|Sherbrooke
+en|CA_Quebec_Terrebonne|Terrebonne
+en|CA_Quebec_Trois-Rivieres|Trois-Rivieres
+en|CA_Quebec_Ville de Quebec|Ville de Quebec
+en|CA_Quebec_Others|Other
+en|CA_Saskatchewan|Saskatchewan
+en|CA_Saskatchewan_Estevan|Estevan
+en|CA_Saskatchewan_Flin Flon|Flin Flon
+en|CA_Saskatchewan_Humboldt|Humboldt
+en|CA_Saskatchewan_Lloydminster|Lloydminster
+en|CA_Saskatchewan_Martensville|Martensville
+en|CA_Saskatchewan_Meadow Lake|Meadow Lake
+en|CA_Saskatchewan_Melfort|Melfort
+en|CA_Saskatchewan_Melville|Melville
+en|CA_Saskatchewan_Moose Jaw|Moose Jaw
+en|CA_Saskatchewan_North Battleford|North Battleford
+en|CA_Saskatchewan_Prince Albert|Prince Albert
+en|CA_Saskatchewan_Regina|Regina
+en|CA_Saskatchewan_Saskatoon|Saskatoon
+en|CA_Saskatchewan_Swift Current|Swift Current
+en|CA_Saskatchewan_Warman|Warman
+en|CA_Saskatchewan_Weyburn|Weyburn
+en|CA_Saskatchewan_Yorkton|Yorkton
+en|CA_Saskatchewan_Others|Other
+en|CA_Yukon|Yukon
+en|CA_Yukon_Beaver Creek|Beaver Creek
+en|CA_Yukon_Carmacks|Carmacks
+en|CA_Yukon_Dawson City|Dawson City
+en|CA_Yukon_Mayo|Mayo
+en|CA_Yukon_Old Crow|Old Crow
+en|CA_Yukon_Ross River|Ross River
+en|CA_Yukon_Whitehorse|Whitehorse
+en|CA_Yukon_Others|Other
+en|CV|Cape Verde
+en|BQ|Caribbean Netherlands
+en|KY|Cayman Islands
+en|CF|Central African Republic
+en|TD|Chad
+en|CL|Chile
+en|CN|China Mainland
+en|CN_Anhui|Anhui
+en|CN_Anhui_Anqing|Anqing
+en|CN_Anhui_Bengbu|Bengbu
+en|CN_Anhui_Bozhou|Bozhou
+en|CN_Anhui_Chaohu|Chaohu
+en|CN_Anhui_Chizhou|Chizhou
+en|CN_Anhui_Chuzhou|Chuzhou
+en|CN_Anhui_Fuyang|Fuyang
+en|CN_Anhui_Hefei|Hefei
+en|CN_Anhui_Huaibei|Huaibei
+en|CN_Anhui_Huainan|Huainan
+en|CN_Anhui_Huangshan|Huangshan
+en|CN_Anhui_Luan|Lu'an
+en|CN_Anhui_MOS|Ma'anshan
+en|CN_Anhui_Suzhou|Suzhou
+en|CN_Anhui_Tongling|Tongling
+en|CN_Anhui_Wuhu|Wuhu
+en|CN_Anhui_Xuancheng|Xuancheng
+en|CN_Beijing|Beijing
+en|CN_Beijing_Changping|Changping
+en|CN_Beijing_Chaoyang|Chaoyang
+en|CN_Beijing_Daxing|Daxing
+en|CN_Beijing_East|Dongcheng
+en|CN_Beijing_Fangshan|Fangshan
+en|CN_Beijing_Fengtai|Fengtai
+en|CN_Beijing_Haidian|Haidian
+en|CN_Beijing_Huairou|Huairou
+en|CN_Beijing_Mentougou|Mentougou
+en|CN_Beijing_Miyun|Miyun
+en|CN_Beijing_Pinggu|Pinggu
+en|CN_Beijing_Shijingshan|Shijingshan
+en|CN_Beijing_Shunyi|Shunyi
+en|CN_Beijing_Tongzhou|Tongzhou
+en|CN_Beijing_West|Xicheng District
+en|CN_Beijing_Yanqing|Yanqing
+en|CN_Chongqing|Chongqing
+en|CN_Chongqing_Banan|Banan
+en|CN_Chongqing_Beibei|Beibei
+en|CN_Chongqing_Bishan|Bishan
+en|CN_Chongqing_longevity|Changshou
+en|CN_Chongqing_Chengkou|Chengkou
+en|CN_Chongqing_Dadukou|Dadukou
+en|CN_Chongqing_Dazu|Dazu
+en|CN_Chongqing_Dianjiang|Dianjiang
+en|CN_Chongqing_Fengdu|Fengdu
+en|CN_Chongqing_Fengjie|Fengjie
+en|CN_Chongqing_Fuling|Fuling
+en|CN_Chongqing_Aikawa|Hechuan
+en|CN_Chongqing_Jiangbei|Jiangbei
+en|CN_Chongqing_Jiangjin|Jiangjin
+en|CN_Chongqing_Jiulongpo|Jiulongpo
+en|CN_Chongqing_Kaixian|Kaixian
+en|CN_Chongqing_Two Rivers|Liangjiang New Area
+en|CN_Chongqing_Liangping|Liangping
+en|CN_Chongqing_South Bank|Nan'an
+en|CN_Chongqing_Nanchuan|Nanchuan
+en|CN_Chongqing_Pengshui|Pengshui
+en|CN_Chongqing_Qianjiang|Qianjiang
+en|CN_Chongqing_Qijiang|Qijiang
+en|CN_Chongqing_Rongchang|Rongchang
+en|CN_Chongqing_Shapingba|Shapingba
+en|CN_Chongqing_columns|Shizhu
+en|CN_Chongqing_Shuangqiao|Shuangqiao
+en|CN_Chongqing_Tongliang|Tongliang
+en|CN_Chongqing_Tongnan|Tongnan
+en|CN_Chongqing_Pine Valley|Wansheng
+en|CN_Chongqing_Wanzhou|Wanzhou
+en|CN_Chongqing_Wulong|Wulong
+en|CN_Chongqing_Wushan|Wushan
+en|CN_Chongqing_Wuxi|Wuxi
+en|CN_Chongqing_Xiushan|Xiushan
+en|CN_Chongqing_Yongchuan|Yongchuan
+en|CN_Chongqing_Youyang|Youyang
+en|CN_Chongqing_Yubei|Yubei
+en|CN_Chongqing_Yunyang|Yunyang
+en|CN_Chongqing_Yuzhong|Yuzhong
+en|CN_Chongqing_Zhongxian|Zhongxian
+en|CN_Fujian|Fujian
+en|CN_Fujian_Fuzhou|Fuzhou
+en|CN_Fujian_Longyan|Longyan
+en|CN_Fujian_Nanping|Nanping
+en|CN_Fujian_Ningde|Ningde
+en|CN_Fujian_Putian|Putian
+en|CN_Fujian_Quanzhou|Quanzhou
+en|CN_Fujian_Sanming|Sanming
+en|CN_Fujian_Xiamen|Xiamen
+en|CN_Fujian_Zhangzhou|Zhangzhou
+en|CN_Gansu|Gansu
+en|CN_Gansu_Silver|Baiyin
+en|CN_Gansu_Dingxi|Dingxi
+en|CN_Gansu_Gannan|Gannan
+en|CN_Gansu_Jiayuguan|Jiayuguan
+en|CN_Gansu_Jinchang|Jinchang
+en|CN_Gansu_Jiuquan|Jiuquan
+en|CN_Gansu_Lanzhou|Lanzhou
+en|CN_Gansu_Linxia|Linxia
+en|CN_Gansu_Longnan|Longnan
+en|CN_Gansu_Pingliang|Pingliang
+en|CN_Gansu_Qingyang|Qingyang
+en|CN_Gansu_Tin Shui|Tianshui
+en|CN_Gansu_Wuwei|Wuwei
+en|CN_Gansu_Zhangye|Zhangye
+en|CN_Guangdong|Guangdong
+en|CN_Guangdong_Chaozhou|Chaozhou
+en|CN_Guangdong_Dongguan|Dongguan
+en|CN_Guangdong_Foshan|Foshan
+en|CN_Guangdong_Guangzhou|Guangzhou
+en|CN_Guangdong_Heyuan|Heyuan
+en|CN_Guangdong_Huizhou|Huizhou
+en|CN_Guangdong_Jiangmen|Jiangmen
+en|CN_Guangdong_Jieyang|Jieyang
+en|CN_Guangdong_Maoming|Maoming
+en|CN_Guangdong_Meizhou|Meizhou
+en|CN_Guangdong_Qingyuan|Qingyuan
+en|CN_Guangdong_Shantou|Shantou
+en|CN_Guangdong_Shanwei|Shanwei
+en|CN_Guangdong_Shaoguan|Shaoguan
+en|CN_Guangdong_Shenzhen|Shenzhen
+en|CN_Guangdong_Yangjiang|Yangjiang
+en|CN_Guangdong_Yunfu|Yunfu
+en|CN_Guangdong_Zhanjiang|Zhanjiang
+en|CN_Guangdong_Zhaoqing|Zhaoqing
+en|CN_Guangdong_Zhongshan|Zhongshan
+en|CN_Guangdong_Zhuhai|Zhuhai
+en|CN_Guangxi|Guangxi
+en|CN_Guangxi_Baise|Baise
+en|CN_Guangxi_Beihai|Beihai
+en|CN_Guangxi_Chongzuo|Chongzuo
+en|CN_Guangxi_Fangchenggang|Fangchenggang
+en|CN_Guangxi_Guigang|Guigang
+en|CN_Guangxi_Guilin|Guilin
+en|CN_Guangxi_Hechi|Hechi
+en|CN_Guangxi_Hezhou|Hezhou
+en|CN_Guangxi_guests|Laibin
+en|CN_Guangxi_Liuzhou|Liuzhou
+en|CN_Guangxi_Nanning|Nanning
+en|CN_Guangxi_Chow|Qinzhou
+en|CN_Guangxi_Wuzhou|Wuzhou
+en|CN_Guangxi_Yulin|Yulin
+en|CN_Guizhou|Guizhou
+en|CN_Guizhou_Anshun|Anshun
+en|CN_Guizhou_Bijie|Bijie
+en|CN_Guizhou_Guiyang|Guiyang
+en|CN_Guizhou_Liupanshui|Liupanshui
+en|CN_Guizhou_Southeast|Qiandongnan
+en|CN_Guizhou_South Guizhou|Qiannan
+en|CN_Guizhou_Southwest Guizhou|Qianxinan
+en|CN_Guizhou_Tongren|Tongren
+en|CN_Guizhou_Lawrence|Zunyi
+en|CN_Hainan|Hainan
+en|CN_Hainan_White Sands|Baisha
+en|CN_Hainan_Baoting|Baoting
+en|CN_Hainan_Changjiang|Changjiang
+en|CN_Hainan_Chengmai|Chengmai
+en|CN_Hainan_Danzhou|Danzhou
+en|CN_Hainan_Honour|Ding'an
+en|CN_Hainan_East|Dongfang
+en|CN_Hainan_Haikou|Haikou
+en|CN_Hainan_Music East|Ledong
+en|CN_Hainan_Pro High|Lingao
+en|CN_Hainan_Lingshui|Lingshui
+en|CN_Hainan_Qionghai|Qionghai
+en|CN_Hainan_Qiongzhong|Qiongzhong
+en|CN_Hainan_Sansha|Sansha
+en|CN_Hainan_Sanya|Sanya
+en|CN_Hainan_Tunchang|Tunchang
+en|CN_Hainan_Manning|Wanning
+en|CN_Hainan_Wenchang|Wenchang
+en|CN_Hainan_Fingers|Wuzhishan
+en|CN_Hebei|Hebei
+en|CN_Hebei_Baoding|Baoding
+en|CN_Hebei_Cangzhou|Cangzhou
+en|CN_Hebei_Chengde|Chengde
+en|CN_Hebei_Handan|Handan
+en|CN_Hebei_Hengshui|Hengshui
+en|CN_Hebei_Langfang|Langfang
+en|CN_Hebei_Qinhuangdao|Qinhuangdao
+en|CN_Hebei_Shijiazhuang|Shijiazhuang
+en|CN_Hebei_Tangshan|Tangshan
+en|CN_Hebei_Xingtai|Xingtai
+en|CN_Hebei_Zhangjiakou|Zhangjiakou
+en|CN_Heilongjiang|Heilongjiang
+en|CN_Heilongjiang_Daqing|Daqing
+en|CN_Heilongjiang_Mountains|Daxing'anling
+en|CN_Heilongjiang_Harbin|Harbin
+en|CN_Heilongjiang_Hegang|Hegang
+en|CN_Heilongjiang_Heihe|Heihe
+en|CN_Heilongjiang_Jiamusi|Jiamusi
+en|CN_Heilongjiang_Jixi|Jixi
+en|CN_Heilongjiang_Mudanjiang|Mudanjiang
+en|CN_Heilongjiang_Qiqihar|Qiqihar
+en|CN_Heilongjiang_Qitaihe|Qitaihe
+en|CN_Heilongjiang_Shuangyashan|Shuangyashan
+en|CN_Heilongjiang_Suihua|Suihua
+en|CN_Heilongjiang_Yichun|Yichun
+en|CN_Henan|Henan
+en|CN_Henan_Anyang|Anyang
+en|CN_Henan_Hebi|Hebi
+en|CN_Henan_Jiaozuo|Jiaozuo
+en|CN_Henan_Jiyuan|Jiyuan
+en|CN_Henan_Kaifeng|Kaifeng
+en|CN_Henan_Luohe|Luohe
+en|CN_Henan_Luoyang|Luoyang
+en|CN_Henan_Nanyang|Nanyang
+en|CN_Henan_mesa|Pingdingshan
+en|CN_Henan_Puyang|Puyang
+en|CN_Henan_Sanmenxia|Sanmenxia
+en|CN_Henan_Shangqiu|Shangqiu
+en|CN_Henan_Xinxiang|Xinxiang
+en|CN_Henan_Xinyang|Xinyang
+en|CN_Henan_Xuchang|Xuchang
+en|CN_Henan_Zhengzhou|Zhengzhou
+en|CN_Henan_Zhoukou|Zhoukou
+en|CN_Henan_Zhumadian|Zhumadian
+en|CN_Hubei|Hubei
+en|CN_Hubei_Enshi|Enshi
+en|CN_Hubei_Ezhou|Ezhou
+en|CN_Hubei_Huanggang|Huanggang
+en|CN_Hubei_Yellowstone|Huangshi
+en|CN_Hubei_Jingmen|Jingmen
+en|CN_Hubei_Jingzhou|Jingzhou
+en|CN_Hubei_Qianjiang|Qianjiang
+en|CN_Hubei_Shennongjia|Shennongjia
+en|CN_Hubei_Shiyan|Shiyan
+en|CN_Hubei_Suizhou|Suizhou
+en|CN_Hubei_Tianmen|Tianmen
+en|CN_Hubei_Wuhan|Wuhan
+en|CN_Hubei_Yangyang|Xiangyang
+en|CN_Hubei_Xianning|Xianning
+en|CN_Hubei_Bristol|Xiantao
+en|CN_Hubei_Xiaogan|Xiaogan
+en|CN_Hubei_Yichang|Yichang
+en|CN_Hunan|Hunan
+en|CN_Hunan_Changde|Changde
+en|CN_Hunan_Changsha|Changsha
+en|CN_Hunan_Chenzhou|Chenzhou
+en|CN_Hunan_Hengyang|Hengyang
+en|CN_Hunan_Huaihua|Huaihua
+en|CN_Hunan_Loudi|Loudi
+en|CN_Hunan_Shaoyang|Shaoyang
+en|CN_Hunan_Xiangtan|Xiangtan
+en|CN_Hunan_Xiangxi|Xiangxi
+en|CN_Hunan_Yiyang|Yiyang
+en|CN_Hunan_Yongzhou|Yongzhou
+en|CN_Hunan_Yueyang|Yueyang
+en|CN_Hunan_Zhangjiajie|Zhangjiajie
+en|CN_Hunan_Zhuzhou|Zhuzhou
+en|CN_Inner Mongolia|Inner Mongolia
+en|CN_Inner Mongolia_Alxa|Alxa
+en|CN_Inner Mongolia_Baotou|Baotou
+en|CN_Inner Mongolia_Bayannur|Bayannur
+en|CN_Inner Mongolia_Chifeng|Chifeng
+en|CN_Inner Mongolia_Erdos|Erdos
+en|CN_Inner Mongolia_Hohhot|Hohhot
+en|CN_Inner Mongolia_Hulunbeier|Hulunbeier
+en|CN_Inner Mongolia_Tongliao|Tongliao
+en|CN_Inner Mongolia_Bu|Ulanqab
+en|CN_Inner Mongolia_Wuhai|Wuhai
+en|CN_Inner Mongolia_Gol|Xilingol
+en|CN_Inner Mongolia_Xing|Xing'an
+en|CN_Jiangsu|Jiangsu
+en|CN_Jiangsu_Changzhou|Changzhou
+en|CN_Jiangsu_Huai|Huai'an
+en|CN_Jiangsu_Lianyungang|Lianyungang
+en|CN_Jiangsu_Nanjing|Nanjing
+en|CN_Jiangsu_Nantong|Nantong
+en|CN_Jiangsu_Suqian|Suqian
+en|CN_Jiangsu_Suzhou|Suzhou
+en|CN_Jiangsu_Taizhou|Taizhou
+en|CN_Jiangsu_Wuxi|Wuxi
+en|CN_Jiangsu_Xuzhou|Xuzhou
+en|CN_Jiangsu_Yancheng|Yancheng
+en|CN_Jiangsu_Yangzhou|Yangzhou
+en|CN_Jiangsu_Zhenjiang|Zhenjiang
+en|CN_Jiangxi|Jiangxi
+en|CN_Jiangxi_Fuzhou|Fuzhou
+en|CN_Jiangxi_Ganzhou|Ganzhou
+en|CN_Jiangxi_Jian|Ji'an
+en|CN_Jiangxi_Jingdezhen|Jingdezhen
+en|CN_Jiangxi_Jiujiang|Jiujiang
+en|CN_Jiangxi_Nanchang|Nanchang
+en|CN_Jiangxi_Pingxiang|Pingxiang
+en|CN_Jiangxi_Shangrao|Shangrao
+en|CN_Jiangxi_Xinyu|Xinyu
+en|CN_Jiangxi_Yichun|Yichun
+en|CN_Jiangxi_Yingtan|Yingtan
+en|CN_Jilin|Jilin
+en|CN_Jilin_White City|Baicheng
+en|CN_Jilin_White Mountains|Baishan
+en|CN_Jilin_Changchun|Changchun
+en|CN_Jilin_Jilin|Jilin
+en|CN_Jilin_Liaoyuan|Liaoyuan
+en|CN_Jilin_Siping|Siping
+en|CN_Jilin_Matsubara|Songyuan
+en|CN_Jilin_Tonghua|Tonghua
+en|CN_Jilin_Yanbian|Yanbian
+en|CN_Liaoning|Liaoning
+en|CN_Liaoning_Anshan|Anshan
+en|CN_Liaoning_Benxi|Benxi
+en|CN_Liaoning_Chaoyang|Chaoyang
+en|CN_Liaoning_Dalian|Dalian
+en|CN_Liaoning_Dandong|Dandong
+en|CN_Liaoning_Fushun|Fushun
+en|CN_Liaoning_Fuxin|Fuxin
+en|CN_Liaoning_Huludao|Huludao
+en|CN_Liaoning_Jinzhou|Jinzhou
+en|CN_Liaoning_Liaoyang|Liaoyang
+en|CN_Liaoning_Panjin|Panjin
+en|CN_Liaoning_Shenyang|Shenyang
+en|CN_Liaoning_Tieling|Tieling
+en|CN_Liaoning_Yingkou|Yingkou
+en|CN_Ningxia|Ningxia
+en|CN_Ningxia_Guyuan|Guyuan
+en|CN_Ningxia_Shizuishan|Shizuishan
+en|CN_Ningxia_Wuzhong|Wuzhong
+en|CN_Ningxia_Yinchuan|Yinchuan
+en|CN_Ningxia_Zhongwei|Zhongwei
+en|CN_Qinghai|Qinghai
+en|CN_Qinghai_Guoluo|Guoluo
+en|CN_Qinghai_rambling|Haibei
+en|CN_Qinghai_Haidong|Haidong
+en|CN_Qinghai_Hainan|Hainan
+en|CN_Qinghai_Hercynian|Haixi
+en|CN_Qinghai_Huangnan|Huangnan
+en|CN_Qinghai_Xining|Xining
+en|CN_Qinghai_Yushu|Yushu
+en|CN_Shaanxi|Shaanxi
+en|CN_Shaanxi_Ankang|Ankang
+en|CN_Shaanxi_Baoji|Baoji
+en|CN_Shaanxi_Hanzhong|Hanzhong
+en|CN_Shaanxi_Shangluo|Shangluo
+en|CN_Shaanxi_Tongchuan|Tongchuan
+en|CN_Shaanxi_Weinan|Weinan
+en|CN_Shaanxi_Xi'an|Xi'an
+en|CN_Shaanxi_Xianyang|Xianyang
+en|CN_Shaanxi_Yanan|Yanan
+en|CN_Shaanxi_Yulin|Yulin
+en|CN_Shandong|Shandong
+en|CN_Shandong_Binzhou|Binzhou
+en|CN_Shandong_Texas|Dezhou
+en|CN_Shandong_Dongying|Dongying
+en|CN_Shandong_Heze|Heze
+en|CN_Shandong_Jinan|Jinan
+en|CN_Shandong_Jining|Jining
+en|CN_Shandong_Laiwu|Laiwu
+en|CN_Shandong_Liaocheng|Liaocheng
+en|CN_Shandong_Linyi|Linyi
+en|CN_Shandong_Qingdao|Qingdao
+en|CN_Shandong_Rizhao|Rizhao
+en|CN_Shandong_Taian|Tai'an
+en|CN_Shandong_Weifang|Weifang
+en|CN_Shandong_Weihai|Weihai
+en|CN_Shandong_Yantai|Yantai
+en|CN_Shandong_Zaozhuang|Zaozhuang
+en|CN_Shandong_Zibo|Zibo
+en|CN_Shanghai|Shanghai
+en|CN_Shanghai_Baoshan|Baoshan
+en|CN_Shanghai_Changning|Changning
+en|CN_Shanghai_Chongming|Chongming
+en|CN_Shanghai_Fengxian|Fengxian
+en|CN_Shanghai_Hongkou|Hongkou
+en|CN_Shanghai_Huangpu|Huangpu
+en|CN_Shanghai_Jiading|Jiading
+en|CN_Shanghai_Jing|Jing'an
+en|CN_Shanghai_Jinshan|Jinshan
+en|CN_Shanghai_Luwan|Luwan
+en|CN_Shanghai_Minhang|Minhang
+en|CN_Shanghai_Pudong New District|Pudong New Area
+en|CN_Shanghai_Po|Putuo
+en|CN_Shanghai_Qingpu|Qingpu
+en|CN_Shanghai_Songjiang|Songjiang
+en|CN_Shanghai_Xuhui|Xuhui
+en|CN_Shanghai_Yangpu|Yangpu
+en|CN_Shanghai_Zhabei|Zhabei
+en|CN_Shanxi|Shanxi
+en|CN_Shanxi_Changzhi|Changzhi
+en|CN_Shanxi_Datong|Datong
+en|CN_Shanxi_Jincheng|Jincheng
+en|CN_Shanxi_Jinzhong|Jinzhong
+en|CN_Shanxi_Linfen|Linfen
+en|CN_Shanxi_Luliang|Lvliang
+en|CN_Shanxi_Shuozhou|Shuozhou
+en|CN_Shanxi_Taiyuan|Taiyuan
+en|CN_Shanxi_Xinzhou|Xinzhou
+en|CN_Shanxi_Yangquan|Yangquan
+en|CN_Shanxi_Yuncheng|Yuncheng
+en|CN_Sichuan|Sichuan
+en|CN_Sichuan_Aba|Aba
+en|CN_Sichuan_Pakistan|Bazhong
+en|CN_Sichuan_Chengdu|Chengdu
+en|CN_Sichuan_Florida|Dazhou
+en|CN_Sichuan_Deyang|Deyang
+en|CN_Sichuan_Ganzi|Ganzi
+en|CN_Sichuan_Kwong|Guang'an
+en|CN_Sichuan_Guangyuan|Guangyuan
+en|CN_Sichuan_Leshan|Leshan
+en|CN_Sichuan_Liangshan|Liangshan
+en|CN_Sichuan_Luzhou|Luzhou
+en|CN_Sichuan_Meishan|Meishan
+en|CN_Sichuan_Mianyang|Mianyang
+en|CN_Sichuan_Nanchong|Nanchong
+en|CN_Sichuan_Neijiang|Neijiang
+en|CN_Sichuan_Panzhihua|Panzhihua
+en|CN_Sichuan_Suining|Suining
+en|CN_Sichuan_Yaan|Ya'an
+en|CN_Sichuan_Yibin|Yibin
+en|CN_Sichuan_Zigong|Zigong
+en|CN_Sichuan_Ziyang|Ziyang
+en|CN_Tianjin|Tianjin
+en|CN_Tianjin_Baodi|Baodi
+en|CN_Tianjin_North Star|Beichen
+en|CN_Tianjin_Binhai New Area|Binhai New Area
+en|CN_Tianjin_Toray|Dongli
+en|CN_Tianjin_Hebei|Hebei
+en|CN_Tianjin_east|Hedong
+en|CN_Tianjin_Peace|Heping
+en|CN_Tianjin_west|Hexi
+en|CN_Tianjin_Red Bridge|Hongqiao
+en|CN_Tianjin_Jinghai|Jinghai
+en|CN_Tianjin_Jinnan|Jinnan
+en|CN_Tianjin_Jixian|Jixian
+en|CN_Tianjin_Nankai|Nankai
+en|CN_Tianjin_Ninghe|Ninghe
+en|CN_Tianjin_Wuqing|Wuqing
+en|CN_Tianjin_West Green|Xiqing
+en|CN_Tibet|Tibet
+en|CN_Tibet_Ali|Ali
+en|CN_Tibet_Lhasa|Lhasa
+en|CN_Tibet_Nagqu|Nagqu
+en|CN_Tibet_Nyingchi|Nyingchi
+en|CN_Tibet_Qamdo|Qamdo
+en|CN_Tibet_Shannan|Shannan
+en|CN_Tibet_Shigatse|Shigatse
+en|CN_Xinjiang|Xinjiang
+en|CN_Xinjiang_Aksu|Aksu
+en|CN_Xinjiang_Altay|Altay
+en|CN_Xinjiang_Arar|Arar
+en|CN_Xinjiang_Bayingolin|Bayingolin
+en|CN_Xinjiang_Bortala|Bortala
+en|CN_Xinjiang_Changji|Changji
+en|CN_Xinjiang_Hamilton|Hami
+en|CN_Xinjiang_Hotan|Hotan
+en|CN_Xinjiang_Ili|Ili
+en|CN_Xinjiang_Karamay|Karamay
+en|CN_Xinjiang_Kashgar|Kashgar
+en|CN_Xinjiang_Kizilsu|Kizilsu
+en|CN_Xinjiang_Shihezi|Shihezi
+en|CN_Xinjiang_Tacheng|Tacheng
+en|CN_Xinjiang_Figure wooden Shook|Tumushuke
+en|CN_Xinjiang_Turpan|Turpan
+en|CN_Xinjiang_Urumqi|Urumqi
+en|CN_Xinjiang_Wujiaqu|Wujiaqu
+en|CN_Yunnan|Yunnan
+en|CN_Yunnan_Baoshan|Baoshan
+en|CN_Yunnan_Chuxiong|Chuxiong
+en|CN_Yunnan_Dali|Dali
+en|CN_Yunnan_Devon|Dehong
+en|CN_Yunnan_Diqing|Diqing
+en|CN_Yunnan_Red|Honghe
+en|CN_Yunnan_Kunming|Kunming
+en|CN_Yunnan_Lijiang|Lijiang
+en|CN_Yunnan_Lincang|Lincang
+en|CN_Yunnan_Nu|Nujiang
+en|CN_Yunnan_Pu'er|Pu'er
+en|CN_Yunnan_Qujing|Qujing
+en|CN_Yunnan_Wenshan|Wenshan
+en|CN_Yunnan_Xishuangbanna|Xishuangbanna
+en|CN_Yunnan_Yuxi|Yuxi
+en|CN_Yunnan_Zhaotong|Zhaotong
+en|CN_Zhejiang|Zhejiang
+en|CN_Zhejiang_Hangzhou|Hangzhou
+en|CN_Zhejiang_Huzhou|Huzhou
+en|CN_Zhejiang_Jiaxing|Jiaxing
+en|CN_Zhejiang_Jinhua|Jinhua
+en|CN_Zhejiang_Lishui|Lishui
+en|CN_Zhejiang_Ningbo|Ningbo
+en|CN_Zhejiang_Quzhou|Quzhou
+en|CN_Zhejiang_Shaoxing|Shaoxing
+en|CN_Zhejiang_Taizhou|Taizhou
+en|CN_Zhejiang_Wenzhou|Wenzhou
+en|CN_Zhejiang_Zhoushan|Zhoushan
+en|CX|Christmas Island
+en|CC|Cocos (Keeling) Islands
+en|CO|Colombia
+en|KM|Comoros
+en|CG|Congo - Brazzaville
+en|CD|Congo - Kinshasa
+en|CK|Cook Islands
+en|CR|Costa Rica
+en|CI|Côte d'Ivoire
+en|HR|Croatia
+en|CU|Cuba
+en|CW|Curaçao
+en|CY|Cyprus
+en|CZ|Czech Republic
+en|DK|Denmark
+en|DJ|Djibouti
+en|DM|Dominica
+en|DO|Dominican Republic
+en|EC|Ecuador
+en|EG|Egypt
+en|SV|El Salvador
+en|GQ|Equatorial Guinea
+en|ER|Eritrea
+en|EE|Estonia
+en|SZ|Eswatini (Swaziland)
+en|ET|Ethiopia
+en|FK|Falkland Islands
+en|FO|Faroe Islands
+en|FJ|Fiji
+en|FI|Finland
+en|FR|France
+en|FR_Aix-en-Provence|Aix-en-Provence
+en|FR_Ajaccio|Ajaccio
+en|FR_Amiens|Amiens
+en|FR_Arles|Arles
+en|FR_Besancon|Besancon
+en|FR_Caen|Caen
+en|FR_Chalons-en-Champagne|Chalons-en-Champagne
+en|FR_Dijon|Dijon
+en|FR_Frejus|Fréjus
+en|FR_Lille|Lille
+en|FR_Limoges|Limoges
+en|FR_Lyon|Lyon
+en|FR_Marseille|Marseille
+en|FR_Metz|Metz
+en|FR_Montpellier|Montpellier
+en|FR_Nantes|Nantes
+en|FR_Nice|Nice
+en|FR_Orleans|Orleans
+en|FR_Paris|Paris
+en|FR_Rennes|Rennes
+en|FR_Rouen|Rouen
+en|FR_Toulouse|Toulouse
+en|FR_Valence|Valence
+en|GF|French Guiana
+en|PF|French Polynesia
+en|TF|French Southern & Antarctic Lands
+en|GA|Gabon
+en|GM|Gambia
+en|GE|Georgia
+en|DE|Germany
+en|DE_Ansbach|Ansbach
+en|DE_Arnsberg|Arnsberg
+en|DE_Augsburg|Augsburg
+en|DE_Bayreuth|Bayreuth
+en|DE_Berlin|Berlin
+en|DE_Bielefeld|Bielefeld
+en|DE_Bochum|Bochum
+en|DE_Bremen|Bremen
+en|DE_Brunswick|Brunswick
+en|DE_Chemnitz|Chemnitz
+en|DE_Cologne|Cologne
+en|DE_Darmstadt|Darmstadt
+en|DE_Dessau|Dessau
+en|DE_Detmold|Detmold
+en|DE_Dresden|Dresden
+en|DE_Dusseldorf|Dusseldorf
+en|DE_Erfurt|Erfurt
+en|DE_Frankfurt|Frankfurt
+en|DE_Freiburg|Freiburg
+en|DE_GieBen|Gießen
+en|DE_Halle|Halle
+en|DE_Hamburg|Hamburg
+en|DE_Hannover|Hannover
+en|DE_Karlsruhe|Karlsruhe
+en|DE_Kassel|Kassel
+en|DE_Kiel|Kiel
+en|DE_Koblenz|Koblenz
+en|DE_Landshut|Landshut
+en|DE_Leipzig|Leipzig
+en|DE_Luneburg|Luneburg
+en|DE_Magdeburg|Magdeburg
+en|DE_Mainz|Mainz
+en|DE_Mannheim|Mannheim
+en|DE_Muenster|Muenster
+en|DE_Munich|Munich
+en|DE_Nuremberg|Nuremberg
+en|DE_Potsdam|Potsdam
+en|DE_Schwerin|Schwerin
+en|DE_Stuttgart|Stuttgart
+en|DE_Trier|Trier
+en|DE_Wiesbaden|Wiesbaden
+en|DE_Wuerzburg|Wuerzburg
+en|GH|Ghana
+en|GI|Gibraltar
+en|GR|Greece
+en|GL|Greenland
+en|GD|Grenada
+en|GP|Guadeloupe
+en|GU|Guam
+en|GT|Guatemala
+en|GG|Guernsey
+en|GN|Guinea
+en|GW|Guinea-Bissau
+en|GY|Guyana
+en|HT|Haiti
+en|HM|Heard & McDonald Islands
+en|HN|Honduras
+en|HK|Hong Kong, China
+en|HK_Central and Western|Central and Western
+en|HK_Eastern|Eastern
+en|HK_Islands|Islands
+en|HK_Kowloon City|Kowloon City
+en|HK_Kwai Tsing|Kwai Tsing
+en|HK_Kwun Tong|Kwun Tong
+en|HK_North|North
+en|HK_Sai Kung|Sai Kung
+en|HK_Sha Tin|Sha Tin
+en|HK_Sham Shui Po|Sham Shui Po
+en|HK_Southern|Southern
+en|HK_Tai Po|Tai Po
+en|HK_Tsuen Wan|Tsuen Wan
+en|HK_Tuen Mun|Tuen Mun
+en|HK_Wan Chai|Wan Chai
+en|HK_Wong Tai Sin|Wong Tai Sin
+en|HK_Yau Tsim Mong|Yau Tsim Mong
+en|HK_Yuen Long|Yuen Long
+en|HU|Hungary
+en|HU_Bacs-Kiskun|Bacs-Kiskun
+en|HU_Baranya|Baranya
+en|HU_Bekes|Bekes
+en|HU_Borsod-Abauj-Zemplen|Borsod-Abauj-Zemplen
+en|HU_Budapest|Budapest
+en|HU_Csongrad|Csongrad
+en|HU_Fejer|Fejer
+en|HU_Gyor-Moson-Sopron|Gyor-Moson-Sopron
+en|HU_Hajdu-Bihar|Hajdú-Bihar
+en|HU_Heves|Heves
+en|HU_Jasz-Nagykun-Szolnok|Jasz-Nagykun-Szolnok
+en|HU_Komarom-Esztergom|Komarom-Esztergom
+en|HU_Nograd|Nograd
+en|HU_Pest|Pest
+en|HU_Somogy|Somogy
+en|HU_Szabolcs-Szatmar-Bereg|Szabolcs-Szatmar-Bereg
+en|HU_Tolna|Tolna
+en|HU_Vas|Vas
+en|HU_Veszprem|Veszprem
+en|HU_Zala|Zala
+en|IS|Iceland
+en|IN|India
+en|IN_Agartala|Agartala
+en|IN_Agra|Agra
+en|IN_Ahmedabad|Ahmedabad
+en|IN_Aizawl|Aizawl
+en|IN_Aligarh|Aligarh
+en|IN_Allahabad|Allahabad
+en|IN_Amritsar|Amritsar
+en|IN_Aurangabad|Aurangabad
+en|IN_Bangalore|Bangalore
+en|IN_Baroda|Baroda
+en|IN_Bhopal|Bhopal
+en|IN_Bhubaneswar|Bhubaneswar
+en|IN_Bokaro|Bokaro
+en|IN_Chandigarh|Chandigarh
+en|IN_Chennai|Chennai
+en|IN_Cochin|Cochin
+en|IN_Coimbatore|Coimbatore
+en|IN_Cuttack|Cuttack
+en|IN_Dehradun|Dehradun
+en|IN_Dimapur|Dimapur
+en|IN_Durgapur|Durgapur
+en|IN_Faridabad|Faridabad
+en|IN_Gandhinagar|Gandhinagar
+en|IN_Ghaziabad|Ghaziabad
+en|IN_Goa|Goa
+en|IN_Gurgaon|Gurgaon
+en|IN_Guwahati|Guwahati
+en|IN_Gwalior|Gwalior
+en|IN_Hyderabad|Hyderabad
+en|IN_Imphal|Imphal
+en|IN_Indore|Indore
+en|IN_Jabalpur|Jabalpur
+en|IN_Jaipur|Jaipur
+en|IN_Jammu|Jammu
+en|IN_Jamnagar|Jamnagar
+en|IN_Jamshedpur|Jamshedpur
+en|IN_Jodhpur|Jodhpur
+en|IN_Jullundhar|Jullundhar
+en|IN_Kanpur|Kanpur
+en|IN_Kolhapur|Kolhapur
+en|IN_Kolkata|Kolkata
+en|IN_Lucknow|Lucknow
+en|IN_Ludhiana|Ludhiana
+en|IN_Madurai|Madurai
+en|IN_Mangalore|Mangalore
+en|IN_Margao|Margao
+en|IN_Mumbai|Mumbai
+en|IN_Mysore|Mysore
+en|IN_Nagpur|Nagpur
+en|IN_Nasik|Nasik
+en|IN_New Delhi|New Delhi
+en|IN_Noida|Noida
+en|IN_Panjim|Panjim
+en|IN_Patna|Patna
+en|IN_Pondicherry|Pondicherry
+en|IN_Pune|Pune
+en|IN_Raipur|Raipur
+en|IN_Rajkot|Rajkot
+en|IN_Ranchi|Ranchi
+en|IN_Rourkela|Rourkela
+en|IN_Salem|Salem
+en|IN_Secunderabad|Secunderabad
+en|IN_Shillong|Shillong
+en|IN_Siliguri|Siliguri
+en|IN_Srinagar|Srinagar
+en|IN_Sura|Sura
+en|IN_Thane|Thane
+en|IN_Thiruvananthapuram|Thiruvananthapuram
+en|IN_Tiruchirappalli|Tiruchirappalli
+en|IN_Udaipur|Udaipur
+en|IN_Varanasi|Varanasi
+en|IN_Vellore|Vellore
+en|IN_Vijayawada|Vijayawada
+en|IN_Visakhapatnam|Visakhapatnam
+en|ID|Indonesia
+en|ID_Aceh|Aceh
+en|ID_Bali|Bali
+en|ID_Banten|Banten
+en|ID_Bengkulu|Bengkulu
+en|ID_Daerah Istimewa Yogyakarta|Daerah Istimewa Yogyakarta
+en|ID_Irian Jaya|Irian Jaya
+en|ID_Jakarta Raya|Jakarta Raya
+en|ID_Jambi|Jambi
+en|ID_Java Barat|Java Barat
+en|ID_Java Tengah|Java Tengah
+en|ID_Java Timur|Java Timur
+en|ID_Kalimantan Selatan|Kalimantan Selatan
+en|ID_Kalimantan Tengah|Kalimantan Tengah
+en|ID_Kalimantan Timur|Kalimantan Timur
+en|ID_Kepulauan Bangka Belitung|Kepulauan Bangka Belitung
+en|ID_Lampung|Lampung
+en|ID_Maluku|Maluku
+en|ID_Nusa Tenggara Barat|Nusa Tenggara Barat
+en|ID_Nusa Tenggara Timur|Nusa Tenggara Timur
+en|ID_Daerah Tingkat I Kalimantan Barat|Provinsi Kalimantan Barat
+en|ID_Riau|Riau
+en|ID_Sulawesi Selatan|Sulawesi Selatan
+en|ID_Sulawesi Tengah|Sulawesi Tengah
+en|ID_Sulawesi Tenggara|Sulawesi Tenggara
+en|ID_Sulawesi Utara|Sulawesi Utara
+en|ID_Sumatera Barat|Sumatera Barat
+en|ID_Sumatera Selatan|Sumatera Selatan
+en|ID_Sumatera Utara|Sumatera Utara
+en|IR|Iran
+en|IQ|Iraq
+en|IE|Ireland
+en|IE_Carlow|Carlow
+en|IE_Cavan|Cavan
+en|IE_Clare|Clare
+en|IE_Cork|Cork
+en|IE_Donegal|Donegal
+en|IE_Dublin|Dublin
+en|IE_Galway|Galway
+en|IE_Kerry|Kerry
+en|IE_Kildare|Kildare
+en|IE_Kilkenny|Kilkenny
+en|IE_Laois|Laois
+en|IE_Leitrim|Leitrim
+en|IE_Limerick|Limerick
+en|IE_Longford|Longford
+en|IE_Louth|Louth
+en|IE_Mayo|Mayo
+en|IE_Meath|Meath
+en|IE_Monaghan|Monaghan
+en|IE_Offaly|Offaly
+en|IE_Roscommon|Roscommon
+en|IE_Sligo|Sligo
+en|IE_Tipperary|Tipperary
+en|IE_Waterford|Waterford
+en|IE_Westmeath|Westmeath
+en|IE_Wexford|Wexford
+en|IE_Wicklow|Wicklow
+en|IM|Isle of Man
+en|IL|Israel
+en|IT|Italy
+en|IT_Agrigento|Agrigento
+en|IT_Alessandria|Alessandria
+en|IT_Ancona|Ancona
+en|IT_Aosta|Aosta
+en|IT_Arezzo|Arezzo
+en|IT_Ascoli Piceno|Ascoli Piceno
+en|IT_Asti|Asti
+en|IT_Bari|Bari
+en|IT_Barletta-Andria-Trani|Barletta-Andria-Trani
+en|IT_Belluno|Belluno
+en|IT_Benevento|Benevento
+en|IT_Bergamo|Bergamo
+en|IT_Biella|Biella
+en|IT_Bologna|Bologna
+en|IT_Bolzano|Bolzano
+en|IT_Brescia|Brescia
+en|IT_Brindisi|Brindisi
+en|IT_Cagliari|Cagliari
+en|IT_Campobasso|Campobasso
+en|IT_Carbonia-Iglesias|Carbonia-Iglesias
+en|IT_Caserta|Caserta
+en|IT_Catania|Catania
+en|IT_Catanzaro|Catanzaro
+en|IT_Chieti|Chieti
+en|IT_Como|Como
+en|IT_Cosenza|Cosenza
+en|IT_Crotone|Crotone
+en|IT_Cuneo|Cuneo
+en|IT_Enna|Enna
+en|IT_Fermo|Fermo
+en|IT_Ferrara|Ferrara
+en|IT_Firenze|Firenze
+en|IT_Foggia|Foggia
+en|IT_Forlì- Cesena|Forlì- Cesena
+en|IT_Frosinone|Frosinone
+en|IT_Genova|Genova
+en|IT_Gorizia|Gorizia
+en|IT_Grosseto|Grosseto
+en|IT_Imperia|Imperia
+en|IT_Isernia|Isernia
+en|IT_La Spezia|La Spezia
+en|IT_L'Aquila|L'Aquila
+en|IT_Latina|Latina
+en|IT_Lecce|Lecce
+en|IT_Lecco|Lecco
+en|IT_Livorno|Livorno
+en|IT_Lodi|Lodi
+en|IT_Lucca|Lucca
+en|IT_Macerata|Macerata
+en|IT_Mantova|Mantova
+en|IT_Massa-Carrara|Massa-Carrara
+en|IT_Matera|Matera
+en|IT_Messina|Messina
+en|IT_Milano|Milano
+en|IT_Modena|Modena
+en|IT_Monza e Brianza|Monza e Brianza
+en|IT_Naples|Napoli
+en|IT_Novara|Novara
+en|IT_Nuoro|Nuoro
+en|IT_Olbia-Tempio|Olbia-Tempio
+en|IT_Oristano|Oristano
+en|IT_Padova|Padova
+en|IT_Palermo|Palermo
+en|IT_Parma|Parma
+en|IT_Pavia|Pavia
+en|IT_Perugia|Perugia
+en|IT_Pesaro|Pesaro
+en|IT_Pescara|Pescara
+en|IT_Piacenza|Piacenza
+en|IT_Pisa|Pisa
+en|IT_Pistoia|Pistoia
+en|IT_Pordenone|Pordenone
+en|IT_Potenza|Potenza
+en|IT_Prato|Prato
+en|IT_Ragusa|Ragusa
+en|IT_Ravenna|Ravenna
+en|IT_Reggio Calabria|Reggio Calabria
+en|IT_Reggio Emilia|Reggio Emilia
+en|IT_Rieti|Rieti
+en|IT_Rimini|Rimini
+en|IT_Roma|Roma
+en|IT_Rovigo|Rovigo
+en|IT_Salerno|Salerno
+en|IT_Sassari|Sassari
+en|IT_Savona|Savona
+en|IT_Siena|Siena
+en|IT_Syracuse|Siracusa
+en|IT_Sondrio|Sondrio
+en|IT_Taranto|Taranto
+en|IT_Teramo|Teramo
+en|IT_Terni|Terni
+en|IT_Turin|Torino
+en|IT_Trapani|Trapani
+en|IT_Trento|Trento
+en|IT_Treviso|Treviso
+en|IT_Trieste|Trieste
+en|IT_Udine|Udine
+en|IT_Varese|Varese
+en|IT_Venice|Venezia
+en|IT_Verbano-Cusio-Ossola|Verbano-Cusio-Ossola
+en|IT_Vercelli|Vercelli
+en|IT_Verona|Verona
+en|IT_Vibo-valentia|Vibo-valentia
+en|IT_Vicenza|Vicenza
+en|IT_Viterbo|Viterbo
+en|JM|Jamaica
+en|JP|Japan
+en|JP_Aichi-ken|Aichi-ken
+en|JP_Aichi-ken_Anjo-shi|Anjo-shi
+en|JP_Aichi-ken_Chiryu-shi|Chiryu-shi
+en|JP_Aichi-ken_Gamagori-shi|Gamagori-shi
+en|JP_Aichi-ken_Handa-shi|Handa-shi
+en|JP_Aichi-ken_Hekinan-shi|Hekinan-shi
+en|JP_Aichi-ken_Ichinomiya-shi|Ichinomiya-shi
+en|JP_Aichi-ken_Inazawa-shi|Inazawa-shi
+en|JP_Aichi-ken_Kariya-shi|Kariya-shi
+en|JP_Aichi-ken_Kasugai-shi|Kasugai-shi
+en|JP_Aichi-ken_Komaki-shi|Komaki-shi
+en|JP_Aichi-ken_Konan-shi|Konan-shi
+en|JP_Aichi-ken_Nagoya-shi|Nagoya-shi
+en|JP_Aichi-ken_Nishio-shi|Nishio-shi
+en|JP_Aichi-ken_obu-shi|Obu-shi
+en|JP_Aichi-ken_Okazaki-jo|Okazaki-shi
+en|JP_Aichi-ken_Seto-shi|Seto-shi
+en|JP_Aichi-ken_Toyohashi-shi|Toyohashi-shi
+en|JP_Aichi-ken_Toyokawa-shi|Toyokawa-shi
+en|JP_Aichi-ken_Toyota-shi|Toyota-shi
+en|JP_Aichi-ken_Tsushima-shi|Tsushima-shi
+en|JP_Aichi-ken_Others|Other
+en|JP_Akita-ken|Akita-ken
+en|JP_Akita-ken_Akita-shi|Akita-shi
+en|JP_Akita-ken_Noshiro-shi|Noshiro-shi
+en|JP_Akita-ken_odate-shi|Odate-shi
+en|JP_Akita-ken_Others|Other
+en|JP_Aomori-ken|Aomori-ken
+en|JP_Aomori-ken_Aomori-shi|Aomori-shi
+en|JP_Aomori-ken_Hachinohe-shi|Hachinohe-shi
+en|JP_Aomori-ken_Hirosaki-shi|Hirosaki-shi
+en|JP_Aomori-ken_Others|Other
+en|JP_Chiba-ken|Chiba-ken
+en|JP_Chiba-ken_Abiko-shi|Abiko-shi
+en|JP_Chiba-ken_Chiba-shi|Chiba-shi
+en|JP_Chiba-ken_Futtsu shi|Futtsu-shi
+en|JP_Chiba-ken_Honmachi|Honmachi
+en|JP_Chiba-ken_Ichihara-shi|Ichihara-shi
+en|JP_Chiba-ken_Kashiwa-shi|Kashiwa-shi
+en|JP_Chiba-ken_Katori-shi|Katori-shi
+en|JP_Chiba-ken_Kimitsu-shi|Kimitsu-shi
+en|JP_Chiba-ken_Kisarazu-shi|Kisarazu-shi
+en|JP_Chiba-ken_Matsudo-shi|Matsudo-shi
+en|JP_Chiba-ken_Mobara-shi|Mobara-shi
+en|JP_Chiba-ken_Nagareyama-shi|Nagareyama-shi
+en|JP_Chiba-ken_Narita-shi|Narita-shi
+en|JP_Chiba-ken_Noda-shi|Noda-shi
+en|JP_Chiba-ken_Oamishirasato-shi|Oamishirasato-shi
+en|JP_Chiba-ken_Sakura-shi|Sakura-shi
+en|JP_Chiba-ken_Shiroi-shi|Shiroi-shi
+en|JP_Chiba-ken_Tateyama shi|Tateyama shi
+en|JP_Chiba-ken_Togane-shi|Togane-shi
+en|JP_Chiba-ken_Urayasu-shi|Urayasu-shi
+en|JP_Chiba-ken_Yachimata-shi|Yachimata-shi
+en|JP_Chiba-ken_Yotsukaido-shi|Yotsukaido-shi
+en|JP_Chiba-ken_Others|Other
+en|JP_Ehime-ken|Ehime-ken
+en|JP_Ehime-ken_Matsuyama-shi|Matsuyama-shi
+en|JP_Ehime-ken_Niihama-shi|Niihama-shi
+en|JP_Ehime-ken_Saijo-shi|Saijo-shi
+en|JP_Ehime-ken_Uwajima-shi|Uwajima-shi
+en|JP_Ehime-ken_Others|Other
+en|JP_Fukui-ken|Fukui-ken
+en|JP_Fukui-ken_Fukui-shi|Fukui-shi
+en|JP_Fukui-ken_Sabae-shi|Sabae-shi
+en|JP_Fukui-ken_Takefu-shi|Takefu-shi
+en|JP_Fukui-ken_Tsuruga-shi|Tsuruga-shi
+en|JP_Fukui-ken_Others|Other
+en|JP_Fukuoka-ken|Fukuoka-ken
+en|JP_Fukuoka-ken_Chikushino-shi|Chikushino-shi
+en|JP_Fukuoka-ken_Dazaifu-shi|Dazaifu-shi
+en|JP_Fukuoka-ken_Fukuoka-shi|Fukuoka-shi
+en|JP_Fukuoka-ken_Iizuka-shi|Iizuka-shi
+en|JP_Fukuoka-ken_Kitakyushu-shi|Kitakyushu-shi
+en|JP_Fukuoka-ken_Koga-shi|Koga-shi
+en|JP_Fukuoka-ken_Kurume-shi|Kurume-shi
+en|JP_Fukuoka-ken_Maebaru-shi|Maebaru-shi
+en|JP_Fukuoka-ken_Nogata-shi|Nogata-shi
+en|JP_Fukuoka-ken_Omuta-shi|Omuta-shi
+en|JP_Fukuoka-ken_Onojo-shi|Onojo-shi
+en|JP_Fukuoka-ken_Tagawa-shi|Tagawa-shi
+en|JP_Fukuoka-ken_Yukuhashi-shi|Yukuhashi-shi
+en|JP_Fukuoka-ken_Others|Other
+en|JP_Fukushima-ken|Fukushima-ken
+en|JP_Fukushima-ken_Fukushima shi|Fukushima-shi
+en|JP_Fukushima-ken_Iwaki-shi|Iwaki-shi
+en|JP_Fukushima-ken_Koriyama shi|Koriyama-shi
+en|JP_Fukushima-ken_Sukagawa-shi|Sukagawa-shi
+en|JP_Fukushima-ken_Others|Other
+en|JP_Gifu-ken|Gifu-ken
+en|JP_Gifu-ken_Gifu-shi|Gifu-shi
+en|JP_Gifu-ken_Inuyama-shi|Inuyama-shi
+en|JP_Gifu-ken_Kakamigahara-shi|Kakamigahara-shi
+en|JP_Gifu-ken_Minokamo shi|Minokamo-shi
+en|JP_Gifu-ken_Nakatsugawa-shi|Nakatsugawa-shi
+en|JP_Gifu-ken_Ogaki-shi|Ogaki-shi
+en|JP_Gifu-ken_Tajimi-shi|Tajimi-shi
+en|JP_Gifu-ken_Takayama-shi|Takayama-shi
+en|JP_Gifu-ken_Toki-shi|Toki-shi
+en|JP_Gifu-ken_Others|Other
+en|JP_Gunma-ken|Gunma-ken
+en|JP_Gunma-ken_Fujioka-shi|Fujioka-shi
+en|JP_Gunma-ken_Isesaki-shi|Isesaki-shi
+en|JP_Gunma-ken_Kiryu-shi|Kiryu-shi
+en|JP_Gunma-ken_Maebashi-shi|Maebashi-shi
+en|JP_Gunma-ken_Ota-shi|Ota-shi
+en|JP_Gunma-ken_Takasaki-shi|Takasaki-shi
+en|JP_Gunma-ken_Tatebayashi-shi|Tatebayashi-shi
+en|JP_Gunma-ken_Others|Other
+en|JP_Hiroshima-ken|Hiroshima-ken
+en|JP_Hiroshima-ken_Fuchu-cho|Fuchu-cho
+en|JP_Hiroshima-ken_Fukuyama-shi|Fukuyama-shi
+en|JP_Hiroshima-ken_Hatsukaichi-shi|Hatsukaichi-shi
+en|JP_Hiroshima-ken_Hiroshima-shi|Hiroshima-shi
+en|JP_Hiroshima-ken_Kure-shi|Kure-shi
+en|JP_Hiroshima-ken_Mihara-shi|Mihara-shi
+en|JP_Hiroshima-ken_Onomichi-shi|Onomichi-shi
+en|JP_Hiroshima-ken_Others|Other
+en|JP_Hokkaido|Hokkaido
+en|JP_Hokkaido_Asahikawa-shi|Asahikawa-shi
+en|JP_Hokkaido_Chitose-shi|Chitose-shi
+en|JP_Hokkaido_Ebetsu shi|Ebetsu-shi
+en|JP_Hokkaido_Hakodate-shi|Hakodate-shi
+en|JP_Hokkaido_Ishikari-shi|Ishikari-shi
+en|JP_Hokkaido_Iwamizawa-shi|Iwamizawa-shi
+en|JP_Hokkaido_Kitahiroshima-shi|Kitahiroshima-shi
+en|JP_Hokkaido_Kitami-shi|Kitami-shi
+en|JP_Hokkaido_Kushiro-gun|Kushiro-gun
+en|JP_Hokkaido_Muroran-shi|Muroran-shi
+en|JP_Hokkaido_Obihiro-shi|Obihiro-shi
+en|JP_Hokkaido_Otaru-shi|Otaru-shi
+en|JP_Hokkaido_Sapporo-shi|Sapporo-shi
+en|JP_Hokkaido_Tomakomai-shi|Tomakomai-shi
+en|JP_Hokkaido_Others|Other
+en|JP_Hyogo-ken|Hyogo-ken
+en|JP_Hyogo-ken_Akashi-shi|Akashi-shi
+en|JP_Hyogo-ken_Amagasaki-shi|Amagasaki-shi
+en|JP_Hyogo-ken_Ashiya-shi|Ashiya-shi
+en|JP_Hyogo-ken_Himeji-shi|Himeji-shi
+en|JP_Hyogo-ken_Itami-shi|Itami-shi
+en|JP_Hyogo-ken_Kakogawa-shi|Kakogawa-shi
+en|JP_Hyogo-ken_Kariya-shi|Kariya-shi
+en|JP_Hyogo-ken_Kawanishi-shi|Kawanishi-shi
+en|JP_Hyogo-ken_Kobe-shi|Kobe-shi
+en|JP_Hyogo-ken_Miki-shi|Miki-shi
+en|JP_Hyogo-ken_Nishinomiya-shi|Nishinomiya-shi
+en|JP_Hyogo-ken_Ono-machi|Ono-machi
+en|JP_Hyogo-ken_Sanda-shi|Sanda-shi
+en|JP_Hyogo-ken_Takarazuka-shi|Takarazuka-shi
+en|JP_Hyogo-ken_Others|Other
+en|JP_Ibaraki-ken|Ibaraki-ken
+en|JP_Ibaraki-ken_Hitachi-shi|Hitachi-shi
+en|JP_Ibaraki-ken_Ishioka-shi|Ishioka-shi
+en|JP_Ibaraki-ken_Kashima-shi|Kashima-shi
+en|JP_Ibaraki-ken_Katsuta-gun|Katsuta-gun
+en|JP_Ibaraki-ken_Kitaibaraki-shi|Kitaibaraki-shi
+en|JP_Ibaraki-ken_Koga-shi|Koga-shi
+en|JP_Ibaraki-ken_Mito-shi|Mito-shi
+en|JP_Ibaraki-ken_Moriya-shi|Moriya-shi
+en|JP_Ibaraki-ken_Naka-shi|Naka-shi
+en|JP_Ibaraki-ken_Ryugasaki-shi|Ryugasaki-shi
+en|JP_Ibaraki-ken_Shimodate-shi|Shimodate-shi
+en|JP_Ibaraki-ken_Toride-shi|Toride-shi
+en|JP_Ibaraki-ken_Tsukuba-shi|Tsukuba-shi
+en|JP_Ibaraki-ken_Ushiku-shi|Ushiku-shi
+en|JP_Ibaraki-ken_Yuki-shi|Yuki-shi
+en|JP_Ibaraki-ken_Others|Other
+en|JP_Ishikawa-ken|Ishikawa-ken
+en|JP_Ishikawa-ken_Kanazawa-shi|Kanazawa-shi
+en|JP_Ishikawa-ken_Komatsu-shi|Komatsu-shi
+en|JP_Ishikawa-ken_Others|Other
+en|JP_Iwate-ken|Iwate-ken
+en|JP_Iwate-ken_Hanamaki-shi|Hanamaki-shi
+en|JP_Iwate-ken_Ichinoseki-shi|Ichinoseki-shi
+en|JP_Iwate-ken_Kitakami-shi|Kitakami-shi
+en|JP_Iwate-ken_Miyako-shi|Miyako-shi
+en|JP_Iwate-ken_Mizusawa-shi|Mizusawa-shi
+en|JP_Iwate-ken_Morioka-shi|Morioka-shi
+en|JP_Iwate-ken_Others|Other
+en|JP_Kagawa-ken|Kagawa-ken
+en|JP_Kagawa-ken_Marugame-shi|Marugame-shi
+en|JP_Kagawa-ken_Sakaide-shi|Sakaide-shi
+en|JP_Kagawa-ken_Takamatsu-shi|Takamatsu-shi
+en|JP_Kagawa-ken_Others|Other
+en|JP_Kagoshima-ken|Kagoshima-ken
+en|JP_Kagoshima-ken_Kagoshima-shi|Kagoshima-shi
+en|JP_Kagoshima-ken_Kanoya-shi|Kanoya-shi
+en|JP_Kagoshima-ken_Satsumasendai-shi|Satsumasendai-shi
+en|JP_Kagoshima-ken_Others|Other
+en|JP_Kanagawa-ken|Kanagawa-ken
+en|JP_Kanagawa-ken_Atsugi-shi|Atsugi-shi
+en|JP_Kanagawa-ken_Chigasaki-shi|Chigasaki-shi
+en|JP_Kanagawa-ken_Fujisawa-shi|Fujisawa-shi
+en|JP_Kanagawa-ken_Hadano-shi|Hadano-shi
+en|JP_Kanagawa-ken_Hiratsuka-shi|Hiratsuka-shi
+en|JP_Kanagawa-ken_Isehara-shi|Isehara-shi
+en|JP_Kanagawa-ken_Kamakura-shi|Kamakura-shi
+en|JP_Kanagawa-ken_Kawasaki-shi|Kawasaki-shi
+en|JP_Kanagawa-ken_Miura-shi|Miura-shi
+en|JP_Kanagawa-ken_Odawara-shi|Odawara-shi
+en|JP_Kanagawa-ken_Yokohama shi|Yokohama shi
+en|JP_Kanagawa-ken_Yokosuka-shi|Yokosuka-shi
+en|JP_Kanagawa-ken_Zama-shi|Zama-shi
+en|JP_Kanagawa-ken_Zushi-shi|Zushi-shi
+en|JP_Kanagawa-ken_Others|Other
+en|JP_Kochi-ken|Kochi-ken
+en|JP_Kochi-ken_Kochi-shi|Kochi-shi
+en|JP_Kochi-ken_Others|Other
+en|JP_Kumamoto-ken|Kumamoto-ken
+en|JP_Kumamoto-ken_Hon-machi|Hon-machi
+en|JP_Kumamoto-ken_Kumamoto-shi|Kumamoto-shi
+en|JP_Kumamoto-ken_Others|Other
+en|JP_Kyoto-fu|Kyoto-fu
+en|JP_Kyoto-fu_Fukuchiyama-shi|Fukuchiyama-shi
+en|JP_Kyoto-fu_Kameoka-shi|Kameoka-shi
+en|JP_Kyoto-fu_Kamigyo-ku|Kamigyo-ku
+en|JP_Kyoto-fu_Kyoto|Kyoto-shi
+en|JP_Kyoto-fu_Maizuru-shi|Maizuru-shi
+en|JP_Kyoto-fu_Muko-shi|Muko-shi
+en|JP_Kyoto-fu_Tanabe-shi|Tanabe-shi
+en|JP_Kyoto-fu_Uji-shi|Uji-shi
+en|JP_Kyoto-fu_Yawata-shi|Yawata-shi
+en|JP_Kyoto-fu_Others|Other
+en|JP_Mie-ken|Mie-ken
+en|JP_Mie-ken_Iga-shi|Iga-shi
+en|JP_Mie-ken_Ise-shi|Ise-shi
+en|JP_Mie-ken_Nabari-shi|Nabari-shi
+en|JP_Mie-ken_Suzuka-shi|Suzuka-shi
+en|JP_Mie-ken_Tsu-shi|Tsu-shi
+en|JP_Mie-ken_Yokkaichi-shi|Yokkaichi-shi
+en|JP_Mie-ken_Others|Other
+en|JP_Miyagi-ken|Miyagi-ken
+en|JP_Miyagi-ken_Furukawa-shi|Furukawa-shi
+en|JP_Miyagi-ken_Ishinomaki-shi|Ishinomaki-shi
+en|JP_Miyagi-ken_Sendai-shi|Sendai-shi
+en|JP_Miyagi-ken_Shiogama-shi|Shiogama-shi
+en|JP_Miyagi-ken_Others|Other
+en|JP_Miyazaki-ken|Miyazaki-ken
+en|JP_Miyazaki-ken_Miyakonojo-shi|Miyakonojo-shi
+en|JP_Miyazaki-ken_Miyazaki-shi|Miyazaki-shi
+en|JP_Miyazaki-ken_Nobeoka-shi|Nobeoka-shi
+en|JP_Miyazaki-ken_Others|Other
+en|JP_Nagano-ken|Nagano-ken
+en|JP_Nagano-ken_Chino-shi|Chino-shi
+en|JP_Nagano-ken_Iida-shi|Iida-shi
+en|JP_Nagano-ken_Ina-shi|Ina-shi
+en|JP_Nagano-ken_Matsumoto-shi|Matsumoto-shi
+en|JP_Nagano-ken_Nagano-shi|Nagano-shi
+en|JP_Nagano-ken_Okaya-shi|Okaya-shi
+en|JP_Nagano-ken_Saku-shi|Saku-shi
+en|JP_Nagano-ken_Shiojiri-shi|Shiojiri-shi
+en|JP_Nagano-ken_Suwa-shi|Suwa-shi
+en|JP_Nagano-ken_Suzaka-shi|Suzaka-shi
+en|JP_Nagano-ken_Ueda-shi|Ueda-shi
+en|JP_Nagano-ken_Others|Other
+en|JP_Nagasaki-ken|Nagasaki-ken
+en|JP_Nagasaki-ken_Isahaya-shi|Isahaya-shi
+en|JP_Nagasaki-ken_Nagasaki-shi|Nagasaki-shi
+en|JP_Nagasaki-ken_omura-shi|omura-shi
+en|JP_Nagasaki-ken_Sasebo-shi|Sasebo-shi
+en|JP_Nagasaki-ken_Others|Other
+en|JP_Nara-ken|Nara-ken
+en|JP_Nara-ken_Ikoma-shi|Ikoma-shi
+en|JP_Nara-ken_Kashihara-shi|Kashihara-shi
+en|JP_Nara-ken_Nara-shi|Nara-shi
+en|JP_Nara-ken_Sakurai-shi|Sakurai-shi
+en|JP_Nara-ken_Tenri-shi|Tenri-shi
+en|JP_Nara-ken_Others|Other
+en|JP_Niigata-ken|Niigata-ken
+en|JP_Niigata-ken_Joetsu-shi|Joetsu-shi
+en|JP_Niigata-ken_Kashiwazaki-shi|Kashiwazaki-shi
+en|JP_Niigata-ken_Nagaoka-shi|Nagaoka-shi
+en|JP_Niigata-ken_Niigata-shi|Niigata-shi
+en|JP_Niigata-ken_Niitsu-shi|Niitsu-shi
+en|JP_Niigata-ken_Sanjo-shi|Sanjo-shi
+en|JP_Niigata-ken_Shibata-shi|Shibata-shi
+en|JP_Niigata-ken_Others|Other
+en|JP_Oita-ken|Oita-ken
+en|JP_Oita-ken_Beppu-shi|Beppu-shi
+en|JP_Oita-ken_Hita-shi|Hita-shi
+en|JP_Oita-ken_Nakatsu-jo|Nakatsu-shi
+en|JP_Oita-ken_Oita-shi|Oita-shi
+en|JP_Oita-ken_Tsurusaki-shi|Tsurusaki-shi
+en|JP_Oita-ken_Others|Other
+en|JP_Okayama-ken|Okayama-ken
+en|JP_Okayama-ken_Kasaoka-shi|Kasaoka-shi
+en|JP_Okayama-ken_Kurashiki-ken|Kurashiki-shi
+en|JP_Okayama-ken_Okayama-shi|Okayama-shi
+en|JP_Okayama-ken_Soja-shi|Soja-shi
+en|JP_Okayama-ken_Tamano-shi|Tamano-shi
+en|JP_Okayama-ken_Tsuyama-shi|Tsuyama-shi
+en|JP_Okayama-ken_Others|Other
+en|JP_Okinawa-ken|Okinawa-ken
+en|JP_Okinawa-ken_Ginowan-shi|Ginowan-shi
+en|JP_Okinawa-ken_Itoman-shi|Itoman-shi
+en|JP_Okinawa-ken_Nago-shi|Nago-shi
+en|JP_Okinawa-ken_Naha-shi|Naha-shi
+en|JP_Okinawa-ken_Okinawa Islands|Okinawa Islands
+en|JP_Okinawa-ken_Tomigusuku-shi|Tomigusuku-shi
+en|JP_Okinawa-ken_Others|Other
+en|JP_Osaka-fu|Osaka-fu
+en|JP_Osaka-fu_Hirakata-shi|Hirakata-shi
+en|JP_Osaka-fu_Ibaraki-shi|Ibaraki-shi
+en|JP_Osaka-fu_Ikeda-shi|Ikeda-shi
+en|JP_Osaka-fu_Izumi-shi|Izumi-shi
+en|JP_Osaka-fu_Izumiotsu-shi|Izumiotsu-shi
+en|JP_Osaka-fu_Kadoma-shi|Kadoma-shi
+en|JP_Osaka-fu_Kaizuka-shi|Kaizuka-shi
+en|JP_Osaka-fu_Kashihara-shi|Kashiwara-shi
+en|JP_Osaka-fu_Kishiwada-shi|Kishiwada-shi
+en|JP_Osaka-fu_Matsubara-shi|Matsubara-shi
+en|JP_Osaka-fu_Minoo-shi|Minoo-shi
+en|JP_Osaka-fu_Moriguchi-shi|Moriguchi-shi
+en|JP_Osaka-fu_Neyagawa-shi|Neyagawa-shi
+en|JP_Osaka-fu_osaka-shi|Osaka-shi
+en|JP_Osaka-fu_Sakai-shi|Sakai-shi
+en|JP_Osaka-fu_Suita-shi|Suita-shi
+en|JP_Osaka-fu_Takaishi-shi|Takaishi-shi
+en|JP_Osaka-fu_Takatsuki-shi|Takatsuki-shi
+en|JP_Osaka-fu_Tondabayashi shi|Tondabayashi shi
+en|JP_Osaka-fu_Toyonaka-shi|Toyonaka-shi
+en|JP_Osaka-fu_Yao-shi|Yao-shi
+en|JP_Osaka-fu_Others|Other
+en|JP_Saga-ken|Saga-ken
+en|JP_Saga-ken_Imari-shi|Imari-shi
+en|JP_Saga-ken_Karatsu-shi|Karatsu-shi
+en|JP_Saga-ken_Saga-shi|Saga-shi
+en|JP_Saga-ken_Tosu-shi|Tosu-shi
+en|JP_Saga-ken_Others|Other
+en|JP_Saitama-ken|Saitama-ken
+en|JP_Saitama-ken_Ageo-shi|Ageo-shi
+en|JP_Saitama-ken_Asaka-shi|Asaka-shi
+en|JP_Saitama-ken_Chichibu-shi|Chichibu-shi
+en|JP_Saitama-ken_Fukaya-shi|Fukaya-shi
+en|JP_Saitama-ken_Gyoda-shi|Gyoda-shi
+en|JP_Saitama-ken_Hanno-shi|Hanno-shi
+en|JP_Saitama-ken_Hanyu-shi|Hanyu-shi
+en|JP_Saitama-ken_Hasuda-shi|Hasuda-shi
+en|JP_Saitama-ken_Hatogaya-shi|Hatogaya-shi
+en|JP_Saitama-ken_Honjo-shi|Honjo-shi
+en|JP_Saitama-ken_Iwatsuki-ku|Iwatsuki-ku
+en|JP_Saitama-ken_Kamifukuoka-shi|Kamifukuoka-shi
+en|JP_Saitama-ken_Kasukabe-shi|Kasukabe-shi
+en|JP_Saitama-ken_Kawagoe-shi|Kawagoe-shi
+en|JP_Saitama-ken_Kawaguchi-shi|Kawaguchi-shi
+en|JP_Saitama-ken_Kazo-shi|Kazo-shi
+en|JP_Saitama-ken_Koshigaya shi|Koshigaya shi
+en|JP_Saitama-ken_Konosu-shi|Kounosu-shi
+en|JP_Saitama-ken_Kuki-shi|Kuki-shi
+en|JP_Saitama-ken_Kumagaya-shi|Kumagaya-shi
+en|JP_Saitama-ken_oi-machi|oi-machi
+en|JP_Saitama-ken_Okegawa-shi|Okegawa-shi
+en|JP_Saitama-ken_Saitama-shi|Saitama-shi
+en|JP_Saitama-ken_Sakado-shi|Sakado-shi
+en|JP_Saitama-ken_Satte-shi|Satte-shi
+en|JP_Saitama-ken_Sayama-shi|Sayama-shi
+en|JP_Saitama-ken_Shiki-shi|Shiki-shi
+en|JP_Saitama-ken_Shiraoka-shi|Shiraoka-shi
+en|JP_Saitama-ken_Soka-shi|Soka-shi
+en|JP_Saitama-ken_Toda-shi|Toda-shi
+en|JP_Saitama-ken_Tokorozawa-shi|Tokorozawa-shi
+en|JP_Saitama-ken_Wako-shi|Wako-shi
+en|JP_Saitama-ken_Yashio-shi|Yashio-shi
+en|JP_Saitama-ken_oshikawa-shi|Yoshikawa-shi
+en|JP_Saitama-ken_Others|Other
+en|JP_Shiga-ken|Shiga-ken
+en|JP_Shiga-ken_Hikone-shi|Hikone-shi
+en|JP_Shiga-ken_Kusatsu-shi|Kusatsu-shi
+en|JP_Shiga-ken_Moriyama-shi|Moriyama-shi
+en|JP_Shiga-ken_Nagahama-shi|Nagahama-shi
+en|JP_Shiga-ken_Omihachiman-shi|Omihachiman-shi
+en|JP_Shiga-ken_Otsu-shi|Otsu-shi
+en|JP_Shiga-ken_Others|Other
+en|JP_Shimane-ken|Shimane-ken
+en|JP_Shimane-ken_Izumo-shi|Izumo-shi
+en|JP_Shimane-ken_Matsue-shi|Matsue-shi
+en|JP_Shimane-ken_Others|Other
+en|JP_Shizuoka-ken|Shizuoka-ken
+en|JP_Shizuoka-ken_Fuji-shi|Fuji-shi
+en|JP_Shizuoka-ken_Fujieda-shi|Fujieda-shi
+en|JP_Shizuoka-ken_Fujinomiya-shi|Fujinomiya-shi
+en|JP_Shizuoka-ken_Fukuroi-shi|Fukuroi-shi
+en|JP_Shizuoka-ken_Gotenba-shi|Gotenba-shi
+en|JP_Shizuoka-ken_Hamakita-shi|Hamakita-shi
+en|JP_Shizuoka-ken_Hamamatsu-shi|Hamamatsu-shi
+en|JP_Shizuoka-ken_Ito-shi|Ito-shi
+en|JP_Shizuoka-ken_Iwata-shi|Iwata-shi
+en|JP_Shizuoka-ken_Kakegawa-shi|Kakegawa-shi
+en|JP_Shizuoka-ken_Mishima-machi|Mishima-machi
+en|JP_Shizuoka-ken_Numazu-shi|Numazu-shi
+en|JP_Shizuoka-ken_Shimada-shi|Shimada-shi
+en|JP_Shizuoka-ken_Shizuoka-shi|Shizuoka-shi
+en|JP_Shizuoka-ken_Yaizu-shi|Yaizu-shi
+en|JP_Shizuoka-ken_Others|Other
+en|JP_Tochigi-ken|Tochigi-ken
+en|JP_Tochigi-ken_Ashikaga-shi|Ashikaga-shi
+en|JP_Tochigi-ken_Imaichi-shi|Imaichi-shi
+en|JP_Tochigi-ken_Kanuma-shi|Kanuma-shi
+en|JP_Tochigi-ken_Mooka-shi|Mooka-shi
+en|JP_Tochigi-ken_Otawara-shi|Otawara-shi
+en|JP_Tochigi-ken_Oyama-cho|Oyama-cho
+en|JP_Tochigi-ken_Sano-shi|Sano-shi
+en|JP_Tochigi-ken_Tochigi-shi|Tochigi-shi
+en|JP_Tochigi-ken_Utsunomiya-shi|Utsunomiya-shi
+en|JP_Tochigi-ken_Others|Other
+en|JP_Tokushima-ken|Tokushima-ken
+en|JP_Tokushima-ken_Anan-cho|Anan-cho
+en|JP_Tokushima-ken_Naruto-shi|Naruto-shi
+en|JP_Tokushima-ken_Tokushima-shi|Tokushima-shi
+en|JP_Tokushima-ken_Others|Other
+en|JP_Tokyo|Tokyo
+en|JP_Tokyo_Chofu-shi|Chofu-shi
+en|JP_Tokyo_Fussa-shi|Fussa-shi
+en|JP_Tokyo_Hachioji-shi|Hachioji-shi
+en|JP_Tokyo_Higashimurayama-shi|Higashimurayama-shi
+en|JP_Tokyo_Hino shi|Hino-shi
+en|JP_Tokyo_Kamirenjaku|Kamirenjaku
+en|JP_Tokyo_Kokubunji-shi|Kokubunji-shi
+en|JP_Tokyo_Machida-shi|Machida-shi
+en|JP_Tokyo_Mitaka-shi|Mitaka-shi
+en|JP_Tokyo_Musashino-shi|Musashino-shi
+en|JP_Tokyo_Nishi-Tokyo-shi|NishiTokyo-shi
+en|JP_Tokyo_Ome-shi|Ome-shi
+en|JP_Tokyo_Tokyo|Tokyo-to
+en|JP_Tokyo_Others|Other
+en|JP_Tottori-ken|Tottori-ken
+en|JP_Tottori-ken_Tottori-shi|Tottori-shi
+en|JP_Tottori-ken_Yonago-shi|Yonago-shi
+en|JP_Tottori-ken_Others|Other
+en|JP_Toyama-ken|Toyama-ken
+en|JP_Toyama-ken_Himi-shi|Himi-shi
+en|JP_Toyama-ken_Nanto-shi|Nanto-shi
+en|JP_Toyama-ken_Takaoka-shi|Takaoka-shi
+en|JP_Toyama-ken_Toyama-shi|Toyama-shi
+en|JP_Toyama-ken_Others|Other
+en|JP_Wakayama-ken|Wakayama-ken
+en|JP_Wakayama-ken_Hashimoto-shi|Hashimoto-shi
+en|JP_Wakayama-ken_Iwade-shi|Iwade-shi
+en|JP_Wakayama-ken_Tanabe-shi|Tanabe-shi
+en|JP_Wakayama-ken_Wakayama-shi|Wakayama-shi
+en|JP_Wakayama-ken_Others|Other
+en|JP_Yamagata-ken|Yamagata-ken
+en|JP_Yamagata-ken_Sakata-shi|Sakata-shi
+en|JP_Yamagata-ken_Tendo-shi|Tendo-shi
+en|JP_Yamagata-ken_Tsuruoka-shi|Tsuruoka-shi
+en|JP_Yamagata-ken_Yamagata-shi|Yamagata-shi
+en|JP_Yamagata-ken_Yonezawa-shi|Yonezawa-shi
+en|JP_Yamagata-ken_Others|Other
+en|JP_Yamaguchi-ken|Yamaguchi-ken
+en|JP_Yamaguchi-ken_Hofu-shi|Hofu-shi
+en|JP_Yamaguchi-ken_Iwakuni-shi|Iwakuni-shi
+en|JP_Yamaguchi-ken_Kudamatsu-shi|Kudamatsu-shi
+en|JP_Yamaguchi-ken_Shimonoseki-shi|Shimonoseki-shi
+en|JP_Yamaguchi-ken_Tokuyama-shi|Tokuyama-shi
+en|JP_Yamaguchi-ken_Ube-shi|Ube-shi
+en|JP_Yamaguchi-ken_Yamaguchi-shi|Yamaguchi-shi
+en|JP_Yamaguchi-ken_Others|Other
+en|JP_Yamanashi-ken|Yamanashi-ken
+en|JP_Yamanashi-ken_Kofu-shi|Kofu-shi
+en|JP_Yamanashi-ken_Others|Other
+en|JE|Jersey
+en|JO|Jordan
+en|KZ|Kazakhstan
+en|KE|Kenya
+en|KI|Kiribati
+en|XK|Kosovo
+en|KW|Kuwait
+en|KG|Kyrgyzstan
+en|LA|Laos
+en|LV|Latvia
+en|LB|Lebanon
+en|LS|Lesotho
+en|LR|Liberia
+en|LY|Libya
+en|LI|Liechtenstein
+en|LT|Lithuania
+en|LU|Luxembourg
+en|MO|Macao, China
+en|MO_Cathedral|Cathedral
+en|MO_Coloane|Coloane
+en|MO_Fatima|Fatima
+en|MO_St. Anthony|St. Anthony
+en|MO_St. Lawrence|St. Lawrence
+en|MO_St. Lazarus|St. Lazarus
+en|MO_Taipa|Taipa
+en|MK|Macedonia
+en|MG|Madagascar
+en|MW|Malawi
+en|MY|Malaysia
+en|MY_Johor|Johor
+en|MY_Johor_Batu Pahat|Batu Pahat
+en|MY_Johor_Johor Bahru|Johor Bahru
+en|MY_Johor_Kluang|Kluang
+en|MY_Johor_Kota Tinggi|Kota Tinggi
+en|MY_Johor_Kulai|Kulai
+en|MY_Johor_Mersing|Mersing
+en|MY_Johor_Muar|Muar
+en|MY_Johor_Pontian|Pontian
+en|MY_Johor_Segamat|Segamat
+en|MY_Johor_Skudai|Skudai
+en|MY_Johor_Ulu Tiram|Ulu Tiram
+en|MY_Johor_Others|Other
+en|MY_Kedah|Kedah
+en|MY_Kedah_Alor Setar|Alor Setar
+en|MY_Kedah_Baling|Baling
+en|MY_Kedah_Bandar Baharu|Bandar Baharu
+en|MY_Kedah_Jitra|Jitra
+en|MY_Kedah_Kota Setar|Kota Setar
+en|MY_Kedah_Kuala Muda|Kuala Muda
+en|MY_Kedah_Kubang Pasu|Kubang Pasu
+en|MY_Kedah_Kulim|Kulim
+en|MY_Kedah_Langkawi|Langkawi
+en|MY_Kedah_Padang Terap|Padang Terap
+en|MY_Kedah_Pendang|Pendang
+en|MY_Kedah_Sungai Petani|Sungai Petani
+en|MY_Kedah_Others|Other
+en|MY_Kelantan|Kelantan
+en|MY_Kelantan_Bachok|Bachok
+en|MY_Kelantan_Gua Musang|Gua Musang
+en|MY_Kelantan_Jeli|Jeli
+en|MY_Kelantan_Kota Bharu|Kota Bharu
+en|MY_Kelantan_Kuala Krai|Kuala Krai
+en|MY_Kelantan_Machang|Machang
+en|MY_Kelantan_Pasir Mas|Pasir Mas
+en|MY_Kelantan_Pasir Putih|Pasir Putih
+en|MY_Kelantan_Tanah Merah|Tanah Merah
+en|MY_Kelantan_Tumpat|Tumpat
+en|MY_Kelantan_Others|Other
+en|MY_Kuala Lumpur|Kuala Lumpur
+en|MY_Kuala Lumpur_Kuala Lumpur|Kuala Lumpur
+en|MY_Kuala Lumpur_Others|Other
+en|MY_Labuan|Labuan
+en|MY_Labuan_Labuan|Labuan
+en|MY_Labuan_Victoria|Victoria
+en|MY_Labuan_Others|Other
+en|MY_Malacca|Malacca
+en|MY_Malacca_Alor Gajah|Alor Gajah
+en|MY_Malacca_Jasin|Jasin
+en|MY_Malacca_Melaka|Melaka
+en|MY_Malacca_Others|Other
+en|MY_Negeri Sembilan|Negeri Sembilan
+en|MY_Negeri Sembilan_Jelebu|Jelebu
+en|MY_Negeri Sembilan_Jempol|Jempol
+en|MY_Negeri Sembilan_Kuala Pilah|Kuala Pilah
+en|MY_Negeri Sembilan_Port Dickson|Port Dickson
+en|MY_Negeri Sembilan_Rembau|Rembau
+en|MY_Negeri Sembilan_Seremban|Seremban
+en|MY_Negeri Sembilan_Tampin|Tampin
+en|MY_Negeri Sembilan_Others|Other
+en|MY_Pahang|Pahang
+en|MY_Pahang_Bentong|Bentong
+en|MY_Pahang_Bera|Bera
+en|MY_Pahang_Cameron Highlands|Cameron Highlands
+en|MY_Pahang_Jerantut|Jerantut
+en|MY_Pahang_Kuala Lipis|Kuala Lipis
+en|MY_Pahang_Kuantan|Kuantan
+en|MY_Pahang_Maran|Maran
+en|MY_Pahang_Pekan|Pekan
+en|MY_Pahang_Raub|Raub
+en|MY_Pahang_Rompin|Rompin
+en|MY_Pahang_Temerloh|Temerloh
+en|MY_Pahang_Others|Other
+en|MY_Perak|Perak
+en|MY_Perak_Batu Gajah|Batu Gajah
+en|MY_Perak_Ipoh|Ipoh
+en|MY_Perak_Kuala Kangsar|Kuala Kangsar
+en|MY_Perak_Lumut|Lumut
+en|MY_Perak_Simpang Empat|Simpang Empat
+en|MY_Perak_Sungai Siput|Sungai Siput
+en|MY_Perak_Taiping|Taiping
+en|MY_Perak_Tanjung Malim|Tanjung Malim
+en|MY_Perak_Teluk Intan|Teluk Intan
+en|MY_Perak_Others|Other
+en|MY_Perlis|Perlis
+en|MY_Perlis_Kangar|Kangar
+en|MY_Perlis_Others|Other
+en|MY_Pulau Pinang|Pulau Pinang
+en|MY_Pulau Pinang_Bukit Mertajam|Bukit Mertajam
+en|MY_Pulau Pinang_Butterworth|Butterworth
+en|MY_Pulau Pinang_George Town|George Town
+en|MY_Pulau Pinang_Nibong Tebal|Nibong Tebal
+en|MY_Pulau Pinang_Perai|Perai
+en|MY_Pulau Pinang_Others|Other
+en|MY_Sabah|Sabah
+en|MY_Sabah_Beaufort|Beaufort
+en|MY_Sabah_Beluran|Beluran
+en|MY_Sabah_Keningau|Keningau
+en|MY_Sabah_Kinabatangan|Kinabatangan
+en|MY_Sabah_Kota Belud|Kota Belud
+en|MY_Sabah_Kota Kinabalu|Kota Kinabalu
+en|MY_Sabah_Kota Marudu|Kota Marudu
+en|MY_Sabah_Kuala Penyu|Kuala Penyu
+en|MY_Sabah_Kudat|Kudat
+en|MY_Sabah_Kunak|Kunak
+en|MY_Sabah_Lahad Datu|Lahad Datu
+en|MY_Sabah_Nabawan|Nabawan
+en|MY_Sabah_Papar|Papar
+en|MY_Sabah_Penampang|Penampang
+en|MY_Sabah_Pitas|Pitas
+en|MY_Sabah_Ranau|Ranau
+en|MY_Sabah_Sandakan|Sandakan
+en|MY_Sabah_Semporna|Semporna
+en|MY_Sabah_Sipitang|Sipitang
+en|MY_Sabah_Tambunan|Tambunan
+en|MY_Sabah_Tawau|Tawau
+en|MY_Sabah_Tenom|Tenom
+en|MY_Sabah_Tuaran|Tuaran
+en|MY_Sabah_Others|Other
+en|MY_Sarawak|Sarawak
+en|MY_Sarawak_Betong|Betong
+en|MY_Sarawak_Bintulu|Bintulu
+en|MY_Sarawak_Kapit|Kapit
+en|MY_Sarawak_Kuching|Kuching
+en|MY_Sarawak_Limbang|Limbang
+en|MY_Sarawak_Miri|Miri
+en|MY_Sarawak_Mukah|Mukah
+en|MY_Sarawak_Samarahan|Samarahan
+en|MY_Sarawak_Sarikei|Sarikei
+en|MY_Sarawak_Sibu|Sibu
+en|MY_Sarawak_Sri Aman|Sri Aman
+en|MY_Sarawak_Others|Other
+en|MY_Selangor|Selangor
+en|MY_Selangor_Gombak|Gombak
+en|MY_Selangor_Hulu Langat|Hulu Langat
+en|MY_Selangor_Hulu Selangor|Hulu Selangor
+en|MY_Selangor_Klang|Klang
+en|MY_Selangor_Kuala Langat|Kuala Langat
+en|MY_Selangor_Kuala Selangor|Kuala Selangor
+en|MY_Selangor_Petaling|Petaling
+en|MY_Selangor_Petaling Jaya|Petaling Jaya
+en|MY_Selangor_Rawang|Rawang
+en|MY_Selangor_Sabak Bernam|Sabak Bernam
+en|MY_Selangor_Sepang|Sepang
+en|MY_Selangor_Shah Alam|Shah Alam
+en|MY_Selangor_Subang Jaya|Subang Jaya
+en|MY_Selangor_Others|Other
+en|MY_Terengganu|Terengganu
+en|MY_Terengganu_Besut|Besut
+en|MY_Terengganu_Dungun|Dungun
+en|MY_Terengganu_Hulu|Hulu
+en|MY_Terengganu_Kemaman|Kemaman
+en|MY_Terengganu_Kuala Terengganu|Kuala Terengganu
+en|MY_Terengganu_Marang|Marang
+en|MY_Terengganu_Setiu|Setiu
+en|MY_Terengganu_Others|Other
+en|MV|Maldives
+en|MV_Addu Atoll|Addu Atoll
+en|MV_Faadhippolhu|Faadhippolhu
+en|MV_Felidhu Atoll|Felidhu Atoll
+en|MV_Foammulah|Foammulah
+en|MV_Hadhdhunmathi|Hadhdhunmathi
+en|MV_Kolhumadulu|Kolhumadulu
+en|MV_Male|Male
+en|MV_Male Atoll|Male Atoll
+en|MV_Mulakatholhu|Mulakatholhu
+en|MV_North Ari Atoll|North Ari Atoll
+en|MV_North Huvadhu Atoll|North Huvadhu Atoll
+en|MV_North Maalhosmadhulu|North Maalhosmadhulu
+en|MV_North Miladhunmadhulu|North Miladhunmadhulu
+en|MV_North Nilandhe Atoll|North Nilandhe Atoll
+en|MV_North Thiladhunmathi|North Thiladhunmathi
+en|MV_South Ari Atoll|South Ari Atoll
+en|MV_South Huvadhu Atoll|South Huvadhu Atoll
+en|MV_South Maalhosmadulu|South Maalhosmadulu
+en|MV_South Miladhunmadhulu|South Miladhunmadhulu
+en|MV_South Nilandhe Atoll|South Nilandhe Atoll
+en|MV_South Thiladhunmathi|South Thiladhunmathi
+en|ML|Mali
+en|MT|Malta
+en|MH|Marshall Islands
+en|MQ|Martinique
+en|MR|Mauritania
+en|MU|Mauritius
+en|YT|Mayotte
+en|MX|Mexico
+en|MX_Acapulco|Acapulco
+en|MX_Aguascalientes|Aguascalientes
+en|MX_Benito Juurez|Benito Juárez
+en|MX_Campeche|Campeche
+en|MX_Carmen|Carmen
+en|MX_Celaya|Celaya
+en|MX_Cheturnal|Cheturnal
+en|MX_Chihuahua|Chihuahua
+en|MX_Chilpancingo|Chilpancingo
+en|MX_Coatzacoalcos|Coatzacoalcos
+en|MX_Colima|Colima
+en|MX_Cuernavaca|Cuernavaca
+en|MX_Culiacan|Culiacan
+en|MX_Durango|Durango
+en|MX_Ensenada|Ensenada
+en|MX_Guadalajara|Guadalajara
+en|MX_Guanajuato|Guanajuato
+en|MX_Hermosillo|Hermosillo
+en|MX_Irapuato|Irapuato
+en|MX_Jalapa|Jalapa
+en|MX_Juarez|Juarez
+en|MX_La Paz|La Paz
+en|MX_Leon|Leon
+en|MX_Los Mochis|Los Mochis
+en|MX_Matamoros|Matamoros
+en|MX_Mazatlan|Mazatlan
+en|MX_Merida|Merida
+en|MX_Mexicali|Mexicali
+en|MX_Mexico City|Mexico City
+en|MX_Monclova|Monclova
+en|MX_Monterrey|Monterrey
+en|MX_Morelia|Morelia
+en|MX_Nogales|Nogales
+en|MX_Nuevo Laredo|Nuevo Laredo
+en|MX_Oaxaca|Oaxaca
+en|MX_Obregon|Obregon
+en|MX_Orizaba|Orizaba
+en|MX_Pachuca|Pachuca
+en|MX_Poza Rica de Hidalgo|Poza Rica de Hidalgo
+en|MX_Puebla|Puebla
+en|MX_Puerto Vallarta|Puerto Vallarta
+en|MX_Queretaro|Queretaro
+en|MX_Reynosa|Reynosa
+en|MX_Saltillo|Saltillo
+en|MX_San Luis Potosi|San Luis Potosi
+en|MX_Tampico|Tampico
+en|MX_Tapachula|Tapachula
+en|MX_Tehuacan|Tehuacán
+en|MX_Tepic|Tepic
+en|MX_Tijuana|Tijuana
+en|MX_Tlaxcala|Tlaxcala
+en|MX_Toluca|Toluca
+en|MX_Torreon|Torreon
+en|MX_Tuxtla Gutierrez|Tuxtla Gutierrez
+en|MX_Uruapan|Uruapan
+en|MX_Valles|Valles
+en|MX_Veracruz|Veracruz
+en|MX_Victoria|Victoria
+en|MX_Villahermosa|Villahermosa
+en|MX_Zacatecas|Zacatecas
+en|FM|Micronesia
+en|MD|Moldova
+en|MC|Monaco
+en|MN|Mongolia
+en|ME|Montenegro
+en|MS|Montserrat
+en|MA|Morocco
+en|MZ|Mozambique
+en|MM|Myanmar
+en|NA|Namibia
+en|NR|Nauru
+en|NP|Nepal
+en|NL|Netherlands
+en|NL_Almere|Almere
+en|NL_Amersfoort|Amersfoort
+en|NL_Amsterdam|Amsterdam
+en|NL_Apeldoorn|Apeldoorn
+en|NL_Arnhem|Arnhem
+en|NL_Assen|Assen
+en|NL_Breda|Breda
+en|NL_Dordrecht|Dordrecht
+en|NL_Ede|Ede
+en|NL_Eindhoven|Eindhoven
+en|NL_Emmen|Emmen
+en|NL_Enschede|Enschede
+en|NL_Groningen|Groningen
+en|NL_Haarlem|Haarlem
+en|NL_Hague|Hague
+en|NL_Hoofddorp|Hoofddorp
+en|NL_Leeuwarden|Leeuwarden
+en|NL_Leiden|Leiden
+en|NL_Lelystad|Lelystad
+en|NL_Maastricht|Maastricht
+en|NL_Middelburg|Middelburg
+en|NL_Nijmegen|Nijmegen
+en|NL_Rotterdam|Rotterdam
+en|NL_'s-Hertogenbosch|'s-Hertogenbosch
+en|NL_Tilburg|Tilburg
+en|NL_Utrecht|Utrecht
+en|NL_Zoetermeer|Zoetermeer
+en|NL_Zwolle|Zwolle
+en|NC|New Caledonia
+en|NZ|New Zealand
+en|NZ_Auckland|Auckland
+en|NZ_Blenheim|Blenheim
+en|NZ_Christchurch|Christchurch
+en|NZ_Dunedin|Dunedin
+en|NZ_Far North|Far North
+en|NZ_Gisborne|Gisborne
+en|NZ_Greymouth|Greymouth
+en|NZ_Hamilton|Hamilton
+en|NZ_Hastings|Hastings
+en|NZ_Invercargill|Invercargill
+en|NZ_Kaipara|Kaipara
+en|NZ_Manukau|Manukau
+en|NZ_Napier|Napier
+en|NZ_Nelson|Nelson
+en|NZ_New Plymouth|New Plymouth
+en|NZ_North Shore|North Shore
+en|NZ_Palmerston North|Palmerston North
+en|NZ_Richmond|Richmond
+en|NZ_Stratford|Stratford
+en|NZ_Taumarunui|Taumarunui
+en|NZ_Waitakere|Waitakere
+en|NZ_Wanganui|Wanganui
+en|NZ_Wellington|Wellington
+en|NZ_Whakatane|Whakatane
+en|NZ_Whangarei|Whangarei
+en|NI|Nicaragua
+en|NE|Niger
+en|NG|Nigeria
+en|NU|Niue
+en|NF|Norfolk Island
+en|KP|North Korea
+en|MP|Northern Mariana Islands
+en|NO|Norway
+en|OM|Oman
+en|PK|Pakistan
+en|PW|Palau
+en|PS|Palestine
+en|PA|Panama
+en|PG|Papua New Guinea
+en|PY|Paraguay
+en|PE|Peru
+en|PH|Philippines
+en|PH_Caloocan|Caloocan
+en|PH_Cebu|Cebu
+en|PH_Davao|Davao
+en|PH_Manila|Manila
+en|PN|Pitcairn Islands
+en|PL|Poland
+en|PT|Portugal
+en|PT_Alentejo Central|Alentejo Central
+en|PT_Alentejo Litoral|Alentejo Litoral
+en|PT_Alto Alentejo|Alto Alentejo
+en|PT_Alto Tros-os-Montes|Alto Tros-os-Montes
+en|PT_Ave|Ave
+en|PT_Baixo Alentejo|Baixo Alentejo
+en|PT_Baixo Mondego|Baixo Mondego
+en|PT_Baixo Vouga|Baixo Vouga
+en|PT_Beira Interior Norte|Beira Interior Norte
+en|PT_Beira Interior Sul|Beira Interior Sul
+en|PT_Cavado|Cavado
+en|PT_Cova da Beira|Cova da Beira
+en|PT_Douro|Douro
+en|PT_Entre Douro e Vouga|Entre Douro e Vouga
+en|PT_Faro|Faro
+en|PT_Funchal|Funchal
+en|PT_Leziria do Tejo|Leziria do Tejo
+en|PT_Lisboa|Lisboa
+en|PT_Medio Tejo|Medio Tejo
+en|PT_Minho-Lima|Minho-Lima
+en|PT_Oeste|Oeste
+en|PT_Peninsula de Setubal|Peninsula de Setubal
+en|PT_Pinhal Interior Norte|Pinhal Interior Norte
+en|PT_Pinhal Interior Sul|Pinhal Interior Sul
+en|PT_Pinhal Litoral|Pinhal Litoral
+en|PT_Ponta Delgada|Ponta Delgada
+en|PT_Porto|Porto
+en|PT_Serra da Estrela|Serra da Estrela
+en|PT_Tamega|Tamega
+en|PR|Puerto Rico
+en|QA|Qatar
+en|RE|Réunion
+en|RO|Romania
+en|RU|Russia
+en|RU_Abakan|Abakan
+en|RU_Aginskoye|Aginskoye
+en|RU_Anadyr|Anadyr
+en|RU_Arkhangelsk|Arkhangelsk
+en|RU_Astrakhan|Astrakhan
+en|RU_Barnaul|Barnaul
+en|RU_Belgorod|Belgorod
+en|RU_Birobidzan|Birobidzan
+en|RU_Blagoveshchensk|Blagoveshchensk
+en|RU_Bryansk|Bryansk
+en|RU_Chabarovsk|Chabarovsk
+en|RU_Cheboksary|Cheboksary
+en|RU_Chelyabinsk|Chelyabinsk
+en|RU_Cherkessk|Cherkessk
+en|RU_Chita|Chita
+en|RU_Elista|Elista
+en|RU_Gorno-Altajsk|Gorno-Altajsk
+en|RU_Grozny|Grozny
+en|RU_Irkutsk|Irkutsk
+en|RU_Ivanovo|Ivanovo
+en|RU_Izhevsk|Izhevsk
+en|RU_Jakutsk|Jakutsk
+en|RU_Jaroslavl|Jaroslavl
+en|RU_Jekaterinburg|Jekaterinburg
+en|RU_Juzno-Sachalinsk|Juzno-Sachalinsk
+en|RU_Kaliningrad|Kaliningrad
+en|RU_Kaluga|Kaluga
+en|RU_Kazan|Kazan
+en|RU_Kemerovo|Kemerovo
+en|RU_Khanty-Mansiysk|Khanty-Mansiysk
+en|RU_Kirov|Kirov
+en|RU_Kostroma|Kostroma
+en|RU_Krasnodar|Krasnodar
+en|RU_Krasnojarsk|Krasnojarsk
+en|RU_Kudymkar|Kudymkar
+en|RU_Kurgan|Kurgan
+en|RU_Kursk|Kursk
+en|RU_Kyzyl|Kyzyl
+en|RU_Lipeck|Lipeck
+en|RU_Magadan|Magadan
+en|RU_Magas|Magas
+en|RU_Makhachkala|Makhachkala
+en|RU_Maykop|Maykop
+en|RU_Moscow|Moscow
+en|RU_Murmansk|Murmansk
+en|RU_Nalchik|Nalchik
+en|RU_Naryan-Mar|Naryan-Mar
+en|RU_Niznij Novgorod|Niznij Novgorod
+en|RU_Novosibirsk|Novosibirsk
+en|RU_Omsk|Omsk
+en|RU_Orel|Orel
+en|RU_Orenburg|Orenburg
+en|RU_Palana|Palana
+en|RU_Penza|Penza
+en|RU_Perm|Perm
+en|RU_Petropavlovsk-Kamchatskiy|Petropavlovsk-Kamchatskiy
+en|RU_Petrozavodsk|Petrozavodsk
+en|RU_Pskov|Pskov
+en|RU_Rostov-na-Donu|Rostov-na-Donu
+en|RU_Ryazan|Ryazan
+en|RU_Salekhard|Salekhard
+en|RU_Samara|Samara
+en|RU_Saransk|Saransk
+en|RU_Saratov|Saratov
+en|RU_Smolensk|Smolensk
+en|RU_St. Peterburg|St. Petersburg
+en|RU_Stavropol|Stavropol
+en|RU_Syktyvkar|Syktyvkar
+en|RU_Tambov|Tambov
+en|RU_Tomsk|Tomsk
+en|RU_Tula|Tula
+en|RU_Tver|Tver
+en|RU_Tyumen|Tyumen
+en|RU_Ufa|Ufa
+en|RU_Ulan-Ude|Ulan-Ude
+en|RU_Uljanovsk|Uljanovsk
+en|RU_Ust-Ordynsky|Ust-Ordynsky
+en|RU_Velikij Novgorod|Veliky Novgorod
+en|RU_Vladikavkaz|Vladikavkaz
+en|RU_Vladimir|Vladimir
+en|RU_Vladivostok|Vladivostok
+en|RU_Volgograd|Volgograd
+en|RU_Vologda|Vologda
+en|RU_Voronezh|Voronezh
+en|RU_Yoshkar-Ola|Yoshkar-Ola
+en|RW|Rwanda
+en|WS|Samoa
+en|SM|San Marino
+en|ST|São Tomé & Príncipe
+en|SA|Saudi Arabia
+en|SA_Abha|Abha
+en|SA_Al Bahah|Al Bahah
+en|SA_Al Hofuf|Al Hofuf
+en|SA_Al Jubail|Al Jubail
+en|SA_Al Kharj|Al Kharj
+en|SA_Al Mubarraz|Al Mubarraz
+en|SA_Arar|Arar
+en|SA_At Tarif|At Tarif
+en|SA_Buraydah|Buraydah
+en|SA_Dammam|Dammam
+en|SA_Hafar al-Batin|Hafar al-Batin
+en|SA_Hail|Hail
+en|SA_Jiddah|Jiddah
+en|SA_Jizan|Jizan
+en|SA_Khamis Mushayt|Khamis Mushayt
+en|SA_Makkah|Makkah
+en|SA_Medina|Medina
+en|SA_Najran|Najran
+en|SA_Riyad|Riyad
+en|SA_Sakaka|Sakaka
+en|SA_Tabuk|Tabuk
+en|SA_Yanbu al-Bahr|Yanbu al-Bahr
+en|SN|Senegal
+en|RS|Serbia
+en|SC|Seychelles
+en|SL|Sierra Leone
+en|SG|Singapore
+en|SX|Sint Maarten
+en|SK|Slovakia
+en|SI|Slovenia
+en|GS|So. Georgia & So. Sandwich Isl.
+en|SB|Solomon Islands
+en|SO|Somalia
+en|ZA|South Africa
+en|ZA_Barkley East|Barkley East
+en|ZA_Beaufort West|Beaufort West
+en|ZA_Bisho|Bisho
+en|ZA_Bloemfontein|Bloemfontein
+en|ZA_Bredasdorp|Bredasdorp
+en|ZA_Bronkhorstspruit|Bronkhorstspruit
+en|ZA_Cape Town|Cape Town
+en|ZA_De Aar|De Aar
+en|ZA_Dundee|Dundee
+en|ZA_Durban|Durban
+en|ZA_East London|East London
+en|ZA_George|George
+en|ZA_Giyani|Giyani
+en|ZA_Groblersdal|Groblersdal
+en|ZA_Ixopo|Ixopo
+en|ZA_Johannesburg|Johannesburg
+en|ZA_Kimberley|Kimberley
+en|ZA_Klerksdorp|Klerksdorp
+en|ZA_Kuruman|Kuruman
+en|ZA_Ladysmith|Ladysmith
+en|ZA_Middelburg|Middelburg
+en|ZA_Mkuze|Mkuze
+en|ZA_Moorreesburg|Moorreesburg
+en|ZA_Mount Ayliff|Mount Ayliff
+en|ZA_Nelspruit|Nelspruit
+en|ZA_Newcastle|Newcastle
+en|ZA_Nylstroom|Nylstroom
+en|ZA_Pietermaritzburg|Pietermaritzburg
+en|ZA_Pietersburg|Pietersburg
+en|ZA_Port Elizabeth|Port Elizabeth
+en|ZA_Port Shepstone|Port Shepstone
+en|ZA_Pretoria|Pretoria
+en|ZA_Queenstown|Queenstown
+en|ZA_Randfontein|Randfontein
+en|ZA_Richards Bay|Richards Bay
+en|ZA_Rustenburg|Rustenburg
+en|ZA_Sasolburg|Sasolburg
+en|ZA_Secunda|Secunda
+en|ZA_Springbok|Springbok
+en|ZA_Thohoyandou|Thohoyandou
+en|ZA_Thulamahashe|Thulamahashe
+en|ZA_Trompsburg|Trompsburg
+en|ZA_Ulundi|Ulundi
+en|ZA_Umtata|Umtata
+en|ZA_Upington|Upington
+en|ZA_Vereeniging|Vereeniging
+en|ZA_Vryburg|Vryburg
+en|ZA_Welkom|Welkom
+en|ZA_Witsieshoek|Witsieshoek
+en|ZA_Worcester|Worcester
+en|KR|South Korea
+en|KR_Busan|Busan
+en|KR_Busan_Busan|Busan
+en|KR_Busan_Others|Other
+en|KR_Chungcheongbuk-do|Chungcheongbuk-do
+en|KR_Chungcheongbuk-do_Boeun County|Boeun County
+en|KR_Chungcheongbuk-do_Cheongju|Cheongju
+en|KR_Chungcheongbuk-do_Cheongwon County|Cheongwon County
+en|KR_Chungcheongbuk-do_Chungju|Chungju
+en|KR_Chungcheongbuk-do_Danyang County|Danyang County
+en|KR_Chungcheongbuk-do_Eumseong County|Eumseong County
+en|KR_Chungcheongbuk-do_Gochang County|Gochang County
+en|KR_Chungcheongbuk-do_Goesan County|Goesan County
+en|KR_Chungcheongbuk-do_Jecheon|Jecheon
+en|KR_Chungcheongbuk-do_Jeungpyeong County|Jeungpyeong County
+en|KR_Chungcheongbuk-do_Jincheon County|Jincheon County
+en|KR_Chungcheongbuk-do_Okcheon County|Okcheon County
+en|KR_Chungcheongbuk-do_Yeongdong County|Yeongdong County
+en|KR_Chungcheongbuk-do_Others|Other
+en|KR_Chungcheongnam-do|Chungcheongnam-do
+en|KR_Chungcheongnam-do_Asan|Asan
+en|KR_Chungcheongnam-do_Boryeong|Boryeong
+en|KR_Chungcheongnam-do_Buyeo County|Buyeo County
+en|KR_Chungcheongnam-do_Cheonan|Cheonan
+en|KR_Chungcheongnam-do_Cheongyang County|Cheongyang County
+en|KR_Chungcheongnam-do_Dangjin|Dangjin
+en|KR_Chungcheongnam-do_Geumsan County|Geumsan County
+en|KR_Chungcheongnam-do_Gongju|Gongju
+en|KR_Chungcheongnam-do_Gyeryong|Gyeryong
+en|KR_Chungcheongnam-do_Hongseong County|Hongseong County
+en|KR_Chungcheongnam-do_Nonsan|Nonsan
+en|KR_Chungcheongnam-do_Seocheon County|Seocheon County
+en|KR_Chungcheongnam-do_Seosan|Seosan
+en|KR_Chungcheongnam-do_Taean County|Taean County
+en|KR_Chungcheongnam-do_Yeongi County|Yeongi County
+en|KR_Chungcheongnam-do_Yesan County|Yesan County
+en|KR_Chungcheongnam-do_Others|Other
+en|KR_Daegu|Daegu
+en|KR_Daegu_Daegu|Daegu
+en|KR_Daegu_Dalseong County|Dalseong County
+en|KR_Daegu_Suseong|Suseong
+en|KR_Daegu_Others|Other
+en|KR_Daejeon|Daejeon
+en|KR_Daejeon_Daejeon|Daejeon
+en|KR_Daejeon_Others|Other
+en|KR_Gangwon-do|Gangwon-do
+en|KR_Gangwon-do_Cheorwon County|Cheorwon County
+en|KR_Gangwon-do_Chuncheon|Chuncheon
+en|KR_Gangwon-do_Donghae|Donghae
+en|KR_Gangwon-do_Gangneung|Gangneung
+en|KR_Gangwon-do_Goseong County|Goseong County
+en|KR_Gangwon-do_Hoengseong County|Hoengseong County
+en|KR_Gangwon-do_Hongcheon County|Hongcheon County
+en|KR_Gangwon-do_Hwacheon County|Hwacheon County
+en|KR_Gangwon-do_Inje County|Inje County
+en|KR_Gangwon-do_Jeongseon County|Jeongseon County
+en|KR_Gangwon-do_Pyeongchang County|Pyeongchang County
+en|KR_Gangwon-do_Samcheok|Samcheok
+en|KR_Gangwon-do_Sokcho|Sokcho
+en|KR_Gangwon-do_Taebaek|Taebaek
+en|KR_Gangwon-do_Wonju|Wonju
+en|KR_Gangwon-do_Yanggu County|Yanggu County
+en|KR_Gangwon-do_Yangyang County|Yangyang County
+en|KR_Gangwon-do_Yeongwol County|Yeongwol County
+en|KR_Gangwon-do_Others|Other
+en|KR_Gwangju|Gwangju
+en|KR_Gwangju_Gwangju|Gwangju
+en|KR_Gwangju_Others|Other
+en|KR_Gyeonggi-do|Gyeonggi-do
+en|KR_Gyeonggi-do_Ansan|Ansan
+en|KR_Gyeonggi-do_Anseong|Anseong
+en|KR_Gyeonggi-do_Anyang|Anyang
+en|KR_Gyeonggi-do_Bucheon|Bucheon
+en|KR_Gyeonggi-do_Dongducheon|Dongducheon
+en|KR_Gyeonggi-do_Gapyeong County|Gapyeong County
+en|KR_Gyeonggi-do_Gimpo|Gimpo
+en|KR_Gyeonggi-do_Goyang|Goyang
+en|KR_Gyeonggi-do_Gunpo|Gunpo
+en|KR_Gyeonggi-do_Guri|Guri
+en|KR_Gyeonggi-do_Gwacheon|Gwacheon
+en|KR_Gyeonggi-do_Gwangju|Gwangju
+en|KR_Gyeonggi-do_Gwangmyeong|Gwangmyeong
+en|KR_Gyeonggi-do_Hanam|Hanam
+en|KR_Gyeonggi-do_Hwaseong|Hwaseong
+en|KR_Gyeonggi-do_Icheon|Icheon
+en|KR_Gyeonggi-do_Namyangju|Namyangju
+en|KR_Gyeonggi-do_Osan|Osan
+en|KR_Gyeonggi-do_Paju|Paju
+en|KR_Gyeonggi-do_Pocheon|Pocheon
+en|KR_Gyeonggi-do_Pyeongtaek|Pyeongtaek
+en|KR_Gyeonggi-do_Seongnam|Seongnam
+en|KR_Gyeonggi-do_Siheung|Siheung
+en|KR_Gyeonggi-do_Suwon|Suwon
+en|KR_Gyeonggi-do_Uijeongbu|Uijeongbu
+en|KR_Gyeonggi-do_Uiwang|Uiwang
+en|KR_Gyeonggi-do_Yangju|Yangju
+en|KR_Gyeonggi-do_Yangpyeong County|Yangpyeong County
+en|KR_Gyeonggi-do_Yeoju County|Yeoju County
+en|KR_Gyeonggi-do_Yeoncheon County|Yeoncheon County
+en|KR_Gyeonggi-do_Yongin|Yongin
+en|KR_Gyeonggi-do_Others|Other
+en|KR_Gyeongsangbuk-do|Gyeongsangbuk-do
+en|KR_Gyeongsangbuk-do_Andong|Andong
+en|KR_Gyeongsangbuk-do_Bonghwa County|Bonghwa County
+en|KR_Gyeongsangbuk-do_Cheongdo County|Cheongdo County
+en|KR_Gyeongsangbuk-do_Cheongsong County|Cheongsong County
+en|KR_Gyeongsangbuk-do_Chilgok County|Chilgok County
+en|KR_Gyeongsangbuk-do_Gimcheon|Gimcheon
+en|KR_Gyeongsangbuk-do_Goryeong County|Goryeong County
+en|KR_Gyeongsangbuk-do_Gumi|Gumi
+en|KR_Gyeongsangbuk-do_Gunwi County|Gunwi County
+en|KR_Gyeongsangbuk-do_Gyeongju|Gyeongju
+en|KR_Gyeongsangbuk-do_Gyeongsan|Gyeongsan
+en|KR_Gyeongsangbuk-do_Jincheon County|Jincheon County
+en|KR_Gyeongsangbuk-do_Mungyeong|Mungyeong
+en|KR_Gyeongsangbuk-do_Pohang|Pohang
+en|KR_Gyeongsangbuk-do_Sangju|Sangju
+en|KR_Gyeongsangbuk-do_Seongju County|Seongju County
+en|KR_Gyeongsangbuk-do_Uiseong County|Uiseong County
+en|KR_Gyeongsangbuk-do_Uljin County|Uljin County
+en|KR_Gyeongsangbuk-do_Ulleung County|Ulleung County
+en|KR_Gyeongsangbuk-do_Yecheon County|Yecheon County
+en|KR_Gyeongsangbuk-do_Yeongcheon|Yeongcheon
+en|KR_Gyeongsangbuk-do_Yeongdeok County|Yeongdeok County
+en|KR_Gyeongsangbuk-do_Yeongju|Yeongju
+en|KR_Gyeongsangbuk-do_Yeongyang County|Yeongyang County
+en|KR_Gyeongsangbuk-do_Others|Other
+en|KR_Gyeongsangnam-do|Gyeongsangnam-do
+en|KR_Gyeongsangnam-do_Changnyeong County|Changnyeong County
+en|KR_Gyeongsangnam-do_Changwon|Changwon
+en|KR_Gyeongsangnam-do_Geochang County|Geochang County
+en|KR_Gyeongsangnam-do_Geoje|Geoje
+en|KR_Gyeongsangnam-do_Gimhae|Gimhae
+en|KR_Gyeongsangnam-do_Goseong County|Goseong County
+en|KR_Gyeongsangnam-do_Hadong County|Hadong County
+en|KR_Gyeongsangnam-do_Haman County|Haman County
+en|KR_Gyeongsangnam-do_Hamyang County|Hamyang County
+en|KR_Gyeongsangnam-do_Hapcheon County|Hapcheon County
+en|KR_Gyeongsangnam-do_Jinhae|Jinhae
+en|KR_Gyeongsangnam-do_Jinju|Jinju
+en|KR_Gyeongsangnam-do_Masan|Masan
+en|KR_Gyeongsangnam-do_Miryang|Miryang
+en|KR_Gyeongsangnam-do_Namhae County|Namhae County
+en|KR_Gyeongsangnam-do_Sacheon|Sacheon
+en|KR_Gyeongsangnam-do_Sancheong County|Sancheong County
+en|KR_Gyeongsangnam-do_Tongyeong|Tongyeong
+en|KR_Gyeongsangnam-do_Uiryeong County|Uiryeong County
+en|KR_Gyeongsangnam-do_Yangsan|Yangsan
+en|KR_Gyeongsangnam-do_Others|Other
+en|KR_Incheon|Incheon
+en|KR_Incheon_Incheon|Incheon
+en|KR_Incheon_Others|Other
+en|KR_Jeju-do|Jeju-do
+en|KR_Jeju-do_Jeju City|Jeju City
+en|KR_Jeju-do_Seogwipo|Seogwipo
+en|KR_Jeju-do_Others|Other
+en|KR_Jeollabuk-do|Jeollabuk-do
+en|KR_Jeollabuk-do_Buan County|Buan County
+en|KR_Jeollabuk-do_Gimje|Gimje
+en|KR_Jeollabuk-do_Gochang County|Gochang County
+en|KR_Jeollabuk-do_Gunsan|Gunsan
+en|KR_Jeollabuk-do_Iksan|Iksan
+en|KR_Jeollabuk-do_Imsil County|Imsil County
+en|KR_Jeollabuk-do_Jangsu County|Jangsu County
+en|KR_Jeollabuk-do_Jeongeup|Jeongeup
+en|KR_Jeollabuk-do_Jeonju|Jeonju
+en|KR_Jeollabuk-do_Jinan County|Jinan County
+en|KR_Jeollabuk-do_Muju County|Muju County
+en|KR_Jeollabuk-do_Namwon|Namwon
+en|KR_Jeollabuk-do_Sunchang County|Sunchang County
+en|KR_Jeollabuk-do_Wanju County|Wanju County
+en|KR_Jeollabuk-do_Others|Other
+en|KR_Jeollanam-do|Jeollanam-do
+en|KR_Jeollanam-do_Boseong County|Boseong County
+en|KR_Jeollanam-do_Damyang County|Damyang County
+en|KR_Jeollanam-do_Gangjin County|Gangjin County
+en|KR_Jeollanam-do_Goheung County|Goheung County
+en|KR_Jeollanam-do_Gokseong County|Gokseong County
+en|KR_Jeollanam-do_Gurye County|Gurye County
+en|KR_Jeollanam-do_Gwangyang|Gwangyang
+en|KR_Jeollanam-do_Haenam County|Haenam County
+en|KR_Jeollanam-do_Hampyeong County|Hampyeong County
+en|KR_Jeollanam-do_Hwasun County|Hwasun County
+en|KR_Jeollanam-do_Jangheung County|Jangheung County
+en|KR_Jeollanam-do_Jangseong County|Jangseong County
+en|KR_Jeollanam-do_Jindo County|Jindo County
+en|KR_Jeollanam-do_Jinju|Jinju
+en|KR_Jeollanam-do_Mokpo|Mokpo
+en|KR_Jeollanam-do_Muan County|Muan County
+en|KR_Jeollanam-do_Naju|Naju
+en|KR_Jeollanam-do_Sinan County|Sinan County
+en|KR_Jeollanam-do_Suncheon|Suncheon
+en|KR_Jeollanam-do_Wando County|Wando County
+en|KR_Jeollanam-do_Yeongam County|Yeongam County
+en|KR_Jeollanam-do_Yeonggwang County|Yeonggwang County
+en|KR_Jeollanam-do_Yeosu|Yeosu
+en|KR_Jeollanam-do_Others|Other
+en|KR_Sejong|Sejong
+en|KR_Sejong_Sejong|Sejong
+en|KR_Sejong_Others|Other
+en|KR_Seoul|Seoul
+en|KR_Seoul_Seoul|Seoul
+en|KR_Seoul_Others|Other
+en|KR_Ulsan|Ulsan
+en|KR_Ulsan_Ulsan|Ulsan
+en|KR_Ulsan_Others|Other
+en|SS|South Sudan
+en|ES|Spain
+en|ES_Alava|Alava
+en|ES_Albacete|Albacete
+en|ES_Alicante|Alicante
+en|ES_Almeria|Almeria
+en|ES_Asturias|Asturias
+en|ES_Avila|Avila
+en|ES_Badajoz|Badajoz
+en|ES_Baleares|Baleares
+en|ES_Barcelona|Barcelona
+en|ES_Burgos|Burgos
+en|ES_Caceres|Caceres
+en|ES_Cadiz|Cadiz
+en|ES_Castellon|Castellon
+en|ES_Ciudad Real|Ciudad Real
+en|ES_Cordoba|Cordoba
+en|ES_Cuenca|Cuenca
+en|ES_Gerona|Gerona
+en|ES_Granada|Granada
+en|ES_Guadalajara|Guadalajara
+en|ES_Guipuzcoa|Guipuzcoa
+en|ES_Huelva|Huelva
+en|ES_Huesca|Huesca
+en|ES_Jaen|Jaen
+en|ES_La Coruna|La Coruna
+en|ES_La Rioja|La Rioja
+en|ES_Las Palmas|Las Palmas
+en|ES_Leon|Leon
+en|ES_Lleida|Lleida
+en|ES_Madrid|Madrid
+en|ES_Malaga|Malaga
+en|ES_Murcia|Murcia
+en|ES_Navarra|Navarra
+en|ES_Orense|Orense
+en|ES_Palencia|Palencia
+en|ES_Provincia de Lugo|Provincia de Lugo
+en|ES_Provincia de Pontevedra|Provincia de Pontevedra
+en|ES_Salamanca|Salamanca
+en|ES_Santa Cruz de Tenerife|Santa Cruz de Tenerife
+en|ES_Santander|Santander
+en|ES_Segovia|Segovia
+en|ES_Sevilla|Sevilla
+en|ES_Soria|Soria
+en|ES_Tarragona|Tarragona
+en|ES_Teruel|Teruel
+en|ES_Toledo|Toledo
+en|ES_Valencia|Valencia
+en|ES_Valladolid|Valladolid
+en|ES_Vizcaya|Vizcaya
+en|ES_Zamora|Zamora
+en|ES_Zaragoza|Zaragoza
+en|LK|Sri Lanka
+en|BL|St. Barthélemy
+en|SH|St. Helena
+en|KN|St. Kitts & Nevis
+en|LC|St. Lucia
+en|MF|St. Martin
+en|PM|St. Pierre & Miquelon
+en|VC|St. Vincent & the Grenadines
+en|SD|Sudan
+en|SR|Suriname
+en|SJ|Svalbard & Jan Mayen
+en|SE|Sweden
+en|SE_Blekinge|Blekinge
+en|SE_Dalarnas|Dalarnas
+en|SE_Gavleborgs|Gavleborgs
+en|SE_Gotlands|Gotlands
+en|SE_Hallands|Hallands
+en|SE_Jamtlands|Jamtlands
+en|SE_Jonkopings|Jonkopings
+en|SE_Kalmar|Kalmar
+en|SE_Kronobergs|Kronobergs
+en|SE_Norrbottens|Norrbottens
+en|SE_Orebro|Orebro
+en|SE_Skane|Skane
+en|SE_Sodermanlands|Sodermanlands
+en|SE_Stockholms|Stockholms
+en|SE_Uppsala|Uppsala
+en|SE_Ustergotland|Ustergotland
+en|SE_Varmlands|Varmlands
+en|SE_Vasterbottens|Vasterbottens
+en|SE_Vasternorrlands|Vasternorrlands
+en|SE_Vastmanlands|Vastmanlands
+en|SE_Vastra Gotalands|Vastra Gotalands
+en|CH|Switzerland
+en|CH_Aargau|Aargau
+en|CH_Appenzell Ausserrhon|Appenzell Ausserrhoden
+en|CH_Appenzell Innerrhodn|Appenzell Innerrhoden
+en|CH_Basel Landschaft|Basel-Landschaft
+en|CH_Basel-stadt|Basel-Stadt
+en|CH_Bern|Bern
+en|CH_Freiburg|Freiburg
+en|CH_Geneve|Geneva
+en|CH_Glarus|Glarus
+en|CH_Graubnden|Graubuenden
+en|CH_Jura|Jura
+en|CH_Lausanne|Lausanne
+en|CH_Luzern|Lucerne
+en|CH_Neuchatel|Neuchatel
+en|CH_Nidwalden|Nidwalden
+en|CH_Obwalden|Obwalden
+en|CH_Schaffhausen|Schaffhausen
+en|CH_Schwyz|Schwyz
+en|CH_Solothurn|Solothurn
+en|CH_St.Gallen|St. Gallen
+en|CH_Thurgau|Thurgau
+en|CH_Ticino|Ticino
+en|CH_Uri|Uri
+en|CH_Vaud|Vaud
+en|CH_Wallis|Wallis
+en|CH_Zug|Zug
+en|CH_Zurich|Zurich
+en|SY|Syria
+en|TW|Taiwan, China
+en|TW_Changhua County|Changhua County
+en|TW_Chiayi City|Chiayi City
+en|TW_Chiayi County|Chiayi County
+en|TW_Hsinchu City|Hsinchu City
+en|TW_Hsinchu County|Hsinchu County
+en|TW_Hualien County|Hualien County
+en|TW_Kaohsiung City|Kaohsiung City
+en|TW_Keelung City|Keelung City
+en|TW_Kinmen County|Kinmen County
+en|TW_Lianjiang County|Lianjiang County
+en|TW_Miaoli County|Miaoli County
+en|TW_Nantou County|Nantou County
+en|TW_New Taipei City|New Taipei City
+en|TW_Penghu County|Penghu County
+en|TW_Pingtung County|Pingtung County
+en|TW_Taichung City|Taichung City
+en|TW_Tainan City|Tainan City
+en|TW_Taipei|Taipei
+en|TW_Taitung County|Taitung County
+en|TW_Taoyuan County|Taoyuan City
+en|TW_Yilan County|Yilan County
+en|TW_Yunlin County|Yunlin County
+en|TJ|Tajikistan
+en|TZ|Tanzania
+en|TH|Thailand
+en|TH_Amnat Charoen|Amnat Charoen
+en|TH_Ang Thong|Ang Thong
+en|TH_Bangkok|Bangkok
+en|TH_Buri Ram|Buri Ram
+en|TH_Chachoengsao|Chachoengsao
+en|TH_Chai Nat|Chai Nat
+en|TH_Chaiyaphum|Chaiyaphum
+en|TH_Chanthaburi|Chanthaburi
+en|TH_Chiang Mai|Chiang Mai
+en|TH_Chiang Rai|Chiang Rai
+en|TH_Chon Buri|Chon Buri
+en|TH_Chumphon|Chumphon
+en|TH_Kalasin|Kalasin
+en|TH_Kamphaeng Phet|Kamphaeng Phet
+en|TH_Kanchanaburi|Kanchanaburi
+en|TH_Khon Kaen|Khon Kaen
+en|TH_Krabi|Krabi
+en|TH_Lamphun|Lamphun
+en|TH_Loei|Loei
+en|TH_Lop Buri|Lop Buri
+en|TH_Mae Hong Son|Mae Hong Son
+en|TH_Maha Sarakham|Maha Sarakham
+en|TH_Mukdahan|Mukdahan
+en|TH_Nakhon Nayok|Nakhon Nayok
+en|TH_Nakhon Pathom|Nakhon Pathom
+en|TH_Nakhon Phanom|Nakhon Phanom
+en|TH_Nakhon Sawan|Nakhon Sawan
+en|TH_Nakhon Si Thammarat|Nakhon Si Thammarat
+en|TH_Nan|Nan
+en|TH_Narathiwat|Narathiwat
+en|TH_Nong Bua Lamphu|Nong Bua Lamphu
+en|TH_Nong Khai|Nong Khai
+en|TH_Nonthaburi|Nonthaburi
+en|TH_Pathum Thani|Pathum Thani
+en|TH_Pattani|Pattani
+en|TH_Phangnga|Phangnga
+en|TH_Phatthalung|Phatthalung
+en|TH_Phayao|Phayao
+en|TH_Phetchabun|Phetchabun
+en|TH_Phetchaburi|Phetchaburi
+en|TH_Phichit|Phichit
+en|TH_Phitsanulok|Phitsanulok
+en|TH_Phra Nakhon Si Ayutthaya|Phra Nakhon Si Ayutthaya
+en|TH_Phrae|Phrae
+en|TH_Phuket|Phuket
+en|TH_Prachin Buri|Prachin Buri
+en|TH_Prachuap Khiri Khan|Prachuap Khiri Khan
+en|TH_Ranong|Ranong
+en|TH_Ratchaburi|Ratchaburi
+en|TH_Rayong|Rayong
+en|TH_Roi Et|Roi Et
+en|TH_Sa Kaeo|Sa Kaeo
+en|TH_Sakon Nakhon|Sakon Nakhon
+en|TH_Samut Prakan|Samut Prakan
+en|TH_Samut Sakhon|Samut Sakhon
+en|TH_Samut Songkhram|Samut Songkhram
+en|TH_Saraburi|Saraburi
+en|TH_Satun|Satun
+en|TH_Si sa ket|Si sa ket
+en|TH_Sing Buri|Sing Buri
+en|TH_Songkhla|Songkhla
+en|TH_Sukhothai|Sukhothai
+en|TH_Suphan Buri|Suphan Buri
+en|TH_Surat Thani|Surat Thani
+en|TH_Surin|Surin
+en|TH_Tak|Tak
+en|TH_Trang|Trang
+en|TH_Trat|Trat
+en|TH_Ubon Ratchathani|Ubon Ratchathani
+en|TH_Udon Thani|Udon Thani
+en|TH_Uthai Thani|Uthai Thani
+en|TH_Uttaradit|Uttaradit
+en|TH_Yala|Yala
+en|TH_Yasothon|Yasothon
+en|TL|Timor-Leste
+en|TG|Togo
+en|TK|Tokelau
+en|TO|Tonga
+en|TT|Trinidad & Tobago
+en|TN|Tunisia
+en|TR|Turkey
+en|TR_Adana|Adana
+en|TR_Adiyaman|Adiyaman
+en|TR_Afyon|Afyon
+en|TR_Agri|Agri
+en|TR_Aksaray|Aksaray
+en|TR_Amasya|Amasya
+en|TR_Ankara|Ankara
+en|TR_Antalya|Antalya
+en|TR_Ardahan|Ardahan
+en|TR_Artvin|Artvin
+en|TR_Aydin|Aydin
+en|TR_Balikesir|Balikesir
+en|TR_Bartin|Bartin
+en|TR_Batman|Batman
+en|TR_Bayburt|Bayburt
+en|TR_Bilecik|Bilecik
+en|TR_Bingol|Bingol
+en|TR_Bitlis|Bitlis
+en|TR_Bolu|Bolu
+en|TR_Burdur|Burdur
+en|TR_Bursa|Bursa
+en|TR_Canakkale|Canakkale
+en|TR_Cankiri|Cankiri
+en|TR_Corum|Corum
+en|TR_Denizli|Denizli
+en|TR_Diyarbakir|Diyarbakir
+en|TR_Duzce|Duzce
+en|TR_Edirne|Edirne
+en|TR_Elazig|Elazig
+en|TR_Erzincan|Erzincan
+en|TR_Erzurum|Erzurum
+en|TR_Eskisehir|Eskisehir
+en|TR_Gaziantep|Gaziantep
+en|TR_Giresun|Giresun
+en|TR_Gumushane|Gumushane
+en|TR_Hakkari|Hakkari
+en|TR_Hatay|Hatay
+en|TR_Icel|Icel
+en|TR_Igdir|Igdir
+en|TR_Isparta|Isparta
+en|TR_Istanbul|Istanbul
+en|TR_Izmir|Izmir
+en|TR_Kahraman?Maras|Kahramanmaras
+en|TR_Karabuk|Karabuk
+en|TR_Karaman|Karaman
+en|TR_Kars|Kars
+en|TR_Kastamonu|Kastamonu
+en|TR_Kayseri|Kayseri
+en|TR_Kilis|Kilis
+en|TR_Kirikkale|Kirikkale
+en|TR_Kirklareli|Kirklareli
+en|TR_Kirsehir|Kirsehir
+en|TR_Kocaeli|Kocaeli
+en|TR_Konya|Konya
+en|TR_Kutahya|Kutahya
+en|TR_Malatya|Malatya
+en|TR_Manisa|Manisa
+en|TR_Mardin|Mardin
+en|TR_Mersin|Mersin
+en|TR_Mugla|Mugla
+en|TR_Mus|Mus
+en|TR_Nevsehir|Nevsehir
+en|TR_Nigde|Nigde
+en|TR_Ordu|Ordu
+en|TR_Osmaniye|Osmaniye
+en|TR_Rize|Rize
+en|TR_Sakarya|Sakarya
+en|TR_Samsun|Samsun
+en|TR_Siirt|Siirt
+en|TR_Sinop|Sinop
+en|TR_Sirnak|Sirnak
+en|TR_Sivas|Sivas
+en|TR_Tekirdag|Tekirdag
+en|TR_Tokat|Tokat
+en|TR_Trabzon|Trabzon
+en|TR_Tunceli|Tunceli
+en|TR_Urfa|Urfa
+en|TR_Usak|Usak
+en|TR_Van|Van
+en|TR_Yalova|Yalova
+en|TR_Yozgat|Yozgat
+en|TR_Zonguldak|Zonguldak
+en|TM|Turkmenistan
+en|TC|Turks & Caicos Islands
+en|TV|Tuvalu
+en|UM|U.S. Minor Outlying Islands
+en|VI|U.S. Virgin Islands
+en|UG|Uganda
+en|UA|Ukraine
+en|UA_Cherkasy|Cherkasy
+en|UA_Chernihiv|Chernihiv
+en|UA_Chernivtsi|Chernivtsi
+en|UA_Dnipropetrovsk|Dnipro
+en|UA_Donetsk|Donetsk
+en|UA_Ivano-Frankivsk|Ivano-Frankivsk
+en|UA_Kharkiv|Kharkiv
+en|UA_Khersonsrka|Khersons'ka
+en|UA_Khmelnytsky|Khmelnytsky
+en|UA_Kirovohrad|Kirovohrad
+en|UA_Kyiv|Kyiv
+en|UA_Luhansk|Luhansk
+en|UA_Lviv|Lviv
+en|UA_Mykolayiv|Mykolayiv
+en|UA_Odessa|Odessa
+en|UA_Poltava|Poltava
+en|UA_Respublika Krym|Respublika Krym
+en|UA_Rivne|Rivne
+en|UA_Sumy|Sumy
+en|UA_Ternopil|Ternopil
+en|UA_Vinnytsya|Vinnytsya
+en|UA_Volyn|Volyn
+en|UA_Zakarpatska|Zakarpatska
+en|UA_Zaporizhzhya|Zaporizhzhya
+en|UA_Zhytomyr|Zhytomyr
+en|AE|United Arab Emirates
+en|AE_Abu Dhabi|Abu Dhabi
+en|AE_Ajman|Ajman
+en|AE_Al Fujayrah|Al Fujayrah
+en|AE_Ash Shariqah|Ash Shariqah
+en|AE_Dubai|Dubai
+en|AE_Ras Al Khaimah|Ras Al Khaimah
+en|AE_Umm al Qaiwain|Umm al Qaiwain
+en|GB|United Kingdom
+en|GB_England|England
+en|GB_England_Bath|Bath
+en|GB_England_Birmingham|Birmingham
+en|GB_England_Bradford|Bradford
+en|GB_England_Brighton & Hove|Brighton & Hove
+en|GB_England_Bristol|Bristol
+en|GB_England_Cambridge|Cambridge
+en|GB_England_Canterbury|Canterbury
+en|GB_England_Carlisle|Carlisle
+en|GB_England_Chester|Chester
+en|GB_England_Chichester|Chichester
+en|GB_England_Coventry|Coventry
+en|GB_England_Derby|Derby
+en|GB_England_Durham|Durham
+en|GB_England_Ely|Ely
+en|GB_England_Exeter|Exeter
+en|GB_England_Gloucester|Gloucester
+en|GB_England_Hereford|Hereford
+en|GB_England_Kingston upon Hull|Kingston upon Hull
+en|GB_England_Lancaster|Lancaster
+en|GB_England_Leeds|Leeds
+en|GB_England_Leicester|Leicester
+en|GB_England_Lichfield|Lichfield
+en|GB_England_Lincoln|Lincoln
+en|GB_England_Liverpool|Liverpool
+en|GB_England_London|London
+en|GB_England_Manchester|Manchester
+en|GB_England_Newcastle|Newcastle
+en|GB_England_Norwich|Norwich
+en|GB_England_Nottingham|Nottingham
+en|GB_England_Oxford|Oxford
+en|GB_England_Peterborough|Peterborough
+en|GB_England_Plymouth|Plymouth
+en|GB_England_Portsmouth|Portsmouth
+en|GB_England_Preston|Preston
+en|GB_England_Ripon|Ripon
+en|GB_England_Saint Albans|Saint Albans
+en|GB_England_Salford|Salford
+en|GB_England_Salisbury|Salisbury
+en|GB_England_Sheffield|Sheffield
+en|GB_England_Southampton|Southampton
+en|GB_England_Stoke-on-Trent|Stoke-on-Trent
+en|GB_England_Sunderland|Sunderland
+en|GB_England_Truro|Truro
+en|GB_England_Wakefield|Wakefield
+en|GB_England_Wells|Wells
+en|GB_England_Winchester|Winchester
+en|GB_England_Wolverhampton|Wolverhampton
+en|GB_England_Worcester|Worcester
+en|GB_England_York|York
+en|GB_Northern Ireland|Northern Ireland
+en|GB_Northern Ireland_Belfast|Belfast
+en|GB_Northern Ireland_Derry|Derry
+en|GB_Northern Ireland_Lisburn|Lisburn
+en|GB_Northern Ireland_Newry|Newry
+en|GB_Scotland|Scotland
+en|GB_Scotland_Aberdeen|Aberdeen
+en|GB_Scotland_Dundee|Dundee
+en|GB_Scotland_Edinburgh|Edinburgh
+en|GB_Scotland_Glasgow|Glasgow
+en|GB_Scotland_Inverness|Inverness
+en|GB_Scotland_Stirling|Stirling
+en|GB_Wales|Wales
+en|GB_Wales_Bangor|Bangor
+en|GB_Wales_Cardiff|Cardiff
+en|GB_Wales_Newport|Newport
+en|GB_Wales_Swansea|Swansea
+en|US|United States
+en|US_Alabama|Alabama
+en|US_Alabama_Auburn|Auburn
+en|US_Alabama_Birmingham|Birmingham
+en|US_Alabama_Decatur|Decatur
+en|US_Alabama_Dothan|Dothan
+en|US_Alabama_Hoover|Hoover
+en|US_Alabama_Huntsville|Huntsville
+en|US_Alabama_Mobile|Mobile
+en|US_Alabama_Montgomery|Montgomery
+en|US_Alabama_Tuscaloosa|Tuscaloosa
+en|US_Alabama_Others|Other
+en|US_Alaska|Alaska
+en|US_Alaska_Anchorage|Anchorage
+en|US_Alaska_Fairbanks|Fairbanks
+en|US_Alaska_Others|Other
+en|US_Arizona|Arizona
+en|US_Arizona_Avondale|Avondale
+en|US_Arizona_Buckeye|Buckeye
+en|US_Arizona_Bullhead City|Bullhead City
+en|US_Arizona_Casa Grande|Casa Grande
+en|US_Arizona_Chandler|Chandler
+en|US_Arizona_Flagstaff|Flagstaff
+en|US_Arizona_Gilbert|Gilbert
+en|US_Arizona_Glendale|Glendale
+en|US_Arizona_Goodyear|Goodyear
+en|US_Arizona_Lake Havasu City|Lake Havasu City
+en|US_Arizona_Mesa|Mesa
+en|US_Arizona_Peoria|Peoria
+en|US_Arizona_Phoenix|Phoenix
+en|US_Arizona_Scottsdale|Scottsdale
+en|US_Arizona_Surprise|Surprise
+en|US_Arizona_Tempe|Tempe
+en|US_Arizona_Tucson|Tucson
+en|US_Arizona_Yuma|Yuma
+en|US_Arizona_Others|Other
+en|US_Arkansas|Arkansas
+en|US_Arkansas_Conway|Conway
+en|US_Arkansas_Fayetteville|Fayetteville
+en|US_Arkansas_Fort Smith|Fort Smith
+en|US_Arkansas_Jonesboro|Jonesboro
+en|US_Arkansas_Little Rock|Little Rock
+en|US_Arkansas_North Little Rock|North Little Rock
+en|US_Arkansas_Pine Bluff|Pine Bluff
+en|US_Arkansas_Rogers|Rogers
+en|US_Arkansas_Springdale|Springdale
+en|US_Arkansas_Others|Other
+en|US_California|California
+en|US_California_Alameda|Alameda
+en|US_California_Alhambra|Alhambra
+en|US_California_Aliso Viejo|Aliso Viejo
+en|US_California_Anaheim|Anaheim
+en|US_California_Antioch|Antioch
+en|US_California_Apple Valley|Apple Valley
+en|US_California_Arcadia|Arcadia
+en|US_California_Bakersfield|Bakersfield
+en|US_California_Baldwin Park|Baldwin Park
+en|US_California_Bellflower|Bellflower
+en|US_California_Berkeley|Berkeley
+en|US_California_Brentwood|Brentwood
+en|US_California_Buena Park|Buena Park
+en|US_California_Burbank|Burbank
+en|US_California_Camarillo|Camarillo
+en|US_California_Carlsbad|Carlsbad
+en|US_California_Carmichael|Carmichael
+en|US_California_Carson|Carson
+en|US_California_Cathedral City|Cathedral City
+en|US_California_Cerritos|Cerritos
+en|US_California_Chico|Chico
+en|US_California_Chino|Chino
+en|US_California_Chino Hills|Chino Hills
+en|US_California_Chula Vista|Chula Vista
+en|US_California_Citrus Heights|Citrus Heights
+en|US_California_Clovis|Clovis
+en|US_California_Colton|Colton
+en|US_California_Compton|Compton
+en|US_California_Concord|Concord
+en|US_California_Corona|Corona
+en|US_California_Costa Mesa|Costa Mesa
+en|US_California_Cupertino|Cupertino
+en|US_California_Daly City|Daly City
+en|US_California_Davis|Davis
+en|US_California_Delano|Delano
+en|US_California_Diamond Bar|Diamond Bar
+en|US_California_Downey|Downey
+en|US_California_Dublin|Dublin
+en|US_California_Eastvale|Eastvale
+en|US_California_El Cajon|El Cajon
+en|US_California_El Monte|El Monte
+en|US_California_Elk Grove|Elk Grove
+en|US_California_Encinitas|Encinitas
+en|US_California_Escondido|Escondido
+en|US_California_Fairfield|Fairfield
+en|US_California_Folsom|Folsom
+en|US_California_Fontana|Fontana
+en|US_California_Fountain Valley|Fountain Valley
+en|US_California_Fremont|Fremont
+en|US_California_Fresno|Fresno
+en|US_California_Fullerton|Fullerton
+en|US_California_Garden Grove|Garden Grove
+en|US_California_Gardena|Gardena
+en|US_California_Gilroy|Gilroy
+en|US_California_Glendale|Glendale
+en|US_California_Glendora|Glendora
+en|US_California_Hanford|Hanford
+en|US_California_Hawthorne|Hawthorne
+en|US_California_Hayward|Hayward
+en|US_California_Hemet|Hemet
+en|US_California_Hesperia|Hesperia
+en|US_California_Highland|Highland
+en|US_California_Huntington Beach|Huntington Beach
+en|US_California_Huntington Park|Huntington Park
+en|US_California_Indio|Indio
+en|US_California_Inglewood|Inglewood
+en|US_California_Irvine|Irvine
+en|US_California_Jurupa Valley|Jurupa Valley
+en|US_California_La Habra|La Habra
+en|US_California_La Mesa|La Mesa
+en|US_California_Laguna Niguel|Laguna Niguel
+en|US_California_Lake Elsinore|Lake Elsinore
+en|US_California_Lake Forest|Lake Forest
+en|US_California_Lakewood|Lakewood
+en|US_California_Lancaster|Lancaster
+en|US_California_Livermore|Livermore
+en|US_California_Lodi|Lodi
+en|US_California_Long Beach|Long Beach
+en|US_California_Los Angeles|Los Angeles
+en|US_California_Lynwood|Lynwood
+en|US_California_Madera|Madera
+en|US_California_Manteca|Manteca
+en|US_California_Menifee|Menifee
+en|US_California_Merced|Merced
+en|US_California_Milpitas|Milpitas
+en|US_California_Mission Viejo|Mission Viejo
+en|US_California_Modesto|Modesto
+en|US_California_Montebello|Montebello
+en|US_California_Monterey Park|Monterey Park
+en|US_California_Moreno Valley|Moreno Valley
+en|US_California_Mountain View|Mountain View
+en|US_California_Murrieta|Murrieta
+en|US_California_Napa|Napa
+en|US_California_National City|National City
+en|US_California_Newport Beach|Newport Beach
+en|US_California_Norwalk|Norwalk
+en|US_California_Novato|Novato
+en|US_California_Oakland|Oakland
+en|US_California_Oceanside|Oceanside
+en|US_California_Ontario|Ontario
+en|US_California_Orange|Orange
+en|US_California_Oxnard|Oxnard
+en|US_California_Palm Desert|Palm Desert
+en|US_California_Palmdale|Palmdale
+en|US_California_Palo Alto|Palo Alto
+en|US_California_Paramount|Paramount
+en|US_California_Pasadena|Pasadena
+en|US_California_Perris|Perris
+en|US_California_Petaluma|Petaluma
+en|US_California_Pico Rivera|Pico Rivera
+en|US_California_Pittsburg|Pittsburg
+en|US_California_Placentia|Placentia
+en|US_California_Pleasanton|Pleasanton
+en|US_California_Pomona|Pomona
+en|US_California_Porterville|Porterville
+en|US_California_Rancho Cordova|Rancho Cordova
+en|US_California_Rancho Cucamonga|Rancho Cucamonga
+en|US_California_Redding|Redding
+en|US_California_Redlands|Redlands
+en|US_California_Redondo Beach|Redondo Beach
+en|US_California_Redwood City|Redwood City
+en|US_California_Rialto|Rialto
+en|US_California_Richmond|Richmond
+en|US_California_Riverside|Riverside
+en|US_California_Rocklin|Rocklin
+en|US_California_Rosemead|Rosemead
+en|US_California_Roseville|Roseville
+en|US_California_Sacramento|Sacramento
+en|US_California_Salinas|Salinas
+en|US_California_San Bernardino|San Bernardino
+en|US_California_San Clemente|San Clemente
+en|US_California_San Diego|San Diego
+en|US_California_San Francisco|San Francisco
+en|US_California_San Jose|San Jose
+en|US_California_San Leandro|San Leandro
+en|US_California_San Marcos|San Marcos
+en|US_California_San Mateo|San Mateo
+en|US_California_San Rafael|San Rafael
+en|US_California_San Ramon|San Ramon
+en|US_California_Santa Ana|Santa Ana
+en|US_California_Santa Barbara|Santa Barbara
+en|US_California_Santa Clara|Santa Clara
+en|US_California_Santa Clarita|Santa Clarita
+en|US_California_Santa Cruz|Santa Cruz
+en|US_California_Santa Maria|Santa Maria
+en|US_California_Santa Monica|Santa Monica
+en|US_California_Santa Rosa|Santa Rosa
+en|US_California_Santee|Santee
+en|US_California_Simi Valley|Simi Valley
+en|US_California_South Gate|South Gate
+en|US_California_South San Francisco|South San Francisco
+en|US_California_Stockton|Stockton
+en|US_California_Sunnyvale|Sunnyvale
+en|US_California_Temecula|Temecula
+en|US_California_Thousand Oaks|Thousand Oaks
+en|US_California_Torrance|Torrance
+en|US_California_Tracy|Tracy
+en|US_California_Tulare|Tulare
+en|US_California_Turlock|Turlock
+en|US_California_Tustin|Tustin
+en|US_California_Union City|Union City
+en|US_California_Upland|Upland
+en|US_California_Vacaville|Vacaville
+en|US_California_Vallejo|Vallejo
+en|US_California_Victorville|Victorville
+en|US_California_Visalia|Visalia
+en|US_California_Vista|Vista
+en|US_California_Walnut Creek|Walnut Creek
+en|US_California_Watsonville|Watsonville
+en|US_California_West Covina|West Covina
+en|US_California_West Sacramento|West Sacramento
+en|US_California_Westminster|Westminster
+en|US_California_Whittier|Whittier
+en|US_California_Woodland|Woodland
+en|US_California_Yorba Linda|Yorba Linda
+en|US_California_Yuba City|Yuba City
+en|US_California_Yucaipa|Yucaipa
+en|US_California_Others|Other
+en|US_Colorado|Colorado
+en|US_Colorado_Arvada|Arvada
+en|US_Colorado_Aurora|Aurora
+en|US_Colorado_Boulder|Boulder
+en|US_Colorado_Broomfield|Broomfield
+en|US_Colorado_Castle Rock|Castle Rock
+en|US_Colorado_Centennial|Centennial
+en|US_Colorado_Colorado Springs|Colorado Springs
+en|US_Colorado_Commerce City|Commerce City
+en|US_Colorado_Denver|Denver
+en|US_Colorado_Fort Collins|Fort Collins
+en|US_Colorado_Grand Junction|Grand Junction
+en|US_Colorado_Greeley|Greeley
+en|US_Colorado_Lakewood|Lakewood
+en|US_Colorado_Longmont|Longmont
+en|US_Colorado_Loveland|Loveland
+en|US_Colorado_Pueblo|Pueblo
+en|US_Colorado_Thornton|Thornton
+en|US_Colorado_Westminster|Westminster
+en|US_Colorado_Others|Other
+en|US_Connecticut|Connecticut
+en|US_Connecticut_Bridgeport|Bridgeport
+en|US_Connecticut_Bristol|Bristol
+en|US_Connecticut_Danbury|Danbury
+en|US_Connecticut_Fairfield|Fairfield
+en|US_Connecticut_Hartford|Hartford
+en|US_Connecticut_Meriden|Meriden
+en|US_Connecticut_Milford|Milford
+en|US_Connecticut_New Britain|New Britain
+en|US_Connecticut_New Haven|New Haven
+en|US_Connecticut_Norwalk|Norwalk
+en|US_Connecticut_Stamford|Stamford
+en|US_Connecticut_Waterbury|Waterbury
+en|US_Connecticut_West Haven|West Haven
+en|US_Connecticut_Others|Other
+en|US_Delaware|Delaware
+en|US_Delaware_Wilmington|Wilmington
+en|US_Delaware_Others|Other
+en|US_District of Columbia|District of Columbia
+en|US_Florida|Florida
+en|US_Florida_Boca Raton|Boca Raton
+en|US_Florida_Boynton Beach|Boynton Beach
+en|US_Florida_Bradenton|Bradenton
+en|US_Florida_Cape Coral|Cape Coral
+en|US_Florida_Clearwater|Clearwater
+en|US_Florida_Coconut Creek|Coconut Creek
+en|US_Florida_Coral Gables|Coral Gables
+en|US_Florida_Coral Springs|Coral Springs
+en|US_Florida_Daytona Beach|Daytona Beach
+en|US_Florida_Deerfield Beach|Deerfield Beach
+en|US_Florida_Delray Beach|Delray Beach
+en|US_Florida_Deltona|Deltona
+en|US_Florida_Doral|Doral
+en|US_Florida_Fort Lauderdale|Fort Lauderdale
+en|US_Florida_Gainesville|Gainesville
+en|US_Florida_Hialeah|Hialeah
+en|US_Florida_Hollywood|Hollywood
+en|US_Florida_Homestead|Homestead
+en|US_Florida_Jacksonville|Jacksonville
+en|US_Florida_Kissimmee|Kissimmee
+en|US_Florida_Lakeland|Lakeland
+en|US_Florida_Largo|Largo
+en|US_Florida_Lauderhill|Lauderhill
+en|US_Florida_Margate|Margate
+en|US_Florida_Melbourne|Melbourne
+en|US_Florida_Miami|Miami
+en|US_Florida_Miami Beach|Miami Beach
+en|US_Florida_Miami Gardens|Miami Gardens
+en|US_Florida_Miramar|Miramar
+en|US_Florida_North Miami|North Miami
+en|US_Florida_North Port|North Port
+en|US_Florida_Ocala|Ocala
+en|US_Florida_Orlando|Orlando
+en|US_Florida_Palm Bay|Palm Bay
+en|US_Florida_Palm Beach Gardens|Palm Beach Gardens
+en|US_Florida_Palm Coast|Palm Coast
+en|US_Florida_Pembroke Pines|Pembroke Pines
+en|US_Florida_Pensacola|Pensacola
+en|US_Florida_Pinellas Park|Pinellas Park
+en|US_Florida_Plantation|Plantation
+en|US_Florida_Pompano Beach|Pompano Beach
+en|US_Florida_Port Orange|Port Orange
+en|US_Florida_Port St. Lucie|Port St. Lucie
+en|US_Florida_Sanford|Sanford
+en|US_Florida_Sarasota|Sarasota
+en|US_Florida_St. Petersburg|St. Petersburg
+en|US_Florida_Sunrise|Sunrise
+en|US_Florida_Tallahassee|Tallahassee
+en|US_Florida_Tamarac|Tamarac
+en|US_Florida_Tampa|Tampa
+en|US_Florida_West Palm Beach|West Palm Beach
+en|US_Florida_Weston|Weston
+en|US_Florida_Others|Other
+en|US_Georgia|Georgia
+en|US_Georgia_Albany|Albany
+en|US_Georgia_Alpharetta|Alpharetta
+en|US_Georgia_Athens|Athens
+en|US_Georgia_Atlanta|Atlanta
+en|US_Georgia_Brookhaven|Brookhaven
+en|US_Georgia_Columbus|Columbus
+en|US_Georgia_Johns Creek|Johns Creek
+en|US_Georgia_Macon|Macon
+en|US_Georgia_Marietta|Marietta
+en|US_Georgia_Roswell|Roswell
+en|US_Georgia_Sandy Springs|Sandy Springs
+en|US_Georgia_Savannah|Savannah
+en|US_Georgia_Smyrna|Smyrna
+en|US_Georgia_Valdosta|Valdosta
+en|US_Georgia_Warner Robins|Warner Robins
+en|US_Georgia_Others|Other
+en|US_Hawaii|Hawaii
+en|US_Hawaii_Honolulu|Honolulu
+en|US_Hawaii_Others|Other
+en|US_Idaho|Idaho
+en|US_Idaho_Boise|Boise
+en|US_Idaho_Caldwell|Caldwell
+en|US_Idaho_Idaho Falls|Idaho Falls
+en|US_Idaho_Meridian|Meridian
+en|US_Idaho_Nampa|Nampa
+en|US_Idaho_Pocatello|Pocatello
+en|US_Idaho_Others|Other
+en|US_Illinois|Illinois
+en|US_Illinois_Aurora|Aurora
+en|US_Illinois_Berwyn|Berwyn
+en|US_Illinois_Bloomington|Bloomington
+en|US_Illinois_Champaign|Champaign
+en|US_Illinois_Chicago|Chicago
+en|US_Illinois_Decatur|Decatur
+en|US_Illinois_Des Plaines|Des Plaines
+en|US_Illinois_Elgin|Elgin
+en|US_Illinois_Evanston|Evanston
+en|US_Illinois_Grafton|Grafton
+en|US_Illinois_Joliet|Joliet
+en|US_Illinois_Lockport|Lockport
+en|US_Illinois_Naperville|Naperville
+en|US_Illinois_North Peoria|North Peoria
+en|US_Illinois_Peoria|Peoria
+en|US_Illinois_Rockford|Rockford
+en|US_Illinois_Springfield|Springfield
+en|US_Illinois_St. Charles|St. Charles
+en|US_Illinois_Waukegan|Waukegan
+en|US_Illinois_Others|Other
+en|US_Indiana|Indiana
+en|US_Indiana_Anderson|Anderson
+en|US_Indiana_Bloomington|Bloomington
+en|US_Indiana_Carmel|Carmel
+en|US_Indiana_Elkhart|Elkhart
+en|US_Indiana_Evansville|Evansville
+en|US_Indiana_Fort Wayne|Fort Wayne
+en|US_Indiana_Franklin|Franklin
+en|US_Indiana_Gary|Gary
+en|US_Indiana_Greenwood|Greenwood
+en|US_Indiana_Hammond|Hammond
+en|US_Indiana_Indianapolis|Indianapolis
+en|US_Indiana_Jeffersonville|Jeffersonville
+en|US_Indiana_Kokomo|Kokomo
+en|US_Indiana_Lafayette|Lafayette
+en|US_Indiana_Lawrence|Lawrence
+en|US_Indiana_Muncie|Muncie
+en|US_Indiana_Noblesville|Noblesville
+en|US_Indiana_Portage|Portage
+en|US_Indiana_South Bend|South Bend
+en|US_Indiana_Terre Haute|Terre Haute
+en|US_Indiana_Wabash|Wabash
+en|US_Indiana_Washington|Washington
+en|US_Indiana_Others|Other
+en|US_Iowa|Iowa
+en|US_Iowa_Ames|Ames
+en|US_Iowa_Ankeny|Ankeny
+en|US_Iowa_Cedar Rapids|Cedar Rapids
+en|US_Iowa_Council Bluffs|Council Bluffs
+en|US_Iowa_Davenport|Davenport
+en|US_Iowa_Des Moines|Des Moines
+en|US_Iowa_Iowa City|Iowa City
+en|US_Iowa_Sioux City|Sioux City
+en|US_Iowa_Waterloo|Waterloo
+en|US_Iowa_West Des Moines|West Des Moines
+en|US_Iowa_Others|Other
+en|US_Kansas|Kansas
+en|US_Kansas_Kansas City|Kansas City
+en|US_Kansas_Lawrence|Lawrence
+en|US_Kansas_Lenexa|Lenexa
+en|US_Kansas_Manhattan|Manhattan
+en|US_Kansas_Olathe|Olathe
+en|US_Kansas_Overland Park|Overland Park
+en|US_Kansas_Shawnee|Shawnee
+en|US_Kansas_Topeka|Topeka
+en|US_Kansas_Wichita|Wichita
+en|US_Kansas_Others|Other
+en|US_Kentucky|Kentucky
+en|US_Kentucky_Bowling Green|Bowling Green
+en|US_Kentucky_Lexington|Lexington
+en|US_Kentucky_Louisville|Louisville
+en|US_Kentucky_Owensboro|Owensboro
+en|US_Kentucky_Others|Other
+en|US_Louisiana|Louisiana
+en|US_Louisiana_Baton Rouge|Baton Rouge
+en|US_Louisiana_Bossier City|Bossier City
+en|US_Louisiana_Kenner|Kenner
+en|US_Louisiana_Lafayette|Lafayette
+en|US_Louisiana_Lake Charles|Lake Charles
+en|US_Louisiana_New Orleans|New Orleans
+en|US_Louisiana_Shreveport|Shreveport
+en|US_Louisiana_Others|Other
+en|US_Maine|Maine
+en|US_Maine_Portland|Portland
+en|US_Maine_Others|Other
+en|US_Maryland|Maryland
+en|US_Maryland_Baltimore|Baltimore
+en|US_Maryland_Bowie|Bowie
+en|US_Maryland_Frederick|Frederick
+en|US_Maryland_Gaithersburg|Gaithersburg
+en|US_Maryland_Rockville|Rockville
+en|US_Maryland_Silver Spring|Silver Spring
+en|US_Maryland_Others|Other
+en|US_Massachusetts|Massachusetts
+en|US_Massachusetts_Boston|Boston
+en|US_Massachusetts_Brockton|Brockton
+en|US_Massachusetts_Cambridge|Cambridge
+en|US_Massachusetts_Chicopee|Chicopee
+en|US_Massachusetts_Fall River|Fall River
+en|US_Massachusetts_Haverhill|Haverhill
+en|US_Massachusetts_Lawrence|Lawrence
+en|US_Massachusetts_Lowell|Lowell
+en|US_Massachusetts_Lynn|Lynn
+en|US_Massachusetts_Malden|Malden
+en|US_Massachusetts_Medford|Medford
+en|US_Massachusetts_New Bedford|New Bedford
+en|US_Massachusetts_Newton|Newton
+en|US_Massachusetts_Peabody|Peabody
+en|US_Massachusetts_Quincy|Quincy
+en|US_Massachusetts_Revere|Revere
+en|US_Massachusetts_Somerville|Somerville
+en|US_Massachusetts_Springfield|Springfield
+en|US_Massachusetts_Taunton|Taunton
+en|US_Massachusetts_Waltham|Waltham
+en|US_Massachusetts_Weymouth|Weymouth
+en|US_Massachusetts_Worcester|Worcester
+en|US_Massachusetts_Others|Other
+en|US_Michigan|Michigan
+en|US_Michigan_Ann Arbor|Ann Arbor
+en|US_Michigan_Battle Creek|Battle Creek
+en|US_Michigan_Dearborn|Dearborn
+en|US_Michigan_Dearborn Heights|Dearborn Heights
+en|US_Michigan_Detroit|Detroit
+en|US_Michigan_Farmington Hills|Farmington Hills
+en|US_Michigan_Flint|Flint
+en|US_Michigan_Grand Rapids|Grand Rapids
+en|US_Michigan_Kalamazoo|Kalamazoo
+en|US_Michigan_Kentwood|Kentwood
+en|US_Michigan_Lansing|Lansing
+en|US_Michigan_Livonia|Livonia
+en|US_Michigan_Novi|Novi
+en|US_Michigan_Pontiac|Pontiac
+en|US_Michigan_Rochester|Rochester
+en|US_Michigan_Rochester Hills|Rochester Hills
+en|US_Michigan_Royal Oak|Royal Oak
+en|US_Michigan_Saginaw|Saginaw
+en|US_Michigan_Southfield|Southfield
+en|US_Michigan_St. Clair Shores|St. Clair Shores
+en|US_Michigan_Sterling Heights|Sterling Heights
+en|US_Michigan_Taylor|Taylor
+en|US_Michigan_Troy|Troy
+en|US_Michigan_Warren|Warren
+en|US_Michigan_Westland|Westland
+en|US_Michigan_Wyoming|Wyoming
+en|US_Michigan_Others|Other
+en|US_Minnesota|Minnesota
+en|US_Minnesota_Apple Valley|Apple Valley
+en|US_Minnesota_Blaine|Blaine
+en|US_Minnesota_Bloomington|Bloomington
+en|US_Minnesota_Brooklyn Park|Brooklyn Park
+en|US_Minnesota_Burnsville|Burnsville
+en|US_Minnesota_Coon Rapids|Coon Rapids
+en|US_Minnesota_Duluth|Duluth
+en|US_Minnesota_Eagan|Eagan
+en|US_Minnesota_Eden Prairie|Eden Prairie
+en|US_Minnesota_Lakeville|Lakeville
+en|US_Minnesota_Maple Grove|Maple Grove
+en|US_Minnesota_Minneapolis|Minneapolis
+en|US_Minnesota_Minnetonka|Minnetonka
+en|US_Minnesota_Plymouth|Plymouth
+en|US_Minnesota_Rochester|Rochester
+en|US_Minnesota_St. Cloud|St. Cloud
+en|US_Minnesota_St. Paul|St. Paul
+en|US_Minnesota_Woodbury|Woodbury
+en|US_Minnesota_Others|Other
+en|US_Mississippi|Mississippi
+en|US_Mississippi_Gulfport|Gulfport
+en|US_Mississippi_Jackson|Jackson
+en|US_Mississippi_Southaven|Southaven
+en|US_Mississippi_Others|Other
+en|US_Missouri|Missouri
+en|US_Missouri_Blue Springs|Blue Springs
+en|US_Missouri_Columbia|Columbia
+en|US_Missouri_Florissant|Florissant
+en|US_Missouri_Independence|Independence
+en|US_Missouri_Joplin|Joplin
+en|US_Missouri_Kansas City|Kansas City
+en|US_Missouri_Lee'S Summit|Lee'S Summit
+en|US_Missouri_O'Fallon|O'Fallon
+en|US_Missouri_Springfield|Springfield
+en|US_Missouri_St. Charles|St. Charles
+en|US_Missouri_St. Joseph|St. Joseph
+en|US_Missouri_St. Louis|St. Louis
+en|US_Missouri_St. Peters|St. Peters
+en|US_Missouri_Others|Other
+en|US_Montana|Montana
+en|US_Montana_Billings|Billings
+en|US_Montana_Great Falls|Great Falls
+en|US_Montana_Missoula|Missoula
+en|US_Montana_Others|Other
+en|US_Nebraska|Nebraska
+en|US_Nebraska_Bellevue|Bellevue
+en|US_Nebraska_Grand Island|Grand Island
+en|US_Nebraska_Lincoln|Lincoln
+en|US_Nebraska_Omaha|Omaha
+en|US_Nebraska_Others|Other
+en|US_Nevada|Nevada
+en|US_Nevada_Carson City|Carson City
+en|US_Nevada_Henderson|Henderson
+en|US_Nevada_Las Vegas|Las Vegas
+en|US_Nevada_Reno|Reno
+en|US_Nevada_Sparks|Sparks
+en|US_Nevada_Others|Other
+en|US_New Hampshire|New Hampshire
+en|US_New Hampshire_Manchester|Manchester
+en|US_New Hampshire_Nashua|Nashua
+en|US_New Hampshire_Others|Other
+en|US_New Jersey|New Jersey
+en|US_New Jersey_Bayonne|Bayonne
+en|US_New Jersey_Camden|Camden
+en|US_New Jersey_Clifton|Clifton
+en|US_New Jersey_East Orange|East Orange
+en|US_New Jersey_Elizabeth|Elizabeth
+en|US_New Jersey_Hoboken|Hoboken
+en|US_New Jersey_Jersey City|Jersey City
+en|US_New Jersey_New Brunswick|New Brunswick
+en|US_New Jersey_Newark|Newark
+en|US_New Jersey_Passaic|Passaic
+en|US_New Jersey_Paterson|Paterson
+en|US_New Jersey_Perth Amboy|Perth Amboy
+en|US_New Jersey_Plainfield|Plainfield
+en|US_New Jersey_Trenton|Trenton
+en|US_New Jersey_Vineland|Vineland
+en|US_New Jersey_Others|Other
+en|US_New Mexico|New Mexico
+en|US_New Mexico_Albuquerque|Albuquerque
+en|US_New Mexico_Las Cruces|Las Cruces
+en|US_New Mexico_Rio Rancho|Rio Rancho
+en|US_New Mexico_Santa Fe|Santa Fe
+en|US_New Mexico_Others|Other
+en|US_New York|New York
+en|US_New York_Albany|Albany
+en|US_New York_Buffalo|Buffalo
+en|US_New York_Mount Vernon|Mount Vernon
+en|US_New York_New Rochelle|New Rochelle
+en|US_New York_New York|New York
+en|US_New York_Niagara Falls|Niagara Falls
+en|US_New York_Rochester|Rochester
+en|US_New York_Schenectady|Schenectady
+en|US_New York_Syracuse|Syracuse
+en|US_New York_Tonawanda|Tonawanda
+en|US_New York_Troy|Troy
+en|US_New York_Utica|Utica
+en|US_New York_White Plains|White Plains
+en|US_New York_Yonkers|Yonkers
+en|US_New York_Others|Other
+en|US_North Carolina|North Carolina
+en|US_North Carolina_Asheville|Asheville
+en|US_North Carolina_Burlington|Burlington
+en|US_North Carolina_Chapel Hill|Chapel Hill
+en|US_North Carolina_Charlotte|Charlotte
+en|US_North Carolina_Concord|Concord
+en|US_North Carolina_Durham|Durham
+en|US_North Carolina_Fayetteville|Fayetteville
+en|US_North Carolina_Gastonia|Gastonia
+en|US_North Carolina_Greensboro|Greensboro
+en|US_North Carolina_Greenville|Greenville
+en|US_North Carolina_High Point|High Point
+en|US_North Carolina_Jacksonville|Jacksonville
+en|US_North Carolina_Raleigh|Raleigh
+en|US_North Carolina_Rocky Mount|Rocky Mount
+en|US_North Carolina_Wilmington|Wilmington
+en|US_North Carolina_Winston-Salem|Winston-Salem
+en|US_North Carolina_Others|Other
+en|US_North Dakota|North Dakota
+en|US_North Dakota_Bismarck|Bismarck
+en|US_North Dakota_Fargo|Fargo
+en|US_North Dakota_Grand Forks|Grand Forks
+en|US_North Dakota_Others|Other
+en|US_Ohio|Ohio
+en|US_Ohio_Akron|Akron
+en|US_Ohio_Beavercreekship|Beavercreekship
+en|US_Ohio_Canton|Canton
+en|US_Ohio_Cincinnati|Cincinnati
+en|US_Ohio_Cleveland|Cleveland
+en|US_Ohio_Columbus|Columbus
+en|US_Ohio_Dayton|Dayton
+en|US_Ohio_Elyria|Elyria
+en|US_Ohio_Hamilton|Hamilton
+en|US_Ohio_Kettering|Kettering
+en|US_Ohio_Lakewood|Lakewood
+en|US_Ohio_Lorain|Lorain
+en|US_Ohio_Parma|Parma
+en|US_Ohio_Springfield|Springfield
+en|US_Ohio_Toledo|Toledo
+en|US_Ohio_Youngstown|Youngstown
+en|US_Ohio_Others|Other
+en|US_Oklahoma|Oklahoma
+en|US_Oklahoma_Broken Arrow|Broken Arrow
+en|US_Oklahoma_Edmond|Edmond
+en|US_Oklahoma_Enid|Enid
+en|US_Oklahoma_Lawton|Lawton
+en|US_Oklahoma_Midwest City|Midwest City
+en|US_Oklahoma_Moore|Moore
+en|US_Oklahoma_Norman|Norman
+en|US_Oklahoma_Oklahoma City|Oklahoma City
+en|US_Oklahoma_Tulsa|Tulsa
+en|US_Oklahoma_Others|Other
+en|US_Oregon|Oregon
+en|US_Oregon_Beaverton|Beaverton
+en|US_Oregon_Bend|Bend
+en|US_Oregon_Corvallis|Corvallis
+en|US_Oregon_Eugene|Eugene
+en|US_Oregon_Gresham|Gresham
+en|US_Oregon_Hillsboro|Hillsboro
+en|US_Oregon_Medford|Medford
+en|US_Oregon_Portland|Portland
+en|US_Oregon_Salem|Salem
+en|US_Oregon_Springfield|Springfield
+en|US_Oregon_Tigard|Tigard
+en|US_Oregon_Others|Other
+en|US_Pennsylvania|Pennsylvania
+en|US_Pennsylvania_Allentown|Allentown
+en|US_Pennsylvania_Bethlehem|Bethlehem
+en|US_Pennsylvania_Erie|Erie
+en|US_Pennsylvania_Lancaster|Lancaster
+en|US_Pennsylvania_Philadelphia|Philadelphia
+en|US_Pennsylvania_Pittsburgh|Pittsburgh
+en|US_Pennsylvania_Scranton|Scranton
+en|US_Pennsylvania_Others|Other
+en|US_Rhode Island|Rhode Island
+en|US_Rhode Island_Cranston|Cranston
+en|US_Rhode Island_Pawtucket|Pawtucket
+en|US_Rhode Island_Providence|Providence
+en|US_Rhode Island_Warwick|Warwick
+en|US_Rhode Island_Others|Other
+en|US_South Carolina|South Carolina
+en|US_South Carolina_Charleston|Charleston
+en|US_South Carolina_Columbia|Columbia
+en|US_South Carolina_North Charleston|North Charleston
+en|US_South Carolina_Rock Hill|Rock Hill
+en|US_South Carolina_Others|Other
+en|US_South Dakota|South Dakota
+en|US_South Dakota_Rapid City|Rapid City
+en|US_South Dakota_Sioux Falls|Sioux Falls
+en|US_South Dakota_Others|Other
+en|US_Tennessee|Tennessee
+en|US_Tennessee_Bartlett|Bartlett
+en|US_Tennessee_Chattanooga|Chattanooga
+en|US_Tennessee_Clarksville|Clarksville
+en|US_Tennessee_Franklin|Franklin
+en|US_Tennessee_Hendersonville|Hendersonville
+en|US_Tennessee_Jackson|Jackson
+en|US_Tennessee_Johnson City|Johnson City
+en|US_Tennessee_Kingsport|Kingsport
+en|US_Tennessee_Knoxville|Knoxville
+en|US_Tennessee_Memphis|Memphis
+en|US_Tennessee_Murfreesboro|Murfreesboro
+en|US_Tennessee_Nashville|Nashville
+en|US_Tennessee_Others|Other
+en|US_Texas|Texas
+en|US_Texas_Abilene|Abilene
+en|US_Texas_Allen|Allen
+en|US_Texas_Amarillo|Amarillo
+en|US_Texas_Arlington|Arlington
+en|US_Texas_Austin|Austin
+en|US_Texas_Baytown|Baytown
+en|US_Texas_Beaumont|Beaumont
+en|US_Texas_Brownsville|Brownsville
+en|US_Texas_Bryan|Bryan
+en|US_Texas_Carrollton|Carrollton
+en|US_Texas_Cedar Park|Cedar Park
+en|US_Texas_College Station|College Station
+en|US_Texas_Conroe|Conroe
+en|US_Texas_Corpus Christi|Corpus Christi
+en|US_Texas_Dallas|Dallas
+en|US_Texas_Denton|Denton
+en|US_Texas_Desoto|Desoto
+en|US_Texas_Edinburg|Edinburg
+en|US_Texas_El Paso|El Paso
+en|US_Texas_Euless|Euless
+en|US_Texas_Fort Worth|Fort Worth
+en|US_Texas_Frisco|Frisco
+en|US_Texas_Garland|Garland
+en|US_Texas_George West|George West
+en|US_Texas_Grand Prairie|Grand Prairie
+en|US_Texas_Grapevine|Grapevine
+en|US_Texas_Haltom City|Haltom City
+en|US_Texas_Harlingen|Harlingen
+en|US_Texas_Houston|Houston
+en|US_Texas_Irving|Irving
+en|US_Texas_Killeen|Killeen
+en|US_Texas_Laredo|Laredo
+en|US_Texas_League City|League City
+en|US_Texas_Lewisville|Lewisville
+en|US_Texas_Longview|Longview
+en|US_Texas_Lubbock|Lubbock
+en|US_Texas_Mansfield|Mansfield
+en|US_Texas_Mcallen|Mcallen
+en|US_Texas_Mckinney|Mckinney
+en|US_Texas_Mesquite|Mesquite
+en|US_Texas_Midland|Midland
+en|US_Texas_Mission|Mission
+en|US_Texas_Missouri City|Missouri City
+en|US_Texas_New Braunfels|New Braunfels
+en|US_Texas_North Richland Hills|North Richland Hills
+en|US_Texas_Odessa|Odessa
+en|US_Texas_Pasadena|Pasadena
+en|US_Texas_Pearland|Pearland
+en|US_Texas_Pflugerville|Pflugerville
+en|US_Texas_Pharr|Pharr
+en|US_Texas_Plano|Plano
+en|US_Texas_Port Arthur|Port Arthur
+en|US_Texas_Richardson|Richardson
+en|US_Texas_Round Rock|Round Rock
+en|US_Texas_Rowlett|Rowlett
+en|US_Texas_San Angelo|San Angelo
+en|US_Texas_San Antonio|San Antonio
+en|US_Texas_San Marcos|San Marcos
+en|US_Texas_Sugar Land|Sugar Land
+en|US_Texas_Temple|Temple
+en|US_Texas_Texas City|Texas City
+en|US_Texas_Tyler|Tyler
+en|US_Texas_Victoria|Victoria
+en|US_Texas_Waco|Waco
+en|US_Texas_Wichita Falls|Wichita Falls
+en|US_Texas_Others|Other
+en|US_Utah|Utah
+en|US_Utah_Layton|Layton
+en|US_Utah_Lehi|Lehi
+en|US_Utah_Ogden|Ogden
+en|US_Utah_Orem|Orem
+en|US_Utah_Provo|Provo
+en|US_Utah_Salt Lake City|Salt Lake City
+en|US_Utah_Sandy|Sandy
+en|US_Utah_South Jordan|South Jordan
+en|US_Utah_St. George|St. George
+en|US_Utah_Taylorsville|Taylorsville
+en|US_Utah_West Jordan|West Jordan
+en|US_Utah_West Valley City|West Valley City
+en|US_Utah_Others|Other
+en|US_Vermont|Vermont
+en|US_Vermont_Montpelier|Montpelier
+en|US_Vermont_Others|Other
+en|US_Virginia|Virginia
+en|US_Virginia_Alexandria|Alexandria
+en|US_Virginia_Chesapeake|Chesapeake
+en|US_Virginia_Hampton|Hampton
+en|US_Virginia_Harrisonburg|Harrisonburg
+en|US_Virginia_Lynchburg|Lynchburg
+en|US_Virginia_Newport News|Newport News
+en|US_Virginia_Norfolk|Norfolk
+en|US_Virginia_Portsmouth|Portsmouth
+en|US_Virginia_Richmond|Richmond
+en|US_Virginia_Roanoke|Roanoke
+en|US_Virginia_Suffolk|Suffolk
+en|US_Virginia_Virginia Beach|Virginia Beach
+en|US_Virginia_Others|Other
+en|US_Washington|Washington
+en|US_Washington_Auburn|Auburn
+en|US_Washington_Bellevue|Bellevue
+en|US_Washington_Bellingham|Bellingham
+en|US_Washington_Burien|Burien
+en|US_Washington_Everett|Everett
+en|US_Washington_Federal Way|Federal Way
+en|US_Washington_Kennewick|Kennewick
+en|US_Washington_Kent|Kent
+en|US_Washington_Kirkland|Kirkland
+en|US_Washington_Lakewood|Lakewood
+en|US_Washington_Marysville|Marysville
+en|US_Washington_Pasco|Pasco
+en|US_Washington_Redmond|Redmond
+en|US_Washington_Renton|Renton
+en|US_Washington_Richland|Richland
+en|US_Washington_Sammamish|Sammamish
+en|US_Washington_Seattle|Seattle
+en|US_Washington_Shoreline|Shoreline
+en|US_Washington_Spokane|Spokane
+en|US_Washington_Spokane Valley|Spokane Valley
+en|US_Washington_Tacoma|Tacoma
+en|US_Washington_Vancouver|Vancouver
+en|US_Washington_Yakima|Yakima
+en|US_Washington_Others|Other
+en|US_West Virginia|West Virginia
+en|US_West Virginia_Charleston|Charleston
+en|US_West Virginia_Others|Other
+en|US_Wisconsin|Wisconsin
+en|US_Wisconsin_Appleton|Appleton
+en|US_Wisconsin_Eau Claire|Eau Claire
+en|US_Wisconsin_Green Bay|Green Bay
+en|US_Wisconsin_Janesville|Janesville
+en|US_Wisconsin_Kenosha|Kenosha
+en|US_Wisconsin_La Crosse|La Crosse
+en|US_Wisconsin_Madison|Madison
+en|US_Wisconsin_Milwaukee|Milwaukee
+en|US_Wisconsin_Oshkosh|Oshkosh
+en|US_Wisconsin_Racine|Racine
+en|US_Wisconsin_Waukesha|Waukesha
+en|US_Wisconsin_West Allis|West Allis
+en|US_Wisconsin_Others|Other
+en|US_Wyoming|Wyoming
+en|US_Wyoming_Casper|Casper
+en|US_Wyoming_Cheyenne|Cheyenne
+en|US_Wyoming_Others|Other
+en|UY|Uruguay
+en|UZ|Uzbekistan
+en|VU|Vanuatu
+en|VA|Vatican City
+en|VE|Venezuela
+en|VE_Amazonas|Amazonas
+en|VE_Anzoategui|Anzoategui
+en|VE_Apure|Apure
+en|VE_Aragua|Aragua
+en|VE_Barinas|Barinas
+en|VE_Bolivar|Bolivar
+en|VE_Carabobo|Carabobo
+en|VE_Caracas|Caracas
+en|VE_Cojedes|Cojedes
+en|VE_Delta Amacuro|Delta Amacuro
+en|VE_Dependencias Federales|Dependencias Federales
+en|VE_Estado Nueva Esparta|Estado Nueva Esparta
+en|VE_Falcon|Falcon
+en|VE_Guarico|Guarico
+en|VE_Lara|Lara
+en|VE_Merida|Merida
+en|VE_Miranda|Miranda
+en|VE_Monagas|Monagas
+en|VE_Portuguesa|Portuguesa
+en|VE_Sucre|Sucre
+en|VE_Tachira|Tachira
+en|VE_Trujillo|Trujillo
+en|VE_Yaracuy|Yaracuy
+en|VE_Zulia|Zulia
+en|VN|Vietnam
+en|VN_Haiphong|Haiphong
+en|VN_Hanoi|Hanoi
+en|VN_Ho Chi Minh City|Ho Chi Minh City
+en|WF|Wallis & Futuna
+en|EH|Western Sahara
+en|YE|Yemen
+en|ZM|Zambia
+en|ZW|Zimbabwe

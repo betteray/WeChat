@@ -13,6 +13,7 @@
 #import "SyncCmdHandler.h"
 #import "SyncKeyCompare.h"
 #import "SyncKeyStore.h"
+#import "PersonalInfoService.h"
 
 @implementation Business
 
@@ -132,6 +133,8 @@
                               //                                             NSData *identifyCheckBuf = [Business identifyReq2bufWithSyncKey:self.sync_key_cur uin:self.uin];
                               //                                             NSData *sendData = [long_pack pack:[WeChatClient sharedClient].seq++ cmdId:205 shortData:identifyCheckBuf];
                               //                                             [[WeChatClient sharedClient].client sendData:sendData];
+                              
+                              [PersonalInfoService getprofile];
                           }
                       }
                       failure:^(NSError *error) {

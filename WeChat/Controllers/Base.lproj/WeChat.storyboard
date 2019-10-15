@@ -739,13 +739,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="陈晨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxz-LQ-25I">
-                                <rect key="frame" x="90" y="69" width="33" height="20"/>
+                                <rect key="frame" x="90" y="79" width="33" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这个世界会好吗？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFN-WD-6eL">
-                                <rect key="frame" x="90" y="99" width="270" height="16"/>
+                                <rect key="frame" x="90" y="109" width="270" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -759,7 +759,7 @@
                             <constraint firstItem="FgG-4K-0Bx" firstAttribute="leading" secondItem="glP-FZ-uuQ" secondAttribute="leading" constant="15" id="YAh-Fm-8Y3"/>
                             <constraint firstItem="zFN-WD-6eL" firstAttribute="leading" secondItem="oxz-LQ-25I" secondAttribute="leading" id="eEC-XP-cHR"/>
                             <constraint firstItem="zFN-WD-6eL" firstAttribute="top" secondItem="oxz-LQ-25I" secondAttribute="bottom" constant="10" id="pHf-3f-b83"/>
-                            <constraint firstItem="oxz-LQ-25I" firstAttribute="top" secondItem="FgG-4K-0Bx" secondAttribute="top" id="uNV-0A-HNg"/>
+                            <constraint firstItem="oxz-LQ-25I" firstAttribute="top" secondItem="FgG-4K-0Bx" secondAttribute="top" constant="10" id="uNV-0A-HNg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="glP-FZ-uuQ"/>
                     </view>

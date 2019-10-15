@@ -22,6 +22,7 @@
 #import "NSData+Compression.h"
 #import "Safe.pbobjc.h"
 
+
 @interface LoginViewController ()
 
 @property(weak, nonatomic) IBOutlet UITextField *userNameTextField;
@@ -394,9 +395,8 @@
                          nLenLocalPri:(int) [_priKeyData length]
                            szShareKey:szSharedKey
                          pLenShareKey:&szSharedKeyLen];
-
+            
             WCContact *slf = [[WCContact objectsWhere:@"userName = %@", resp.acctSectResp.userName] firstObject];
-
             if (ret) {
                 NSData *checkEcdhKey = [NSData dataWithBytes:szSharedKey length:szSharedKeyLen];
                 NSData *sessionKey = [FSOpenSSL aesDecryptData:resp.authSectResp.sessionKey.buffer key:checkEcdhKey];
@@ -455,7 +455,7 @@
                 [SessionKeyStore createOrUpdateInDefaultRealmWithValue:@[SessionKeyStoreID, sessionKey]];
 
                 [realm commitWriteTransaction];
-
+                
                 [self enterWeChat];
             }
         }
