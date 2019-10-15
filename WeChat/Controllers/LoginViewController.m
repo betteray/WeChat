@@ -16,11 +16,10 @@
 #import "AccountInfo.h"
 #import "SessionKeyStore.h"
 #import "WCContact.h"
-#import <ASIFormDataRequest.h>
 
 #import "CalSpamAlg.h"
 #import "NSData+Compression.h"
-#import "Safe.pbobjc.h"
+#import "WCSafeSDK.h"
 
 
 @interface LoginViewController ()
@@ -62,14 +61,8 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self autoAuthIfCould];
     });
-    
+        
     /*
-    // test for 003.
-    {
-        NSData *data = [self get003FromLocalServer];
-        LogVerbose(@"data: %@", data);
-    }
-    
     {
         NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"secmanualauth_706" ofType:@"bin"]];
         ManualAuthRequest *request = [ManualAuthRequest parseFromData:data error:nil];
@@ -97,19 +90,7 @@
      */
 }
 
-- (NSData *)get003FromLocalServer {
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://10.20.10.22:8099"]];
-    [request addPostValue:@"123455" forKey:@"postData"];
-    [request startSynchronous];
-    
-    NSError *error = [request error];
-    if (error)
-    {
-        LogError(@"Error: %@", error);
-    }
-    
-    return [request responseData];
-}
+
 
 - (void)autoAuthIfCould {
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AutoAuthKeyStoreID];

@@ -9,6 +9,7 @@
 #import "SyncCmdHandler.h"
 #import "WCContact.h"
 #import "WCMessage.h"
+#import "WCSafeSDK.h"
 
 @implementation SyncCmdHandler
 
@@ -30,6 +31,19 @@
                        msg.toUserName.string,
                        msg.msgType,
                        msg.content.string);
+            
+            
+            //msg content : <sysmsg type="ClientCheckGetExtInfo"><ClientCheckGetExtInfo><ReportContext>539033600</ReportContext><Basic>0</Basic></ClientCheckGetExtInfo></sysmsg>
+            NSString *xmlMsg = msg.content.string;
+            if (isSystemMsg && [xmlMsg containsString:@"ClientCheckGetExtInfo"]) {
+                NSRange range1 = [xmlMsg rangeOfString:@"<ReportContext>"];
+                NSString *reportContent = [xmlMsg substringFromIndex:( range1.location + range1.length )];
+                NSRange range2 = [reportContent rangeOfString:@"</ReportContext>"];
+                reportContent = [reportContent substringToIndex:range2.location];
+                
+                uint32_t rptContext = (uint32_t) [reportContent integerValue];
+                [WCSafeSDK reportClientCheckWithContext:rptContext];
+            }
             
             WCContact *fromUser = [[WCContact objectsWhere:@"userName = %@", msg.fromUserName.string] firstObject];
             WCContact *toUser = [[WCContact objectsWhere:@"userName = %@", msg.toUserName.string] firstObject];
