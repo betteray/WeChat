@@ -12,8 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WCSafeSDK : NSObject
 
++ (NSData *)get003FromLocalServer:(NSString *)xml;
 + (void)reportClientCheckWithContext:(uint64_t)context;
 
+//&lt;LoginByID&gt
++ (NSData *)getextSpamInfoBufferWithContent:(NSString *)content
+                                    context:(NSString *)context;
 @end
 
 NS_ASSUME_NONNULL_END

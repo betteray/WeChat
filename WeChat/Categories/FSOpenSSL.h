@@ -43,6 +43,8 @@ enum
 + (NSString *)sha256FromString:(NSString *)string;
 
 + (NSString *)base64FromString:(NSString *)string encodeWithNewlines:(BOOL)encodeWithNewlines;
++ (NSString *)base64FromData:(NSData *)stringData encodeWithNewlines:(BOOL)encodeWithNewline;
++ (NSData *)base64decodeFromString:(NSString *)base64String;
 
 + (NSData *)RSAEncryptData:(NSData *)data modulus:(NSData *)modules exponent:(NSData *)exponent;
 

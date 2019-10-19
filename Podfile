@@ -15,6 +15,7 @@ target 'WeChat' do
   pod 'Json2pb' , :git => 'https://github.com/henrayluo/json2pb.git'
   pod 'IQKeyboardManager'
   pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'YYModel'
   
   # Pods for WeChat
 
@@ -22,7 +23,6 @@ target 'WeChat' do
     inherit! :search_paths
     # Pods for testing
     pod 'Protobuf'
-    
   end
 
   target 'WeChatUITests' do

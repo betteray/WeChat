@@ -16,6 +16,7 @@
 #ifdef __OBJC__
     #import <Realm/Realm.h>
     #import <SDWebImage/UIImageView+WebCache.h>
+    #import "NSObject+YYModel.h"
 
     #import "MM.pbobjc.h"
 

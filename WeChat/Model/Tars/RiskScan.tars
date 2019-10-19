@@ -1,0 +1,119 @@
+// 生成各种语言： https://github.com/TarsCloud/TarsCpp
+// 各种语言runtime： https://github.com/TarsCloud/TarsTup
+
+
+// 706版本里JceStruct的子类。 搜// "req" , userinfo , phonetype等
+module Report {
+
+struct PhoneType {
+    0 optional int BSR; // 固定写死 2
+    1 optional int BSS; // 固定写死 201
+};
+
+struct WxVersion {
+    1 require int majorVersion;
+    2 require int mirorVersion;
+    3 require int patchVersion;
+};
+
+//userinfo
+struct UserInfo
+{
+    0 require string imei;
+    1 optional string gUx;
+    2 optional string kOV;
+    3 optional string ip;
+    4 optional string BSW;
+    5 optional string channelId; //BSX
+    6 optional string model;  // BSY
+    7 optional int networkType; //BSZ
+    8 optional int BTa;
+    9 optional WxVersion wxVersion;
+    10 optional string guid;
+    11 optional string imsi;
+    12 optional int BTc;
+    13 optional int BTd;
+    14 optional int BTe;
+    15 optional int versionCode; // wechat versionCode
+    16 optional string eUN;
+    17 optional short BTg;
+    18 optional double longitude;
+    19 optional double latitude;
+    20 optional string BTh;
+    21 optional int BTi;
+    22 optional string BTj;
+    23 optional string fAS;
+    24 optional string rZC;
+    25 optional string BTk;
+    26 optional string BTl;
+};
+
+
+struct c {
+    0 optional int BTQ; // 写死 6
+    1 require int BTi; // 写死 1
+    2 require int requestType; // 写死 0
+    3 optional int BTR; // 0
+    4 optional int BTS; // 0
+    5 optional byte BTT; // null
+    6 optional int BTU; // 0
+    7 optional int fUD; // 
+    8 optional long BTV;
+    9 optional byte BTW;
+    10 optional int BTX;
+    11 optional int BTY; // 1
+};
+
+struct Pkg {
+    0 require int index; // 包列表索引
+    1 optional byte BTu; // 写死 null
+    2 optional string packageName;
+    3 optional vector<byte> signature2; // 
+    4 optional long fileSize;
+    5 optional string applicationLabel;
+    6 optional int versionCode;
+    7 optional string versionName;
+    8 optional int appSourceFlag; // // 默认为BTB = 0， 如果 ApplicationInfo.flag == 1(BTB |= 1) ; BTB |= 2 ; 如果 !ApplicationInfo.sourceDir.startWith("/data") && !ApplicationInfo.sourceDir.startWith("/system") BTB |= 4;
+    9 optional string BTC; //  写死""
+    10 require int BTD; // 写死0
+    11 optional int BTE; // 写死 0
+    12 optional int BTF; // 写死 0
+    13 optional vector<int> BTG; // 写死null
+    14 optional int BTH; // 写死 0
+    15 require bool BTI; // 写死 false
+    16 optional int BTJ; // 写死 0
+    17 require int BTK; // 写死 0
+    18 optional vector<byte> signature; // signature
+};
+
+struct SysInfo {
+    0 optional string fingerprint;
+    1 optional string procVersion;
+    2 optional string brand;
+    3 optional string model;
+    4 optional int sdkInt;
+    5 optional string cpuAbi;
+    6 optional string platform; // ro.board.platform
+    7 optional int BUf; // root or something?
+};
+
+struct Req {
+    0 optional c BTn;
+    1 optional vector<Pkg> pkgList;
+    2 optional SysInfo sysInfo;
+};
+
+struct RequestPacket {
+    1 require short iVersion;
+    2 require byte cPacketType;
+    3 require int iMessageType;
+    4 require int iRequestId;
+    5 require string sServantName;
+    6 require string sFuncName;
+    7 require vector<byte> sBuffer;
+    8 require int iTimeout;
+    9 require map<string, string> context;
+    10 require map<string, string> status;
+};
+
+}; 

@@ -33,6 +33,7 @@ PODS:
   - SDWebImage (4.4.3):
     - SDWebImage/Core (= 4.4.3)
   - SDWebImage/Core (4.4.3)
+  - YYModel (1.0.4)
 
 DEPENDENCIES:
   - ASIHTTPRequest
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - Realm
   - RegexKitLite
   - SDWebImage
+  - YYModel
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -60,6 +62,7 @@ SPEC REPOS:
     - Realm
     - RegexKitLite
     - SDWebImage
+    - YYModel
 
 EXTERNAL SOURCES:
   Json2pb:
@@ -83,7 +86,8 @@ SPEC CHECKSUMS:
   Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: dabb1a6092355f5814c851c5bc4d02ed7fcd336e
+PODFILE CHECKSUM: 9c30891fc197833c58bb6b679f638a0525ed4bb5
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.5

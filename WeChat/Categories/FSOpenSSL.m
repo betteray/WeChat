@@ -567,6 +567,95 @@ static GenRsaKeyResult generate_rsa_key_pair_1024(char *_pem_public_key_buf, con
     return base64String;
 }
 
++ (NSString *)base64FromData:(NSData *)stringData encodeWithNewlines:(BOOL)encodeWithNewlines
+{
+    BIO *mem = BIO_new(BIO_s_mem());
+    BIO *b64 = BIO_new(BIO_f_base64());
+
+    if (!encodeWithNewlines)
+    {
+        BIO_set_flags(b64, BIO_FLAGS_BASE64_NO_NL);
+    }
+    mem = BIO_push(b64, mem);
+
+    NSUInteger length = stringData.length;
+    void *buffer = (void *) [stringData bytes];
+    int bufferSize = (int) MIN(length, INT_MAX);
+
+    NSUInteger count = 0;
+
+    BOOL error = NO;
+
+    // Encode the data
+    while (!error && count < length)
+    {
+        int result = BIO_write(mem, buffer, bufferSize);
+        if (result <= 0)
+        {
+            error = YES;
+        }
+        else
+        {
+            count += result;
+            buffer = (void *) [stringData bytes] + count;
+            bufferSize = (int) MIN((length - count), INT_MAX);
+        }
+    }
+
+    int flush_result = BIO_flush(mem);
+    if (flush_result != 1)
+    {
+        return nil;
+    }
+
+    char *base64Pointer;
+    NSUInteger base64Length = (NSUInteger) BIO_get_mem_data(mem, &base64Pointer);
+
+    NSData *base64data = [NSData dataWithBytesNoCopy:base64Pointer length:base64Length freeWhenDone:NO];
+    NSString *base64String = [[NSString alloc] initWithData:base64data encoding:NSUTF8StringEncoding];
+
+    BIO_free_all(mem);
+    return base64String;
+}
+
+//Calculates the length of a decoded string
+static size_t sizeOfBase64DecodeLength(const char* b64input) {
+    size_t len = strlen(b64input),
+    padding = 0;
+
+    if (b64input[len-1] == '=' && b64input[len-2] == '=') //last two chars are =
+        padding = 2;
+    else if (b64input[len-1] == '=') //last char is =
+        padding = 1;
+
+    return (len*3)/4 - padding;
+}
+
+static int base64DecodeWithString(const char* b64message, unsigned char** buffer, size_t* length) { //Decodes a base64 encoded string
+    BIO *bio, *b64;
+    int decodeLen = decodeLen = (int) sizeOfBase64DecodeLength(b64message);
+    *buffer = (unsigned char*)malloc(decodeLen + 1);
+    (*buffer)[decodeLen] = '\0';
+    bio = BIO_new_mem_buf(b64message, -1);
+    b64 = BIO_new(BIO_f_base64());
+    bio = BIO_push(b64, bio);
+    BIO_set_flags(bio, BIO_FLAGS_BASE64_NO_NL); //Do not use newlines to flush buffer
+    *length = BIO_read(bio, *buffer, (int) strlen(b64message));
+    assert(*length == decodeLen); //length should equal decodeLen, else something went horribly wrong
+    BIO_free_all(bio);
+    return 0; //success
+}
+
++ (NSData *)base64decodeFromString:(NSString *)base64String {
+    const char * buf = [base64String cStringUsingEncoding:NSUTF8StringEncoding];
+    char *base64DecodeOutput ;
+    size_t lengthAfterDecode;
+    
+    base64DecodeWithString(buf, (unsigned char**)&base64DecodeOutput, &lengthAfterDecode);
+    
+    return [NSData dataWithBytes:base64DecodeOutput length:lengthAfterDecode];
+}
+
 + (NSData *)RSAEncryptData:(NSData *)data modulus:(NSData *)modules exponent:(NSData *)exponent
 {
     unsigned char *output;

@@ -1,0 +1,768 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		3CB475C4152AA45F00F145B4 /* tup.Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3CB475C5152AA45F00F145B4 /* Build configuration list for PBXAggregateTarget "tup.Framework" */;
+			buildPhases = (
+				3CB475CA152AA46900F145B4 /* Build Framework */,
+			);
+			dependencies = (
+				3CB475CC152AA47100F145B4 /* PBXTargetDependency */,
+			);
+			name = tup.Framework;
+			productName = tup.Framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		3C4347F8155CE1E100892E0A /* ASICacheDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C4347F3155CE1E100892E0A /* ASICacheDelegate.h */; };
+		3C4347F9155CE1E100892E0A /* ASIHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C4347F4155CE1E100892E0A /* ASIHTTPRequest.h */; };
+		3C4347FA155CE1E100892E0A /* ASIHTTPRequestConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C4347F5155CE1E100892E0A /* ASIHTTPRequestConfig.h */; };
+		3C4347FB155CE1E100892E0A /* ASIHTTPRequestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C4347F6155CE1E100892E0A /* ASIHTTPRequestDelegate.h */; };
+		3C4347FC155CE1E100892E0A /* ASIProgressDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C4347F7155CE1E100892E0A /* ASIProgressDelegate.h */; };
+		3CAFA00E153D4D58000624F5 /* UniAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAFA00C153D4D58000624F5 /* UniAttribute.m */; };
+		3CC191B6152455910083BBCE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC191B5152455910083BBCE /* Foundation.framework */; };
+		3CC191C4152455910083BBCE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC191C3152455910083BBCE /* SenTestingKit.framework */; };
+		3CC191C7152455910083BBCE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC191B5152455910083BBCE /* Foundation.framework */; };
+		3CC191CA152455910083BBCE /* libtup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC191B2152455910083BBCE /* libtup.a */; };
+		3CC191D0152455910083BBCE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3CC191CE152455910083BBCE /* InfoPlist.strings */; };
+		3CC1A319152466AA0083BBCE /* RequestF.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3CC1A30B152466AA0083BBCE /* RequestF.mm */; };
+		3CC1A31B152466AA0083BBCE /* UniPacket.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3CC1A30D152466AA0083BBCE /* UniPacket.mm */; };
+		714E3581235725370046F7D8 /* tup-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 714E357F235725370046F7D8 /* tup-Prefix.pch */; };
+		714E3582235725370046F7D8 /* tup-Debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E3580235725370046F7D8 /* tup-Debug.h */; };
+		714E358A235725670046F7D8 /* WupHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E3583235725670046F7D8 /* WupHttpRequest.m */; };
+		714E358B235725670046F7D8 /* WupHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E3584235725670046F7D8 /* WupHttpRequest.h */; };
+		714E358C235725670046F7D8 /* WupAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E3585235725670046F7D8 /* WupAgent.m */; };
+		714E358D235725670046F7D8 /* WupAgentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E3586235725670046F7D8 /* WupAgentDelegate.h */; };
+		714E358E235725670046F7D8 /* WupService.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E3587235725670046F7D8 /* WupService.m */; };
+		714E358F235725670046F7D8 /* WupAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E3588235725670046F7D8 /* WupAgent.h */; };
+		714E3590235725670046F7D8 /* WupService.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E3589235725670046F7D8 /* WupService.h */; };
+		714E359D2357257A0046F7D8 /* TarsInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E35912357257A0046F7D8 /* TarsInputStream.m */; };
+		714E359E2357257A0046F7D8 /* TarsObjectV2.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E35922357257A0046F7D8 /* TarsObjectV2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		714E359F2357257A0046F7D8 /* TarsEnumHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E35932357257A0046F7D8 /* TarsEnumHelper.m */; };
+		714E35A02357257A0046F7D8 /* TarsOutputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E35942357257A0046F7D8 /* TarsOutputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		714E35A12357257A0046F7D8 /* TarsStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E35952357257A0046F7D8 /* TarsStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		714E35A22357257A0046F7D8 /* TarsStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E35962357257A0046F7D8 /* TarsStream.m */; };
+		714E35A32357257A0046F7D8 /* TarsObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E35972357257A0046F7D8 /* TarsObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		714E35A42357257A0046F7D8 /* TarsInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E35982357257A0046F7D8 /* TarsInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		714E35A52357257A0046F7D8 /* TarsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E35992357257A0046F7D8 /* TarsObject.m */; };
+		714E35A62357257A0046F7D8 /* TarsObjectV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E359A2357257A0046F7D8 /* TarsObjectV2.m */; };
+		714E35A72357257A0046F7D8 /* TarsEnumHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E359B2357257A0046F7D8 /* TarsEnumHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		714E35A82357257A0046F7D8 /* TarsOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E359C2357257A0046F7D8 /* TarsOutputStream.m */; };
+		714E35AA235725960046F7D8 /* tup.h in Headers */ = {isa = PBXBuildFile; fileRef = 714E35A9235725960046F7D8 /* tup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		714E35AD235726E50046F7D8 /* WirelessUnifiedProtocolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E35AC235726E50046F7D8 /* WirelessUnifiedProtocolTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3CB475CB152AA47100F145B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CC191A9152455910083BBCE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CC191B1152455910083BBCE;
+			remoteInfo = tup.Serializable;
+		};
+		3CC191C8152455910083BBCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CC191A9152455910083BBCE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CC191B1152455910083BBCE;
+			remoteInfo = tup;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3C4347F3155CE1E100892E0A /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		3C4347F4155CE1E100892E0A /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		3C4347F5155CE1E100892E0A /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		3C4347F6155CE1E100892E0A /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		3C4347F7155CE1E100892E0A /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		3CAFA00B153D4D58000624F5 /* UniAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniAttribute.h; path = Serializable/UniAttribute.h; sourceTree = "<group>"; };
+		3CAFA00C153D4D58000624F5 /* UniAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UniAttribute.m; path = Serializable/UniAttribute.m; sourceTree = "<group>"; };
+		3CC191B2152455910083BBCE /* libtup.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtup.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC191B5152455910083BBCE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3CC191C2152455910083BBCE /* tupTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tupTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC191C3152455910083BBCE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		3CC191CD152455910083BBCE /* tupTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "tupTests-Info.plist"; sourceTree = "<group>"; };
+		3CC191CF152455910083BBCE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3CC1A30A152466AA0083BBCE /* RequestF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RequestF.h; path = Serializable/RequestF.h; sourceTree = "<group>"; };
+		3CC1A30B152466AA0083BBCE /* RequestF.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RequestF.mm; path = Serializable/RequestF.mm; sourceTree = "<group>"; };
+		3CC1A30C152466AA0083BBCE /* UniPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniPacket.h; path = Serializable/UniPacket.h; sourceTree = "<group>"; };
+		3CC1A30D152466AA0083BBCE /* UniPacket.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UniPacket.mm; path = Serializable/UniPacket.mm; sourceTree = "<group>"; };
+		714E357F235725370046F7D8 /* tup-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "tup-Prefix.pch"; sourceTree = "<group>"; };
+		714E3580235725370046F7D8 /* tup-Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "tup-Debug.h"; sourceTree = "<group>"; };
+		714E3583235725670046F7D8 /* WupHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WupHttpRequest.m; path = RMIModel/WupHttpRequest.m; sourceTree = "<group>"; };
+		714E3584235725670046F7D8 /* WupHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WupHttpRequest.h; path = RMIModel/WupHttpRequest.h; sourceTree = "<group>"; };
+		714E3585235725670046F7D8 /* WupAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WupAgent.m; path = RMIModel/WupAgent.m; sourceTree = "<group>"; };
+		714E3586235725670046F7D8 /* WupAgentDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WupAgentDelegate.h; path = RMIModel/WupAgentDelegate.h; sourceTree = "<group>"; };
+		714E3587235725670046F7D8 /* WupService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WupService.m; path = RMIModel/WupService.m; sourceTree = "<group>"; };
+		714E3588235725670046F7D8 /* WupAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WupAgent.h; path = RMIModel/WupAgent.h; sourceTree = "<group>"; };
+		714E3589235725670046F7D8 /* WupService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WupService.h; path = RMIModel/WupService.h; sourceTree = "<group>"; };
+		714E35912357257A0046F7D8 /* TarsInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TarsInputStream.m; path = Serializable/TarsInputStream.m; sourceTree = "<group>"; };
+		714E35922357257A0046F7D8 /* TarsObjectV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TarsObjectV2.h; path = Serializable/TarsObjectV2.h; sourceTree = "<group>"; };
+		714E35932357257A0046F7D8 /* TarsEnumHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TarsEnumHelper.m; path = Serializable/TarsEnumHelper.m; sourceTree = "<group>"; };
+		714E35942357257A0046F7D8 /* TarsOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TarsOutputStream.h; path = Serializable/TarsOutputStream.h; sourceTree = "<group>"; };
+		714E35952357257A0046F7D8 /* TarsStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TarsStream.h; path = Serializable/TarsStream.h; sourceTree = "<group>"; };
+		714E35962357257A0046F7D8 /* TarsStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TarsStream.m; path = Serializable/TarsStream.m; sourceTree = "<group>"; };
+		714E35972357257A0046F7D8 /* TarsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TarsObject.h; path = Serializable/TarsObject.h; sourceTree = "<group>"; };
+		714E35982357257A0046F7D8 /* TarsInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TarsInputStream.h; path = Serializable/TarsInputStream.h; sourceTree = "<group>"; };
+		714E35992357257A0046F7D8 /* TarsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TarsObject.m; path = Serializable/TarsObject.m; sourceTree = "<group>"; };
+		714E359A2357257A0046F7D8 /* TarsObjectV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TarsObjectV2.m; path = Serializable/TarsObjectV2.m; sourceTree = "<group>"; };
+		714E359B2357257A0046F7D8 /* TarsEnumHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TarsEnumHelper.h; path = Serializable/TarsEnumHelper.h; sourceTree = "<group>"; };
+		714E359C2357257A0046F7D8 /* TarsOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TarsOutputStream.m; path = Serializable/TarsOutputStream.m; sourceTree = "<group>"; };
+		714E35A9235725960046F7D8 /* tup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tup.h; sourceTree = "<group>"; };
+		714E35AB235726E50046F7D8 /* WirelessUnifiedProtocolTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessUnifiedProtocolTests.h; sourceTree = "<group>"; };
+		714E35AC235726E50046F7D8 /* WirelessUnifiedProtocolTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WirelessUnifiedProtocolTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3CC191AF152455910083BBCE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC191B6152455910083BBCE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CC191BE152455910083BBCE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC191C4152455910083BBCE /* SenTestingKit.framework in Frameworks */,
+				3CC191C7152455910083BBCE /* Foundation.framework in Frameworks */,
+				3CC191CA152455910083BBCE /* libtup.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3CC191A7152455910083BBCE = {
+			isa = PBXGroup;
+			children = (
+				3CC191B7152455910083BBCE /* tup */,
+				3CC191CB152455910083BBCE /* tupTests */,
+				3CC192091524573A0083BBCE /* Dependencies */,
+				3CC191B4152455910083BBCE /* Frameworks */,
+				3CC191B3152455910083BBCE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3CC191B3152455910083BBCE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3CC191B2152455910083BBCE /* libtup.a */,
+				3CC191C2152455910083BBCE /* tupTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3CC191B4152455910083BBCE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3CC191B5152455910083BBCE /* Foundation.framework */,
+				3CC191C3152455910083BBCE /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3CC191B7152455910083BBCE /* tup */ = {
+			isa = PBXGroup;
+			children = (
+				714E35A9235725960046F7D8 /* tup.h */,
+				3CC1920C152458D10083BBCE /* Serializable */,
+				3CC1A390152469030083BBCE /* RMIModel */,
+				3CC191B8152455910083BBCE /* Supporting Files */,
+			);
+			path = tup;
+			sourceTree = "<group>";
+		};
+		3CC191B8152455910083BBCE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				714E3580235725370046F7D8 /* tup-Debug.h */,
+				714E357F235725370046F7D8 /* tup-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3CC191CB152455910083BBCE /* tupTests */ = {
+			isa = PBXGroup;
+			children = (
+				714E35AB235726E50046F7D8 /* WirelessUnifiedProtocolTests.h */,
+				714E35AC235726E50046F7D8 /* WirelessUnifiedProtocolTests.m */,
+				3CC191CC152455910083BBCE /* Supporting Files */,
+			);
+			path = tupTests;
+			sourceTree = "<group>";
+		};
+		3CC191CC152455910083BBCE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3CC191CD152455910083BBCE /* tupTests-Info.plist */,
+				3CC191CE152455910083BBCE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3CC192091524573A0083BBCE /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				3CC1A3BD15246ED20083BBCE /* ASIHttpRequest */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		3CC1920C152458D10083BBCE /* Serializable */ = {
+			isa = PBXGroup;
+			children = (
+				714E359B2357257A0046F7D8 /* TarsEnumHelper.h */,
+				714E35932357257A0046F7D8 /* TarsEnumHelper.m */,
+				714E35982357257A0046F7D8 /* TarsInputStream.h */,
+				714E35912357257A0046F7D8 /* TarsInputStream.m */,
+				714E35972357257A0046F7D8 /* TarsObject.h */,
+				714E35992357257A0046F7D8 /* TarsObject.m */,
+				714E35922357257A0046F7D8 /* TarsObjectV2.h */,
+				714E359A2357257A0046F7D8 /* TarsObjectV2.m */,
+				714E35942357257A0046F7D8 /* TarsOutputStream.h */,
+				714E359C2357257A0046F7D8 /* TarsOutputStream.m */,
+				714E35952357257A0046F7D8 /* TarsStream.h */,
+				714E35962357257A0046F7D8 /* TarsStream.m */,
+				3CC1A30A152466AA0083BBCE /* RequestF.h */,
+				3CC1A30B152466AA0083BBCE /* RequestF.mm */,
+				3CAFA00B153D4D58000624F5 /* UniAttribute.h */,
+				3CAFA00C153D4D58000624F5 /* UniAttribute.m */,
+				3CC1A30C152466AA0083BBCE /* UniPacket.h */,
+				3CC1A30D152466AA0083BBCE /* UniPacket.mm */,
+			);
+			name = Serializable;
+			sourceTree = "<group>";
+		};
+		3CC1A390152469030083BBCE /* RMIModel */ = {
+			isa = PBXGroup;
+			children = (
+				714E3588235725670046F7D8 /* WupAgent.h */,
+				714E3585235725670046F7D8 /* WupAgent.m */,
+				714E3586235725670046F7D8 /* WupAgentDelegate.h */,
+				714E3584235725670046F7D8 /* WupHttpRequest.h */,
+				714E3583235725670046F7D8 /* WupHttpRequest.m */,
+				714E3589235725670046F7D8 /* WupService.h */,
+				714E3587235725670046F7D8 /* WupService.m */,
+			);
+			name = RMIModel;
+			sourceTree = "<group>";
+		};
+		3CC1A3BD15246ED20083BBCE /* ASIHttpRequest */ = {
+			isa = PBXGroup;
+			children = (
+				3C4347F3155CE1E100892E0A /* ASICacheDelegate.h */,
+				3C4347F4155CE1E100892E0A /* ASIHTTPRequest.h */,
+				3C4347F5155CE1E100892E0A /* ASIHTTPRequestConfig.h */,
+				3C4347F6155CE1E100892E0A /* ASIHTTPRequestDelegate.h */,
+				3C4347F7155CE1E100892E0A /* ASIProgressDelegate.h */,
+			);
+			name = ASIHttpRequest;
+			path = Dependencies/ASIHttpRequest;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3CC191B0152455910083BBCE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				714E35AA235725960046F7D8 /* tup.h in Headers */,
+				714E35A12357257A0046F7D8 /* TarsStream.h in Headers */,
+				714E359E2357257A0046F7D8 /* TarsObjectV2.h in Headers */,
+				714E35A72357257A0046F7D8 /* TarsEnumHelper.h in Headers */,
+				714E35A02357257A0046F7D8 /* TarsOutputStream.h in Headers */,
+				714E35A32357257A0046F7D8 /* TarsObject.h in Headers */,
+				714E35A42357257A0046F7D8 /* TarsInputStream.h in Headers */,
+				714E358D235725670046F7D8 /* WupAgentDelegate.h in Headers */,
+				714E358B235725670046F7D8 /* WupHttpRequest.h in Headers */,
+				714E3590235725670046F7D8 /* WupService.h in Headers */,
+				714E3582235725370046F7D8 /* tup-Debug.h in Headers */,
+				3C4347F8155CE1E100892E0A /* ASICacheDelegate.h in Headers */,
+				3C4347F9155CE1E100892E0A /* ASIHTTPRequest.h in Headers */,
+				714E3581235725370046F7D8 /* tup-Prefix.pch in Headers */,
+				3C4347FA155CE1E100892E0A /* ASIHTTPRequestConfig.h in Headers */,
+				3C4347FB155CE1E100892E0A /* ASIHTTPRequestDelegate.h in Headers */,
+				3C4347FC155CE1E100892E0A /* ASIProgressDelegate.h in Headers */,
+				714E358F235725670046F7D8 /* WupAgent.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3CC191B1152455910083BBCE /* tup */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CC191D6152455910083BBCE /* Build configuration list for PBXNativeTarget "tup" */;
+			buildPhases = (
+				3CC191AE152455910083BBCE /* Sources */,
+				3CC191AF152455910083BBCE /* Frameworks */,
+				3CC191B0152455910083BBCE /* Headers */,
+				3CB475B8152AA35B00F145B4 /* Prepare Framework */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tup;
+			productName = tup;
+			productReference = 3CC191B2152455910083BBCE /* libtup.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3CC191C1152455910083BBCE /* tupTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CC191D9152455910083BBCE /* Build configuration list for PBXNativeTarget "tupTests" */;
+			buildPhases = (
+				3CC191BD152455910083BBCE /* Sources */,
+				3CC191BE152455910083BBCE /* Frameworks */,
+				3CC191BF152455910083BBCE /* Resources */,
+				3CC191C0152455910083BBCE /* Run Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3CC191C9152455910083BBCE /* PBXTargetDependency */,
+			);
+			name = tupTests;
+			productName = tupTests;
+			productReference = 3CC191C2152455910083BBCE /* tupTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3CC191A9152455910083BBCE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = Tencent;
+			};
+			buildConfigurationList = 3CC191AC152455910083BBCE /* Build configuration list for PBXProject "tup" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				English,
+				zh_CN,
+				zh_TW,
+			);
+			mainGroup = 3CC191A7152455910083BBCE;
+			productRefGroup = 3CC191B3152455910083BBCE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3CC191B1152455910083BBCE /* tup */,
+				3CC191C1152455910083BBCE /* tupTests */,
+				3CB475C4152AA45F00F145B4 /* tup.Framework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3CC191BF152455910083BBCE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC191D0152455910083BBCE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3CB475B8152AA35B00F145B4 /* Prepare Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"\n\n# Link the \"Current\" version to \"${FRAMEWORK_VERSION}\"\nln -sfh ${FRAMEWORK_VERSION} \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\nln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\nln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\ncp -a \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"\n";
+		};
+		3CB475CA152AA46900F145B4 /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\"\n";
+		};
+		3CC191C0152455910083BBCE /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3CC191AE152455910083BBCE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				714E358E235725670046F7D8 /* WupService.m in Sources */,
+				714E359F2357257A0046F7D8 /* TarsEnumHelper.m in Sources */,
+				714E358A235725670046F7D8 /* WupHttpRequest.m in Sources */,
+				3CC1A319152466AA0083BBCE /* RequestF.mm in Sources */,
+				714E35A62357257A0046F7D8 /* TarsObjectV2.m in Sources */,
+				3CC1A31B152466AA0083BBCE /* UniPacket.mm in Sources */,
+				714E35A52357257A0046F7D8 /* TarsObject.m in Sources */,
+				714E35A82357257A0046F7D8 /* TarsOutputStream.m in Sources */,
+				3CAFA00E153D4D58000624F5 /* UniAttribute.m in Sources */,
+				714E35A22357257A0046F7D8 /* TarsStream.m in Sources */,
+				714E359D2357257A0046F7D8 /* TarsInputStream.m in Sources */,
+				714E358C235725670046F7D8 /* WupAgent.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CC191BD152455910083BBCE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				714E35AD235726E50046F7D8 /* WirelessUnifiedProtocolTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3CB475CC152AA47100F145B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CC191B1152455910083BBCE /* tup */;
+			targetProxy = 3CB475CB152AA47100F145B4 /* PBXContainerItemProxy */;
+		};
+		3CC191C9152455910083BBCE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CC191B1152455910083BBCE /* tup */;
+			targetProxy = 3CC191C8152455910083BBCE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3CC191CE152455910083BBCE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CC191CF152455910083BBCE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3CB47578152A9D5E00F145B4 /* DailyBuild */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = DailyBuild;
+		};
+		3CB47579152A9D5E00F145B4 /* DailyBuild */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DSTROOT = /tmp/tup.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tup/tup-Prefix.pch";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = debugging;
+			};
+			name = DailyBuild;
+		};
+		3CB4757C152A9D5E00F145B4 /* DailyBuild */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tup/tup-Prefix.pch";
+				INFOPLIST_FILE = "tupTests/tupTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = DailyBuild;
+		};
+		3CB4757D152A9D6800F145B4 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		3CB4757E152A9D6800F145B4 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DSTROOT = /tmp/tup.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tup/tup-Prefix.pch";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = debugging;
+			};
+			name = Distribution;
+		};
+		3CB47581152A9D6800F145B4 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tup/tup-Prefix.pch";
+				INFOPLIST_FILE = "tupTests/tupTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Distribution;
+		};
+		3CB475C6152AA45F00F145B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CB475C7152AA45F00F145B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3CB475C8152AA45F00F145B4 /* DailyBuild */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = DailyBuild;
+		};
+		3CB475C9152AA45F00F145B4 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Distribution;
+		};
+		3CC191D4152455910083BBCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3CC191D5152455910083BBCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3CC191D7152455910083BBCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DSTROOT = /tmp/tup.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tup/tup-Prefix.pch";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = debugging;
+			};
+			name = Debug;
+		};
+		3CC191D8152455910083BBCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DSTROOT = /tmp/tup.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tup/tup-Prefix.pch";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = debugging;
+			};
+			name = Release;
+		};
+		3CC191DA152455910083BBCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tup/tup-Prefix.pch";
+				INFOPLIST_FILE = "tupTests/tupTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		3CC191DB152455910083BBCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tup/tup-Prefix.pch";
+				INFOPLIST_FILE = "tupTests/tupTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3CB475C5152AA45F00F145B4 /* Build configuration list for PBXAggregateTarget "tup.Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CB475C6152AA45F00F145B4 /* Debug */,
+				3CB475C7152AA45F00F145B4 /* Release */,
+				3CB475C8152AA45F00F145B4 /* DailyBuild */,
+				3CB475C9152AA45F00F145B4 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CC191AC152455910083BBCE /* Build configuration list for PBXProject "tup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CC191D4152455910083BBCE /* Debug */,
+				3CC191D5152455910083BBCE /* Release */,
+				3CB47578152A9D5E00F145B4 /* DailyBuild */,
+				3CB4757D152A9D6800F145B4 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CC191D6152455910083BBCE /* Build configuration list for PBXNativeTarget "tup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CC191D7152455910083BBCE /* Debug */,
+				3CC191D8152455910083BBCE /* Release */,
+				3CB47579152A9D5E00F145B4 /* DailyBuild */,
+				3CB4757E152A9D6800F145B4 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CC191D9152455910083BBCE /* Build configuration list for PBXNativeTarget "tupTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CC191DA152455910083BBCE /* Debug */,
+				3CC191DB152455910083BBCE /* Release */,
+				3CB4757C152A9D5E00F145B4 /* DailyBuild */,
+				3CB47581152A9D6800F145B4 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3CC191A9152455910083BBCE /* Project object */;
+}

@@ -21,6 +21,7 @@
 #import "NSData+Compression.h"
 #import "WCSafeSDK.h"
 
+#import "RiskScanBufReq.h"
 
 @interface LoginViewController ()
 
@@ -61,36 +62,11 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self autoAuthIfCould];
     });
-        
-    /*
-    {
-        NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"secmanualauth_706" ofType:@"bin"]];
-        ManualAuthRequest *request = [ManualAuthRequest parseFromData:data error:nil];
-        
-        WCExtInfo *info = [WCExtInfo parseFromData:request.aesReqData.extSpamInfo.buffer error:nil];
-        LogVerbose(@"info: %@", info);
-    }
     
-    {
-        NSData* data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"secautoauth" ofType:@"bin"]];
-        AutoAuthRequest *request = [AutoAuthRequest parseFromData:data error:nil];
-        
-        WCExtInfo *info = [WCExtInfo parseFromData:request.aesReqData.extSpamInfo.buffer error:nil];
-        LogVerbose(@"reqeust: %@", info);
-    }
-    
-    {
-        NSData* data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"verifyuser" ofType:@"bin"]];
-        VerifyUserRequest *request = [VerifyUserRequest parseFromData:data error:nil];
-        
-        WCExtInfo *info = [WCExtInfo parseFromData:request.extSpamInfo.buffer error:nil];
-        LogVerbose(@"reqeust: %@", info);
-    }
-    
-     */
+    [RiskScanBufReq test];
+    NSString *riskScan = [RiskScanBufReq getRiskScanBufReq];
+    [WCSafeSDK getextSpamInfoBufferWithContent:self.userNameTextField.text context:@"&lt;LoginByID&gt"];
 }
-
-
 
 - (void)autoAuthIfCould {
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AutoAuthKeyStoreID];
@@ -178,6 +154,18 @@
 //    clientCheckData.buffer = ccd.data;
 //    aesReqData.clientCheckData = clientCheckData;
 #endif
+    
+    if (CLIENT_VERSION > A703) {
+        NSData *extSpamInfoBuffer = [WCSafeSDK getextSpamInfoBufferWithContent:self.userNameTextField.text context:@"&lt;LoginByID&gt"];
+
+        SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
+        extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
+        extSpamInfo.buffer = extSpamInfoBuffer;
+        
+        aesReqData.extSpamInfo = extSpamInfo; // tag=24
+    }
+    
+    
     ManualAuthRequest *authRequest = [ManualAuthRequest new];
     authRequest.aesReqData = aesReqData;
     authRequest.rsaReqData = rsaReqData;
