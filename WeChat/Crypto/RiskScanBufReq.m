@@ -50,7 +50,6 @@
     TarsInputStream *userinfoDataStream = [TarsInputStream streamWithData:userinfoData];
     ReportUserInfo *reportUserInfo = [userinfoDataStream readAnything:0 required:YES description:[ReportUserInfo class]];
 
-    
     LogVerbose(@"phoneType = %@", [phoneType yy_modelToJSONString]);
     LogVerbose(@"reportReq = %@", [reportReq yy_modelToJSONString]);
     LogVerbose(@"reportUserInfo = %@", [reportUserInfo yy_modelToJSONString]);

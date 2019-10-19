@@ -905,6 +905,7 @@
 		711E9B3923598D4B00C5B655 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
+				714E35DD235806B50046F7D8 /* TarsModels */,
 				711E9B3C23598D8200C5B655 /* RiskScanBufUtil.h */,
 				711E9B3D23598D8200C5B655 /* RiskScanBufUtil.m */,
 				711E9B4C2359EC0700C5B655 /* RiskScanBufReq.h */,
@@ -1143,7 +1144,6 @@
 		712C7146214BA35700603022 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				714E35DD235806B50046F7D8 /* Tars */,
 				712C7153214BF8A900603022 /* CgiWrap.h */,
 				712C7154214BF8A900603022 /* CgiWrap.m */,
 				712C7156214BFB1600603022 /* Task.h */,
@@ -1196,7 +1196,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		714E35DD235806B50046F7D8 /* Tars */ = {
+		714E35DD235806B50046F7D8 /* TarsModels */ = {
 			isa = PBXGroup;
 			children = (
 				714E360A2358ADF90046F7D8 /* ReportRequestPacket.h */,
@@ -1217,7 +1217,7 @@
 				714E35E9235806CA0046F7D8 /* ReportUserInfo.m */,
 				714E35DF235806C80046F7D8 /* RiskScan.tars */,
 			);
-			path = Tars;
+			path = TarsModels;
 			sourceTree = "<group>";
 		};
 		7154D50E2196B714005064C4 /* HexDump */ = {
