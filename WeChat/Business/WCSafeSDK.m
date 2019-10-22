@@ -8,14 +8,14 @@
 
 #import "WCSafeSDK.h"
 #import "NSData+CRC32.h"
-#import "ASIFormDataRequest.h"
+#import "ASIHTTPRequest.h"
 #include <sys/time.h>
 
 @implementation WCSafeSDK
 
 + (NSData *)get003FromLocalServer:(NSString *)xml {
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://10.20.10.22:8099"]];
-    [request addPostValue:xml forKey:@"postData"];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8099"]];
+    request.postBody = (NSMutableData *)[xml dataUsingEncoding:NSUTF8StringEncoding];
     [request startSynchronous];
     
     NSError *error = [request error];

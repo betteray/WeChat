@@ -40,7 +40,7 @@
 #define A705  0x27000530
 #define A706  0x27000634
 
-#define AVERSION A703
+#define AVERSION A706
 
 #if PROTOCOL_FOR_IOS
     #define CLIENT_VERSION [CUtility numberVersionOf:IVERSION]

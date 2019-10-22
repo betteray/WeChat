@@ -63,9 +63,9 @@
         [self autoAuthIfCould];
     });
     
-    [RiskScanBufReq test];
-    NSString *riskScan = [RiskScanBufReq getRiskScanBufReq];
-    [WCSafeSDK getextSpamInfoBufferWithContent:self.userNameTextField.text context:@"&lt;LoginByID&gt"];
+//    [RiskScanBufReq test];
+//    NSString *riskScan = [RiskScanBufReq getRiskScanBufReq];
+//    [WCSafeSDK getextSpamInfoBufferWithContent:self.userNameTextField.text context:@"&lt;LoginByID&gt"];
 }
 
 - (void)autoAuthIfCould {
