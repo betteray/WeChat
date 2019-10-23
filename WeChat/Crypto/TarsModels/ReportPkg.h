@@ -10,7 +10,7 @@
 @property (nonatomic, assign, JV2_PROP_GS_V2(index,setIndex:)) TarsInt32 JV2_PROP_NM(r,0,index);
 @property (nonatomic, assign, JV2_PROP_GS_V2(BTu,setBTu:)) TarsInt8 JV2_PROP_NM(o,1,BTu);
 @property (nonatomic, retain, JV2_PROP_GS_V2(packageName,setPackageName:)) NSString* JV2_PROP_NM(o,2,packageName);
-@property (nonatomic, retain, JV2_PROP_GS_V2(signature2,setSignature2:)) NSData* JV2_PROP_NM(o,3,signature2);
+@property (nonatomic, retain, JV2_PROP_GS_V2(signature,setSignature:)) NSData* JV2_PROP_NM(o,3,signature);
 @property (nonatomic, assign, JV2_PROP_GS_V2(fileSize,setFileSize:)) TarsInt64 JV2_PROP_NM(o,4,fileSize);
 @property (nonatomic, retain, JV2_PROP_GS_V2(applicationLabel,setApplicationLabel:)) NSString* JV2_PROP_NM(o,5,applicationLabel);
 @property (nonatomic, assign, JV2_PROP_GS_V2(versionCode,setVersionCode:)) TarsInt32 JV2_PROP_NM(o,6,versionCode);
@@ -25,6 +25,6 @@
 @property (nonatomic, assign, JV2_PROP_GS_V2(BTI,setBTI:)) TarsBool JV2_PROP_NM(r,15,BTI);
 @property (nonatomic, assign, JV2_PROP_GS_V2(BTJ,setBTJ:)) TarsInt32 JV2_PROP_NM(o,16,BTJ);
 @property (nonatomic, assign, JV2_PROP_GS_V2(BTK,setBTK:)) TarsInt32 JV2_PROP_NM(r,17,BTK);
-@property (nonatomic, retain, JV2_PROP_GS_V2(signature,setSignature:)) NSData* JV2_PROP_NM(o,18,signature);
+@property (nonatomic, retain, JV2_PROP_GS_V2(extractPkgCertMd5s,setExtractPkgCertMd5s:)) NSData* JV2_PROP_NM(o,18,extractPkgCertMd5s);
 
 @end

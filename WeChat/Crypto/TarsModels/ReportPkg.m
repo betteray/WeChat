@@ -10,7 +10,7 @@
 @synthesize JV2_PROP_NM(r,0,index);
 @synthesize JV2_PROP_NM(o,1,BTu);
 @synthesize JV2_PROP_NM(o,2,packageName);
-@synthesize JV2_PROP_NM(o,3,signature2);
+@synthesize JV2_PROP_NM(o,3,signature);
 @synthesize JV2_PROP_NM(o,4,fileSize);
 @synthesize JV2_PROP_NM(o,5,applicationLabel);
 @synthesize JV2_PROP_NM(o,6,versionCode);
@@ -25,7 +25,7 @@
 @synthesize JV2_PROP_NM(r,15,BTI);
 @synthesize JV2_PROP_NM(o,16,BTJ);
 @synthesize JV2_PROP_NM(r,17,BTK);
-@synthesize JV2_PROP_NM(o,18,signature);
+@synthesize JV2_PROP_NM(o,18,extractPkgCertMd5s);
 
 + (void)initialize
 {
@@ -49,12 +49,12 @@
 - (void)dealloc
 {
     JV2_PROP(packageName) = nil;
-    JV2_PROP(signature2) = nil;
+    JV2_PROP(signature) = nil;
     JV2_PROP(applicationLabel) = nil;
     JV2_PROP(versionName) = nil;
     JV2_PROP(BTC) = nil;
     JV2_PROP(BTG) = nil;
-    JV2_PROP(signature) = nil;
+    JV2_PROP(extractPkgCertMd5s) = nil;
     [super dealloc];
 }
 
