@@ -34,6 +34,23 @@
             
             
             //msg content : <sysmsg type="ClientCheckGetExtInfo"><ClientCheckGetExtInfo><ReportContext>539033600</ReportContext><Basic>0</Basic></ClientCheckGetExtInfo></sysmsg>
+            // basic != 0时，上报的消息不一样，比较简单
+//            if (str != null && str.equals("ClientCheckGetExtInfo")) {
+//                final Map<String, String> map2 = map;
+//                com.tencent.mm.sdk.g.d.g(new Runnable() {
+//                    public final void run() {
+//                        AppMethodBeat.i(16264);
+//                        int i = bo.getInt((String) map2.get(".sysmsg.ClientCheckGetExtInfo.ReportContext"), 0);
+//                        if (bo.getInt((String) map2.get(".sysmsg.ClientCheckGetExtInfo.Basic"), 0) != 0) {
+//                            com.tencent.mm.plugin.secinforeport.a.d.roA.fI(i, 0);
+//                            AppMethodBeat.o(16264);
+//                            return;
+//                        }
+//                        com.tencent.mm.plugin.secinforeport.a.d.roA.fI(i, 15);
+//                        AppMethodBeat.o(16264);
+//                    }
+//                }, "syscmd_rpt_cc");
+//            }
             NSString *xmlMsg = msg.content.string;
             if (isSystemMsg && [xmlMsg containsString:@"ClientCheckGetExtInfo"]) {
                 NSRange range1 = [xmlMsg rangeOfString:@"<ReportContext>"];

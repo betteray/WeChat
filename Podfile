@@ -16,7 +16,8 @@ target 'WeChat' do
   pod 'IQKeyboardManager'
   pod 'MBProgressHUD', '~> 1.1.0'
   pod 'YYModel'
-  
+  pod 'CocoaZ', '~> 1.2'
+
   # Pods for WeChat
 
   target 'WeChatTests' do

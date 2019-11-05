@@ -18596,7 +18596,7 @@ message SingleLineTextViewData {
 
 message SmcSelfMonitor {
     required  uint32  itemcount  = 1;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  itemlist  = 2;
+    repeated  SmcSelfMonitorItem  itemlist  = 2;
 }
 
 message SmcSelfMonitorItem {

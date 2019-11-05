@@ -499,6 +499,7 @@ CF_EXTERN_C_BEGIN
 @class ShowStyleKey;
 @class ShowWordsInfo;
 @class SingleLineTextViewData;
+@class SmcSelfMonitorItem;
 @class SmsUpCheckExtInfo;
 @class Snapshot;
 @class SnsADObject;
@@ -73584,14 +73585,18 @@ typedef GPB_ENUM(SingleLineTextViewData_FieldNumber) {
 
 typedef GPB_ENUM(SmcSelfMonitor_FieldNumber) {
   SmcSelfMonitor_FieldNumber_Itemcount = 1,
+  SmcSelfMonitor_FieldNumber_ItemlistArray = 2,
 };
 
 @interface SmcSelfMonitor : GPBMessage
 
-/** repeated  fieldType:(11)[\@"NSMutableArray"]  itemlist  = 2; */
 @property(nonatomic, readwrite) uint32_t itemcount;
 
 @property(nonatomic, readwrite) BOOL hasItemcount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SmcSelfMonitorItem*> *itemlistArray;
+/** The number of items in @c itemlistArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger itemlistArray_Count;
+
 @end
 
 #pragma mark - SmcSelfMonitorItem

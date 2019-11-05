@@ -103,6 +103,10 @@
 		71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */; };
 		71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */; };
 		71076B2621CCF10500570FB1 /* TestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71076B2521CCF10500570FB1 /* TestViewController.mm */; };
+		7109CD66236A904600CA8AFA /* aes_4337686b34397366396f622976747837.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7109CD63236A904600CA8AFA /* aes_4337686b34397366396f622976747837.bin */; };
+		7109CD68236A950400CA8AFA /* aes_4337686b34397366396f622976747837.out in Resources */ = {isa = PBXBuildFile; fileRef = 7109CD67236A950400CA8AFA /* aes_4337686b34397366396f622976747837.out */; };
+		710F14FB2360343B0034FA65 /* NewSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 710F14FA2360343B0034FA65 /* NewSyncService.m */; };
+		710F14FF2360350F0034FA65 /* DeleteContactOpLogReqest.bin in Resources */ = {isa = PBXBuildFile; fileRef = 710F14FE2360350F0034FA65 /* DeleteContactOpLogReqest.bin */; };
 		711E9B3E23598D8200C5B655 /* RiskScanBufUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 711E9B3D23598D8200C5B655 /* RiskScanBufUtil.m */; };
 		711E9B4E2359EC0700C5B655 /* RiskScanBufReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 711E9B4D2359EC0700C5B655 /* RiskScanBufReq.m */; };
 		7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C35D21C3494300A3E900 /* LoginViewController.m */; };
@@ -156,6 +160,8 @@
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
 		719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */ = {isa = PBXBuildFile; fileRef = 719A962C219BD53800E4D077 /* NSData+AddData.m */; };
+		71B962052360546700E9D430 /* oplog.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B962022360546700E9D430 /* oplog.bin */; };
+		71B9620723605BAC00E9D430 /* oplog_con.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B9620623605BAC00E9D430 /* oplog_con.bin */; };
 		71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* MeViewController.m */; };
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
 		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
@@ -358,6 +364,11 @@
 		71008F4021B7A36200DE8DF8 /* MMTLSShortLinkResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMTLSShortLinkResponse.h; sourceTree = "<group>"; };
 		71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMTLSShortLinkResponse.m; sourceTree = "<group>"; };
 		71076B2521CCF10500570FB1 /* TestViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestViewController.mm; sourceTree = "<group>"; };
+		7109CD63236A904600CA8AFA /* aes_4337686b34397366396f622976747837.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = aes_4337686b34397366396f622976747837.bin; sourceTree = "<group>"; };
+		7109CD67236A950400CA8AFA /* aes_4337686b34397366396f622976747837.out */ = {isa = PBXFileReference; lastKnownFileType = file; path = aes_4337686b34397366396f622976747837.out; sourceTree = "<group>"; };
+		710F14F92360343B0034FA65 /* NewSyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewSyncService.h; sourceTree = "<group>"; };
+		710F14FA2360343B0034FA65 /* NewSyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewSyncService.m; sourceTree = "<group>"; };
+		710F14FE2360350F0034FA65 /* DeleteContactOpLogReqest.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DeleteContactOpLogReqest.bin; sourceTree = "<group>"; };
 		711E9B3C23598D8200C5B655 /* RiskScanBufUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RiskScanBufUtil.h; sourceTree = "<group>"; };
 		711E9B3D23598D8200C5B655 /* RiskScanBufUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RiskScanBufUtil.m; sourceTree = "<group>"; };
 		711E9B4C2359EC0700C5B655 /* RiskScanBufReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RiskScanBufReq.h; sourceTree = "<group>"; };
@@ -548,6 +559,8 @@
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
 		719A962B219BD53800E4D077 /* NSData+AddData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AddData.h"; sourceTree = "<group>"; };
 		719A962C219BD53800E4D077 /* NSData+AddData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AddData.m"; sourceTree = "<group>"; };
+		71B962022360546700E9D430 /* oplog.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = oplog.bin; sourceTree = "<group>"; };
+		71B9620623605BAC00E9D430 /* oplog_con.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = oplog_con.bin; sourceTree = "<group>"; };
 		71C9CA5321C4DC1D006C4DDD /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUB.h"; sourceTree = "<group>"; };
 		71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUB.m"; sourceTree = "<group>"; };
@@ -680,6 +693,8 @@
 				71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */,
 				71F9F5C32355B8B500C6C736 /* WCSafeSDK.h */,
 				71F9F5C42355B8B500C6C736 /* WCSafeSDK.m */,
+				710F14F92360343B0034FA65 /* NewSyncService.h */,
+				710F14FA2360343B0034FA65 /* NewSyncService.m */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -716,6 +731,11 @@
 		4649DD6621ED864F006315DC /* Res4test */ = {
 			isa = PBXGroup;
 			children = (
+				7109CD67236A950400CA8AFA /* aes_4337686b34397366396f622976747837.out */,
+				7109CD63236A904600CA8AFA /* aes_4337686b34397366396f622976747837.bin */,
+				71B962022360546700E9D430 /* oplog.bin */,
+				71B9620623605BAC00E9D430 /* oplog_con.bin */,
+				710F14FE2360350F0034FA65 /* DeleteContactOpLogReqest.bin */,
 			);
 			path = Res4test;
 			sourceTree = "<group>";
@@ -1452,8 +1472,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				710F14FF2360350F0034FA65 /* DeleteContactOpLogReqest.bin in Resources */,
 				4685A4B322E06E4E00DE95BE /* 703_login_2.txt in Resources */,
 				46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */,
+				71B962052360546700E9D430 /* oplog.bin in Resources */,
 				712C6F1A214A6A5800603022 /* PROTO_README.md in Resources */,
 				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
 				460CDE50220088CE0075F3E5 /* cgi.json in Resources */,
@@ -1463,7 +1485,10 @@
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				71F9F5D023560E5A00C6C736 /* st-6p-login.bin in Resources */,
+				71B9620723605BAC00E9D430 /* oplog_con.bin in Resources */,
 				4685A4B522E06FFF00DE95BE /* 703_login_3.txt in Resources */,
+				7109CD66236A904600CA8AFA /* aes_4337686b34397366396f622976747837.bin in Resources */,
+				7109CD68236A950400CA8AFA /* aes_4337686b34397366396f622976747837.out in Resources */,
 				714E35EC235806CA0046F7D8 /* RiskScan.tars in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
 				712C7143214B5A4B00603022 /* LICENSE in Resources */,
@@ -1578,6 +1603,7 @@
 				712C7152214BAD8900603022 /* ShortHeader.m in Sources */,
 				46EB620621F98E1100760593 /* mmsns.proto in Sources */,
 				712F960621D78F0B00CFE3A0 /* AutoAuthKeyStore.m in Sources */,
+				710F14FB2360343B0034FA65 /* NewSyncService.m in Sources */,
 				46D2CA65223A3BA30053C4A6 /* wwopenim.proto in Sources */,
 				466C4AC621DDD65900743075 /* ContactsTableViewController.m in Sources */,
 				46EB61FD21F98E1100760593 /* mmbase.proto in Sources */,

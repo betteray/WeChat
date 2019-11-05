@@ -18,6 +18,7 @@ PODS:
   - CocoaLumberjack/Default (3.4.2)
   - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
+  - CocoaZ (1.4.2)
   - FastSocket (1.6)
   - IQKeyboardManager (6.2.0)
   - Json2pb (1.0.0):
@@ -38,6 +39,7 @@ PODS:
 DEPENDENCIES:
   - ASIHTTPRequest
   - CocoaLumberjack
+  - CocoaZ (~> 1.2)
   - FastSocket
   - IQKeyboardManager
   - Json2pb (from `https://github.com/henrayluo/json2pb.git`)
@@ -50,7 +52,7 @@ DEPENDENCIES:
   - YYModel
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - ASIHTTPRequest
     - CocoaLumberjack
     - FastSocket
@@ -63,6 +65,8 @@ SPEC REPOS:
     - RegexKitLite
     - SDWebImage
     - YYModel
+  trunk:
+    - CocoaZ
 
 EXTERNAL SOURCES:
   Json2pb:
@@ -76,6 +80,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  CocoaZ: a296b1fbea2c648daf2ccabb5403ed354569e633
   FastSocket: f847d6a85b766dc40f848035e2bf255752c280f1
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   Json2pb: 9db91c01e3c51dce89820f2874843ec63303d111
@@ -88,6 +93,6 @@ SPEC CHECKSUMS:
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 9c30891fc197833c58bb6b679f638a0525ed4bb5
+PODFILE CHECKSUM: 077baad85a24b24165dcc6157c82b654c7f46b36
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

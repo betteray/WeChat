@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 //&lt;LoginByID&gt
 + (NSData *)getextSpamInfoBufferWithContent:(NSString *)content
                                     context:(NSString *)context;
+
++ (void)decodeNDM;
+
 @end
 
 NS_ASSUME_NONNULL_END

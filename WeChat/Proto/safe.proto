@@ -1,11 +1,116 @@
 syntax = "proto2";
 
-//message BaseRequest {
-//    required  bytes  sessionKey  = 1;
-//    required  uint32  uin  = 2;
-//    required  bytes  deviceId  = 3;
-//    required  int32  clientVersion  = 4;
-//    required  bytes  deviceType  = 5;
-//    optional  uint32  scene  = 6;
-//}
+message InstalledPackageInfo {
+    optional string packageName = 1;
+    optional string Label = 2;
+    optional string sigMD5 = 3;
+    optional uint32 fileSize = 4;
+    optional uint32 applicationFlag = 5;
+}
 
+message ST {
+    optional uint32 IsMorkLocOpen = 1;
+    optional uint32 MsgLevel = 2;
+    optional uint32 IsDbgConnected = 3;
+    optional string PkgHash3 = 4;
+    optional string RatioFwVer = 5;
+    optional string OsRelVer = 6;
+    optional string IMEI = 7;
+    optional string AndroidID = 8;
+    optional string PhoneSerial = 9;
+    optional string PhoneModel = 10;
+    optional uint32 CpuCoreCount = 11;
+    optional string CpuHW = 12;
+    optional string CpuFeatures = 13;
+    optional string SelfMAC = 14;
+    optional string SSID = 15;
+    optional string BSSID = 16;
+    optional string SpInfo = 17;
+    optional string APNInfo = 18;
+    optional string BuildFP = 19;
+    optional string BuildBoard = 20;
+    optional string BuildBootloader = 21;
+    optional string BuildBrand = 22;
+    optional string BuildDevice = 23;
+    optional string BuildHW = 24;
+    optional string BuildProduct = 25;
+    optional string Manufacturer = 26;
+    optional string PhoneNum = 27;
+    optional string NetType = 28;
+    optional uint32 IsQemuEnv = 29;
+    optional uint32 HasDupPkg = 30;
+    optional uint32 HasQikuShadow = 31;
+    optional string PkgName = 32;
+    optional string AppName = 33;
+    optional string DataRoot = 34;
+    optional string EntranceClassLoaderName = 35;
+    repeated string MMProcLoadedFiles = 36;
+    optional string RiskScanReqBuffer = 37;
+    optional uint32 EnvBits = 38;
+
+    repeated InstalledPackageInfo InstalledPackageInfos = 40;
+    //EnabledAccessibilityServiceIds
+    optional uint32 AccessibilityClickCount = 41;
+    optional string APKLeadingMD5 = 42;
+    optional string ClientVersion = 43;
+    optional string WXTag = 44;
+    optional string ClientIP = 45;
+    optional string Language = 46;
+    optional uint32 IsInCalling = 47;
+    optional uint32 IsSetScreenLock = 48;
+    optional string NeighborBSSIDList = 49;
+    optional uint32 IsWifiOpen = 50;
+    optional uint32 HasXposedStackTrace = 51;
+    optional string XposedHookedMethods = 52;
+    optional uint32 IsADBSwitchEnabled = 53;
+    optional uint32 IsRunningByMonkey = 54;
+    optional string AppInstrumentationClassName = 55;
+    optional string AMSBinderClassName = 56;
+    optional string AMSSingletonClassName = 57;
+    optional uint32 IsVPNUsed = 58;
+    optional uint32 IsVPNConnected = 59;
+    optional string PCodes = 60;
+    optional string HasQCodes = 61;
+    optional string RCodes0 = 62;
+    optional string RCodes1 = 63;
+    optional string STID = 64;
+    
+//    65: "3.4.0-lineageos-g9485acc"
+//    66: 2
+//    67: "18c867f0717aa67b2ab7347505ba07ed"
+//    68: 0
+//    69: 996227
+//    70: 1
+//    71: 561278238
+//    72: "d2a627a595e8b4d5156fd9bb197ea49a"
+//    75: "6e39b0fb45e84df6c3d1eb28cc658df3"
+
+}
+
+message clientspam {
+    required int32 ccdcc = 1;
+    required int32 ccdts = 2;
+    required ST st = 3;
+}
+
+message WCSTF {
+    optional uint32 st = 1;
+    optional uint32 et = 2;
+    optional uint32 cc = 3;
+    repeated uint32 ct = 4;
+}
+
+message WCSTE {
+    optional string context = 1;
+    optional uint32 st = 2;
+    optional uint32 et = 3;
+    optional uint32 iec = 4;
+    optional uint32 tec = 5;
+    optional uint32 asst = 6;
+    optional uint64 pss = 7;
+    optional uint64 tlmj = 8;
+    optional uint64 tlmn = 9;
+    optional uint64 thmj = 10;
+    optional uint64 thmn = 11;
+    optional uint64 sz = 12;
+}

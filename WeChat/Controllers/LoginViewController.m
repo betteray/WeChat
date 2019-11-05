@@ -22,6 +22,13 @@
 #import "WCSafeSDK.h"
 
 #import "RiskScanBufReq.h"
+#import "NewSyncService.h"
+#import "TDTZCompressor.h"
+#import "TDTZDecompressor.h"
+
+#import "WCSafeSDK.h"
+
+#import "NSData+AES.h"
 
 @interface LoginViewController ()
 
@@ -63,9 +70,24 @@
         [self autoAuthIfCould];
     });
     
-//    [RiskScanBufReq test];
+    [RiskScanBufReq test];
+//    [NewSyncService testOplog];
 //    NSString *riskScan = [RiskScanBufReq getRiskScanBufReq];
 //    [WCSafeSDK getextSpamInfoBufferWithContent:self.userNameTextField.text context:@"&lt;LoginByID&gt"];
+    
+    [WCSafeSDK decodeNDM];
+    
+//    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"aes_4337686b34397366396f622976747837" ofType:@"bin"]];
+//    NSData *key = [NSData dataWithHexString:@"4337686b34397366396f622976747837"];
+//    NSData *plainData = [data AES_CBC_decryptWithKey:key];
+//    LogVerbose(@"%@", plainData);
+    
+    NSData *compressedData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"aes_4337686b34397366396f622976747837" ofType:@"out"]];
+    NSData *decompressedData = [compressedData dataByInflatingWithError:nil];
+    NSError *error = nil;
+    NewSyncResponse *resp = [[NewSyncResponse alloc] initWithData:decompressedData error:&error];
+    LogVerbose(@"%@", resp);
+
 }
 
 - (void)autoAuthIfCould {
