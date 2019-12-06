@@ -59,7 +59,7 @@
                 reportContent = [reportContent substringToIndex:range2.location];
                 
                 uint32_t rptContext = (uint32_t) [reportContent integerValue];
-                [WCSafeSDK reportClientCheckWithContext:rptContext];
+                [WCSafeSDK reportClientCheckWithContext:rptContext basic:YES];
             }
             
             WCContact *fromUser = [[WCContact objectsWhere:@"userName = %@", msg.fromUserName.string] firstObject];

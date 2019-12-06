@@ -124,6 +124,7 @@ CF_EXTERN_C_BEGIN
 @class C2CMsgNode;
 @class CDNClientConfig;
 @class CDNDnsInfo;
+@class CDNDnsPortInfo;
 @class CallbackRetryConf;
 @class CancelDescItem;
 @class CanvasInfo;
@@ -361,6 +362,7 @@ CF_EXTERN_C_BEGIN
 @class ManualAuthAesReqData;
 @class ManualAuthRsaReqData;
 @class MarginStyle;
+@class MediaInfo;
 @class MenuItem;
 @class MicroMsgRequestNew;
 @class MicroMsgResponseNew;
@@ -13739,10 +13741,14 @@ typedef GPB_ENUM(CDNDnsInfo_FieldNumber) {
   CDNDnsInfo_FieldNumber_ExpireTime = 3,
   CDNDnsInfo_FieldNumber_FrontId = 4,
   CDNDnsInfo_FieldNumber_FrontIpcount = 5,
+  CDNDnsInfo_FieldNumber_FrontIplistArray = 6,
   CDNDnsInfo_FieldNumber_ZoneDomain = 7,
   CDNDnsInfo_FieldNumber_AuthKey = 8,
   CDNDnsInfo_FieldNumber_ZoneId = 9,
   CDNDnsInfo_FieldNumber_ZoneIpcount = 10,
+  CDNDnsInfo_FieldNumber_ZoneIplistArray = 11,
+  CDNDnsInfo_FieldNumber_FrontIpportListArray = 12,
+  CDNDnsInfo_FieldNumber_ZoneIpportListArray = 13,
   CDNDnsInfo_FieldNumber_FrontIpportCount = 14,
   CDNDnsInfo_FieldNumber_ZoneIpportCount = 15,
   CDNDnsInfo_FieldNumber_FakeUin = 16,
@@ -13766,7 +13772,10 @@ typedef GPB_ENUM(CDNDnsInfo_FieldNumber) {
 @property(nonatomic, readwrite) int32_t frontIpcount;
 
 @property(nonatomic, readwrite) BOOL hasFrontIpcount;
-/** repeated  fieldType:(11)[\@"NSMutableArray"]  frontIplist  = 6; */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SKBuiltinString_t*> *frontIplistArray;
+/** The number of items in @c frontIplistArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger frontIplistArray_Count;
+
 @property(nonatomic, readwrite, copy, null_resettable) NSString *zoneDomain;
 /** Test to see if @c zoneDomain has been set. */
 @property(nonatomic, readwrite) BOOL hasZoneDomain;
@@ -13781,11 +13790,18 @@ typedef GPB_ENUM(CDNDnsInfo_FieldNumber) {
 @property(nonatomic, readwrite) int32_t zoneIpcount;
 
 @property(nonatomic, readwrite) BOOL hasZoneIpcount;
-/**
- * repeated  fieldType:(11)[\@"NSMutableArray"]  zoneIplist  = 11;
- * repeated  fieldType:(11)[\@"NSMutableArray"]  frontIpportList  = 12;
- * repeated  fieldType:(11)[\@"NSMutableArray"]  zoneIpportList  = 13;
- **/
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SKBuiltinString_t*> *zoneIplistArray;
+/** The number of items in @c zoneIplistArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger zoneIplistArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<CDNDnsPortInfo*> *frontIpportListArray;
+/** The number of items in @c frontIpportListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger frontIpportListArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<CDNDnsPortInfo*> *zoneIpportListArray;
+/** The number of items in @c zoneIpportListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger zoneIpportListArray_Count;
+
 @property(nonatomic, readwrite) int32_t frontIpportCount;
 
 @property(nonatomic, readwrite) BOOL hasFrontIpportCount;
@@ -74687,6 +74703,7 @@ typedef GPB_ENUM(SnsPostRequest_FieldNumber) {
   SnsPostRequest_FieldNumber_FromScene = 22,
   SnsPostRequest_FieldNumber_CanvasInfo = 23,
   SnsPostRequest_FieldNumber_MediaInfoCount = 24,
+  SnsPostRequest_FieldNumber_MediaInfoArray = 25,
   SnsPostRequest_FieldNumber_WeAppInfo = 26,
   SnsPostRequest_FieldNumber_ClientCheckData = 27,
   SnsPostRequest_FieldNumber_ExtSpamInfo = 28,
@@ -74768,7 +74785,10 @@ typedef GPB_ENUM(SnsPostRequest_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t mediaInfoCount;
 
 @property(nonatomic, readwrite) BOOL hasMediaInfoCount;
-/** repeated  fieldType:(11)[\@"NSMutableArray"]  mediaInfo  = 25; */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<MediaInfo*> *mediaInfoArray;
+/** The number of items in @c mediaInfoArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger mediaInfoArray_Count;
+
 @property(nonatomic, readwrite, strong, null_resettable) SnsWeAppInfo *weAppInfo;
 /** Test to see if @c weAppInfo has been set. */
 @property(nonatomic, readwrite) BOOL hasWeAppInfo;

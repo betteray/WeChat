@@ -56,12 +56,12 @@
     UploadHDHeadImgRequest *reqeust = [UploadHDHeadImgRequest new];
 
     NSData *headImageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"head" ofType:@"jpg"]];
-    NSMutableData *headImageDataHash = [[FSOpenSSL md5FromData:headImageData] mutableCopy];
+    NSMutableData *headImageDataHash = [[FSOpenSSL md5DataFromData:headImageData] mutableCopy];
 
     NSString *ts = [NSString stringWithFormat:@"%lu", time(0)];
     [headImageDataHash appendData:[ts dataUsingEncoding:NSUTF8StringEncoding]];
 
-    NSData *imgHash = [FSOpenSSL md5FromData:headImageDataHash];
+    NSData *imgHash = [FSOpenSSL md5DataFromData:headImageDataHash];
     reqeust.imgHash = [[NSString alloc] initWithData:imgHash encoding:NSUTF8StringEncoding];
 
     [reqeust setHeadImgType:1];

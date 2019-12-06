@@ -77,7 +77,7 @@ message ST {
     
 //    65: "3.4.0-lineageos-g9485acc"
 //    66: 2
-//    67: "18c867f0717aa67b2ab7347505ba07ed"
+//    optional string PkgHash3 = 67; //: "18c867f0717aa67b2ab7347505ba07ed"
 //    68: 0
 //    69: 996227
 //    70: 1
@@ -85,6 +85,18 @@ message ST {
 //    72: "d2a627a595e8b4d5156fd9bb197ea49a"
 //    75: "6e39b0fb45e84df6c3d1eb28cc658df3"
 
+    
+//    65: "3.10.73-ge8c57cd"
+//     66: 0
+//     67: "18c867f0717aa67b2ab7347505ba07ed"
+//     68: 0
+//     69: 995806
+//     70: 1
+//     71: 554306425
+//     72: "4f4b618f33a03d43355fff0ccb0aa070"
+//     73: "2f05012d7322da26337d27954c648afa"
+//     74: "368ae7c20dbee5b217bd76f5ed4a45c1"
+//     75: "d97f02b54875c58237fa925b82a1f0ac"
 }
 
 message clientspam {

@@ -29,6 +29,7 @@
 
 #include <openssl/aes.h>
 #include <openssl/pem.h>
+#include <openssl/err.h>
 
 #import <CommonCrypto/CommonCryptor.h>
 
@@ -210,7 +211,12 @@ END:
 
 ///////
 
-static int rsa_public_encrypt1(const unsigned char *pInput, unsigned int uiInputLen, unsigned char **ppOutput, unsigned int *uiOutputLen, const char *pPublicKeyN, const char *pPublicKeyE)
+static int rsa_public_encrypt1(const unsigned char *pInput,
+                               unsigned int uiInputLen,
+                               unsigned char **ppOutput,
+                               unsigned int *uiOutputLen,
+                               const char *pPublicKeyN,
+                               const char *pPublicKeyE)
 {
     RSA *encrypt_rsa;
     int finalLen = 0;
@@ -261,6 +267,11 @@ static int rsa_public_encrypt1(const unsigned char *pInput, unsigned int uiInput
 
             if (RSA_public_encrypt(blockSize, (pInput + i * (rsa_len - 12)), (*ppOutput + i * rsa_len), encrypt_rsa, RSA_PKCS1_PADDING) < 0)
             {
+                unsigned long errorTrack = ERR_get_error() ;
+
+                char buf[256] = {0};
+                ERR_error_string(errorTrack, buf);
+                printf("%s", buf);
                 ret = CRYPT_ERR_ENCRYPT_WITH_RSA_PUBKEY;
                 goto END;
             }
@@ -467,7 +478,7 @@ static GenRsaKeyResult generate_rsa_key_pair_1024(char *_pem_public_key_buf, con
     return [NSData dataWithBytes:buf length:sizeof(buf)];
 }
 
-+ (NSString *)md5FromString:(NSString *)string
++ (NSString *)md5StringFromString:(NSString *)string
 {
     unsigned char *inStrg = (unsigned char *) [[string dataUsingEncoding:NSASCIIStringEncoding] bytes];
     unsigned long lngth = [string length];
@@ -484,7 +495,7 @@ static GenRsaKeyResult generate_rsa_key_pair_1024(char *_pem_public_key_buf, con
     return [outStrg copy];
 }
 
-+ (NSData *)md5FromData:(NSData *)data
++ (NSData *)md5DataFromData:(NSData *)data
 {
     unsigned char *inStrg = (unsigned char *) [data bytes];
     unsigned long lngth = [data length];
@@ -493,6 +504,23 @@ static GenRsaKeyResult generate_rsa_key_pair_1024(char *_pem_public_key_buf, con
     MD5(inStrg, lngth, result);
     
     return [NSData dataWithBytes:result length:MD5_DIGEST_LENGTH];
+}
+
++ (NSString *)md5StringFromData:(NSData *)data
+{
+    unsigned char *inStrg = (unsigned char *) [data bytes];
+    unsigned long lngth = [data length];
+    unsigned char result[MD5_DIGEST_LENGTH];
+    
+    MD5(inStrg, lngth, result);
+    
+    NSMutableString *outStrg = [NSMutableString string];
+    unsigned int i;
+    for (i = 0; i < MD5_DIGEST_LENGTH; i++)
+    {
+        [outStrg appendFormat:@"%02x", result[i]];
+    }
+    return [outStrg copy];
 }
 
 + (NSString *)sha256FromString:(NSString *)string
@@ -756,6 +784,18 @@ NSData *cipherOperation(NSData *contentData, NSData *keyData, CCOperation operat
     }
     
     return NO;
+}
+
++ (NSString *)data2HexString:(NSData *)data {
+    unsigned char *result = (unsigned char *) [data bytes];
+    
+    NSMutableString *outStrg = [NSMutableString string];
+    unsigned int i;
+    for (i = 0; i < [data length]; i++)
+    {
+        [outStrg appendFormat:@"%02x", result[i]];
+    }
+    return [outStrg copy];
 }
 
 @end

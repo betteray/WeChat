@@ -33,6 +33,7 @@ typedef void (^FailureBlock)(NSError *error);
 + (instancetype)sharedClient;
 
 - (void)start;
+- (void)restart;
 
 - (void)registerWeChat:(CgiWrap *)cgiWrap
                success:(SuccessBlock)successBlock

@@ -38,8 +38,7 @@
 #endif
     
     [[WeChatClient sharedClient] start];
-    [[DNSFetcher new] fetchAndSaveToDB];
-//    [[ClientCheckDataFetcher new] fetchAndSaveToDB];
+    [DNSFetcher fetchAndSaveToDB];
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     

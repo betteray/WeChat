@@ -8,12 +8,11 @@
 
 #import "RLMObject.h"
 
-
 @interface DefaultLongIp : RLMObject
 
 @property NSString *ip;
 
-+ (NSString *)getARandomIp;
++ (nullable instancetype)getARandomIp;
 
 @end
 

@@ -3348,14 +3348,14 @@ message CDNDnsInfo {
     required  uint32  expireTime  = 3;
     required  int32  frontId  = 4;
     required  int32  frontIpcount  = 5;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  frontIplist  = 6;
+    repeated  SKBuiltinString_t  frontIplist  = 6;
     optional  string  zoneDomain  = 7;
     required  SKBuiltinBuffer_t  authKey  = 8;
     required  int32  zoneId  = 9;
     required  int32  zoneIpcount  = 10;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  zoneIplist  = 11;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  frontIpportList  = 12;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  zoneIpportList  = 13;
+    repeated  SKBuiltinString_t  zoneIplist  = 11;
+    repeated  CDNDnsPortInfo  frontIpportList  = 12;
+    repeated  CDNDnsPortInfo  zoneIpportList  = 13;
     optional  int32  frontIpportCount  = 14;
     optional  int32  zoneIpportCount  = 15;
     optional  uint32  fakeUin  = 16;
@@ -18905,7 +18905,7 @@ message SnsPostRequest {
     optional  string  fromScene  = 22;
     optional  CanvasInfo  canvasInfo  = 23;
     optional  uint32  mediaInfoCount  = 24;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  mediaInfo  = 25;
+    repeated  MediaInfo  mediaInfo  = 25;
     optional  SnsWeAppInfo  weAppInfo  = 26;
     optional  SKBuiltinBuffer_t  clientCheckData  = 27;
     optional  SKBuiltinBuffer_t  extSpamInfo  = 28;

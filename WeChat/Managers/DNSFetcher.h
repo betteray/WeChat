@@ -10,6 +10,6 @@
 
 @interface DNSFetcher : NSObject
 
-- (void)fetchAndSaveToDB;
++ (void)fetchAndSaveToDB;
 
 @end

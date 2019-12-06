@@ -113,21 +113,22 @@ static inline int getRandomSpan() {
     struct timeval tp = {0};
     
     if (gettimeofday(&tp, NULL) != 0) LogVerbose(@"Error get time");
-    long st = tp.tv_sec * 1000 + tp.tv_usec;
+    long ct = tp.tv_sec * 1000 + tp.tv_usec ;
     
-    long et = st;
-    
+    long st = ct - 40000 ;
+    long et = ct;
+
     NSMutableString *string = [NSMutableString stringWithString:@"<ct>"];
     for (int i=0; i<account.length; i++) {
-        st = st - timeSpan[arc4random()%20]; // 从此刻向前计算
-        [string appendFormat:@"%ld,", et];
+        st = st + timeSpan[arc4random() % 20]; // 从此刻向前计算
+        [string appendFormat:@"%ld,", st];
     }
-    st = st - timeSpan[arc4random()%20]; // 从此刻向前计算
+    et = et + timeSpan[arc4random()%20]; // 从此刻向前计算
     
-    NSString *ctXML = [string substringToIndex:string.length-2];
+    NSString *ctXML = [string substringToIndex:string.length-1];
     ctXML = [NSString stringWithFormat:@"%@</ct>", ctXML];
     
-    return [NSString stringWithFormat:@"<WCSTF><st>%ld</st><et>%ld</et><cc>%ld</cc>%@</WCSTF>", st, et, [account length], ctXML];
+    return [NSString stringWithFormat:@"<WCSTF><st>%ld</st><et>%ld</et><cc>%ld</cc>%@</WCSTF>", ct - 40000, et, [account length], ctXML];
 }
 
 + (NSString *)genWCSTEWithContext:(NSString *)context {
@@ -143,28 +144,29 @@ static inline int getRandomSpan() {
 + (NSData *)getextSpamInfoBufferWithContent:(NSString *)content
                                     context:(NSString *)context {
     
-    NSString *WCSTF = [self genWCSTFWithAccount:content];
-    NSString *WCSTE = [self genWCSTEWithContext:context];
-    NSString *ST = [self genST:0]; // 0 登录用
-    
-    NSData *WCSTFData = [self get003FromLocalServer:WCSTF];
-    NSData *WCSTEData = [self get003FromLocalServer:WCSTE];
-    NSData *STData = [self get003FromLocalServer:ST];
-    
+    BOOL isAutoAuth = [context containsString:@"auto"];
     WCExtInfo *extInfo = [WCExtInfo new];
     
-    SKBuiltinBuffer_t *wcstf = [SKBuiltinBuffer_t new];
-    wcstf.iLen = (int32_t) [WCSTFData length];
-    wcstf.buffer = WCSTFData;
+    if (!isAutoAuth) {
+        NSString *WCSTF = [self genWCSTFWithAccount:content];
+        NSData *WCSTFData = [self get003FromLocalServer:WCSTF];
+        SKBuiltinBuffer_t *wcstf = [SKBuiltinBuffer_t new];
+        wcstf.iLen = (int32_t) [WCSTFData length];
+        wcstf.buffer = WCSTFData;
+        
+        extInfo.wcstf = wcstf;
+        
+        NSString *WCSTE = [self genWCSTEWithContext:context];
+        NSData *WCSTEData = [self get003FromLocalServer:WCSTE];
+        SKBuiltinBuffer_t *wcste = [SKBuiltinBuffer_t new];
+        wcste.iLen = (int32_t) [WCSTEData length];
+        wcste.buffer = WCSTEData;
+        
+        extInfo.wcste = wcste;
+    }
     
-    extInfo.wcstf = wcstf;
-    
-    SKBuiltinBuffer_t *wcste = [SKBuiltinBuffer_t new];
-    wcste.iLen = (int32_t) [WCSTEData length];
-    wcste.buffer = WCSTEData;
-    
-    extInfo.wcste = wcste;
-    
+    NSString *ST = [self genST:0]; // 0 登录用
+    NSData *STData = [self get003FromLocalServer:ST];
     SKBuiltinBuffer_t *ccData = [SKBuiltinBuffer_t new];
     ccData.iLen = (int32_t) [STData length];
     ccData.buffer = STData;

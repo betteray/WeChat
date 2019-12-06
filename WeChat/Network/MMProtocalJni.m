@@ -18,12 +18,12 @@
 {
     NSData *data = [NSData packInt32:uin flip:YES];
     data = [data addDataAtTail:ecdhKey];
-    NSData *md5result = [FSOpenSSL md5FromData:data];
+    NSData *md5result = [FSOpenSSL md5DataFromData:data];
     
     data = [NSData packInt32:(int) [probufData length] flip:YES];
     data = [data addDataAtTail:ecdhKey];
     data = [data addDataAtTail:md5result];
-    md5result = [FSOpenSSL md5FromData:data];
+    md5result = [FSOpenSSL md5DataFromData:data];
     
     uLong adler = adler32(0L, Z_NULL, 0);
     adler = adler32(adler, [md5result bytes], (uInt) [md5result length]);

@@ -14,7 +14,7 @@
 
 @implementation DNSFetcher
 
-- (void)fetchAndSaveToDB {
++ (void)fetchAndSaveToDB {
     NSURL *url = [NSURL URLWithString:@"http://dns.weixin.qq.com/cgi-bin/micromsg-bin/newgetdns"];
     NSMutableURLRequest *newGetDNSReq = [NSMutableURLRequest requestWithURL:url];
     newGetDNSReq.HTTPMethod = @"GET";
@@ -46,7 +46,7 @@
     [task resume];
 }
 
-- (NSArray<NSString *> *)getIpListWithDoc:(ONOXMLDocument *)document tag:(NSString *)attr {
++ (NSArray<NSString *> *)getIpListWithDoc:(ONOXMLDocument *)document tag:(NSString *)attr {
     NSMutableArray *ma = [NSMutableArray array];
 
     NSString *path = [NSString stringWithFormat:@"//domain[@name='%@']", attr];

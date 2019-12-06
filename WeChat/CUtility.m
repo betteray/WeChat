@@ -31,7 +31,7 @@
     NSUUID *uuid = [[UIDevice currentDevice] identifierForVendor];
     NSString *uuidString = [uuid UUIDString];
     uuidString = [uuidString stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    return [FSOpenSSL md5FromString:uuidString];
+    return [FSOpenSSL md5StringFromString:uuidString];
 }
 
 + (NSString *)GetDeviceID

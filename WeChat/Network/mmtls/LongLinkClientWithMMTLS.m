@@ -17,6 +17,8 @@
 #import "KeyPair.h"
 
 #import "long_pack.h"
+#import "DefaultLongIp.h"
+#import "WCBuiltinIP.h"
 
 #define CMDID_NOOP_REQ 6
 
@@ -62,10 +64,23 @@
 
 - (void)start
 {
-    FastSocket *client = [[FastSocket alloc] initWithHost:@"121.51.130.111" andPort:@"80"]; //long.weixin.qq.com 58.247.204.141:443 //163.177.81.141 //121.51.130.111:80
+    DefaultLongIp *randomIP = [DefaultLongIp getARandomIp];
+    NSString *ip = @"long.weixin.qq.com";
+    NSString *port = @"443";
+    if (randomIP != nil) {
+        ip = randomIP.ip;
+    }
+    
+    WCBuiltinIP *randomBuiltinIp = [WCBuiltinIP getARandomLongBuiltinIP];
+    if (randomBuiltinIp != nil) {
+        ip = randomBuiltinIp.ip;
+        port = [NSString stringWithFormat:@"%d", randomBuiltinIp.port];
+    }
+    
+    FastSocket *client = [[FastSocket alloc] initWithHost:ip andPort:port]; //long.weixin.qq.com 58.247.204.141:443 //163.177.81.141 //121.51.130.111:80  121.51.130.111
     if ([client connect])
     {
-        LogDebug(@"FastSocket Connected To Server.");
+        LogDebug(@"FastSocket Connected To Server: %@:%@", ip, port);
         _client = client;
         [self InitLongLinkMMTLS];
         [self readData];

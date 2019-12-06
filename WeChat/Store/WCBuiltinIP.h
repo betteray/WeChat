@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property int32_t type;
 @property int32_t port;
 
++ (nullable instancetype)getARandomLongBuiltinIP;
++ (nullable instancetype)getARandomShortBuiltinIP;
+
 @end
 
 NS_ASSUME_NONNULL_END

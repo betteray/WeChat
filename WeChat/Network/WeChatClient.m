@@ -125,6 +125,11 @@
     [_client start];
 }
 
+- (void)restart {
+    _seq = 1;
+    [_client restart];
+}
+
 - (void)heartBeat {
     NSData *heart = [long_pack pack:-1 cmdId:CMDID_NOOP_REQ shortData:nil];
     [_client sendData:heart];
@@ -315,15 +320,8 @@
     Task *task = [self getTaskWithTag:package.header.cgi];
 
     NSData *protobufData = nil;
-    if (package.header.cgi == 252 || package.header.cgi == 763) {
+    if (package.header.cgi == 252 || package.header.cgi == 763 || package.header.cgi == 145 || package.header.cgi == 126) {
         protobufData = [_Jni HybridEcdhDecrypt:package.body];
-        if ([self.sync_key_cur length] == 0) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [Business newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
-            });
-        } else {
-            [Business newSync];
-        }
     } else {
         protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:sessionKey];
     }

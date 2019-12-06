@@ -12,7 +12,7 @@
 
 @property NSString *ip;
 
-+ (NSString *)getARandomIp;
++ (nullable instancetype)getARandomIp;
 
 @end
 

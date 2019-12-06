@@ -80,7 +80,7 @@ static void a2(int iArr[], int iArrLen, int i, Byte bArr[], int bArrLen) {
 }
 
 + (NSData *)encrypt:(NSData *)data key:(NSData *)key {
-    NSData *md5 = [FSOpenSSL md5FromData:key];
+    NSData *md5 = [FSOpenSSL md5DataFromData:key];
     Byte * v2 = (Byte *) md5.bytes;
     if(data == nil || v2 == NULL || data.length == 0) {
     }
@@ -137,7 +137,7 @@ static void a2(int iArr[], int iArrLen, int i, Byte bArr[], int bArrLen) {
 }
 
 + (NSData *)decrypt:(NSData *)ciphertext key:(NSData *)key {
-    NSData *md5 = [FSOpenSSL md5FromData:key];    
+    NSData *md5 = [FSOpenSSL md5DataFromData:key];    
     if (ciphertext == nil || md5 == nil || ciphertext.length == 0) {
         return ciphertext;
     } else if (ciphertext.length % 4 != 0 || ciphertext.length < 8) {

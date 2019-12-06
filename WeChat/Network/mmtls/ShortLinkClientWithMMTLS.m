@@ -15,6 +15,9 @@
 #import "ShortLinkWithMMTLS.h"
 #import "MMTLSShortLinkResponse.h"
 
+#import "DefaultShortIp.h"
+#import "WCBuiltinIP.h"
+
 @interface ShortLinkClientWithMMTLS ()
 
 @property (nonatomic, strong) NSData *decryptedPart2;
@@ -41,7 +44,22 @@
     srand((unsigned int) t);
     unsigned long long r = rand();
 
-    NSString *host = [NSString stringWithFormat:@"http://%@", @"183.3.224.141"];//183.192.199.147 //163.177.81.139
+    DefaultShortIp *randomIP = [DefaultShortIp getARandomIp];
+    NSString *ip = @"short.weixin.qq.com";
+    if (randomIP != nil) {
+        ip = randomIP.ip;
+        LogVerbose(@"ShortIP from default dns: %@", ip);
+    }
+    
+    do {
+        WCBuiltinIP *randomBuiltinIp = [WCBuiltinIP getARandomShortBuiltinIP];
+        if (randomBuiltinIp != nil) {
+            ip = randomBuiltinIp.ip;
+            LogVerbose(@"ShortIP from builtin dns: %@", ip);
+        }
+    } while ([ip isEqualToString:@"127.0.0.1"]);
+    
+    NSString *host = [NSString stringWithFormat:@"http://%@", ip];//183.192.199.147 //163.177.81.139 //183.3.224.141 //117.184.242.101 163.177.81.139
     NSString *urlstr = [NSString stringWithFormat:@"%@/%@", host, [NSString stringWithFormat:@"mmtls/%08llx", r]];
 
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlstr]];

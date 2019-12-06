@@ -14,6 +14,7 @@
 #import "SyncKeyCompare.h"
 #import "SyncKeyStore.h"
 #import "PersonalInfoService.h"
+#import "GetCDNDnsService.h"
 
 @implementation Business
 
@@ -130,11 +131,8 @@
                               [self newInitWithSyncKeyCur:[WeChatClient sharedClient].sync_key_cur
                                                syncKeyMax:[WeChatClient sharedClient].sync_key_max];
                           } else {
-                              //                                             NSData *identifyCheckBuf = [Business identifyReq2bufWithSyncKey:self.sync_key_cur uin:self.uin];
-                              //                                             NSData *sendData = [long_pack pack:[WeChatClient sharedClient].seq++ cmdId:205 shortData:identifyCheckBuf];
-                              //                                             [[WeChatClient sharedClient].client sendData:sendData];
-                              
                               [PersonalInfoService getprofile];
+                              [GetCDNDnsService getCDNDns];
                           }
                       }
                       failure:^(NSError *error) {

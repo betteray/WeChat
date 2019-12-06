@@ -7,11 +7,13 @@
 //
 
 #import "LoginViewController.h"
+#import "MMWebViewController.h"
 #import "AppDelegate.h"
 
 #import "WCECDH.h"
 #import "FSOpenSSL.h"
 #import "WCBuiltinIP.h"
+#import "Cookie.h"
 #import "AutoAuthKeyStore.h"
 #import "AccountInfo.h"
 #import "SessionKeyStore.h"
@@ -27,8 +29,18 @@
 #import "TDTZDecompressor.h"
 
 #import "WCSafeSDK.h"
+#import "Business.h"
 
 #import "NSData+AES.h"
+#import "FSOpenSSL.h"
+#import "ASIHTTPRequest.h"
+
+#include <zlib.h>
+#import "DefaultLongIp.h"
+#import <RegexKitLite/RegexKitLite.h>
+
+// test import
+#import "CdnLogic.h"
 
 @interface LoginViewController ()
 
@@ -69,25 +81,6 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self autoAuthIfCould];
     });
-    
-    [RiskScanBufReq test];
-//    [NewSyncService testOplog];
-//    NSString *riskScan = [RiskScanBufReq getRiskScanBufReq];
-//    [WCSafeSDK getextSpamInfoBufferWithContent:self.userNameTextField.text context:@"&lt;LoginByID&gt"];
-    
-    [WCSafeSDK decodeNDM];
-    
-//    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"aes_4337686b34397366396f622976747837" ofType:@"bin"]];
-//    NSData *key = [NSData dataWithHexString:@"4337686b34397366396f622976747837"];
-//    NSData *plainData = [data AES_CBC_decryptWithKey:key];
-//    LogVerbose(@"%@", plainData);
-    
-    NSData *compressedData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"aes_4337686b34397366396f622976747837" ofType:@"out"]];
-    NSData *decompressedData = [compressedData dataByInflatingWithError:nil];
-    NSError *error = nil;
-    NewSyncResponse *resp = [[NewSyncResponse alloc] initWithData:decompressedData error:&error];
-    LogVerbose(@"%@", resp);
-
 }
 
 - (void)autoAuthIfCould {
@@ -98,10 +91,7 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Auth
 
 - (IBAction)ManualAuth {
     NSData *sessionKey = [FSOpenSSL random128BitAESKey];
@@ -122,9 +112,9 @@
     ManualAuthRsaReqData *rsaReqData = [ManualAuthRsaReqData new];
     rsaReqData.randomEncryKey = aesKey;
     rsaReqData.cliPubEcdhkey = cliPubEcdhkey;
-    rsaReqData.pwd = [FSOpenSSL md5FromString:_pwdTextField.text];
+    rsaReqData.pwd = [FSOpenSSL md5StringFromString:_pwdTextField.text];
 #if PROTOCOL_FOR_ANDROID
-    rsaReqData.pwd2 = [FSOpenSSL md5FromString:_pwdTextField.text];
+    rsaReqData.pwd2 = [FSOpenSSL md5StringFromString:_pwdTextField.text];
 #endif
     rsaReqData.userName = _userNameTextField.text;
 
@@ -221,7 +211,6 @@
     cgiWrap.needSetBaseRequest = NO;
 
     [WeChatClient android700manualAuth:cgiWrap success:^(id _Nullable response) {
-        LogVerbose(@"登陆响应: %@", response);
         [self onLoginResponse:response];
     }                          failure:^(NSError *_Nonnull error) {
 
@@ -312,6 +301,16 @@
     aesReqData.timeZone = device.timeZone;
     aesReqData.channel = 10003;
 
+    if (CLIENT_VERSION > A703) {
+        NSData *extSpamInfoBuffer = [WCSafeSDK getextSpamInfoBufferWithContent:self.userNameTextField.text context:@"auto"];
+
+        SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
+        extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
+        extSpamInfo.buffer = extSpamInfoBuffer;
+        
+        aesReqData.extSpamInfo = extSpamInfo; // tag=24
+    }
+    
 #if PROTOCOL_FOR_IOS
 //    NSPredicate *clientCheckDataPre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
 //    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:clientCheckDataPre] firstObject];
@@ -352,20 +351,33 @@
     cgiWrap.needSetBaseRequest = NO;
 
     [WeChatClient android700manualAuth:cgiWrap success:^(id _Nullable response) {
-        LogVerbose(@"登陆响应: %@", response);
         [self onLoginResponse:response];
     }                          failure:^(NSError *_Nonnull error) {
 
     }];
 }
 
+#pragma mark - AuthResponse
+
 - (void)onLoginResponse:(UnifyAuthResponse *)resp {
     switch (resp.baseResponse.ret) {
+        case -106: {
+            [self clearCookie];
+            LogError(@"登录错误: (-106) errMsg: %@", resp.baseResponse.errMsg.string);
+            
+            NSString *regex = @"(https?|http)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]";
+            NSString *url = [resp.baseResponse.errMsg.string stringByMatching:regex];
+            [self startNaviUrl:url];
+        }
+            break;
         case -301: { //需要重定向
-            if (resp.networkSectResp.builtinIplist.longConnectIpcount > 0) {
-                //NSString *longlinkIp = [[resp.networkSectResp.builtinIplist.longConnectIplistArray firstObject].ip stringByReplacingOccurrencesOfString:@"\0" withString:@""];
-                //[[WeChatClient sharedClient] restartUsingIpAddress:longlinkIp];
-            }
+
+            LogError(@"登录 -301， 重定向IP。。。");
+            [self saveIp:resp];
+            [self clearCookie];
+            [[WeChatClient sharedClient] restart]; // restart
+
+            [self ManualAuth]; // 重新登录
         }
             break;
         case 0: {
@@ -404,28 +416,6 @@
                 // 存数据到数据库。
                 RLMRealm *realm = [RLMRealm defaultRealm];
                 [realm beginWriteTransaction];
-                for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.longConnectIplistArray) {
-                    NSString *domain = [[NSString alloc] initWithData:longBuiltinIp.domain encoding:NSUTF8StringEncoding];
-                    NSString *ipString = [[NSString alloc] initWithData:longBuiltinIp.ip encoding:NSUTF8StringEncoding];
-                    WCBuiltinIP *ip = [[WCBuiltinIP alloc] initWithValue:@{@"isLongIP": @YES,
-                            @"type": @(longBuiltinIp.type),
-                            @"port": @(longBuiltinIp.port),
-                            @"ip": ipString,
-                            @"domain": domain}];
-                    [realm addOrUpdateObject:ip];
-
-                };
-
-                for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.shortConnectIplistArray) {
-                    NSString *domain = [[NSString alloc] initWithData:longBuiltinIp.domain encoding:NSUTF8StringEncoding];
-                    NSString *ipString = [[NSString alloc] initWithData:longBuiltinIp.ip encoding:NSUTF8StringEncoding];
-                    WCBuiltinIP *ip = [[WCBuiltinIP alloc] initWithValue:@{@"isLongIP": @NO,
-                            @"type": @(longBuiltinIp.type),
-                            @"port": @(longBuiltinIp.port),
-                            @"ip": ipString,
-                            @"domain": domain}];
-                    [realm addOrUpdateObject:ip];
-                };
 
                 SKBuiltinBuffer_t *autoAuthkey = resp.authSectResp.autoAuthKey;
                 [AutoAuthKeyStore createOrUpdateInDefaultRealmWithValue:@[AutoAuthKeyStoreID, autoAuthkey.buffer]];
@@ -463,6 +453,70 @@
     
     AppDelegate *delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
     delegate.window.rootViewController = nav;
+    
+    
+    [self startSync];
+}
+
+
+- (void)startSync {
+    if ([[WeChatClient sharedClient].sync_key_cur length] == 0) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [Business newInitWithSyncKeyCur:[WeChatClient sharedClient].sync_key_cur syncKeyMax:[WeChatClient sharedClient].sync_key_max];
+        });
+    } else {
+        [Business newSync];
+    }
+}
+
+- (void)saveIp:(UnifyAuthResponse *)resp {
+    // 存数据到数据库。
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.longConnectIplistArray) {
+        NSString *domain = [[NSString alloc] initWithData:longBuiltinIp.domain encoding:NSUTF8StringEncoding];
+        NSString *ipString = [[NSString alloc] initWithData:longBuiltinIp.ip encoding:NSUTF8StringEncoding];
+        WCBuiltinIP *ip = [[WCBuiltinIP alloc] initWithValue:@{@"isLongIP": @YES,
+                @"type": @(longBuiltinIp.type),
+                @"port": @(longBuiltinIp.port),
+                @"ip": [ipString stringByReplacingOccurrencesOfString:@"\0" withString:@""],
+                @"domain": domain}];
+        [realm addOrUpdateObject:ip];
+
+    };
+
+    for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.shortConnectIplistArray) {
+        NSString *domain = [[NSString alloc] initWithData:longBuiltinIp.domain encoding:NSUTF8StringEncoding];
+        NSString *ipString = [[NSString alloc] initWithData:longBuiltinIp.ip encoding:NSUTF8StringEncoding];
+        WCBuiltinIP *ip = [[WCBuiltinIP alloc] initWithValue:@{@"isLongIP": @NO,
+                @"type": @(longBuiltinIp.type),
+                @"port": @(longBuiltinIp.port),
+                @"ip": [ipString stringByReplacingOccurrencesOfString:@"\0" withString:@""],
+                @"domain": domain}];
+        [realm addOrUpdateObject:ip];
+    };
+    
+    [realm commitWriteTransaction];
+}
+
+// delete saved cookie
+- (void)clearCookie {
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    [realm beginWriteTransaction];
+    
+    Cookie *cookie = [[Cookie allObjects] firstObject];
+    [realm deleteObject:cookie];
+    
+    [realm commitWriteTransaction];
+}
+
+
+- (void)startNaviUrl:(NSString *)url {
+    UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
+    MMWebViewController *webViewController = [WeChatSB instantiateViewControllerWithIdentifier:@"MMWebViewController"];
+    webViewController.url = [NSURL URLWithString:url];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 @end

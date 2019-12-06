@@ -37,8 +37,9 @@ enum
 
 + (NSData *)random128BitAESKey;
 
-+ (NSString *)md5FromString:(NSString *)string;
-+ (NSData *)md5FromData:(NSData *)data;
++ (NSString *)md5StringFromString:(NSString *)string;
++ (NSData *)md5DataFromData:(NSData *)data;
++ (NSString *)md5StringFromData:(NSData *)data;
 
 + (NSString *)sha256FromString:(NSString *)string;
 
@@ -54,4 +55,5 @@ enum
 + (NSData *)RSA_PUB_EncryptData:(NSData *)data modulus:(NSString *)modules exponent:(NSString *)exponent;
 + (BOOL)genRSAKeyPairPubKey:(NSString **)rsaPubKey priKey:(NSString **)rsaPriKey;
 
++ (NSString *)data2HexString:(NSData *)data;
 @end
