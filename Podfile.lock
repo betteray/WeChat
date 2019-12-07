@@ -12,28 +12,25 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
-  - CocoaLumberjack (3.4.2):
-    - CocoaLumberjack/Default (= 3.4.2)
-    - CocoaLumberjack/Extensions (= 3.4.2)
-  - CocoaLumberjack/Default (3.4.2)
-  - CocoaLumberjack/Extensions (3.4.2):
-    - CocoaLumberjack/Default
+  - CocoaLumberjack (3.6.0):
+    - CocoaLumberjack/Core (= 3.6.0)
+  - CocoaLumberjack/Core (3.6.0)
   - CocoaZ (1.4.2)
   - FastSocket (1.6)
-  - IQKeyboardManager (6.2.0)
+  - IQKeyboardManager (6.5.4)
   - Json2pb (1.0.0):
     - Protobuf
   - MBProgressHUD (1.1.0)
-  - Ono (2.1.1)
-  - Protobuf (3.6.1)
+  - Ono (2.1.2)
+  - Protobuf (3.11.1)
   - Reachability (3.2)
-  - Realm (3.13.0):
-    - Realm/Headers (= 3.13.0)
-  - Realm/Headers (3.13.0)
+  - Realm (4.1.1):
+    - Realm/Headers (= 4.1.1)
+  - Realm/Headers (4.1.1)
   - RegexKitLite (4.0)
-  - SDWebImage (4.4.3):
-    - SDWebImage/Core (= 4.4.3)
-  - SDWebImage/Core (4.4.3)
+  - SDWebImage (5.4.0):
+    - SDWebImage/Core (= 5.4.0)
+  - SDWebImage/Core (5.4.0)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -52,9 +49,10 @@ DEPENDENCIES:
   - YYModel
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - ASIHTTPRequest
     - CocoaLumberjack
+    - CocoaZ
     - FastSocket
     - IQKeyboardManager
     - MBProgressHUD
@@ -65,8 +63,6 @@ SPEC REPOS:
     - RegexKitLite
     - SDWebImage
     - YYModel
-  trunk:
-    - CocoaZ
 
 EXTERNAL SOURCES:
   Json2pb:
@@ -74,23 +70,23 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Json2pb:
-    :commit: 49030ddf4a7f210267163e2ecf3d2bb9f3312fe8
+    :commit: 5d3c3763e822cf885f6418077f1fff343bb1fb69
     :git: https://github.com/henrayluo/json2pb.git
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
-  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
   CocoaZ: a296b1fbea2c648daf2ccabb5403ed354569e633
   FastSocket: f847d6a85b766dc40f848035e2bf255752c280f1
-  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
-  Json2pb: 9db91c01e3c51dce89820f2874843ec63303d111
+  IQKeyboardManager: 72b359cd7e777e3a984cedbe05f8da45320cbb63
+  Json2pb: a93aa76bd1dc975923a812f2fb29c81804bc2712
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  Ono: 13c25831a4a66b30df93bd1fa57cf70f13c62699
-  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  Ono: 26a7c1fc4df13ece7747560a1d80655807a8a000
+  Protobuf: 20d79da7f20b5928b80043b05080b816e802659e
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
+  Realm: 25f0a8244cbb1c2271c922963ea8666fc2d8104d
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
-  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  SDWebImage: 5bf6aec6481ae2a062bdc59f9d6c1d1e552090e0
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
 PODFILE CHECKSUM: 077baad85a24b24165dcc6157c82b654c7f46b36

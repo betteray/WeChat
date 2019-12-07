@@ -156,7 +156,12 @@
     return finalController;
 }
 
--(UIView*)superviewOfClassType:(Class)classType
+-(UIView*)superviewOfClassType:(nonnull Class)classType
+{
+    return [self superviewOfClassType:classType belowView:nil];
+}
+
+-(nullable __kindof UIView*)superviewOfClassType:(nonnull Class)classType belowView:(nullable UIView*)belowView
 {
     UIView *superview = self.superview;
     
@@ -184,6 +189,10 @@
                 return superview;
             }
         }
+        else if (belowView == superview)
+        {
+            return nil;
+        }
         
         superview = superview.superview;
     }
@@ -195,15 +204,17 @@
 {
     BOOL _IQcanBecomeFirstResponder = NO;
     
-    if ([self isKindOfClass:[UITextField class]])
-    {
-        _IQcanBecomeFirstResponder = [(UITextField*)self isEnabled];
+    if ([self conformsToProtocol:@protocol(UITextInput)]) {
+        if ([self respondsToSelector:@selector(isEditable)] && [self isKindOfClass:[UIScrollView class]])
+        {
+            _IQcanBecomeFirstResponder = [(UITextView*)self isEditable];
+        }
+        else if ([self respondsToSelector:@selector(isEnabled)])
+        {
+            _IQcanBecomeFirstResponder = [(UITextField*)self isEnabled];
+        }
     }
-    else if ([self isKindOfClass:[UITextView class]])
-    {
-        _IQcanBecomeFirstResponder = [(UITextView*)self isEditable];
-    }
-
+    
     if (_IQcanBecomeFirstResponder == YES)
     {
         _IQcanBecomeFirstResponder = ([self isUserInteractionEnabled] && ![self isHidden] && [self alpha]!=0.0 && ![self isAlertViewTextField]  && !self.textFieldSearchBar);
@@ -237,10 +248,9 @@
         {
             [textFields addObject:textField];
         }
-        
         //Sometimes there are hidden or disabled views and textField inside them still recorded, so we added some more validations here (Bug ID: #458)
         //Uncommented else (Bug ID: #625)
-        if (textField.subviews.count && [textField isUserInteractionEnabled] && ![textField isHidden] && [textField alpha]!=0.0)
+        else if (textField.subviews.count && [textField isUserInteractionEnabled] && ![textField isHidden] && [textField alpha]!=0.0)
         {
             [textFields addObjectsFromArray:[textField deepResponderViews]];
         }

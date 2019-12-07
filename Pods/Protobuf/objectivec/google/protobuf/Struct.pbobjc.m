@@ -8,7 +8,7 @@
 #endif
 
 #if GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS
- #import <Protobuf/GPBProtocolBuffers_RuntimeSupport.h>
+ #import <protobuf/GPBProtocolBuffers_RuntimeSupport.h>
 #else
  #import "GPBProtocolBuffers_RuntimeSupport.h"
 #endif
@@ -16,7 +16,7 @@
 #import <stdatomic.h>
 
 #if GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS
- #import <Protobuf/Struct.pbobjc.h>
+ #import <protobuf/Struct.pbobjc.h>
 #else
  #import "google/protobuf/Struct.pbobjc.h"
 #endif
@@ -118,7 +118,9 @@ typedef struct GPBStruct__storage_ {
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(GPBStruct__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    NSAssert(descriptor == nil, @"Startup recursed!");
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
     descriptor = localDescriptor;
   }
   return descriptor;
@@ -222,7 +224,9 @@ typedef struct GPBValue__storage_ {
     [localDescriptor setupOneofs:oneofs
                            count:(uint32_t)(sizeof(oneofs) / sizeof(char*))
                    firstHasIndex:-1];
-    NSAssert(descriptor == nil, @"Startup recursed!");
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
     descriptor = localDescriptor;
   }
   return descriptor;
@@ -282,7 +286,9 @@ typedef struct GPBListValue__storage_ {
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(GPBListValue__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
-    NSAssert(descriptor == nil, @"Startup recursed!");
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
     descriptor = localDescriptor;
   }
   return descriptor;

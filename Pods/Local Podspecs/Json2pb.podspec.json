@@ -14,14 +14,17 @@
     "git": "https://github.com/rannger/json2pb.git",
     "tag": "1.0.0"
   },
-  "platforms": {
-    "ios": "7.0"
-  },
   "source_files": "Classes/*.{h,m}",
   "requires_arc": true,
   "dependencies": {
     "Protobuf": [
 
     ]
+  },
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
   }
 }
