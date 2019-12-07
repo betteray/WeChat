@@ -18914,7 +18914,8 @@ message SnsPostRequest {
 message SnsPostResponse {
     required  BaseResponse  baseResponse  = 1;
     required  SnsObject  snsObject  = 2;
-    required  string  spamTips  = 3;
+    optional  string  spamTips  = 3;
+    optional  string  tag4  = 4;
 }
 
 message SnsRecommendObject {

@@ -74809,6 +74809,7 @@ typedef GPB_ENUM(SnsPostResponse_FieldNumber) {
   SnsPostResponse_FieldNumber_BaseResponse = 1,
   SnsPostResponse_FieldNumber_SnsObject = 2,
   SnsPostResponse_FieldNumber_SpamTips = 3,
+  SnsPostResponse_FieldNumber_Tag4 = 4,
 };
 
 @interface SnsPostResponse : GPBMessage
@@ -74824,6 +74825,10 @@ typedef GPB_ENUM(SnsPostResponse_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *spamTips;
 /** Test to see if @c spamTips has been set. */
 @property(nonatomic, readwrite) BOOL hasSpamTips;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *tag4;
+/** Test to see if @c tag4 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag4;
 
 @end
 
