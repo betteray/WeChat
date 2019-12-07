@@ -79,6 +79,7 @@
             else
             {
                 LogError(@"Can not find contact with username: %@", msg.fromUserName.string);
+                LogError(@"But the content is: %@", msg.content.string);
             }
             
         }

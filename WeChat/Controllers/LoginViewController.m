@@ -81,6 +81,12 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self autoAuthIfCould];
     });
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"sns_resp_mine" ofType:@"bin"];
+    NSData *data =  [NSData dataWithContentsOfFile:path];
+    NSError *error = nil;
+    SnsPostResponse *response = [[SnsPostResponse alloc] initWithData:data error:&error];
+    LogVerbose(@"%@", response);
 }
 
 - (void)autoAuthIfCould {

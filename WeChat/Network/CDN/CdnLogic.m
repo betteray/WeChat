@@ -89,8 +89,10 @@
                 NSDictionary *response = [self parserResponseToDic:dataPackage];
                 LogVerbose(@"cdn recv response: %@", response);
                 
-                if ([response objectForKey:@"fileurl"] && [response objectForKey:@"thumburl"] && _successBlock) {
-                    _successBlock(response);
+                if ([response objectForKey:@"fileurl"] && [response objectForKey:@"thumburl"] && self.successBlock) {
+                    self.successBlock(response);
+                    [self.client close];
+                    break;
                 }
             }
             else
@@ -234,20 +236,6 @@
 
 #pragma mark - Parse Response
 
-- (void)getResponse:(NSData *)cdnPacketData {
-    int32_t payloadLength = [cdnPacketData toInt16ofRange:NSMakeRange(3, 2) SwapBigToHost:YES];
-    if (payloadLength != [cdnPacketData length]) {
-        [_client close];
-        LogError(@"CDN Parse Response Error: verify cdn packet length fail, hex data: %@", [FSOpenSSL data2HexString:cdnPacketData]);
-    }
-    
-    int32_t responseLength = [cdnPacketData toInt16ofRange:NSMakeRange(23, 2) SwapBigToHost:YES];
-
-    if (responseLength != [cdnPacketData length] - 23) {
-        LogError(@"CDN Parse Response Error: verify cdn response length fail, hex data: %@", [FSOpenSSL data2HexString:cdnPacketData]);
-    }
-}
-
 - (NSDictionary *)parserResponseToDic:(NSData *)cdnPacketData {
     NSMutableDictionary *md = [NSMutableDictionary dictionary];
     NSString *key = nil;
@@ -262,7 +250,6 @@
 
 - (BOOL)readField:(NSString **)field andValue:(NSString **)value withReponse:(NSData *)responseData pos:(int *)pos {
     int index = *pos;
-    
     if (index >= [responseData length]) return NO;
     
     // read key

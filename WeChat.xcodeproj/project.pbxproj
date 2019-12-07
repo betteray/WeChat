@@ -156,9 +156,10 @@
 		7161985321CB863A00A76F39 /* LongLinkClientWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161985221CB863A00A76F39 /* LongLinkClientWithMMTLS.m */; };
 		716A93BF2398F04B00A0C9DC /* AES_EVP.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93BE2398F04B00A0C9DC /* AES_EVP.m */; };
 		716A93C2239A2CA200A0C9DC /* GetCDNDnsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93C1239A2CA200A0C9DC /* GetCDNDnsService.m */; };
-		716A93D1239A9A9F00A0C9DC /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 716A93D0239A9A9F00A0C9DC /* test.jpg */; };
 		716A93D4239AA2C200A0C9DC /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93D3239AA2C200A0C9DC /* DBManager.m */; };
+		716A93D9239B49B100A0C9DC /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 716A93D8239B49B100A0C9DC /* test.jpg */; };
 		716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */; };
+		71808BFB239BA84E005C3BDE /* sns_resp_mine.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71808BF8239BA84E005C3BDE /* sns_resp_mine.bin */; };
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
 		719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */ = {isa = PBXBuildFile; fileRef = 719A962C219BD53800E4D077 /* NSData+AddData.m */; };
@@ -554,11 +555,12 @@
 		716A93BE2398F04B00A0C9DC /* AES_EVP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AES_EVP.m; sourceTree = "<group>"; };
 		716A93C0239A2CA200A0C9DC /* GetCDNDnsService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetCDNDnsService.h; sourceTree = "<group>"; };
 		716A93C1239A2CA200A0C9DC /* GetCDNDnsService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetCDNDnsService.m; sourceTree = "<group>"; };
-		716A93D0239A9A9F00A0C9DC /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		716A93D2239AA2C200A0C9DC /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		716A93D3239AA2C200A0C9DC /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		716A93D8239B49B100A0C9DC /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		716AAE4D214FC8C5006BCFB2 /* NSData+CompressAndEncypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CompressAndEncypt.h"; sourceTree = "<group>"; };
 		716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CompressAndEncypt.m"; sourceTree = "<group>"; };
+		71808BF8239BA84E005C3BDE /* sns_resp_mine.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = sns_resp_mine.bin; sourceTree = "<group>"; };
 		71848F252150CABD00DB669E /* NSData+Compression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Compression.h"; sourceTree = "<group>"; };
 		71848F262150CABD00DB669E /* NSData+Compression.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Compression.m"; sourceTree = "<group>"; };
 		71848F6621549C8100DB669E /* NSData+GenRandomData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+GenRandomData.h"; sourceTree = "<group>"; };
@@ -737,7 +739,8 @@
 		4649DD6621ED864F006315DC /* Res4test */ = {
 			isa = PBXGroup;
 			children = (
-				716A93D0239A9A9F00A0C9DC /* test.jpg */,
+				71808BF8239BA84E005C3BDE /* sns_resp_mine.bin */,
+				716A93D8239B49B100A0C9DC /* test.jpg */,
 			);
 			path = Res4test;
 			sourceTree = "<group>";
@@ -1488,7 +1491,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				716A93D1239A9A9F00A0C9DC /* test.jpg in Resources */,
 				4685A4B322E06E4E00DE95BE /* 703_login_2.txt in Resources */,
 				46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */,
 				712C6F1A214A6A5800603022 /* PROTO_README.md in Resources */,
@@ -1497,12 +1499,14 @@
 				71F9F5CE2355CC8D00C6C736 /* st-6p-clientcheck.bin in Resources */,
 				71F9F5BB235576B500C6C736 /* mmregion4client_zh_CN.txt in Resources */,
 				46CD1A8522DED2FE0023C585 /* TODO.md in Resources */,
+				716A93D9239B49B100A0C9DC /* test.jpg in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				71F9F5D023560E5A00C6C736 /* st-6p-login.bin in Resources */,
 				4685A4B522E06FFF00DE95BE /* 703_login_3.txt in Resources */,
 				714E35EC235806CA0046F7D8 /* RiskScan.tars in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
+				71808BFB239BA84E005C3BDE /* sns_resp_mine.bin in Resources */,
 				712C7143214B5A4B00603022 /* LICENSE in Resources */,
 				71F9F5BD2355774700C6C736 /* mmregion4client_en.txt in Resources */,
 			);
