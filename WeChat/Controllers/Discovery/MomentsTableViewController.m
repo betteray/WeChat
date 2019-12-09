@@ -24,37 +24,26 @@
 }
 
 - (IBAction)sendSnsPostRequest:(id)sender {
-    NSString *pic = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"jpg"];
+    NSMutableArray *ma = [NSMutableArray array];
+    for (int i = 1; i < 4 ; i++) {
+        NSString *pic = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"pic_%d", i] ofType:@"jpg"];
+        [ma addObject:pic];
+    }
     
-    //    response
-    //    {
-    //        enablequic = 0;
-    //        filekey = a019d837919cd0245cd950f5d54e65d5;
-    //        fileurl = "http://shmmsns.qpic.cn/mmsns/O5IB5rptd1qib8b8Izmpr4SxJe1IbnFzpGcDT8tsGbaicAurMwncp85X1tPEicBYJDywz7ejNLoxu4/0";
-    //        isgetcdn = 0;
-    //        isoverload = 0;
-    //        isretry = 0;
-    //        recvlen = 17469;
-    //        retcode = 0;
-    //        retrysec = 0;
-    //        seq = 1;
-    //        thumburl = "http://shmmsns.qpic.cn/mmsns/O5IB5rptd1qib8b8Izmpr4SxJe1IbnFzpGcDT8tsGbaicAurMwncp85X1tPEicBYJDywz7ejNLoxu4/150";
-    //        ver = 0;
-    //        "x-ClientIp" = "43.243.12.74";
-    //    }
-    
-    [[CdnLogic new] startC2CUpload:pic success:^(NSDictionary *  _Nullable response) {
+    [[CdnLogic sharedInstance] startC2CUpload:ma success:^(NSArray *  _Nullable response) {
         LogVerbose(@"上传朋友圈图片 response： %@", response);
-        [self startSendSNSPost:response];
+        if ([response count]) {
+            [self startSendSNSPost:response];
+        }
     } failure:^(NSError * _Nonnull error) {
         
     }];
 }
 
-- (void)startSendSNSPost:(NSDictionary *)response {
+- (void)startSendSNSPost:(NSArray *)cdnResponse {
     SnsPostRequest *request = [SnsPostRequest new];
     
-    NSData *xmlData = [self getObjectDesc:response];
+    NSData *xmlData = [self getObjectDesc:cdnResponse];
     SKBuiltinBuffer_t *objectDesc = [SKBuiltinBuffer_t new];
     objectDesc.iLen = (uint32_t)xmlData.length;
     objectDesc.buffer  = xmlData;
@@ -85,14 +74,22 @@
     request.poiInfo = poiInfo;
 
     request.fromScene = @"";
-    request.mediaInfoCount = 1;
-    MediaInfo *mediaInfo = [MediaInfo new];
-    mediaInfo.videoPlayLength = 0;
-    mediaInfo.mediaType = 1;
-    mediaInfo.source = 2;
-    mediaInfo.sessionId = [NSString stringWithFormat:@"memonts-%ld", (NSInteger) [[NSDate date] timeIntervalSince1970]];
-    mediaInfo.startTime = (uint32_t) [[NSDate date] timeIntervalSince1970];
-    request.mediaInfoArray = [@[mediaInfo] mutableCopy];
+    
+    uint32_t startTime =  (uint32_t) [[NSDate date] timeIntervalSince1970];
+    NSMutableArray *ma = [NSMutableArray array];
+    int i = (int) [cdnResponse count];
+    while (i--) {
+        MediaInfo *mediaInfo = [MediaInfo new];
+        mediaInfo.videoPlayLength = 0;
+        mediaInfo.mediaType = 1;
+        mediaInfo.source = 2;
+        mediaInfo.sessionId = [NSString stringWithFormat:@"memonts-%ld", (NSInteger) [[NSDate date] timeIntervalSince1970]];
+        mediaInfo.startTime = startTime;
+        [ma addObject:mediaInfo];
+    }
+    
+    request.mediaInfoCount = (uint32_t) [ma count];
+    request.mediaInfoArray = ma;
     
     if (CLIENT_VERSION > A703) {
         NSData *extSpamInfoBuffer = [WCSafeSDK getextSpamInfoBufferWithContent:@"" context:@"&lt;SNSPost&gt"];
@@ -119,7 +116,30 @@
                       }];
 }
 
-- (NSData *)getObjectDesc:(NSDictionary *)response {
+- (NSData *)getObjectDesc:(NSArray *)cdnResponse {
+    
+    NSMutableString *ms = [NSMutableString new];
+    for (NSDictionary *res in cdnResponse) {
+        NSString *mediaFormat = @"<media>"
+                                    "<id>0</id>"
+                                    "<type>2</type>"
+                                    "<title></title>"
+                                    "<description></description>"
+                                    "<private>0</private>"
+                                    "<userData></userData>"
+                                    "<subType>0</subType>"
+                                    "<videoSize width=\"795\" height=\"1413\"/>"
+                                    "<url type=\"1\" md5=\"%@\" videomd5=\"\" >%@</url>" //url 0
+                                    "<thumb type=\"1\">%@</thumb>" // url 150
+                                    "<size width=\"795.000000\" height = \"1413.000000\" totalSize=\"0\"/>"
+                                "</media>";
+        NSString *media = [NSString stringWithFormat:mediaFormat,
+                                               [res objectForKey:@"filekey"],
+                                               [res objectForKey:@"fileurl"],
+                                               [res objectForKey:@"thumburl"]];
+        [ms appendString:media];
+    }
+    
     NSString *xml =
     @"<TimelineObject> "
         "<id>0</id>"
@@ -148,19 +168,7 @@
             "<title></title>"
             "<description></description>"
             "<mediaList>"
-                "<media>"
-                    "<id>0</id>"
-                    "<type>2</type>"
-                    "<title></title>"
-                    "<description></description>"
-                    "<private>0</private>"
-                    "<userData></userData>"
-                    "<subType>0</subType>"
-                    "<videoSize width=\"795\" height=\"1413\"/>"
-                    "<url type=\"1\" md5=\"%@\" videomd5=\"\" >%@</url>" //url 0
-                    "<thumb type=\"1\">%@</thumb>" // url 150
-                    "<size width=\"795.000000\" height = \"1413.000000\" totalSize=\"0\"/>"
-                "</media>"
+                "%@"
             "</mediaList>"
         "</ContentObject>"
     "</TimelineObject>";
@@ -169,10 +177,7 @@
     NSString *picXml = [NSString stringWithFormat:xml,
                         accountInfo.userName,
                         [NSString stringWithFormat:@"%ld", (NSUInteger) [[NSDate date] timeIntervalSince1970]],
-                        [response objectForKey:@"filekey"],
-                        [response objectForKey:@"fileurl"],
-                        [response objectForKey:@"thumburl"]
-                        ];
+                        [ms copy]];
     return [picXml dataUsingEncoding:NSUTF8StringEncoding];
 }
 

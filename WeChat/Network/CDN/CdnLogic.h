@@ -10,12 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^SuccessBlock)(id _Nullable response);
-typedef void (^FailureBlock)(NSError *error);
-
 @interface CdnLogic : NSObject
 
-- (void)startC2CUpload:(NSString *)picPath
++ (instancetype)sharedInstance;
+
+- (void)startC2CUpload:(NSArray<NSString *> *)picPaths
                success:(SuccessBlock)successBlock
                failure:(FailureBlock)failureBlock;
 

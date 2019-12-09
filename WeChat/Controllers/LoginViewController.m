@@ -82,11 +82,16 @@
         [self autoAuthIfCould];
     });
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"sns_resp_mine" ofType:@"bin"];
-    NSData *data =  [NSData dataWithContentsOfFile:path];
-    NSError *error = nil;
-    SnsPostResponse *response = [[SnsPostResponse alloc] initWithData:data error:&error];
-    LogVerbose(@"%@", response);
+//    for (int i=1; i<4; i++) {
+//        NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"sns_upload_%d", i] ofType:@"bin"];
+//        NSData *data =  [NSData dataWithContentsOfFile:path];
+//
+////        CdnLogic *cdn = [CdnLogic new];
+////        NSDictionary *dic1 = [cdn parserResponseToDic:data];
+//        
+//        LogVerbose(@"%@", dic1);
+//    }
+    
 }
 
 - (void)autoAuthIfCould {
