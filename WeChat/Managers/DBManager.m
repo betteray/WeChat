@@ -69,6 +69,16 @@
     [realm commitWriteTransaction];
 }
 
++ (void)clearSyncKey {
+    SyncKeyStore *store = [self syncKey];
+    if (store) {
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm deleteObject:store];
+        [realm commitWriteTransaction];
+    }
+}
+
 + (void)saveBuiltinIP:(UnifyAuthResponse *)resp {
     // 存数据到数据库。
     RLMRealm *realm = [RLMRealm defaultRealm];
@@ -102,6 +112,16 @@
 + (nullable AutoAuthKeyStore *)autoAuthKey {
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AutoAuthKeyStoreID];
     return [[AutoAuthKeyStore objectsWithPredicate:pre] firstObject];
+}
+
++ (void)clearAutoAuthKey {
+    AutoAuthKeyStore *store = [self autoAuthKey];
+    if (store) {
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm deleteObject:store];
+        [realm commitWriteTransaction];
+    }
 }
 
 + (void)saveAutoAuthKey:(NSData *)autoAuthkey {

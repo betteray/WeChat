@@ -35,11 +35,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (nullable SyncKeyStore *)syncKey;
 + (void)saveSyncKey:(NSData *)syncKey;
++ (void)clearSyncKey;
 
 + (void)saveBuiltinIP:(UnifyAuthResponse *)resp;
 
 + (nullable AutoAuthKeyStore *)autoAuthKey;
 + (void)saveAutoAuthKey:(NSData *)autoAuthkey;
++ (void)clearAutoAuthKey;
 
 + (void)saveSelfAsWCContact:(NSString *)userName
                    nickName:(NSString *)nickName;

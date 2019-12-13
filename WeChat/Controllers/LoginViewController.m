@@ -110,6 +110,8 @@
     request.messageAction = @"";
     request.meesageExt = @"";
     request.mediaTagName = @"";
+    
+    
 }
 
 - (void)autoAuthIfCould {
@@ -404,7 +406,7 @@
             ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:resp.baseResponse.errMsg.string encoding:NSUTF8StringEncoding error:nil];
             NSString *errorMsg = [[document.rootElement firstChildWithTag:@"Content"] stringValue];
             LogError(@"%@", errorMsg);
-            [self showHUDWithText:errorMsg];
+            [self alartLoginError:errorMsg];
         }
             break;
             
@@ -494,6 +496,22 @@
     [self startSync];
 }
 
+- (void)alartLoginError:(NSString *)errMsg {
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"重新登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self clearData];
+        [self ManualAuth];
+    }];
+    
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"登录错误" message:errMsg preferredStyle:UIAlertControllerStyleAlert];
+    [controller addAction:action];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)clearData {
+    [DBManager clearCookie];
+    [DBManager clearAutoAuthKey];
+    [DBManager clearSyncKey];
+}
 
 - (void)startSync {
     if ([[WeChatClient sharedClient].sync_key_cur length] == 0) {
