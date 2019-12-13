@@ -153,10 +153,26 @@
 
 #pragma mark - Internal
 
++ (void)setBaseResquestIfNeed:(CgiWrap *)cgiWrap {
+    if (cgiWrap.needSetBaseRequest) {
+        BaseRequest *base = [BaseRequest new];
+        NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
+        [base setSessionKey:sessionKey];
+
+        AccountInfo *accountInfo = [DBManager accountInfo];
+        [base setUin:accountInfo.uin];
+        [base setScene:0]; // iMac 1
+        [base setClientVersion:CLIENT_VERSION];
+        [base setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].osType];
+        [base setDeviceId:[[DeviceManager sharedManager] getCurrentDevice].deviceID];
+        [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
+    }
+}
+
 - (void)startRequest:(CgiWrap *)cgiWrap
              success:(SuccessBlock)successBlock
              failure:(FailureBlock)failureBlock {
-    [Business setBaseResquestIfNeed:cgiWrap];
+    [[self class] setBaseResquestIfNeed:cgiWrap];
 
     LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
 
@@ -188,7 +204,7 @@
             success:(SuccessBlock)successBlock
             failure:(FailureBlock)failureBlock {
 
-    [Business setBaseResquestIfNeed:cgiWrap];
+    [[self class] setBaseResquestIfNeed:cgiWrap];
 
     Task *task = [Task new];
     task.sucBlock = successBlock;
@@ -265,7 +281,7 @@
 - (void)registerWeChat:(CgiWrap *)cgiWrap
                success:(SuccessBlock)successBlock
                failure:(FailureBlock)failureBlock {
-    [Business setBaseResquestIfNeed:cgiWrap];
+    [[self class] setBaseResquestIfNeed:cgiWrap];
 
     Task *task = [Task new];
     task.sucBlock = successBlock;

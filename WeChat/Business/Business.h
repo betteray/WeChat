@@ -12,8 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Business : NSObject
 
-+ (void)setBaseResquestIfNeed:(CgiWrap *)cgiWrap;
-
 + (NSData *)identifyReq2bufWithSyncKey:(NSData *)syncKey
                                    uin:(int)uin;
 + (NSData *)syncDoneReq2Buf;

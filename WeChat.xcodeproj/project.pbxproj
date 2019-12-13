@@ -723,12 +723,14 @@
 		462D9C3721DCD2DF00FC5461 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */,
+				4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */,
+				465B39B222D5EFAD001FDE53 /* Business.h */,
+				465B39B322D5EFAD001FDE53 /* Business.m */,
 				462D9C3421DCD2D000FC5461 /* SyncCmdHandler.h */,
 				462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */,
 				71F9F5A8235459AD00C6C736 /* PersonalInfoService.h */,
 				71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */,
-				71F9F5C32355B8B500C6C736 /* WCSafeSDK.h */,
-				71F9F5C42355B8B500C6C736 /* WCSafeSDK.m */,
 				710F14F92360343B0034FA65 /* NewSyncService.h */,
 				710F14FA2360343B0034FA65 /* NewSyncService.m */,
 				716A93C0239A2CA200A0C9DC /* GetCDNDnsService.h */,
@@ -848,31 +850,17 @@
 			path = Me;
 			sourceTree = "<group>";
 		};
-		4689A17521E4BFD200E2EA9A /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */,
-				4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		469F657B21D27FCE00C1DC8B /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				7145133F2390F67F0078D130 /* CDN */,
 				46ED97B722C9F0A200978C0D /* hybridecdh */,
-				4689A17521E4BFD200E2EA9A /* Helpers */,
 				712C6E91214A1E8900603022 /* WeChatClient.h */,
 				712C6E92214A1E8900603022 /* WeChatClient.m */,
 				7161985021CB79E000A76F39 /* pack */,
 				712C7160214D231C00603022 /* ecdh */,
 				712F95F721D1E6D700CFE3A0 /* without_mmtls */,
 				7155BA492190293B0002CE1D /* mmtls */,
-				460429A822D0911900F9BB94 /* MMProtocalJni.h */,
-				460429A922D0911900F9BB94 /* MMProtocalJni.m */,
-				465B39B222D5EFAD001FDE53 /* Business.h */,
-				465B39B322D5EFAD001FDE53 /* Business.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -977,11 +965,17 @@
 		711E9B3923598D4B00C5B655 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
+				71F9F5C32355B8B500C6C736 /* WCSafeSDK.h */,
+				71F9F5C42355B8B500C6C736 /* WCSafeSDK.m */,
 				714E35DD235806B50046F7D8 /* TarsModels */,
 				711E9B3C23598D8200C5B655 /* RiskScanBufUtil.h */,
 				711E9B3D23598D8200C5B655 /* RiskScanBufUtil.m */,
 				711E9B4C2359EC0700C5B655 /* RiskScanBufReq.h */,
 				711E9B4D2359EC0700C5B655 /* RiskScanBufReq.m */,
+				460429A822D0911900F9BB94 /* MMProtocalJni.h */,
+				460429A922D0911900F9BB94 /* MMProtocalJni.m */,
+				71E9EABF234068FA00353DBD /* CalSpamAlg.h */,
+				71E9EAC0234068FA00353DBD /* CalSpamAlg.m */,
 			);
 			path = Crypto;
 			sourceTree = "<group>";
@@ -1056,8 +1050,6 @@
 				46206F5E21E9EA1E00BF0B82 /* CUtility.h */,
 				46206F5F21E9EA1E00BF0B82 /* CUtility.m */,
 				46CD1A8422DED2FE0023C585 /* TODO.md */,
-				71E9EABF234068FA00353DBD /* CalSpamAlg.h */,
-				71E9EAC0234068FA00353DBD /* CalSpamAlg.m */,
 			);
 			path = WeChat;
 			sourceTree = "<group>";

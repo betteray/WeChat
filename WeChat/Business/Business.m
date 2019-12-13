@@ -15,22 +15,7 @@
 
 @implementation Business
 
-+ (void)setBaseResquestIfNeed:(CgiWrap *)cgiWrap {
-    if (cgiWrap.needSetBaseRequest) {
-        BaseRequest *base = [BaseRequest new];
-        NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
-        LogDebug(@"%@", sessionKey);
-        [base setSessionKey:sessionKey];
 
-        AccountInfo *accountInfo = [DBManager accountInfo];
-        [base setUin:accountInfo.uin];
-        [base setScene:0]; // iMac 1
-        [base setClientVersion:CLIENT_VERSION];
-        [base setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].osType];
-        [base setDeviceId:[[DeviceManager sharedManager] getCurrentDevice].deviceID];
-        [[cgiWrap request] performSelector:@selector(setBaseRequest:) withObject:base];
-    }
-}
 
 + (NSData *)identifyReq2bufWithSyncKey:(NSData *)syncKey
                                    uin:(int)uin
