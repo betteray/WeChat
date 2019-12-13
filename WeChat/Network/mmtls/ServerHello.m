@@ -7,7 +7,6 @@
 //
 
 #import "ServerHello.h"
-#import "NSData+Util.h"
 
 @interface ServerHello ()
 

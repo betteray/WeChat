@@ -385,7 +385,7 @@
             </objects>
             <point key="canvasLocation" x="-986" y="3313"/>
         </scene>
-        <!--Chat Detail Table View Controller-->
+        <!--Title-->
         <scene sceneID="Pfu-6p-27I">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="MjI-5X-eGc" customClass="ChatDetailTableViewController" sceneMemberID="viewController">
@@ -394,7 +394,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sHY-vv-KzS">
-                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="530"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatsDetailTableViewCell" rowHeight="82" id="fwd-Db-6g3" customClass="ChatsDetailTableViewCell">
@@ -440,7 +440,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xH0-ZZ-JFX">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发个消息试试？" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wXq-Zq-9NA">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -470,6 +470,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X8B-8D-E5v"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="ABf-OH-MrS"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="FtP-3U-QAe">
+                        <barButtonItem key="rightBarButtonItem" title="test" id="Azd-ZT-guC">
+                            <connections>
+                                <action selector="test:" destination="MjI-5X-eGc" id="mIT-ku-tCc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="msgTextField" destination="wXq-Zq-9NA" id="vfp-6j-UVv"/>
                         <outlet property="tableView" destination="sHY-vv-KzS" id="2CH-Y8-tFS"/>
@@ -564,6 +575,9 @@
                             <outlet property="delegate" destination="zAx-mS-kob" id="s7F-UZ-nSe"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="test" id="uXH-dV-xIZ"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Moments" id="diH-EG-g8t">
                         <barButtonItem key="rightBarButtonItem" title="发送" id="Wco-7S-MR2">
                             <connections>
@@ -571,6 +585,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZl-oL-vVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

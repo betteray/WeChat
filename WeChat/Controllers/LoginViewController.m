@@ -9,45 +9,22 @@
 #import "LoginViewController.h"
 #import "MMWebViewController.h"
 #import "AppDelegate.h"
-
 #import "WCECDH.h"
 #import "FSOpenSSL.h"
-#import "WCBuiltinIP.h"
-#import "Cookie.h"
-#import "AutoAuthKeyStore.h"
-#import "AccountInfo.h"
-#import "SessionKeyStore.h"
-#import "WCContact.h"
-
-#import "CalSpamAlg.h"
-#import "NSData+Compression.h"
-#import "WCSafeSDK.h"
-
-#import "RiskScanBufReq.h"
-#import "NewSyncService.h"
-#import "TDTZCompressor.h"
-#import "TDTZDecompressor.h"
-
 #import "WCSafeSDK.h"
 #import "Business.h"
-
-#import "NSData+AES.h"
-#import "FSOpenSSL.h"
-#import "ASIHTTPRequest.h"
-
-#include <zlib.h>
-#import "DefaultLongIp.h"
 #import <RegexKitLite/RegexKitLite.h>
-
+#import <Ono.h>
 // test import
-#import "CdnLogic.h"
+#import "CdnSnsUploadTask.h"
+#include <sys/time.h>
 
 @interface LoginViewController ()
 
 @property(weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property(weak, nonatomic) IBOutlet UITextField *pwdTextField;
 
-@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property(weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 @property(nonatomic, strong) NSData *priKeyData;
 @property(nonatomic, strong) NSData *pubKeyData;
@@ -64,7 +41,7 @@
 #elif PROTOCOL_FOR_IOS
     _versionLabel.text = [NSString stringWithFormat:@"iOS (0x%x)", CLIENT_VERSION];
 #endif
-    
+
     NSData *priKeyData = nil;
     NSData *pubKeyData = nil;
 
@@ -75,30 +52,73 @@
         LogVerbose(@"+[ECDH GenEcdh:pubKeyData:] %@, PubKey: %@.", priKeyData, pubKeyData);
     }
 
-    [WeChatClient sharedClient].sessionKey = [FSOpenSSL random128BitAESKey];
+//    self.userNameTextField.text = @"dathsp06";
+//    self.pwdTextField.text = @"kqrjs496";
 
-    //能自动登录自动登录
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self autoAuthIfCould];
-    });
+    [WeChatClient sharedClient].sessionKey = [FSOpenSSL random128BitAESKey];
+    [self autoAuthIfCould];
+
+    unsigned int aa = 3460251153;
     
-//    for (int i=1; i<4; i++) {
-//        NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"sns_upload_%d", i] ofType:@"bin"];
-//        NSData *data =  [NSData dataWithContentsOfFile:path];
-//
-////        CdnLogic *cdn = [CdnLogic new];
-////        NSDictionary *dic1 = [cdn parserResponseToDic:data];
-//        
-//        LogVerbose(@"%@", dic1);
-//    }
+//    CdnSendPictureTask *task = [CdnSendPictureTask new];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"jpg"];
+//    [task packBody:path];
+
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"bin"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    CdnSnsUploadTask *snsUploadTask = [CdnSnsUploadTask new];
+    NSDictionary *dic = [snsUploadTask parseResponseToDic:data];
+    LogVerbose(@"%@", dic);
     
+//    message CDNUploadMsgImgPrepareRequest {
+//    optional  string  clientImgId  = 1;
+//    optional  string  fromUserName  = 2;
+//    optional  string  toUserName  = 3;
+//    required  int32  thumbHeight  = 4;
+//    required  int32  thumbWidth  = 5;
+//    optional  string  msgSource  = 6;
+//    optional  SKBuiltinBuffer_t  clientStat  = 7;
+//    optional  int32  scene  = 8;
+//    optional  float  longitude  = 9;
+//    optional  float  latitude  = 10;
+//    optional  string  attachedContent  = 11;
+//    optional  string  aeskey  = 16;
+//    optional  int32  encryVer  = 17;
+//    optional  uint32  crc32  = 18;
+//    optional  uint32  msgForwardType  = 19;
+//    optional  uint32  source  = 20;
+//    optional  string  appid  = 21;
+//    optional  string  messageAction  = 22;
+//    optional  string  meesageExt  = 23;
+//    optional  string  mediaTagName  = 24;
+
+    
+    AccountInfo *accountInfo = [DBManager accountInfo];
+    CDNUploadMsgImgPrepareRequest *request = [CDNUploadMsgImgPrepareRequest new];
+    request.clientImgId = @"rowhongwei56_1576073040";
+    request.fromUserName = accountInfo.userName;
+    request.toUserName = @"wxid_30uhdskklyci22";
+    request.thumbWidth = 100;
+    request.thumbHeight = 100;
+    request.msgSource = @"";
+    request.scene = 0;
+//    request.aeskey =
+//    request.crc32 =
+    request.msgForwardType = 1;
+    request.source = 20;
+    request.appid = @"";
+    request.messageAction = @"";
+    request.meesageExt = @"";
+    request.mediaTagName = @"";
 }
 
 - (void)autoAuthIfCould {
-    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AutoAuthKeyStoreID];
-    AutoAuthKeyStore *autoAuthKeyStore = [[AutoAuthKeyStore objectsWithPredicate:pre] firstObject];
+    AutoAuthKeyStore *autoAuthKeyStore = [DBManager autoAuthKey];
     if ([autoAuthKeyStore.data length] > 0) {
-        [self AutoAuth];
+        //能自动登录自动登录
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self AutoAuth];
+        });
     }
 }
 
@@ -170,25 +190,25 @@
     aesReqData.ostype = [[NSString alloc] initWithData:device.osType encoding:NSUTF8StringEncoding];
 
 #if PROTOCOL_FOR_IOS
-//    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
-//    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:pre] firstObject];
-//    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
-//    clientCheckData.iLen = (int) [ccd.data length];
-//    clientCheckData.buffer = ccd.data;
-//    aesReqData.clientCheckData = clientCheckData;
+    //    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
+    //    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:pre] firstObject];
+    //    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
+    //    clientCheckData.iLen = (int) [ccd.data length];
+    //    clientCheckData.buffer = ccd.data;
+    //    aesReqData.clientCheckData = clientCheckData;
 #endif
-    
+
     if (CLIENT_VERSION > A703) {
         NSData *extSpamInfoBuffer = [WCSafeSDK getextSpamInfoBufferWithContent:self.userNameTextField.text context:@"&lt;LoginByID&gt"];
 
         SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
         extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
         extSpamInfo.buffer = extSpamInfoBuffer;
-        
+
         aesReqData.extSpamInfo = extSpamInfo; // tag=24
     }
-    
-    
+
+
     ManualAuthRequest *authRequest = [ManualAuthRequest new];
     authRequest.aesReqData = aesReqData;
     authRequest.rsaReqData = rsaReqData;
@@ -318,17 +338,17 @@
         SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
         extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
         extSpamInfo.buffer = extSpamInfoBuffer;
-        
+
         aesReqData.extSpamInfo = extSpamInfo; // tag=24
     }
-    
+
 #if PROTOCOL_FOR_IOS
-//    NSPredicate *clientCheckDataPre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
-//    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:clientCheckDataPre] firstObject];
-//    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
-//    clientCheckData.iLen = (int) [ccd.data length];
-//    clientCheckData.buffer = ccd.data;
-//    aesReqData.clientCheckData = clientCheckData;
+    //    NSPredicate *clientCheckDataPre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
+    //    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:clientCheckDataPre] firstObject];
+    //    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
+    //    clientCheckData.iLen = (int) [ccd.data length];
+    //    clientCheckData.buffer = ccd.data;
+    //    aesReqData.clientCheckData = clientCheckData;
 #endif
     AutoAuthRequest *authRequest = [AutoAuthRequest new];
     authRequest.aesReqData = aesReqData;
@@ -336,8 +356,7 @@
 
     BaseRequest *baseRequest = [BaseRequest new];
     [baseRequest setSessionKey:[NSData data]];
-    NSPredicate *accountInfoPre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
-    AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:accountInfoPre] firstObject];
+    AccountInfo *accountInfo = [DBManager accountInfo];
     [baseRequest setUin:accountInfo.uin];
     [baseRequest setScene:2];
     [baseRequest setClientVersion:CLIENT_VERSION];
@@ -371,11 +390,34 @@
 #pragma mark - AuthResponse
 
 - (void)onLoginResponse:(UnifyAuthResponse *)resp {
+    LogVerbose(@"%@", resp);
     switch (resp.baseResponse.ret) {
-        case -106: {
-            [self clearCookie];
-            LogError(@"登录错误: (-106) errMsg: %@", resp.baseResponse.errMsg.string);
+        case -100:
+        {
+            //        baseResponse {
+            //            ret: -100
+            //            errMsg {
+            //                string: "<e>\n<ShowType>1</ShowType>\n<Content><![CDATA[当前帐号于19:03在ray’s iPhone设备上登录。若非本人操作，你的登录密码可能已经泄漏，请及时改密。紧急情况可前往http://weixin110.qq.com冻结帐号。]]></Content>\n<Url><![CDATA[]]></Url>\n<DispSec>30</DispSec>\n<Title><![CDATA[]]></Title>\n<Action>4</Action>\n<DelayConnSec>0</DelayConnSec>\n<Countdown>0</Countdown>\n<Ok><![CDATA[]]></Ok>\n<Cancel><![CDATA[]]></Cancel>\n</e>\n"
+            //            }
+            //        }
             
+            ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:resp.baseResponse.errMsg.string encoding:NSUTF8StringEncoding error:nil];
+            NSString *errorMsg = [[document.rootElement firstChildWithTag:@"Content"] stringValue];
+            LogError(@"%@", errorMsg);
+            [self showHUDWithText:errorMsg];
+        }
+            break;
+            
+//        baseResponse {
+//            ret: -305 // 要换 NE重新登录，新疆号。
+//            errMsg {
+//            }
+//        }
+
+        case -106: {
+            [DBManager clearCookie];
+            LogError(@"登录错误: (-106) errMsg: %@", resp.baseResponse.errMsg.string);
+
             NSString *regex = @"(https?|http)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]";
             NSString *url = [resp.baseResponse.errMsg.string stringByMatching:regex];
             [self startNaviUrl:url];
@@ -384,8 +426,8 @@
         case -301: { //需要重定向
 
             LogError(@"登录 -301， 重定向IP。。。");
-            [self saveIp:resp];
-            [self clearCookie];
+            [DBManager saveBuiltinIP:resp];
+            [DBManager clearCookie];
             [[WeChatClient sharedClient] restart]; // restart
 
             [self ManualAuth]; // 重新登录
@@ -409,8 +451,7 @@
                          nLenLocalPri:(int) [_priKeyData length]
                            szShareKey:szSharedKey
                          pLenShareKey:&szSharedKeyLen];
-            
-            WCContact *slf = [[WCContact objectsWhere:@"userName = %@", resp.acctSectResp.userName] firstObject];
+
             if (ret) {
                 NSData *checkEcdhKey = [NSData dataWithBytes:szSharedKey length:szSharedKeyLen];
                 NSData *sessionKey = [FSOpenSSL aesDecryptData:resp.authSectResp.sessionKey.buffer key:checkEcdhKey];
@@ -424,30 +465,16 @@
                         resp.acctSectResp.nickName,
                         resp.acctSectResp.alias);
 
-                // 存数据到数据库。
-                RLMRealm *realm = [RLMRealm defaultRealm];
-                [realm beginWriteTransaction];
+                [DBManager saveAutoAuthKey:resp.authSectResp.autoAuthKey.buffer];
+                [DBManager saveAccountInfo:uin
+                                  userName:resp.acctSectResp.userName
+                                  nickName:resp.acctSectResp.nickName
+                                     alias:resp.acctSectResp.alias];
 
-                SKBuiltinBuffer_t *autoAuthkey = resp.authSectResp.autoAuthKey;
-                [AutoAuthKeyStore createOrUpdateInDefaultRealmWithValue:@[AutoAuthKeyStoreID, autoAuthkey.buffer]];
+                [DBManager saveSessionKey:sessionKey];
+                [DBManager saveSelfAsWCContact:resp.acctSectResp.userName
+                                      nickName:resp.acctSectResp.nickName];
 
-                [AccountInfo createOrUpdateInDefaultRealmWithValue:@[AccountInfoID, @(uin), resp.acctSectResp.userName, resp.acctSectResp.nickName, resp.acctSectResp.alias]];
-
-                if (!slf) {
-                    [WCContact createOrUpdateInDefaultRealmWithValue:@[resp.acctSectResp.userName,
-                            resp.acctSectResp.nickName,
-                            @"",
-                            @"",
-                            @"",
-                            @"",
-                            @"",
-                            @""]];
-                }
-
-                [SessionKeyStore createOrUpdateInDefaultRealmWithValue:@[SessionKeyStoreID, sessionKey]];
-
-                [realm commitWriteTransaction];
-                
                 [self enterWeChat];
             }
         }
@@ -460,12 +487,10 @@
 - (void)enterWeChat {
     UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
     UINavigationController *nav = [WeChatSB instantiateViewControllerWithIdentifier:@"WeChatTabBarController"];
-//    [self presentViewController:nav animated:YES completion:nil];
-    
+
     AppDelegate *delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
     delegate.window.rootViewController = nav;
-    
-    
+
     [self startSync];
 }
 
@@ -479,49 +504,6 @@
         [Business newSync];
     }
 }
-
-- (void)saveIp:(UnifyAuthResponse *)resp {
-    // 存数据到数据库。
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    [realm beginWriteTransaction];
-    for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.longConnectIplistArray) {
-        NSString *domain = [[NSString alloc] initWithData:longBuiltinIp.domain encoding:NSUTF8StringEncoding];
-        NSString *ipString = [[NSString alloc] initWithData:longBuiltinIp.ip encoding:NSUTF8StringEncoding];
-        WCBuiltinIP *ip = [[WCBuiltinIP alloc] initWithValue:@{@"isLongIP": @YES,
-                @"type": @(longBuiltinIp.type),
-                @"port": @(longBuiltinIp.port),
-                @"ip": [ipString stringByReplacingOccurrencesOfString:@"\0" withString:@""],
-                @"domain": domain}];
-        [realm addOrUpdateObject:ip];
-
-    };
-
-    for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.shortConnectIplistArray) {
-        NSString *domain = [[NSString alloc] initWithData:longBuiltinIp.domain encoding:NSUTF8StringEncoding];
-        NSString *ipString = [[NSString alloc] initWithData:longBuiltinIp.ip encoding:NSUTF8StringEncoding];
-        WCBuiltinIP *ip = [[WCBuiltinIP alloc] initWithValue:@{@"isLongIP": @NO,
-                @"type": @(longBuiltinIp.type),
-                @"port": @(longBuiltinIp.port),
-                @"ip": [ipString stringByReplacingOccurrencesOfString:@"\0" withString:@""],
-                @"domain": domain}];
-        [realm addOrUpdateObject:ip];
-    };
-    
-    [realm commitWriteTransaction];
-}
-
-// delete saved cookie
-- (void)clearCookie {
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    
-    [realm beginWriteTransaction];
-    
-    Cookie *cookie = [[Cookie allObjects] firstObject];
-    [realm deleteObject:cookie];
-    
-    [realm commitWriteTransaction];
-}
-
 
 - (void)startNaviUrl:(NSString *)url {
     UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];

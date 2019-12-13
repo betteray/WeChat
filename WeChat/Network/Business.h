@@ -16,10 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSData *)identifyReq2bufWithSyncKey:(NSData *)syncKey
                                    uin:(int)uin;
++ (NSData *)syncDoneReq2Buf;
 
 + (void)newInitWithSyncKeyCur:(NSData *)syncKeyCur syncKeyMax:(NSData *)syncKeyMax;
 
 + (void)newSync;
+
 
 @end
 

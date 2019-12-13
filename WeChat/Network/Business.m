@@ -7,14 +7,11 @@
 //
 
 #import "Business.h"
-#import "AccountInfo.h"
-#import "SessionKeyStore.h"
-#import "long_pack.h"
 #import "SyncCmdHandler.h"
 #import "SyncKeyCompare.h"
-#import "SyncKeyStore.h"
 #import "PersonalInfoService.h"
 #import "GetCDNDnsService.h"
+#import "FSOpenSSL.h"
 
 @implementation Business
 
@@ -24,8 +21,8 @@
         NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
         LogDebug(@"%@", sessionKey);
         [base setSessionKey:sessionKey];
-        NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
-        AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:pre] firstObject];
+
+        AccountInfo *accountInfo = [DBManager accountInfo];
         [base setUin:accountInfo.uin];
         [base setScene:0]; // iMac 1
         [base setClientVersion:CLIENT_VERSION];
@@ -88,8 +85,7 @@
 
 + (void)newInitWithSyncKeyCur:(NSData *)syncKeyCur syncKeyMax:(NSData *)syncKeyMax {
     NewInitRequest *request = [NewInitRequest new];
-    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
-    AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:pre] firstObject];
+    AccountInfo *accountInfo = [DBManager accountInfo];
     request.userName = accountInfo.userName;
     SKBuiltinBuffer_t *currentSynckey = nil;
     SKBuiltinBuffer_t *maxSynckey = nil;
@@ -119,11 +115,8 @@
                           [WeChatClient sharedClient].sync_key_max = [response.maxSynckey data];
                           
                           // 存数据到数据库。
-                          RLMRealm *realm = [RLMRealm defaultRealm];
-                          [realm beginWriteTransaction];
-                          [SyncKeyStore createOrUpdateInDefaultRealmWithValue:@[SyncKeyStoreID, [WeChatClient sharedClient].sync_key_cur]];
-                          [realm commitWriteTransaction];
-                          
+                          [DBManager saveSyncKey:[WeChatClient sharedClient].sync_key_cur];
+        
                           [SyncCmdHandler parseCmdList:response.cmdListArray];
                           
                           LogVerbose(@"newinit cmd count: %d, continue flag: %d", response.cmdCount, response.continueFlag);
@@ -180,16 +173,32 @@
                             [SyncKeyCompare compaireOldSyncKey:oldSyncKey newSyncKey:newSyncKey];
                             
                             // 存数据到数据库。
-                            RLMRealm *realm = [RLMRealm defaultRealm];
-                            [realm beginWriteTransaction];
-                            [SyncKeyStore createOrUpdateInDefaultRealmWithValue:@[SyncKeyStoreID, [WeChatClient sharedClient].sync_key_cur]];
-                            [realm commitWriteTransaction];
+                            [DBManager saveSyncKey:[WeChatClient sharedClient].sync_key_cur];
                             
                             [SyncCmdHandler parseCmdList:response.cmdList.listArray];
+        
+                            [[WeChatClient sharedClient] syncDone];
                         }
                         failure:^(NSError *error) {
                             LogError(@"new sync resp error: %@", error);
                         }];
+}
+
++ (NSData *)syncDoneReq2Buf {
+    NSError *error = nil;
+    SKBuiltinBuffer_t *buffer = [SKBuiltinBuffer_t parseFromData:[WeChatClient sharedClient].sync_key_cur error:&error];
+    SyncKey *syncKey = [SyncKey parseFromData:buffer.buffer error:&error];
+    if (!error && syncKey) {
+        NSData *body = [syncKey data];
+        // 包头:固定8字节,网络字节序;4字节本地时间与上次newsync时间差(us);4字节protobuf长度
+        NSData *header = [NSData dataWithHexString:@"000000ff"];
+        NSData *sendData = [header addDataAtTail:[NSData packInt32:(int) ([body length]) flip:YES]];
+        sendData = [sendData addDataAtTail:body];
+        LogDebug(@"Sync Done: %@", [FSOpenSSL data2HexString:sendData]);
+        return sendData;
+    }
+    
+    return nil;
 }
 
 @end

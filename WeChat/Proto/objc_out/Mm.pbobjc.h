@@ -331,6 +331,7 @@ CF_EXTERN_C_BEGIN
 @class JumpItem;
 @class JumpRemind;
 @class KVLogHead;
+@class KeyVal;
 @class LBSLifeAction;
 @class LQTDepositBanner;
 @class LQTDetailButton;
@@ -78221,14 +78222,18 @@ typedef GPB_ENUM(SyncControl_FieldNumber) {
 
 typedef GPB_ENUM(SyncKey_FieldNumber) {
   SyncKey_FieldNumber_KeyCount = 1,
+  SyncKey_FieldNumber_KeyArray = 2,
 };
 
 @interface SyncKey : GPBMessage
 
-/** repeated  fieldType:(11)[\@"NSMutableArray"]  key  = 2; */
 @property(nonatomic, readwrite) uint32_t keyCount;
 
 @property(nonatomic, readwrite) BOOL hasKeyCount;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<KeyVal*> *keyArray;
+/** The number of items in @c keyArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger keyArray_Count;
+
 @end
 
 #pragma mark - SyncVersionSingleReqInfo

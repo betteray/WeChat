@@ -9,14 +9,12 @@
 //
 
 #import "ShortLinkClientWithMMTLS.h"
-#import "DNSFetcher.h"
 #import <ASIHTTPRequest.h>
 
 #import "ShortLinkWithMMTLS.h"
 #import "MMTLSShortLinkResponse.h"
 
 #import "DefaultShortIp.h"
-#import "WCBuiltinIP.h"
 
 @interface ShortLinkClientWithMMTLS ()
 

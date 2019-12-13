@@ -29,25 +29,25 @@
         _responseData = responseData;
 
         int index = 3;
-        int16_t pubKeyLen = [responseData toInt16ofRange:NSMakeRange(index, 2) SwapBigToHost:YES]; //2字节长度
+        uint16_t pubKeyLen = [responseData toInt16ofRange:NSMakeRange(index, 2) SwapBigToHost:YES]; //2字节长度
 
         index += 2;
         _hashPart = [responseData subdataWithRange:NSMakeRange(index, pubKeyLen)];
 
         index = index + pubKeyLen + 3;
-        int16_t part1Len = [responseData toInt16ofRange:NSMakeRange(index, 2) SwapBigToHost:YES];
+        uint16_t part1Len = [responseData toInt16ofRange:NSMakeRange(index, 2) SwapBigToHost:YES];
 
         index += 2;
         _part1Data = [responseData subdataWithRange:NSMakeRange(index, part1Len)];
 
         index = index + part1Len + 3;
-        int16_t part2Len = [responseData toInt16ofRange:NSMakeRange(index, 2) SwapBigToHost:YES];
+        uint16_t part2Len = [responseData toInt16ofRange:NSMakeRange(index, 2) SwapBigToHost:YES];
 
         index += 2;
         _part2Data = [responseData subdataWithRange:NSMakeRange(index, part2Len)];
 
         index = index + part2Len + 3;
-        int16_t part3Len = [responseData toInt16ofRange:NSMakeRange(index, 2) SwapBigToHost:YES];
+        uint16_t part3Len = [responseData toInt16ofRange:NSMakeRange(index, 2) SwapBigToHost:YES];
 
         index += 2;
         _part3Data = [responseData subdataWithRange:NSMakeRange(index, part3Len)];

@@ -7,14 +7,8 @@
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "WC_AesGcm128.h"
-
 #include <openssl/rand.h>
-#include <openssl/ecdsa.h>
-#include <openssl/obj_mac.h>
-#include <openssl/err.h>
 #include <openssl/pem.h>
-#include <openssl/evp.h>
 
 #define AES_256_IVEC_LENGTH 12
 

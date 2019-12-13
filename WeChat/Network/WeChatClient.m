@@ -23,11 +23,6 @@
 
 #import "UtilsJni.h"
 
-#import "SyncKeyStore.h"
-#import "AccountInfo.h"
-#import "Cookie.h"
-#import "SessionKeyStore.h"
-
 #import "MMProtocalJni.h"
 #import "Business.h"
 
@@ -77,8 +72,7 @@
     if (self) {
         _seq = 1;
 
-        NSPredicate *accountInfoPre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
-        AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:accountInfoPre] firstObject];
+        AccountInfo *accountInfo = [DBManager accountInfo];
         _uin = accountInfo.uin;
 
         _tasks = [NSMutableArray array];
@@ -90,8 +84,7 @@
 #endif
         _client.delegate = self;
 
-        NSPredicate *syncKeyStorePre = [NSPredicate predicateWithFormat:@"ID = %@", SyncKeyStoreID];
-        SyncKeyStore *store = [[SyncKeyStore objectsWithPredicate:syncKeyStorePre] firstObject];
+        SyncKeyStore *store = [DBManager syncKey];
 
         if ([store.data length] > 0) {
             _sync_key_cur = store.data;
@@ -101,12 +94,10 @@
             _sync_key_max = [NSData data];
         }
 
-        NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
-        Cookie *cookieStore = [[Cookie objectsWithPredicate:cookiePre] firstObject];
-        _cookie = cookieStore.data;
+        Cookie *cookie = [DBManager cookie];
+        _cookie = cookie.data;
 
-        NSPredicate *sessionKeyStorePre = [NSPredicate predicateWithFormat:@"ID = %@", SessionKeyStoreID];
-        SessionKeyStore *sessionKeyStore = [[SessionKeyStore objectsWithPredicate:sessionKeyStorePre] firstObject];
+        SessionKeyStore *sessionKeyStore = [DBManager sessionKey];
         _sessionKey = sessionKeyStore.data;
 
         _heartbeatTimer = [NSTimer timerWithTimeInterval:70 * 3
@@ -133,6 +124,11 @@
 - (void)heartBeat {
     NSData *heart = [long_pack pack:-1 cmdId:CMDID_NOOP_REQ shortData:nil];
     [_client sendData:heart];
+}
+
+- (void)syncDone {
+    NSData *syncDone = [long_pack pack:_seq++ cmdId:CMDID_REPORT_KV_REQ shortData:[Business syncDoneReq2Buf]];
+    [_client sendData:syncDone];
 }
 
 #pragma mark - Public
@@ -165,14 +161,11 @@
     LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
 
     NSData *serilizedData = [[cgiWrap request] data];
-
-    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
-    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
-
     int signature = [MMProtocalJni genSignatureWithUin:_uin
                                                ecdhKey:[WeChatClient sharedClient].checkEcdhKey
                                           protofufData:serilizedData];
-
+    
+    Cookie *cookie = [DBManager cookie];
     NSData *shortLinkBuf = [mmpack EncodePack:cgiWrap.cgi
                                 serilizedData:serilizedData
                                           uin:_uin
@@ -205,15 +198,12 @@
 
     LogVerbose(@"Start Request: %@", cgiWrap.request);
 
-    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
-    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
-
     NSData *serilizedData = [[cgiWrap request] data];
-
     int signature = [MMProtocalJni genSignatureWithUin:_uin
                                                ecdhKey:_checkEcdhKey
                                           protofufData:serilizedData];
-
+    
+    Cookie *cookie = [DBManager cookie];
     NSData *sendData = [mmpack EncodePack:cgiWrap.cgi
                             serilizedData:serilizedData
                                       uin:_uin
@@ -249,11 +239,9 @@
 
     NSData *HybridEcdhEncryptData = [Jni HybridEcdhEncrypt:serilizedData];
 
-    NSPredicate *accountInfoPre = [NSPredicate predicateWithFormat:@"ID = %@", AccountInfoID];
-    AccountInfo *accountInfo = [[AccountInfo objectsWithPredicate:accountInfoPre] firstObject];
+    AccountInfo *accountInfo = [DBManager accountInfo];
+    Cookie *cookie = [DBManager cookie];
 
-    NSPredicate *cookiePre = [NSPredicate predicateWithFormat:@"ID = %@", CookieID];
-    Cookie *cookie = [[Cookie objectsWithPredicate:cookiePre] firstObject];
     NSData *cookieData = nil;
     if (cookie.data.length) cookieData = cookie.data;
 

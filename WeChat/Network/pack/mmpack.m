@@ -132,12 +132,7 @@
         index += cookieLen;
 
         [WeChatClient sharedClient].cookie = cookie;
-
-        //更新cookie到数据库
-        RLMRealm *realm = [RLMRealm defaultRealm];
-        [realm beginWriteTransaction];
-        [Cookie createOrUpdateInDefaultRealmWithValue:@[CookieID, cookie]];
-        [realm commitWriteTransaction];
+        [DBManager saveCookie:cookie];
     } else if (cookieLen > 0xf) {
         LogError(@"UnPack BF Fail, cookieLen too long.");
         return nil;

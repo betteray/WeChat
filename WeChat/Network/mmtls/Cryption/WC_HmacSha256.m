@@ -6,7 +6,6 @@
 //  Copyright © 2018 ray. All rights reserved.
 //
 
-#import "WC_HmacSha256.h"
 #include <openssl/evp.h>
 #include <openssl/hmac.h>
 

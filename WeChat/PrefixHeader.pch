@@ -48,7 +48,7 @@
     #define LogVerbose(fmt, ...) DDLogVerbose((@"[V][🍀] [%s] [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
     #ifdef DEBUG
-    static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+    static const DDLogLevel ddLogLevel = DDLogLevelAll;
     #else
     static const DDLogLevel ddLogLevel = LOG_LEVEL_ERROR;
     #endif

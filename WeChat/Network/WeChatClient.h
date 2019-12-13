@@ -34,6 +34,7 @@ typedef void (^FailureBlock)(NSError *error);
 
 - (void)start;
 - (void)restart;
+- (void)syncDone;
 
 - (void)registerWeChat:(CgiWrap *)cgiWrap
                success:(SuccessBlock)successBlock

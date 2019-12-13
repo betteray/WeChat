@@ -7,7 +7,7 @@
 //
 
 #import "CdnLogic.h"
-#import "CdnTask.h"
+#import "CdnSnsUploadTask.h"
 
 @interface CdnLogic()
 
@@ -41,7 +41,7 @@
     
     NSMutableArray *ma = [NSMutableArray array];
     for (NSString *path in picPaths) {
-        CdnTask *task = [[CdnTask alloc] initWithSeq: _seq++];
+        CdnSnsUploadTask *task = [[CdnSnsUploadTask alloc] initWithSeq: _seq++];
         [task startC2CUpload:path
                      success:^(NSDictionary *  _Nullable response) {
             [ma addObject:response];

@@ -10,6 +10,7 @@
 #import "FSOpenSSL.h"
 #import "CdnLogic.h"
 #import "WCSafeSDK.h"
+#import "SnsUploadImageService.h"
 
 @interface MomentsTableViewController ()
 
@@ -24,20 +25,22 @@
 }
 
 - (IBAction)sendSnsPostRequest:(id)sender {
-    NSMutableArray *ma = [NSMutableArray array];
-    for (int i = 1; i < 4 ; i++) {
-        NSString *pic = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"pic_%d", i] ofType:@"jpg"];
-        [ma addObject:pic];
-    }
-    
-    [[CdnLogic sharedInstance] startC2CUpload:ma success:^(NSArray *  _Nullable response) {
-        LogVerbose(@"上传朋友圈图片 response： %@", response);
-        if ([response count]) {
-            [self startSendSNSPost:response];
-        }
-    } failure:^(NSError * _Nonnull error) {
-        
-    }];
+//    NSMutableArray *ma = [NSMutableArray array];
+//    for (int i = 1; i < 4 ; i++) {
+//        NSString *pic = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"pic_%d", i] ofType:@"jpg"];
+//        [ma addObject:pic];
+//    }
+//
+//    [[CdnLogic sharedInstance] startC2CUpload:ma success:^(NSArray *  _Nullable response) {
+//        LogVerbose(@"上传朋友圈图片 response： %@", response);
+//        if ([response count]) {
+//            [self startSendSNSPost:response];
+//        }
+//    } failure:^(NSError * _Nonnull error) {
+//
+//    }];
+    NSString *pic = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"pic_%d", 1] ofType:@"jpg"];
+    [SnsUploadImageService SnsUpload:pic];
 }
 
 - (void)startSendSNSPost:(NSArray *)cdnResponse {

@@ -18,7 +18,6 @@
 
 #import "long_pack.h"
 #import "DefaultLongIp.h"
-#import "WCBuiltinIP.h"
 
 #define CMDID_NOOP_REQ 6
 

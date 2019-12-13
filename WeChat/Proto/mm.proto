@@ -19806,7 +19806,7 @@ message SyncControl {
 
 message SyncKey {
     required  uint32  keyCount  = 1;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  key  = 2;
+    repeated  KeyVal  key  = 2;
 }
 
 message SyncVersionSingleReqInfo {
