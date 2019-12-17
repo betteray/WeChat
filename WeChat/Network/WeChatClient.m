@@ -22,9 +22,10 @@
 #import "long_pack.h"
 
 #import "UtilsJni.h"
+#import "FSOpenSSL.h"
 
 #import "MMProtocalJni.h"
-#import "Business.h"
+#import "SyncService.h"
 
 #define CMDID_NOOP_REQ 6
 #define CMDID_IDENTIFY_REQ 205
@@ -127,7 +128,7 @@
 }
 
 - (void)syncDone {
-    NSData *syncDone = [long_pack pack:_seq++ cmdId:CMDID_REPORT_KV_REQ shortData:[Business syncDoneReq2Buf]];
+    NSData *syncDone = [long_pack pack:_seq++ cmdId:CMDID_REPORT_KV_REQ shortData:[SyncService syncDoneReq2Buf]];
     [_client sendData:syncDone];
 }
 
@@ -174,7 +175,7 @@
              failure:(FailureBlock)failureBlock {
     [[self class] setBaseResquestIfNeed:cgiWrap];
 
-    LogVerbose(@"Start Request: \n\n%@\n", cgiWrap.request);
+    LogVerbose(@"Start Request cmdId: %d", cgiWrap.cmdId);
 
     NSData *serilizedData = [[cgiWrap request] data];
     int signature = [MMProtocalJni genSignatureWithUin:_uin
@@ -212,7 +213,7 @@
     task.cgiWrap = cgiWrap;
     [_tasks addObject:task];
 
-    LogVerbose(@"Start Request: %@", cgiWrap.request);
+    LogVerbose(@"Post Request cgiPath: %@", cgiWrap.cgiPath);
 
     NSData *serilizedData = [[cgiWrap request] data];
     int signature = [MMProtocalJni genSignatureWithUin:_uin
@@ -333,7 +334,7 @@
     NSError *error = nil;
     id response = [(GPBMessage *) [task.cgiWrap.responseClass alloc] initWithData:protobufData error:&error];
     if (error) {
-        LogError("ProtoBuf Serilized Error: %@", error);
+        LogError("ProtoBuf Serilized Error: %@\n ProtoBuf Data: %@", error, [FSOpenSSL data2HexString:protobufData]);
         if (task.failBlock) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 ((FailureBlock) task.failBlock)(error);
@@ -369,10 +370,10 @@
                     case CMDID_PUSH_ACK: {
                         if ([self.sync_key_cur length] == 0) {
                             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                [Business newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
+                                [SyncService newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
                             });
                         } else {
-                            [Business newSync];
+                            [SyncService newSync];
                         }
                         break;
                     }

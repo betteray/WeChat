@@ -14,7 +14,7 @@
 
 - (NSData *)getHashPart;
 - (NSData *)getPart1;
-- (NSData *)getPart2;
+- (NSMutableArray<NSData *> *)getDataSegs;
 - (NSData *)getPart3;
 
 @end

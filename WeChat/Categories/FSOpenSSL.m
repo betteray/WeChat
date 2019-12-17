@@ -543,6 +543,33 @@ static GenRsaKeyResult generate_rsa_key_pair_1024(char *_pem_public_key_buf, con
     return [outStrg copy];
 }
 
++ (NSString *)sha1StringFromData:(NSData *)data
+{
+    NSData *sha1 = [self sha1DataFromData:data];
+    NSMutableString *ms = [NSMutableString new];
+    unsigned int i;
+    for (i = 0; i < [sha1 length]; i++)
+    {
+        [ms appendFormat:@"%02x", ((Byte *)[sha1 bytes])[i]];
+    }
+    return [ms copy];
+}
+
++ (NSData *)sha1DataFromData:(NSData *)data {
+    unsigned char *inStrg = (unsigned char *) [data bytes];
+    unsigned long lngth = [data length];
+    unsigned char result[SHA_DIGEST_LENGTH] = {0};
+
+    SHA_CTX sha256;
+    SHA_Init(&sha256);
+    SHA_Update(&sha256, inStrg, lngth);
+    SHA_Final(result, &sha256);
+
+    NSData *r = [[NSData alloc] initWithBytes:result length:SHA_DIGEST_LENGTH];
+    LogDebug(@"%@", r);
+    return r;
+}
+
 + (NSString *)base64FromString:(NSString *)string encodeWithNewlines:(BOOL)encodeWithNewlines
 {
     BIO *mem = BIO_new(BIO_s_mem());

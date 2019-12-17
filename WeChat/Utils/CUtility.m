@@ -9,7 +9,6 @@
 #import "CUtility.h"
 #import "FSOpenSSL.h"
 
-
 @implementation CUtility
 
 + (uint32_t)numberVersionOf:(NSString *)stringVersion

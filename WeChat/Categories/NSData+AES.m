@@ -136,7 +136,7 @@ static int aes_cbc_decrypt(const unsigned char *pKey, unsigned int uiKeyLen, con
     }
     else
     {
-        LogError(@"AES_CBC_encryptWithKey error: %d", ret);
+        LogError(@"AES_CBC_encryptWithKey error: %d \n Data: %@\n aesKey: %@", ret, self, aesKey);
         return nil;
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DownloadVoiceService.h
+//  CalRqtAlg.h
 //  WeChat
 //
 //  Created by ray on 2019/12/13.
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DownloadVoiceService : NSObject
+@interface CalRqtAlg : NSObject
 
-+ (void)getMsgVoice:(uint32_t)msgId clientMsgID:(NSString *)clientMsgId length:(uint32_t)length;
++ (int)calRqtData:(NSData *)data cmd:(unsigned int)cmd uin:(unsigned int)uin;
 
 @end
 

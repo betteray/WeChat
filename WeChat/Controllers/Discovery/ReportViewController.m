@@ -7,7 +7,7 @@
 //
 
 #import "ReportViewController.h"
-#import "Business.h"
+#import "SyncService.h"
 #import "FSOpenSSL.h"
 
 @interface ReportViewController ()

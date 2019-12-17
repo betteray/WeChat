@@ -149,35 +149,31 @@
     
     // 第一部分
     NSData *encryptedPart1 = [response getPart1];
-    
     NSMutableData *aad1 = [[NSData dataWithHexString:@"000000000000000116F103"] mutableCopy];
     [aad1 appendData:[NSData packInt32:(int32_t)[encryptedPart1 length] flip:NO]];
-    
     NSData *readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
-    
     NSData *plainText1 = [WC_AesGcm128 aes128gcmDecrypt:encryptedPart1 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
     
-    // 第二部分
-    NSData *encrypedPart2 = [response getPart2];
-    
+    // 第二部分 存在多个片段，需分别解密然后拼装。
     aad1 = [[NSData dataWithHexString:@"000000000000000217F10301"] mutableCopy];
-    [aad1 appendData:[NSData packInt32:(int32_t)[encrypedPart2 length] flip:NO]];
-    
-    readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
-    
-    NSData *plainText2 = [WC_AesGcm128 aes128gcmDecrypt:encrypedPart2 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
+    NSMutableData *plainResponseText = [NSMutableData data];
+    NSMutableArray<NSData *> *dataSegs = [response getDataSegs];
+    for (int i=0; i<dataSegs.count; i++) {
+        NSData *encrypedDataSeg = dataSegs[i];
+        [aad1 appendData:[NSData packInt32:(int32_t)[encrypedDataSeg length] flip:NO]];
+        readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
+        NSData *plainDataSeg = [WC_AesGcm128 aes128gcmDecrypt:encrypedDataSeg aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
+        [plainResponseText appendData:plainDataSeg];
+    }
     
     // 第三部分
     NSData *encrypedPart3 = [response getPart3];
-    
     aad1 = [[NSData dataWithHexString:@"000000000000000317F10301"] mutableCopy];
     [aad1 appendData:[NSData packInt32:(int32_t)[encrypedPart3 length] flip:NO]];
-    
     readIV1 = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_readSeq++]; //序号从1开始。
-
     NSData *plainText3 = [WC_AesGcm128 aes128gcmDecrypt:encrypedPart3 aad:[aad1 copy] key:shortlinkWriteKey.KEY ivec:readIV1];
 
-    return plainText2;
+    return plainResponseText;
 }
 
 @end

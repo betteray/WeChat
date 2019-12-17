@@ -58,21 +58,35 @@
                     // <msg>
                     //     <img aeskey="455ef37de7239ca561a3ce12783a5d2b" encryver="1" cdnthumbaeskey="455ef37de7239ca561a3ce12783a5d2b" cdnthumburl="304f02010004483046020100020474e9584d02033d0af802045830feb602045df2f8330421777869645f3330756864736b6b6c79636932323135325f313537363230343333390204010400020201000400" cdnthumblength="2738" cdnthumbheight="39" cdnthumbwidth="69" cdnmidheight="0" cdnmidwidth="0" cdnhdheight="0" cdnhdwidth="0" cdnmidimgurl="304f02010004483046020100020474e9584d02033d0af802045830feb602045df2f8330421777869645f3330756864736b6b6c79636932323135325f313537363230343333390204010400020201000400" length="6825" md5="30e013e2e1aacc5fe0487a92c747c650" />
                     // </msg>
+                    
+                    // <msg>
+                    //     <img aeskey="b57168182ec2a5593635e41954a16701" encryver="0" cdnthumbaeskey="b57168182ec2a5593635e41954a16701" cdnthumburl="30580201000451304f020100020474e9584d02033d0af802047034feb602045df497b3042a777875706c6f61645f777869645f3330756864736b6b6c79636932323230305f313537363331303730340204010438010201000400" cdnthumblength="2874" cdnthumbheight="67" cdnthumbwidth="120" cdnmidheight="0" cdnmidwidth="0" cdnhdheight="0" cdnhdwidth="0" cdnmidimgurl="30580201000451304f020100020474e9584d02033d0af802047034feb602045df497b3042a777875706c6f61645f777869645f3330756864736b6b6c79636932323230305f313537363331303730340204010438010201000400" length="97574" cdnbigimgurl="30580201000451304f020100020474e9584d02033d0af802047034feb602045df497b3042a777875706c6f61645f777869645f3330756864736b6b6c79636932323230305f313537363331303730340204010438010201000400" hdlength="270545" md5="cc1e5bf7e089075b824a3ef5372ae10b" />
+                    // </msg>
                     NSString *from = msg.fromUserName.string;
                     NSString *to = msg.toUserName.string;
                     ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content.string encoding:NSUTF8StringEncoding error:nil];
                     NSDictionary *attrs = [[document.rootElement firstChildWithTag:@"img"] attributes];
-                    [GetMsgImgService getMsgImg:msg.msgId from:from to:to dataTotalLen:[attrs[@"length"] intValue]];
+                    NSNumber *thumbLength = [attrs objectForKey:@"length"];
+                    if (thumbLength) { // 缩略图应该都有吧。 控制位在请求上设置。
+                        [GetMsgImgService getMsgImg:msg.msgId startPos:0 from:from to:to dataTotalLen:[thumbLength intValue] original:NO];
+                    }
+                    NSNumber *hdLength = [attrs objectForKey:@"hdlength"];
+                    if (thumbLength) { //需要判断有没有高清图，再获取高清图。
+                        [GetMsgImgService getMsgImg:msg.msgId startPos:0 from:from to:to dataTotalLen:[hdLength intValue] original:YES];
+                    }
                 }
                     break;
-                case 34: { //语音
+                case 34: { //收 语音 x
                     // <msg><voicemsg endflag="1" length="8198" voicelength="4740" clientmsgid="49815b6f8cf628b6cc64119a643bb6aawxid_30uhdskklyci22179_1576211669" fromusername="rowhongwei" downcount="0" cancelflag="0" voiceformat="4" forwardflag="0" bufid="650040178152112560" /></msg>
+                    
+//                    [普通消息]: msgId: 1106281102, createTime: 1576487825, fromUserName: rowhongwei, toUserName: wxid_30uhdskklyci22, msgType: 34, content: <msg><voicemsg endflag="1" length="6350" voicelength="4120" clientmsgid="49815b6f8cf628b6cc64119a643bb6aawxid_30uhdskklyci22215_1576487819" fromusername="rowhongwei" downcount="0" cancelflag="0" voiceformat="4" forwardflag="0" bufid="507242312405090687" /></msg>
+                    
                     ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content.string encoding:NSUTF8StringEncoding error:nil];
                     NSDictionary *attrs = [[document.rootElement firstChildWithTag:@"voicemsg"] attributes];
-                    [DownloadVoiceService getMsgVoice:msg.msgId clientMsgID:attrs[@"clientmsgid"] length:[attrs[@"length"] intValue]];
+                    [DownloadVoiceService getMsgVoice:msg.msgId clientMsgID:attrs[@"clientmsgid"] bufid:[attrs[@"bufid"] longLongValue] length:[attrs[@"length"] intValue]];
                 }
                     break;
-                case 43:
+                case 43: // 收视频 ok
                 {
                     // <?xml version="1.0"?>
                     // <msg>

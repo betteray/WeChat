@@ -7,9 +7,9 @@
 //
 
 #import "DownloadVideoService.h"
-#import "FSOpenSSL.h"
+#import "FileUtil.h"
 
-#define DATA_SEG_LEN 5000
+#define DATA_SEG_LEN 65536
 
 @implementation DownloadVideoService
 
@@ -46,22 +46,19 @@
                                 [self downloadVideo:msgId startPos:startPos + count dataTotalLen:dataTotalLen];
                             }
         
-                            [self saveVideoToDoc:response];
+                            [self saveVideoToDoc:response msgId:msgId];
                       }
                       failure:^(NSError *_Nonnull error){}];
     
 }
 
-+ (void)saveVideoToDoc:(DownloadVideoResponse *)resp {
++ (void)saveVideoToDoc:(DownloadVideoResponse *)resp msgId:(uint32_t)msgId {
     if (resp.baseResponse.ret == 0) {
-        NSData *voiceData = resp.data_p.buffer;
+        NSData *videoData = resp.data_p.buffer;
         NSString *dirName = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
                               stringByAppendingPathComponent:@"video"];
-        NSFileManager *fileNamager = [NSFileManager defaultManager];
-        if ([fileNamager createDirectoryAtPath:dirName withIntermediateDirectories:YES attributes:nil error:nil]) {
-            NSString *fileName = [dirName stringByAppendingPathComponent:[FSOpenSSL md5StringFromData:voiceData]];
-            [voiceData writeToFile:fileName atomically:YES];
-        }
+        NSString *filePath = [dirName stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.mp4", msgId]];
+        [FileUtil saveFileWithData:videoData withFilePath:filePath];
     }
 }
 

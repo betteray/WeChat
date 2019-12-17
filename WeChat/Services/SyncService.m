@@ -6,14 +6,14 @@
 //  Copyright © 2019 ray. All rights reserved.
 //
 
-#import "Business.h"
+#import "SyncService.h"
 #import "SyncCmdHandler.h"
 #import "SyncKeyCompare.h"
 #import "PersonalInfoService.h"
 #import "GetCDNDnsService.h"
 #import "FSOpenSSL.h"
 
-@implementation Business
+@implementation SyncService
 
 
 
@@ -179,7 +179,6 @@
         NSData *header = [NSData dataWithHexString:@"000000ff"];
         NSData *sendData = [header addDataAtTail:[NSData packInt32:(int) ([body length]) flip:YES]];
         sendData = [sendData addDataAtTail:body];
-        LogDebug(@"Sync Done: %@", [FSOpenSSL data2HexString:sendData]);
         return sendData;
     }
     

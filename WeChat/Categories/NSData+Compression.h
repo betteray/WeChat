@@ -23,4 +23,7 @@ typedef NS_ENUM(NSUInteger, BBZlibErrorCode) {
 - (NSData *)dataByDeflating;
 - (NSData *)dataByInflatingWithError:(NSError **)error;
 
+- (NSData *)gunzippedData;
+- (NSData *)gunzip:(NSError *__autoreleasing *)error;
+
 @end

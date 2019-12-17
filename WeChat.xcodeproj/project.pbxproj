@@ -39,7 +39,7 @@
 		464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82921D4E8BD003E923F /* NSString+Regex.m */; };
 		465A634B22E7FCBA00711C60 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A634A22E7FCBA00711C60 /* ReportViewController.m */; };
 		465A64DB22EEDBBE00711C60 /* mmhongbao.proto in Sources */ = {isa = PBXBuildFile; fileRef = 465A64DA22EEDBBE00711C60 /* mmhongbao.proto */; };
-		465B39B422D5EFAD001FDE53 /* Business.m in Sources */ = {isa = PBXBuildFile; fileRef = 465B39B322D5EFAD001FDE53 /* Business.m */; };
+		465B39B422D5EFAD001FDE53 /* SyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 465B39B322D5EFAD001FDE53 /* SyncService.m */; };
 		466C4AC321DDBFA800743075 /* WCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C4AC221DDBFA800743075 /* WCButton.m */; };
 		466C4AC621DDD65900743075 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C4AC521DDD65900743075 /* ContactsTableViewController.m */; };
 		466C4ACA21DDD6D200743075 /* ContactsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C4AC921DDD6D200743075 /* ContactsTableViewCell.m */; };
@@ -104,10 +104,13 @@
 		71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */; };
 		71076B2621CCF10500570FB1 /* TestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71076B2521CCF10500570FB1 /* TestViewController.mm */; };
 		710F14FB2360343B0034FA65 /* NewSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 710F14FA2360343B0034FA65 /* NewSyncService.m */; };
+		7112117E23A77B0000A5DBCA /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112117D23A77B0000A5DBCA /* FileUtil.m */; };
+		7112118523A8C7C700A5DBCA /* SendMsgService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112118423A8C7C700A5DBCA /* SendMsgService.m */; };
 		7112DBC223A334AD008CC5E1 /* GetMsgImgService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBC123A334AD008CC5E1 /* GetMsgImgService.m */; };
 		7112DBC723A34A10008CC5E1 /* DownloadVoiceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBC623A34A10008CC5E1 /* DownloadVoiceService.m */; };
 		7112DBCA23A37192008CC5E1 /* DownloadVideoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBC923A37192008CC5E1 /* DownloadVideoService.m */; };
 		7112DBCD23A37F5D008CC5E1 /* SnsUploadImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBCC23A37F5D008CC5E1 /* SnsUploadImageService.m */; };
+		7112DBD023A3CF58008CC5E1 /* CalRqtAlg.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBCF23A3CF58008CC5E1 /* CalRqtAlg.m */; };
 		711E9B3E23598D8200C5B655 /* RiskScanBufUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 711E9B3D23598D8200C5B655 /* RiskScanBufUtil.m */; };
 		711E9B4E2359EC0700C5B655 /* RiskScanBufReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 711E9B4D2359EC0700C5B655 /* RiskScanBufReq.m */; };
 		7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C35D21C3494300A3E900 /* LoginViewController.m */; };
@@ -293,8 +296,8 @@
 		465A634922E7FCBA00711C60 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		465A634A22E7FCBA00711C60 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
 		465A64DA22EEDBBE00711C60 /* mmhongbao.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mmhongbao.proto; sourceTree = "<group>"; };
-		465B39B222D5EFAD001FDE53 /* Business.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Business.h; sourceTree = "<group>"; };
-		465B39B322D5EFAD001FDE53 /* Business.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Business.m; sourceTree = "<group>"; };
+		465B39B222D5EFAD001FDE53 /* SyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncService.h; sourceTree = "<group>"; };
+		465B39B322D5EFAD001FDE53 /* SyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncService.m; sourceTree = "<group>"; };
 		466C4AC121DDBFA800743075 /* WCButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCButton.h; sourceTree = "<group>"; };
 		466C4AC221DDBFA800743075 /* WCButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCButton.m; sourceTree = "<group>"; };
 		466C4AC421DDD65900743075 /* ContactsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
@@ -379,6 +382,10 @@
 		71076B2521CCF10500570FB1 /* TestViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestViewController.mm; sourceTree = "<group>"; };
 		710F14F92360343B0034FA65 /* NewSyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewSyncService.h; sourceTree = "<group>"; };
 		710F14FA2360343B0034FA65 /* NewSyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewSyncService.m; sourceTree = "<group>"; };
+		7112117C23A77B0000A5DBCA /* FileUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileUtil.h; sourceTree = "<group>"; };
+		7112117D23A77B0000A5DBCA /* FileUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileUtil.m; sourceTree = "<group>"; };
+		7112118323A8C7C700A5DBCA /* SendMsgService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgService.h; sourceTree = "<group>"; };
+		7112118423A8C7C700A5DBCA /* SendMsgService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgService.m; sourceTree = "<group>"; };
 		7112DBC023A334AD008CC5E1 /* GetMsgImgService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetMsgImgService.h; sourceTree = "<group>"; };
 		7112DBC123A334AD008CC5E1 /* GetMsgImgService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetMsgImgService.m; sourceTree = "<group>"; };
 		7112DBC523A34A10008CC5E1 /* DownloadVoiceService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadVoiceService.h; sourceTree = "<group>"; };
@@ -387,6 +394,8 @@
 		7112DBC923A37192008CC5E1 /* DownloadVideoService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadVideoService.m; sourceTree = "<group>"; };
 		7112DBCB23A37F5D008CC5E1 /* SnsUploadImageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnsUploadImageService.h; sourceTree = "<group>"; };
 		7112DBCC23A37F5D008CC5E1 /* SnsUploadImageService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnsUploadImageService.m; sourceTree = "<group>"; };
+		7112DBCE23A3CF58008CC5E1 /* CalRqtAlg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalRqtAlg.h; sourceTree = "<group>"; };
+		7112DBCF23A3CF58008CC5E1 /* CalRqtAlg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalRqtAlg.m; sourceTree = "<group>"; };
 		711E9B3C23598D8200C5B655 /* RiskScanBufUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RiskScanBufUtil.h; sourceTree = "<group>"; };
 		711E9B3D23598D8200C5B655 /* RiskScanBufUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RiskScanBufUtil.m; sourceTree = "<group>"; };
 		711E9B4C2359EC0700C5B655 /* RiskScanBufReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RiskScanBufReq.h; sourceTree = "<group>"; };
@@ -720,13 +729,13 @@
 			path = IDACode;
 			sourceTree = "<group>";
 		};
-		462D9C3721DCD2DF00FC5461 /* Business */ = {
+		462D9C3721DCD2DF00FC5461 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */,
 				4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */,
-				465B39B222D5EFAD001FDE53 /* Business.h */,
-				465B39B322D5EFAD001FDE53 /* Business.m */,
+				465B39B222D5EFAD001FDE53 /* SyncService.h */,
+				465B39B322D5EFAD001FDE53 /* SyncService.m */,
 				462D9C3421DCD2D000FC5461 /* SyncCmdHandler.h */,
 				462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */,
 				71F9F5A8235459AD00C6C736 /* PersonalInfoService.h */,
@@ -743,8 +752,10 @@
 				7112DBC923A37192008CC5E1 /* DownloadVideoService.m */,
 				7112DBCB23A37F5D008CC5E1 /* SnsUploadImageService.h */,
 				7112DBCC23A37F5D008CC5E1 /* SnsUploadImageService.m */,
+				7112118323A8C7C700A5DBCA /* SendMsgService.h */,
+				7112118423A8C7C700A5DBCA /* SendMsgService.m */,
 			);
-			path = Business;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		463BAD2B21D38EFA00847A8B /* Store */ = {
@@ -962,12 +973,23 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		7112117B23A77AF000A5DBCA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				46206F5E21E9EA1E00BF0B82 /* CUtility.h */,
+				46206F5F21E9EA1E00BF0B82 /* CUtility.m */,
+				7112117C23A77B0000A5DBCA /* FileUtil.h */,
+				7112117D23A77B0000A5DBCA /* FileUtil.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		711E9B3923598D4B00C5B655 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
+				714E35DD235806B50046F7D8 /* TarsModels */,
 				71F9F5C32355B8B500C6C736 /* WCSafeSDK.h */,
 				71F9F5C42355B8B500C6C736 /* WCSafeSDK.m */,
-				714E35DD235806B50046F7D8 /* TarsModels */,
 				711E9B3C23598D8200C5B655 /* RiskScanBufUtil.h */,
 				711E9B3D23598D8200C5B655 /* RiskScanBufUtil.m */,
 				711E9B4C2359EC0700C5B655 /* RiskScanBufReq.h */,
@@ -976,6 +998,8 @@
 				460429A922D0911900F9BB94 /* MMProtocalJni.m */,
 				71E9EABF234068FA00353DBD /* CalSpamAlg.h */,
 				71E9EAC0234068FA00353DBD /* CalSpamAlg.m */,
+				7112DBCE23A3CF58008CC5E1 /* CalRqtAlg.h */,
+				7112DBCF23A3CF58008CC5E1 /* CalRqtAlg.m */,
 			);
 			path = Crypto;
 			sourceTree = "<group>";
@@ -1029,12 +1053,13 @@
 		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				7112117B23A77AF000A5DBCA /* Utils */,
 				711E9B3923598D4B00C5B655 /* Crypto */,
 				71F9F5B9235576AA00C6C736 /* mmres */,
 				460CDE4421FEAFC80075F3E5 /* IDACode */,
 				4649DD6621ED864F006315DC /* Res4test */,
 				466C4AC021DDBF8700743075 /* Views */,
-				462D9C3721DCD2DF00FC5461 /* Business */,
+				462D9C3721DCD2DF00FC5461 /* Services */,
 				463BAD2B21D38EFA00847A8B /* Store */,
 				712C6F18214A6A5800603022 /* Proto */,
 				469F657C21D2801100C1DC8B /* Vendor */,
@@ -1047,8 +1072,6 @@
 				71D3DAA921AEACD2002ACF1C /* ViewCat */,
 				712C7065214A9A8B00603022 /* Constants.h */,
 				7154D5192196B8DF005064C4 /* PrefixHeader.pch */,
-				46206F5E21E9EA1E00BF0B82 /* CUtility.h */,
-				46206F5F21E9EA1E00BF0B82 /* CUtility.m */,
 				46CD1A8422DED2FE0023C585 /* TODO.md */,
 			);
 			path = WeChat;
@@ -1704,9 +1727,10 @@
 				71F9F5AA235459AD00C6C736 /* PersonalInfoService.m in Sources */,
 				7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */,
 				7121C36521C3610000A3E900 /* ChatsTableViewController.m in Sources */,
+				7112DBD023A3CF58008CC5E1 /* CalRqtAlg.m in Sources */,
 				71E1C19D230657E900F5032A /* safe.proto in Sources */,
 				7112DBC723A34A10008CC5E1 /* DownloadVoiceService.m in Sources */,
-				465B39B422D5EFAD001FDE53 /* Business.m in Sources */,
+				465B39B422D5EFAD001FDE53 /* SyncService.m in Sources */,
 				71F9F5CC2355CB3D00C6C736 /* NSData+CRC32.m in Sources */,
 				716A93D4239AA2C200A0C9DC /* DBManager.m in Sources */,
 				46D2CA7C223A5DF30053C4A6 /* wwunkown.proto in Sources */,
@@ -1714,6 +1738,7 @@
 				71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */,
 				465A634B22E7FCBA00711C60 /* ReportViewController.m in Sources */,
 				46EB621221F98E1100760593 /* mmbuiltintype.proto in Sources */,
+				7112117E23A77B0000A5DBCA /* FileUtil.m in Sources */,
 				46EB620A21F98E1100760593 /* mmpay.proto in Sources */,
 				7154D5172196B721005064C4 /* NSData+HexDump.m in Sources */,
 				46EB620521F98E1100760593 /* mmremind.proto in Sources */,
@@ -1733,6 +1758,7 @@
 				712F95F521D0B91F00CFE3A0 /* DeviceManager.m in Sources */,
 				711E9B3E23598D8200C5B655 /* RiskScanBufUtil.m in Sources */,
 				46EB621321F98E1100760593 /* mmtalk.proto in Sources */,
+				7112118523A8C7C700A5DBCA /* SendMsgService.m in Sources */,
 				714E360B2358ADF90046F7D8 /* ReportRequestPacket.m in Sources */,
 				7161985321CB863A00A76F39 /* LongLinkClientWithMMTLS.m in Sources */,
 				714E36022358173D0046F7D8 /* ReportPhoneType.m in Sources */,

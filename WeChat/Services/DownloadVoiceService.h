@@ -1,5 +1,5 @@
 //
-//  GetMsgImgService.h
+//  DownloadVoiceService.h
 //  WeChat
 //
 //  Created by ray on 2019/12/13.
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GetMsgImgService : NSObject
+@interface DownloadVoiceService : NSObject
 
-+ (void)getMsgImg:(uint32_t)msgId from:(NSString *)from to:(NSString *)to dataTotalLen:(uint32_t)dataTotalLen;
++ (void)getMsgVoice:(uint32_t)msgId clientMsgID:(NSString *)clientMsgId bufid:(uint64_t)bufid length:(uint32_t)length;
 
 @end
 
