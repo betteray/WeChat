@@ -106,6 +106,7 @@
 		710F14FB2360343B0034FA65 /* NewSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 710F14FA2360343B0034FA65 /* NewSyncService.m */; };
 		7112117E23A77B0000A5DBCA /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112117D23A77B0000A5DBCA /* FileUtil.m */; };
 		7112118523A8C7C700A5DBCA /* SendMsgService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112118423A8C7C700A5DBCA /* SendMsgService.m */; };
+		7112118923A8E54E00A5DBCA /* 1106281122.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7112118823A8E54E00A5DBCA /* 1106281122.mp4 */; };
 		7112DBC223A334AD008CC5E1 /* GetMsgImgService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBC123A334AD008CC5E1 /* GetMsgImgService.m */; };
 		7112DBC723A34A10008CC5E1 /* DownloadVoiceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBC623A34A10008CC5E1 /* DownloadVoiceService.m */; };
 		7112DBCA23A37192008CC5E1 /* DownloadVideoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBC923A37192008CC5E1 /* DownloadVideoService.m */; };
@@ -386,6 +387,7 @@
 		7112117D23A77B0000A5DBCA /* FileUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileUtil.m; sourceTree = "<group>"; };
 		7112118323A8C7C700A5DBCA /* SendMsgService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgService.h; sourceTree = "<group>"; };
 		7112118423A8C7C700A5DBCA /* SendMsgService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgService.m; sourceTree = "<group>"; };
+		7112118823A8E54E00A5DBCA /* 1106281122.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1106281122.mp4; sourceTree = "<group>"; };
 		7112DBC023A334AD008CC5E1 /* GetMsgImgService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetMsgImgService.h; sourceTree = "<group>"; };
 		7112DBC123A334AD008CC5E1 /* GetMsgImgService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetMsgImgService.m; sourceTree = "<group>"; };
 		7112DBC523A34A10008CC5E1 /* DownloadVoiceService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadVoiceService.h; sourceTree = "<group>"; };
@@ -790,6 +792,7 @@
 		4649DD6621ED864F006315DC /* Res4test */ = {
 			isa = PBXGroup;
 			children = (
+				7112118823A8E54E00A5DBCA /* 1106281122.mp4 */,
 				713F5A5823A27F970096220C /* 1576159220872799.mp4 */,
 				713F5A5623A250220096220C /* test.amr */,
 				713F5A5223A23C770096220C /* cat_mouse.mp4 */,
@@ -1569,6 +1572,7 @@
 				71F9F5D023560E5A00C6C736 /* st-6p-login.bin in Resources */,
 				713F5A5723A250220096220C /* test.amr in Resources */,
 				4685A4B522E06FFF00DE95BE /* 703_login_3.txt in Resources */,
+				7112118923A8E54E00A5DBCA /* 1106281122.mp4 in Resources */,
 				713F5A5123A231EC0096220C /* 1576139358368.jpg in Resources */,
 				71808C10239E0619005C3BDE /* pic_2.jpg in Resources */,
 				713F5A5323A23C770096220C /* cat_mouse.mp4 in Resources */,

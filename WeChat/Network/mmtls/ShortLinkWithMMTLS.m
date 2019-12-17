@@ -105,16 +105,36 @@
     postData = [postData addDataAtTail:[NSData packInt16:(int16_t)[encryptedPart1 length] flip:YES]];
     postData = [postData addDataAtTail:encryptedPart1];
     
-    writeIV = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
-    aadddd = [NSData dataWithHexString:@"00000000000000"];
-    aadddd = [aadddd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
-    aadddd = [[aadddd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t)([_httpData length] + 0x10) flip:YES]]; //0x10 aad len
+    ////////
     
-    NSData *encryptedPart2 = [WC_AesGcm128 aes128gcmEncrypt:_httpData aad:aadddd key:shortlinkWriteKey.KEY ivec:writeIV];        //第二次加密 http 明文流量
+    NSUInteger block = [_httpData length] / 0x8000 + 1;
+    
+    NSUInteger startPos = 0;
+    for (NSUInteger index = 0; index < block; index ++) {
+        
+        NSUInteger sendCnt = 0;
+        if (_httpData.length - startPos > 0x8000) {
+            sendCnt = 0x8000; // 没次加密这么多
+        } else {
+            sendCnt = _httpData.length - startPos; // 加密剩余的
+        }
+        
+        NSData *subData = [_httpData subdataWithRange:NSMakeRange(startPos, sendCnt)];
+        writeIV = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；
+        aadddd = [NSData dataWithHexString:@"00000000000000"];
+        aadddd = [aadddd addDataAtTail:[NSData dataWithHexString:[NSString stringWithFormat:@"%2X", (unsigned int) (_writeSeq - 1)]]];
+        aadddd = [[aadddd addDataAtTail:[NSData dataWithHexString:@"17F103"]] addDataAtTail:[NSData packInt16:(int32_t)([subData length] + 0x10) flip:YES]]; //0x10 aad len
+        
+        NSData *encryptedPart2 = [WC_AesGcm128 aes128gcmEncrypt:subData aad:aadddd key:shortlinkWriteKey.KEY ivec:writeIV];        //第二次加密 http 明文流量
 
-    postData = [postData addDataAtTail:[NSData dataWithHexString:@"17F103"]];
-    postData = [postData addDataAtTail:[NSData packInt16:(int16_t)[encryptedPart2 length] flip:YES]];
-    postData = [postData addDataAtTail:encryptedPart2];
+        postData = [postData addDataAtTail:[NSData dataWithHexString:@"17F103"]];
+        postData = [postData addDataAtTail:[NSData packInt16:(int16_t)[encryptedPart2 length] flip:YES]];
+        postData = [postData addDataAtTail:encryptedPart2];
+        
+        startPos += sendCnt;
+    }
+    
+    //////
     
     NSData *plainTextData3 = [NSData dataWithHexString:@"00000003000101"]; // 第三次固定内容
     writeIV = [WC_Hex IV:shortlinkWriteKey.IV XORSeq:_writeSeq++]; //序号从1开始，每次+1；

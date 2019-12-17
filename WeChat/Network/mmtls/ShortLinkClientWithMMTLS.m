@@ -73,7 +73,8 @@
     [request setAllowCompressedResponse:NO];
     [request setRequestMethod:@"POST"];
     [request setPostBody:[mmtlsData mutableCopy]];
-
+    [request setTimeOutSeconds:30];
+    
     [request startSynchronous];
 
     NSError *error = [request error];

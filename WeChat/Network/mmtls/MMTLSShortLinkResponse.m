@@ -28,7 +28,9 @@
     {
         _responseData = responseData;
         _dataSegs = [NSMutableArray array];
-        [self parseData];
+        if (_responseData.length) {
+            [self parseData];
+        }
     }
 
     return self;
