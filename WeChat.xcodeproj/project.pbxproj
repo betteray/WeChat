@@ -426,7 +426,6 @@
 		712C6EFE214A5D8200603022 /* FSOpenSSL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOpenSSL.m; sourceTree = "<group>"; };
 		712C6EFF214A5D8200603022 /* FSOpenSSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOpenSSL.h; sourceTree = "<group>"; };
 		712C6F19214A6A5800603022 /* PROTO_README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = PROTO_README.md; sourceTree = "<group>"; };
-		712C7065214A9A8B00603022 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		712C70E7214AB2BC00603022 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		712C70EB214B5A4B00603022 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		712C70ED214B5A4B00603022 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
@@ -1073,7 +1072,6 @@
 				712C7146214BA35700603022 /* Model */,
 				712C7159214CDA9100603022 /* Others */,
 				71D3DAA921AEACD2002ACF1C /* ViewCat */,
-				712C7065214A9A8B00603022 /* Constants.h */,
 				7154D5192196B8DF005064C4 /* PrefixHeader.pch */,
 				46CD1A8422DED2FE0023C585 /* TODO.md */,
 			);
