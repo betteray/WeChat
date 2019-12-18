@@ -27,11 +27,13 @@
     [block appendData:[md5 dataUsingEncoding:NSUTF8StringEncoding]];
     
     LogVerbose(@"%@", block);
+   
+    // ok ======== ^^^^^^^ ===========
     
     NSMutableData *block2 = [[rqtKeyData addDataAtTail:
                               [NSData dataWithHexString:@"000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"]]
                              mutableCopy]; // 48 byte 00 // 48 byte 00
-    Byte *mutableBlock2 = [block mutableBytes];
+    Byte *mutableBlock2 = (Byte *) [block2 mutableBytes];
     for (int i=0; i<[block2 length]; i++) {
         mutableBlock2[i] ^= 0x5c;
     }
@@ -53,7 +55,7 @@
     
     int r3 = t1 & 0x7f;
     int r4 = (t3 << 16) & 0x7f0000;
-    int r5 = (t2 << 0) & 0x7f00;
+    int r5 = (t2 << 8) & 0x7f00;
     
     return r3 | r4 | r5 | ((uin<<5 | (cmd&0x1f)) << 24);
 }

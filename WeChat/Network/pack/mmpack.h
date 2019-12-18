@@ -13,7 +13,7 @@
 @interface mmpack : NSObject
 
 + (NSData *)EncodeHybirdEcdhEncryptPack:(int)cgi
-                          serilizedData:(NSData *)serilizedData
+                          serilizedData:(NSData *)hybridEncrypedData
                                     uin:(uint32_t)uin
                                  cookie:(NSData *)cookie
                              rsaVersion:(int)rsaVersion;

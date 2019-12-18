@@ -561,9 +561,9 @@ static GenRsaKeyResult generate_rsa_key_pair_1024(char *_pem_public_key_buf, con
     unsigned char result[SHA_DIGEST_LENGTH] = {0};
 
     SHA_CTX sha256;
-    SHA_Init(&sha256);
-    SHA_Update(&sha256, inStrg, lngth);
-    SHA_Final(result, &sha256);
+    SHA1_Init(&sha256);
+    SHA1_Update(&sha256, inStrg, lngth);
+    SHA1_Final(result, &sha256);
 
     NSData *r = [[NSData alloc] initWithBytes:result length:SHA_DIGEST_LENGTH];
     LogDebug(@"%@", r);

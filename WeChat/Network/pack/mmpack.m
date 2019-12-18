@@ -13,17 +13,18 @@
 #import "Varint128.h"
 #import "NSData+Compression.h"
 #import "NSData+AES.h"
+#import "CalRqtAlg.h"
 
 @implementation mmpack
 
 + (NSData *)EncodeHybirdEcdhEncryptPack:(int)cgi
-                          serilizedData:(NSData *)serilizedData
+                          serilizedData:(NSData *)hybridEncrypedData
                                     uin:(uint32_t)uin
                                  cookie:(NSData *)cookie
                              rsaVersion:(int)rsaVersion {
 
-    int bodyDataLen = (int) [serilizedData length];
-    int compressedBodyDataLen = (int) [serilizedData length];
+    int bodyDataLen = (int) [hybridEncrypedData length];
+    int compressedBodyDataLen = (int) [hybridEncrypedData length];
 
     NSMutableData *header = [NSMutableData data];
 
@@ -42,11 +43,16 @@
 
     [header appendData:[NSData dataWithHexString:@"02"]];
 
+    // cal rqt 
+    int rqt = [CalRqtAlg calRqtData:hybridEncrypedData cmd:1 uin:1];
+    NSData *rqtData = [Varint128 dataWithUInt32:rqt];
+    [header appendData:rqtData];
+    
     NSData *headerLen = [NSData dataWithHexString:[NSString stringWithFormat:@"%2x", (int) ((
             [header length] << 2) + 0x2)]]; //0x2 !use_compress
     [header replaceBytesInRange:NSMakeRange(0, 1) withBytes:[headerLen bytes]];
 
-    [header appendData:serilizedData];
+    [header appendData:hybridEncrypedData];
 
     return [header copy];
 }
@@ -90,6 +96,10 @@
     [header appendData:[Varint128 dataWithUInt32:signature]];//checksum
     [header appendData:[NSData dataWithHexString:@"010000"]];
 
+    int rqt = [CalRqtAlg calRqtData:aesedData cmd:1 uin:1];
+    NSData *rqtData = [Varint128 dataWithUInt32:rqt];
+    [header appendData:rqtData];
+    
     NSData *headerLen = [NSData dataWithHexString:[NSString stringWithFormat:@"%2x", (int) ((
             [header length] << 2) + (useCompress ? 1 : 2))]];
     [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[headerLen bytes]];

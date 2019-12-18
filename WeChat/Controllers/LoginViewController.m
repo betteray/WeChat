@@ -20,6 +20,7 @@
 #include <sys/time.h>
 #import "CalRqtAlg.h"
 #import "NSData+Compression.h"
+#import "Varint128.h"
 
 @interface LoginViewController ()
 
@@ -113,47 +114,7 @@
     request.meesageExt = @"";
     request.mediaTagName = @"";
     
-    int32_t uin = -810633676;
-
-    int rqt = [CalRqtAlg calRqtData:[NSData dataWithHexString:@"6a664d5d537c253f736e48273a295e4f"] cmd:1 uin:1];
-    LogVerbose(@"%d", rqt);
-}
-
-- (void)test {
-    NSString *test = @"H4sIAAAAAAACA31Su3LcMAz8F9UXCRLF13V25XT5ADakRJ7o0ct8+Mb2+N8D6i6TXJOGAy6wuwDBr0qPyAX4kwMdg8u2aq81el9\/3nWJ3zq+pU+TXZEJNPXs9\/MKPX1Ybb7ftU6dmGVGg5zAhNKe3xrBrVvOqPuK2Xsb74NGVT+001evequQmoZnq91lNaZtQctryiCKBesO\/eXosg2s4WJVXurelUdg4Glanko8rCDD3GZMBYSiGwxlGCsRZDOUdEJLSucMFgvSss2pcs6zXGjBJbEMsO5RaRwSKLteDOhUa0ylwwW6THsZwMEGECjZlhaEYtOYw52nDaiVPpy\/FH2r\/9CmNQlHUtCtFOOpz8GnzCIX90p2rJEd\/A6TlafIfLmO77MHkdZ3s8+LAttY+TDrZ2S42LQoX\/rasHAMolsL4XBKh8XJ8EDoJToD0VvWxLdtXJv9+8GAgA5CKZtR3r\/mYXfbEvW\/Cf25ruRi0Q4FhMGNCWSflY\/GsLKWif7j0RIOgKkoGUErA07rOO0z0rgHcgGClawMoX8\/HtDVOl0sen8k2fjyEO7Ps3fv9qBboCAAA=";
-    NSInteger length = [test length];
-    NSInteger location = floor((double)(((signed int)length - 9) / (((signed int)length - 9) % 9u + 1)));
     
-    test = [test stringByReplacingCharactersInRange:NSMakeRange(location, 10) withString:@""];
-    
-    NSData *base64Data = [[NSData alloc] initWithBase64EncodedString:test options:1];
-    length = [base64Data length];
-    int v24 = (unsigned int)floor((double)(length / (length % 9 + 1)));
-    
-    Byte *base64_data_bytes = (Byte *)[base64Data bytes];
-    
-    if ( (unsigned int)length < v24 )
-      v24 = (unsigned int)length;
-    int v25 = (unsigned int)(length - 1);
-    int v27 = 0;
-    if ( (v24 & 0x80000000) == 0 && v25 > v24 )
-    {
-      int v26 = v24 + 1;
-      do
-      {
-        v27 = v26 >= v25;
-        base64_data_bytes[v26 - 1] = base64_data_bytes[v26];
-        ++v26;
-      }
-      while ( !v27 );
-    }
-    
-    base64Data = [[NSData alloc] initWithBytes:base64_data_bytes length:length];
-    
-    base64Data = [base64Data gunzippedData];
-    
-    NSString *json = [[NSString alloc] initWithData:base64Data encoding:NSUTF8StringEncoding];
-    LogVerbose(@"%@", json);
 }
 
 - (void)autoAuthIfCould {
