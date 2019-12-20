@@ -291,7 +291,7 @@
     request.data_p = data_p;
     
 //    request.voiceFormat = 0; // amr
-    request.voiceLength = 100; // 10秒
+    request.voiceLength = 5920; // 10秒
     request.length = (uint32_t) [voiceData length]; //字节长度
     request.offset = 0;
     request.endFlag = 1;

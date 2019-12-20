@@ -20,8 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self fetchSnsTimeLine];
 }
 
 - (IBAction)sendSnsPostRequest:(id)sender {
@@ -39,8 +37,8 @@
 //    } failure:^(NSError * _Nonnull error) {
 //
 //    }];
-    NSString *pic = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"pic_%d", 1] ofType:@"jpg"];
-    [SnsUploadImageService SnsUpload:pic];
+    NSString *pic = [[NSBundle mainBundle] pathForResource:@"pic_1" ofType:@"jpg"];
+    [SnsUploadImageService SnsUpload:pic starPos:0];
 }
 
 - (void)startSendSNSPost:(NSArray *)cdnResponse {

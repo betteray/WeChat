@@ -14,11 +14,11 @@
 + (void)getMsgVoice:(uint32_t)msgId clientMsgID:(NSString *)clientMsgId bufid:(uint64_t)bufid length:(uint32_t)length {
     DownloadVoiceRequest *request = [DownloadVoiceRequest new];
     request.length = length;
-//    request.clientMsgId = clientMsgId;
+    request.clientMsgId = clientMsgId;
     request.msgId = 0;
     request.offset = 0;
     request.newMsgId = msgId;
-//    request.masterBufId = 0;
+    request.masterBufId = 0;
     
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cgi = 128;

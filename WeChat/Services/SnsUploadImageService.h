@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SnsUploadImageService : NSObject
 
-+ (void)SnsUpload:(NSString *)imagePath;
++ (void)SnsUpload:(NSString *)imagePath starPos:(NSUInteger)startPos;
 
 @end
 
