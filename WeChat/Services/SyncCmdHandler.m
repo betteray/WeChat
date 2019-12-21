@@ -83,7 +83,7 @@
                     
                     ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content.string encoding:NSUTF8StringEncoding error:nil];
                     NSDictionary *attrs = [[document.rootElement firstChildWithTag:@"voicemsg"] attributes];
-                    [DownloadVoiceService getMsgVoice:msg.msgId clientMsgID:attrs[@"clientmsgid"] bufid:[attrs[@"bufid"] longLongValue] length:[attrs[@"length"] intValue]];
+                    [DownloadVoiceService getMsgVoice:msg.newMsgId clientMsgID:attrs[@"clientmsgid"] bufid:[attrs[@"bufid"] longLongValue] length:[attrs[@"length"] intValue]];
                 }
                     break;
                 case 43: // 收视频 ok

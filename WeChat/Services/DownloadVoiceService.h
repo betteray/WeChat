@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DownloadVoiceService : NSObject
 
-+ (void)getMsgVoice:(uint32_t)msgId clientMsgID:(NSString *)clientMsgId bufid:(uint64_t)bufid length:(uint32_t)length;
++ (void)getMsgVoice:(int64_t)newMsgId clientMsgID:(NSString *)clientMsgId bufid:(uint64_t)bufid length:(uint32_t)length;
 
 @end
 
