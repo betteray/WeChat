@@ -13,14 +13,9 @@
 #import "FSOpenSSL.h"
 #import "WCSafeSDK.h"
 #import "SyncService.h"
-#import <RegexKitLite/RegexKitLite.h>
 #import <Ono.h>
 // test import
 #import "CdnSnsUploadTask.h"
-#include <sys/time.h>
-#import "CalRqtAlg.h"
-#import "NSData+Compression.h"
-#import "Varint128.h"
 
 @interface LoginViewController ()
 
@@ -61,8 +56,6 @@
     [WeChatClient sharedClient].sessionKey = [FSOpenSSL random128BitAESKey];
     [self autoAuthIfCould];
 
-    unsigned int aa = 3460251153;
-    
 //    CdnSendPictureTask *task = [CdnSendPictureTask new];
 //    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"jpg"];
 //    [task packBody:path];
@@ -114,6 +107,7 @@
     request.meesageExt = @"";
     request.mediaTagName = @"";
     
+
     
 }
 
@@ -395,36 +389,14 @@
 #pragma mark - AuthResponse
 
 - (void)onLoginResponse:(UnifyAuthResponse *)resp {
-    LogVerbose(@"%@", resp);
     switch (resp.baseResponse.ret) {
-        case -100:
-        {
-            //        baseResponse {
-            //            ret: -100
-            //            errMsg {
-            //                string: "<e>\n<ShowType>1</ShowType>\n<Content><![CDATA[当前帐号于19:03在ray’s iPhone设备上登录。若非本人操作，你的登录密码可能已经泄漏，请及时改密。紧急情况可前往http://weixin110.qq.com冻结帐号。]]></Content>\n<Url><![CDATA[]]></Url>\n<DispSec>30</DispSec>\n<Title><![CDATA[]]></Title>\n<Action>4</Action>\n<DelayConnSec>0</DelayConnSec>\n<Countdown>0</Countdown>\n<Ok><![CDATA[]]></Ok>\n<Cancel><![CDATA[]]></Cancel>\n</e>\n"
-            //            }
-            //        }
-            
-            ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:resp.baseResponse.errMsg.string encoding:NSUTF8StringEncoding error:nil];
-            NSString *errorMsg = [[document.rootElement firstChildWithTag:@"Content"] stringValue];
-            LogError(@"%@", errorMsg);
-            [self alartLoginError:errorMsg];
-        }
-            break;
-            
-//        baseResponse {
-//            ret: -305 // 要换 NE重新登录，新疆号。
-//            errMsg {
-//            }
-//        }
-
         case -106: {
             [DBManager clearCookie];
-            LogError(@"登录错误: (-106) errMsg: %@", resp.baseResponse.errMsg.string);
-
-            NSString *regex = @"(https?|http)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]";
-            NSString *url = [resp.baseResponse.errMsg.string stringByMatching:regex];
+            ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:resp.baseResponse.errMsg.string encoding:NSUTF8StringEncoding error:nil];
+            NSString *errMsgContent = [[document.rootElement firstChildWithTag:@"Content"] stringValue];
+            LogError(@"登录错误: (-106) errMsg: %@", errMsgContent);
+            
+            NSString *url = [[document.rootElement firstChildWithTag:@"Url"] stringValue];
             [self startNaviUrl:url];
         }
             break;
@@ -484,7 +456,11 @@
             }
         }
             break;
-        default:
+        default: {
+            ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:resp.baseResponse.errMsg.string encoding:NSUTF8StringEncoding error:nil];
+            NSString *errorMsg = [[document.rootElement firstChildWithTag:@"Content"] stringValue];
+            [self alartLoginError:resp.baseResponse.ret msg:errorMsg];
+        }
             break;
     }
 }
@@ -499,13 +475,14 @@
     [self startSync];
 }
 
-- (void)alartLoginError:(NSString *)errMsg {
+- (void)alartLoginError:(int32_t)code msg:(NSString *)errMsg {
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"重新登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self clearData];
         [self ManualAuth];
     }];
     
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"登录错误" message:errMsg preferredStyle:UIAlertControllerStyleAlert];
+    NSString *title = [NSString stringWithFormat:@"登录错误(%d)", code];
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:errMsg preferredStyle:UIAlertControllerStyleAlert];
     [controller addAction:action];
     [self presentViewController:controller animated:YES completion:nil];
 }
@@ -534,3 +511,4 @@
 }
 
 @end
+

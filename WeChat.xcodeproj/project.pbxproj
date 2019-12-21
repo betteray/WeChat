@@ -2007,6 +2007,7 @@
 			baseConfigurationReference = 8435ACA679E3636C36C7D47C /* Pods-WeChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WeChat/WeChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RB4EN3PQ7J;
 				ENABLE_BITCODE = NO;
@@ -2046,6 +2047,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ray.me.chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2055,6 +2057,7 @@
 			baseConfigurationReference = 127BAC7036D39AFEE4EAF228 /* Pods-WeChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WeChat/WeChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RB4EN3PQ7J;
 				ENABLE_BITCODE = NO;
@@ -2094,6 +2097,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ray.me.chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -209,7 +209,7 @@
         
         NSString *guid2 = @"A2fba8d86e7d1e6";
         NSString *clientSeqId2 = [NSString stringWithFormat:@"%@_%@", guid2, ts];
-        NSData *guidData2 = [[NSString stringWithFormat:@"%@\0", [guid substringWithRange:NSMakeRange(0, 15)]] dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *guidData2 = [[NSString stringWithFormat:@"%@\0", [guid2 substringWithRange:NSMakeRange(0, 15)]] dataUsingEncoding:NSUTF8StringEncoding];
         WCDevice *huawei6p = [[WCDevice alloc] initWithImei:@"867979021665986"
                                               softType:sofytype4
                                              clientSeq:clientSeqId2

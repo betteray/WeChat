@@ -1,6 +1,12 @@
 #import "Varint128.h"
+//#import <Protobuf/GPBCodedOutputStream_PackagePrivate.h>
 
 @implementation Varint128
+
+//size_t size = GPBComputeRawVarint32Size(0xf8a9a1cc);
+//NSMutableData *md = [NSMutableData dataWithLength:size];
+//GPBCodedOutputStream *outputStream = [[GPBCodedOutputStream alloc] initWithData:md];
+//[outputStream writeUInt32NoTag:0xf8a9a1cc];
 
 + (NSData *)dataWithUnsignedInt:(unsigned int)value
 {
