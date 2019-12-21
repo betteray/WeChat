@@ -240,7 +240,7 @@
     cgiWrap.responseClass = [UnifyAuthResponse class];
     cgiWrap.needSetBaseRequest = NO;
 
-    [WeChatClient android700manualAuth:cgiWrap success:^(id _Nullable response) {
+    [WeChatClient secAuth:cgiWrap success:^(id _Nullable response) {
         [self onLoginResponse:response];
     }                          failure:^(NSError *_Nonnull error) {
 
@@ -379,7 +379,7 @@
     cgiWrap.responseClass = [UnifyAuthResponse class];
     cgiWrap.needSetBaseRequest = NO;
 
-    [WeChatClient android700manualAuth:cgiWrap success:^(id _Nullable response) {
+    [WeChatClient secAuth:cgiWrap success:^(id _Nullable response) {
         [self onLoginResponse:response];
     }                          failure:^(NSError *_Nonnull error) {
 

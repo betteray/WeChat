@@ -146,10 +146,10 @@
     [[self sharedClient] postRequest:cgiWrap success:successBlock failure:failureBlock];
 }
 
-+ (void)android700manualAuth:(CgiWrap *)cgiWrap
++ (void)secAuth:(CgiWrap *)cgiWrap
                      success:(SuccessBlock)successBlock
                      failure:(FailureBlock)failureBlock {
-    [[self sharedClient] android700manualAuth:cgiWrap success:successBlock failure:failureBlock];
+    [[self sharedClient] secAuth:cgiWrap success:successBlock failure:failureBlock];
 }
 
 #pragma mark - Internal
@@ -239,7 +239,7 @@
 
 #pragma mark -
 
-- (void)android700manualAuth:(CgiWrap *)cgiWrap
+- (void)secAuth:(CgiWrap *)cgiWrap
                      success:(SuccessBlock)successBlock
                      failure:(FailureBlock)failureBlock {
 

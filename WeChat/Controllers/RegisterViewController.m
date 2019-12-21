@@ -144,7 +144,7 @@
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/newreg";
     cgiWrap.responseClass = [NewRegResponse class];
     
-    [WeChatClient android700manualAuth:cgiWrap success:^(BindOpMobileResponse * _Nullable response) {
+    [WeChatClient secAuth:cgiWrap success:^(BindOpMobileResponse * _Nullable response) {
         LogVerbose(@"%@", response);
     } failure:^(NSError * _Nonnull error) {
         
