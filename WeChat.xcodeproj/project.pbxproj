@@ -183,6 +183,8 @@
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
 		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
 		71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932F2158AC4900DFEBC8 /* Varint128.m */; };
+		71DD025823AE0C5400EC8E04 /* AuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DD025723AE0C5400EC8E04 /* AuthHandler.m */; };
+		71DD025D23AE181B00EC8E04 /* AuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DD025C23AE181B00EC8E04 /* AuthService.m */; };
 		71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A421E1A12E00B77500 /* MomentsTableViewController.m */; };
 		71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A721E1A32100B77500 /* PeapleNearByTableViewController.m */; };
 		71E1C19D230657E900F5032A /* safe.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71E1C19C230657E900F5032A /* safe.proto */; };
@@ -614,6 +616,10 @@
 		71D593002155247C00DFEBC8 /* NSData+AES.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
 		71D5932F2158AC4900DFEBC8 /* Varint128.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Varint128.m; sourceTree = "<group>"; };
 		71D593302158AC4900DFEBC8 /* Varint128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Varint128.h; sourceTree = "<group>"; };
+		71DD025623AE0C5400EC8E04 /* AuthHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthHandler.h; sourceTree = "<group>"; };
+		71DD025723AE0C5400EC8E04 /* AuthHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthHandler.m; sourceTree = "<group>"; };
+		71DD025B23AE181B00EC8E04 /* AuthService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthService.h; sourceTree = "<group>"; };
+		71DD025C23AE181B00EC8E04 /* AuthService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthService.m; sourceTree = "<group>"; };
 		71DE10A321E1A12E00B77500 /* MomentsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MomentsTableViewController.h; sourceTree = "<group>"; };
 		71DE10A421E1A12E00B77500 /* MomentsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MomentsTableViewController.m; sourceTree = "<group>"; };
 		71DE10A621E1A32100B77500 /* PeapleNearByTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeapleNearByTableViewController.h; sourceTree = "<group>"; };
@@ -755,6 +761,10 @@
 				7112DBCC23A37F5D008CC5E1 /* SnsUploadImageService.m */,
 				7112118323A8C7C700A5DBCA /* SendMsgService.h */,
 				7112118423A8C7C700A5DBCA /* SendMsgService.m */,
+				71DD025623AE0C5400EC8E04 /* AuthHandler.h */,
+				71DD025723AE0C5400EC8E04 /* AuthHandler.m */,
+				71DD025B23AE181B00EC8E04 /* AuthService.h */,
+				71DD025C23AE181B00EC8E04 /* AuthService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1679,6 +1689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				462D9C0E21D4EC5700FC5461 /* WCBuiltinIP.m in Sources */,
+				71DD025823AE0C5400EC8E04 /* AuthHandler.m in Sources */,
 				712C6E93214A1E8900603022 /* WeChatClient.m in Sources */,
 				46EB620B21F98E1100760593 /* mmgame.proto in Sources */,
 				46EB620021F98E1100760593 /* mmextdevice.proto in Sources */,
@@ -1686,6 +1697,7 @@
 				712F95F221D0981B00CFE3A0 /* WCDevice.m in Sources */,
 				46EB61FB21F98E1100760593 /* mmimg.proto in Sources */,
 				716A93BF2398F04B00A0C9DC /* AES_EVP.m in Sources */,
+				71DD025D23AE181B00EC8E04 /* AuthService.m in Sources */,
 				712F960021D20A7800CFE3A0 /* ShortLinkClient.m in Sources */,
 				46804CDD21DE13B300232229 /* WCMessage.m in Sources */,
 				712C7152214BAD8900603022 /* ShortHeader.m in Sources */,

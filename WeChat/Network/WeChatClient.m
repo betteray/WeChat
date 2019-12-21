@@ -23,7 +23,7 @@
 
 #import "UtilsJni.h"
 #import "FSOpenSSL.h"
-
+#import "WCECDH.h"
 #import "MMProtocalJni.h"
 #import "SyncService.h"
 
@@ -73,6 +73,16 @@
     if (self) {
         _seq = 1;
 
+        
+        NSData *priKeyData = nil;
+        NSData *pubKeyData = nil;
+        BOOL ret = [WCECDH GenEcdhWithNid:713 priKey:&priKeyData pubKeyData:&pubKeyData];
+        if (ret) {
+            _priKeyData = priKeyData;
+            _pubKeyData = pubKeyData;
+            LogVerbose(@"+[ECDH GenEcdh:pubKeyData:] %@, PubKey: %@.", priKeyData, pubKeyData);
+        }
+        
         AccountInfo *accountInfo = [DBManager accountInfo];
         _uin = accountInfo.uin;
 
@@ -101,6 +111,10 @@
         SessionKeyStore *sessionKeyStore = [DBManager sessionKey];
         _sessionKey = sessionKeyStore.data;
 
+        if (!_sessionKey.length) {
+            [WeChatClient sharedClient].sessionKey = [FSOpenSSL random128BitAESKey];
+        }
+        
         _heartbeatTimer = [NSTimer timerWithTimeInterval:70 * 3
                                                   target:self
                                                 selector:@selector(heartBeat)

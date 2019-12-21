@@ -15,6 +15,8 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "CUtility.h"
 
+#import "AuthService.h"
+
 @interface AppDelegate ()
 
 @end
@@ -41,8 +43,16 @@
     [DNSFetcher fetchAndSaveToDB];
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+    [self autoAuthIfCould];
     
     return YES;
+}
+
+- (void)autoAuthIfCould {
+    AutoAuthKeyStore *autoAuthKeyStore = [DBManager autoAuthKey];
+    if ([autoAuthKeyStore.data length] > 0) {
+        [AuthService autoAuthWithRootViewController:(UINavigationController *)self.window.rootViewController];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

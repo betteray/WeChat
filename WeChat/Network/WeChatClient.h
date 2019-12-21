@@ -30,6 +30,9 @@ typedef void (^FailureBlock)(NSError *error);
 @property(nonatomic, strong, readonly) NSData *pskData;
 @property(nonatomic, strong, readonly) NSData *resumptionSecret;
 
+@property(nonatomic, strong) NSData *priKeyData;
+@property(nonatomic, strong) NSData *pubKeyData;
+
 + (instancetype)sharedClient;
 
 - (void)start;
