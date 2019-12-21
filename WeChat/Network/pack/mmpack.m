@@ -47,7 +47,9 @@
     int rqt = [CalRqtAlg calRqtData:hybridEncrypedData cmd:1 uin:1];
     NSData *rqtData = [Varint128 dataWithUInt32:rqt];
     [header appendData:rqtData];
-    
+   
+    [header appendData:[NSData dataWithHexString:@"00"]];
+
     NSData *headerLen = [NSData dataWithHexString:[NSString stringWithFormat:@"%2x", (int) ((
             [header length] << 2) + 0x2)]]; //0x2 !use_compress
     [header replaceBytesInRange:NSMakeRange(0, 1) withBytes:[headerLen bytes]];
@@ -92,13 +94,16 @@
     [header appendData:[Varint128 dataWithUInt32:bodyDataLen]];
     [header appendData:[Varint128 dataWithUInt32:(useCompress ? compressedBodyDataLen : bodyDataLen)]];
 
-    [header appendData:[NSData dataWithHexString:@"0002"]];
+    [header appendData:[Varint128 dataWithUInt32:0]];
+    [header appendData:[Varint128 dataWithUInt32:2]];
     [header appendData:[Varint128 dataWithUInt32:signature]];//checksum
-    [header appendData:[NSData dataWithHexString:@"010000"]];
+    [header appendData:[NSData dataWithHexString:@"fe"]]; //ios ff
 
     int rqt = [CalRqtAlg calRqtData:aesedData cmd:1 uin:1];
     NSData *rqtData = [Varint128 dataWithUInt32:rqt];
     [header appendData:rqtData];
+    
+    [header appendData:[NSData dataWithHexString:@"00"]];
     
     NSData *headerLen = [NSData dataWithHexString:[NSString stringWithFormat:@"%2x", (int) ((
             [header length] << 2) + (useCompress ? 1 : 2))]];
