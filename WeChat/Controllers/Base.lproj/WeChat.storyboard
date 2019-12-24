@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lCv-zx-odE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lCv-zx-odE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -890,6 +890,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0d-6S-pgo">
+                                <rect key="frame" x="233" y="64" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="dfg-0B-bsf"/>
+                                    <constraint firstAttribute="height" constant="30" id="ego-l8-Jhc"/>
+                                </constraints>
+                                <state key="normal" title="ClearLogin">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearLogin:" destination="jjw-Ng-GsO" eventType="touchUpInside" id="MWc-om-vGs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -907,6 +920,8 @@
                             <constraint firstItem="D5q-32-OJu" firstAttribute="bottom" secondItem="mkJ-ED-57t" secondAttribute="bottom" constant="80" id="emI-lY-k26"/>
                             <constraint firstItem="mkJ-ED-57t" firstAttribute="trailing" secondItem="Mr5-8c-SK8" secondAttribute="trailing" id="evM-3A-rZ1"/>
                             <constraint firstItem="6tw-cI-dlT" firstAttribute="top" secondItem="D5q-32-OJu" secondAttribute="top" constant="87" id="jkn-pZ-eOi"/>
+                            <constraint firstItem="D5q-32-OJu" firstAttribute="trailing" secondItem="A0d-6S-pgo" secondAttribute="trailing" constant="42" id="jnr-Pt-lcN"/>
+                            <constraint firstItem="A0d-6S-pgo" firstAttribute="top" secondItem="D5q-32-OJu" secondAttribute="top" constant="20" id="rAL-Bs-ded"/>
                             <constraint firstItem="6tw-cI-dlT" firstAttribute="leading" secondItem="D5q-32-OJu" secondAttribute="leading" constant="42" id="tGl-ah-DCy"/>
                             <constraint firstItem="aU0-tA-peL" firstAttribute="leading" secondItem="Mr5-8c-SK8" secondAttribute="leading" id="tx8-XY-0ov"/>
                             <constraint firstItem="9ju-m2-hOa" firstAttribute="trailing" secondItem="6tw-cI-dlT" secondAttribute="trailing" id="vFi-2g-5Cp"/>

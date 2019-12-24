@@ -94,5 +94,11 @@
     [AuthService manualAuthWithViewController:self userName:self.userNameTextField.text password:self.pwdTextField.text];
 }
 
+- (IBAction)clearLogin:(id)sender {
+    [DBManager clearCookie];
+    [DBManager clearAutoAuthKey];
+    [DBManager clearSyncKey];
+}
+
 @end
 
