@@ -55,6 +55,8 @@
 
 @property(nonatomic, strong) UtilsJni *Jni;
 
+@property(nonatomic, strong) NSMutableData *receivedLonglinkData;
+
 @end
 
 @implementation WeChatClient
@@ -114,7 +116,7 @@
         if (!_sessionKey.length) {
             [WeChatClient sharedClient].sessionKey = [FSOpenSSL random128BitAESKey];
         }
-        
+        _receivedLonglinkData = [NSMutableData data];
         _heartbeatTimer = [NSTimer timerWithTimeInterval:70 * 3
                                                   target:self
                                                 selector:@selector(heartBeat)
@@ -370,7 +372,8 @@
 }
 
 - (void)onRcvData:(NSData *)plainData {
-    LongPackage *longLinkPackage = [long_pack unpack:plainData];
+    [_receivedLonglinkData appendData:plainData];
+    LongPackage *longLinkPackage = [long_pack unpack:_receivedLonglinkData];
 
     switch (longLinkPackage.result) {
         case UnPack_Success: {
@@ -379,6 +382,8 @@
                     longLinkPackage.header.seq,
                     longLinkPackage.header.bodyLength);
 
+            [_receivedLonglinkData setData:[NSData data]];// 清空数据。
+            
             if (longLinkPackage.header.bodyLength < 0x20) {
                 switch (longLinkPackage.header.cmdId) {
                     case CMDID_PUSH_ACK: {

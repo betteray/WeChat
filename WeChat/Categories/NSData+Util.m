@@ -17,9 +17,9 @@
     return swap ? CFSwapInt32BigToHost(int32) : int32;
 }
 
-- (int16_t)toInt16ofRange:(NSRange)range SwapBigToHost:(BOOL)swap
+- (uint16_t)toInt16ofRange:(NSRange)range SwapBigToHost:(BOOL)swap
 {
-    int16_t int16 = *(int16_t *) ([[self subdataWithRange:range] bytes]);
+    uint16_t int16 = *(uint16_t *) ([[self subdataWithRange:range] bytes]);
     return swap ? CFSwapInt16BigToHost(int16) : int16;
 }
 

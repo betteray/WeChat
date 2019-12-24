@@ -155,7 +155,7 @@
         //LogInfo(@"Read 5 bytes Head.");
     }
 
-    int32_t payloadLength = [header toInt16ofRange:NSMakeRange(3, 2) SwapBigToHost:YES];
+    uint32_t payloadLength = [header toInt16ofRange:NSMakeRange(3, 2) SwapBigToHost:YES];
     NSData *payloadData = [self readPayload:payloadLength];
     [header appendData:payloadData];
 
