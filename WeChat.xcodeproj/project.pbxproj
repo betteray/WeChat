@@ -12,19 +12,16 @@
 		1D48E6F0446FD84F950B71E2 /* KeyPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48E1503C8555663742C661 /* KeyPair.m */; };
 		1D48E7C8E155D99FF346ADFB /* WC_AesGcm128.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48E7D73D6EC647E939F955 /* WC_AesGcm128.m */; };
 		1D48E82BF0AADB88925F440F /* ShortLinkKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48E9E298ACC066BF6F3C08 /* ShortLinkKey.m */; };
-		1D48EC3CADAA35C33963F112 /* mmerror.proto in Sources */ = {isa = PBXBuildFile; fileRef = 1D48E2E30AB0FF28A9277053 /* mmerror.proto */; };
 		1D48EEF40F55F7104E8622E1 /* WC_HmacSha256.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48ED8F905897FC2BA0731D /* WC_HmacSha256.m */; };
 		1D48EFA57EBE8BB457184405 /* WC_SHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48E2FC43F4A4FE6BCB8994 /* WC_SHA256.m */; };
 		2FFBBBF5A4F4493C2BD0EBFB /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE308AEA822A0536476B28E2 /* libPods-WeChat.a */; };
 		3170D26FEE89CCA046B85687 /* libPods-WeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49481301164AD3564DCE2106 /* libPods-WeChat.a */; };
 		4602CC7E2212AAFC005FB94F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4602CC7D2212AAFC005FB94F /* RegisterViewController.m */; };
 		460429AA22D0911900F9BB94 /* MMProtocalJni.m in Sources */ = {isa = PBXBuildFile; fileRef = 460429A922D0911900F9BB94 /* MMProtocalJni.m */; };
-		460CDE50220088CE0075F3E5 /* cgi.json in Resources */ = {isa = PBXBuildFile; fileRef = 460CDE4F220088CE0075F3E5 /* cgi.json */; };
 		46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */ = {isa = PBXBuildFile; fileRef = 46145F96221D9BF6003DC115 /* newwxjs-compiled.js */; };
 		46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */ = {isa = PBXBuildFile; fileRef = 46145F9F221E7AA9003DC115 /* UserScript3.js */; };
 		46206F6021E9EA1E00BF0B82 /* CUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 46206F5F21E9EA1E00BF0B82 /* CUtility.m */; };
 		4625AE952296CDDB00284F22 /* RAYContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4625AE942296CDDB00284F22 /* RAYContactManager.m */; };
-		46285D6122EFFD58000841BA /* mmkv.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46285D6022EFFD58000841BA /* mmkv.proto */; };
 		462D9C0E21D4EC5700FC5461 /* WCBuiltinIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C0D21D4EC5700FC5461 /* WCBuiltinIP.m */; };
 		462D9C1521D509FC00FC5461 /* ClientCheckDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C1421D509FC00FC5461 /* ClientCheckDataFetcher.m */; };
 		462D9C2D21DC98E300FC5461 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C2C21DC98E300FC5461 /* AccountInfo.m */; };
@@ -38,7 +35,6 @@
 		464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82621D4B9DD003E923F /* DefaultShortIp.m */; };
 		464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82921D4E8BD003E923F /* NSString+Regex.m */; };
 		465A634B22E7FCBA00711C60 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A634A22E7FCBA00711C60 /* ReportViewController.m */; };
-		465A64DB22EEDBBE00711C60 /* mmhongbao.proto in Sources */ = {isa = PBXBuildFile; fileRef = 465A64DA22EEDBBE00711C60 /* mmhongbao.proto */; };
 		465B39B422D5EFAD001FDE53 /* SyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 465B39B322D5EFAD001FDE53 /* SyncService.m */; };
 		466C4AC321DDBFA800743075 /* WCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C4AC221DDBFA800743075 /* WCButton.m */; };
 		466C4AC621DDD65900743075 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C4AC521DDD65900743075 /* ContactsTableViewController.m */; };
@@ -48,50 +44,9 @@
 		46804CE721DE41BE00232229 /* ChatDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46804CE621DE41BE00232229 /* ChatDetailTableViewController.m */; };
 		46804CEA21DE5B1800232229 /* ChatsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46804CE921DE5B1800232229 /* ChatsTableViewCell.m */; };
 		46804CED21DE5B2900232229 /* ChatsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46804CEC21DE5B2900232229 /* ChatsDetailTableViewCell.m */; };
-		4681939422CB2E8C00839EB0 /* UtileJni.proto in Sources */ = {isa = PBXBuildFile; fileRef = 4681939322CB2E8C00839EB0 /* UtileJni.proto */; };
 		4681939722CB31D400839EB0 /* UtileJni.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 4681939522CB31D400839EB0 /* UtileJni.pbobjc.m */; };
-		4685A4B322E06E4E00DE95BE /* 703_login_2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4685A4B222E06E4D00DE95BE /* 703_login_2.txt */; };
-		4685A4B522E06FFF00DE95BE /* 703_login_3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4685A4B422E06FFF00DE95BE /* 703_login_3.txt */; };
 		4689A17821E4C01800E2EA9A /* SyncKeyCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */; };
 		469F657D21D3196100C1DC8B /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C7141214B5A4B00603022 /* libcrypto.a */; };
-		46CD1A8522DED2FE0023C585 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 46CD1A8422DED2FE0023C585 /* TODO.md */; };
-		46D2CA3A223A0A620053C4A6 /* mmreport.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA38223A0A610053C4A6 /* mmreport.proto */; };
-		46D2CA3B223A0A620053C4A6 /* mmthinker.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA39223A0A620053C4A6 /* mmthinker.proto */; };
-		46D2CA65223A3BA30053C4A6 /* wwopenim.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA64223A3BA30053C4A6 /* wwopenim.proto */; };
-		46D2CA67223A44EC0053C4A6 /* wwbiz.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA66223A44EC0053C4A6 /* wwbiz.proto */; };
-		46D2CA71223A57A30053C4A6 /* wwux.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA70223A57A30053C4A6 /* wwux.proto */; };
-		46D2CA7C223A5DF30053C4A6 /* wwunkown.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46D2CA7B223A5DF30053C4A6 /* wwunkown.proto */; };
-		46EB61F521F98E1100760593 /* mmbottle.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D621F98E1000760593 /* mmbottle.proto */; };
-		46EB61F621F98E1100760593 /* mmlogin.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D721F98E1000760593 /* mmlogin.proto */; };
-		46EB61F721F98E1100760593 /* mmtrack.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D821F98E1000760593 /* mmtrack.proto */; };
-		46EB61F821F98E1100760593 /* mmcontact.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61D921F98E1000760593 /* mmcontact.proto */; };
-		46EB61F921F98E1100760593 /* mmvoip.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DA21F98E1000760593 /* mmvoip.proto */; };
-		46EB61FA21F98E1100760593 /* mmemotion.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DB21F98E1000760593 /* mmemotion.proto */; };
-		46EB61FB21F98E1100760593 /* mmimg.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DC21F98E1000760593 /* mmimg.proto */; };
-		46EB61FC21F98E1100760593 /* mmemotionstore.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DD21F98E1000760593 /* mmemotionstore.proto */; };
-		46EB61FD21F98E1100760593 /* mmbase.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DE21F98E1000760593 /* mmbase.proto */; };
-		46EB61FE21F98E1100760593 /* mmweb.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61DF21F98E1000760593 /* mmweb.proto */; };
-		46EB61FF21F98E1100760593 /* mmfav.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E021F98E1000760593 /* mmfav.proto */; };
-		46EB620021F98E1100760593 /* mmextdevice.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E121F98E1000760593 /* mmextdevice.proto */; };
-		46EB620121F98E1100760593 /* mmappmsg.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E221F98E1000760593 /* mmappmsg.proto */; };
-		46EB620221F98E1100760593 /* mmbackup.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E321F98E1000760593 /* mmbackup.proto */; };
-		46EB620321F98E1100760593 /* mmcard.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E421F98E1000760593 /* mmcard.proto */; };
-		46EB620421F98E1100760593 /* mmprimsend.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E521F98E1000760593 /* mmprimsend.proto */; };
-		46EB620521F98E1100760593 /* mmremind.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E621F98E1000760593 /* mmremind.proto */; };
-		46EB620621F98E1100760593 /* mmsns.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E721F98E1000760593 /* mmsns.proto */; };
-		46EB620721F98E1100760593 /* mmvoiceprint.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E821F98E1000760593 /* mmvoiceprint.proto */; };
-		46EB620821F98E1100760593 /* mmsync.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61E921F98E1000760593 /* mmsync.proto */; };
-		46EB620921F98E1100760593 /* mmopenapi.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61EA21F98E1000760593 /* mmopenapi.proto */; };
-		46EB620A21F98E1100760593 /* mmpay.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61EB21F98E1000760593 /* mmpay.proto */; };
-		46EB620B21F98E1100760593 /* mmgame.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61EC21F98E1000760593 /* mmgame.proto */; };
-		46EB620C21F98E1100760593 /* mmvoiceaddr.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61ED21F98E1000760593 /* mmvoiceaddr.proto */; };
-		46EB620D21F98E1100760593 /* mmvoiphw.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61EE21F98E1000760593 /* mmvoiphw.proto */; };
-		46EB620E21F98E1100760593 /* mmlbs.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61EF21F98E1000760593 /* mmlbs.proto */; };
-		46EB620F21F98E1100760593 /* BlockDumpList.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61F021F98E1000760593 /* BlockDumpList.proto */; };
-		46EB621021F98E1100760593 /* mmextsend.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61F121F98E1000760593 /* mmextsend.proto */; };
-		46EB621121F98E1100760593 /* mmutils.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61F221F98E1000760593 /* mmutils.proto */; };
-		46EB621221F98E1100760593 /* mmbuiltintype.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61F321F98E1000760593 /* mmbuiltintype.proto */; };
-		46EB621321F98E1100760593 /* mmtalk.proto in Sources */ = {isa = PBXBuildFile; fileRef = 46EB61F421F98E1000760593 /* mmtalk.proto */; };
 		46EB621521F993AA00760593 /* WeChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB621421F993A900760593 /* WeChatTests.m */; };
 		46EB621721F993B900760593 /* WXDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB621621F993B800760593 /* WXDemoTests.m */; };
 		46EB621921F9943C00760593 /* WeChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB621821F9943C00760593 /* WeChatUITests.m */; };
@@ -125,9 +80,7 @@
 		712C6E93214A1E8900603022 /* WeChatClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E92214A1E8900603022 /* WeChatClient.m */; };
 		712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E98214A2F9C00603022 /* NSData+Util.m */; };
 		712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6EFE214A5D8200603022 /* FSOpenSSL.m */; };
-		712C6F1A214A6A5800603022 /* PROTO_README.md in Resources */ = {isa = PBXBuildFile; fileRef = 712C6F19214A6A5800603022 /* PROTO_README.md */; };
 		712C70E8214AB2BC00603022 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C70E7214AB2BC00603022 /* libc++.1.tbd */; };
-		712C7143214B5A4B00603022 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 712C70EB214B5A4B00603022 /* LICENSE */; };
 		712C7149214BA38900603022 /* LongHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C7148214BA38900603022 /* LongHeader.m */; };
 		712C714C214BA49300603022 /* LongPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C714B214BA49300603022 /* LongPackage.m */; };
 		712C714F214BABA500603022 /* ShortPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C714E214BABA500603022 /* ShortPackage.m */; };
@@ -147,10 +100,8 @@
 		713F5A5723A250220096220C /* test.amr in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5623A250220096220C /* test.amr */; };
 		713F5A5923A27F970096220C /* 1576159220872799.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5823A27F970096220C /* 1576159220872799.mp4 */; };
 		714513442390F6A40078D130 /* CdnLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 714513432390F6A40078D130 /* CdnLogic.m */; };
-		71456CA4233E1B0600986437 /* mm.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71456CA3233E1B0600986437 /* mm.proto */; };
 		71456CA7233E1B3200986437 /* Mm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 71456CA5233E1B3200986437 /* Mm.pbobjc.m */; };
 		714E35CD235733510046F7D8 /* libtup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 714E35C623572F380046F7D8 /* libtup.a */; };
-		714E35EC235806CA0046F7D8 /* RiskScan.tars in Resources */ = {isa = PBXBuildFile; fileRef = 714E35DF235806C80046F7D8 /* RiskScan.tars */; };
 		714E35F1235806CA0046F7D8 /* ReportUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E35E9235806CA0046F7D8 /* ReportUserInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		714E36002358173D0046F7D8 /* Reportc.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E35F42358173C0046F7D8 /* Reportc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		714E36012358173D0046F7D8 /* ReportSysInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E35F62358173C0046F7D8 /* ReportSysInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -167,6 +118,11 @@
 		7161984C21CB704F00A76F39 /* mmpack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984B21CB704F00A76F39 /* mmpack.m */; };
 		7161984F21CB712900A76F39 /* long_pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984E21CB712900A76F39 /* long_pack.m */; };
 		7161985321CB863A00A76F39 /* LongLinkClientWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161985221CB863A00A76F39 /* LongLinkClientWithMMTLS.m */; };
+		7168F90723B0A5F800DBB3A6 /* test2.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7168F90423B0A5F800DBB3A6 /* test2.bin */; };
+		7168F91523B0F51C00DBB3A6 /* mm_dump_660.proto in Sources */ = {isa = PBXBuildFile; fileRef = 7168F91423B0F51C00DBB3A6 /* mm_dump_660.proto */; };
+		7168F92423B1BF3000DBB3A6 /* OplogService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7168F92323B1BF3000DBB3A6 /* OplogService.m */; };
+		7168F92823B1F65300DBB3A6 /* classes_706.dex in Resources */ = {isa = PBXBuildFile; fileRef = 7168F92723B1F65300DBB3A6 /* classes_706.dex */; };
+		7168F92B23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7168F92A23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m */; };
 		716A93BF2398F04B00A0C9DC /* AES_EVP.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93BE2398F04B00A0C9DC /* AES_EVP.m */; };
 		716A93C2239A2CA200A0C9DC /* GetCDNDnsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93C1239A2CA200A0C9DC /* GetCDNDnsService.m */; };
 		716A93D4239AA2C200A0C9DC /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93D3239AA2C200A0C9DC /* DBManager.m */; };
@@ -187,11 +143,8 @@
 		71DD025D23AE181B00EC8E04 /* AuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DD025C23AE181B00EC8E04 /* AuthService.m */; };
 		71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A421E1A12E00B77500 /* MomentsTableViewController.m */; };
 		71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A721E1A32100B77500 /* PeapleNearByTableViewController.m */; };
-		71E1C19D230657E900F5032A /* safe.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71E1C19C230657E900F5032A /* safe.proto */; };
 		71E9EAC1234068FA00353DBD /* CalSpamAlg.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E9EAC0234068FA00353DBD /* CalSpamAlg.m */; };
 		71F9F5AA235459AD00C6C736 /* PersonalInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */; };
-		71F9F5BB235576B500C6C736 /* mmregion4client_zh_CN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 71F9F5BA235576B500C6C736 /* mmregion4client_zh_CN.txt */; };
-		71F9F5BD2355774700C6C736 /* mmregion4client_en.txt in Resources */ = {isa = PBXBuildFile; fileRef = 71F9F5BC2355774700C6C736 /* mmregion4client_en.txt */; };
 		71F9F5C52355B8B500C6C736 /* WCSafeSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5C42355B8B500C6C736 /* WCSafeSDK.m */; };
 		71F9F5CC2355CB3D00C6C736 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5CB2355CB3D00C6C736 /* NSData+CRC32.m */; };
 		71F9F5CE2355CC8D00C6C736 /* st-6p-clientcheck.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71F9F5CD2355CC8D00C6C736 /* st-6p-clientcheck.bin */; };
@@ -588,6 +541,19 @@
 		7161984E21CB712900A76F39 /* long_pack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = long_pack.m; sourceTree = "<group>"; };
 		7161985121CB863A00A76F39 /* LongLinkClientWithMMTLS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongLinkClientWithMMTLS.h; sourceTree = "<group>"; };
 		7161985221CB863A00A76F39 /* LongLinkClientWithMMTLS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LongLinkClientWithMMTLS.m; sourceTree = "<group>"; };
+		7168F90423B0A5F800DBB3A6 /* test2.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = test2.bin; sourceTree = "<group>"; };
+		7168F90823B0ACE000DBB3A6 /* mm_dump_709.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mm_dump_709.proto; sourceTree = "<group>"; };
+		7168F90923B0B02F00DBB3A6 /* mm_dump_708.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mm_dump_708.proto; sourceTree = "<group>"; };
+		7168F90C23B0C4D900DBB3A6 /* mm_dump_707.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mm_dump_707.proto; sourceTree = "<group>"; };
+		7168F91123B0F0F500DBB3A6 /* mm_dump_705.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mm_dump_705.proto; sourceTree = "<group>"; };
+		7168F91223B0F3AF00DBB3A6 /* mm_dump_666.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mm_dump_666.proto; sourceTree = "<group>"; };
+		7168F91423B0F51C00DBB3A6 /* mm_dump_660.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_dump_660.proto; sourceTree = "<group>"; };
+		7168F91623B0F65B00DBB3A6 /* mm_dump_6523.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mm_dump_6523.proto; sourceTree = "<group>"; };
+		7168F92223B1BF3000DBB3A6 /* OplogService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OplogService.h; sourceTree = "<group>"; };
+		7168F92323B1BF3000DBB3A6 /* OplogService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OplogService.m; sourceTree = "<group>"; };
+		7168F92723B1F65300DBB3A6 /* classes_706.dex */ = {isa = PBXFileReference; lastKnownFileType = file; path = classes_706.dex; sourceTree = "<group>"; };
+		7168F92923B205ED00DBB3A6 /* ClientCheckConsistencyUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClientCheckConsistencyUtil.h; sourceTree = "<group>"; };
+		7168F92A23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckConsistencyUtil.m; sourceTree = "<group>"; };
 		716A93BD2398F04B00A0C9DC /* AES_EVP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AES_EVP.h; sourceTree = "<group>"; };
 		716A93BE2398F04B00A0C9DC /* AES_EVP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AES_EVP.m; sourceTree = "<group>"; };
 		716A93C0239A2CA200A0C9DC /* GetCDNDnsService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetCDNDnsService.h; sourceTree = "<group>"; };
@@ -765,6 +731,8 @@
 				71DD025723AE0C5400EC8E04 /* AuthHandler.m */,
 				71DD025B23AE181B00EC8E04 /* AuthService.h */,
 				71DD025C23AE181B00EC8E04 /* AuthService.m */,
+				7168F92223B1BF3000DBB3A6 /* OplogService.h */,
+				7168F92323B1BF3000DBB3A6 /* OplogService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -801,6 +769,7 @@
 		4649DD6621ED864F006315DC /* Res4test */ = {
 			isa = PBXGroup;
 			children = (
+				7168F90423B0A5F800DBB3A6 /* test2.bin */,
 				7112118823A8E54E00A5DBCA /* 1106281122.mp4 */,
 				713F5A5823A27F970096220C /* 1576159220872799.mp4 */,
 				713F5A5623A250220096220C /* test.amr */,
@@ -1012,6 +981,8 @@
 				71E9EAC0234068FA00353DBD /* CalSpamAlg.m */,
 				7112DBCE23A3CF58008CC5E1 /* CalRqtAlg.h */,
 				7112DBCF23A3CF58008CC5E1 /* CalRqtAlg.m */,
+				7168F92923B205ED00DBB3A6 /* ClientCheckConsistencyUtil.h */,
+				7168F92A23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m */,
 			);
 			path = Crypto;
 			sourceTree = "<group>";
@@ -1112,6 +1083,13 @@
 		712C6F18214A6A5800603022 /* Proto */ = {
 			isa = PBXGroup;
 			children = (
+				7168F91623B0F65B00DBB3A6 /* mm_dump_6523.proto */,
+				7168F91423B0F51C00DBB3A6 /* mm_dump_660.proto */,
+				7168F91223B0F3AF00DBB3A6 /* mm_dump_666.proto */,
+				7168F91123B0F0F500DBB3A6 /* mm_dump_705.proto */,
+				7168F90C23B0C4D900DBB3A6 /* mm_dump_707.proto */,
+				7168F90923B0B02F00DBB3A6 /* mm_dump_708.proto */,
+				7168F90823B0ACE000DBB3A6 /* mm_dump_709.proto */,
 				71456CA3233E1B0600986437 /* mm.proto */,
 				71E1C19C230657E900F5032A /* safe.proto */,
 				46D2CA332239F1F30053C4A6 /* proto */,
@@ -1426,6 +1404,7 @@
 		71F9F5B9235576AA00C6C736 /* mmres */ = {
 			isa = PBXGroup;
 			children = (
+				7168F92723B1F65300DBB3A6 /* classes_706.dex */,
 				71F9F5CF23560E5A00C6C736 /* st-6p-login.bin */,
 				71F9F5CD2355CC8D00C6C736 /* st-6p-clientcheck.bin */,
 				71F9F5BC2355774700C6C736 /* mmregion4client_en.txt */,
@@ -1565,31 +1544,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4685A4B322E06E4E00DE95BE /* 703_login_2.txt in Resources */,
 				46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */,
-				712C6F1A214A6A5800603022 /* PROTO_README.md in Resources */,
 				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
-				460CDE50220088CE0075F3E5 /* cgi.json in Resources */,
 				71808C0E239E0619005C3BDE /* pic_3.jpg in Resources */,
 				71F9F5CE2355CC8D00C6C736 /* st-6p-clientcheck.bin in Resources */,
-				71F9F5BB235576B500C6C736 /* mmregion4client_zh_CN.txt in Resources */,
 				713F5A4F23A2158A0096220C /* send.png in Resources */,
-				46CD1A8522DED2FE0023C585 /* TODO.md in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				71F9F5D023560E5A00C6C736 /* st-6p-login.bin in Resources */,
 				713F5A5723A250220096220C /* test.amr in Resources */,
-				4685A4B522E06FFF00DE95BE /* 703_login_3.txt in Resources */,
 				7112118923A8E54E00A5DBCA /* 1106281122.mp4 in Resources */,
 				713F5A5123A231EC0096220C /* 1576139358368.jpg in Resources */,
 				71808C10239E0619005C3BDE /* pic_2.jpg in Resources */,
+				7168F92823B1F65300DBB3A6 /* classes_706.dex in Resources */,
 				713F5A5323A23C770096220C /* cat_mouse.mp4 in Resources */,
-				714E35EC235806CA0046F7D8 /* RiskScan.tars in Resources */,
 				713F5A5923A27F970096220C /* 1576159220872799.mp4 in Resources */,
 				71808C0F239E0619005C3BDE /* pic_1.jpg in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
-				712C7143214B5A4B00603022 /* LICENSE in Resources */,
-				71F9F5BD2355774700C6C736 /* mmregion4client_en.txt in Resources */,
+				7168F90723B0A5F800DBB3A6 /* test2.bin in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1691,34 +1663,24 @@
 				462D9C0E21D4EC5700FC5461 /* WCBuiltinIP.m in Sources */,
 				71DD025823AE0C5400EC8E04 /* AuthHandler.m in Sources */,
 				712C6E93214A1E8900603022 /* WeChatClient.m in Sources */,
-				46EB620B21F98E1100760593 /* mmgame.proto in Sources */,
-				46EB620021F98E1100760593 /* mmextdevice.proto in Sources */,
 				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
 				712F95F221D0981B00CFE3A0 /* WCDevice.m in Sources */,
-				46EB61FB21F98E1100760593 /* mmimg.proto in Sources */,
 				716A93BF2398F04B00A0C9DC /* AES_EVP.m in Sources */,
 				71DD025D23AE181B00EC8E04 /* AuthService.m in Sources */,
 				712F960021D20A7800CFE3A0 /* ShortLinkClient.m in Sources */,
+				7168F92B23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m in Sources */,
 				46804CDD21DE13B300232229 /* WCMessage.m in Sources */,
 				712C7152214BAD8900603022 /* ShortHeader.m in Sources */,
-				46EB620621F98E1100760593 /* mmsns.proto in Sources */,
 				712F960621D78F0B00CFE3A0 /* AutoAuthKeyStore.m in Sources */,
 				710F14FB2360343B0034FA65 /* NewSyncService.m in Sources */,
-				46D2CA65223A3BA30053C4A6 /* wwopenim.proto in Sources */,
 				466C4AC621DDD65900743075 /* ContactsTableViewController.m in Sources */,
-				46EB61FD21F98E1100760593 /* mmbase.proto in Sources */,
 				463D13442212E4D5007C1DBD /* MMWKWebViewController.m in Sources */,
 				71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */,
-				46D2CA67223A44EC0053C4A6 /* wwbiz.proto in Sources */,
 				711E9B4E2359EC0700C5B655 /* RiskScanBufReq.m in Sources */,
-				46EB620921F98E1100760593 /* mmopenapi.proto in Sources */,
-				46EB61FC21F98E1100760593 /* mmemotionstore.proto in Sources */,
 				71E9EAC1234068FA00353DBD /* CalSpamAlg.m in Sources */,
 				714E36032358173D0046F7D8 /* ReportPkg.m in Sources */,
 				7161984F21CB712900A76F39 /* long_pack.m in Sources */,
-				46EB620E21F98E1100760593 /* mmlbs.proto in Sources */,
 				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,
-				4681939422CB2E8C00839EB0 /* UtileJni.proto in Sources */,
 				714513442390F6A40078D130 /* CdnLogic.m in Sources */,
 				71008F3321B6750700DE8DF8 /* DNSFetcher.m in Sources */,
 				4681939722CB31D400839EB0 /* UtileJni.pbobjc.m in Sources */,
@@ -1733,29 +1695,20 @@
 				71076B2621CCF10500570FB1 /* TestViewController.mm in Sources */,
 				71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */,
 				714E360823587D8E0046F7D8 /* ReportWxVersion.m in Sources */,
-				46D2CA3B223A0A620053C4A6 /* mmthinker.proto in Sources */,
-				46EB620321F98E1100760593 /* mmcard.proto in Sources */,
-				465A64DB22EEDBBE00711C60 /* mmhongbao.proto in Sources */,
-				46EB61FA21F98E1100760593 /* mmemotion.proto in Sources */,
 				7112DBCD23A37F5D008CC5E1 /* SnsUploadImageService.m in Sources */,
 				71F9F5AA235459AD00C6C736 /* PersonalInfoService.m in Sources */,
 				7154D5152196B721005064C4 /* NSString+HexDump.m in Sources */,
 				7121C36521C3610000A3E900 /* ChatsTableViewController.m in Sources */,
 				7112DBD023A3CF58008CC5E1 /* CalRqtAlg.m in Sources */,
-				71E1C19D230657E900F5032A /* safe.proto in Sources */,
 				7112DBC723A34A10008CC5E1 /* DownloadVoiceService.m in Sources */,
 				465B39B422D5EFAD001FDE53 /* SyncService.m in Sources */,
 				71F9F5CC2355CB3D00C6C736 /* NSData+CRC32.m in Sources */,
 				716A93D4239AA2C200A0C9DC /* DBManager.m in Sources */,
-				46D2CA7C223A5DF30053C4A6 /* wwunkown.proto in Sources */,
 				46EB621E21F99C6F00760593 /* MMWebViewController.m in Sources */,
 				71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */,
 				465A634B22E7FCBA00711C60 /* ReportViewController.m in Sources */,
-				46EB621221F98E1100760593 /* mmbuiltintype.proto in Sources */,
 				7112117E23A77B0000A5DBCA /* FileUtil.m in Sources */,
-				46EB620A21F98E1100760593 /* mmpay.proto in Sources */,
 				7154D5172196B721005064C4 /* NSData+HexDump.m in Sources */,
-				46EB620521F98E1100760593 /* mmremind.proto in Sources */,
 				71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */,
 				4602CC7E2212AAFC005FB94F /* RegisterViewController.m in Sources */,
 				71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */,
@@ -1765,13 +1718,11 @@
 				7155BA5221902AB30002CE1D /* ClientHello.m in Sources */,
 				716A93C2239A2CA200A0C9DC /* GetCDNDnsService.m in Sources */,
 				712F95FA21D1E71600CFE3A0 /* LongLinkClient.m in Sources */,
-				46285D6122EFFD58000841BA /* mmkv.proto in Sources */,
 				7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */,
 				46ED97BC22C9F5A500978C0D /* UtilsJni.m in Sources */,
 				7161984C21CB704F00A76F39 /* mmpack.m in Sources */,
 				712F95F521D0B91F00CFE3A0 /* DeviceManager.m in Sources */,
 				711E9B3E23598D8200C5B655 /* RiskScanBufUtil.m in Sources */,
-				46EB621321F98E1100760593 /* mmtalk.proto in Sources */,
 				7112118523A8C7C700A5DBCA /* SendMsgService.m in Sources */,
 				714E360B2358ADF90046F7D8 /* ReportRequestPacket.m in Sources */,
 				7161985321CB863A00A76F39 /* LongLinkClientWithMMTLS.m in Sources */,
@@ -1779,69 +1730,50 @@
 				714E36012358173D0046F7D8 /* ReportSysInfo.m in Sources */,
 				464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */,
 				7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */,
-				46EB620F21F98E1100760593 /* BlockDumpList.proto in Sources */,
 				460429AA22D0911900F9BB94 /* MMProtocalJni.m in Sources */,
-				46EB61F521F98E1100760593 /* mmbottle.proto in Sources */,
 				466C4AC321DDBFA800743075 /* WCButton.m in Sources */,
-				46EB620221F98E1100760593 /* mmbackup.proto in Sources */,
 				714E36052358173D0046F7D8 /* ReportReq.m in Sources */,
 				46804CE421DE280900232229 /* DiscoveryTableViewController.m in Sources */,
 				712C714F214BABA500603022 /* ShortPackage.m in Sources */,
 				462D9C3021DCAB6B00FC5461 /* Cookie.m in Sources */,
-				46EB61FE21F98E1100760593 /* mmweb.proto in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
-				46EB620D21F98E1100760593 /* mmvoiphw.proto in Sources */,
 				462D9C3A21DDA60F00FC5461 /* WCContact.m in Sources */,
 				71456CA7233E1B3200986437 /* Mm.pbobjc.m in Sources */,
 				462D9C3321DCC4FE00FC5461 /* SessionKeyStore.m in Sources */,
 				464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */,
-				46EB621121F98E1100760593 /* mmutils.proto in Sources */,
 				719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */,
-				46D2CA3A223A0A620053C4A6 /* mmreport.proto in Sources */,
 				71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */,
-				46EB61F621F98E1100760593 /* mmlogin.proto in Sources */,
 				712F960921D78F9300CFE3A0 /* SyncKeyStore.m in Sources */,
-				46EB61F821F98E1100760593 /* mmcontact.proto in Sources */,
 				46804CE721DE41BE00232229 /* ChatDetailTableViewController.m in Sources */,
 				4689A17821E4C01800E2EA9A /* SyncKeyCompare.m in Sources */,
 				71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */,
-				46EB61F921F98E1100760593 /* mmvoip.proto in Sources */,
 				7112DBC223A334AD008CC5E1 /* GetMsgImgService.m in Sources */,
-				46EB61FF21F98E1100760593 /* mmfav.proto in Sources */,
 				46804CED21DE5B2900232229 /* ChatsDetailTableViewCell.m in Sources */,
-				46EB620421F98E1100760593 /* mmprimsend.proto in Sources */,
 				466C4ACA21DDD6D200743075 /* ContactsTableViewCell.m in Sources */,
 				71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */,
 				712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */,
 				463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */,
-				46D2CA71223A57A30053C4A6 /* wwux.proto in Sources */,
 				712C7149214BA38900603022 /* LongHeader.m in Sources */,
 				712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */,
-				46EB621021F98E1100760593 /* mmextsend.proto in Sources */,
 				462D9C3621DCD2D000FC5461 /* SyncCmdHandler.m in Sources */,
-				46EB620C21F98E1100760593 /* mmvoiceaddr.proto in Sources */,
 				714E35F1235806CA0046F7D8 /* ReportUserInfo.m in Sources */,
 				71848F272150CABD00DB669E /* NSData+Compression.m in Sources */,
 				7154D5162196B721005064C4 /* HexDump.m in Sources */,
-				46EB620721F98E1100760593 /* mmvoiceprint.proto in Sources */,
 				464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */,
 				46804CEA21DE5B1800232229 /* ChatsTableViewCell.m in Sources */,
 				712C714C214BA49300603022 /* LongPackage.m in Sources */,
-				46EB61F721F98E1100760593 /* mmtrack.proto in Sources */,
-				46EB620821F98E1100760593 /* mmsync.proto in Sources */,
-				46EB620121F98E1100760593 /* mmappmsg.proto in Sources */,
-				71456CA4233E1B0600986437 /* mm.proto in Sources */,
 				71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */,
 				1D48E7C8E155D99FF346ADFB /* WC_AesGcm128.m in Sources */,
 				1D48E4CAB057574BBEBA804D /* WC_Hex.m in Sources */,
 				1D48E6EDD6760DEA4DD7B382 /* WC_HKDF.m in Sources */,
 				1D48EEF40F55F7104E8622E1 /* WC_HmacSha256.m in Sources */,
+				7168F92423B1BF3000DBB3A6 /* OplogService.m in Sources */,
 				714E36002358173D0046F7D8 /* Reportc.m in Sources */,
+				7168F91523B0F51C00DBB3A6 /* mm_dump_660.proto in Sources */,
 				1D48EFA57EBE8BB457184405 /* WC_SHA256.m in Sources */,
 				71808C0A239DFCD0005C3BDE /* CdnSnsUploadTask.m in Sources */,
 				1D48E82BF0AADB88925F440F /* ShortLinkKey.m in Sources */,
 				1D48E6F0446FD84F950B71E2 /* KeyPair.m in Sources */,
-				1D48EC3CADAA35C33963F112 /* mmerror.proto in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

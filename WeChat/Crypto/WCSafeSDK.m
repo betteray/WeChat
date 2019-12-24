@@ -90,6 +90,15 @@ static inline int getRandomSpan() {
     return arc4random()%3000 + 201;
 }
 
+/**
+生成ST(CCData)中的WCSTF字段xml。
+
+@return A xml string.
+
+@discussion Any of the invalid property is ignored.
+If the reciver is `NSArray`, `NSDictionary` or `NSSet`, it will also convert the
+inner object to json string.
+*/
 + (NSString *)genWCSTFWithAccount:(NSString *)account {
     
     // android:inputType="textNoSuggestions" 微信监控 EditText 输入的变化，并且没有这个属性，会因为这个属性导致统计输入的文字个数的不准确，比如myrti_361时，输入_后会多统计一次输入cc=10。
@@ -119,7 +128,7 @@ static inline int getRandomSpan() {
     long et = ct;
 
     NSMutableString *string = [NSMutableString stringWithString:@"<ct>"];
-    for (int i=0; i<account.length; i++) {
+    for (int i=0; i <= account.length; i++) {
         st = st + timeSpan[arc4random() % 20]; // 从此刻向前计算
         [string appendFormat:@"%ld,", st];
     }
@@ -141,7 +150,7 @@ static inline int getRandomSpan() {
     (int) tp.tv_sec];
 }
 
-+ (NSData *)getextSpamInfoBufferWithContent:(NSString *)content
++ (NSData *)getExtSpamInfoWithContent:(NSString *)content
                                     context:(NSString *)context {
     
     BOOL isAutoAuth = [context containsString:@"auto"];

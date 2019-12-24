@@ -14,6 +14,8 @@
 #import "GetMsgImgService.h"
 #import "DownloadVoiceService.h"
 #import "DownloadVideoService.h"
+#import "OplogService.h"
+#import "FSOpenSSL.h"
 
 @implementation SyncCmdHandler
 
@@ -42,13 +44,50 @@
                 case 10002:
                 case 9999:
                 {
-                    // msg content : <sysmsg type="ClientCheckGetExtInfo"><ClientCheckGetExtInfo><ReportContext>539033600</ReportContext><Basic>0</Basic></ClientCheckGetExtInfo></sysmsg>
-                    // basic != 0时，上报的消息不一样，比较简单
-                    NSString *xmlMsg = msg.content.string;
-                    if (isSystemMsg && [xmlMsg containsString:@"ClientCheckGetExtInfo"]) {
-                        ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content.string encoding:NSUTF8StringEncoding error:nil];
-                        uint32_t rptContext = [[[document.rootElement firstChildWithTag:@"ReportContext"] numberValue] intValue];
-                        [WCSafeSDK reportClientCheckWithContext:rptContext basic:YES];
+                    ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content.string encoding:NSUTF8StringEncoding error:nil];
+                    NSDictionary *attrs = [document.rootElement attributes];
+                    NSString *type = [attrs objectForKey:@"type"];
+                    if ([type isEqualToString:@"ClientCheckGetExtInfo"]) {
+                        // <sysmsg type="ClientCheckGetExtInfo"><ClientCheckGetExtInfo><ReportContext>539033600</ReportContext><Basic>0</Basic></ClientCheckGetExtInfo></sysmsg>
+                        // basic != 0时，上报的消息不一样，比较简单
+                        uint32_t reportContext = [[[document.rootElement firstChildWithXPath:@"//ReportContext"] numberValue] intValue];
+                        [WCSafeSDK reportClientCheckWithContext:reportContext basic:YES];
+                    }
+                    else if ([type isEqualToString:@"ClientCheckConsistency"])
+                    {
+                        // <sysmsg type="ClientCheckConsistency"><ClientCheckConsistency><clientcheck><fullpathfilename>@classes.dex</fullpathfilename><fileoffset>0</fileoffset><checkbuffersize>9999999</checkbuffersize><seq>536870912</seq></clientcheck></ClientCheckConsistency></sysmsg>
+                        OpLogClientCheckConsistency *clientCheckConsistency = [OpLogClientCheckConsistency new];
+                        NSString *fullpathfilename = [[document.rootElement firstChildWithXPath:@"//fullpathfilename"] stringValue];
+                        uint32_t fileoffset = [[[document.rootElement firstChildWithXPath:@"//fileoffset"] numberValue] intValue];
+                        uint32_t checkbuffersize = [[[document.rootElement firstChildWithXPath:@"//checkbuffersize"] numberValue] intValue];
+                        uint32_t seq = [[[document.rootElement firstChildWithXPath:@"//seq"] numberValue] intValue];
+
+                        NSString *dexPath = [[NSBundle mainBundle] pathForResource:@"classes_706" ofType:@"dex"];
+                        NSData *dexData = [NSData dataWithContentsOfFile:dexPath];
+                        NSString *dexMd5String = [FSOpenSSL md5StringFromData:dexData];
+                        
+                        [clientCheckConsistency setSeq:seq];
+                        [clientCheckConsistency setCheckBufferSize:checkbuffersize];
+                        [clientCheckConsistency setFileName:fullpathfilename];
+                        [clientCheckConsistency setFileOffset:fileoffset];
+                        
+                        [clientCheckConsistency setCheckBufferHash:dexMd5String]; //所检测dex部分的md5，从抓到的数据看offset为0，检测总大小小等于9999999的话为整个dex文件的md5。
+                        [clientCheckConsistency setFileSize:(uint32_t) [dexData length]];
+                        [clientCheckConsistency setIsRoot:0]; //是否设备root
+                        [clientCheckConsistency setNetType:4];
+                        [clientCheckConsistency setCheckSum:@"1962359c264a15f2edf38ae300e7ec0c"]; // 计算方法见 ClientCheckConsistencyUtil.m 中的java实现，java计算结果正确。 正常情况下是这个值，如果offset和checkbuffersize小于dex文件则md5会变，相应这个值计算结果也要跟着变。
+                        
+                        [OplogService oplogRequestWithCmdId:61 message:clientCheckConsistency];
+                    }
+                    else if ([type isEqualToString:@"ClientCheckHook"]) //目前还没看到收到类似检测。
+                    {
+                        OpLogClientCheckHook *clientCheckHook = [OpLogClientCheckHook new];
+                        [OplogService oplogRequestWithCmdId:62 message:clientCheckHook];
+                    }
+                    else if ([type isEqualToString:@"ClientCheckGetAppList"]) //目前也没收到类似的检测。
+                    {
+                        OpLogClientCheckGetAppList *checkGetAppList = [OpLogClientCheckGetAppList new];
+                        [OplogService oplogRequestWithCmdId:63 message:checkGetAppList];
                     }
                 }
                     break;

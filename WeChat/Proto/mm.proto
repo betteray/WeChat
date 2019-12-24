@@ -22597,10 +22597,15 @@ message WARemoteDebug_WxSyncMessageResp {
 }
 
 message WCExtInfo {
-    optional  SKBuiltinBuffer_t  wcstf  = 1;
-    optional  SKBuiltinBuffer_t  wcste  = 2;
-    optional  SKBuiltinBuffer_t  ccData  = 3;
-    optional  SKBuiltinBuffer_t  userAttrInfo  = 4;
+    optional  SKBuiltinBuffer_t  wcstf  = 1 ;
+    optional  SKBuiltinBuffer_t  wcste  = 2 ;
+    optional  SKBuiltinBuffer_t  ccData  = 3 ;
+    optional  SKBuiltinBuffer_t  userAttrInfo  = 4 ;
+    optional  SKBuiltinBuffer_t  acgiDeviceInfo  = 5 ;
+    optional  SKBuiltinBuffer_t  acgiTuring  = 6 ;
+    optional  SKBuiltinBuffer_t  deviceToken  = 7 ;
+    optional  SKBuiltinBuffer_t  iosturingHuman  = 101 ;
+    optional  SKBuiltinBuffer_t  iosturingOwner  = 102 ;
 }
 
 message WCOCell {

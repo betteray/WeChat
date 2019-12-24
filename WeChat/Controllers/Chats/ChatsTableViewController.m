@@ -11,6 +11,7 @@
 #import "WCMessage.h"
 #import "ChatDetailTableViewController.h"
 #import "AccountInfo.h"
+#import <Ono.h>
 
 @interface ChatsTableViewController ()
 
@@ -60,8 +61,28 @@
      WCMessage *msg = [_chats objectAtIndex:indexPath.row];
      cell.avatarImageUrl = msg.fromUser.smallHeadImgUrl;
      cell.userName = msg.fromUser.nickName;
-     cell.lastMsg = msg.content;
+    
+     NSError *error = nil;
+     NSString *lastMsg = nil;
+     ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content encoding:NSUTF8StringEncoding error:&error];
+     if (error) {
+         lastMsg = msg.content;
+     } else if (document) {
+         if ([document.rootElement firstChildWithTag:@"voicemsg"]) {
+             lastMsg = @"[语音]";
+         } else if ([document.rootElement firstChildWithTag:@"img"]) {
+             lastMsg = @"[图片]";
+         } else if ([document.rootElement firstChildWithTag:@"videomsg"]) {
+             lastMsg = @"[视频]";
+         } else if ([document.rootElement firstChildWithTag:@"appmsg"]) {
+             ONOXMLElement *ele = [document.rootElement firstChildWithTag:@"appmsg"];
+             lastMsg = [[ele firstChildWithTag:@"title"] stringValue];
+         } else {
+             lastMsg = msg.content;
+         }
+     }
      
+     cell.lastMsg = lastMsg;
      return cell;
  }
 

@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PersonalInfoService : NSObject
 
 + (void)getprofile;
-+ (void)testOpLog;
 
 @end
 

@@ -89081,6 +89081,11 @@ typedef GPB_ENUM(WCExtInfo_FieldNumber) {
   WCExtInfo_FieldNumber_Wcste = 2,
   WCExtInfo_FieldNumber_CcData = 3,
   WCExtInfo_FieldNumber_UserAttrInfo = 4,
+  WCExtInfo_FieldNumber_AcgiDeviceInfo = 5,
+  WCExtInfo_FieldNumber_AcgiTuring = 6,
+  WCExtInfo_FieldNumber_DeviceToken = 7,
+  WCExtInfo_FieldNumber_IosturingHuman = 101,
+  WCExtInfo_FieldNumber_IosturingOwner = 102,
 };
 
 @interface WCExtInfo : GPBMessage
@@ -89100,6 +89105,26 @@ typedef GPB_ENUM(WCExtInfo_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *userAttrInfo;
 /** Test to see if @c userAttrInfo has been set. */
 @property(nonatomic, readwrite) BOOL hasUserAttrInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *acgiDeviceInfo;
+/** Test to see if @c acgiDeviceInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasAcgiDeviceInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *acgiTuring;
+/** Test to see if @c acgiTuring has been set. */
+@property(nonatomic, readwrite) BOOL hasAcgiTuring;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *deviceToken;
+/** Test to see if @c deviceToken has been set. */
+@property(nonatomic, readwrite) BOOL hasDeviceToken;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *iosturingHuman;
+/** Test to see if @c iosturingHuman has been set. */
+@property(nonatomic, readwrite) BOOL hasIosturingHuman;
+
+@property(nonatomic, readwrite, strong, null_resettable) SKBuiltinBuffer_t *iosturingOwner;
+/** Test to see if @c iosturingOwner has been set. */
+@property(nonatomic, readwrite) BOOL hasIosturingOwner;
 
 @end
 

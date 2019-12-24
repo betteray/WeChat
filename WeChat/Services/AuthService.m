@@ -99,7 +99,7 @@
 
     if (CLIENT_VERSION > A703) {
         AccountInfo *accoutInfo = [DBManager accountInfo];
-        NSData *extSpamInfoBuffer = [WCSafeSDK getextSpamInfoBufferWithContent:accoutInfo.userName context:@"auto"];
+        NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:accoutInfo.userName context:@"auto"];
 
         SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
         extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
@@ -229,7 +229,7 @@
 #endif
     
     if (CLIENT_VERSION > A703) {
-        NSData *extSpamInfoBuffer = [WCSafeSDK getextSpamInfoBufferWithContent:userName context:@"&lt;LoginByID&gt"];
+        NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:userName context:@"&lt;LoginByID&gt"];
         
         SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
         extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];

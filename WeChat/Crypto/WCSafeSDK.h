@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)reportClientCheckWithContext:(uint64_t)context basic:(BOOL)basic;
 
 //&lt;LoginByID&gt
-+ (NSData *)getextSpamInfoBufferWithContent:(NSString *)content
-                                    context:(NSString *)context;
++ (NSData *)getExtSpamInfoWithContent:(NSString *)content
+                              context:(NSString *)context;
 
 + (void)decodeNDM;
 
