@@ -473,13 +473,7 @@
                     <toolbarItems>
                         <barButtonItem title="Item" id="ABf-OH-MrS"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Title" id="FtP-3U-QAe">
-                        <barButtonItem key="rightBarButtonItem" title="test" id="Azd-ZT-guC">
-                            <connections>
-                                <action selector="test:" destination="MjI-5X-eGc" id="mIT-ku-tCc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="FtP-3U-QAe"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="msgTextField" destination="wXq-Zq-9NA" id="vfp-6j-UVv"/>

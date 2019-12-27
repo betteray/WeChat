@@ -17,34 +17,48 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XkE-30-iwA">
                     <rect key="frame" x="0.0" y="44" width="414" height="192"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTc-ea-vY9">
-                            <rect key="frame" x="0.0" y="0.0" width="103.5" height="192"/>
-                            <state key="normal" title="发文字"/>
-                            <connections>
-                                <action selector="onClick:" destination="-1" eventType="touchUpInside" id="saP-O1-FbZ"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lq7-6S-fuu">
-                            <rect key="frame" x="103.5" y="0.0" width="103.5" height="192"/>
-                            <state key="normal" title="发语音"/>
-                            <connections>
-                                <action selector="onClick:" destination="-1" eventType="touchUpInside" id="sxa-F4-c8S"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqp-DT-Lyd">
-                            <rect key="frame" x="207" y="0.0" width="103.5" height="192"/>
-                            <state key="normal" title="发图片"/>
-                            <connections>
-                                <action selector="onClick:" destination="-1" eventType="touchUpInside" id="bSB-4s-meT"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GuK-4A-q4z">
-                            <rect key="frame" x="310.5" y="0.0" width="103.5" height="192"/>
-                            <state key="normal" title="发视频"/>
-                            <connections>
-                                <action selector="onClick:" destination="-1" eventType="touchUpInside" id="qZj-ko-iEV"/>
-                            </connections>
-                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yVz-na-QzB">
+                            <rect key="frame" x="0.0" y="0.0" width="207" height="192"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTc-ea-vY9">
+                                    <rect key="frame" x="0.0" y="0.0" width="207" height="96"/>
+                                    <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="发文字"/>
+                                    <connections>
+                                        <action selector="onClick:" destination="-1" eventType="touchUpInside" id="saP-O1-FbZ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lq7-6S-fuu">
+                                    <rect key="frame" x="0.0" y="96" width="207" height="96"/>
+                                    <color key="backgroundColor" systemColor="quaternarySystemFillColor" red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="发语音"/>
+                                    <connections>
+                                        <action selector="onClick:" destination="-1" eventType="touchUpInside" id="sxa-F4-c8S"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GqK-pr-qmU">
+                            <rect key="frame" x="207" y="0.0" width="207" height="192"/>
+                            <subviews>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqp-DT-Lyd">
+                                    <rect key="frame" x="0.0" y="0.0" width="207" height="96"/>
+                                    <color key="backgroundColor" systemColor="quaternarySystemFillColor" red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="发图片"/>
+                                    <connections>
+                                        <action selector="onClick:" destination="-1" eventType="touchUpInside" id="bSB-4s-meT"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GuK-4A-q4z">
+                                    <rect key="frame" x="0.0" y="96" width="207" height="96"/>
+                                    <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="发视频"/>
+                                    <connections>
+                                        <action selector="onClick:" destination="-1" eventType="touchUpInside" id="qZj-ko-iEV"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
                 </stackView>
             </subviews>

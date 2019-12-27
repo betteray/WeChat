@@ -14,7 +14,7 @@
 #import "MMKeyBoardView.h"
 #import "UIView+LoadFromXIB.h"
 
-@interface ChatDetailTableViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface ChatDetailTableViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MMKeyBoardViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *msgTextField;
@@ -32,8 +32,10 @@
     self.title = _curUser.nickName;
     
     _msgTextField.delegate = self;
-   
-    _msgTextField.inputView = [MMKeyBoardView dc_loadFromXIB];
+  
+    MMKeyBoardView *keyboardView = [MMKeyBoardView dc_loadFromXIB];
+    keyboardView.delegate = self;
+    _msgTextField.inputView = keyboardView;
     
     [self refreshChats:YES];
 
@@ -52,29 +54,6 @@
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_messages.count-1 inSection:0]
                           atScrollPosition:UITableViewScrollPositionBottom
                                   animated:NO];
-}
-
-- (IBAction)test:(id)sender {
-//    [SendMsgService sendImgMsg:[[NSBundle mainBundle] pathForResource:@"1576139358368" ofType:@"jpg"] toUser:self.curUser]; // ok
-    [SendMsgService sendVoiceMsg:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp3"] toUser:self.curUser]; // ok
-//    [SendMsgService sendVideoMsg:[[NSBundle mainBundle] pathForResource:@"1106281122" ofType:@"mp4"]
-//                       imagePath:[[NSBundle mainBundle] pathForResource:@"pic_1" ofType:@"jpg"]
-//                          toUser:self.curUser
-//                   imageStartPos:0]; //
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if ([textField.text length] == 0) {
-        return NO;
-    }
-    
-    [SendMsgService sendTextMsg:textField.text toUser:self.curUser];
-    
-    textField.text = nil;
-    [textField resignFirstResponder];
-
-    return YES;
 }
 
 #pragma mark - Table view data source
@@ -97,6 +76,32 @@
     cell.msgContent = msg.content;
         
     return cell;
+}
+
+#pragma mark -
+
+- (BOOL)onMMKeyBoardViewSendText:(MMKeyBoardView *)keyboardView {
+    [SendMsgService sendTextMsg:self.msgTextField.text toUser:self.curUser];
+    self.msgTextField.text = @"";
+    return YES;
+}
+
+- (BOOL)onMMKeyBoardViewSendVoice:(MMKeyBoardView *)keyboardView {
+    [SendMsgService sendVoiceMsg:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp3"] toUser:self.curUser]; // ok
+    return YES;
+}
+
+- (BOOL)onMMKeyBoardViewSendPic:(MMKeyBoardView *)keyboardView {
+    [SendMsgService sendImgMsg:[[NSBundle mainBundle] pathForResource:@"pic_1" ofType:@"jpg"] toUser:self.curUser];
+    return YES;
+}
+
+- (BOOL)onMMKeyBoardViewSendVideo:(MMKeyBoardView *)keyboardView {
+    [SendMsgService sendVideoMsg:[[NSBundle mainBundle] pathForResource:@"1106281122" ofType:@"mp4"]
+                       imagePath:[[NSBundle mainBundle] pathForResource:@"pic_1" ofType:@"jpg"]
+                          toUser:self.curUser
+                   imageStartPos:0]; //
+    return YES;
 }
 
 @end
