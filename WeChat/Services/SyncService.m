@@ -109,7 +109,11 @@
                               [self newInitWithSyncKeyCur:[WeChatClient sharedClient].sync_key_cur
                                                syncKeyMax:[WeChatClient sharedClient].sync_key_max];
                           } else {
-                              [PersonalInfoService getprofile];
+                              [PersonalInfoService getprofileSuccess:^(id  _Nullable response) {
+                                  
+                              } failure:^(NSError * _Nonnull error) {
+                                  
+                              }];
                               [GetCDNDnsService getCDNDns];
                           }
                       }

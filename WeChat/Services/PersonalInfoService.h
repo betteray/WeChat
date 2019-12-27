@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PersonalInfoService : NSObject
 
-+ (void)getprofile;
++ (void)getprofileSuccess:(SuccessBlock)successBlock
+                  failure:(FailureBlock)failureBlock;
 
 @end
 
