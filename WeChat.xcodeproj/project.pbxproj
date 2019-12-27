@@ -101,6 +101,8 @@
 		713F5A5923A27F970096220C /* 1576159220872799.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5823A27F970096220C /* 1576159220872799.mp4 */; };
 		714513442390F6A40078D130 /* CdnLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 714513432390F6A40078D130 /* CdnLogic.m */; };
 		71456CA7233E1B3200986437 /* Mm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 71456CA5233E1B3200986437 /* Mm.pbobjc.m */; };
+		714B348523B5B78C00C5B442 /* SnsTimeLineService.m in Sources */ = {isa = PBXBuildFile; fileRef = 714B348423B5B78C00C5B442 /* SnsTimeLineService.m */; };
+		714B348A23B5B89C00C5B442 /* SnsPostService.m in Sources */ = {isa = PBXBuildFile; fileRef = 714B348923B5B89C00C5B442 /* SnsPostService.m */; };
 		714E35CD235733510046F7D8 /* libtup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 714E35C623572F380046F7D8 /* libtup.a */; };
 		714E35F1235806CA0046F7D8 /* ReportUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E35E9235806CA0046F7D8 /* ReportUserInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		714E36002358173D0046F7D8 /* Reportc.m in Sources */ = {isa = PBXBuildFile; fileRef = 714E35F42358173C0046F7D8 /* Reportc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -123,6 +125,9 @@
 		7168F92423B1BF3000DBB3A6 /* OplogService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7168F92323B1BF3000DBB3A6 /* OplogService.m */; };
 		7168F92823B1F65300DBB3A6 /* classes_706.dex in Resources */ = {isa = PBXBuildFile; fileRef = 7168F92723B1F65300DBB3A6 /* classes_706.dex */; };
 		7168F92B23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7168F92A23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m */; };
+		7168F97023B349A100DBB3A6 /* MMKeyBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7168F96F23B349A100DBB3A6 /* MMKeyBoardView.m */; };
+		7168F97423B349B900DBB3A6 /* MMKeyBoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7168F97323B349B900DBB3A6 /* MMKeyBoardView.xib */; };
+		7168F97623B355B400DBB3A6 /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7168F97523B355B400DBB3A6 /* test.mp3 */; };
 		716A93BF2398F04B00A0C9DC /* AES_EVP.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93BE2398F04B00A0C9DC /* AES_EVP.m */; };
 		716A93C2239A2CA200A0C9DC /* GetCDNDnsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93C1239A2CA200A0C9DC /* GetCDNDnsService.m */; };
 		716A93D4239AA2C200A0C9DC /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93D3239AA2C200A0C9DC /* DBManager.m */; };
@@ -134,7 +139,6 @@
 		71808C1B239E2C4D005C3BDE /* CdnSendPictureTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 71808C1A239E2C4D005C3BDE /* CdnSendPictureTask.m */; };
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
-		719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */ = {isa = PBXBuildFile; fileRef = 719A962C219BD53800E4D077 /* NSData+AddData.m */; };
 		71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* MeViewController.m */; };
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
 		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
@@ -149,6 +153,9 @@
 		71F9F5CC2355CB3D00C6C736 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5CB2355CB3D00C6C736 /* NSData+CRC32.m */; };
 		71F9F5CE2355CC8D00C6C736 /* st-6p-clientcheck.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71F9F5CD2355CC8D00C6C736 /* st-6p-clientcheck.bin */; };
 		71F9F5D023560E5A00C6C736 /* st-6p-login.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71F9F5CF23560E5A00C6C736 /* st-6p-login.bin */; };
+		71FD5D8D23B48A3200B70518 /* GetkvidkeyStrategyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FD5D8C23B48A3200B70518 /* GetkvidkeyStrategyService.m */; };
+		71FD5D9223B48CE000B70518 /* UIView+LoadFromXIB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FD5D9023B48CE000B70518 /* UIView+LoadFromXIB.m */; };
+		71FD5D9523B48E7B00B70518 /* NSData+AddData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FD5D9323B48E7A00B70518 /* NSData+AddData.m */; };
 		8A6B7E6AD0B44DCDF3A4DADB /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD18BBDEB2F4000E11CEB5B0 /* libPods-WeChatTests.a */; };
 		A171A24009C24E78AD226EE0 /* libPods-WeChatUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB43DD6C2AA522C9401323 /* libPods-WeChatUITests.a */; };
 		B29AF48CDFF2BFFF255F71A2 /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 814381742B1C4841306B49D3 /* libPods-WeChatTests.a */; };
@@ -504,6 +511,10 @@
 		71456CA3233E1B0600986437 /* mm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm.proto; sourceTree = "<group>"; };
 		71456CA5233E1B3200986437 /* Mm.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mm.pbobjc.m; sourceTree = "<group>"; };
 		71456CA6233E1B3200986437 /* Mm.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mm.pbobjc.h; sourceTree = "<group>"; };
+		714B348423B5B78C00C5B442 /* SnsTimeLineService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnsTimeLineService.m; sourceTree = "<group>"; };
+		714B348823B5B89C00C5B442 /* SnsPostService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnsPostService.h; sourceTree = "<group>"; };
+		714B348923B5B89C00C5B442 /* SnsPostService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnsPostService.m; sourceTree = "<group>"; };
+		714B348B23B5B8AB00C5B442 /* SnsTimeLineService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnsTimeLineService.h; sourceTree = "<group>"; };
 		714E35BF23572F380046F7D8 /* tup.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = tup.xcodeproj; path = tup/tup.xcodeproj; sourceTree = "<group>"; };
 		714E35DF235806C80046F7D8 /* RiskScan.tars */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RiskScan.tars; sourceTree = "<group>"; };
 		714E35E4235806C90046F7D8 /* ReportUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportUserInfo.h; sourceTree = "<group>"; };
@@ -554,6 +565,10 @@
 		7168F92723B1F65300DBB3A6 /* classes_706.dex */ = {isa = PBXFileReference; lastKnownFileType = file; path = classes_706.dex; sourceTree = "<group>"; };
 		7168F92923B205ED00DBB3A6 /* ClientCheckConsistencyUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClientCheckConsistencyUtil.h; sourceTree = "<group>"; };
 		7168F92A23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckConsistencyUtil.m; sourceTree = "<group>"; };
+		7168F96E23B349A100DBB3A6 /* MMKeyBoardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMKeyBoardView.h; sourceTree = "<group>"; };
+		7168F96F23B349A100DBB3A6 /* MMKeyBoardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMKeyBoardView.m; sourceTree = "<group>"; };
+		7168F97323B349B900DBB3A6 /* MMKeyBoardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MMKeyBoardView.xib; sourceTree = "<group>"; };
+		7168F97523B355B400DBB3A6 /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		716A93BD2398F04B00A0C9DC /* AES_EVP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AES_EVP.h; sourceTree = "<group>"; };
 		716A93BE2398F04B00A0C9DC /* AES_EVP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AES_EVP.m; sourceTree = "<group>"; };
 		716A93C0239A2CA200A0C9DC /* GetCDNDnsService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetCDNDnsService.h; sourceTree = "<group>"; };
@@ -573,8 +588,6 @@
 		71848F262150CABD00DB669E /* NSData+Compression.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Compression.m"; sourceTree = "<group>"; };
 		71848F6621549C8100DB669E /* NSData+GenRandomData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+GenRandomData.h"; sourceTree = "<group>"; };
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
-		719A962B219BD53800E4D077 /* NSData+AddData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AddData.h"; sourceTree = "<group>"; };
-		719A962C219BD53800E4D077 /* NSData+AddData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+AddData.m"; sourceTree = "<group>"; };
 		71C9CA5321C4DC1D006C4DDD /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUB.h"; sourceTree = "<group>"; };
 		71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUB.m"; sourceTree = "<group>"; };
@@ -603,6 +616,12 @@
 		71F9F5CB2355CB3D00C6C736 /* NSData+CRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CRC32.m"; sourceTree = "<group>"; };
 		71F9F5CD2355CC8D00C6C736 /* st-6p-clientcheck.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "st-6p-clientcheck.bin"; sourceTree = "<group>"; };
 		71F9F5CF23560E5A00C6C736 /* st-6p-login.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "st-6p-login.bin"; sourceTree = "<group>"; };
+		71FD5D8B23B48A3200B70518 /* GetkvidkeyStrategyService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetkvidkeyStrategyService.h; sourceTree = "<group>"; };
+		71FD5D8C23B48A3200B70518 /* GetkvidkeyStrategyService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetkvidkeyStrategyService.m; sourceTree = "<group>"; };
+		71FD5D9023B48CE000B70518 /* UIView+LoadFromXIB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LoadFromXIB.m"; sourceTree = "<group>"; };
+		71FD5D9123B48CE000B70518 /* UIView+LoadFromXIB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LoadFromXIB.h"; sourceTree = "<group>"; };
+		71FD5D9323B48E7A00B70518 /* NSData+AddData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AddData.m"; sourceTree = "<group>"; };
+		71FD5D9423B48E7A00B70518 /* NSData+AddData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AddData.h"; sourceTree = "<group>"; };
 		814381742B1C4841306B49D3 /* libPods-WeChatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8435ACA679E3636C36C7D47C /* Pods-WeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChat/Pods-WeChat.debug.xcconfig"; sourceTree = "<group>"; };
 		A8AE4D42890ED7488CA924E7 /* Pods-WeChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatUITests/Pods-WeChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -705,34 +724,40 @@
 		462D9C3721DCD2DF00FC5461 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */,
-				4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */,
-				465B39B222D5EFAD001FDE53 /* SyncService.h */,
-				465B39B322D5EFAD001FDE53 /* SyncService.m */,
-				462D9C3421DCD2D000FC5461 /* SyncCmdHandler.h */,
-				462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */,
-				71F9F5A8235459AD00C6C736 /* PersonalInfoService.h */,
-				71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */,
-				710F14F92360343B0034FA65 /* NewSyncService.h */,
-				710F14FA2360343B0034FA65 /* NewSyncService.m */,
-				716A93C0239A2CA200A0C9DC /* GetCDNDnsService.h */,
-				716A93C1239A2CA200A0C9DC /* GetCDNDnsService.m */,
-				7112DBC023A334AD008CC5E1 /* GetMsgImgService.h */,
-				7112DBC123A334AD008CC5E1 /* GetMsgImgService.m */,
-				7112DBC523A34A10008CC5E1 /* DownloadVoiceService.h */,
-				7112DBC623A34A10008CC5E1 /* DownloadVoiceService.m */,
-				7112DBC823A37192008CC5E1 /* DownloadVideoService.h */,
-				7112DBC923A37192008CC5E1 /* DownloadVideoService.m */,
-				7112DBCB23A37F5D008CC5E1 /* SnsUploadImageService.h */,
-				7112DBCC23A37F5D008CC5E1 /* SnsUploadImageService.m */,
-				7112118323A8C7C700A5DBCA /* SendMsgService.h */,
-				7112118423A8C7C700A5DBCA /* SendMsgService.m */,
 				71DD025623AE0C5400EC8E04 /* AuthHandler.h */,
 				71DD025723AE0C5400EC8E04 /* AuthHandler.m */,
 				71DD025B23AE181B00EC8E04 /* AuthService.h */,
 				71DD025C23AE181B00EC8E04 /* AuthService.m */,
+				7112DBC823A37192008CC5E1 /* DownloadVideoService.h */,
+				7112DBC923A37192008CC5E1 /* DownloadVideoService.m */,
+				7112DBC523A34A10008CC5E1 /* DownloadVoiceService.h */,
+				7112DBC623A34A10008CC5E1 /* DownloadVoiceService.m */,
+				716A93C0239A2CA200A0C9DC /* GetCDNDnsService.h */,
+				716A93C1239A2CA200A0C9DC /* GetCDNDnsService.m */,
+				71FD5D8B23B48A3200B70518 /* GetkvidkeyStrategyService.h */,
+				71FD5D8C23B48A3200B70518 /* GetkvidkeyStrategyService.m */,
+				7112DBC023A334AD008CC5E1 /* GetMsgImgService.h */,
+				7112DBC123A334AD008CC5E1 /* GetMsgImgService.m */,
+				710F14F92360343B0034FA65 /* NewSyncService.h */,
+				710F14FA2360343B0034FA65 /* NewSyncService.m */,
 				7168F92223B1BF3000DBB3A6 /* OplogService.h */,
 				7168F92323B1BF3000DBB3A6 /* OplogService.m */,
+				71F9F5A8235459AD00C6C736 /* PersonalInfoService.h */,
+				71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */,
+				7112118323A8C7C700A5DBCA /* SendMsgService.h */,
+				7112118423A8C7C700A5DBCA /* SendMsgService.m */,
+				714B348823B5B89C00C5B442 /* SnsPostService.h */,
+				714B348923B5B89C00C5B442 /* SnsPostService.m */,
+				714B348B23B5B8AB00C5B442 /* SnsTimeLineService.h */,
+				714B348423B5B78C00C5B442 /* SnsTimeLineService.m */,
+				7112DBCB23A37F5D008CC5E1 /* SnsUploadImageService.h */,
+				7112DBCC23A37F5D008CC5E1 /* SnsUploadImageService.m */,
+				462D9C3421DCD2D000FC5461 /* SyncCmdHandler.h */,
+				462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */,
+				4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */,
+				4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */,
+				465B39B222D5EFAD001FDE53 /* SyncService.h */,
+				465B39B322D5EFAD001FDE53 /* SyncService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -769,6 +794,7 @@
 		4649DD6621ED864F006315DC /* Res4test */ = {
 			isa = PBXGroup;
 			children = (
+				7168F97523B355B400DBB3A6 /* test.mp3 */,
 				7168F90423B0A5F800DBB3A6 /* test2.bin */,
 				7112118823A8E54E00A5DBCA /* 1106281122.mp4 */,
 				713F5A5823A27F970096220C /* 1576159220872799.mp4 */,
@@ -814,6 +840,9 @@
 				46804CE921DE5B1800232229 /* ChatsTableViewCell.m */,
 				46804CEB21DE5B2900232229 /* ChatsDetailTableViewCell.h */,
 				46804CEC21DE5B2900232229 /* ChatsDetailTableViewCell.m */,
+				7168F96E23B349A100DBB3A6 /* MMKeyBoardView.h */,
+				7168F96F23B349A100DBB3A6 /* MMKeyBoardView.m */,
+				7168F97323B349B900DBB3A6 /* MMKeyBoardView.xib */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -1366,6 +1395,8 @@
 		71848F6221549A1C00DB669E /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				71FD5D9423B48E7A00B70518 /* NSData+AddData.h */,
+				71FD5D9323B48E7A00B70518 /* NSData+AddData.m */,
 				71F9F5CA2355CB3D00C6C736 /* NSData+CRC32.h */,
 				71F9F5CB2355CB3D00C6C736 /* NSData+CRC32.m */,
 				712C6EFF214A5D8200603022 /* FSOpenSSL.h */,
@@ -1382,8 +1413,6 @@
 				71D593002155247C00DFEBC8 /* NSData+AES.m */,
 				71D593302158AC4900DFEBC8 /* Varint128.h */,
 				71D5932F2158AC4900DFEBC8 /* Varint128.m */,
-				719A962B219BD53800E4D077 /* NSData+AddData.h */,
-				719A962C219BD53800E4D077 /* NSData+AddData.m */,
 				464FB82821D4E8BD003E923F /* NSString+Regex.h */,
 				464FB82921D4E8BD003E923F /* NSString+Regex.m */,
 				716A93BD2398F04B00A0C9DC /* AES_EVP.h */,
@@ -1395,6 +1424,8 @@
 		71D3DAA921AEACD2002ACF1C /* ViewCat */ = {
 			isa = PBXGroup;
 			children = (
+				71FD5D9123B48CE000B70518 /* UIView+LoadFromXIB.h */,
+				71FD5D9023B48CE000B70518 /* UIView+LoadFromXIB.m */,
 				71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */,
 				71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */,
 			);
@@ -1549,9 +1580,11 @@
 				71808C0E239E0619005C3BDE /* pic_3.jpg in Resources */,
 				71F9F5CE2355CC8D00C6C736 /* st-6p-clientcheck.bin in Resources */,
 				713F5A4F23A2158A0096220C /* send.png in Resources */,
+				7168F97423B349B900DBB3A6 /* MMKeyBoardView.xib in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				71F9F5D023560E5A00C6C736 /* st-6p-login.bin in Resources */,
+				7168F97623B355B400DBB3A6 /* test.mp3 in Resources */,
 				713F5A5723A250220096220C /* test.amr in Resources */,
 				7112118923A8E54E00A5DBCA /* 1106281122.mp4 in Resources */,
 				713F5A5123A231EC0096220C /* 1576139358368.jpg in Resources */,
@@ -1677,13 +1710,16 @@
 				463D13442212E4D5007C1DBD /* MMWKWebViewController.m in Sources */,
 				71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */,
 				711E9B4E2359EC0700C5B655 /* RiskScanBufReq.m in Sources */,
+				714B348A23B5B89C00C5B442 /* SnsPostService.m in Sources */,
 				71E9EAC1234068FA00353DBD /* CalSpamAlg.m in Sources */,
 				714E36032358173D0046F7D8 /* ReportPkg.m in Sources */,
 				7161984F21CB712900A76F39 /* long_pack.m in Sources */,
 				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,
 				714513442390F6A40078D130 /* CdnLogic.m in Sources */,
+				714B348523B5B78C00C5B442 /* SnsTimeLineService.m in Sources */,
 				71008F3321B6750700DE8DF8 /* DNSFetcher.m in Sources */,
 				4681939722CB31D400839EB0 /* UtileJni.pbobjc.m in Sources */,
+				71FD5D9523B48E7B00B70518 /* NSData+AddData.m in Sources */,
 				712C6E6E214A145700603022 /* main.m in Sources */,
 				7112DBCA23A37192008CC5E1 /* DownloadVideoService.m in Sources */,
 				462D9C1521D509FC00FC5461 /* ClientCheckDataFetcher.m in Sources */,
@@ -1719,6 +1755,7 @@
 				716A93C2239A2CA200A0C9DC /* GetCDNDnsService.m in Sources */,
 				712F95FA21D1E71600CFE3A0 /* LongLinkClient.m in Sources */,
 				7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */,
+				71FD5D8D23B48A3200B70518 /* GetkvidkeyStrategyService.m in Sources */,
 				46ED97BC22C9F5A500978C0D /* UtilsJni.m in Sources */,
 				7161984C21CB704F00A76F39 /* mmpack.m in Sources */,
 				712F95F521D0B91F00CFE3A0 /* DeviceManager.m in Sources */,
@@ -1741,7 +1778,7 @@
 				71456CA7233E1B3200986437 /* Mm.pbobjc.m in Sources */,
 				462D9C3321DCC4FE00FC5461 /* SessionKeyStore.m in Sources */,
 				464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */,
-				719A962D219BD53800E4D077 /* NSData+AddData.m in Sources */,
+				71FD5D9223B48CE000B70518 /* UIView+LoadFromXIB.m in Sources */,
 				71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */,
 				712F960921D78F9300CFE3A0 /* SyncKeyStore.m in Sources */,
 				46804CE721DE41BE00232229 /* ChatDetailTableViewController.m in Sources */,
@@ -1768,6 +1805,7 @@
 				1D48E6EDD6760DEA4DD7B382 /* WC_HKDF.m in Sources */,
 				1D48EEF40F55F7104E8622E1 /* WC_HmacSha256.m in Sources */,
 				7168F92423B1BF3000DBB3A6 /* OplogService.m in Sources */,
+				7168F97023B349A100DBB3A6 /* MMKeyBoardView.m in Sources */,
 				714E36002358173D0046F7D8 /* Reportc.m in Sources */,
 				7168F91523B0F51C00DBB3A6 /* mm_dump_660.proto in Sources */,
 				1D48EFA57EBE8BB457184405 /* WC_SHA256.m in Sources */,

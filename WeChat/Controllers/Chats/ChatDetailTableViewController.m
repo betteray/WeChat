@@ -11,7 +11,8 @@
 #import "ChatsDetailTableViewCell.h"
 #import "AccountInfo.h"
 #import "SendMsgService.h"
-
+#import "MMKeyBoardView.h"
+#import "UIView+LoadFromXIB.h"
 
 @interface ChatDetailTableViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
@@ -31,6 +32,8 @@
     self.title = _curUser.nickName;
     
     _msgTextField.delegate = self;
+   
+    _msgTextField.inputView = [MMKeyBoardView dc_loadFromXIB];
     
     [self refreshChats:YES];
 
@@ -53,7 +56,7 @@
 
 - (IBAction)test:(id)sender {
 //    [SendMsgService sendImgMsg:[[NSBundle mainBundle] pathForResource:@"1576139358368" ofType:@"jpg"] toUser:self.curUser]; // ok
-    [SendMsgService sendVoiceMsg:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"amr"] toUser:self.curUser]; // ok
+    [SendMsgService sendVoiceMsg:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp3"] toUser:self.curUser]; // ok
 //    [SendMsgService sendVideoMsg:[[NSBundle mainBundle] pathForResource:@"1106281122" ofType:@"mp4"]
 //                       imagePath:[[NSBundle mainBundle] pathForResource:@"pic_1" ofType:@"jpg"]
 //                          toUser:self.curUser

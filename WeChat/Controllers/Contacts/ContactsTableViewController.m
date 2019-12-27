@@ -12,6 +12,7 @@
 
 #import "ChatDetailTableViewController.h"
 #import "MMWebViewController.h"
+#import <sys/time.h>
 
 @interface ContactsTableViewController ()
 
@@ -85,7 +86,14 @@
     SKBuiltinString_t *str = [SKBuiltinString_t new];
     str.string = @"https://support.weixin.qq.com/cgi-bin/mmsupport-bin/addchatroombyinvite?ticket=A7J4dj8MbCs%2BUvaoRfIGJw%3D%3D";
     req.reqURL = str;
+
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    uint32_t requestId = (unsigned int)(274877907LL * tv.tv_usec >> 38)
+        + ((uint64_t)(274877907LL * tv.tv_usec) >> 63)
+        + 1000 * (tv.tv_sec);
     
+    req.requestId = requestId;
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cgi = 233;
     cgiWrap.cmdId = 0;
