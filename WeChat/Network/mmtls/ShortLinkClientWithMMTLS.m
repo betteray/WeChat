@@ -60,6 +60,8 @@
     NSString *host = [NSString stringWithFormat:@"http://%@", ip];//183.192.199.147 //163.177.81.139 //183.3.224.141 //117.184.242.101 163.177.81.139
     NSString *urlstr = [NSString stringWithFormat:@"%@/%@", host, [NSString stringWithFormat:@"mmtls/%08llx", r]];
 
+    [ASIHTTPRequest setShouldUpdateNetworkActivityIndicator:NO];
+    
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlstr]];
     [request addRequestHeader:@"Accept" value:@"*/*"];
     [request addRequestHeader:@"Cache-Control" value:@"no-cache"];
