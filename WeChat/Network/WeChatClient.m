@@ -244,14 +244,15 @@
                                    aesKey:_sessionKey
                                    cookie:cookie.data
                                 signature:signature];
-
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
 #if USE_MMTLS
-    NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
+        NSData *packData = [ShortLinkClientWithMMTLS post:sendData toCgiPath:cgiWrap.cgiPath];
 #else
-    NSData *packData = [ShortLinkClient post:sendData toCgiPath:cgiWrap.cgiPath];
+        NSData *packData = [ShortLinkClient post:sendData toCgiPath:cgiWrap.cgiPath];
 #endif
-
-    [self UnPack:packData];
+        [self UnPack:packData];
+    });
 }
 
 #pragma mark -
@@ -284,16 +285,19 @@
                                                        uin:accountInfo.uin
                                                     cookie:cookieData
                                                 rsaVersion:10002];
-
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
 #if USE_MMTLS
-    NSData *packData = [ShortLinkClientWithMMTLS post:sendData
-                                            toCgiPath:cgiWrap.cgiPath];
+        NSData *packData = [ShortLinkClientWithMMTLS post:sendData
+                                                toCgiPath:cgiWrap.cgiPath];
 #else
-    NSData *packData = [ShortLinkClient post:sendData
-                                   toCgiPath:cgiWrap.cgiPath];
+        NSData *packData = [ShortLinkClient post:sendData
+                                       toCgiPath:cgiWrap.cgiPath];
 #endif
-
-    [self UnPack:packData];
+        
+        [self UnPack:packData];
+    });
 }
 
 - (void)registerWeChat:(CgiWrap *)cgiWrap
