@@ -17,7 +17,7 @@
 @implementation WCSafeSDK
 
 + (NSData *)get003FromLocalServer:(NSString *)xml {
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://10.20.10.107:8099"]];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://10.20.10.31:8099"]];
     request.postBody = (NSMutableData *)[xml dataUsingEncoding:NSUTF8StringEncoding];
     [request startSynchronous];
     
