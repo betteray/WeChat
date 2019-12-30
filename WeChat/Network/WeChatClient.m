@@ -26,6 +26,7 @@
 #import "WCECDH.h"
 #import "MMProtocalJni.h"
 #import "SyncService.h"
+#import "SnsSyncService.h"
 
 #define CMDID_NOOP_REQ 6
 #define CMDID_IDENTIFY_REQ 205
@@ -387,13 +388,33 @@
             if (longLinkPackage.header.bodyLength < 0x20) {
                 switch (longLinkPackage.header.cmdId) {
                     case CMDID_PUSH_ACK: {
-                        if ([self.sync_key_cur length] == 0) {
-                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                [SyncService newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
-                            });
-                        } else {
-                            [SyncService newSync];
+                        // <00000014 00100001 00000018 00000000 00000100> //mmsnssync
+                        // <00000014 00100001 00000018 00000000 00000006> //newsync
+                        uint32_t subCmdId = [plainData toInt32ofRange:NSMakeRange(16, 4) SwapBigToHost:YES];
+                        switch (subCmdId) {
+                            case 6:
+                            {
+                                if ([self.sync_key_cur length] == 0) {
+                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                        [SyncService newInitWithSyncKeyCur:self.sync_key_cur syncKeyMax:self.sync_key_max];
+                                    });
+                                } else {
+                                    [SyncService newSync];
+                                }
+                            }
+                                break;
+                            case 256:
+                            {
+                                [SnsSyncService mmSnsSync];
+                            }
+                                break;
+                            default:
+                            {
+                                LogError(@"UnHandled SubCmdId: %d", subCmdId);
+                            }
+                                break;
                         }
+                        
                         break;
                     }
                     default:
