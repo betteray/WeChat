@@ -114,7 +114,7 @@
         _sessionKey = sessionKeyStore.data;
 
         if (!_sessionKey.length) {
-            [WeChatClient sharedClient].sessionKey = [FSOpenSSL random128BitAESKey];
+           _sessionKey = [FSOpenSSL random128BitAESKey];
         }
         _receivedLonglinkData = [NSMutableData data];
         _heartbeatTimer = [NSTimer timerWithTimeInterval:70 * 3
