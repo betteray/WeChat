@@ -389,6 +389,7 @@ CF_EXTERN_C_BEGIN
 @class NewDocumentItem;
 @class NewHot;
 @class NewHotItem_AppInfo;
+@class NewStrategyItem;
 @class OauthAvatarInfo;
 @class OcrItem;
 @class OpenAppInfo;
@@ -503,6 +504,7 @@ CF_EXTERN_C_BEGIN
 @class ShowWordsInfo;
 @class SingleLineTextViewData;
 @class SmcSelfMonitorItem;
+@class SmcStrategyInterval;
 @class SmsUpCheckExtInfo;
 @class Snapshot;
 @class SnsADObject;
@@ -531,6 +533,7 @@ CF_EXTERN_C_BEGIN
 @class StoryCommentDetail;
 @class StoryObject;
 @class StorySyncMsgDetail;
+@class StrategyItem;
 @class StrategyTable;
 @class SubscribeMsgShowInfo;
 @class SubscribeMsgWording;
@@ -32194,12 +32197,18 @@ typedef GPB_ENUM(GetCliKVStrategyResp_FieldNumber) {
   GetCliKVStrategyResp_FieldNumber_GeneralVersion = 2,
   GetCliKVStrategyResp_FieldNumber_SpecialVersion = 3,
   GetCliKVStrategyResp_FieldNumber_WhiteOrBlackUinVersion = 4,
+  GetCliKVStrategyResp_FieldNumber_GeneralStrategiesArray = 5,
+  GetCliKVStrategyResp_FieldNumber_SpecialStrategiesArray = 6,
+  GetCliKVStrategyResp_FieldNumber_WhiteOrBlackUinStrategiesArray = 7,
   GetCliKVStrategyResp_FieldNumber_MaxValidDataTime = 8,
   GetCliKVStrategyResp_FieldNumber_BanReportTime = 9,
   GetCliKVStrategyResp_FieldNumber_AskSvrStrategyInterval = 10,
   GetCliKVStrategyResp_FieldNumber_KvgeneralVersion = 11,
   GetCliKVStrategyResp_FieldNumber_KvspecialVersion = 12,
   GetCliKVStrategyResp_FieldNumber_KvwhiteOrBlackUinVersion = 13,
+  GetCliKVStrategyResp_FieldNumber_KvgeneralStrategiesArray = 14,
+  GetCliKVStrategyResp_FieldNumber_KvspecialStrategiesArray = 15,
+  GetCliKVStrategyResp_FieldNumber_KvwhiteOrBlackUinStrategiesArray = 16,
   GetCliKVStrategyResp_FieldNumber_HeavyUserInfo = 17,
 };
 
@@ -32217,11 +32226,18 @@ typedef GPB_ENUM(GetCliKVStrategyResp_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t whiteOrBlackUinVersion;
 
 @property(nonatomic, readwrite) BOOL hasWhiteOrBlackUinVersion;
-/**
- * repeated  fieldType:(11)[\@"NSMutableArray"]  generalStrategies  = 5;
- * repeated  fieldType:(11)[\@"NSMutableArray"]  specialStrategies  = 6;
- * repeated  fieldType:(11)[\@"NSMutableArray"]  whiteOrBlackUinStrategies  = 7;
- **/
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SmcStrategyInterval*> *generalStrategiesArray;
+/** The number of items in @c generalStrategiesArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger generalStrategiesArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SmcStrategyInterval*> *specialStrategiesArray;
+/** The number of items in @c specialStrategiesArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger specialStrategiesArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SmcStrategyInterval*> *whiteOrBlackUinStrategiesArray;
+/** The number of items in @c whiteOrBlackUinStrategiesArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger whiteOrBlackUinStrategiesArray_Count;
+
 @property(nonatomic, readwrite) uint32_t maxValidDataTime;
 
 @property(nonatomic, readwrite) BOOL hasMaxValidDataTime;
@@ -32240,11 +32256,18 @@ typedef GPB_ENUM(GetCliKVStrategyResp_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t kvwhiteOrBlackUinVersion;
 
 @property(nonatomic, readwrite) BOOL hasKvwhiteOrBlackUinVersion;
-/**
- * repeated  fieldType:(11)[\@"NSMutableArray"]  kvgeneralStrategies  = 14;
- * repeated  fieldType:(11)[\@"NSMutableArray"]  kvspecialStrategies  = 15;
- * repeated  fieldType:(11)[\@"NSMutableArray"]  kvwhiteOrBlackUinStrategies  = 16;
- **/
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SmcStrategyInterval*> *kvgeneralStrategiesArray;
+/** The number of items in @c kvgeneralStrategiesArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger kvgeneralStrategiesArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SmcStrategyInterval*> *kvspecialStrategiesArray;
+/** The number of items in @c kvspecialStrategiesArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger kvspecialStrategiesArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SmcStrategyInterval*> *kvwhiteOrBlackUinStrategiesArray;
+/** The number of items in @c kvwhiteOrBlackUinStrategiesArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger kvwhiteOrBlackUinStrategiesArray_Count;
+
 @property(nonatomic, readwrite, strong, null_resettable) HeavyUserRespInfo *heavyUserInfo;
 /** Test to see if @c heavyUserInfo has been set. */
 @property(nonatomic, readwrite) BOOL hasHeavyUserInfo;
@@ -38918,6 +38941,7 @@ typedef GPB_ENUM(GetReportStrategyReq_FieldNumber) {
 typedef GPB_ENUM(GetReportStrategyResp_FieldNumber) {
   GetReportStrategyResp_FieldNumber_BaseResponse = 1,
   GetReportStrategyResp_FieldNumber_Cnt = 2,
+  GetReportStrategyResp_FieldNumber_ListArray = 3,
 };
 
 @interface GetReportStrategyResp : GPBMessage
@@ -38926,10 +38950,13 @@ typedef GPB_ENUM(GetReportStrategyResp_FieldNumber) {
 /** Test to see if @c baseResponse has been set. */
 @property(nonatomic, readwrite) BOOL hasBaseResponse;
 
-/** repeated  fieldType:(11)[\@"NSMutableArray"]  list  = 3; */
 @property(nonatomic, readwrite) uint32_t cnt;
 
 @property(nonatomic, readwrite) BOOL hasCnt;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<StrategyItem*> *listArray;
+/** The number of items in @c listArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger listArray_Count;
+
 @end
 
 #pragma mark - GetSafetyInfoRequest
@@ -73662,6 +73689,7 @@ typedef GPB_ENUM(SmcSelfMonitorItem_FieldNumber) {
 typedef GPB_ENUM(SmcStrategyInterval_FieldNumber) {
   SmcStrategyInterval_FieldNumber_Logidbegin = 1,
   SmcStrategyInterval_FieldNumber_Logidend = 2,
+  SmcStrategyInterval_FieldNumber_StgitemsArray = 3,
 };
 
 @interface SmcStrategyInterval : GPBMessage
@@ -73669,10 +73697,13 @@ typedef GPB_ENUM(SmcStrategyInterval_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t logidbegin;
 
 @property(nonatomic, readwrite) BOOL hasLogidbegin;
-/** repeated  fieldType:(11)[\@"NSMutableArray"]  stgitems  = 3; */
 @property(nonatomic, readwrite) uint32_t logidend;
 
 @property(nonatomic, readwrite) BOOL hasLogidend;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NewStrategyItem*> *stgitemsArray;
+/** The number of items in @c stgitemsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger stgitemsArray_Count;
+
 @end
 
 #pragma mark - SmcStrategyItem
@@ -77235,6 +77266,7 @@ typedef GPB_ENUM(StoryUserPageResponse_FieldNumber) {
 typedef GPB_ENUM(StrategyInterval_FieldNumber) {
   StrategyInterval_FieldNumber_LogIdbegin = 1,
   StrategyInterval_FieldNumber_LogIdend = 2,
+  StrategyInterval_FieldNumber_StrategyItemArray = 3,
 };
 
 @interface StrategyInterval : GPBMessage
@@ -77242,10 +77274,13 @@ typedef GPB_ENUM(StrategyInterval_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t logIdbegin;
 
 @property(nonatomic, readwrite) BOOL hasLogIdbegin;
-/** repeated  fieldType:(11)[\@"NSMutableArray"]  strategyItem  = 3; */
 @property(nonatomic, readwrite) uint32_t logIdend;
 
 @property(nonatomic, readwrite) BOOL hasLogIdend;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<StrategyItem*> *strategyItemArray;
+/** The number of items in @c strategyItemArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger strategyItemArray_Count;
+
 @end
 
 #pragma mark - StrategyItem

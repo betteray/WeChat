@@ -139,6 +139,7 @@
 		71808C1B239E2C4D005C3BDE /* CdnSendPictureTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 71808C1A239E2C4D005C3BDE /* CdnSendPictureTask.m */; };
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
+		719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 719EA66923B9F221005DCA56 /* SnsSyncService.m */; };
 		71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* MeViewController.m */; };
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
 		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
@@ -541,6 +542,7 @@
 		7154D5142196B721005064C4 /* NSData+HexDump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+HexDump.m"; sourceTree = "<group>"; };
 		7154D5182196B738005064C4 /* DebugKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugKit.h; sourceTree = "<group>"; };
 		7154D5192196B8DF005064C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		7154EDD323B61831008927B9 /* cgi-709.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "cgi-709.json"; sourceTree = "<group>"; };
 		7155BA5021902AB30002CE1D /* ClientHello.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClientHello.h; sourceTree = "<group>"; };
 		7155BA5121902AB30002CE1D /* ClientHello.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientHello.m; sourceTree = "<group>"; };
 		7155BA5321902ABE0002CE1D /* ServerHello.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerHello.h; sourceTree = "<group>"; };
@@ -588,6 +590,8 @@
 		71848F262150CABD00DB669E /* NSData+Compression.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Compression.m"; sourceTree = "<group>"; };
 		71848F6621549C8100DB669E /* NSData+GenRandomData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+GenRandomData.h"; sourceTree = "<group>"; };
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
+		719EA66823B9F221005DCA56 /* SnsSyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnsSyncService.h; sourceTree = "<group>"; };
+		719EA66923B9F221005DCA56 /* SnsSyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnsSyncService.m; sourceTree = "<group>"; };
 		71C9CA5321C4DC1D006C4DDD /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUB.h"; sourceTree = "<group>"; };
 		71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUB.m"; sourceTree = "<group>"; };
@@ -758,6 +762,8 @@
 				4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */,
 				465B39B222D5EFAD001FDE53 /* SyncService.h */,
 				465B39B322D5EFAD001FDE53 /* SyncService.m */,
+				719EA66823B9F221005DCA56 /* SnsSyncService.h */,
+				719EA66923B9F221005DCA56 /* SnsSyncService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1125,6 +1131,7 @@
 				46D2CA322239F1CE0053C4A6 /* objc_out */,
 				712C6F19214A6A5800603022 /* PROTO_README.md */,
 				460CDE4F220088CE0075F3E5 /* cgi.json */,
+				7154EDD323B61831008927B9 /* cgi-709.json */,
 			);
 			path = Proto;
 			sourceTree = "<group>";
@@ -1762,6 +1769,7 @@
 				711E9B3E23598D8200C5B655 /* RiskScanBufUtil.m in Sources */,
 				7112118523A8C7C700A5DBCA /* SendMsgService.m in Sources */,
 				714E360B2358ADF90046F7D8 /* ReportRequestPacket.m in Sources */,
+				719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */,
 				7161985321CB863A00A76F39 /* LongLinkClientWithMMTLS.m in Sources */,
 				714E36022358173D0046F7D8 /* ReportPhoneType.m in Sources */,
 				714E36012358173D0046F7D8 /* ReportSysInfo.m in Sources */,

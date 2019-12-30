@@ -8036,18 +8036,18 @@ message GetCliKVStrategyResp {
     required  uint32  generalVersion  = 2;
     required  uint32  specialVersion  = 3;
     required  uint32  whiteOrBlackUinVersion  = 4;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  generalStrategies  = 5;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  specialStrategies  = 6;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  whiteOrBlackUinStrategies  = 7;
+    repeated  SmcStrategyInterval  generalStrategies  = 5;
+    repeated  SmcStrategyInterval  specialStrategies  = 6;
+    repeated  SmcStrategyInterval  whiteOrBlackUinStrategies  = 7;
     optional  uint32  maxValidDataTime  = 8;
     optional  uint32  banReportTime  = 9;
     optional  uint32  askSvrStrategyInterval  = 10;
     optional  uint32  kvgeneralVersion  = 11;
     optional  uint32  kvspecialVersion  = 12;
     optional  uint32  kvwhiteOrBlackUinVersion  = 13;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  kvgeneralStrategies  = 14;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  kvspecialStrategies  = 15;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  kvwhiteOrBlackUinStrategies  = 16;
+    repeated  SmcStrategyInterval  kvgeneralStrategies  = 14;
+    repeated  SmcStrategyInterval  kvspecialStrategies  = 15;
+    repeated  SmcStrategyInterval  kvwhiteOrBlackUinStrategies  = 16;
     optional  HeavyUserRespInfo  heavyUserInfo  = 17;
 }
 
@@ -9761,7 +9761,7 @@ message GetReportStrategyReq {
 message GetReportStrategyResp {
     required  BaseResponse  baseResponse  = 1;
     required  uint32  cnt  = 2;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  list  = 3;
+    repeated  StrategyItem  list  = 3;
 }
 
 message GetSafetyInfoRequest {
@@ -18613,7 +18613,7 @@ message SmcSelfMonitorItem {
 message SmcStrategyInterval {
     required  uint32  logidbegin  = 1;
     required  uint32  logidend  = 2;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  stgitems  = 3;
+    repeated  NewStrategyItem  stgitems  = 3;
 }
 
 message SmcStrategyItem {
@@ -19552,7 +19552,7 @@ message StoryUserPageResponse {
 message StrategyInterval {
     required  uint32  logIdbegin  = 1;
     required  uint32  logIdend  = 2;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  strategyItem  = 3;
+    repeated  StrategyItem  strategyItem  = 3;
 }
 
 message StrategyItem {
