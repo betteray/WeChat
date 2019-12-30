@@ -110,7 +110,7 @@
                         [GetMsgImgService getMsgImg:msg.msgId startPos:0 from:from to:to dataTotalLen:[thumbLength intValue] original:NO];
                     }
                     NSNumber *hdLength = [attrs objectForKey:@"hdlength"];
-                    if (thumbLength) { //需要判断有没有高清图，再获取高清图。
+                    if (hdLength) { //需要判断有没有高清图，再获取高清图。
                         [GetMsgImgService getMsgImg:msg.msgId startPos:0 from:from to:to dataTotalLen:[hdLength intValue] original:YES];
                     }
                 }
