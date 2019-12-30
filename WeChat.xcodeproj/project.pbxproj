@@ -728,8 +728,6 @@
 		462D9C3721DCD2DF00FC5461 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				71DD025623AE0C5400EC8E04 /* AuthHandler.h */,
-				71DD025723AE0C5400EC8E04 /* AuthHandler.m */,
 				71DD025B23AE181B00EC8E04 /* AuthService.h */,
 				71DD025C23AE181B00EC8E04 /* AuthService.m */,
 				7112DBC823A37192008CC5E1 /* DownloadVideoService.h */,
@@ -756,10 +754,6 @@
 				714B348423B5B78C00C5B442 /* SnsTimeLineService.m */,
 				7112DBCB23A37F5D008CC5E1 /* SnsUploadImageService.h */,
 				7112DBCC23A37F5D008CC5E1 /* SnsUploadImageService.m */,
-				462D9C3421DCD2D000FC5461 /* SyncCmdHandler.h */,
-				462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */,
-				4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */,
-				4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */,
 				465B39B222D5EFAD001FDE53 /* SyncService.h */,
 				465B39B322D5EFAD001FDE53 /* SyncService.m */,
 				719EA66823B9F221005DCA56 /* SnsSyncService.h */,
@@ -1071,6 +1065,7 @@
 		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				719EA66E23BA149C005DCA56 /* Handlers */,
 				7112117B23A77AF000A5DBCA /* Utils */,
 				711E9B3923598D4B00C5B655 /* Crypto */,
 				71F9F5B9235576AA00C6C736 /* mmres */,
@@ -1426,6 +1421,19 @@
 				716A93BE2398F04B00A0C9DC /* AES_EVP.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		719EA66E23BA149C005DCA56 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				71DD025623AE0C5400EC8E04 /* AuthHandler.h */,
+				71DD025723AE0C5400EC8E04 /* AuthHandler.m */,
+				462D9C3421DCD2D000FC5461 /* SyncCmdHandler.h */,
+				462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */,
+				4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */,
+				4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */,
+			);
+			path = Handlers;
 			sourceTree = "<group>";
 		};
 		71D3DAA921AEACD2002ACF1C /* ViewCat */ = {
