@@ -107,6 +107,30 @@ struct c {
 
 
 // appSourceFlag 生成
+
+// PackageManager packageManager = context.getPackageManager();
+// for (ApplicationInfo next : packageManager.getInstalledApplications(0)) {
+//     if (next.packageName != null && !next.packageName.equals(packageName)) {
+//         boolean z = (next.flags & 1) != 0;
+//         C17470a cc = m36918cc(context, next.packageName);
+//         cc.BSF = packageManager.getApplicationLabel(next).toString();
+//         if (cc.BSF == null) {
+//             cc.BSF = "";
+//         }
+//         if (z) {
+//             i = 1;
+//         } else {
+//             i = 0;
+//         }
+//         cc.exx = i;
+//         cc.fileSize = new File(next.sourceDir).length();
+//         cc.BSH = next.sourceDir;
+//         arrayList.add(cc);
+//         new StringBuilder("add app: ").append(next.packageName);
+//         C1006h.ecE();
+//     }
+// }
+
 // bVar.BTB = 0;
 // if (aVar.exx == 1) {
 //     bVar.BTB |= 1;
