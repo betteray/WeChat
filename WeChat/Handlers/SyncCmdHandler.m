@@ -49,7 +49,7 @@
                     NSString *type = [attrs objectForKey:@"type"];
                     if ([type isEqualToString:@"ClientCheckGetExtInfo"]) {
                         // <sysmsg type="ClientCheckGetExtInfo"><ClientCheckGetExtInfo><ReportContext>539033600</ReportContext><Basic>0</Basic></ClientCheckGetExtInfo></sysmsg>
-                        // basic != 0时，上报的消息不一样，比较简单
+                        // basic != 0时，获取st的时候是传 0，这时候应该和登录的时候差不多。否则，传15，可以参考现在抓的数据，是15.
                         uint32_t reportContext = [[[document.rootElement firstChildWithXPath:@"//ReportContext"] numberValue] intValue];
                         [WCSafeSDK reportClientCheckWithContext:reportContext basic:YES];
                     }

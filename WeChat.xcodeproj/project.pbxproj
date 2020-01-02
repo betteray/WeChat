@@ -610,6 +610,11 @@
 		71E1C19C230657E900F5032A /* safe.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = safe.proto; sourceTree = "<group>"; };
 		71E9EABF234068FA00353DBD /* CalSpamAlg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalSpamAlg.h; sourceTree = "<group>"; };
 		71E9EAC0234068FA00353DBD /* CalSpamAlg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalSpamAlg.m; sourceTree = "<group>"; };
+		71EE8B3923BE077600650F67 /* st-706-verifyuserrequest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-verifyuserrequest.txt"; sourceTree = "<group>"; };
+		71EE8B3A23BE077600650F67 /* st-706-login.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-login.txt"; sourceTree = "<group>"; };
+		71EE8B3B23BE077600650F67 /* st-706-reportclientcheck-15.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-reportclientcheck-15.txt"; sourceTree = "<group>"; };
+		71EE8B3C23BE077600650F67 /* st-706-snspost.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-snspost.txt"; sourceTree = "<group>"; };
+		71EE8B3D23BE077700650F67 /* st-706-autoauth.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-autoauth.txt"; sourceTree = "<group>"; };
 		71F9F5A8235459AD00C6C736 /* PersonalInfoService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalInfoService.h; sourceTree = "<group>"; };
 		71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoService.m; sourceTree = "<group>"; };
 		71F9F5BA235576B500C6C736 /* mmregion4client_zh_CN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mmregion4client_zh_CN.txt; sourceTree = "<group>"; };
@@ -997,6 +1002,8 @@
 		711E9B3923598D4B00C5B655 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
+				71EE8B3E23BE078300650F67 /* st-666 */,
+				71EE8B3623BE074E00650F67 /* st-706 */,
 				714E35DD235806B50046F7D8 /* TarsModels */,
 				71F9F5C32355B8B500C6C736 /* WCSafeSDK.h */,
 				71F9F5C42355B8B500C6C736 /* WCSafeSDK.m */,
@@ -1445,6 +1452,25 @@
 				71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */,
 			);
 			path = ViewCat;
+			sourceTree = "<group>";
+		};
+		71EE8B3623BE074E00650F67 /* st-706 */ = {
+			isa = PBXGroup;
+			children = (
+				71EE8B3D23BE077700650F67 /* st-706-autoauth.txt */,
+				71EE8B3A23BE077600650F67 /* st-706-login.txt */,
+				71EE8B3B23BE077600650F67 /* st-706-reportclientcheck-15.txt */,
+				71EE8B3C23BE077600650F67 /* st-706-snspost.txt */,
+				71EE8B3923BE077600650F67 /* st-706-verifyuserrequest.txt */,
+			);
+			path = "st-706";
+			sourceTree = "<group>";
+		};
+		71EE8B3E23BE078300650F67 /* st-666 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "st-666";
 			sourceTree = "<group>";
 		};
 		71F9F5B9235576AA00C6C736 /* mmres */ = {
