@@ -149,6 +149,9 @@
 		71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A421E1A12E00B77500 /* MomentsTableViewController.m */; };
 		71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A721E1A32100B77500 /* PeapleNearByTableViewController.m */; };
 		71E9EAC1234068FA00353DBD /* CalSpamAlg.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E9EAC0234068FA00353DBD /* CalSpamAlg.m */; };
+		71EE8B4323BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71EE8B4123BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin */; };
+		71EE8B4423BEF9C200650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71EE8B4223BEF9C100650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin */; };
+		71EE8B4923BEFB7500650F67 /* proto_bin_666.zip in Resources */ = {isa = PBXBuildFile; fileRef = 71EE8B4823BEFB7500650F67 /* proto_bin_666.zip */; };
 		71F9F5AA235459AD00C6C736 /* PersonalInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */; };
 		71F9F5C52355B8B500C6C736 /* WCSafeSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5C42355B8B500C6C736 /* WCSafeSDK.m */; };
 		71F9F5CC2355CB3D00C6C736 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5CB2355CB3D00C6C736 /* NSData+CRC32.m */; };
@@ -615,6 +618,14 @@
 		71EE8B3B23BE077600650F67 /* st-706-reportclientcheck-15.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-reportclientcheck-15.txt"; sourceTree = "<group>"; };
 		71EE8B3C23BE077600650F67 /* st-706-snspost.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-snspost.txt"; sourceTree = "<group>"; };
 		71EE8B3D23BE077700650F67 /* st-706-autoauth.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-autoauth.txt"; sourceTree = "<group>"; };
+		71EE8B3F23BEF98700650F67 /* 1578111253511_cgi-bin_micromsg-bin_manualauth.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1578111253511_cgi-bin_micromsg-bin_manualauth.bin"; sourceTree = "<group>"; };
+		71EE8B4023BEF98700650F67 /* 1578111253128_cgi-bin_micromsg-bin_manualauth.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1578111253128_cgi-bin_micromsg-bin_manualauth.bin"; sourceTree = "<group>"; };
+		71EE8B4123BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1578111445585_cgi-bin_micromsg-bin_verifyuser.bin"; sourceTree = "<group>"; };
+		71EE8B4223BEF9C100650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1578111436705_cgi-bin_micromsg-bin_verifyuser.bin"; sourceTree = "<group>"; };
+		71EE8B4523BEFA0F00650F67 /* 1578111299366_cgi-bin_micromsg-bin_reportclientcheck.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1578111299366_cgi-bin_micromsg-bin_reportclientcheck.bin"; sourceTree = "<group>"; };
+		71EE8B4623BEFA0F00650F67 /* 1578111285666_cgi-bin_micromsg-bin_reportclientcheck.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1578111285666_cgi-bin_micromsg-bin_reportclientcheck.bin"; sourceTree = "<group>"; };
+		71EE8B4723BEFA2600650F67 /* 1578111411148_cgi-bin_micromsg-bin_mmsnspost.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1578111411148_cgi-bin_micromsg-bin_mmsnspost.bin"; sourceTree = "<group>"; };
+		71EE8B4823BEFB7500650F67 /* proto_bin_666.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = proto_bin_666.zip; sourceTree = "<group>"; };
 		71F9F5A8235459AD00C6C736 /* PersonalInfoService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalInfoService.h; sourceTree = "<group>"; };
 		71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoService.m; sourceTree = "<group>"; };
 		71F9F5BA235576B500C6C736 /* mmregion4client_zh_CN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mmregion4client_zh_CN.txt; sourceTree = "<group>"; };
@@ -1469,6 +1480,14 @@
 		71EE8B3E23BE078300650F67 /* st-666 */ = {
 			isa = PBXGroup;
 			children = (
+				71EE8B4823BEFB7500650F67 /* proto_bin_666.zip */,
+				71EE8B4023BEF98700650F67 /* 1578111253128_cgi-bin_micromsg-bin_manualauth.bin */,
+				71EE8B3F23BEF98700650F67 /* 1578111253511_cgi-bin_micromsg-bin_manualauth.bin */,
+				71EE8B4223BEF9C100650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin */,
+				71EE8B4123BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin */,
+				71EE8B4623BEFA0F00650F67 /* 1578111285666_cgi-bin_micromsg-bin_reportclientcheck.bin */,
+				71EE8B4523BEFA0F00650F67 /* 1578111299366_cgi-bin_micromsg-bin_reportclientcheck.bin */,
+				71EE8B4723BEFA2600650F67 /* 1578111411148_cgi-bin_micromsg-bin_mmsnspost.bin */,
 			);
 			path = "st-666";
 			sourceTree = "<group>";
@@ -1618,17 +1637,20 @@
 			files = (
 				46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */,
 				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
+				71EE8B4323BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
 				71808C0E239E0619005C3BDE /* pic_3.jpg in Resources */,
 				71F9F5CE2355CC8D00C6C736 /* st-6p-clientcheck.bin in Resources */,
 				713F5A4F23A2158A0096220C /* send.png in Resources */,
 				7168F97423B349B900DBB3A6 /* MMKeyBoardView.xib in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
+				71EE8B4923BEFB7500650F67 /* proto_bin_666.zip in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				71F9F5D023560E5A00C6C736 /* st-6p-login.bin in Resources */,
 				7168F97623B355B400DBB3A6 /* test.mp3 in Resources */,
 				713F5A5723A250220096220C /* test.amr in Resources */,
 				7112118923A8E54E00A5DBCA /* 1106281122.mp4 in Resources */,
 				713F5A5123A231EC0096220C /* 1576139358368.jpg in Resources */,
+				71EE8B4423BEF9C200650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
 				71808C10239E0619005C3BDE /* pic_2.jpg in Resources */,
 				7168F92823B1F65300DBB3A6 /* classes_706.dex in Resources */,
 				713F5A5323A23C770096220C /* cat_mouse.mp4 in Resources */,
