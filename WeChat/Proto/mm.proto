@@ -1,5 +1,7 @@
 syntax = "proto2";
 
+package com.example.protodumper;
+
 message AAAlertItem {
     optional  int32  flag  = 1;
     optional  string  wording  = 2;
@@ -4596,7 +4598,7 @@ message CliReportKVDataPackage {
     required  uint32  uin  = 1;
     required  uint32  clientVersion  = 2;
     required  uint32  netType  = 3;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  itemList  = 4;
+    repeated  KVCommReportItem  itemList  = 4;
     optional  string  deviceModel  = 5;
     optional  string  deviceBrand  = 6;
     optional  string  osName  = 7;
@@ -4609,7 +4611,7 @@ message CliReportKVReq {
     required  uint32  generalVersion  = 1;
     required  uint32  specialVersion  = 2;
     required  uint32  whiteOrBlackUinVersion  = 3;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  dataPkg  = 4;
+    repeated  CliReportKVDataPackage  dataPkg  = 4;
     optional  bytes  randomEncryKey  = 5;
     optional  HeavyUserReqInfo  heavyUserInfo  = 6;
 }
@@ -4619,9 +4621,9 @@ message CliReportKVResp {
     required  uint32  generalVersion  = 2;
     required  uint32  specialVersion  = 3;
     required  uint32  whiteOrBlackUinVersion  = 4;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  generalStrategies  = 5;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  specialStrategies  = 6;
-    // repeated  fieldType:(11)[@"NSMutableArray"]  whiteOrBlackUinStrategies  = 7;
+    repeated  SmcStrategyInterval  generalStrategies  = 5;
+    repeated  SmcStrategyInterval  specialStrategies  = 6;
+    repeated  SmcStrategyInterval  whiteOrBlackUinStrategies  = 7;
     optional  uint32  maxValidDataTime  = 8;
     optional  uint32  banReportTime  = 9;
     optional  uint32  askSvrStrategyInterval  = 10;
@@ -6636,6 +6638,39 @@ message ForcePushItem {
     optional  string  userIcon  = 5;
     optional  string  userName  = 6;
     optional  string  extinfo  = 7;
+}
+
+message FPFreshRequest {
+    required  BaseRequest  baseRequest  = 1 ;
+    optional  bytes  randomkey  = 2 ;
+    optional  bytes  spamBuff  = 3 ;
+}
+
+message FPFreshResponse {
+    required  BaseResponse  baseResponse  = 1 ;
+    optional  bytes  spamBuff  = 2 ;
+}
+
+message FPGetRequest {
+    required  BaseRequest  baseRequest  = 1 ;
+    optional  bytes  randomkey  = 2 ;
+    optional  bytes  spamBuff  = 3 ;
+}
+
+message FPGetResponse {
+    required  BaseResponse  baseResponse  = 1 ;
+    optional  bytes  spamBuff  = 2 ;
+}
+
+message FPInitRequest {
+    required  BaseRequest  baseRequest  = 1 ;
+    optional  bytes  randomkey  = 2 ;
+    optional  bytes  spamBuff  = 3 ;
+}
+
+message FPInitResponse {
+    required  BaseResponse  baseResponse  = 1 ;
+    optional  bytes  spamBuff  = 2 ;
 }
 
 message FreeWifiReport {

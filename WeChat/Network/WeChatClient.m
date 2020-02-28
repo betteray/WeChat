@@ -260,7 +260,6 @@
 - (void)secAuth:(CgiWrap *)cgiWrap
                      success:(SuccessBlock)successBlock
                      failure:(FailureBlock)failureBlock {
-
     Task *task = [Task new];
     task.sucBlock = successBlock;
     task.failBlock = failureBlock;
@@ -346,7 +345,7 @@
     Task *task = [self getTaskWithTag:package.header.cgi];
 
     NSData *protobufData = nil;
-    if (package.header.cgi == 252 || package.header.cgi == 763 || package.header.cgi == 145 || package.header.cgi == 126) {
+    if (package.header.cgi == 252 || package.header.cgi == 763 || package.header.cgi == 145 || package.header.cgi == 126 || package.header.cgi == 3789) {
         protobufData = [_Jni HybridEcdhDecrypt:package.body];
     } else {
         protobufData = package.header.compressed ? [package.body aesDecrypt_then_decompress] : [package.body aesDecryptWithKey:sessionKey];

@@ -33,13 +33,38 @@
     cgiWrap.needSetBaseRequest = NO;
     
     [WeChatClient postRequest:cgiWrap success:^(GetCliKVStrategyResp * _Nullable response) {
-        LogVerbose(@"%@", response);
+        [self logStrategies:response.generalStrategiesArray withKind:@"generalStrategies"];
+        [self logStrategies:response.specialStrategiesArray withKind:@"specialStrategies"];
+        [self logStrategies:response.whiteOrBlackUinStrategiesArray withKind:@"whiteOrBlackUinStrategiesArray"];
+        
+        [self logStrategies:response.kvgeneralStrategiesArray withKind:@"kvgeneralStrategiesArray"];
+        [self logStrategies:response.kvspecialStrategiesArray withKind:@"kvspecialStrategiesArray"];
+        [self logStrategies:response.kvwhiteOrBlackUinStrategiesArray withKind:@"kvwhiteOrBlackUinStrategiesArray"];
     } failure:^(NSError * _Nonnull error) {
         
     }];
     
 }
 
++ (void)printStrategies:(GetCliKVStrategyResp *) response {
+    [self logStrategies:response.generalStrategiesArray withKind:@"generalStrategies"];
+    [self logStrategies:response.specialStrategiesArray withKind:@"specialStrategies"];
+    [self logStrategies:response.whiteOrBlackUinStrategiesArray withKind:@"whiteOrBlackUinStrategies"];
+    
+    [self logStrategies:response.kvgeneralStrategiesArray withKind:@"kvgeneralStrategies"];
+    [self logStrategies:response.kvspecialStrategiesArray withKind:@"kvspecialStrategies"];
+    [self logStrategies:response.kvwhiteOrBlackUinStrategiesArray withKind:@"kvwhiteOrBlackUinStrategies"];
+}
+
++ (void)logStrategies:(NSArray *)strategies withKind:(NSString *)kind {
+    for (SmcStrategyInterval * s in strategies) {
+        LogVerbose(@"logidbegin: %u, logidend: %u item count: %ld", s.logidbegin, s.logidend, s.stgitemsArray.count);
+        for (NewStrategyItem *item in s.stgitemsArray) {
+            LogVerbose(@"kind: %@, item: %u", kind, item.logId);
+//            LogVerbose(@"kind: %@, item: %u", kind, item.logId & 0x7fff);
+        }
+    }
+}
 
 //String str = 1 == this.cWc ? "/cgi-bin/micromsg-bin/newreportkvcomm" : "/cgi-bin/micromsg-bin/newreportidkey";
 //String str2 = 1 == this.cWc ? "/cgi-bin/micromsg-bin/newreportkvcommrsa" : "/cgi-bin/micromsg-bin/newreportidkeyrsa";

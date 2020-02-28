@@ -8,6 +8,7 @@
 
 #import "CUtility.h"
 #import "FSOpenSSL.h"
+#include <sys/time.h>
 
 @implementation CUtility
 
@@ -37,6 +38,12 @@
 {
     NSString *uuidNew = [self GetUUIDNew];
     return [uuidNew stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@"49"];
+}
+
++ (NSInteger)GetTimeStamp {
+    struct timeval tp = {0};
+    if (gettimeofday(&tp, NULL) != 0) LogVerbose(@"Error get time");
+    return tp.tv_sec;
 }
 
 @end

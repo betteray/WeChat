@@ -97,9 +97,20 @@
     aesReqData.timeZone = device.timeZone;
     aesReqData.channel = 10003;
 
-    if (CLIENT_VERSION > A703) {
+    if (CLIENT_VERSION == A706) {
         AccountInfo *accoutInfo = [DBManager accountInfo];
-        NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:accoutInfo.userName context:@"auto"];
+        NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:accoutInfo.userName context:@"auto" format:WCSafeSDKDataFormatXML];
+
+        SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
+        extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
+        extSpamInfo.buffer = extSpamInfoBuffer;
+
+        aesReqData.extSpamInfo = extSpamInfo; // tag=24
+    }
+    
+    if (CLIENT_VERSION == A7011) {
+        AccountInfo *accoutInfo = [DBManager accountInfo];
+        NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:accoutInfo.userName context:@"auto" format:WCSafeSDKDataFormatProto];
 
         SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
         extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
@@ -229,7 +240,7 @@
 #endif
     
     if (CLIENT_VERSION > A703) {
-        NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:userName context:@"&lt;LoginByID&gt"];
+        NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:userName context:@"&lt;LoginByID&gt" format:WCSafeSDKDataFormatXML];
         
         SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
         extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CUtility : NSObject
 
 + (uint32_t)numberVersionOf:(NSString *)stringVersion;
++ (NSInteger)GetTimeStamp;
 
 @end
 

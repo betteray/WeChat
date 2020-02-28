@@ -12,6 +12,7 @@
 @property (nonatomic, strong) WCDevice *sevenPuls;
 @property (nonatomic, strong) WCDevice *mi3;
 @property (nonatomic, strong) WCDevice *huawei6p;
+@property (nonatomic, strong) WCDevice *mi4;
 @end
 
 @implementation DeviceManager
@@ -228,6 +229,31 @@
                                            deviceModel:@"Nexus 6Parmeabi-v7a"  //ios only
                                               deviceID:guidData2];
         _huawei6p = huawei6p;
+        
+        /// mi4
+        NSString *sofytype5 = @"<softtype><lctmoc>0</lctmoc><level>1</level><k1>ARMv7 Processor rev 1 (v7l) </k1><k2>MPSS.DI.4.0-eaa9d90</k2><k3>8.1.0</k3><k4>865932026043404</k4><k5></k5><k6></k6><k7>d42ebd8612e9c402</k7><k8>26552c80</k8><k9>MI 4LTE</k9><k10>4</k10><k11>Qualcomm MSM8974PRO-AC</k11><k12>0000</k12><k13>0000000000000000</k13><k14>02:00:00:00:00:00</k14><k15>02:00:00:00:00:00</k15><k16>swp half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32</k16><k18>18c867f0717aa67b2ab7347505ba07ed</k18><k21>ray&#8217;s Mac Pro</k21><k22></k22><k24>02:00:00:00:00:00</k24><k26>0</k26><k30>&quot;ray&#8217;s Mac Pro&quot;</k30><k33>com.tencent.mm</k33><k34>Xiaomi/cancro/cancro:6.0.1/MMB29M/V8.1.6.0.MXDMIDI:user/release-keys</k34><k35>MSM8974</k35><k36>unknown</k36><k37>Xiaomi</k37><k38>cancro</k38><k39>qcom</k39><k40>cancro</k40><k41>0</k41><k42>Xiaomi</k42><k43>null</k43><k44>0</k44><k45></k45><k46></k46><k47>wifi</k47><k48>865932026043404</k48><k49>/data/user/0/com.tencent.mm/</k49><k52>0</k52><k53>0</k53><k57>1600</k57><k58></k58><k59>3</k59><k60></k60><k61>true</k61><k62></k62><k63>A17e315fd6fff6ed</k63><k64>599a73de-d64d-3a38-9d6f-8e0096d4790f</k64><k65></k65></softtype>";
+        
+        NSString *guid5 = @"A17e315fd6fff6ed";
+        NSString *clientSeqId5 = [NSString stringWithFormat:@"%@_%@", guid5, ts];
+        NSData *guidData5 = [[NSString stringWithFormat:@"%@\0", [guid2 substringWithRange:NSMakeRange(0, 15)]] dataUsingEncoding:NSUTF8StringEncoding];
+        WCDevice *mi4 = [[WCDevice alloc] initWithImei:@"865932026043404"
+                                              softType:sofytype5
+                                             clientSeq:clientSeqId5
+                                       clientSeqIdsign:@"18c867f0717aa67b2ab7347505ba07ed"
+                                            deviceName:@"Xiaomi-MI 4LTE"
+                                            deviceType:@"<deviceinfo><MANUFACTURER name=\"Xiaomi\"><MODEL name=\"MI 4LTE\"><VERSION_RELEASE name=\"8.1.0\"><VERSION_INCREMENTAL name=\"c4045b1e37\"><DISPLAY name=\"mk_cancro-userdebug 8.1.0 OPM7.181205.001 c4045b1e37 test-keys\"></DISPLAY></VERSION_INCREMENTAL></VERSION_RELEASE></MODEL></MANUFACTURER></deviceinfo>"
+                                              language:@"zh_CN"
+                                              timeZone:@"8.00"
+                                           deviceBrand:@"Xiaomi"
+                                                chanel:0
+                                           realCountry:@"cn"
+                                              bundleID:@""  //ios only
+                                             iphoneVer:@""  //ios only
+                                                osType:[@"android-27" dataUsingEncoding:NSUTF8StringEncoding]
+                                              adSource:@""  //ios only
+                                           deviceModel:@"MI 4LTEarmeabi-v7a"  //ios only
+                                              deviceID:guidData5];
+        _mi4 = mi4;
     }
 
     return self;
@@ -238,7 +264,7 @@
 #if PROTOCOL_FOR_IOS
     return _sevenPuls;
 #elif PROTOCOL_FOR_ANDROID
-    return _huawei6p;
+    return _mi4;
 #endif
 }
 

@@ -147,6 +147,7 @@ CF_EXTERN_C_BEGIN
 @class CheckJsApiInfo;
 @class CheckResUpdateRequest;
 @class CheckWin;
+@class CliReportKVDataPackage;
 @class CmdInfo;
 @class CmdItem;
 @class CmdList;
@@ -330,6 +331,7 @@ CF_EXTERN_C_BEGIN
 @class JbmBitrateRsParam;
 @class JumpItem;
 @class JumpRemind;
+@class KVCommReportItem;
 @class KVLogHead;
 @class KeyVal;
 @class LBSLifeAction;
@@ -18783,6 +18785,7 @@ typedef GPB_ENUM(CliReportKVDataPackage_FieldNumber) {
   CliReportKVDataPackage_FieldNumber_Uin = 1,
   CliReportKVDataPackage_FieldNumber_ClientVersion = 2,
   CliReportKVDataPackage_FieldNumber_NetType = 3,
+  CliReportKVDataPackage_FieldNumber_ItemListArray = 4,
   CliReportKVDataPackage_FieldNumber_DeviceModel = 5,
   CliReportKVDataPackage_FieldNumber_DeviceBrand = 6,
   CliReportKVDataPackage_FieldNumber_OsName = 7,
@@ -18802,7 +18805,10 @@ typedef GPB_ENUM(CliReportKVDataPackage_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t netType;
 
 @property(nonatomic, readwrite) BOOL hasNetType;
-/** repeated  fieldType:(11)[\@"NSMutableArray"]  itemList  = 4; */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<KVCommReportItem*> *itemListArray;
+/** The number of items in @c itemListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger itemListArray_Count;
+
 @property(nonatomic, readwrite, copy, null_resettable) NSString *deviceModel;
 /** Test to see if @c deviceModel has been set. */
 @property(nonatomic, readwrite) BOOL hasDeviceModel;
@@ -18834,6 +18840,7 @@ typedef GPB_ENUM(CliReportKVReq_FieldNumber) {
   CliReportKVReq_FieldNumber_GeneralVersion = 1,
   CliReportKVReq_FieldNumber_SpecialVersion = 2,
   CliReportKVReq_FieldNumber_WhiteOrBlackUinVersion = 3,
+  CliReportKVReq_FieldNumber_DataPkgArray = 4,
   CliReportKVReq_FieldNumber_RandomEncryKey = 5,
   CliReportKVReq_FieldNumber_HeavyUserInfo = 6,
 };
@@ -18849,7 +18856,10 @@ typedef GPB_ENUM(CliReportKVReq_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t whiteOrBlackUinVersion;
 
 @property(nonatomic, readwrite) BOOL hasWhiteOrBlackUinVersion;
-/** repeated  fieldType:(11)[\@"NSMutableArray"]  dataPkg  = 4; */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<CliReportKVDataPackage*> *dataPkgArray;
+/** The number of items in @c dataPkgArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger dataPkgArray_Count;
+
 @property(nonatomic, readwrite, copy, null_resettable) NSData *randomEncryKey;
 /** Test to see if @c randomEncryKey has been set. */
 @property(nonatomic, readwrite) BOOL hasRandomEncryKey;
@@ -18867,6 +18877,9 @@ typedef GPB_ENUM(CliReportKVResp_FieldNumber) {
   CliReportKVResp_FieldNumber_GeneralVersion = 2,
   CliReportKVResp_FieldNumber_SpecialVersion = 3,
   CliReportKVResp_FieldNumber_WhiteOrBlackUinVersion = 4,
+  CliReportKVResp_FieldNumber_GeneralStrategiesArray = 5,
+  CliReportKVResp_FieldNumber_SpecialStrategiesArray = 6,
+  CliReportKVResp_FieldNumber_WhiteOrBlackUinStrategiesArray = 7,
   CliReportKVResp_FieldNumber_MaxValidDataTime = 8,
   CliReportKVResp_FieldNumber_BanReportTime = 9,
   CliReportKVResp_FieldNumber_AskSvrStrategyInterval = 10,
@@ -18887,11 +18900,18 @@ typedef GPB_ENUM(CliReportKVResp_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t whiteOrBlackUinVersion;
 
 @property(nonatomic, readwrite) BOOL hasWhiteOrBlackUinVersion;
-/**
- * repeated  fieldType:(11)[\@"NSMutableArray"]  generalStrategies  = 5;
- * repeated  fieldType:(11)[\@"NSMutableArray"]  specialStrategies  = 6;
- * repeated  fieldType:(11)[\@"NSMutableArray"]  whiteOrBlackUinStrategies  = 7;
- **/
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SmcStrategyInterval*> *generalStrategiesArray;
+/** The number of items in @c generalStrategiesArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger generalStrategiesArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SmcStrategyInterval*> *specialStrategiesArray;
+/** The number of items in @c specialStrategiesArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger specialStrategiesArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<SmcStrategyInterval*> *whiteOrBlackUinStrategiesArray;
+/** The number of items in @c whiteOrBlackUinStrategiesArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger whiteOrBlackUinStrategiesArray_Count;
+
 @property(nonatomic, readwrite) uint32_t maxValidDataTime;
 
 @property(nonatomic, readwrite) BOOL hasMaxValidDataTime;
@@ -26693,6 +26713,135 @@ typedef GPB_ENUM(ForcePushItem_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *extinfo;
 /** Test to see if @c extinfo has been set. */
 @property(nonatomic, readwrite) BOOL hasExtinfo;
+
+@end
+
+#pragma mark - FPFreshRequest
+
+typedef GPB_ENUM(FPFreshRequest_FieldNumber) {
+  FPFreshRequest_FieldNumber_BaseRequest = 1,
+  FPFreshRequest_FieldNumber_Randomkey = 2,
+  FPFreshRequest_FieldNumber_SpamBuff = 3,
+};
+
+@interface FPFreshRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *randomkey;
+/** Test to see if @c randomkey has been set. */
+@property(nonatomic, readwrite) BOOL hasRandomkey;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *spamBuff;
+/** Test to see if @c spamBuff has been set. */
+@property(nonatomic, readwrite) BOOL hasSpamBuff;
+
+@end
+
+#pragma mark - FPFreshResponse
+
+typedef GPB_ENUM(FPFreshResponse_FieldNumber) {
+  FPFreshResponse_FieldNumber_BaseResponse = 1,
+  FPFreshResponse_FieldNumber_SpamBuff = 2,
+};
+
+@interface FPFreshResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *spamBuff;
+/** Test to see if @c spamBuff has been set. */
+@property(nonatomic, readwrite) BOOL hasSpamBuff;
+
+@end
+
+#pragma mark - FPGetRequest
+
+typedef GPB_ENUM(FPGetRequest_FieldNumber) {
+  FPGetRequest_FieldNumber_BaseRequest = 1,
+  FPGetRequest_FieldNumber_Randomkey = 2,
+  FPGetRequest_FieldNumber_SpamBuff = 3,
+};
+
+@interface FPGetRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *randomkey;
+/** Test to see if @c randomkey has been set. */
+@property(nonatomic, readwrite) BOOL hasRandomkey;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *spamBuff;
+/** Test to see if @c spamBuff has been set. */
+@property(nonatomic, readwrite) BOOL hasSpamBuff;
+
+@end
+
+#pragma mark - FPGetResponse
+
+typedef GPB_ENUM(FPGetResponse_FieldNumber) {
+  FPGetResponse_FieldNumber_BaseResponse = 1,
+  FPGetResponse_FieldNumber_SpamBuff = 2,
+};
+
+@interface FPGetResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *spamBuff;
+/** Test to see if @c spamBuff has been set. */
+@property(nonatomic, readwrite) BOOL hasSpamBuff;
+
+@end
+
+#pragma mark - FPInitRequest
+
+typedef GPB_ENUM(FPInitRequest_FieldNumber) {
+  FPInitRequest_FieldNumber_BaseRequest = 1,
+  FPInitRequest_FieldNumber_Randomkey = 2,
+  FPInitRequest_FieldNumber_SpamBuff = 3,
+};
+
+@interface FPInitRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseRequest *baseRequest;
+/** Test to see if @c baseRequest has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseRequest;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *randomkey;
+/** Test to see if @c randomkey has been set. */
+@property(nonatomic, readwrite) BOOL hasRandomkey;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *spamBuff;
+/** Test to see if @c spamBuff has been set. */
+@property(nonatomic, readwrite) BOOL hasSpamBuff;
+
+@end
+
+#pragma mark - FPInitResponse
+
+typedef GPB_ENUM(FPInitResponse_FieldNumber) {
+  FPInitResponse_FieldNumber_BaseResponse = 1,
+  FPInitResponse_FieldNumber_SpamBuff = 2,
+};
+
+@interface FPInitResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BaseResponse *baseResponse;
+/** Test to see if @c baseResponse has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResponse;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *spamBuff;
+/** Test to see if @c spamBuff has been set. */
+@property(nonatomic, readwrite) BOOL hasSpamBuff;
 
 @end
 

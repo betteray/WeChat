@@ -16,6 +16,7 @@
 #import "DownloadVideoService.h"
 #import "OplogService.h"
 #import "FSOpenSSL.h"
+#import "ReportClientCheckService.h"
 
 @implementation SyncCmdHandler
 
@@ -51,7 +52,7 @@
                         // <sysmsg type="ClientCheckGetExtInfo"><ClientCheckGetExtInfo><ReportContext>539033600</ReportContext><Basic>0</Basic></ClientCheckGetExtInfo></sysmsg>
                         // basic != 0时，获取st的时候是传 0，这时候应该和登录的时候差不多。否则，传15，可以参考现在抓的数据，是15.
                         uint32_t reportContext = [[[document.rootElement firstChildWithXPath:@"//ReportContext"] numberValue] intValue];
-                        [WCSafeSDK reportClientCheckWithContext:reportContext basic:YES];
+                        [ReportClientCheckService reportClientCheckWithContext:reportContext basic:YES];
                     }
                     else if ([type isEqualToString:@"ClientCheckConsistency"])
                     {

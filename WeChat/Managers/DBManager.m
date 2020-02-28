@@ -34,7 +34,9 @@
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
     Cookie *cookie = [DBManager cookie];
-    [realm deleteObject:cookie];
+    if (cookie) {
+        [realm deleteObject:cookie];
+    }
     [realm commitWriteTransaction];
 }
 

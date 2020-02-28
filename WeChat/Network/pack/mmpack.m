@@ -147,7 +147,7 @@
         index += cookieLen;
 
         [WeChatClient sharedClient].cookie = cookie;
-        [DBManager saveCookie:cookie];
+        if (cookieLen > 6) [DBManager saveCookie:cookie];
     } else if (cookieLen > 0xf) {
         LogError(@"UnPack BF Fail, cookieLen too long.");
         return nil;

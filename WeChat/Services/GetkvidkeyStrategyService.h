@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)get;
 
++ (void)printStrategies:(GetCliKVStrategyResp *) response;
+
 @end
 
 NS_ASSUME_NONNULL_END

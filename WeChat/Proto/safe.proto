@@ -75,33 +75,40 @@ message ST {
     optional string RCodes1 = 63;
     optional string STID = 64;
     
-//    65: "3.4.0-lineageos-g9485acc"
-//    66: 2
-//    optional string PkgHash3 = 67; //: "18c867f0717aa67b2ab7347505ba07ed"
-//    68: 0
-//    69: 996227
-//    70: 1
-//    71: 561278238
-//    72: "d2a627a595e8b4d5156fd9bb197ea49a"
-//    75: "6e39b0fb45e84df6c3d1eb28cc658df3"
-
-    
-//    65: "3.10.73-ge8c57cd"
-//     66: 0
-//     67: "18c867f0717aa67b2ab7347505ba07ed"
-//     68: 0
-//     69: 995806
-//     70: 1
-//     71: 554306425
-//     72: "4f4b618f33a03d43355fff0ccb0aa070"
-//     73: "2f05012d7322da26337d27954c648afa"
-//     74: "368ae7c20dbee5b217bd76f5ed4a45c1"
-//     75: "d97f02b54875c58237fa925b82a1f0ac"
+    optional string KernelReleaseNumber = 65; // uname -r //65: "4.4.153-perf+"  // uname获取   和/proc/version 数据有关联
+    optional uint32 UsbState = 66; //66: 0 //sys/class/android_usb/android0/state  usb连上为2，未连接为1,    c8方法false时为0
+    optional string apkSignatureMd5 = 67; //67: "18c867f0717aa67b2ab7347505ba07ed"    //签名md5
+    //68: 14 //目前测试情况： com.android.vending     8
+    //       //com.google.android.gsf.login          1
+    //       //com.google.android.gsf         2
+    //       //com.google.android.gms         4
+    //       //这四个包微信会去单独检测，如果存在则加上对应的数据， 测试miui11 （不包含com.google.android.gsf.login）为14  zui11也为14
+    optional uint32 googleServiceState = 68;
+    optional uint32 timeval1 = 69; //69: 954783 // 时间相关struct timeval*  中微秒数值      gettimeofday获取
+    optional uint32 spamInfoVersionSeq = 70; //70: 3 // 708 709 7010 分别对应 123
+    optional uint32 initialSeq = 71; //71: 556011293                 //   可能与资源下载有关，不做pm clear 数据不会变化
+    optional string pathMd51 = 72; //72: "a8de294f819234ee723148f6f3d003a6"//根据目录生成的md5
+    optional string pathMd52 = 73; //73: "a7cae61554b3c3596c073782ac5d69d1"//根据目录生成的md5
+    optional string pathMd53 = 74; //74: "0d922e4d36ecfdce95da6257798320ab"//根据目录生成的md5
+    optional string pathMd54 = 75; //75: "22bb890943c1c673ccc5246b8a888819"//根据目录生成的md5
+    optional string soteruid = 76; //76: "" //soteruid
+    optional string WidevineDeviceID = 77; //77: "304334a25f546b42df65319978c5dbd2f8b42a3899f0973b0813735dd71795ad"  //java/util/UUID mediaDrm  getPropertyByteArray      => WidevineDeviceID
+    //78: "1535763623|1535763679@664854922a684596|fa114cb9f80068d980d8d89e708bbddd@8b1106cd1d6c932a|1b295f3b9b7ba7f5f8e0275a9a3c1c32"
+    // stat -c "%X|%Y" /storage/emulated
+    // stat -f -c "%i" /system/etc
+    // stat -f -c "%i %b %f %a %c %d" /system/etc  => md5
+    // stat -f -c "%i" /storage/emulated
+    // stat -f -c "%i %b %f %a %c %d" /storage/emulated  => md5  以@和|连接
+    optional string storageID = 78;
+    optional string OAID = 79; //79: ""// c14 ?    OAID
+    optional uint32 unkonwTag80 = 80; //80: 0 // 一直为0 不知道是啥
+    optional uint32 timeval2 = 81; //81: 242379 // 时间相关struct timeval*  中微秒数值      gettimeofday获取
+    optional string fileModifiedInframework = 82; //82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断
 }
 
-message clientspam {
-    required int32 ccdcc = 1;
-    required int32 ccdts = 2;
+message ClientSpamInfo {
+    required uint32 ccdcc = 1;
+    required uint32 ccdts = 2;
     required ST st = 3;
 }
 
@@ -125,4 +132,240 @@ message WCSTE {
     optional uint64 thmj = 10;
     optional uint64 thmn = 11;
     optional uint64 sz = 12;
+}
+
+
+// *********************** FP ********************
+/*
+ 
+ 1 {
+   1 {
+     1: "IMEI"
+     2: "1234567890ABCDEF" =//getDeviceId
+   }
+
+  1 {
+       1: "AndroidID" //ANDROID_ID
+       2: "11b6c9b0371bdbad"
+     }
+   1 {
+     1: "PhoneSerial" //android/os/Build  getSerial
+     2: "26552c80"
+   }
+   1 {
+     1: "cid"
+     2: "4501005344573136470126552c802200"     ///sys/block/mmcblk0/device/cid
+   }
+   1 {
+     1: "WidevineDeviceID" //java/util/UUID     mediaDrm  getPropertyByteArray    传值不同
+     2: "724e71447778476168424252754756424a616e4772576d636a53665155654c00"
+   }
+   1 {
+     1: "WidevineProvisionID"//java/util/UUID     mediaDrm  getPropertyByteArray   传值不同
+     2: "becc9ada6df7c9d7eb9729ab2ff1e8a2"
+   }
+   1 {
+     1: "GSFID" //   google service framework ID           parse("content://com.google.android.gsf.gservices")    测试zui11 为空，含有谷歌服务的手机不为空
+     2: ""
+   }
+
+
+ private static String getGsfAndroidId(Context context)
+ {
+     Uri URI = Uri.parse("content://com.google.android.gsf.gservices");
+     String ID_KEY = "android_id";
+     String params[] = {ID_KEY};
+     Cursor c = context.getContentResolver().query(URI, null, null, params, null);
+     if (c != null && (!c.moveToFirst() || c.getColumnCount() < 2)){
+         if(!c.isClosed())
+             c.close();
+         return null;
+     }
+
+     try {
+         if (c != null) {
+             String result = Long.toHexString(Long.parseLong(c.getString(1)));
+             if(!c.isClosed())
+                 c.close();
+             return result;
+         }else {
+             return null;
+         }
+     } catch (NumberFormatException e) {
+         if(!c.isClosed())
+             c.close();
+         return null;
+     }
+ }
+
+
+   1 {
+     1: "SoterID"
+     2: ""     // SoterID          // c7      无法生成 ，不知道生成规则  暂时为空，不作处理
+   }
+   1 {
+     1: "SoterUid"              // SoterUid           //c9  无法生成 ，不知道生成规则   暂时为空，不作处理
+     2: ""
+   }
+   1 {
+     1: "FSID"
+     2: "1565145651|1578921026@8c829c5f2697bfed|0dfa3fd5117241943a578c1d610e48cf@d3609fe804970d6b|3b8097466edef8b4a6e3fc29728f61e3"               // stat -c "%X|%Y" /storage/emulated
+                                                                          // stat -f -c "%i" /system/etc
+                                                                          // stat -f -c "%i %b %f %a %c %d" /system/etc  => md5
+                                                                          // stat -f -c "%i" /storage/emulated
+                                                                          // stat -f -c "%i %b %f %a %c %d" /storage/emulated  => md5  以@和|连接
+   }
+   1 {
+     1: "BootID"
+     2: "06476842-2823-492e-8221-3333b81cf8d3"                       //    /proc/sys/kernel/random/boot_id
+   }
+   1 {
+     1: "IMSI"                   //  getSubscriberId
+     2: ""
+   }
+   1 {
+     1: "PhoneNum"    //getLine1Number
+     2: ""
+   }
+   1 {
+     1: "WeChatInstallTime"     //getPackageInfo   firstInstallTime
+     2: "1579160423"
+   }
+   1 {
+     1: "PhoneModel"        //通过libc   property_get ro.product.model
+     2: "MI 4LTE"
+   }
+   1 {
+     1: "BuildBoard"         //通过libc   property_get ro.product.board
+     2: "MSM8974"
+   }
+   1 {
+     1: "BuildBootloader"       //通过libc   property_get ro.bootloader
+     2: "unknown"
+   }
+   1 {
+     1: "SystemBuildDate"    //通过libc   property_get  ro.build.date
+     2: "Tue Jan  7 07:11:39 CST 2020"
+   }
+   1 {
+     1: "SystemBuildDateUTC"     //通过libc   property_get  ro.build.date.utc
+     2: "1578352299"
+   }
+   1 {
+     1: "BuildFP"                     //通过libc   property_get  ro.build.fingerprint
+     2: "Xiaomi/cancro/cancro:6.0.1/MMB29M/V8.1.6.0.MXDMIDI:user/release-keys"
+   }
+   1 {
+     1: "BuildID"                    //通过libc   property_get  ro.build.id
+     2: "OPM7.181205.001"
+   }
+   1 {
+     1: "BuildBrand"                    //通过libc   property_get  ro.product.brand
+     2: "Xiaomi"
+   }
+   1 {
+     1: "BuildDevice"                    //通过libc   property_get ro.product.device
+     2: "cancro"
+   }
+   1 {
+     1: "BuildProduct"                    //通过libc   property_get  ro.product.name
+     2: "cancro"
+   }
+   1 {
+     1: "Manufacturer"                    //通过libc   property_get  ro.product.manufacturer
+     2: "Xiaomi"
+   }
+   1 {
+     1: "RadioVersion"                    //    getRadioVersion   ? 通过libc   property_get  gsm.version.baseband  (和系统版本有关)
+     2: "MPSS.DI.4.0-eaa9d90"
+   }
+   1 {
+     1: "AndroidVersion"                    //通过libc   property_get  ro.build.version.release
+     2: "8.1.0"
+   }
+   1 {
+     1: "SdkIntVersion"      //通过libc   property_get  ro.build.version.sdk
+     2: "27"
+   }
+   1 {
+     1: "ScreenWidth"       // getDisplayMetrics   widthPixels
+     2: "1080"
+   }
+   1 {
+     1: "ScreenHeight"       // getDisplayMetrics   heightPixels
+     2: "1920"
+   }
+   1 {
+     1: "SensorList"                         //getSensorList     getName   getVendor  getResolution getVersion
+     2: "Accelerometer#STMicroelectronics#0.001190#1,Magnetometer#AKM#0.149536#1,Magnetometer Uncalibrated#AKM#0.149536#1,Gyroscope#STMicroelectronics#0.000153#1,Gyroscope Uncalibrated#STMicroelectronics#0.000153#1,Proximity Sensor#TAOS#5.000305#1,Ambient Light Sensor#TAOS#0.199997#1,Barometer Sensor#BOSCH#0.009995#1,Temperature Sensor#BOSCH#0.009995#1,Gravity#Qualcomm#0.001190#1,Linear Acceleration#Qualcomm#0.001190#1,Rotation Vector#Qualcomm#0.000000#1,Step Detector#Qualcomm#1.000000#1,Step Counter#Qualcomm#1.000000#1,Significant Motion Detector#Qualcomm#1.000000#1,Game Rotation Vector#Qualcomm#0.000000#1,Geomagnetic Rotation Vector#Qualcomm#0.000000#1,Orientation#Qualcomm#0.100000#1,AMD#Qualcomm#1.000000#1,RMD#Qualcomm#1.000000#1,VMD#Qualcomm#1.000000#1,Basic Gestures#Qualcomm#1.000000#1,Facing#Qualcomm#1.000000#1,Tilt#Qualcomm#0.100000#1,Gyro Tap#Qualcomm#1.000000#1,Pedometer#Qualcomm#1.000000#1,PEDESTRIAN-ACTIVITY-MONITOR#Qualcomm#1.000000#1,Motion Accel#Qualcomm#0.001190#1,Coarse Motion Classifier#Qualcomm#1.000000#1"
+   }
+   1 {
+     1: "DefaultInputMethod"                  //   android/provider/Settings$Secure   DEFAULT_INPUT_METHOD
+     2: "com.google.android.inputmethod.latin"
+   }
+   1 {
+     1: "InputMethodList"                     //getInputMethodList
+     2: "Gboard#com.google.android.inputmethod.latin"
+   }
+   1 {
+     1: "DeviceID"               //c10      com.tencent.mm.compatible.deviceinfo.q$12    A16
+     2: "Af1762d2e5da437a"
+   }
+   1 {
+     1: "OAID"               //c14       OAID  com.tencent.mm.plugin.normsg.b.getOAID    目前看zui11 该值为空，小米华为oppo vivo高版本系统应该不为空，未测试
+     2: ""
+   }
+ }
+
+ 
+ */
+
+message FPKeyVal {
+    optional string key = 1;
+    optional string value = 2;
+}
+
+message FPKeyVals {
+    repeated FPKeyVal keyVal = 1;
+}
+
+message FPDevice {
+    optional FPKeyVals keyvals = 1;
+}
+
+
+// **********************03加密结果***************************
+
+//  用于加密完填充字端用。
+message SpamInfoEncrypedResult {
+    optional string type = 1;
+    optional uint32 tag2 = 2;
+    optional bytes encrypedData = 3;
+    optional uint32 timestamp = 4; // 706没有 , 7011有
+    optional uint32 tag5 = 5; // 5
+    optional uint32 tag6 = 6; // 0
+}
+
+message SpamBuff {
+    message UnknownTag2 {
+        optional bytes unknowntag1 = 1;
+        optional bytes unknowntag2 = 2;
+    }
+    optional UnknownTag2 unknowntag2 = 2; //还不清楚这个数据是干啥用的，下次刷新token会用吗
+    optional string devicetoken = 3;
+    optional uint32 timestamp = 4;
+}
+
+message DeviceToken {
+    optional string tag1 = 1;
+    optional uint32 tag2 = 2;
+    
+    message Token {
+        optional string devicetoken = 1;
+    }
+    
+    optional Token token = 3;
+    optional uint32 timestamp = 4;
+    optional uint32 tag5 = 5;
+    optional uint32 tag6 = 6;
 }

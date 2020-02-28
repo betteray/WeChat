@@ -1,0 +1,5177 @@
+[
+    {
+        "cgi": 132,
+        "response": "BindOpMobileResponse",
+        "path": "/cgi-bin/micromsg-bin/bindopmobile"
+    },
+    {
+        "cgi": 145,
+        "response": "BindOpMobileResponse",
+        "path": "/cgi-bin/micromsg-bin/bindopmobileforreg"
+    },
+    {
+        "cgi": 159,
+        "response": "GetPackageListResponse",
+        "path": "/cgi-bin/micromsg-bin/getpackagelist"
+    },
+    {
+        "cgi": 160,
+        "response": "DownLoadPackageResponse",
+        "path": "/cgi-bin/micromsg-bin/downloadpackage"
+    },
+    {
+        "cgi": 161,
+        "response": "ShakeReportResponse",
+        "path": "/cgi-bin/micromsg-bin/shakereport"
+    },
+    {
+        "cgi": 162,
+        "response": "ShakeGetResponse",
+        "path": "/cgi-bin/micromsg-bin/shakeget"
+    },
+    {
+        "cgi": 165,
+        "response": "ShakeImgResponse",
+        "path": "/cgi-bin/micromsg-bin/shakeimg"
+    },
+    {
+        "cgi": 166,
+        "response": "ExposeResponse",
+        "path": "/cgi-bin/micromsg-bin/expose"
+    },
+    {
+        "cgi": 167,
+        "response": "GetVUserInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getvuserinfo"
+    },
+    {
+        "cgi": 142,
+        "response": "GetMFriendResponse",
+        "path": "/cgi-bin/micromsg-bin/getmfriend"
+    },
+    {
+        "cgi": 168,
+        "response": "GetQRCodeResponse",
+        "path": "/cgi-bin/micromsg-bin/getqrcode"
+    },
+    {
+        "cgi": 700,
+        "response": "RevokeChatRoomQRCodeResponse",
+        "path": "/cgi-bin/micromsg-bin/revokechatroomqrcode"
+    },
+    {
+        "cgi": 169,
+        "response": "GmailOperResponse",
+        "path": "/cgi-bin/micromsg-bin/gmailoper"
+    },
+    {
+        "cgi": 170,
+        "response": "VoipInviteResp",
+        "path": "/cgi-bin/micromsg-bin/voipinvite"
+    },
+    {
+        "cgi": 171,
+        "response": "VoipCancelInviteResp",
+        "path": "/cgi-bin/micromsg-bin/voipcancelinvite"
+    },
+    {
+        "cgi": 172,
+        "response": "VoipAnswerResp",
+        "path": "/cgi-bin/micromsg-bin/voipanswer"
+    },
+    {
+        "cgi": 173,
+        "response": "VoipShutDownResp",
+        "path": "/cgi-bin/micromsg-bin/voipshutdown"
+    },
+    {
+        "cgi": 174,
+        "response": "VoipSyncResp",
+        "path": "/cgi-bin/micromsg-bin/voipsync"
+    },
+    {
+        "cgi": 303,
+        "response": "VoipGetRoomInfoResp",
+        "path": "/cgi-bin/micromsg-bin/voipgetroominfo"
+    },
+    {
+        "cgi": 305,
+        "response": "VoipAckResp",
+        "path": "/cgi-bin/micromsg-bin/voipack"
+    },
+    {
+        "cgi": 306,
+        "response": "VoipInviteRemindResp",
+        "path": "/cgi-bin/micromsg-bin/voipinviteremind"
+    },
+    {
+        "cgi": 178,
+        "response": "VoipHeartBeatResp",
+        "path": "/cgi-bin/micromsg-bin/voipheartbeat"
+    },
+    {
+        "cgi": 249,
+        "response": "VoipDoubleLinkSwitchRsp",
+        "path": "/cgi-bin/micromsg-bin/voipdoublelinkswitch"
+    },
+    {
+        "cgi": 320,
+        "response": "VoipStatReportResp",
+        "path": "/cgi-bin/micromsg-bin/voipstatreport"
+    },
+    {
+        "cgi": 175,
+        "response": "UploadEmojiResponse",
+        "path": "/cgi-bin/micromsg-bin/sendemoji"
+    },
+    {
+        "cgi": 177,
+        "response": "GeneralSetResponse",
+        "path": "/cgi-bin/micromsg-bin/generalset"
+    },
+    {
+        "cgi": 179,
+        "response": "DelChatRoomMemberResponse",
+        "path": "/cgi-bin/micromsg-bin/delchatroommember"
+    },
+    {
+        "cgi": 182,
+        "response": "GetContactResponse",
+        "path": "/cgi-bin/micromsg-bin/getcontact"
+    },
+    {
+        "cgi": 183,
+        "response": "FaceBookAuthResponse",
+        "path": "/cgi-bin/micromsg-bin/facebookauth"
+    },
+    {
+        "cgi": 193,
+        "response": "MassSendResponse",
+        "path": "/cgi-bin/micromsg-bin/masssend"
+    },
+    {
+        "cgi": 245,
+        "response": "SendSightResponse",
+        "path": "/cgi-bin/micromsg-bin/sendsight"
+    },
+    {
+        "cgi": 153,
+        "response": "SendFeedbackResponse",
+        "path": "/cgi-bin/micromsg-bin/sendfeedback"
+    },
+    {
+        "cgi": 383,
+        "response": "SetPwdResponse",
+        "path": "/cgi-bin/micromsg-bin/newsetpasswd"
+    },
+    {
+        "cgi": 131,
+        "response": "SendCardResponse",
+        "path": "/cgi-bin/micromsg-bin/sendcard"
+    },
+    {
+        "cgi": 150,
+        "response": "DownloadVideoResponse",
+        "path": "/cgi-bin/micromsg-bin/downloadvideo"
+    },
+    {
+        "cgi": 149,
+        "response": "UploadVideoResponse",
+        "path": "/cgi-bin/micromsg-bin/uploadvideo"
+    },
+    {
+        "cgi": 109,
+        "response": "GetMsgImgResponse",
+        "path": "/cgi-bin/micromsg-bin/getmsgimg"
+    },
+    {
+        "cgi": 108,
+        "response": "SendVerifyEmailResponse",
+        "path": "/cgi-bin/micromsg-bin/sendverifyemail"
+    },
+    {
+        "cgi": 129,
+        "response": "SwitchPushMailResponse",
+        "path": "/cgi-bin/micromsg-bin/switchpushmail"
+    },
+    {
+        "cgi": 133,
+        "response": "UploadMContactResponse",
+        "path": "/cgi-bin/micromsg-bin/uploadmcontact"
+    },
+    {
+        "cgi": 127,
+        "response": "UploadVoiceResponse",
+        "path": "/cgi-bin/micromsg-bin/uploadvoice"
+    },
+    {
+        "cgi": 329,
+        "response": "UploadVoiceResponse",
+        "path": "/cgi-bin/micromsg-bin/uploadvoicerecognize"
+    },
+    {
+        "cgi": 128,
+        "response": "DownloadVoiceResponse",
+        "path": "/cgi-bin/micromsg-bin/downloadvoice"
+    },
+    {
+        "cgi": 155,
+        "response": "PickBottleResponse",
+        "path": "/cgi-bin/micromsg-bin/pickbottle"
+    },
+    {
+        "cgi": 156,
+        "response": "OpenBottleResponse",
+        "path": "/cgi-bin/micromsg-bin/openbottle"
+    },
+    {
+        "cgi": 152,
+        "response": "GetBottleCountResponse",
+        "path": "/cgi-bin/micromsg-bin/getbottlecount"
+    },
+    {
+        "cgi": 154,
+        "response": "ThrowBottleResponse",
+        "path": "/cgi-bin/micromsg-bin/throwbottle"
+    },
+    {
+        "cgi": 1733,
+        "response": "FetchDataResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/fetchdata"
+    },
+    {
+        "cgi": 2921,
+        "response": "GetProfileInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/getprofileinfo"
+    },
+    {
+        "cgi": 2521,
+        "response": "UpdateWxaEvaluateResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/updateevaluate"
+    },
+    {
+        "cgi": 120,
+        "response": "AddChatRoomMemberResponse",
+        "path": "/cgi-bin/micromsg-bin/addchatroommember"
+    },
+    {
+        "cgi": 119,
+        "response": "CreateChatRoomResponse",
+        "path": "/cgi-bin/micromsg-bin/createchatroom"
+    },
+    {
+        "cgi": 207,
+        "response": "SnsUploadResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnsupload"
+    },
+    {
+        "cgi": 209,
+        "response": "SnsPostResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnspost"
+    },
+    {
+        "cgi": 210,
+        "response": "SnsObjectDetailResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnsobjectdetail"
+    },
+    {
+        "cgi": 211,
+        "response": "SnsTimeLineResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnstimeline"
+    },
+    {
+        "cgi": 212,
+        "response": "SnsUserPageResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnsuserpage"
+    },
+    {
+        "cgi": 213,
+        "response": "SnsCommentResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnscomment"
+    },
+    {
+        "cgi": 214,
+        "response": "SnsSyncResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnssync"
+    },
+    {
+        "cgi": 218,
+        "response": "SnsObjectOpResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnsobjectop"
+    },
+    {
+        "cgi": 290,
+        "response": "SnsTagOptionResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnstagoption"
+    },
+    {
+        "cgi": 291,
+        "response": "SnsTagMemberOptionResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnstagmemberoption"
+    },
+    {
+        "cgi": 292,
+        "response": "SnsTagListResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnstaglist"
+    },
+    {
+        "cgi": 293,
+        "response": "SnsTagMemMutilSetResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnstagmemmutilset"
+    },
+    {
+        "cgi": 718,
+        "response": "SnsTimeLineResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnspreloadingtimeline"
+    },
+    {
+        "cgi": 351,
+        "response": "StoryPostResponse",
+        "path": "/cgi-bin/micromsg-bin/mmstorypost"
+    },
+    {
+        "cgi": 354,
+        "response": "StoryCommentResponse",
+        "path": "/cgi-bin/micromsg-bin/mmstorycomment"
+    },
+    {
+        "cgi": 273,
+        "response": "StoryUserPageResponse",
+        "path": "/cgi-bin/micromsg-bin/mmstoryuserpage"
+    },
+    {
+        "cgi": 513,
+        "response": "StorySyncResponse",
+        "path": "/cgi-bin/micromsg-bin/mmstorysync"
+    },
+    {
+        "cgi": 764,
+        "response": "StoryOpResponse",
+        "path": "/cgi-bin/micromsg-bin/mmstoryobjectop"
+    },
+    {
+        "cgi": 998,
+        "response": "StoryChatRoomSyncResponse",
+        "path": "/cgi-bin/micromsg-bin/mmstorychatroomsync"
+    },
+    {
+        "cgi": 191,
+        "response": "StoryHistoryPageResponse",
+        "path": "/cgi-bin/micromsg-bin/mmstoryhistorypage"
+    },
+    {
+        "cgi": 529,
+        "response": "StoryDateDetailResponse",
+        "path": "/cgi-bin/micromsg-bin/mmstorydatedetail"
+    },
+    {
+        "cgi": 302,
+        "response": "GetProfileResponse",
+        "path": "/cgi-bin/micromsg-bin/getprofile"
+    },
+    {
+        "cgi": 123,
+        "response": "BatchGetHeadImgResponse",
+        "path": "/cgi-bin/micromsg-bin/batchgetheadimg"
+    },
+    {
+        "cgi": 158,
+        "response": "GetHDHeadImgResponse",
+        "path": "/cgi-bin/micromsg-bin/gethdheadimg"
+    },
+    {
+        "cgi": 157,
+        "response": "UploadHDHeadImgResponse",
+        "path": "/cgi-bin/micromsg-bin/uploadhdheadimg"
+    },
+    {
+        "cgi": -1,
+        "response": "nil",
+        "path": "/cgi-bin/micromsg-bin/"
+    },
+    {
+        "cgi": 222,
+        "response": "SendAppMsgResponse",
+        "path": "/cgi-bin/micromsg-bin/sendappmsg"
+    },
+    {
+        "cgi": 220,
+        "response": "UploadAppAttachResponse",
+        "path": "/cgi-bin/micromsg-bin/uploadappattach"
+    },
+    {
+        "cgi": 221,
+        "response": "DownloadAppAttachResponse",
+        "path": "/cgi-bin/micromsg-bin/downloadappattach"
+    },
+    {
+        "cgi": 231,
+        "response": "GetAppInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getappinfo"
+    },
+    {
+        "cgi": 232,
+        "response": "GetRecommendAppListResponse",
+        "path": "/cgi-bin/micromsg-bin/getrecommendapplist"
+    },
+    {
+        "cgi": 451,
+        "response": "GetAppInfoListResponse",
+        "path": "/cgi-bin/micromsg-bin/getappinfolist"
+    },
+    {
+        "cgi": 233,
+        "response": "GetA8KeyResp",
+        "path": "/cgi-bin/micromsg-bin/geta8key"
+    },
+    {
+        "cgi": 238,
+        "response": "GetA8KeyResp",
+        "path": "/cgi-bin/micromsg-bin/mp-geta8key"
+    },
+    {
+        "cgi": 835,
+        "response": "GetA8KeyResp",
+        "path": "/cgi-bin/micromsg-bin/pay-geta8key"
+    },
+    {
+        "cgi": 812,
+        "response": "GetA8KeyResp",
+        "path": "/cgi-bin/micromsg-bin/minor-geta8key"
+    },
+    {
+        "cgi": 226,
+        "response": "GetA8KeyResp",
+        "path": "/cgi-bin/micromsg-bin/3rd-geta8key"
+    },
+    {
+        "cgi": 281,
+        "response": "LogOutWebWxResponse",
+        "path": "/cgi-bin/micromsg-bin/logoutwebwx"
+    },
+    {
+        "cgi": 106,
+        "response": "SearchContactResponse",
+        "path": "/cgi-bin/micromsg-bin/searchcontact"
+    },
+    {
+        "cgi": 137,
+        "response": "VerifyUserResponse",
+        "path": "/cgi-bin/micromsg-bin/verifyuser"
+    },
+    {
+        "cgi": 251,
+        "response": "StatusNotifyResponse",
+        "path": "/cgi-bin/micromsg-bin/statusnotify"
+    },
+    {
+        "cgi": 304,
+        "response": "SetPushSoundResp",
+        "path": "/cgi-bin/micromsg-bin/setpushsound"
+    },
+    {
+        "cgi": 206,
+        "response": "VoiceAddrResponse",
+        "path": "/cgi-bin/micromsg-bin/voiceaddr"
+    },
+    {
+        "cgi": 308,
+        "response": "GetReportStrategyResp",
+        "path": "/cgi-bin/micromsg-bin/reportstrategy"
+    },
+    {
+        "cgi": 310,
+        "response": "KVReportResp",
+        "path": "/cgi-bin/micromsg-bin/kvreport"
+    },
+    {
+        "cgi": 311,
+        "response": "UserActionReportResp",
+        "path": "/cgi-bin/micromsg-bin/useractionreport"
+    },
+    {
+        "cgi": 309,
+        "response": "ClientPerfReportResp",
+        "path": "/cgi-bin/micromsg-bin/clientperfreport"
+    },
+    {
+        "cgi": 316,
+        "response": "ShakeTranImgReportResponse",
+        "path": "/cgi-bin/micromsg-bin/shaketranimgreport"
+    },
+    {
+        "cgi": 317,
+        "response": "ShakeTranImgGetResponse",
+        "path": "/cgi-bin/micromsg-bin/shaketranimgget"
+    },
+    {
+        "cgi": 319,
+        "response": "ShakeTranImgUnBindResponse",
+        "path": "/cgi-bin/micromsg-bin/shaketranimgunbind"
+    },
+    {
+        "cgi": 318,
+        "response": "BatchGetShakeTranImgResponse",
+        "path": "/cgi-bin/micromsg-bin/batchgetshaketranimg"
+    },
+    {
+        "cgi": 384,
+        "response": "VerifyPswdResponse",
+        "path": "/cgi-bin/micromsg-bin/newverifypasswd"
+    },
+    {
+        "cgi": 253,
+        "response": "UnBindQQResponse",
+        "path": "/cgi-bin/micromsg-bin/unbindqq"
+    },
+    {
+        "cgi": 144,
+        "response": "BindQQResponse",
+        "path": "/cgi-bin/micromsg-bin/bindqq"
+    },
+    {
+        "cgi": 254,
+        "response": "CheckUnBindResponse",
+        "path": "/cgi-bin/micromsg-bin/checkunbind"
+    },
+    {
+        "cgi": 255,
+        "response": "QueryHasPswdResponse",
+        "path": "/cgi-bin/micromsg-bin/queryhaspasswd"
+    },
+    {
+        "cgi": 256,
+        "response": "BindEmailResponse",
+        "path": "/cgi-bin/micromsg-bin/bindemail"
+    },
+    {
+        "cgi": 282,
+        "response": "LogOutResponse",
+        "path": "/cgi-bin/micromsg-bin/logout"
+    },
+    {
+        "cgi": 331,
+        "response": "OpVoiceReminderResp",
+        "path": "/cgi-bin/micromsg-bin/opvoicereminder"
+    },
+    {
+        "cgi": 332,
+        "response": "EnterTalkRoomResp",
+        "path": "/cgi-bin/micromsg-bin/entertalkroom"
+    },
+    {
+        "cgi": 333,
+        "response": "ExitTalkRoomResp",
+        "path": "/cgi-bin/micromsg-bin/exittalkroom"
+    },
+    {
+        "cgi": 336,
+        "response": "GetTalkRoomMemberResp",
+        "path": "/cgi-bin/micromsg-bin/gettalkroommember"
+    },
+    {
+        "cgi": 334,
+        "response": "TalkMicActionResp",
+        "path": "/cgi-bin/micromsg-bin/talkmicaction"
+    },
+    {
+        "cgi": 335,
+        "response": "TalkNoopResp",
+        "path": "/cgi-bin/micromsg-bin/talknoop"
+    },
+    {
+        "cgi": 373,
+        "response": "TalkStatReportResp",
+        "path": "/cgi-bin/micromsg-bin/talkstatreport"
+    },
+    {
+        "cgi": 321,
+        "response": "BakChatUploadHeadResponse",
+        "path": "/cgi-bin/micromsg-bin/bakchatuploadhead"
+    },
+    {
+        "cgi": 322,
+        "response": "BakChatUploadEndResponse",
+        "path": "/cgi-bin/micromsg-bin/bakchatuploadend"
+    },
+    {
+        "cgi": 323,
+        "response": "BakChatUploadMsgResponse",
+        "path": "/cgi-bin/micromsg-bin/bakchatuploadmsg"
+    },
+    {
+        "cgi": 324,
+        "response": "BakChatUploadMediaResponse",
+        "path": "/cgi-bin/micromsg-bin/bakchatuploadmedia"
+    },
+    {
+        "cgi": 325,
+        "response": "BakChatRecoverGetListResponse",
+        "path": "/cgi-bin/micromsg-bin/bakchatrecovergetlist"
+    },
+    {
+        "cgi": 326,
+        "response": "BakChatRecoverHeadResponse",
+        "path": "/cgi-bin/micromsg-bin/bakchatrecoverhead"
+    },
+    {
+        "cgi": 327,
+        "response": "BakChatRecoverDataResponse",
+        "path": "/cgi-bin/micromsg-bin/bakchatrecoverdata"
+    },
+    {
+        "cgi": 328,
+        "response": "BakChatDeleteResponse",
+        "path": "/cgi-bin/micromsg-bin/bakchatdelete"
+    },
+    {
+        "cgi": 339,
+        "response": "GrantBigChatRoomResp",
+        "path": "/cgi-bin/micromsg-bin/grantbigchatroom"
+    },
+    {
+        "cgi": 110,
+        "response": "UploadMsgImgResponse",
+        "path": "/cgi-bin/micromsg-bin/uploadmsgimg"
+    },
+    {
+        "cgi": 340,
+        "response": "SendQRCodeByEmailResp",
+        "path": "/cgi-bin/micromsg-bin/sendqrcodebyemail"
+    },
+    {
+        "cgi": 349,
+        "response": "UploadInputVoiceResponse",
+        "path": "/cgi-bin/micromsg-bin/uploadinputvoice"
+    },
+    {
+        "cgi": 361,
+        "response": "UpdateSafeDeviceResponse",
+        "path": "/cgi-bin/micromsg-bin/updatesafedevice"
+    },
+    {
+        "cgi": 362,
+        "response": "DelSafeDeviceResponse",
+        "path": "/cgi-bin/micromsg-bin/delsafedevice"
+    },
+    {
+        "cgi": 359,
+        "response": "ClickCommandResponse",
+        "path": "/cgi-bin/micromsg-bin/clickcommand"
+    },
+    {
+        "cgi": 2592,
+        "response": "ReportBrandSessionResponse",
+        "path": "/cgi-bin/micromsg-bin/reportcommand"
+    },
+    {
+        "cgi": 2645,
+        "response": "ReportBizListShowInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/reportshow"
+    },
+    {
+        "cgi": 2550,
+        "response": "OftenReadBarReportResponse",
+        "path": "/cgi-bin/micromsg-bin/often_read_bar_report"
+    },
+    {
+        "cgi": 367,
+        "response": "ShakeMusicResponse",
+        "path": "/cgi-bin/micromsg-bin/shakemusic"
+    },
+    {
+        "cgi": 250,
+        "response": "StatReportResponse",
+        "path": "/cgi-bin/micromsg-bin/statreport"
+    },
+    {
+        "cgi": 376,
+        "response": "LbsRoomResponse",
+        "path": "/cgi-bin/micromsg-bin/joinlbsroom"
+    },
+    {
+        "cgi": 377,
+        "response": "LbsRoomMemberResponse",
+        "path": "/cgi-bin/micromsg-bin/getroommember"
+    },
+    {
+        "cgi": 378,
+        "response": "AppCommentResponse",
+        "path": "/cgi-bin/micromsg-bin/appcommentreport"
+    },
+    {
+        "cgi": 379,
+        "response": "GetCDNDnsResponse",
+        "path": "/cgi-bin/micromsg-bin/getcdndns"
+    },
+    {
+        "cgi": 381,
+        "response": "GetCertResponse",
+        "path": "/cgi-bin/micromsg-bin/getcert"
+    },
+    {
+        "cgi": 385,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/micromsg-bin/tenpay"
+    },
+    {
+        "cgi": 389,
+        "response": "PayDelUserRollResponse",
+        "path": "/cgi-bin/micromsg-bin/paydeluserroll"
+    },
+    {
+        "cgi": 388,
+        "response": "PayQueryUserRollResponse",
+        "path": "/cgi-bin/micromsg-bin/payqueryuserroll"
+    },
+    {
+        "cgi": 658,
+        "response": "IBeaconBoardcastResponse",
+        "path": "/cgi-bin/micromsg-bin/ibeaconboardcast"
+    },
+    {
+        "cgi": 1704,
+        "response": "GetBeaconsInGroupResponse",
+        "path": "/cgi-bin/mmo2o-bin/getbeaconsingroup"
+    },
+    {
+        "cgi": 1708,
+        "response": "GetBeaconsPushMessageResp",
+        "path": "/cgi-bin/mmo2o-bin/getbeaconspushmessage"
+    },
+    {
+        "cgi": 1702,
+        "response": "VerifyBeaconJSPermissionResponse",
+        "path": "/cgi-bin/mmo2o-bin/verifybeaconjspermission"
+    },
+    {
+        "cgi": 140,
+        "response": "BatchGetContactProfileResponse",
+        "path": "/cgi-bin/micromsg-bin/batchgetcontactprofile"
+    },
+    {
+        "cgi": 392,
+        "response": "OCRTranslationResponse",
+        "path": "/cgi-bin/micromsg-bin/ocrtranslation"
+    },
+    {
+        "cgi": 294,
+        "response": "NewOCRTranslationResponse",
+        "path": "/cgi-bin/micromsg-bin/newocrtranslation"
+    },
+    {
+        "cgi": 1062,
+        "response": "BizScanImageResponse",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/bizscanimg"
+    },
+    {
+        "cgi": 1093,
+        "response": "JSAPIPreVerifyResponse",
+        "path": "/cgi-bin/mmbiz-bin/jsapi-preverify"
+    },
+    {
+        "cgi": 1094,
+        "response": "JSAPIRealtimeVerifyResponse",
+        "path": "/cgi-bin/mmbiz-bin/jsapi-realtimeverify"
+    },
+    {
+        "cgi": 1095,
+        "response": "JSAPIAuthResponse",
+        "path": "/cgi-bin/mmbiz-bin/jsapi-auth"
+    },
+    {
+        "cgi": 1096,
+        "response": "JSAPISetAuthResponse",
+        "path": "/cgi-bin/mmbiz-bin/jsapi-setauth"
+    },
+    {
+        "cgi": 1200,
+        "response": "TranslateLinkResp",
+        "path": "/cgi-bin/mmbiz-bin/translatelink"
+    },
+    {
+        "cgi": 1066,
+        "response": "EnterTempSessionResponse",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/entertempsession"
+    },
+    {
+        "cgi": 1067,
+        "response": "DelTempSessionResponse",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/deltempsession"
+    },
+    {
+        "cgi": 1185,
+        "response": "UploadSoterAuthkeyResp",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/uploadsoterauthkey"
+    },
+    {
+        "cgi": 452,
+        "response": "AppCenterResponse",
+        "path": "/cgi-bin/micromsg-bin/appcenter"
+    },
+    {
+        "cgi": 394,
+        "response": "GetAuthAppListResponse",
+        "path": "/cgi-bin/micromsg-bin/getauthapplist"
+    },
+    {
+        "cgi": 396,
+        "response": "SetAppSettingResponse",
+        "path": "/cgi-bin/micromsg-bin/setappsetting"
+    },
+    {
+        "cgi": 395,
+        "response": "GetAppSettingResponse",
+        "path": "/cgi-bin/micromsg-bin/getappsetting"
+    },
+    {
+        "cgi": 409,
+        "response": "GetSuggestionAppListResponse",
+        "path": "/cgi-bin/micromsg-bin/getsuggestionapplist"
+    },
+    {
+        "cgi": 427,
+        "response": "GameKVReportResp",
+        "path": "/cgi-bin/micromsg-bin/gamereportkv"
+    },
+    {
+        "cgi": 397,
+        "response": "PayAuthAppResponse",
+        "path": "/cgi-bin/mmpay-bin/payauthapp"
+    },
+    {
+        "cgi": 398,
+        "response": "GenPrepayResponse",
+        "path": "/cgi-bin/mmpay-bin/genprepay"
+    },
+    {
+        "cgi": 498,
+        "response": "SubmitPayProductBuyInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/submitpayproductbuyinfo"
+    },
+    {
+        "cgi": 410,
+        "response": "CancelQRPayResponse",
+        "path": "/cgi-bin/mmpay-bin/cancelqrpay"
+    },
+    {
+        "cgi": 580,
+        "response": "CheckPayJsapiResponse",
+        "path": "/cgi-bin/mmpay-bin/checkpayjsapi"
+    },
+    {
+        "cgi": 2823,
+        "response": "CancelPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/ts_cancelpay"
+    },
+    {
+        "cgi": 2722,
+        "response": "CancelPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_ff_cancelpay"
+    },
+    {
+        "cgi": 2533,
+        "response": "CancelPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_aa_cancelpay"
+    },
+    {
+        "cgi": 2958,
+        "response": "CancelPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_tf_cancelpay"
+    },
+    {
+        "cgi": 2976,
+        "response": "CancelPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_cancelpay"
+    },
+    {
+        "cgi": 2705,
+        "response": "CancelPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/unicancelpay"
+    },
+    {
+        "cgi": 2820,
+        "response": "CancelPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/seb_ff_cancelpay"
+    },
+    {
+        "cgi": 2652,
+        "response": "CancelPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/tax_cancelpay"
+    },
+    {
+        "cgi": 600,
+        "response": "RemoveVirtualBankCardResponse",
+        "path": "/cgi-bin/micromsg-bin/removevirtualbankcard"
+    },
+    {
+        "cgi": 606,
+        "response": "GetOfflinePayInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getofflinepayinfo"
+    },
+    {
+        "cgi": 609,
+        "response": "OfflinePayConfirmResponse",
+        "path": "/cgi-bin/mmpay-bin/offlinepayconfirm"
+    },
+    {
+        "cgi": 2672,
+        "response": "QueryWeChatWalletResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/querywechatwallet"
+    },
+    {
+        "cgi": 2567,
+        "response": "GetBalanceMenuResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/getbalancemenu"
+    },
+    {
+        "cgi": 2635,
+        "response": "QueryWalletEntranceBalanceSwitchResp",
+        "path": "/cgi-bin/mmpay-bin/querywalletentrancebalanceswitchstate"
+    },
+    {
+        "cgi": 2554,
+        "response": "SetWalletEntranceBalanceSwitchResp",
+        "path": "/cgi-bin/mmpay-bin/setwalletentrancebalanceswitchstate"
+    },
+    {
+        "cgi": 621,
+        "response": "SetMainBankCardResponse",
+        "path": "/cgi-bin/micromsg-bin/setmainbankcard"
+    },
+    {
+        "cgi": 400,
+        "response": "FavSyncResponse",
+        "path": "/cgi-bin/micromsg-bin/favsync"
+    },
+    {
+        "cgi": 401,
+        "response": "AddFavItemResponse",
+        "path": "/cgi-bin/micromsg-bin/addfavitem"
+    },
+    {
+        "cgi": 403,
+        "response": "BatchDelFavItemResponse",
+        "path": "/cgi-bin/micromsg-bin/batchdelfavitem"
+    },
+    {
+        "cgi": 402,
+        "response": "BatchGetFavItemResponse",
+        "path": "/cgi-bin/micromsg-bin/batchgetfavitem"
+    },
+    {
+        "cgi": 405,
+        "response": "CheckFavItemResponse",
+        "path": "/cgi-bin/micromsg-bin/checkfavitem"
+    },
+    {
+        "cgi": 404,
+        "response": "CheckCDNResponse",
+        "path": "/cgi-bin/micromsg-bin/checkcdn"
+    },
+    {
+        "cgi": 426,
+        "response": "ModFavItemResponse",
+        "path": "/cgi-bin/micromsg-bin/modfavitem"
+    },
+    {
+        "cgi": 649,
+        "response": "BatchModFavItemResponse",
+        "path": "/cgi-bin/micromsg-bin/batchmodfavitem"
+    },
+    {
+        "cgi": 438,
+        "response": "GetFavInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getfavinfo"
+    },
+    {
+        "cgi": 921,
+        "response": "FavSecurityResponse",
+        "path": "/cgi-bin/micromsg-bin/favsecurity"
+    },
+    {
+        "cgi": 408,
+        "response": "ShakeTVResponse",
+        "path": "/cgi-bin/micromsg-bin/shaketv"
+    },
+    {
+        "cgi": 415,
+        "response": "RcptInfoAddResponse",
+        "path": "/cgi-bin/micromsg-bin/rcptinfoadd"
+    },
+    {
+        "cgi": 417,
+        "response": "RcptInfoQueryResponse",
+        "path": "/cgi-bin/micromsg-bin/rcptinfoquery"
+    },
+    {
+        "cgi": 416,
+        "response": "RcptInfoRemoveResponse",
+        "path": "/cgi-bin/micromsg-bin/rcptinforemove"
+    },
+    {
+        "cgi": 419,
+        "response": "RcptInfoTouchResponse",
+        "path": "/cgi-bin/micromsg-bin/rcptinfotouch"
+    },
+    {
+        "cgi": 418,
+        "response": "RcptInfoUpdateResponse",
+        "path": "/cgi-bin/micromsg-bin/rcptinfoupdate"
+    },
+    {
+        "cgi": 582,
+        "response": "RcptInfoImportYiXunResponse",
+        "path": "/cgi-bin/micromsg-bin/rcptinfoimport"
+    },
+    {
+        "cgi": 482,
+        "response": "UpgradeChatRoomResp",
+        "path": "/cgi-bin/micromsg-bin/upgradechatroom"
+    },
+    {
+        "cgi": 519,
+        "response": "GetChatRoomUpgradeStatusResp",
+        "path": "/cgi-bin/micromsg-bin/getchatroomupgradestatus"
+    },
+    {
+        "cgi": 551,
+        "response": "GetChatroomMemberDetailResponse",
+        "path": "/cgi-bin/micromsg-bin/getchatroommemberdetail"
+    },
+    {
+        "cgi": 610,
+        "response": "InviteChatRoomMemberResponse",
+        "path": "/cgi-bin/micromsg-bin/invitechatroommember"
+    },
+    {
+        "cgi": 411,
+        "response": "GetEmotionListResponse",
+        "path": "/cgi-bin/micromsg-bin/getemotionlist"
+    },
+    {
+        "cgi": 412,
+        "response": "GetEmotionDetailResponse",
+        "path": "/cgi-bin/micromsg-bin/getemotiondetail"
+    },
+    {
+        "cgi": 413,
+        "response": "ModEmotionPackResponse",
+        "path": "/cgi-bin/micromsg-bin/modemotionpack"
+    },
+    {
+        "cgi": 421,
+        "response": "PaySubscribeResponse",
+        "path": "/cgi-bin/mmpay-bin/paysubscribe"
+    },
+    {
+        "cgi": 423,
+        "response": "ExchangeEmotionPackResponse",
+        "path": "/cgi-bin/micromsg-bin/exchangeemotionpack"
+    },
+    {
+        "cgi": 521,
+        "response": "GetEmotionDescResponse",
+        "path": "/cgi-bin/micromsg-bin/getemotiondesc"
+    },
+    {
+        "cgi": 720,
+        "response": "GetPersonalDesignerResponse",
+        "path": "/cgi-bin/micromsg-bin/mmgetpersonaldesigner"
+    },
+    {
+        "cgi": 822,
+        "response": "GetEmotionRewardResponse",
+        "path": "/cgi-bin/micromsg-bin/mmgetemotionreward"
+    },
+    {
+        "cgi": 299,
+        "response": "GetEmotionDonorListResponse",
+        "path": "/cgi-bin/micromsg-bin/mmgetemotiondonorlist"
+    },
+    {
+        "cgi": 830,
+        "response": "AskForRewardResponse",
+        "path": "/cgi-bin/micromsg-bin/mmaskforreward"
+    },
+    {
+        "cgi": 821,
+        "response": "GetDesignerEmojiListResponse",
+        "path": "/cgi-bin/micromsg-bin/mmgetdesigneremojilist"
+    },
+    {
+        "cgi": 239,
+        "response": "GetDesignerSimpleInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/mmgetdesignersimpleinfo"
+    },
+    {
+        "cgi": 368,
+        "response": "GetEmotionActivityResponse",
+        "path": "/cgi-bin/micromsg-bin/getemotionactivity"
+    },
+    {
+        "cgi": 532,
+        "response": "EmojiTextAntiSpamResponse",
+        "path": "/cgi-bin/micromsg-bin/mmemojitextantispam"
+    },
+    {
+        "cgi": 721,
+        "response": "CheckResUpdateResponse",
+        "path": "/cgi-bin/micromsg-bin/checkresupdate"
+    },
+    {
+        "cgi": 722,
+        "response": "CheckResUpdateResponse",
+        "path": "/cgi-bin/micromsg-bin/encryptcheckresupdate"
+    },
+    {
+        "cgi": 1061,
+        "response": "BizScanBarcodeResponse",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/bizscanbarcode"
+    },
+    {
+        "cgi": 414,
+        "response": "VerifyPurchaseResponse",
+        "path": "/cgi-bin/micromsg-bin/verifypurchase"
+    },
+    {
+        "cgi": 422,
+        "response": "PreparePurchaseResponse",
+        "path": "/cgi-bin/micromsg-bin/preparepurchase"
+    },
+    {
+        "cgi": 486,
+        "response": "CancelPurchaseResponse",
+        "path": "/cgi-bin/micromsg-bin/cancelpurchase"
+    },
+    {
+        "cgi": 424,
+        "response": "ScanStreetViewResponse",
+        "path": "/cgi-bin/micromsg-bin/scanstreetview"
+    },
+    {
+        "cgi": 425,
+        "response": "RadarSearchResponse",
+        "path": "/cgi-bin/micromsg-bin/mmradarsearch"
+    },
+    {
+        "cgi": 429,
+        "response": "GetSuggestAliasResponse",
+        "path": "/cgi-bin/micromsg-bin/getsuggestalias"
+    },
+    {
+        "cgi": 431,
+        "response": "ListMFriendResp",
+        "path": "/cgi-bin/micromsg-bin/listmfriend"
+    },
+    {
+        "cgi": 432,
+        "response": "SendSmsToMFriendResp",
+        "path": "/cgi-bin/micromsg-bin/sendsmstomfriend"
+    },
+    {
+        "cgi": 433,
+        "response": "SendPhoto2FBWallResp",
+        "path": "/cgi-bin/micromsg-bin/sendphoto2fbwall"
+    },
+    {
+        "cgi": 1160,
+        "response": "BizScanLicenseResponse",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/bizscanlicense"
+    },
+    {
+        "cgi": 1063,
+        "response": "BizGetProductInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/bizscangetproductinfo"
+    },
+    {
+        "cgi": 1064,
+        "response": "BizScanProductReportResp",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/bizscanproductreport"
+    },
+    {
+        "cgi": 1068,
+        "response": "BizGetActionInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/bizscangetactioninfo"
+    },
+    {
+        "cgi": 553,
+        "response": "GetProductDetailResponse",
+        "path": "/cgi-bin/micromsg-bin/getproductdetail"
+    },
+    {
+        "cgi": 554,
+        "response": "PreSubmitOrderResponse",
+        "path": "/cgi-bin/micromsg-bin/presubmitorder"
+    },
+    {
+        "cgi": 555,
+        "response": "CancelPreOrderResponse",
+        "path": "/cgi-bin/micromsg-bin/cancelpreorder"
+    },
+    {
+        "cgi": 556,
+        "response": "SubmitMallOrderResponse",
+        "path": "/cgi-bin/micromsg-bin/submitmallorder"
+    },
+    {
+        "cgi": 557,
+        "response": "SubmitMallFreeOrderResponse",
+        "path": "/cgi-bin/micromsg-bin/submitmallfreeorder"
+    },
+    {
+        "cgi": 578,
+        "response": "GetLastestExpressInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getlastestexpressinfo"
+    },
+    {
+        "cgi": 579,
+        "response": "GetProductDiscountResponse",
+        "path": "/cgi-bin/micromsg-bin/getproductdiscount"
+    },
+    {
+        "cgi": 443,
+        "response": "KVReportResp",
+        "path": "/cgi-bin/micromsg-bin/kvreportrsa"
+    },
+    {
+        "cgi": 455,
+        "response": "SearchOrRecommendBizResp",
+        "path": "/cgi-bin/micromsg-bin/searchorrecommendbiz"
+    },
+    {
+        "cgi": 456,
+        "response": "GroupRecommendBizResp",
+        "path": "/cgi-bin/micromsg-bin/grouprecommendbiz"
+    },
+    {
+        "cgi": 430,
+        "response": "KVCommReportResp",
+        "path": "/cgi-bin/micromsg-bin/reportkvcomm"
+    },
+    {
+        "cgi": 499,
+        "response": "KVCommReportResp",
+        "path": "/cgi-bin/micromsg-bin/reportkvcommrsa"
+    },
+    {
+        "cgi": 105,
+        "response": "IphoneRegResponse",
+        "path": "/cgi-bin/micromsg-bin/iphonereg"
+    },
+    {
+        "cgi": 113,
+        "response": "GetUpdateInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getupdateinfo"
+    },
+    {
+        "cgi": 986,
+        "response": "CliReportKVResp",
+        "path": "/cgi-bin/micromsg-bin/newreportidkey"
+    },
+    {
+        "cgi": 987,
+        "response": "CliReportKVResp",
+        "path": "/cgi-bin/micromsg-bin/newreportidkeyrsa"
+    },
+    {
+        "cgi": 996,
+        "response": "CliReportKVResp",
+        "path": "/cgi-bin/micromsg-bin/newreportkvcomm"
+    },
+    {
+        "cgi": 997,
+        "response": "CliReportKVResp",
+        "path": "/cgi-bin/micromsg-bin/newreportkvcommrsa"
+    },
+    {
+        "cgi": 988,
+        "response": "GetCliKVStrategyResp",
+        "path": "/cgi-bin/micromsg-bin/getkvidkeystrategy"
+    },
+    {
+        "cgi": 989,
+        "response": "GetCliKVStrategyResp",
+        "path": "/cgi-bin/micromsg-bin/getkvidkeystrategyrsa"
+    },
+    {
+        "cgi": 693,
+        "response": "KVCommReportResp",
+        "path": "/cgi-bin/micromsg-bin/reportidkey"
+    },
+    {
+        "cgi": 694,
+        "response": "KVCommReportResp",
+        "path": "/cgi-bin/micromsg-bin/reportidkeyrsa"
+    },
+    {
+        "cgi": 487,
+        "response": "BindGoogleContactResponse",
+        "path": "/cgi-bin/micromsg-bin/bindgooglecontact"
+    },
+    {
+        "cgi": 489,
+        "response": "InviteGoogleContactResponse",
+        "path": "/cgi-bin/micromsg-bin/invitegooglecontact"
+    },
+    {
+        "cgi": 457,
+        "response": "GetPOIListResponse",
+        "path": "/cgi-bin/micromsg-bin/getpoilist"
+    },
+    {
+        "cgi": 483,
+        "response": "CheckConversationFileResponse",
+        "path": "/cgi-bin/micromsg-bin/checkconversationfile"
+    },
+    {
+        "cgi": 484,
+        "response": "UploadFileResponse",
+        "path": "/cgi-bin/micromsg-bin/uploadfile"
+    },
+    {
+        "cgi": 485,
+        "response": "ComposeSendResponse",
+        "path": "/cgi-bin/micromsg-bin/composesend"
+    },
+    {
+        "cgi": 488,
+        "response": "ListGoogleContactResponse",
+        "path": "/cgi-bin/micromsg-bin/listgooglecontact"
+    },
+    {
+        "cgi": 490,
+        "response": "JoinTrackRoomResponse",
+        "path": "/cgi-bin/micromsg-bin/jointrackroom"
+    },
+    {
+        "cgi": 492,
+        "response": "RefreshTrackRoomResponse",
+        "path": "/cgi-bin/micromsg-bin/refreshtrackroom"
+    },
+    {
+        "cgi": 491,
+        "response": "ExitTrackRoomResponse",
+        "path": "/cgi-bin/micromsg-bin/exittrackroom"
+    },
+    {
+        "cgi": 493,
+        "response": "GeneralShareResponse",
+        "path": "/cgi-bin/micromsg-bin/generalshare"
+    },
+    {
+        "cgi": 495,
+        "response": "GetPayFunctionListResponse",
+        "path": "/cgi-bin/micromsg-bin/getpayfunctionlist"
+    },
+    {
+        "cgi": 496,
+        "response": "GetPayFunctionProductListResponse",
+        "path": "/cgi-bin/micromsg-bin/getpayfunctionproductlist"
+    },
+    {
+        "cgi": 497,
+        "response": "GetLatestPayProductInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getlatestpayproductinfo"
+    },
+    {
+        "cgi": 1555,
+        "response": "FlowDataRechargePreinQueryResponse",
+        "path": "/cgi-bin/mmpay-bin/flowdatarechargepreinquery"
+    },
+    {
+        "cgi": 1570,
+        "response": "PayChargeProxyResponse",
+        "path": "/cgi-bin/mmpay-bin/paychargeproxy"
+    },
+    {
+        "cgi": 508,
+        "response": "GenBizIapPrepayResponse",
+        "path": "/cgi-bin/micromsg-bin/genbiziapprepay"
+    },
+    {
+        "cgi": 509,
+        "response": "GetBizIapPayResultResponse",
+        "path": "/cgi-bin/micromsg-bin/getbiziappayresult"
+    },
+    {
+        "cgi": 514,
+        "response": "GetBizIapDetailResponse",
+        "path": "/cgi-bin/micromsg-bin/getbiziapdetail"
+    },
+    {
+        "cgi": 1135,
+        "response": "GetInitDataResp",
+        "path": "/cgi-bin/mmbiz-bin/boss/getinitdata"
+    },
+    {
+        "cgi": 1150,
+        "response": "GetPackageResp",
+        "path": "/cgi-bin/mmbiz-bin/boss/getpackage"
+    },
+    {
+        "cgi": 2696,
+        "response": "GetFaceCheckActionResp",
+        "path": "/cgi-bin/mmpay-bin/getfacecheckaction"
+    },
+    {
+        "cgi": 2726,
+        "response": "GetFaceCheckResultResp",
+        "path": "/cgi-bin/mmpay-bin/getfacecheckresult"
+    },
+    {
+        "cgi": 2632,
+        "response": "SecureTunnelResponse",
+        "path": "/cgi-bin/mmpay-bin/securetunnel"
+    },
+    {
+        "cgi": 2570,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/getpaidorderdetail"
+    },
+    {
+        "cgi": 2516,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlinegetpaidorderdetail"
+    },
+    {
+        "cgi": 520,
+        "response": "GetQQMusicLyricResponse",
+        "path": "/cgi-bin/micromsg-bin/getqqmusiclyric"
+    },
+    {
+        "cgi": 526,
+        "response": "GetOnlineInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getonlineinfo"
+    },
+    {
+        "cgi": 546,
+        "response": "CheckVoiceTransResponse",
+        "path": "/cgi-bin/micromsg-bin/checkvoicetrans"
+    },
+    {
+        "cgi": 548,
+        "response": "GetVoiceTransResResponse",
+        "path": "/cgi-bin/micromsg-bin/getvoicetransres"
+    },
+    {
+        "cgi": 547,
+        "response": "UploadVoiceForTransResponse",
+        "path": "/cgi-bin/micromsg-bin/uploadvoicefortrans"
+    },
+    {
+        "cgi": 549,
+        "response": "BindLinkedinContactResponse",
+        "path": "/cgi-bin/micromsg-bin/bindlinkedincontact"
+    },
+    {
+        "cgi": 550,
+        "response": "UnBindLinkedinContactResponse",
+        "path": "/cgi-bin/micromsg-bin/unbindlinkedincontact"
+    },
+    {
+        "cgi": 645,
+        "response": "GetCardItemInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getcarditeminfo"
+    },
+    {
+        "cgi": 651,
+        "response": "AcceptCardItemResponse",
+        "path": "/cgi-bin/micromsg-bin/acceptcarditem"
+    },
+    {
+        "cgi": 652,
+        "response": "GiftCardItemResponse",
+        "path": "/cgi-bin/micromsg-bin/giftcarditem"
+    },
+    {
+        "cgi": 558,
+        "response": "CardSyncResponse",
+        "path": "/cgi-bin/micromsg-bin/cardsync"
+    },
+    {
+        "cgi": 559,
+        "response": "BatchGetCardItemResponse",
+        "path": "/cgi-bin/micromsg-bin/batchgetcarditem"
+    },
+    {
+        "cgi": 560,
+        "response": "BatchDelCardItemResponse",
+        "path": "/cgi-bin/micromsg-bin/batchdelcarditem"
+    },
+    {
+        "cgi": 563,
+        "response": "CardShopLBSResponse",
+        "path": "/cgi-bin/micromsg-bin/cardshoplbs"
+    },
+    {
+        "cgi": 577,
+        "response": "GetCardSerialResponse",
+        "path": "/cgi-bin/micromsg-bin/getcardserial"
+    },
+    {
+        "cgi": 663,
+        "response": "GetCardCountResponse",
+        "path": "/cgi-bin/micromsg-bin/getcardcount"
+    },
+    {
+        "cgi": 664,
+        "response": "GetAvailableCardResponse",
+        "path": "/cgi-bin/micromsg-bin/getavailablecard"
+    },
+    {
+        "cgi": 690,
+        "response": "GetCardListFromAppResponse",
+        "path": "/cgi-bin/micromsg-bin/getcardlistfromapp"
+    },
+    {
+        "cgi": 687,
+        "response": "AcceptCardListFromAppResponse",
+        "path": "/cgi-bin/micromsg-bin/acceptcardlistfromapp"
+    },
+    {
+        "cgi": 692,
+        "response": "GetCardConfigInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getcardconfiginfo"
+    },
+    {
+        "cgi": 699,
+        "response": "BatchGetCardItemByTpInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/batchgetcarditembytpinfo"
+    },
+    {
+        "cgi": 1382,
+        "response": "GetDynamicCardCodeResp",
+        "path": "/cgi-bin/micromsg-bin/getdynamiccardcode"
+    },
+    {
+        "cgi": 1275,
+        "response": "ReportDynamicCardCodeActionResp",
+        "path": "/cgi-bin/micromsg-bin/reportdynamiccardcodeaction"
+    },
+    {
+        "cgi": 984,
+        "response": "GetCardsLayoutResponse",
+        "path": "/cgi-bin/micromsg-bin/getcardslayout"
+    },
+    {
+        "cgi": 1177,
+        "response": "MMBizJsApiGetUserOpenIdResp",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/mmbizjsapi_getuseropenid"
+    },
+    {
+        "cgi": 575,
+        "response": "UploadCardImgResponse",
+        "path": "/cgi-bin/micromsg-bin/uploadcardimg"
+    },
+    {
+        "cgi": 576,
+        "response": "DeleteCardImgResponse",
+        "path": "/cgi-bin/micromsg-bin/deletecardimg"
+    },
+    {
+        "cgi": 552,
+        "response": "GetTVInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/gettvinfo"
+    },
+    {
+        "cgi": 581,
+        "response": "WhatsNewsResponse",
+        "path": "/cgi-bin/micromsg-bin/whatsnews"
+    },
+    {
+        "cgi": 536,
+        "response": "BindHardDeviceResponse",
+        "path": "/cgi-bin/micromsg-bin/bindharddevice"
+    },
+    {
+        "cgi": 537,
+        "response": "UnbindHardDeviceResponse",
+        "path": "/cgi-bin/micromsg-bin/unbindharddevice"
+    },
+    {
+        "cgi": 538,
+        "response": "SendHardDeviceMsgResponse",
+        "path": "/cgi-bin/micromsg-bin/sendharddevicemsg"
+    },
+    {
+        "cgi": 539,
+        "response": "GetBoundHardDevicesResponse",
+        "path": "/cgi-bin/micromsg-bin/getboundharddevices"
+    },
+    {
+        "cgi": 540,
+        "response": "SearchHardDeviceResponse",
+        "path": "/cgi-bin/micromsg-bin/searchharddevice"
+    },
+    {
+        "cgi": 541,
+        "response": "HardDeviceAuthResponse",
+        "path": "/cgi-bin/micromsg-bin/harddeviceauth"
+    },
+    {
+        "cgi": 542,
+        "response": "BatchSearchHardDeviceResp",
+        "path": "/cgi-bin/micromsg-bin/batchsearchharddevice"
+    },
+    {
+        "cgi": 543,
+        "response": "GetHardDeviceOperTicketResp",
+        "path": "/cgi-bin/micromsg-bin/getharddeviceoperticket"
+    },
+    {
+        "cgi": 1261,
+        "response": "UploadDeviceStepResp",
+        "path": "/cgi-bin/mmoc-bin/hardware/uploaddevicestep"
+    },
+    {
+        "cgi": 1263,
+        "response": "UpdateMyDeviceAttrResp",
+        "path": "/cgi-bin/mmoc-bin/hardware/updatemydeviceattr"
+    },
+    {
+        "cgi": 1267,
+        "response": "GetSportDeviceListResponse",
+        "path": "/cgi-bin/mmbiz-bin/rank/getsportdevicelist"
+    },
+    {
+        "cgi": 1270,
+        "response": "SearchWiFiHardDeviceResp",
+        "path": "/cgi-bin/mmoc-bin/hardware/searchwifiharddevice"
+    },
+    {
+        "cgi": 1719,
+        "response": "GetHardDeviceHelpUrlResp",
+        "path": "/cgi-bin/mmoc-bin/hardware/getharddevicehelpurl"
+    },
+    {
+        "cgi": 1706,
+        "response": "SearchBLEHardDeviceResp",
+        "path": "/cgi-bin/mmoc-bin/hardware/searchbleharddevice"
+    },
+    {
+        "cgi": 1799,
+        "response": "ConnectedRouterResp",
+        "path": "/cgi-bin/mmoc-bin/hardware/mydevice/connectedrouter"
+    },
+    {
+        "cgi": 1717,
+        "response": "TransferMsgToDeviceResp",
+        "path": "/cgi-bin/mmoc-bin/hardware/transfermsgtodevice"
+    },
+    {
+        "cgi": 1090,
+        "response": "HardDeviceStatusSubResponse",
+        "path": "/cgi-bin/mmbiz-bin/device/subscribestatus"
+    },
+    {
+        "cgi": 594,
+        "response": "RevokeMsgResponse",
+        "path": "/cgi-bin/micromsg-bin/revokemsg"
+    },
+    {
+        "cgi": 653,
+        "response": "FacingCreateChatRoomResponse",
+        "path": "/cgi-bin/micromsg-bin/mmfacingcreatechatroom"
+    },
+    {
+        "cgi": 608,
+        "response": "ShareFavResponse",
+        "path": "/cgi-bin/micromsg-bin/sharefav"
+    },
+    {
+        "cgi": 605,
+        "response": "CheckCanSubscribeBizResponse",
+        "path": "/cgi-bin/micromsg-bin/checkcansubscribebiz"
+    },
+    {
+        "cgi": 603,
+        "response": "GetLbsLifeListResponse",
+        "path": "/cgi-bin/micromsg-bin/getlbslifelist"
+    },
+    {
+        "cgi": 631,
+        "response": "GetTransTextResponse",
+        "path": "/cgi-bin/micromsg-bin/gettranstext"
+    },
+    {
+        "cgi": 640,
+        "response": "APAuthResponse",
+        "path": "/cgi-bin/micromsg-bin/apauth"
+    },
+    {
+        "cgi": 1703,
+        "response": "AddContactResponse",
+        "path": "/cgi-bin/mmo2o-bin/addcontact"
+    },
+    {
+        "cgi": 1705,
+        "response": "BizWifiConnectResponse",
+        "path": "/cgi-bin/mmo2o-bin/bizwificonnect"
+    },
+    {
+        "cgi": 1709,
+        "response": "GetPortalApInfoResponse",
+        "path": "/cgi-bin/mmo2o-bin/getportalapinfo"
+    },
+    {
+        "cgi": 1760,
+        "response": "GetPcFrontPageResponse",
+        "path": "/cgi-bin/mmo2o-bin/getpcfrontpage"
+    },
+    {
+        "cgi": 1761,
+        "response": "SetPcLoginUserInfoResponse",
+        "path": "/cgi-bin/mmo2o-bin/setpcloginuserInfo"
+    },
+    {
+        "cgi": 1726,
+        "response": "GetBackPageFor33Response",
+        "path": "/cgi-bin/mmo2o-bin/getbackpagefor33"
+    },
+    {
+        "cgi": 1744,
+        "response": "APCheckResponse",
+        "path": "/cgi-bin/mmo2o-bin/apcheck"
+    },
+    {
+        "cgi": 1711,
+        "response": "ManufacturerApInfoResponse",
+        "path": "/cgi-bin/mmo2o-bin/getapinfolist"
+    },
+    {
+        "cgi": 1781,
+        "response": "FreeWifiReportResponse",
+        "path": "/cgi-bin/mmo2o-bin/freewifireport"
+    },
+    {
+        "cgi": 823,
+        "response": "VoipCSInviteResp",
+        "path": "/cgi-bin/micromsg-bin/csvoipinvite"
+    },
+    {
+        "cgi": 880,
+        "response": "VoipCSHangupResp",
+        "path": "/cgi-bin/micromsg-bin/csvoiphangup"
+    },
+    {
+        "cgi": 818,
+        "response": "VoipCSSyncResp",
+        "path": "/cgi-bin/micromsg-bin/csvoipsync"
+    },
+    {
+        "cgi": 795,
+        "response": "VoipCSHeartBeatResp",
+        "path": "/cgi-bin/micromsg-bin/csvoipheartbeat"
+    },
+    {
+        "cgi": 285,
+        "response": "VoipCSRedirectResp",
+        "path": "/cgi-bin/micromsg-bin/csvoipredirect"
+    },
+    {
+        "cgi": 312,
+        "response": "VoipCSReportResp",
+        "path": "/cgi-bin/micromsg-bin/csvoipreport"
+    },
+    {
+        "cgi": 632,
+        "response": "BatchTransCDNResponse",
+        "path": "/cgi-bin/micromsg-bin/batchtranscdnitem"
+    },
+    {
+        "cgi": 630,
+        "response": "GetImUnreadMsgCountResponse",
+        "path": "/cgi-bin/micromsg-bin/getimunreadmsgcount"
+    },
+    {
+        "cgi": 650,
+        "response": "CreatePoiResponse",
+        "path": "/cgi-bin/micromsg-bin/createpoi"
+    },
+    {
+        "cgi": 923,
+        "response": "GetPoiCityResponse",
+        "path": "/cgi-bin/micromsg-bin/getpoicity"
+    },
+    {
+        "cgi": 1032,
+        "response": "MMBizJsApiUploadMediaResp",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/mmbizjsapi_uploadmedia"
+    },
+    {
+        "cgi": 1033,
+        "response": "MMBizJsApiDownloadMediaResp",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/mmbizjsapi_downloadmedia"
+    },
+    {
+        "cgi": 1034,
+        "response": "MMBizJsApiUploadCdnInfoResp",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/mmbizjsapi_uploadcdninfo"
+    },
+    {
+        "cgi": 1035,
+        "response": "MMBizJsApiDownloadCdnInfoResp",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/mmbizjsapi_downloadcdninfo"
+    },
+    {
+        "cgi": 502,
+        "response": "GetLoginQRCodeResponse",
+        "path": "/cgi-bin/micromsg-bin/getloginqrcode"
+    },
+    {
+        "cgi": 503,
+        "response": "CheckLoginQRCodeResponse",
+        "path": "/cgi-bin/micromsg-bin/checkloginqrcode"
+    },
+    {
+        "cgi": 654,
+        "response": "PushLoginURLResponse",
+        "path": "/cgi-bin/micromsg-bin/pushloginurl"
+    },
+    {
+        "cgi": 518,
+        "response": "HeartBeatResponse",
+        "path": "/cgi-bin/micromsg-bin/heartbeat"
+    },
+    {
+        "cgi": 635,
+        "response": "AddContactLabelResponse",
+        "path": "/cgi-bin/micromsg-bin/addcontactlabel"
+    },
+    {
+        "cgi": 636,
+        "response": "DelContactLabelResponse",
+        "path": "/cgi-bin/micromsg-bin/delcontactlabel"
+    },
+    {
+        "cgi": 637,
+        "response": "UpdateContactLabelResponse",
+        "path": "/cgi-bin/micromsg-bin/updatecontactlabel"
+    },
+    {
+        "cgi": 638,
+        "response": "ModifyContactLabelListResponse",
+        "path": "/cgi-bin/micromsg-bin/modifycontactlabellist"
+    },
+    {
+        "cgi": 639,
+        "response": "GetContactLabelListResponse",
+        "path": "/cgi-bin/micromsg-bin/getcontactlabellist"
+    },
+    {
+        "cgi": 1060,
+        "response": "MMBizCommApiGetServiceAppListResp",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/getserviceapplist"
+    },
+    {
+        "cgi": 1030,
+        "response": "MMBizRecvTmpMsgOptionSetResponse",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/setrecvtmpmsgoption"
+    },
+    {
+        "cgi": 1031,
+        "response": "MMBizRecvTmpMsgOptionGetAllResponse",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/getallrecvtmpmsgoption"
+    },
+    {
+        "cgi": 661,
+        "response": "ExposeWithProofResp",
+        "path": "/cgi-bin/micromsg-bin/exposewithproof"
+    },
+    {
+        "cgi": 982,
+        "response": "GetExposeLinkResponse",
+        "path": "/cgi-bin/micromsg-bin/getexposelink"
+    },
+    {
+        "cgi": 659,
+        "response": "SearchHomePageResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsearchhomepage"
+    },
+    {
+        "cgi": 660,
+        "response": "SearchDetailPageResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsearchdetailpage"
+    },
+    {
+        "cgi": 719,
+        "response": "WebSearchResponse",
+        "path": "/cgi-bin/micromsg-bin/mmwebsearch"
+    },
+    {
+        "cgi": 2957,
+        "response": "SearchConfirmResponse",
+        "path": "/cgi-bin/mmsearch-bin/searchconfirm"
+    },
+    {
+        "cgi": 1048,
+        "response": "SearchGuideResponse",
+        "path": "/cgi-bin/mmsearch-bin/searchguide"
+    },
+    {
+        "cgi": 1134,
+        "response": "ReportResponse",
+        "path": "/cgi-bin/mmsearch-bin/searchreport"
+    },
+    {
+        "cgi": 1161,
+        "response": "WebSearchResponse",
+        "path": "/cgi-bin/mmsearch-bin/searchsuggestion"
+    },
+    {
+        "cgi": 1948,
+        "response": "ConfigResponse",
+        "path": "/cgi-bin/mmsearch-bin/websearchconfig"
+    },
+    {
+        "cgi": 1944,
+        "response": "SearchLocalPageResponse",
+        "path": "/cgi-bin/mmsearch-bin/searchlocalpage"
+    },
+    {
+        "cgi": 1943,
+        "response": "WebRecommendResponse",
+        "path": "/cgi-bin/mmsearch-bin/mmwebrecommend"
+    },
+    {
+        "cgi": 2579,
+        "response": "RecommendGetVideoUrlResponse",
+        "path": "/cgi-bin/mmsearch-bin/recommendgetvideourl"
+    },
+    {
+        "cgi": 2531,
+        "response": "TopStoryVoteResponse",
+        "path": "/cgi-bin/mmsearch-bin/topstoryvote"
+    },
+    {
+        "cgi": 143,
+        "response": "GetQQGroupResponse",
+        "path": "/cgi-bin/micromsg-bin/getqqgroup"
+    },
+    {
+        "cgi": 665,
+        "response": "GetCurLocationResponse",
+        "path": "/cgi-bin/micromsg-bin/getcurlocation"
+    },
+    {
+        "cgi": 2906,
+        "response": "TopStoryPluginPostCommentResponse",
+        "path": "/cgi-bin/mmsearch-bin/topstorypluginpostcomment"
+    },
+    {
+        "cgi": 2802,
+        "response": "TopStoryPluginSetCommentResponse",
+        "path": "/cgi-bin/mmsearch-bin/topstorypluginsetcomment"
+    },
+    {
+        "cgi": 2582,
+        "response": "WebCommResponse",
+        "path": "/cgi-bin/mmsearch-bin/searchwebcomm"
+    },
+    {
+        "cgi": 2830,
+        "response": "GetUserattrByOpenidResponse",
+        "path": "/cgi-bin/mmsearch-bin/getuserattrbyopenid"
+    },
+    {
+        "cgi": 673,
+        "response": "GetReadingModeInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getreadingmodeinfo"
+    },
+    {
+        "cgi": 672,
+        "response": "KFGetDefaultListResponse",
+        "path": "/cgi-bin/mmkf-bin/kfgetdefaultlist"
+    },
+    {
+        "cgi": 674,
+        "response": "KFGetBindListResponse",
+        "path": "/cgi-bin/mmkf-bin/kfgetbindlist"
+    },
+    {
+        "cgi": 675,
+        "response": "KFGetInfoListResponse",
+        "path": "/cgi-bin/mmkf-bin/kfgetinfolist"
+    },
+    {
+        "cgi": 666,
+        "response": "JumpEmotionDetailResponse",
+        "path": "/cgi-bin/micromsg-bin/jumpemotiondetail"
+    },
+    {
+        "cgi": 678,
+        "response": "VoipRedirectResp",
+        "path": "/cgi-bin/micromsg-bin/voipredirect"
+    },
+    {
+        "cgi": 1086,
+        "response": "LBSLifeGetNearbyEntranceListResp",
+        "path": "/cgi-bin/mmbiz-bin/lbslife/lbslifegetnearbyentrancelist"
+    },
+    {
+        "cgi": 1087,
+        "response": "LBSLifeGetNearbyRecommendPoiResp",
+        "path": "/cgi-bin/mmbiz-bin/lbslife/lbslifegetnearbyrecommendpoi"
+    },
+    {
+        "cgi": 681,
+        "response": "OplogResponse",
+        "path": "/cgi-bin/micromsg-bin/oplog"
+    },
+    {
+        "cgi": 1038,
+        "response": "CheckSmsCanAddCardResp",
+        "path": "/cgi-bin/mmbiz-bin/api/checksmscanaddcard"
+    },
+    {
+        "cgi": 1215,
+        "response": "SearchGameListResponse",
+        "path": "/cgi-bin/mmgame-bin/searchgamelist"
+    },
+    {
+        "cgi": 2583,
+        "response": "SyncWxagGameListResponse",
+        "path": "/cgi-bin/mmgame-bin/syncwxaggamelist"
+    },
+    {
+        "cgi": 1328,
+        "response": "GameCenterSearchResponse",
+        "path": "/cgi-bin/mmgame-bin/gamecentersearch"
+    },
+    {
+        "cgi": 1329,
+        "response": "GameCenterSearchRecommendResponse",
+        "path": "/cgi-bin/mmgame-bin/gamecentersearchrecommend"
+    },
+    {
+        "cgi": 1216,
+        "response": "GetGameIndexResponse_V2",
+        "path": "/cgi-bin/mmgame-bin/newgetgameindex"
+    },
+    {
+        "cgi": 1217,
+        "response": "GetGameDetailResponse_V2",
+        "path": "/cgi-bin/mmgame-bin/newgetgamedetail"
+    },
+    {
+        "cgi": 1218,
+        "response": "GetLibGameListResponse_V2",
+        "path": "/cgi-bin/mmgame-bin/newgetlibgamelist"
+    },
+    {
+        "cgi": 1219,
+        "response": "SubscribeNewGameResponse_V2",
+        "path": "/cgi-bin/mmgame-bin/newsubscribenewgame"
+    },
+    {
+        "cgi": 1220,
+        "response": "GetMoreGameListResponse_V2",
+        "path": "/cgi-bin/mmgame-bin/newgetmoregamelist"
+    },
+    {
+        "cgi": 1330,
+        "response": "UpFriendResponse",
+        "path": "/cgi-bin/mmgame-bin/upfriend"
+    },
+    {
+        "cgi": 1331,
+        "response": "GetUpListResponse",
+        "path": "/cgi-bin/mmgame-bin/getuplist"
+    },
+    {
+        "cgi": 1337,
+        "response": "GetGameCanvasInfoResponse",
+        "path": "/cgi-bin/mmgame-bin/getgamecanvasinfo"
+    },
+    {
+        "cgi": 1221,
+        "response": "GameMsgBlockResponse",
+        "path": "/cgi-bin/mmgame-bin/gamemsgblock"
+    },
+    {
+        "cgi": 1223,
+        "response": "GameReportResponse",
+        "path": "/cgi-bin/mmgame-bin/gamereport"
+    },
+    {
+        "cgi": 682,
+        "response": "SnsADCommentResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnsadcomment"
+    },
+    {
+        "cgi": 683,
+        "response": "SnsADObjectDetailResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnsadobjectdetail"
+    },
+    {
+        "cgi": 1297,
+        "response": "GetGameIndexResponse_V3",
+        "path": "/cgi-bin/mmgame-bin/getgameindex_v3"
+    },
+    {
+        "cgi": 1238,
+        "response": "GetGameIndex2Response",
+        "path": "/cgi-bin/mmgame-bin/getgameindex2"
+    },
+    {
+        "cgi": 2994,
+        "response": "GetGameIndex4Response",
+        "path": "/cgi-bin/mmgame-bin/getgameindex4"
+    },
+    {
+        "cgi": 2855,
+        "response": "GetGameIndexForeignResponse",
+        "path": "/cgi-bin/mmgame-bin/getgameindexforeign"
+    },
+    {
+        "cgi": 2641,
+        "response": "GetGameIndex4TabNavResponse",
+        "path": "/cgi-bin/mmgame-bin/getgameindex4tabnav"
+    },
+    {
+        "cgi": 2943,
+        "response": "GetGameIndex4FeedsListResponse",
+        "path": "/cgi-bin/mmgame-bin/getgameindex4feedslist"
+    },
+    {
+        "cgi": 1311,
+        "response": "GetGameCenterGlobalSettingResponse",
+        "path": "/cgi-bin/mmgame-bin/getgamecenterglobalsetting"
+    },
+    {
+        "cgi": 1313,
+        "response": "CheckWepkgVersionResponse",
+        "path": "/cgi-bin/mmgame-bin/checkwepkgversion"
+    },
+    {
+        "cgi": 1369,
+        "response": "HVGameGetMenuResponse",
+        "path": "/cgi-bin/mmgame-bin/gethvgamemenu"
+    },
+    {
+        "cgi": 1040,
+        "response": "UpdateMyRankCoverResponse",
+        "path": "/cgi-bin/mmbiz-bin/rank/updatecover"
+    },
+    {
+        "cgi": 1041,
+        "response": "LikeFriendRankResponse",
+        "path": "/cgi-bin/mmbiz-bin/rank/addlike"
+    },
+    {
+        "cgi": 1042,
+        "response": "GetUserRankLikeCountResponse",
+        "path": "/cgi-bin/mmbiz-bin/rank/getuserranklike"
+    },
+    {
+        "cgi": 1043,
+        "response": "GetUserRankDetailResponse",
+        "path": "/cgi-bin/mmbiz-bin/rank/getuserrankdetail"
+    },
+    {
+        "cgi": 1044,
+        "response": "UpdateRankSettingResponse",
+        "path": "/cgi-bin/mmbiz-bin/rank/updateranksetting"
+    },
+    {
+        "cgi": 1777,
+        "response": "AddFollowResponse",
+        "path": "/cgi-bin/mmoc-bin/hardware/addfollow"
+    },
+    {
+        "cgi": 1792,
+        "response": "DelFollowResponse",
+        "path": "/cgi-bin/mmoc-bin/hardware/delfollow"
+    },
+    {
+        "cgi": 1758,
+        "response": "GetWeRunFollowerListResponse",
+        "path": "/cgi-bin/mmoc-bin/hardware/getwerunfollowerlist"
+    },
+    {
+        "cgi": 1734,
+        "response": "GetStepListResponse",
+        "path": "/cgi-bin/mmoc-bin/hardware/getsteplist"
+    },
+    {
+        "cgi": 1926,
+        "response": "GetWeRunUserStateResponse",
+        "path": "/cgi-bin/mmoc-bin/hardware/getwerunuserstate"
+    },
+    {
+        "cgi": 1949,
+        "response": "UploadMiniAppStepResp",
+        "path": "/cgi-bin/mmoc-bin/hardware/uploadminiappstep"
+    },
+    {
+        "cgi": 1231,
+        "response": "AdExposureResponse",
+        "path": "/cgi-bin/mmoc-bin/ad/exposure"
+    },
+    {
+        "cgi": 1232,
+        "response": "AdClickResponse",
+        "path": "/cgi-bin/mmoc-bin/ad/click"
+    },
+    {
+        "cgi": 1295,
+        "response": "AdDataReportResponse",
+        "path": "/cgi-bin/mmoc-bin/ad/addatareport"
+    },
+    {
+        "cgi": 1286,
+        "response": "GetAdCanvasInfoResp",
+        "path": "/cgi-bin/mmoc-bin/adplayinfo/get_adcanvasinfo"
+    },
+    {
+        "cgi": 1802,
+        "response": "AdLogResponse",
+        "path": "/cgi-bin/mmux-bin/adlog"
+    },
+    {
+        "cgi": 1803,
+        "response": "JsLogResponse",
+        "path": "/cgi-bin/mmux-bin/jslog"
+    },
+    {
+        "cgi": 1873,
+        "response": "WeAppSearchAdClickResponse",
+        "path": "/cgi-bin/mmux-bin/weappsearchadclick"
+    },
+    {
+        "cgi": 1890,
+        "response": "GetOfficialCanvasInfoResp",
+        "path": "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_getofficialcanvasinfo"
+    },
+    {
+        "cgi": 2874,
+        "response": "FavOfficialItemResp",
+        "path": "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_favofficialitem"
+    },
+    {
+        "cgi": 2721,
+        "response": "OfficialSyncResp",
+        "path": "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_officialsync"
+    },
+    {
+        "cgi": 1824,
+        "response": "WeAppShowCommentsResponse",
+        "path": "/cgi-bin/mmux-bin/wxaapp/comment/show/wxaapp_showcomments"
+    },
+    {
+        "cgi": 1843,
+        "response": "WeAppPostCommentResponse",
+        "path": "/cgi-bin/mmux-bin/wxaapp/comment/post/wxaapp_postcomment"
+    },
+    {
+        "cgi": 1817,
+        "response": "AdClickResponse",
+        "path": "/cgi-bin/mmux-bin/adclick"
+    },
+    {
+        "cgi": 1875,
+        "response": "AdExposureResponse",
+        "path": "/cgi-bin/mmux-bin/adexposure"
+    },
+    {
+        "cgi": 688,
+        "response": "RegisterNewPatternLockResponse",
+        "path": "/cgi-bin/micromsg-bin/registernewpatternlock"
+    },
+    {
+        "cgi": 689,
+        "response": "OpPatternLockResponse",
+        "path": "/cgi-bin/micromsg-bin/oppatternlock"
+    },
+    {
+        "cgi": 1070,
+        "response": "SearchHomePageResponse",
+        "path": "/cgi-bin/mmbiz-bin/bizsearch/homepage"
+    },
+    {
+        "cgi": 1071,
+        "response": "SearchDetailPageResponse",
+        "path": "/cgi-bin/mmbiz-bin/bizsearch/detailpage"
+    },
+    {
+        "cgi": 695,
+        "response": "SnsTimeLineWithTypeResponse",
+        "path": "/cgi-bin/micromsg-bin/mmsnstimelinewithtype"
+    },
+    {
+        "cgi": 1097,
+        "response": "GetAppTicketResponse",
+        "path": "/cgi-bin/mmbiz-bin/getappticket"
+    },
+    {
+        "cgi": 696,
+        "response": "BatchEmojiBackupResponse",
+        "path": "/cgi-bin/micromsg-bin/mmbatchemojibackup"
+    },
+    {
+        "cgi": 697,
+        "response": "BatchEmojiDownLoadResponse",
+        "path": "/cgi-bin/micromsg-bin/mmbatchemojidownload"
+    },
+    {
+        "cgi": 698,
+        "response": "BackupEmojiOperateResponse",
+        "path": "/cgi-bin/micromsg-bin/mmbackupemojioperate"
+    },
+    {
+        "cgi": 703,
+        "response": "EmojiUploadResponse",
+        "path": "/cgi-bin/micromsg-bin/mmemojiupload"
+    },
+    {
+        "cgi": 685,
+        "response": "GetIosExtensionKeyResponse",
+        "path": "/cgi-bin/micromsg-bin/getiosextensionkey"
+    },
+    {
+        "cgi": 611,
+        "response": "GetVoicePrintResourceResponse",
+        "path": "/cgi-bin/micromsg-bin/getvoiceprintresource"
+    },
+    {
+        "cgi": 612,
+        "response": "RegisterVoicePrintResponse",
+        "path": "/cgi-bin/micromsg-bin/registervoiceprint"
+    },
+    {
+        "cgi": 613,
+        "response": "VerifyVoicePrintResponse",
+        "path": "/cgi-bin/micromsg-bin/verifyvoiceprint"
+    },
+    {
+        "cgi": 615,
+        "response": "SwitchOpVoicePrintResponse",
+        "path": "/cgi-bin/micromsg-bin/switchopvoiceprint"
+    },
+    {
+        "cgi": 616,
+        "response": "GetVoicePrintResourceRsaResponse",
+        "path": "/cgi-bin/micromsg-bin/getvoiceprintresourcersa"
+    },
+    {
+        "cgi": 617,
+        "response": "VerifyVoicePrintRsaResponse",
+        "path": "/cgi-bin/micromsg-bin/verifyvoiceprintrsa"
+    },
+    {
+        "cgi": 618,
+        "response": "GetVoiceprintTicketRsaResponse",
+        "path": "/cgi-bin/micromsg-bin/getvoiceprintticketrsa"
+    },
+    {
+        "cgi": 736,
+        "response": "NewRegVoicePrintResponse",
+        "path": "/cgi-bin/micromsg-bin/newregvoiceprint"
+    },
+    {
+        "cgi": 655,
+        "response": "GetAddressResponse",
+        "path": "/cgi-bin/micromsg-bin/getaddress"
+    },
+    {
+        "cgi": 717,
+        "response": "UploadMyPanelListResponse",
+        "path": "/cgi-bin/micromsg-bin/mmuploadmypanellist"
+    },
+    {
+        "cgi": 1556,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/hongbao"
+    },
+    {
+        "cgi": 1643,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/yearrequestwxhb"
+    },
+    {
+        "cgi": 1554,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/operationwxhb"
+    },
+    {
+        "cgi": 1575,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/requestwxhb"
+    },
+    {
+        "cgi": 1668,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/sharewxhb"
+    },
+    {
+        "cgi": 1581,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/receivewxhb"
+    },
+    {
+        "cgi": 1685,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/openwxhb"
+    },
+    {
+        "cgi": 1585,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/qrydetailwxhb"
+    },
+    {
+        "cgi": 1514,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/qrylistwxhb"
+    },
+    {
+        "cgi": 1682,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/wishwxhb"
+    },
+    {
+        "cgi": 1612,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/deletelistwxhb"
+    },
+    {
+        "cgi": 2929,
+        "response": "HBBusinessCallbackResp",
+        "path": "/cgi-bin/mmpay-bin/ftfhb/businesscallbackwxhb"
+    },
+    {
+        "cgi": 515,
+        "response": "FestivalHongBaoRes",
+        "path": "/cgi-bin/micromsg-bin/festivalhongbao2016"
+    },
+    {
+        "cgi": 1558,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/businesshongbao"
+    },
+    {
+        "cgi": 980,
+        "response": "AsyncBizSubscribeResponse",
+        "path": "/cgi-bin/micromsg-bin/asyncbizsubscribe"
+    },
+    {
+        "cgi": 1253,
+        "response": "ReportLocationResp",
+        "path": "/cgi-bin/mmbiz-bin/card/reportlocation"
+    },
+    {
+        "cgi": 971,
+        "response": "ExtDeviceLoginConfirmGetResponse",
+        "path": "/cgi-bin/micromsg-bin/extdeviceloginconfirmget"
+    },
+    {
+        "cgi": 972,
+        "response": "ExtDeviceLoginConfirmOKResponse",
+        "path": "/cgi-bin/micromsg-bin/extdeviceloginconfirmok"
+    },
+    {
+        "cgi": 973,
+        "response": "ExtDeviceLoginConfirmCancelResponse",
+        "path": "/cgi-bin/micromsg-bin/extdeviceloginconfirmcancel"
+    },
+    {
+        "cgi": 792,
+        "response": "ExtDeviceControlResponse",
+        "path": "/cgi-bin/micromsg-bin/extdevicecontrol"
+    },
+    {
+        "cgi": 702,
+        "response": "UnifyAuthResponse",
+        "path": "/cgi-bin/micromsg-bin/autoauth"
+    },
+    {
+        "cgi": 701,
+        "response": "UnifyAuthResponse",
+        "path": "/cgi-bin/micromsg-bin/manualauth"
+    },
+    {
+        "cgi": 126,
+        "response": "NewRegResponse",
+        "path": "/cgi-bin/micromsg-bin/newreg"
+    },
+    {
+        "cgi": 353,
+        "response": "InitRegResponse",
+        "path": "/cgi-bin/micromsg-bin/initreg"
+    },
+    {
+        "cgi": 716,
+        "response": "RealTimeKVReportResp",
+        "path": "/cgi-bin/micromsg-bin/rtkvreport"
+    },
+    {
+        "cgi": 727,
+        "response": "CheckBigFileUploadResponse",
+        "path": "/cgi-bin/micromsg-bin/checkbigfileupload"
+    },
+    {
+        "cgi": 728,
+        "response": "CheckBigFileDownloadResponse",
+        "path": "/cgi-bin/micromsg-bin/checkbigfiledownload"
+    },
+    {
+        "cgi": 939,
+        "response": "CheckMd5Response",
+        "path": "/cgi-bin/micromsg-bin/checkmd5"
+    },
+    {
+        "cgi": 1075,
+        "response": "BizAttrSyncResp",
+        "path": "/cgi-bin/mmbiz-bin/bizattr/bizattrsync"
+    },
+    {
+        "cgi": 1166,
+        "response": "BatchBizAttrSyncResp",
+        "path": "/cgi-bin/mmbiz-bin/bizattr/batchbizattrsync"
+    },
+    {
+        "cgi": 2656,
+        "response": "BizProfileResp",
+        "path": "/cgi-bin/mmbiz-bin/bizattr/bizprofile"
+    },
+    {
+        "cgi": 704,
+        "response": "BakChatCreateQRcodeResponse",
+        "path": "/cgi-bin/micromsg-bin/bakchatcreateqrcode"
+    },
+    {
+        "cgi": 595,
+        "response": "GetConnectInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getconnectinfo"
+    },
+    {
+        "cgi": 1000,
+        "response": "BakChatCreateQRcodeOfflineResponse",
+        "path": "/cgi-bin/micromsg-bin/bakchatcreateqrcodeoffline"
+    },
+    {
+        "cgi": 1205,
+        "response": "GameCreateChatRoomResponse",
+        "path": "/cgi-bin/mmgame-bin/gamecreatechatroom"
+    },
+    {
+        "cgi": 1206,
+        "response": "GameJoinChatRoomResponse",
+        "path": "/cgi-bin/mmgame-bin/gamejoinchatroom"
+    },
+    {
+        "cgi": 1353,
+        "response": "GetBizChatUserInfoListResp",
+        "path": "/cgi-bin/mmocbiz-bin/getbizchatuserinfolist"
+    },
+    {
+        "cgi": 1354,
+        "response": "GetBizChatMyUserInfoResp",
+        "path": "/cgi-bin/mmocbiz-bin/getbizchatmyuserinfo"
+    },
+    {
+        "cgi": 1355,
+        "response": "CreateBizChatInfoResp",
+        "path": "/cgi-bin/mmocbiz-bin/createbizchatinfo"
+    },
+    {
+        "cgi": 1356,
+        "response": "UpdateBizChatResp",
+        "path": "/cgi-bin/mmocbiz-bin/updatebizchat"
+    },
+    {
+        "cgi": 1357,
+        "response": "UpdateBizChatMemberListResp",
+        "path": "/cgi-bin/mmocbiz-bin/updatebizchatmemberlist"
+    },
+    {
+        "cgi": 1358,
+        "response": "QuitBizChatResp",
+        "path": "/cgi-bin/mmocbiz-bin/quitbizchat"
+    },
+    {
+        "cgi": 1361,
+        "response": "QyMsgStateNotifyResp",
+        "path": "/cgi-bin/mmocbiz-bin/qymsgstatenotify"
+    },
+    {
+        "cgi": 1363,
+        "response": "SetBrandFlagResp",
+        "path": "/cgi-bin/mmocbiz-bin/setbrandflag"
+    },
+    {
+        "cgi": 1365,
+        "response": "GetBizChatInfoListResp",
+        "path": "/cgi-bin/mmocbiz-bin/getbizchatinfolist"
+    },
+    {
+        "cgi": 1069,
+        "response": "GetVideoInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/getvideoinfo"
+    },
+    {
+        "cgi": 1367,
+        "response": "GetFavBizChatListResp",
+        "path": "/cgi-bin/mmocbiz-bin/getfavbizchatlist"
+    },
+    {
+        "cgi": 1389,
+        "response": "InitiateBizChatResp",
+        "path": "/cgi-bin/mmocbiz-bin/initiatebizchat"
+    },
+    {
+        "cgi": 1393,
+        "response": "GetBizJsApiRedirectUrlResp",
+        "path": "/cgi-bin/mmocbiz-bin/getbizjsapiredirecturl"
+    },
+    {
+        "cgi": 1285,
+        "response": "GetBizJsApiResultResp",
+        "path": "/cgi-bin/mmocbiz-bin/getbizjsapiresult"
+    },
+    {
+        "cgi": 1394,
+        "response": "SwitchBrandResp",
+        "path": "/cgi-bin/mmocbiz-bin/switchbrand"
+    },
+    {
+        "cgi": 1315,
+        "response": "ConvertBizChatResp",
+        "path": "/cgi-bin/mmocbiz-bin/convertbizchat"
+    },
+    {
+        "cgi": 1364,
+        "response": "BizChatSearchContactResp",
+        "path": "/cgi-bin/mmocbiz-bin/bizchatsearchcontact"
+    },
+    {
+        "cgi": 1343,
+        "response": "GetBizEnterpriseAttrResp",
+        "path": "/cgi-bin/mmocbiz-bin/getbizenterpriseattr"
+    },
+    {
+        "cgi": 1228,
+        "response": "SetBizEnterpriseAttrResp",
+        "path": "/cgi-bin/mmocbiz-bin/setbizenterpriseattr"
+    },
+    {
+        "cgi": 2805,
+        "response": "PushWxPluginStatInfoResp",
+        "path": "/cgi-bin/mmocbiz-bin/reportpluginstat"
+    },
+    {
+        "cgi": 522,
+        "response": "SendMsgResponseNew",
+        "path": "/cgi-bin/micromsg-bin/newsendmsg"
+    },
+    {
+        "cgi": 765,
+        "response": "VoipSpeedTestRsp",
+        "path": "/cgi-bin/micromsg-bin/voipspeedtest"
+    },
+    {
+        "cgi": 901,
+        "response": "VoipSpeedResultRsp",
+        "path": "/cgi-bin/micromsg-bin/voipspeedresult"
+    },
+    {
+        "cgi": 1564,
+        "response": "PayIBGGetJumpUrlResp",
+        "path": "/cgi-bin/mmpay-bin/payibggetjumpurl"
+    },
+    {
+        "cgi": 1563,
+        "response": "PayIBGGenPrepayResp",
+        "path": "/cgi-bin/mmpay-bin/payibggenprepay"
+    },
+    {
+        "cgi": 1565,
+        "response": "PayIBGJsGetTransactionResp",
+        "path": "/cgi-bin/mmpay-bin/payibgjsgettransaction"
+    },
+    {
+        "cgi": 906,
+        "response": "ShareCardSyncResponse",
+        "path": "/cgi-bin/micromsg-bin/sharecardsync"
+    },
+    {
+        "cgi": 902,
+        "response": "ShareCardItemResponse",
+        "path": "/cgi-bin/micromsg-bin/sharecarditem"
+    },
+    {
+        "cgi": 903,
+        "response": "GetShareCardListResponse",
+        "path": "/cgi-bin/micromsg-bin/getsharecardlist"
+    },
+    {
+        "cgi": 904,
+        "response": "GetShareCardResponse",
+        "path": "/cgi-bin/micromsg-bin/getsharecard"
+    },
+    {
+        "cgi": 905,
+        "response": "CommentShareCardResponse",
+        "path": "/cgi-bin/micromsg-bin/commentsharecard"
+    },
+    {
+        "cgi": 907,
+        "response": "MarkShareCardResponse",
+        "path": "/cgi-bin/micromsg-bin/marksharecard"
+    },
+    {
+        "cgi": 908,
+        "response": "GetCommentResponse",
+        "path": "/cgi-bin/micromsg-bin/getcomment"
+    },
+    {
+        "cgi": 909,
+        "response": "GetShareCardsLayoutResponse",
+        "path": "/cgi-bin/micromsg-bin/getsharecardslayout"
+    },
+    {
+        "cgi": 1164,
+        "response": "GetCardsHomePageLayoutResponse",
+        "path": "/cgi-bin/mmbiz-bin/card/getcardshomepage"
+    },
+    {
+        "cgi": 1050,
+        "response": "GetShareCardConsumedInfoRsp",
+        "path": "/cgi-bin/mmbiz-bin/card/getsharecardconsumedinfo"
+    },
+    {
+        "cgi": 1078,
+        "response": "DelShareCardResponse",
+        "path": "/cgi-bin/mmbiz-bin/card/delsharecard"
+    },
+    {
+        "cgi": 1566,
+        "response": "PayIBGGetUserOpenIdResp",
+        "path": "/cgi-bin/mmpay-bin/payibggetuseropenid"
+    },
+    {
+        "cgi": 1577,
+        "response": "PayIBGGetOverseaWalletResp",
+        "path": "/cgi-bin/mmpay-bin/payibggetoverseawallet"
+    },
+    {
+        "cgi": 1171,
+        "response": "PreAcceptGiftCardResponse",
+        "path": "/cgi-bin/micromsg-bin/preacceptgiftcard"
+    },
+    {
+        "cgi": 1136,
+        "response": "AcceptGiftCardResponse",
+        "path": "/cgi-bin/micromsg-bin/acceptgiftcard"
+    },
+    {
+        "cgi": 1165,
+        "response": "GetCardGiftInfoResp",
+        "path": "/cgi-bin/micromsg-bin/getcardgiftinfo"
+    },
+    {
+        "cgi": 614,
+        "response": "GetFuncMsgResp",
+        "path": "/cgi-bin/micromsg-bin/pullfunctionmsg"
+    },
+    {
+        "cgi": 825,
+        "response": "GetFuncMsgResp",
+        "path": "/cgi-bin/micromsg-bin/addtxnewsmsg"
+    },
+    {
+        "cgi": 805,
+        "response": "GetChatRoomMsgResponse",
+        "path": "/cgi-bin/micromsg-bin/getcrmsg"
+    },
+    {
+        "cgi": 775,
+        "response": "GetDisasterInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getdisasterinfo"
+    },
+    {
+        "cgi": 1801,
+        "response": "GetABTestResponse",
+        "path": "/cgi-bin/mmux-bin/getabtest"
+    },
+    {
+        "cgi": 1816,
+        "response": "GetABTestResponse",
+        "path": "/cgi-bin/mmux-bin/getlabsinfo"
+    },
+    {
+        "cgi": 2738,
+        "response": "GetExptResponse",
+        "path": "/cgi-bin/mmexptappsvr-bin/getexptconfig"
+    },
+    {
+        "cgi": 991,
+        "response": "PstnInviteResponse",
+        "path": "/cgi-bin/micromsg-bin/pstninvite"
+    },
+    {
+        "cgi": 843,
+        "response": "PstnCancelInviteResponse",
+        "path": "/cgi-bin/micromsg-bin/pstncancelinvite"
+    },
+    {
+        "cgi": 824,
+        "response": "PstnShutDownResponse",
+        "path": "/cgi-bin/micromsg-bin/pstnshutdown"
+    },
+    {
+        "cgi": 819,
+        "response": "PstnSyncResponse",
+        "path": "/cgi-bin/micromsg-bin/pstnsync"
+    },
+    {
+        "cgi": 227,
+        "response": "PstnReportResponse",
+        "path": "/cgi-bin/micromsg-bin/pstnreport"
+    },
+    {
+        "cgi": 723,
+        "response": "PstnHeartBeatResponse",
+        "path": "/cgi-bin/micromsg-bin/pstnheartbeat"
+    },
+    {
+        "cgi": 726,
+        "response": "PstnRedirectResponse",
+        "path": "/cgi-bin/micromsg-bin/pstnredirect"
+    },
+    {
+        "cgi": 807,
+        "response": "PstnCheckNumberResponse",
+        "path": "/cgi-bin/micromsg-bin/pstnchecknumber"
+    },
+    {
+        "cgi": 809,
+        "response": "ReportMediaInfoResp",
+        "path": "/cgi-bin/micromsg-bin/reportmediainfo"
+    },
+    {
+        "cgi": 257,
+        "response": "GetWeChatOutCouponsResponse",
+        "path": "/cgi-bin/micromsg-bin/getwechatoutcoupons"
+    },
+    {
+        "cgi": 929,
+        "response": "GetWCOProductListResponse",
+        "path": "/cgi-bin/micromsg-bin/getwcoproductlist"
+    },
+    {
+        "cgi": 288,
+        "response": "GetWCOGiftCardListResponse",
+        "path": "/cgi-bin/micromsg-bin/getwcogiftcardlist"
+    },
+    {
+        "cgi": 871,
+        "response": "SendWCOFeedbackResponse",
+        "path": "/cgi-bin/micromsg-bin/sendwcofeedback"
+    },
+    {
+        "cgi": 746,
+        "response": "GetWCOCallInfoResponse",
+        "path": "/cgi-bin/micromsg-bin/getwcocallinfo"
+    },
+    {
+        "cgi": 831,
+        "response": "GetWCOPackageProductListResponse",
+        "path": "/cgi-bin/micromsg-bin/getwcopackageproductlist"
+    },
+    {
+        "cgi": 277,
+        "response": "WCOPurchasePackageResponse",
+        "path": "/cgi-bin/micromsg-bin/wcopurchasepackage"
+    },
+    {
+        "cgi": 976,
+        "response": "SendYoResponse",
+        "path": "/cgi-bin/micromsg-bin/sendyo"
+    },
+    {
+        "cgi": 990,
+        "response": "TransferChatRoomOwnerResponse",
+        "path": "/cgi-bin/micromsg-bin/transferchatroomowner"
+    },
+    {
+        "cgi": 223,
+        "response": "GetChatRoomInfoDetailResponse",
+        "path": "/cgi-bin/micromsg-bin/getchatroominfodetail"
+    },
+    {
+        "cgi": 993,
+        "response": "SetChatRoomAnnouncementResponse",
+        "path": "/cgi-bin/micromsg-bin/setchatroomannouncement"
+    },
+    {
+        "cgi": 979,
+        "response": "SetPushMuteTimeResp",
+        "path": "/cgi-bin/micromsg-bin/setpushmutetime"
+    },
+    {
+        "cgi": 995,
+        "response": "PostInviteFriendsMsgResp",
+        "path": "/cgi-bin/micromsg-bin/postinvitefriendsmsg"
+    },
+    {
+        "cgi": 994,
+        "response": "GetInviteFriendsMsgResp",
+        "path": "/cgi-bin/micromsg-bin/getinvitefriendsmsg"
+    },
+    {
+        "cgi": 1000,
+        "response": "OpTvHistResponse",
+        "path": "/cgi-bin/mmoctv/optvhist"
+    },
+    {
+        "cgi": 1918,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/createtalkroom"
+    },
+    {
+        "cgi": 1919,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/entertalkroom"
+    },
+    {
+        "cgi": 1927,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/exittalkroom"
+    },
+    {
+        "cgi": 1928,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/cancelcreatetalkroom"
+    },
+    {
+        "cgi": 1929,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/rejectentertalkroom"
+    },
+    {
+        "cgi": 1931,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/addmembers"
+    },
+    {
+        "cgi": 1932,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/hellotalkroom"
+    },
+    {
+        "cgi": 1933,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/miscinfo"
+    },
+    {
+        "cgi": 1934,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/modifygroupinfo"
+    },
+    {
+        "cgi": 1935,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/voiceackreq"
+    },
+    {
+        "cgi": 1936,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/clientscenereport"
+    },
+    {
+        "cgi": 1937,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/voiceredirectreq"
+    },
+    {
+        "cgi": 1938,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/getgroupinfobatch"
+    },
+    {
+        "cgi": 1939,
+        "response": "MultiTalkResponse",
+        "path": "/cgi-bin/qcwxmultitalk-bin/memberwhisper"
+    },
+    {
+        "cgi": 1143,
+        "response": "WxPageDataResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxpagedata"
+    },
+    {
+        "cgi": 1142,
+        "response": "TransIdResponse",
+        "path": "/cgi-bin/mmbiz-bin/transid"
+    },
+    {
+        "cgi": 461,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/authen"
+    },
+    {
+        "cgi": 1610,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/saveauthen"
+    },
+    {
+        "cgi": 1605,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/fetchauthen"
+    },
+    {
+        "cgi": 462,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/verify"
+    },
+    {
+        "cgi": 1607,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/saveverify"
+    },
+    {
+        "cgi": 1606,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/fetchverify"
+    },
+    {
+        "cgi": 465,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/qrcodeuse"
+    },
+    {
+        "cgi": 468,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/changepwd"
+    },
+    {
+        "cgi": 469,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/resetpwdauthen"
+    },
+    {
+        "cgi": 470,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/resetpwdverify"
+    },
+    {
+        "cgi": 471,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/bindauthen"
+    },
+    {
+        "cgi": 472,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/bindverify"
+    },
+    {
+        "cgi": 473,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/unbind"
+    },
+    {
+        "cgi": 474,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/verifyreg"
+    },
+    {
+        "cgi": 1684,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/saveverifyreg"
+    },
+    {
+        "cgi": 1608,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/fetchverifyreg"
+    },
+    {
+        "cgi": 475,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/bindverifyreg"
+    },
+    {
+        "cgi": 476,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/checkpwd"
+    },
+    {
+        "cgi": 477,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/timeseed"
+    },
+    {
+        "cgi": 478,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/resetpwd"
+    },
+    {
+        "cgi": 565,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlinecreate"
+    },
+    {
+        "cgi": 566,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlineclose"
+    },
+    {
+        "cgi": 568,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlinequeryuser"
+    },
+    {
+        "cgi": 571,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlinegettoken"
+    },
+    {
+        "cgi": 1725,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlinegettokenbackground"
+    },
+    {
+        "cgi": 1501,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/bindquerynew"
+    },
+    {
+        "cgi": 1505,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/elementquerynew"
+    },
+    {
+        "cgi": 1502,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/genpresave"
+    },
+    {
+        "cgi": 1503,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/genprefetch"
+    },
+    {
+        "cgi": 1506,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/verifybind"
+    },
+    {
+        "cgi": 1645,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlineshowcode"
+    },
+    {
+        "cgi": 1593,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/qrcodeusebindquery"
+    },
+    {
+        "cgi": 1596,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/opentouchpay"
+    },
+    {
+        "cgi": 1597,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/closetouchpay"
+    },
+    {
+        "cgi": 1598,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/getopentouchcert"
+    },
+    {
+        "cgi": 1599,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/androidopentouch"
+    },
+    {
+        "cgi": 1600,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/banpaybindauthen"
+    },
+    {
+        "cgi": 1601,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/banpaybindverify"
+    },
+    {
+        "cgi": 1602,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/datareport"
+    },
+    {
+        "cgi": 1603,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/webankloanordershow"
+    },
+    {
+        "cgi": 1604,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/webankverifysms"
+    },
+    {
+        "cgi": 1616,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/realnameauthen"
+    },
+    {
+        "cgi": 1648,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/realnamereg"
+    },
+    {
+        "cgi": 1622,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/h5requesttransfer"
+    },
+    {
+        "cgi": 1574,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/h5transferoperate"
+    },
+    {
+        "cgi": 1667,
+        "response": "GetBanPayMobileInfoResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/getbanpaymobileinfo"
+    },
+    {
+        "cgi": 1976,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/getuserexinfo"
+    },
+    {
+        "cgi": 1978,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/setuserexinfo"
+    },
+    {
+        "cgi": 1371,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/resetpwdbytoken"
+    },
+    {
+        "cgi": 1669,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/paysecurity"
+    },
+    {
+        "cgi": 1967,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/openiostouchlock"
+    },
+    {
+        "cgi": 1321,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/closewalletlock"
+    },
+    {
+        "cgi": 1304,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/touchlockauthen"
+    },
+    {
+        "cgi": 1958,
+        "response": "OpenECardAuthRes",
+        "path": "/cgi-bin/mmpay-bin/openecardauth"
+    },
+    {
+        "cgi": 1985,
+        "response": "OpenECardRes",
+        "path": "/cgi-bin/mmpay-bin/openecard"
+    },
+    {
+        "cgi": 1986,
+        "response": "BindECardRes",
+        "path": "/cgi-bin/mmpay-bin/bindecard"
+    },
+    {
+        "cgi": 1988,
+        "response": "QryBankList4BindRes",
+        "path": "/cgi-bin/mmpay-bin/qryecardbanklist4bind"
+    },
+    {
+        "cgi": 2931,
+        "response": "QryCancelECardDescRes",
+        "path": "/cgi-bin/mmpay-bin/qrycancelecarddesc"
+    },
+    {
+        "cgi": 2704,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/getpaypwdtoken"
+    },
+    {
+        "cgi": 2725,
+        "response": "HoneyPayListResp",
+        "path": "/cgi-bin/mmpay-bin/honeypayerlist"
+    },
+    {
+        "cgi": 2618,
+        "response": "CheckHoneyPayerResp",
+        "path": "/cgi-bin/mmpay-bin/checkhoneypayer"
+    },
+    {
+        "cgi": 2926,
+        "response": "CheckHoneyUserResp",
+        "path": "/cgi-bin/mmpay-bin/checkhoneyuser"
+    },
+    {
+        "cgi": 2662,
+        "response": "CreateHoneyPayCardResp",
+        "path": "/cgi-bin/mmpay-bin/createhoneypaycard"
+    },
+    {
+        "cgi": 2876,
+        "response": "QryHoneyPayerDetailResp",
+        "path": "/cgi-bin/mmpay-bin/qryhppayerdetail"
+    },
+    {
+        "cgi": 2742,
+        "response": "ModifyHoneyPayerNotifyResp",
+        "path": "/cgi-bin/mmpay-bin/modifyhppayernotify"
+    },
+    {
+        "cgi": 2941,
+        "response": "ModifyHoneyPayerPayWayResp",
+        "path": "/cgi-bin/mmpay-bin/modifyhppayerpayway"
+    },
+    {
+        "cgi": 2865,
+        "response": "ModifyHoneyPayerCreditLineResp",
+        "path": "/cgi-bin/mmpay-bin/modifyhppayercreditline"
+    },
+    {
+        "cgi": 2613,
+        "response": "QryHoneyUserDetailResp",
+        "path": "/cgi-bin/mmpay-bin/qryhpusererdetail"
+    },
+    {
+        "cgi": 1983,
+        "response": "GetHoneyPayCardResp",
+        "path": "/cgi-bin/mmpay-bin/gethpcard"
+    },
+    {
+        "cgi": 2659,
+        "response": "UnbindHoneyPayCardResp",
+        "path": "/cgi-bin/mmpay-bin/unbindhpcard"
+    },
+    {
+        "cgi": 2851,
+        "response": "QryHoneyPayCardDetailResp",
+        "path": "/cgi-bin/mmpay-bin/qryhpcarddetail"
+    },
+    {
+        "cgi": 2630,
+        "response": "GetCreateTokenSignResp",
+        "path": "/cgi-bin/mmpay-bin/createhpcardtoken"
+    },
+    {
+        "cgi": 2815,
+        "response": "GetMCreditLineTokenSignResp",
+        "path": "/cgi-bin/mmpay-bin/gmcreditlinetoken"
+    },
+    {
+        "cgi": 1639,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/cfrequestwxhb"
+    },
+    {
+        "cgi": 1640,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/cfreceivewxhb"
+    },
+    {
+        "cgi": 1641,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/cfopenwxhb"
+    },
+    {
+        "cgi": 1642,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/cfqrydetailwxhb"
+    },
+    {
+        "cgi": 1647,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/h5requestwxhb"
+    },
+    {
+        "cgi": 1631,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/queryuserwallet"
+    },
+    {
+        "cgi": 1663,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/setuserwallet"
+    },
+    {
+        "cgi": 1625,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/snsfreepasswdauthen"
+    },
+    {
+        "cgi": 1697,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/snspaymanage"
+    },
+    {
+        "cgi": 1540,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/unbindbanner"
+    },
+    {
+        "cgi": 1679,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/getbannerinfo"
+    },
+    {
+        "cgi": 1654,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/paymanage"
+    },
+    {
+        "cgi": 1580,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/gendigitalcert"
+    },
+    {
+        "cgi": 1568,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/deletedigitalcert"
+    },
+    {
+        "cgi": 1694,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/payauthnative"
+    },
+    {
+        "cgi": 1589,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sendpayaward"
+    },
+    {
+        "cgi": 1650,
+        "response": "GetBankResourceRsp",
+        "path": "/cgi-bin/mmpay-bin/bankresource"
+    },
+    {
+        "cgi": 1525,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/payorderquery"
+    },
+    {
+        "cgi": 1666,
+        "response": "GetRealnameWordingRsp",
+        "path": "/cgi-bin/mmpay-bin/getrealnamewording"
+    },
+    {
+        "cgi": 1970,
+        "response": "FFHBRequestResp",
+        "path": "/cgi-bin/mmpay-bin/ftfhb/ffrequestwxhb"
+    },
+    {
+        "cgi": 1990,
+        "response": "FFHBQueryDoResp",
+        "path": "/cgi-bin/mmpay-bin/ftfhb/ffquerydowxhb"
+    },
+    {
+        "cgi": 1987,
+        "response": "FFHBClearResp",
+        "path": "/cgi-bin/mmpay-bin/ftfhb/ffclearwxhb"
+    },
+    {
+        "cgi": 1999,
+        "response": "FFHBAuthReceiveResp",
+        "path": "/cgi-bin/mmpay-bin/ftfhb/ffauthreceivewxhb"
+    },
+    {
+        "cgi": 1997,
+        "response": "FFHBOpenResp",
+        "path": "/cgi-bin/mmpay-bin/ftfhb/ffopenwxhb"
+    },
+    {
+        "cgi": 1614,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/realnamegetduty"
+    },
+    {
+        "cgi": 1584,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/realnamesetduty"
+    },
+    {
+        "cgi": 1630,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/realnameguidequery"
+    },
+    {
+        "cgi": 1686,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlineverifytoken"
+    },
+    {
+        "cgi": 1981,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlinegetmsg"
+    },
+    {
+        "cgi": 1230,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlineackmsg"
+    },
+    {
+        "cgi": 1318,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlinequeryorder"
+    },
+    {
+        "cgi": 1385,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlinecancelpay"
+    },
+    {
+        "cgi": 1742,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlineuserbindquery"
+    },
+    {
+        "cgi": 1029,
+        "response": "JSLoginResponse",
+        "path": "/cgi-bin/mmbiz-bin/js-login"
+    },
+    {
+        "cgi": 1117,
+        "response": "JSLoginConfirmResponse",
+        "path": "/cgi-bin/mmbiz-bin/js-login-confirm"
+    },
+    {
+        "cgi": 1157,
+        "response": "JSAuthorizeResponse",
+        "path": "/cgi-bin/mmbiz-bin/js-authorize"
+    },
+    {
+        "cgi": 1158,
+        "response": "JSAuthorizeConfirmResponse",
+        "path": "/cgi-bin/mmbiz-bin/js-authorize-confirm"
+    },
+    {
+        "cgi": 1133,
+        "response": "JSOperateWxDataResponse",
+        "path": "/cgi-bin/mmbiz-bin/js-operatewxdata"
+    },
+    {
+        "cgi": 1126,
+        "response": "GetEventSampleConfResponse",
+        "path": "/cgi-bin/mmbiz-bin/geteventsampleconf"
+    },
+    {
+        "cgi": 867,
+        "response": "RemoveTrustedFriendsResp",
+        "path": "/cgi-bin/micromsg-bin/removetrustedfriends"
+    },
+    {
+        "cgi": 583,
+        "response": "AddTrustedFriendsResp",
+        "path": "/cgi-bin/micromsg-bin/addtrustedfriends"
+    },
+    {
+        "cgi": 869,
+        "response": "GetTrustedFriendsResp",
+        "path": "/cgi-bin/micromsg-bin/gettrustedfriends"
+    },
+    {
+        "cgi": 1863,
+        "response": "RepeatUrlOperResponse",
+        "path": "/cgi-bin/mmux-bin/repeaturloper"
+    },
+    {
+        "cgi": 1187,
+        "response": "CheckJSApiInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/js-checkjsapiinfo"
+    },
+    {
+        "cgi": 1196,
+        "response": "JSRefreshSessionResponse",
+        "path": "/cgi-bin/mmbiz-bin/js-refreshsession"
+    },
+    {
+        "cgi": 1116,
+        "response": "JSUserAuthResponse",
+        "path": "/cgi-bin/mmbiz-bin/js-userauth"
+    },
+    {
+        "cgi": 1027,
+        "response": "JSUserSetAuthResponse",
+        "path": "/cgi-bin/mmbiz-bin/js-usersetauth"
+    },
+    {
+        "cgi": 1145,
+        "response": "GetServiceNotifyOptionsResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxausrevent/getservicenotifyoptions"
+    },
+    {
+        "cgi": 1176,
+        "response": "BatchSwitchServiceNotifyOptionResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxausrevent/batchswitchservicenotifyoption"
+    },
+    {
+        "cgi": 1129,
+        "response": "BatchRecordWxaTemplateMsgEventResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxausrevent/batchrecordwxatemplatemsgevent"
+    },
+    {
+        "cgi": 1168,
+        "response": "WxaAppGetPublicLibInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/getpubliclibinfo"
+    },
+    {
+        "cgi": 1162,
+        "response": "WeAppSearchResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/weappsearch"
+    },
+    {
+        "cgi": 2676,
+        "response": "WebSearchResponse",
+        "path": "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_weappsearch"
+    },
+    {
+        "cgi": 1747,
+        "response": "WebSearchResponse",
+        "path": "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_weappsuggestion"
+    },
+    {
+        "cgi": 2601,
+        "response": "GetWidgetAppVersionInfoResp",
+        "path": "/cgi-bin/mmux-bin/wxaapp_weappsearchlocal"
+    },
+    {
+        "cgi": 1198,
+        "response": "WxaTmplComplaintResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxausrevent/wxatmplcomplaint"
+    },
+    {
+        "cgi": 1009,
+        "response": "WxaAppIDKeyBatchReportResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxausrevent/wxaappidkeybatchreport"
+    },
+    {
+        "cgi": 1138,
+        "response": "GetAppConfigResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxausrevent/getappconfig"
+    },
+    {
+        "cgi": 1148,
+        "response": "GetWxaUsageRecordResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/getwxausagerecord"
+    },
+    {
+        "cgi": 1149,
+        "response": "UpdateWxaUsageRecordResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/updatewxausagerecord"
+    },
+    {
+        "cgi": 1839,
+        "response": "UpdateWxaStarRecordResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/updatestarrecord"
+    },
+    {
+        "cgi": 1124,
+        "response": "CheckDemoInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/checkdemoinfo"
+    },
+    {
+        "cgi": 1186,
+        "response": "GetWidgetInfoResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/getwidgetinfo"
+    },
+    {
+        "cgi": 2653,
+        "response": "WeAppWidgetAlarmResponse",
+        "path": " /cgi-bin/mmux-bin/wxaapp/wxaapp_widgetalarm/wxaapp_widgetalarm"
+    },
+    {
+        "cgi": 1865,
+        "response": "WeAppOpSearchResp",
+        "path": "/cgi-bin/mmux-bin/wxaapp/wxaapp_opsearch"
+    },
+    {
+        "cgi": 1866,
+        "response": "WeAppSearchGuideResp",
+        "path": "/cgi-bin/mmux-bin/wxaapp/weappsearchguide"
+    },
+    {
+        "cgi": 1056,
+        "response": "GetWxaAppNearbyResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/getwxaappnearby"
+    },
+    {
+        "cgi": 1170,
+        "response": "WeAppSearchWordingResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/weappsearchtitle"
+    },
+    {
+        "cgi": 1173,
+        "response": "WeAppSearchSuggestionResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/weappsearchsuggestion"
+    },
+    {
+        "cgi": 1115,
+        "response": "WxaAppGetAuthInfoResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp_getauthinfo"
+    },
+    {
+        "cgi": 1188,
+        "response": "WxaAppModAuthResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp_modauth"
+    },
+    {
+        "cgi": 1154,
+        "response": "UploadUserLocationInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/uploaduserlocationinfo"
+    },
+    {
+        "cgi": 1151,
+        "response": "WxaAttrSyncResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaattr/wxaattrsync"
+    },
+    {
+        "cgi": 1192,
+        "response": "BatchWxaAttrSyncResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaattr/batchwxaattrsync"
+    },
+    {
+        "cgi": 1139,
+        "response": "GetWxaAppCDNDownloadUrlResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/getwxacdndownloadurl"
+    },
+    {
+        "cgi": 1122,
+        "response": "LaunchWxaAppResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaattr/launchwxaapp"
+    },
+    {
+        "cgi": 1181,
+        "response": "LaunchWxaWidgetResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaattr/launchwxawidget"
+    },
+    {
+        "cgi": 1118,
+        "response": "WxaAppGetShareInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/getshareinfo"
+    },
+    {
+        "cgi": 1345,
+        "response": "ReportWxaAppExposeResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/reportwxaappexpose"
+    },
+    {
+        "cgi": 1862,
+        "response": "GetRemoteDebugTicketResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/getremotedebugticket"
+    },
+    {
+        "cgi": 1303,
+        "response": "GetSubBusinessInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxausrevent/getsubbusinessinfo"
+    },
+    {
+        "cgi": 1841,
+        "response": "GetWxaGameResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/getwxagame"
+    },
+    {
+        "cgi": 1823,
+        "response": "GetWxaBindBizInfoResp",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/getwxabindbizinfo"
+    },
+    {
+        "cgi": 2763,
+        "response": "BatchSyncVersionResp",
+        "path": "/cgi-bin/mmbiz-bin/wxasync/wxabatchsyncversion"
+    },
+    {
+        "cgi": 1479,
+        "response": "PreDownloadCodeResp",
+        "path": "/cgi-bin/mmbiz-bin/wxasync/wxaapp_predownloadcode"
+    },
+    {
+        "cgi": 2912,
+        "response": "GetKefuSessionInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/getkefusessioninfo"
+    },
+    {
+        "cgi": 2778,
+        "response": "GetRecommendWxaResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/getrecommendwxa"
+    },
+    {
+        "cgi": 2564,
+        "response": "ReportRecommendWxaResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/reportrecommendwxa"
+    },
+    {
+        "cgi": 1191,
+        "response": "GetUserAutoFillInfoResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/autofill/getinfo"
+    },
+    {
+        "cgi": 1180,
+        "response": "SaveUserAutoFillInfoResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/autofill/saveinfo"
+    },
+    {
+        "cgi": 1183,
+        "response": "AuthUserAutoFillInfoResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/autofill/authinfo"
+    },
+    {
+        "cgi": 1194,
+        "response": "DeleteUserAutoFillInfoResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/autofill/deleteinfo"
+    },
+    {
+        "cgi": 1024,
+        "response": "SendVerifyCodeResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/sendverifycode"
+    },
+    {
+        "cgi": 1010,
+        "response": "CheckVerifyCodeResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/checkverifycode"
+    },
+    {
+        "cgi": 1141,
+        "response": "JSOperateWxDataResponse",
+        "path": "/cgi-bin/mmbiz-bin/js-getuserwxphone"
+    },
+    {
+        "cgi": 2536,
+        "response": "JSOperateWxDataResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/customphone/getallphone"
+    },
+    {
+        "cgi": 2932,
+        "response": "UpdateUserPhoneResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/customphone/updateuserphone"
+    },
+    {
+        "cgi": 2695,
+        "response": "SendVerifyCodeResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/customphone/sendverifycode"
+    },
+    {
+        "cgi": 2775,
+        "response": "CheckVerifyCodeResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/customphone/checkverifycode"
+    },
+    {
+        "cgi": 1193,
+        "response": "DynamicDataResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/getdynamicdata"
+    },
+    {
+        "cgi": 1718,
+        "response": "GetTestCodeDownloadInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/gettestcodedownloadinfo"
+    },
+    {
+        "cgi": 1314,
+        "response": "GetSearchShowOutWxaAppResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/getsearchshowoutwxaapp"
+    },
+    {
+        "cgi": 1738,
+        "response": "GetGameMenuResp",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/getgamemenu"
+    },
+    {
+        "cgi": 1714,
+        "response": "VerifyPluginResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxaapp/verifyplugin"
+    },
+    {
+        "cgi": 1774,
+        "response": "ShowAuthorizeUserIDResp",
+        "path": "/cgi-bin/mmbiz-bin/userdata/showauthorizeuserid"
+    },
+    {
+        "cgi": 1721,
+        "response": "SubmitAuthorizeUserIDResp",
+        "path": "/cgi-bin/mmbiz-bin/userdata/submitauthorizeuserid"
+    },
+    {
+        "cgi": 1762,
+        "response": "SendSmsResp",
+        "path": "/cgi-bin/mmbiz-bin/userdata/sendsms"
+    },
+    {
+        "cgi": 1776,
+        "response": "VerifySmsCodeResp",
+        "path": "/cgi-bin/mmbiz-bin/userdata/verifysmscode"
+    },
+    {
+        "cgi": 2651,
+        "response": "RequestWxaHBResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxahb/requestwxaapphb"
+    },
+    {
+        "cgi": 2937,
+        "response": "QueryWxaHBDetailResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxahb/querywxaapphbdetail"
+    },
+    {
+        "cgi": 2503,
+        "response": "QueryWxaHBSendStateResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxahb/querywxaapphbsendstate"
+    },
+    {
+        "cgi": 2528,
+        "response": "OpenWxaHBResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxahb/openwxaapphb"
+    },
+    {
+        "cgi": 2869,
+        "response": "ReceiveWxaHBResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxahb/receivewxaapphb"
+    },
+    {
+        "cgi": 2575,
+        "response": "GetGDRPAuthResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/getgdrpauth"
+    },
+    {
+        "cgi": 2734,
+        "response": "SetGDRPAuthResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/setgdrpauth"
+    },
+    {
+        "cgi": 1544,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/transferplaceorder"
+    },
+    {
+        "cgi": 1582,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/f2fplaceorder"
+    },
+    {
+        "cgi": 1628,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/transferquery"
+    },
+    {
+        "cgi": 1691,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/transferoperation"
+    },
+    {
+        "cgi": 1545,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/transferresendmsg"
+    },
+    {
+        "cgi": 1623,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/transfersetf2ffee"
+    },
+    {
+        "cgi": 1515,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/transferscanqrcode"
+    },
+    {
+        "cgi": 1535,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/transfersendcancelf2f"
+    },
+    {
+        "cgi": 1689,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/transfergetchargefee"
+    },
+    {
+        "cgi": 1698,
+        "response": "AAOperationRes",
+        "path": "/cgi-bin/mmpay-bin/newaaoperation"
+    },
+    {
+        "cgi": 1624,
+        "response": "AALaunchByMoneyRes",
+        "path": "/cgi-bin/mmpay-bin/newaalaunchbymoney"
+    },
+    {
+        "cgi": 1655,
+        "response": "AALaunchByPersonRes",
+        "path": "/cgi-bin/mmpay-bin/newaalaunchbyperson"
+    },
+    {
+        "cgi": 1629,
+        "response": "AAPayRes",
+        "path": "/cgi-bin/mmpay-bin/newaapay"
+    },
+    {
+        "cgi": 1530,
+        "response": "AACloseRes",
+        "path": "/cgi-bin/mmpay-bin/newaaclose"
+    },
+    {
+        "cgi": 1676,
+        "response": "AAQueryListRes",
+        "path": "/cgi-bin/mmpay-bin/newaaquerylist"
+    },
+    {
+        "cgi": 1695,
+        "response": "AAQueryDetailRes",
+        "path": "/cgi-bin/mmpay-bin/newaaquerydetail"
+    },
+    {
+        "cgi": 1644,
+        "response": "AAPayUrgeRes",
+        "path": "/cgi-bin/mmpay-bin/newaapayurge"
+    },
+    {
+        "cgi": 1672,
+        "response": "AACloseNotifyRes",
+        "path": "/cgi-bin/mmpay-bin/newaaclosenotify"
+    },
+    {
+        "cgi": 1344,
+        "response": "AAPaySuccRes",
+        "path": "/cgi-bin/mmpay-bin/newaapaysucc"
+    },
+    {
+        "cgi": 1664,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/snsauthen"
+    },
+    {
+        "cgi": 1617,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/snsverify"
+    },
+    {
+        "cgi": 1520,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/snsverifyreg"
+    },
+    {
+        "cgi": 1569,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/snsqrcodeusebindquery"
+    },
+    {
+        "cgi": 1618,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/snspayorderquery"
+    },
+    {
+        "cgi": 1664,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_authen"
+    },
+    {
+        "cgi": 1617,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_verify"
+    },
+    {
+        "cgi": 1520,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_verifyreg"
+    },
+    {
+        "cgi": 1569,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_qrcodeusebindquery"
+    },
+    {
+        "cgi": 1618,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_payorderquery"
+    },
+    {
+        "cgi": 1527,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_aa_authen"
+    },
+    {
+        "cgi": 1675,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_aa_verify"
+    },
+    {
+        "cgi": 1507,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_aa_verifyreg"
+    },
+    {
+        "cgi": 1551,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_aa_qrcodeusebindquery"
+    },
+    {
+        "cgi": 1652,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_aa_payorderquery"
+    },
+    {
+        "cgi": 1659,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_tf_authen"
+    },
+    {
+        "cgi": 1592,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_tf_verify"
+    },
+    {
+        "cgi": 1653,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_tf_verifyreg"
+    },
+    {
+        "cgi": 1688,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_tf_qrcodeusebindquery"
+    },
+    {
+        "cgi": 1512,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_tf_payorderquery"
+    },
+    {
+        "cgi": 1992,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/gettransferwording"
+    },
+    {
+        "cgi": 2783,
+        "response": "CgiTransferBeforeResp",
+        "path": "/cgi-bin/mmpay-bin/beforetransfer"
+    },
+    {
+        "cgi": 1536,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_ff_authen"
+    },
+    {
+        "cgi": 1591,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_ff_verify"
+    },
+    {
+        "cgi": 1517,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_ff_verifyreg"
+    },
+    {
+        "cgi": 1543,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_ff_qrcodeusebindquery"
+    },
+    {
+        "cgi": 1656,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sns_ff_payorderquery"
+    },
+    {
+        "cgi": 1552,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/ts_authen"
+    },
+    {
+        "cgi": 1699,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/ts_verify"
+    },
+    {
+        "cgi": 1559,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/ts_verifyreg"
+    },
+    {
+        "cgi": 1573,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/ts_qrcodeusebindquery"
+    },
+    {
+        "cgi": 1692,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/ts_payorderquery"
+    },
+    {
+        "cgi": 2740,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/seb_ff_authen"
+    },
+    {
+        "cgi": 2689,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/seb_ff_verify"
+    },
+    {
+        "cgi": 2542,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/seb_ff_verifyreg"
+    },
+    {
+        "cgi": 2916,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/seb_ff_qrcodeusebindquery"
+    },
+    {
+        "cgi": 2956,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/seb_ff_payorderquer"
+    },
+    {
+        "cgi": 2862,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/tax_authen"
+    },
+    {
+        "cgi": 2824,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/tax_verify"
+    },
+    {
+        "cgi": 2626,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/tax_verifyreg"
+    },
+    {
+        "cgi": 2867,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/tax_qrcodeusebindquery"
+    },
+    {
+        "cgi": 2872,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/tax_payorderquery"
+    },
+    {
+        "cgi": 1953,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlineqrcodeusebindquery"
+    },
+    {
+        "cgi": 1972,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/offlinepayauthen"
+    },
+    {
+        "cgi": 1878,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/uniqrcodeusebindquery"
+    },
+    {
+        "cgi": 2814,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/uniauthen"
+    },
+    {
+        "cgi": 2892,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/univerify"
+    },
+    {
+        "cgi": 2565,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/univerifyreg"
+    },
+    {
+        "cgi": 2737,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/unipayorderquery"
+    },
+    {
+        "cgi": 2519,
+        "response": "GenPrepayResponse",
+        "path": "/cgi-bin/mmpay-bin/unigenprepay"
+    },
+    {
+        "cgi": 2923,
+        "response": "GenPrepayResponse",
+        "path": "/cgi-bin/mmpay-bin/tax_genprepay"
+    },
+    {
+        "cgi": 2655,
+        "response": "PayAuthAppResponse",
+        "path": "/cgi-bin/mmpay-bin/unipayauthapp"
+    },
+    {
+        "cgi": 2987,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/unipayauthnative"
+    },
+    {
+        "cgi": 1979,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/querypayaward"
+    },
+    {
+        "cgi": 1963,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/f2frcvdlist"
+    },
+    {
+        "cgi": 1964,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/f2frmrcvdrcd"
+    },
+    {
+        "cgi": 1993,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/f2frcvrcdhissta"
+    },
+    {
+        "cgi": 1973,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/f2frcvdlistjsapicheck"
+    },
+    {
+        "cgi": 771,
+        "response": "nil",
+        "path": "/cgi-bin/micromsg-bin/reportclientcheck"
+    },
+    {
+        "cgi": 148,
+        "response": "LbsResponse",
+        "path": "/cgi-bin/micromsg-bin/lbsfind"
+    },
+    {
+        "cgi": 774,
+        "response": "ApproveAddChatRoomMemberResp",
+        "path": "/cgi-bin/micromsg-bin/approveaddchatroommember"
+    },
+    {
+        "cgi": 235,
+        "response": "VoiceTransResponse",
+        "path": "/cgi-bin/micromsg-bin/voicetrans"
+    },
+    {
+        "cgi": 228,
+        "response": "ReportVoiceSendResultResponse",
+        "path": "/cgi-bin/micromsg-bin/reportvoiceresult"
+    },
+    {
+        "cgi": 850,
+        "response": "GetSafetyInfoRespsonse",
+        "path": "/cgi-bin/micromsg-bin/getsafetyinfo"
+    },
+    {
+        "cgi": 734,
+        "response": "GetBioConfigResponse",
+        "path": "/cgi-bin/micromsg-bin/getbioconfig"
+    },
+    {
+        "cgi": 1080,
+        "response": "FaceIdentifyResp",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/faceidentify"
+    },
+    {
+        "cgi": 1197,
+        "response": "FaceVideoBindBioIdResponse",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/facevideobindbioid"
+    },
+    {
+        "cgi": 1147,
+        "response": "FaceIdentifyPrePageResp",
+        "path": "/cgi-bin/mmbiz-bin/usrmsg/faceidentifyprepage"
+    },
+    {
+        "cgi": 733,
+        "response": "GetBioConfigResponse",
+        "path": "/cgi-bin/micromsg-bin/getbioconfigrsa"
+    },
+    {
+        "cgi": 930,
+        "response": "VerifyFaceResponse",
+        "path": "/cgi-bin/micromsg-bin/verifyfacersa"
+    },
+    {
+        "cgi": 931,
+        "response": "RegisterFaceResponse",
+        "path": "/cgi-bin/micromsg-bin/registerfacersa"
+    },
+    {
+        "cgi": 918,
+        "response": "RegisterFaceResponse",
+        "path": "/cgi-bin/micromsg-bin/registerface"
+    },
+    {
+        "cgi": 797,
+        "response": "VerifyFaceResponse",
+        "path": "/cgi-bin/micromsg-bin/verifyface"
+    },
+    {
+        "cgi": 938,
+        "response": "SwitchOpFaceResonse",
+        "path": "/cgi-bin/micromsg-bin/switchopface"
+    },
+    {
+        "cgi": 915,
+        "response": "GetVerifyTicketResponse",
+        "path": "/cgi-bin/micromsg-bin/getverifyticketrsa"
+    },
+    {
+        "cgi": 1125,
+        "response": "JSAPICheckLaunchAppResponse",
+        "path": "/cgi-bin/mmbiz-bin/checklaunchapp"
+    },
+    {
+        "cgi": 940,
+        "response": "CheckMusicResponse",
+        "path": "/cgi-bin/micromsg-bin/checkmusic"
+    },
+    {
+        "cgi": 851,
+        "response": "InitContactResp",
+        "path": "/cgi-bin/micromsg-bin/initcontact"
+    },
+    {
+        "cgi": 945,
+        "response": "BatchGetContactBriefInfoResp",
+        "path": "/cgi-bin/micromsg-bin/batchgetcontactbriefinfo"
+    },
+    {
+        "cgi": 769,
+        "response": "GetShakeMusicUrlResponse",
+        "path": "/cgi-bin/micromsg-bin/getshakemusicurl"
+    },
+    {
+        "cgi": 1273,
+        "response": "CgiPayCheckResp",
+        "path": "/cgi-bin/mmpay-bin/f2fpaycheck"
+    },
+    {
+        "cgi": 1384,
+        "response": "CgiF2FRcvVoiceResp",
+        "path": "/cgi-bin/mmpay-bin/getf2frcvvoice"
+    },
+    {
+        "cgi": 1317,
+        "response": "CgiMDRcvVoiceResp",
+        "path": "/cgi-bin/mmpay-bin/getmdrcvvoice"
+    },
+    {
+        "cgi": 1256,
+        "response": "CgiF2FAnnounceResp",
+        "path": "/cgi-bin/mmpay-bin/f2fannounce"
+    },
+    {
+        "cgi": 1335,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/h5f2ftransfergetqrcode"
+    },
+    {
+        "cgi": 1301,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/h5f2ftransferscanqrcode"
+    },
+    {
+        "cgi": 1529,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/h5f2ftransferpay"
+    },
+    {
+        "cgi": 1257,
+        "response": "HongBaoRes",
+        "path": "/cgi-bin/mmpay-bin/h5f2ftransfercancelpay"
+    },
+    {
+        "cgi": 1146,
+        "response": "GetUserAuthListResp",
+        "path": "/cgi-bin/mmbiz-bin/getuserauthlist"
+    },
+    {
+        "cgi": 1127,
+        "response": "DelUserAuthResp",
+        "path": "/cgi-bin/mmbiz-bin/deluserauth"
+    },
+    {
+        "cgi": 1144,
+        "response": "ModUserAuthResp",
+        "path": "/cgi-bin/mmbiz-bin/moduserauth"
+    },
+    {
+        "cgi": 1169,
+        "response": "SearchUserAuthResp",
+        "path": "/cgi-bin/mmbiz-bin/searchuserauth"
+    },
+    {
+        "cgi": 1211,
+        "response": "QryUsrFundDetailRes",
+        "path": "/cgi-bin/mmpay-bin/qryusrfunddetail"
+    },
+    {
+        "cgi": 1276,
+        "response": "PurchaseFundRes",
+        "path": "/cgi-bin/mmpay-bin/purchasefund"
+    },
+    {
+        "cgi": 1283,
+        "response": "QryPurchaseResultRes",
+        "path": "/cgi-bin/mmpay-bin/qrypurchaseresult"
+    },
+    {
+        "cgi": 1324,
+        "response": "PreRedeemFundRes",
+        "path": "/cgi-bin/mmpay-bin/preredeemfund"
+    },
+    {
+        "cgi": 1338,
+        "response": "RedeemFundRes",
+        "path": "/cgi-bin/mmpay-bin/redeemfund"
+    },
+    {
+        "cgi": 1386,
+        "response": "CloseFundAccountRes",
+        "path": "/cgi-bin/mmpay-bin/closefundaccount"
+    },
+    {
+        "cgi": 1259,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/lqtpaybindauthen"
+    },
+    {
+        "cgi": 1305,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/lqtpaybindverify"
+    },
+    {
+        "cgi": 1274,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/snslqtpaybindauthen"
+    },
+    {
+        "cgi": 1281,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/snslqtpaybindverify"
+    },
+    {
+        "cgi": 1830,
+        "response": "OnClickRedeemRes",
+        "path": "/cgi-bin/mmpay-bin/onclickredeem"
+    },
+    {
+        "cgi": 2585,
+        "response": "OnClickPurchaseRes",
+        "path": "/cgi-bin/mmpay-bin/onclickpurchase"
+    },
+    {
+        "cgi": 2996,
+        "response": "OpenLqbAccountRes",
+        "path": "/cgi-bin/mmpay-bin/openlqbaccount"
+    },
+    {
+        "cgi": 1754,
+        "response": "GetPayMenuResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/getpaymenu"
+    },
+    {
+        "cgi": 1254,
+        "response": "OauthAuthorizeResp",
+        "path": "/cgi-bin/mmbiz-bin/oauth_authorize"
+    },
+    {
+        "cgi": 1373,
+        "response": "OauthAuthorizeConfirmResp",
+        "path": "/cgi-bin/mmbiz-bin/oauth_authorize_confirm"
+    },
+    {
+        "cgi": 1388,
+        "response": "SdkOauthAuthorizeResp",
+        "path": "/cgi-bin/mmbiz-bin/sdk_oauth_authorize"
+    },
+    {
+        "cgi": 1346,
+        "response": "SdkOauthAuthorizeConfirmResp",
+        "path": "/cgi-bin/mmbiz-bin/sdk_oauth_authorize_confirm"
+    },
+    {
+        "cgi": 2500,
+        "response": "AddAvatarResp",
+        "path": "/cgi-bin/mmbiz-bin/oauth_addavatar"
+    },
+    {
+        "cgi": 2700,
+        "response": "DelAvatarResp",
+        "path": "/cgi-bin/mmbiz-bin/oauth_delavatar"
+    },
+    {
+        "cgi": 2785,
+        "response": "GetRandomAvatarResp",
+        "path": "/cgi-bin/mmbiz-bin/oauth_getrandomavatar"
+    },
+    {
+        "cgi": 2842,
+        "response": "OauthCheckGrantResp",
+        "path": "/cgi-bin/mmbiz-bin/oauth_checkgrant"
+    },
+    {
+        "cgi": 1588,
+        "response": "CgiF2FQrcodeResp",
+        "path": "/cgi-bin/mmpay-bin/f2fqrcode"
+    },
+    {
+        "cgi": 1633,
+        "response": "BusiF2FPlaceOrderResp",
+        "path": "/cgi-bin/mmpay-bin/busif2fplaceorder"
+    },
+    {
+        "cgi": 1537,
+        "response": "BusiF2FPayOkResp",
+        "path": "/cgi-bin/mmpay-bin/busif2fpayok"
+    },
+    {
+        "cgi": 1680,
+        "response": "BusiF2FActQryResp",
+        "path": "/cgi-bin/mmpay-bin/busif2factqry"
+    },
+    {
+        "cgi": 1241,
+        "response": "BusiF2FPayCheckResp",
+        "path": "/cgi-bin/mmpay-bin/busif2fpaycheck"
+    },
+    {
+        "cgi": 2677,
+        "response": "BusiF2FGetFavorResp",
+        "path": "/cgi-bin/mmpay-bin/busif2fgetfavor"
+    },
+    {
+        "cgi": 2702,
+        "response": "BusiF2FUnlockFavorResp",
+        "path": "/cgi-bin/mmpay-bin/busif2funlockfavor"
+    },
+    {
+        "cgi": 2504,
+        "response": "BusiF2FSucPageResp",
+        "path": "/cgi-bin/mmpay-bin/busif2fsucpage"
+    },
+    {
+        "cgi": 2682,
+        "response": "BusiF2FZeroCallBackResp",
+        "path": "/cgi-bin/mmpay-bin/busif2fzerocallback"
+    },
+    {
+        "cgi": 2556,
+        "response": "GetBankCardInfoResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/getbankcardinfo"
+    },
+    {
+        "cgi": 1562,
+        "response": "CgiSetRewardQrcodeResp",
+        "path": "/cgi-bin/mmpay-bin/setrewardqrcode"
+    },
+    {
+        "cgi": 1323,
+        "response": "CgiGetRewardQrcodeResp",
+        "path": "/cgi-bin/mmpay-bin/getrewardqrcode"
+    },
+    {
+        "cgi": 1649,
+        "response": "CgiSetRewardQrcodePhotoWordResp",
+        "path": "/cgi-bin/mmpay-bin/setrewardqrcodephotoword"
+    },
+    {
+        "cgi": 1516,
+        "response": "CgiScanRewardQrcodeResp",
+        "path": "/cgi-bin/mmpay-bin/scanrewardqrcode"
+    },
+    {
+        "cgi": 1336,
+        "response": "CgiRewardPlaceOrderResp",
+        "path": "/cgi-bin/mmpay-bin/rewardqrcodeplaceorder"
+    },
+    {
+        "cgi": 1960,
+        "response": "CgiPayRewardCheckResp",
+        "path": "/cgi-bin/mmpay-bin/rewardqrcodepaycheck"
+    },
+    {
+        "cgi": 2541,
+        "response": "GetPayUserDutyResp",
+        "path": "/cgi-bin/mmpay-bin/getpayuserduty"
+    },
+    {
+        "cgi": 2791,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/setpayuserduty"
+    },
+    {
+        "cgi": 138,
+        "response": "NewSyncResponse",
+        "path": "/cgi-bin/micromsg-bin/newsync"
+    },
+    {
+        "cgi": 139,
+        "response": "NewInitResponse",
+        "path": "/cgi-bin/micromsg-bin/newinit"
+    },
+    {
+        "cgi": 268,
+        "response": "PrivacyPolicyChoiseResponse",
+        "path": "/cgi-bin/micromsg-bin/privacypolicychoise"
+    },
+    {
+        "cgi": 1767,
+        "response": "PayIBGCheckJsapiSignResp",
+        "path": "/cgi-bin/mmpay-bin/payibgcheckjsapisign"
+    },
+    {
+        "cgi": 668,
+        "response": "APNSReportResp",
+        "path": "/cgi-bin/micromsg-bin/apnsreport"
+    },
+    {
+        "cgi": 1779,
+        "response": "CgiTransferPayCheckResp",
+        "path": "/cgi-bin/mmpay-bin/transferoldpaycheck"
+    },
+    {
+        "cgi": 1399,
+        "response": "GetBankListRes",
+        "path": "/cgi-bin/mmpay-bin/getbanklist_tsbc"
+    },
+    {
+        "cgi": 1378,
+        "response": "QueryTransferListRes",
+        "path": "/cgi-bin/mmpay-bin/tsrecordlist_tsbc"
+    },
+    {
+        "cgi": 1348,
+        "response": "AppointBankRes",
+        "path": "/cgi-bin/mmpay-bin/appointbank_tsbc"
+    },
+    {
+        "cgi": 1349,
+        "response": "CheckBankBindRes",
+        "path": "/cgi-bin/mmpay-bin/checkbankbind_tsbc"
+    },
+    {
+        "cgi": 1380,
+        "response": "TransToBankCardPayRes",
+        "path": "/cgi-bin/mmpay-bin/request_tsbc"
+    },
+    {
+        "cgi": 1542,
+        "response": "GetBankInfoRes",
+        "path": "/cgi-bin/mmpay-bin/getbankinfo_tsbc"
+    },
+    {
+        "cgi": 1590,
+        "response": "ModifyExplainRes",
+        "path": "/cgi-bin/mmpay-bin/modifyexplain_tsbc"
+    },
+    {
+        "cgi": 1395,
+        "response": "DeleteRecordRes",
+        "path": "/cgi-bin/mmpay-bin/deleterecord_tsbc"
+    },
+    {
+        "cgi": 1280,
+        "response": "OperationResp",
+        "path": "/cgi-bin/mmpay-bin/operation_tsbc"
+    },
+    {
+        "cgi": 1579,
+        "response": "QueryDetailResp",
+        "path": "/cgi-bin/mmpay-bin/querydetail_tsbc"
+    },
+    {
+        "cgi": 1511,
+        "response": "QueryHistoryListRes",
+        "path": "/cgi-bin/mmpay-bin/historylist_tsbc"
+    },
+    {
+        "cgi": 1737,
+        "response": "DeleteHistoryRecordRes",
+        "path": "/cgi-bin/mmpay-bin/deletehistoryrecord_tsbc"
+    },
+    {
+        "cgi": 1340,
+        "response": "BusinessCallbackRes",
+        "path": "/cgi-bin/mmpay-bin/busscb_tsbc"
+    },
+    {
+        "cgi": 1786,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/sendbindcardaward"
+    },
+    {
+        "cgi": 1773,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/querybindcardaward"
+    },
+    {
+        "cgi": 525,
+        "response": "SetMsgRemindResponse",
+        "path": "/cgi-bin/micromsg-bin/setmsgremind"
+    },
+    {
+        "cgi": 866,
+        "response": "GetRemindResponse",
+        "path": "/cgi-bin/micromsg-bin/getremind"
+    },
+    {
+        "cgi": 118,
+        "response": "SetMsgRemindResponse",
+        "path": "/cgi-bin/micromsg-bin/favremind"
+    },
+    {
+        "cgi": 2728,
+        "response": "CheckUserAuthJsapiResponse",
+        "path": "/cgi-bin/mmpay-bin/checkuserauthjsapi"
+    },
+    {
+        "cgi": 922,
+        "response": "CheckTinkerUpdateResponse",
+        "path": "/cgi-bin/micromsg-bin/checktinkerupdate"
+    },
+    {
+        "cgi": 180,
+        "response": "CheckTinkerUpdateResponse",
+        "path": "/cgi-bin/micromsg-bin/encryptchecktinkerupdate"
+    },
+    {
+        "cgi": 1800,
+        "response": "ScanF2fMaterialCodeResp",
+        "path": "/cgi-bin/mmpay-bin/scanf2fmaterialcode"
+    },
+    {
+        "cgi": 2811,
+        "response": "ScanRewardMaterialCodeResp",
+        "path": "/cgi-bin/mmpay-bin/scanrewardmaterialcode"
+    },
+    {
+        "cgi": 2755,
+        "response": "GenMallPrepayResponse",
+        "path": "/cgi-bin/mmpay-bin/genmallprepay"
+    },
+    {
+        "cgi": 597,
+        "response": "PushNewTipsResponse",
+        "path": "/cgi-bin/micromsg-bin/pushnewtips"
+    },
+    {
+        "cgi": 2773,
+        "response": "CgiF2FPaySucPageResp",
+        "path": "/cgi-bin/mmpay-bin/f2fsucpage"
+    },
+    {
+        "cgi": 2803,
+        "response": "GetLotteryResponse",
+        "path": "/cgi-bin/mmpay-bin/mktgetf2flottery"
+    },
+    {
+        "cgi": 2529,
+        "response": "ExposureInfoModifyResponse",
+        "path": "/cgi-bin/mmpay-bin/mktf2fmodifyexposure"
+    },
+    {
+        "cgi": 1859,
+        "response": "DrawLotteryResponse",
+        "path": "/cgi-bin/mmpay-bin/mktdrawf2flottery"
+    },
+    {
+        "cgi": 2508,
+        "response": "GetLotteryResponse",
+        "path": "/cgi-bin/mmpay-bin/mktgetlottery"
+    },
+    {
+        "cgi": 2888,
+        "response": "ExposureInfoModifyResponse",
+        "path": "/cgi-bin/mmpay-bin/mktmodifyexposure"
+    },
+    {
+        "cgi": 2547,
+        "response": "DrawLotteryResponse",
+        "path": "/cgi-bin/mmpay-bin/mktdrawlottery"
+    },
+    {
+        "cgi": 810,
+        "response": "OpenIMSyncResponse",
+        "path": "/cgi-bin/micromsg-bin/openimsync"
+    },
+    {
+        "cgi": 243,
+        "response": "SendOpenIMVerifyRequestResp",
+        "path": "/cgi-bin/micromsg-bin/sendopenimverifyrequest"
+    },
+    {
+        "cgi": 372,
+        "response": "SearchOpenIMContactResp",
+        "path": "/cgi-bin/micromsg-bin/searchopenimcontact"
+    },
+    {
+        "cgi": 679,
+        "response": "SendOpenIMVerifyReplyResp",
+        "path": "/cgi-bin/micromsg-bin/sendopenimverifyreply"
+    },
+    {
+        "cgi": 667,
+        "response": "AddOpenIMContactResp",
+        "path": "/cgi-bin/micromsg-bin/addopenimcontact"
+    },
+    {
+        "cgi": 806,
+        "response": "OpenIMOplogResp",
+        "path": "/cgi-bin/micromsg-bin/openimoplog"
+    },
+    {
+        "cgi": 853,
+        "response": "VerifyOpenIMContactResp",
+        "path": "/cgi-bin/micromsg-bin/verifyopenimcontact"
+    },
+    {
+        "cgi": 881,
+        "response": "GetOpenIMContactResp",
+        "path": "/cgi-bin/micromsg-bin/getopenimcontact"
+    },
+    {
+        "cgi": 570,
+        "response": "GetOpenIMStatusResp",
+        "path": "/cgi-bin/micromsg-bin/getopenimstatus"
+    },
+    {
+        "cgi": 453,
+        "response": "GetOpenIMResourceResp",
+        "path": "/cgi-bin/micromsg-bin/getopenimresource"
+    },
+    {
+        "cgi": 2736,
+        "response": "CgiF2FDynamicCodeResp",
+        "path": "/cgi-bin/mmpay-bin/f2fdynamiccode"
+    },
+    {
+        "cgi": 2954,
+        "response": "GetUpdatableMsgInfoResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/getupdatablemsginfo"
+    },
+    {
+        "cgi": 2571,
+        "response": "TimelineGetCommentRewardResp",
+        "path": "/cgi-bin/mmbiz-bin/bizattr/timeline_comment_reward_stat"
+    },
+    {
+        "cgi": 2768,
+        "response": "TimelineGetOftenReadBizResp",
+        "path": "/cgi-bin/mmbiz-bin/bizattr/timeline_often_read_biz"
+    },
+    {
+        "cgi": 2664,
+        "response": "ReadItLaterResponse",
+        "path": "/cgi-bin/mmsearch-bin/readitlaterreaditlater"
+    },
+    {
+        "cgi": 2826,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/walletlockreport"
+    },
+    {
+        "cgi": 2713,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/tenpay/geteuinfo"
+    },
+    {
+        "cgi": 2784,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/verifyuserrealnameinfo"
+    },
+    {
+        "cgi": 2514,
+        "response": "TenPayResponse",
+        "path": "/cgi-bin/mmpay-bin/resetpaypwdbyface"
+    },
+    {
+        "cgi": 813,
+        "response": "CheckMobileSIMTypeResp",
+        "path": "/cgi-bin/micromsg-bin/checkmobilesimtype"
+    },
+    {
+        "cgi": 889,
+        "response": "AddChatRoomAdminResponse",
+        "path": "/cgi-bin/micromsg-bin/addchatroomadmin"
+    },
+    {
+        "cgi": 259,
+        "response": "DelChatRoomAdminResponse",
+        "path": "/cgi-bin/micromsg-bin/delchatroomadmin"
+    },
+    {
+        "cgi": 691,
+        "response": "GetForcePushResponse",
+        "path": "/cgi-bin/micromsg-bin/getforcepush"
+    },
+    {
+        "cgi": 371,
+        "response": "CreateOpenIMChatRoomResp",
+        "path": "/cgi-bin/micromsg-bin/createopenimchatroom"
+    },
+    {
+        "cgi": 814,
+        "response": "AddOpenIMChatRoomMemberResp",
+        "path": "/cgi-bin/micromsg-bin/addopenimchatroommember"
+    },
+    {
+        "cgi": 943,
+        "response": "DelOpenIMChatRoomMemberResp",
+        "path": "/cgi-bin/micromsg-bin/delopenimchatroommember"
+    },
+    {
+        "cgi": 407,
+        "response": "GetOpenIMChatRoomContactResp",
+        "path": "/cgi-bin/micromsg-bin/getopenimchatroomcontact"
+    },
+    {
+        "cgi": 942,
+        "response": "GetOpenIMChatRoomMemberDetailResp",
+        "path": "/cgi-bin/micromsg-bin/getopenimchatroommemberdetail"
+    },
+    {
+        "cgi": 890,
+        "response": "GetOpenIMChatRoomQRCodeResp",
+        "path": "/cgi-bin/micromsg-bin/getopenimchatroomqrcode"
+    },
+    {
+        "cgi": 887,
+        "response": "InviteOpenIMChatRoomMemberResp",
+        "path": "/cgi-bin/micromsg-bin/inviteopenimchatroommember"
+    },
+    {
+        "cgi": 772,
+        "response": "RevokeOpenIMChatRoomQRCodeResp",
+        "path": "/cgi-bin/micromsg-bin/revokeopenimchatroomqrcode"
+    },
+    {
+        "cgi": 811,
+        "response": "ModOpenIMChatRoomOwnerResp",
+        "path": "/cgi-bin/micromsg-bin/modopenimchatroomowner"
+    },
+    {
+        "cgi": 941,
+        "response": "ApproveAddOpenIMChatRoomMemberResp",
+        "path": "/cgi-bin/micromsg-bin/approveaddopenimchatroommember"
+    },
+    {
+        "cgi": 2594,
+        "response": "BatchGetAppMsgResp",
+        "path": "/cgi-bin/mmbiz-bin/batchgetappmsg"
+    },
+    {
+        "cgi": 2731,
+        "response": "CheckTmplVerResp",
+        "path": "/cgi-bin/mmbiz-bin/checktmplver"
+    },
+    {
+        "cgi": 2998,
+        "response": "AppMsgReportResp",
+        "path": "/cgi-bin/mmbiz-bin/appmsgreport"
+    },
+    {
+        "cgi": 1971,
+        "response": "FFHBInvalidateShareUrlResp",
+        "path": "/cgi-bin/mmpay-bin/ftfhb/ffwxhbinvalidateshareurl"
+    },
+    {
+        "cgi": 2985,
+        "response": "GetCloudIMSessionResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/getcloudimsession"
+    },
+    {
+        "cgi": 1991,
+        "response": "JoinCloudIMRoomResponse",
+        "path": "/cgi-bin/mmbiz-bin/wxabusiness/joincloudimroom"
+    },
+    {
+        "cgi": 2793,
+        "response": "GetCardEntranceStyleResponse",
+        "path": "/cgi-bin/mmpay-bin/mktgetcardentrancestyle"
+    },
+    {
+        "cgi": 2619,
+        "response": "GetMktCardHomePageResponse",
+        "path": "/cgi-bin/mmpay-bin/mktgetmktcardhomepage"
+    },
+    {
+        "cgi": 2769,
+        "response": "GetCardPkgMchInfoResponse",
+        "path": "/cgi-bin/mmpay-bin/mktgetcardpkgmchinfo"
+    },
+    {
+        "cgi": 1768,
+        "response": "DeleteMchInListResponse",
+        "path": "/cgi-bin/mmpay-bin/mktdeletemchinlist"
+    },
+    {
+        "cgi": 2940,
+        "response": "GetMktTicketHomePageResponse",
+        "path": "/cgi-bin/mmpay-bin/mktgetmkttickethomepage"
+    },
+    {
+        "cgi": 2979,
+        "response": "GetMktInvalidTicketHomePageResponse",
+        "path": "/cgi-bin/mmpay-bin/mktgetmktinvalidtickethomepage"
+    },
+    {
+        "cgi": 2660,
+        "response": "DeleteCardInTicketListResponse",
+        "path": "/cgi-bin/mmpay-bin/mktdeletecardinticketlist"
+    },
+    {
+        "cgi": 2707,
+        "response": "DeleteCardInInvalidListResponse",
+        "path": "/cgi-bin/mmpay-bin/mktdeletecardininvalidlist"
+    },
+    {
+        "cgi": 2850,
+        "response": "BatchDeleteCardInInvalidListResponse",
+        "path": "/cgi-bin/mmpay-bin/mktbatchdeletecardininvalidlist"
+    },
+    {
+        "cgi": 2796,
+        "response": "PlanIndexResp",
+        "path": "/cgi-bin/mmpay-bin/planindex"
+    },
+    {
+        "cgi": 2507,
+        "response": "ManagePlanResp",
+        "path": "/cgi-bin/mmpay-bin/manageplan"
+    },
+    {
+        "cgi": 2614,
+        "response": "ModifyPlanResp",
+        "path": "/cgi-bin/mmpay-bin/modifyplan"
+    },
+    {
+        "cgi": 2780,
+        "response": "AddPlanResp",
+        "path": "/cgi-bin/mmpay-bin/addplan"
+    },
+    {
+        "cgi": 1770,
+        "response": "PreAddPlanResp",
+        "path": "/cgi-bin/mmpay-bin/preaddplan"
+    },
+    {
+        "cgi": 341,
+        "response": "GetRecommendedMusicResponse",
+        "path": "/cgi-bin/micromsg-bin/getrecommendedmusiclist"
+    },
+    {
+        "cgi": 298,
+        "response": "ReportRecommendedMusicFeedbackResponse",
+        "path": "/cgi-bin/micromsg-bin/reportrecommendedmusicfeedback"
+    },
+    {
+        "cgi": 2620,
+        "response": "GetShowSourceResp",
+        "path": "/cgi-bin/mmpay-bin/ftfhb/getshowsource"
+    },
+    {
+        "cgi": 2969,
+        "response": "ConfirmShowSourceResp",
+        "path": "/cgi-bin/mmpay-bin/ftfhb/confirmshowsource"
+    }
+]

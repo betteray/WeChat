@@ -14,6 +14,7 @@
 #import "ClientCheckDataFetcher.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "CUtility.h"
+#import "FPService.h"
 
 #import "AuthService.h"
 
@@ -41,6 +42,9 @@
     
     [[WeChatClient sharedClient] start];
     [DNSFetcher fetchAndSaveToDB];
+   
+    
+    [FPService initFP];
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     [self autoAuthIfCould];

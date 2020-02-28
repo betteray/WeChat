@@ -19,6 +19,7 @@
     #import "NSObject+YYModel.h"
 
     #import "MM.pbobjc.h"
+    #import "Safe.pbobjc.h"
 
     #import "UIViewController+ProgressHUB.h"
     #import "CgiWrap.h"
@@ -109,8 +110,9 @@
     #define A704  0x27000437
     #define A705  0x27000530
     #define A706  0x27000634
+    #define A7011 0x27000B32
 
-    #define AVERSION A706
+    #define AVERSION A7011
 
     #if PROTOCOL_FOR_IOS
         #define CLIENT_VERSION [CUtility numberVersionOf:IVERSION]
