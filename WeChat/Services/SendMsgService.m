@@ -7,6 +7,7 @@
 //
 
 #import "SendMsgService.h"
+#import "CUtility.h"
 
 #define DATA_SEG_LEN 50000
 
@@ -315,4 +316,50 @@
     }];
 }
 
++ (void)sendAppMsg:(NSString * _Nonnull)msg toUser:(WCContact *)toUser {
+    SendAppMsgRequest *request = [SendAppMsgRequest new];
+    request.commentURL = @"";
+    request.crc32 = 0;
+    request.hitMd5 = 0;
+    request.fromSence = @"";
+    request.msgForwardType = 0;
+    request.reqTime = 0;
+    request.signature = @"";
+    request.fileType = 0;
+    request.md5 = @"";
+    request.directShare = 0;
+    AppMsg *appMsg = [AppMsg new];
+    appMsg.content = @"<appmsg appid=\"\"  sdkver=\"0\"><title>百度一下，你还是不知道</title><des>https://www.pgyer.com/tools/udid/result?UDID=0d030dfca989ec838a4d419a7c0079d0bc2f9580&CHALLENGE=&DEVICE_NAME=&DEVICE_PRODUCT=iPhone9,2&DEVICE_VERSION=16G77&from=singlemessage&isappinstalled=0</des><action></action><type>5</type><showtype>0</showtype><soundtype>0</soundtype><mediatagname></mediatagname><messageext></messageext><messageaction></messageaction><content></content><contentattr>0</contentattr><url>https://www.baidu.com</url><lowurl></lowurl><dataurl></dataurl><lowdataurl></lowdataurl><songalbumurl></songalbumurl><songlyric></songlyric><appattach><totallen>0</totallen><attachid></attachid><emoticonmd5></emoticonmd5><fileext></fileext><cdnthumbaeskey></cdnthumbaeskey><aeskey></aeskey></appattach><extinfo></extinfo><sourceusername></sourceusername><sourcedisplayname></sourcedisplayname><thumburl>https://s1.ax1x.com/2020/03/17/8NTEVA.jpgs</thumburl><md5></md5><statextstr></statextstr><directshare>0</directshare></appmsg><fromusername></fromusername>";
+    appMsg.jsAppId = @"";
+    appMsg.toUserName = toUser.userName;
+    appMsg.fromUserName = [DBManager accountInfo].userName;
+    uint32_t stamp = (uint32_t) [CUtility GetTimeStamp];
+    appMsg.clientMsgId = [NSString stringWithFormat:@"rowhongwei18_%d", stamp];
+    appMsg.appId = @"";
+    appMsg.shareURLOriginal = @"";
+    appMsg.source = 3;
+    appMsg.type = 5;
+    appMsg.createTime = stamp;
+    appMsg.shareURLOpen = @"";
+    appMsg.sdkVersion = 0;
+    appMsg.remindId = 0;
+    
+    request.msg = appMsg;
+    
+    CgiWrap *cgiWrap = [CgiWrap new];
+    cgiWrap.cmdId = 0;
+    cgiWrap.cgi = 222;
+    cgiWrap.request = request;
+    cgiWrap.needSetBaseRequest = YES;
+    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/sendappmsg";
+    cgiWrap.responseClass = [SendAppMsgResponse class];
+    
+    [WeChatClient postRequest:cgiWrap
+                       success:^(SendAppMsgResponse * _Nullable response) {
+        LogVerbose(@"%@", response);
+    }
+                       failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
 @end

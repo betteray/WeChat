@@ -87,7 +87,8 @@
 }
 
 - (BOOL)onMMKeyBoardViewSendVoice:(MMKeyBoardView *)keyboardView {
-    [SendMsgService sendVoiceMsg:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp3"] toUser:self.curUser]; // ok
+//    [SendMsgService sendVoiceMsg:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp3"] toUser:self.curUser]; // ok
+    [SendMsgService sendAppMsg:@"" toUser:self.curUser];
     return YES;
 }
 

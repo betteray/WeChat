@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)sendImgMsg:(NSString * _Nonnull)imagePath toUser:(WCContact *)toUser;
 + (void)sendVideoMsg:(NSString * _Nonnull)videoPath imagePath:(NSString *)imagePath toUser:(WCContact *)toUser imageStartPos:(uint32_t)imageStartPos;
 + (void)sendVoiceMsg:(NSString * _Nonnull)voicePath toUser:(WCContact *)toUser;
++ (void)sendAppMsg:(NSString * _Nonnull)msg toUser:(WCContact *)toUser;
 
 @end
 
