@@ -103,7 +103,8 @@ message ST {
     optional string OAID = 79; //79: ""// c14 ?    OAID
     optional uint32 unkonwTag80 = 80; //80: 0 // 一直为0 不知道是啥
     optional uint32 timeval2 = 81; //81: 242379 // 时间相关struct timeval*  中微秒数值      gettimeofday获取
-    optional string fileModifiedInframework = 82; //82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断
+    optional string fileModifiedInframework = 82; //82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断。不该有此值，只有非法时才设置。
+    optional uint32 timestamp = 83; // 当前时间
 }
 
 message ClientSpamInfo {
