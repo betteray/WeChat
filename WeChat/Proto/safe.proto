@@ -150,12 +150,12 @@ message WCSTE {
        2: "11b6c9b0371bdbad"
      }
    1 {
-     1: "PhoneSerial" //android/os/Build  getSerial
-     2: "26552c80"
+     1: "PhoneSerial" //android/os/Build  getSerial # 没有权限获取
+     2: ""
    }
    1 {
      1: "cid"
-     2: "4501005344573136470126552c802200"     ///sys/block/mmcblk0/device/cid
+     2: ""     ///sys/block/mmcblk0/device/cid  # 9.0 空
    }
    1 {
      1: "WidevineDeviceID" //java/util/UUID     mediaDrm  getPropertyByteArray    传值不同
@@ -215,7 +215,8 @@ message WCSTE {
                                                                           // stat -f -c "%i %b %f %a %c %d" /system/etc  => md5
                                                                           // stat -f -c "%i" /storage/emulated
                                                                           // stat -f -c "%i %b %f %a %c %d" /storage/emulated  => md5  以@和|连接
-   }
+                                                                          // # 随机生成
+   }                    
    1 {
      1: "BootID"
      2: "06476842-2823-492e-8221-3333b81cf8d3"                       //    /proc/sys/kernel/random/boot_id
@@ -297,15 +298,15 @@ message WCSTE {
      2: "1920"
    }
    1 {
-     1: "SensorList"                         //getSensorList     getName   getVendor  getResolution getVersion
+     1: "SensorList"                         //getSensorList     getName   getVendor  getResolution getVersion 
      2: "Accelerometer#STMicroelectronics#0.001190#1,Magnetometer#AKM#0.149536#1,Magnetometer Uncalibrated#AKM#0.149536#1,Gyroscope#STMicroelectronics#0.000153#1,Gyroscope Uncalibrated#STMicroelectronics#0.000153#1,Proximity Sensor#TAOS#5.000305#1,Ambient Light Sensor#TAOS#0.199997#1,Barometer Sensor#BOSCH#0.009995#1,Temperature Sensor#BOSCH#0.009995#1,Gravity#Qualcomm#0.001190#1,Linear Acceleration#Qualcomm#0.001190#1,Rotation Vector#Qualcomm#0.000000#1,Step Detector#Qualcomm#1.000000#1,Step Counter#Qualcomm#1.000000#1,Significant Motion Detector#Qualcomm#1.000000#1,Game Rotation Vector#Qualcomm#0.000000#1,Geomagnetic Rotation Vector#Qualcomm#0.000000#1,Orientation#Qualcomm#0.100000#1,AMD#Qualcomm#1.000000#1,RMD#Qualcomm#1.000000#1,VMD#Qualcomm#1.000000#1,Basic Gestures#Qualcomm#1.000000#1,Facing#Qualcomm#1.000000#1,Tilt#Qualcomm#0.100000#1,Gyro Tap#Qualcomm#1.000000#1,Pedometer#Qualcomm#1.000000#1,PEDESTRIAN-ACTIVITY-MONITOR#Qualcomm#1.000000#1,Motion Accel#Qualcomm#0.001190#1,Coarse Motion Classifier#Qualcomm#1.000000#1"
    }
    1 {
-     1: "DefaultInputMethod"                  //   android/provider/Settings$Secure   DEFAULT_INPUT_METHOD
+     1: "DefaultInputMethod"                  //   android/provider/Settings$Secure   DEFAULT_INPUT_METHOD  # Settings.json
      2: "com.google.android.inputmethod.latin"
    }
    1 {
-     1: "InputMethodList"                     //getInputMethodList
+     1: "InputMethodList"                     //getInputMethodList # Settings.json
      2: "Gboard#com.google.android.inputmethod.latin"
    }
    1 {
@@ -313,7 +314,7 @@ message WCSTE {
      2: "Af1762d2e5da437a"
    }
    1 {
-     1: "OAID"               //c14       OAID  com.tencent.mm.plugin.normsg.b.getOAID    目前看zui11 该值为空，小米华为oppo vivo高版本系统应该不为空，未测试
+     1: "OAID"               //c14       OAID  com.tencent.mm.plugin.normsg.b.getOAID    目前看zui11 该值为空，小米华为oppo vivo高版本系统应该不为空，未测试 # 空
      2: ""
    }
  }
