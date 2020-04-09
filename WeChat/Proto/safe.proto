@@ -51,7 +51,7 @@ message ST {
     repeated InstalledPackageInfo InstalledPackageInfos = 40;
     //EnabledAccessibilityServiceIds
     optional uint32 AccessibilityClickCount = 41;
-    optional string APKLeadingMD5 = 42;
+    optional string APKLeadingMD5 = 42; // APK 前 102400 字节MD5
     optional string ClientVersion = 43;
     optional string WXTag = 44;
     optional string ClientIP = 45;
@@ -105,6 +105,8 @@ message ST {
     optional uint32 timeval2 = 81; //81: 242379 // 时间相关struct timeval*  中微秒数值      gettimeofday获取
     repeated string filesModifiedInframework = 82; //82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断。不该有此值，只有非法时才设置。
     optional uint32 timestamp = 83; // 当前时间
+    optional bytes f84 = 84;
+    optional bytes f85 = 85;
 }
 
 message ClientSpamInfo {
@@ -114,10 +116,10 @@ message ClientSpamInfo {
 }
 
 message WCSTF {
-    optional uint32 st = 1;
+    optional uint64 st = 1;
     optional uint32 et = 2;
-    optional uint32 cc = 3;
-    repeated uint32 ct = 4;
+    optional uint64 cc = 3;
+    repeated uint64 ct = 4;
 }
 
 message WCSTE {
