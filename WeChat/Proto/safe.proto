@@ -48,8 +48,9 @@ message ST {
     optional string RiskScanReqBuffer = 37;
     optional uint32 EnvBits = 38;
 
+    //EnabledAccessibilityServiceIds = 39
+
     repeated InstalledPackageInfo InstalledPackageInfos = 40;
-    //EnabledAccessibilityServiceIds
     optional uint32 AccessibilityClickCount = 41;
     optional string APKLeadingMD5 = 42; // APK 前 102400 字节MD5
     optional string ClientVersion = 43;
@@ -77,21 +78,21 @@ message ST {
     
     optional string KernelReleaseNumber = 65; // uname -r //65: "4.4.153-perf+"  // uname获取   和/proc/version 数据有关联
     optional uint32 UsbState = 66; //66: 0 //sys/class/android_usb/android0/state  usb连上为2，未连接为1, c8方法false时为0。 【0：啥都没连，1是充电。可选择0、1都算比较真实。】
-    optional string apkSignatureMd5 = 67; //67: "18c867f0717aa67b2ab7347505ba07ed"    //签名md5
+    optional string ApkSignatureMd5 = 67; //67: "18c867f0717aa67b2ab7347505ba07ed"    //签名md5
     //68: 14 //目前测试情况： com.android.vending     8
     //       //com.google.android.gsf.login          1
     //       //com.google.android.gsf         2
     //       //com.google.android.gms         4
     //       //这四个包微信会去单独检测，如果存在则加上对应的数据， 测试miui11 （不包含com.google.android.gsf.login）为14  zui11也为14
-    optional uint32 googleServiceState = 68; // 取设备包PackageManager里根据上述包进行计算。1？ + 2？ + 4？ + 8？ = ？
+    optional uint32 GoogleServiceState = 68; // 取设备包PackageManager里根据上述包进行计算。1？ + 2？ + 4？ + 8？ = ？
     optional uint32 timeval1 = 69; //69: 954783 // 时间相关struct timeval*  中微秒数值      gettimeofday获取
-    optional uint32 spamInfoVersionSeq = 70; // 708 、709 、【7010｜7011】 分别对应 123。 7012是4.
-    optional uint32 initialSeq = 71; //71: 556011293 //   可能与资源下载有关，不做pm clear 数据不会变化 不清楚，需另看。？
-    optional string pathMd51 = 72; //72: "a8de294f819234ee723148f6f3d003a6"//根据目录生成的md5
-    optional string pathMd52 = 73; //73: "a7cae61554b3c3596c073782ac5d69d1"//根据目录生成的md5
-    optional string pathMd53 = 74; //74: "0d922e4d36ecfdce95da6257798320ab"//根据目录生成的md5
-    optional string pathMd54 = 75; //75: "22bb890943c1c673ccc5246b8a888819"//根据目录生成的md5
-    optional string soteruid = 76; //76: "" //soteruid 暂时写 "" 字符串。
+    optional uint32 SpamInfoVersionSeq = 70; // 708 、709 、【7010｜7011】 分别对应 123。 7012是4.
+    optional uint32 TbVersionCrc = 71; //71: 556011293 //   可能与资源下载有关，不做pm clear 数据不会变化 不清楚，需另看。？
+    optional string SystemFrameworkMD5 = 72; //72: "a8de294f819234ee723148f6f3d003a6"//根据目录生成的md5 /system/framework/
+    optional string SystemFrameworkArmMD5 = 73; //73: "a7cae61554b3c3596c073782ac5d69d1"//根据目录生成的md5 /system/framework/arm
+    optional string SystemFrameworkArm64MD5 = 74; //74: "0d922e4d36ecfdce95da6257798320ab"//根据目录生成的md5 /system/framework/arm64
+    optional string SystemBinMD5 = 75; //75: "22bb890943c1c673ccc5246b8a888819"//根据目录生成的md5 /system/bin
+    optional string SoterUid = 76; //76: "" //soteruid 暂时写 "" 字符串。
     optional string WidevineDeviceID = 77; //77: "304334a25f546b42df65319978c5dbd2f8b42a3899f0973b0813735dd71795ad"  //java/util/UUID mediaDrm  getPropertyByteArray      => WidevineDeviceID //皖南会生成。
     //78: "1535763623|1535763679@664854922a684596|fa114cb9f80068d980d8d89e708bbddd@8b1106cd1d6c932a|1b295f3b9b7ba7f5f8e0275a9a3c1c32"
     // stat -c "%X|%Y" /storage/emulated
@@ -99,14 +100,14 @@ message ST {
     // stat -f -c "%i %b %f %a %c %d" /system/etc  => md5
     // stat -f -c "%i" /storage/emulated
     // stat -f -c "%i %b %f %a %c %d" /storage/emulated  => md5  以@和|连接
-    optional string storageID = 78;
+    optional string StorageID = 78;
     optional string OAID = 79; //79: ""// c14 ?    OAID
-    optional uint32 unkonwTag80 = 80; //80: 0 // 一直为0 不知道是啥
-    optional uint32 timeval2 = 81; //81: 242379 // 时间相关struct timeval*  中微秒数值      gettimeofday获取
-    repeated string filesModifiedInframework = 82; //82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断。不该有此值，只有非法时才设置。
+    optional uint32 UnknownTag80 = 80; //80: 0 // 一直为0 不知道是啥
+    optional uint32 TimeVal2 = 81; //81: 242379 // 时间相关struct timeval*  中微秒数值      gettimeofday获取
+    repeated string FilesModifiedInFramework = 82; //82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断。不该有此值，只有非法时才设置。
     optional uint32 WeChatInstallTime = 83; // 微信安装时间。 // 7012到此
-    optional bytes f84 = 84; // 7013 开始
-    optional bytes f85 = 85;
+    optional bytes SoftConfig = 84; // 7013 开始
+    optional bytes SoftData = 85;
 }
 
 message ClientSpamInfo {
@@ -373,4 +374,14 @@ message DeviceToken {
     optional uint32 timestamp = 4;
     optional uint32 tag5 = 5;
     optional uint32 tag6 = 6;
+}
+
+message ClientSpamInfo_IOS {
+    required uint32 ccdcc = 1;
+    required uint32 ccdts = 2;
+    message Content {
+        optional bytes tag3 = 3;
+        optional bytes tag51 = 11;
+    }
+    required Content content = 3;
 }
