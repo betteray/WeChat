@@ -394,6 +394,7 @@
                         // <00000014 00100001 00000018 00000000 00000100> //mmsnssync
                         // <00000014 00100001 00000018 00000000 00000006> //newsync
                         uint32_t subCmdId = [plainData toInt32ofRange:NSMakeRange(16, 4) SwapBigToHost:YES];
+                        LogDebug(@"CMDID_PUSH_ACK(%d) Handled SubCmdId: %d", CMDID_PUSH_ACK, subCmdId);
                         switch (subCmdId) {
                             case 6:
                             {
@@ -413,7 +414,7 @@
                                 break;
                             default:
                             {
-                                LogError(@"UnHandled SubCmdId: %d", subCmdId);
+                                [SyncService newSync]; //应该用newsync处理？
                             }
                                 break;
                         }
