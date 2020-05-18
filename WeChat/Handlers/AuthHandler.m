@@ -33,7 +33,7 @@
         case -301: { //需要重定向
 
             LogError(@"登录 -301， 重定向IP。。。");
-            [DBManager saveBuiltinIP:resp];
+            [DBManager saveBuiltinIP:resp.networkSectResp.builtinIplist];
             [DBManager clearCookie];
             [[WeChatClient sharedClient] restart]; // restart
 

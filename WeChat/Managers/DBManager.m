@@ -81,11 +81,11 @@
     }
 }
 
-+ (void)saveBuiltinIP:(UnifyAuthResponse *)resp {
++ (void)saveBuiltinIP:(BuiltinIPList *)iplist {
     // 存数据到数据库。
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
-    for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.longConnectIplistArray) {
+    for (BuiltinIP *longBuiltinIp in iplist.longConnectIplistArray) {
         NSString *domain = [[NSString alloc] initWithData:longBuiltinIp.domain encoding:NSUTF8StringEncoding];
         NSString *ipString = [[NSString alloc] initWithData:longBuiltinIp.ip encoding:NSUTF8StringEncoding];
         WCBuiltinIP *ip = [[WCBuiltinIP alloc] initWithValue:@{@"isLongIP": @YES,
@@ -97,7 +97,7 @@
 
     };
 
-    for (BuiltinIP *longBuiltinIp in resp.networkSectResp.builtinIplist.shortConnectIplistArray) {
+    for (BuiltinIP *longBuiltinIp in iplist.shortConnectIplistArray) {
         NSString *domain = [[NSString alloc] initWithData:longBuiltinIp.domain encoding:NSUTF8StringEncoding];
         NSString *ipString = [[NSString alloc] initWithData:longBuiltinIp.ip encoding:NSUTF8StringEncoding];
         WCBuiltinIP *ip = [[WCBuiltinIP alloc] initWithValue:@{@"isLongIP": @NO,

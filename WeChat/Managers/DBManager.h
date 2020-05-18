@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)saveSyncKey:(NSData *)syncKey;
 + (void)clearSyncKey;
 
-+ (void)saveBuiltinIP:(UnifyAuthResponse *)resp;
++ (void)saveBuiltinIP:(BuiltinIPList *)iplist;
 
 + (nullable AutoAuthKeyStore *)autoAuthKey;
 + (void)saveAutoAuthKey:(NSData *)autoAuthkey;
