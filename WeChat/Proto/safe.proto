@@ -353,11 +353,11 @@ message SpamInfoEncrypedResult {
 }
 
 message SpamBuff {
-    message UnknownTag2 {
-        optional bytes unknowntag1 = 1;
-        optional bytes unknowntag2 = 2;
+    message Soft {
+        optional bytes soft_data = 1;
+        optional bytes soft_config = 2;
     }
-    optional UnknownTag2 unknowntag2 = 2; //还不清楚这个数据是干啥用的，下次刷新token会用吗
+    optional Soft soft = 2; //还不清楚这个数据是干啥用的，下次刷新token会用吗? 是的，用来计算类似于md5之类的那个东西。
     optional string devicetoken = 3;
     optional uint32 timestamp = 4;
 }

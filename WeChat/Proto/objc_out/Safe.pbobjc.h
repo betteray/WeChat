@@ -27,12 +27,13 @@
 
 CF_EXTERN_C_BEGIN
 
+@class ClientSpamInfo_IOS_Content;
 @class DeviceToken_Token;
 @class FPKeyVal;
 @class FPKeyVals;
 @class InstalledPackageInfo;
 @class ST;
-@class SpamBuff_UnknownTag2;
+@class SpamBuff_Soft;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -155,18 +156,21 @@ typedef GPB_ENUM(ST_FieldNumber) {
   ST_FieldNumber_GoogleServiceState = 68,
   ST_FieldNumber_Timeval1 = 69,
   ST_FieldNumber_SpamInfoVersionSeq = 70,
-  ST_FieldNumber_InitialSeq = 71,
-  ST_FieldNumber_PathMd51 = 72,
-  ST_FieldNumber_PathMd52 = 73,
-  ST_FieldNumber_PathMd53 = 74,
-  ST_FieldNumber_PathMd54 = 75,
-  ST_FieldNumber_Soteruid = 76,
+  ST_FieldNumber_TbVersionCrc = 71,
+  ST_FieldNumber_SystemFrameworkMd5 = 72,
+  ST_FieldNumber_SystemFrameworkArmMd5 = 73,
+  ST_FieldNumber_SystemFrameworkArm64Md5 = 74,
+  ST_FieldNumber_SystemBinMd5 = 75,
+  ST_FieldNumber_SoterUid = 76,
   ST_FieldNumber_WidevineDeviceId = 77,
   ST_FieldNumber_StorageId = 78,
   ST_FieldNumber_Oaid = 79,
-  ST_FieldNumber_UnkonwTag80 = 80,
-  ST_FieldNumber_Timeval2 = 81,
-  ST_FieldNumber_FileModifiedInframework = 82,
+  ST_FieldNumber_UnknownTag80 = 80,
+  ST_FieldNumber_TimeVal2 = 81,
+  ST_FieldNumber_FilesModifiedInFrameworkArray = 82,
+  ST_FieldNumber_WeChatInstallTime = 83,
+  ST_FieldNumber_SoftConfig = 84,
+  ST_FieldNumber_SoftData = 85,
 };
 
 @interface ST : GPBMessage
@@ -319,10 +323,10 @@ typedef GPB_ENUM(ST_FieldNumber) {
 /** The number of items in @c installedPackageInfosArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger installedPackageInfosArray_Count;
 
-/** EnabledAccessibilityServiceIds */
 @property(nonatomic, readwrite) uint32_t accessibilityClickCount;
 
 @property(nonatomic, readwrite) BOOL hasAccessibilityClickCount;
+/** APK 前 102400 字节MD5 */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *apkleadingMd5;
 /** Test to see if @c apkleadingMd5 has been set. */
 @property(nonatomic, readwrite) BOOL hasApkleadingMd5;
@@ -412,7 +416,7 @@ typedef GPB_ENUM(ST_FieldNumber) {
 /** Test to see if @c kernelReleaseNumber has been set. */
 @property(nonatomic, readwrite) BOOL hasKernelReleaseNumber;
 
-/** 66: 0 //sys/class/android_usb/android0/state  usb连上为2，未连接为1,    c8方法false时为0 */
+/** 66: 0 //sys/class/android_usb/android0/state  usb连上为2，未连接为1, c8方法false时为0。 【0：啥都没连，1是充电。可选择0、1都算比较真实。】 */
 @property(nonatomic, readwrite) uint32_t usbState;
 
 @property(nonatomic, readwrite) BOOL hasUsbState;
@@ -435,40 +439,40 @@ typedef GPB_ENUM(ST_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t timeval1;
 
 @property(nonatomic, readwrite) BOOL hasTimeval1;
-/** 70: 3 // 708 709 7010 分别对应 123 */
+/** 708 、709 、【7010｜7011】 分别对应 123。 7012是4. */
 @property(nonatomic, readwrite) uint32_t spamInfoVersionSeq;
 
 @property(nonatomic, readwrite) BOOL hasSpamInfoVersionSeq;
-/** 71: 556011293                 //   可能与资源下载有关，不做pm clear 数据不会变化 */
-@property(nonatomic, readwrite) uint32_t initialSeq;
+/** 71: 556011293 //   可能与资源下载有关，不做pm clear 数据不会变化 不清楚，需另看。？ */
+@property(nonatomic, readwrite) uint32_t tbVersionCrc;
 
-@property(nonatomic, readwrite) BOOL hasInitialSeq;
-/** 72: "a8de294f819234ee723148f6f3d003a6"//根据目录生成的md5 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *pathMd51;
-/** Test to see if @c pathMd51 has been set. */
-@property(nonatomic, readwrite) BOOL hasPathMd51;
+@property(nonatomic, readwrite) BOOL hasTbVersionCrc;
+/** 72: "a8de294f819234ee723148f6f3d003a6"//根据目录生成的md5 /system/framework/ */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *systemFrameworkMd5;
+/** Test to see if @c systemFrameworkMd5 has been set. */
+@property(nonatomic, readwrite) BOOL hasSystemFrameworkMd5;
 
-/** 73: "a7cae61554b3c3596c073782ac5d69d1"//根据目录生成的md5 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *pathMd52;
-/** Test to see if @c pathMd52 has been set. */
-@property(nonatomic, readwrite) BOOL hasPathMd52;
+/** 73: "a7cae61554b3c3596c073782ac5d69d1"//根据目录生成的md5 /system/framework/arm */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *systemFrameworkArmMd5;
+/** Test to see if @c systemFrameworkArmMd5 has been set. */
+@property(nonatomic, readwrite) BOOL hasSystemFrameworkArmMd5;
 
-/** 74: "0d922e4d36ecfdce95da6257798320ab"//根据目录生成的md5 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *pathMd53;
-/** Test to see if @c pathMd53 has been set. */
-@property(nonatomic, readwrite) BOOL hasPathMd53;
+/** 74: "0d922e4d36ecfdce95da6257798320ab"//根据目录生成的md5 /system/framework/arm64 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *systemFrameworkArm64Md5;
+/** Test to see if @c systemFrameworkArm64Md5 has been set. */
+@property(nonatomic, readwrite) BOOL hasSystemFrameworkArm64Md5;
 
-/** 75: "22bb890943c1c673ccc5246b8a888819"//根据目录生成的md5 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *pathMd54;
-/** Test to see if @c pathMd54 has been set. */
-@property(nonatomic, readwrite) BOOL hasPathMd54;
+/** 75: "22bb890943c1c673ccc5246b8a888819"//根据目录生成的md5 /system/bin */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *systemBinMd5;
+/** Test to see if @c systemBinMd5 has been set. */
+@property(nonatomic, readwrite) BOOL hasSystemBinMd5;
 
-/** 76: "" //soteruid */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *soteruid;
-/** Test to see if @c soteruid has been set. */
-@property(nonatomic, readwrite) BOOL hasSoteruid;
+/** 76: "" //soteruid 暂时写 "" 字符串。 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *soterUid;
+/** Test to see if @c soterUid has been set. */
+@property(nonatomic, readwrite) BOOL hasSoterUid;
 
-/** 77: "304334a25f546b42df65319978c5dbd2f8b42a3899f0973b0813735dd71795ad"  //java/util/UUID mediaDrm  getPropertyByteArray      => WidevineDeviceID */
+/** 77: "304334a25f546b42df65319978c5dbd2f8b42a3899f0973b0813735dd71795ad"  //java/util/UUID mediaDrm  getPropertyByteArray      => WidevineDeviceID //皖南会生成。 */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *widevineDeviceId;
 /** Test to see if @c widevineDeviceId has been set. */
 @property(nonatomic, readwrite) BOOL hasWidevineDeviceId;
@@ -491,17 +495,30 @@ typedef GPB_ENUM(ST_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasOaid;
 
 /** 80: 0 // 一直为0 不知道是啥 */
-@property(nonatomic, readwrite) uint32_t unkonwTag80;
+@property(nonatomic, readwrite) uint32_t unknownTag80;
 
-@property(nonatomic, readwrite) BOOL hasUnkonwTag80;
+@property(nonatomic, readwrite) BOOL hasUnknownTag80;
 /** 81: 242379 // 时间相关struct timeval*  中微秒数值      gettimeofday获取 */
-@property(nonatomic, readwrite) uint32_t timeval2;
+@property(nonatomic, readwrite) uint32_t timeVal2;
 
-@property(nonatomic, readwrite) BOOL hasTimeval2;
-/** 82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断 */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *fileModifiedInframework;
-/** Test to see if @c fileModifiedInframework has been set. */
-@property(nonatomic, readwrite) BOOL hasFileModifiedInframework;
+@property(nonatomic, readwrite) BOOL hasTimeVal2;
+/** 82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断。不该有此值，只有非法时才设置。 */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *filesModifiedInFrameworkArray;
+/** The number of items in @c filesModifiedInFrameworkArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger filesModifiedInFrameworkArray_Count;
+
+/** 微信安装时间。 // 7012到此 */
+@property(nonatomic, readwrite) uint32_t weChatInstallTime;
+
+@property(nonatomic, readwrite) BOOL hasWeChatInstallTime;
+/** 7013 开始 */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *softConfig;
+/** Test to see if @c softConfig has been set. */
+@property(nonatomic, readwrite) BOOL hasSoftConfig;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *softData;
+/** Test to see if @c softData has been set. */
+@property(nonatomic, readwrite) BOOL hasSoftData;
 
 @end
 
@@ -538,16 +555,16 @@ typedef GPB_ENUM(WCSTF_FieldNumber) {
 
 @interface WCSTF : GPBMessage
 
-@property(nonatomic, readwrite) uint32_t st;
+@property(nonatomic, readwrite) uint64_t st;
 
 @property(nonatomic, readwrite) BOOL hasSt;
 @property(nonatomic, readwrite) uint32_t et;
 
 @property(nonatomic, readwrite) BOOL hasEt;
-@property(nonatomic, readwrite) uint32_t cc;
+@property(nonatomic, readwrite) uint64_t cc;
 
 @property(nonatomic, readwrite) BOOL hasCc;
-@property(nonatomic, readwrite, strong, null_resettable) GPBUInt32Array *ctArray;
+@property(nonatomic, readwrite, strong, null_resettable) GPBUInt64Array *ctArray;
 /** The number of items in @c ctArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger ctArray_Count;
 
@@ -648,6 +665,7 @@ typedef GPB_ENUM(FPKeyVals_FieldNumber) {
 
 typedef GPB_ENUM(FPDevice_FieldNumber) {
   FPDevice_FieldNumber_Keyvals = 1,
+  FPDevice_FieldNumber_Unknown2 = 2,
 };
 
 @interface FPDevice : GPBMessage
@@ -655,6 +673,11 @@ typedef GPB_ENUM(FPDevice_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) FPKeyVals *keyvals;
 /** Test to see if @c keyvals has been set. */
 @property(nonatomic, readwrite) BOOL hasKeyvals;
+
+/** 未知 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *unknown2;
+/** Test to see if @c unknown2 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnknown2;
 
 @end
 
@@ -702,17 +725,17 @@ typedef GPB_ENUM(SpamInfoEncrypedResult_FieldNumber) {
 #pragma mark - SpamBuff
 
 typedef GPB_ENUM(SpamBuff_FieldNumber) {
-  SpamBuff_FieldNumber_Unknowntag2 = 2,
+  SpamBuff_FieldNumber_Soft = 2,
   SpamBuff_FieldNumber_Devicetoken = 3,
   SpamBuff_FieldNumber_Timestamp = 4,
 };
 
 @interface SpamBuff : GPBMessage
 
-/** 还不清楚这个数据是干啥用的，下次刷新token会用吗 */
-@property(nonatomic, readwrite, strong, null_resettable) SpamBuff_UnknownTag2 *unknowntag2;
-/** Test to see if @c unknowntag2 has been set. */
-@property(nonatomic, readwrite) BOOL hasUnknowntag2;
+/** 还不清楚这个数据是干啥用的，下次刷新token会用吗? 是的，用来计算类似于md5之类的那个东西。 */
+@property(nonatomic, readwrite, strong, null_resettable) SpamBuff_Soft *soft;
+/** Test to see if @c soft has been set. */
+@property(nonatomic, readwrite) BOOL hasSoft;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *devicetoken;
 /** Test to see if @c devicetoken has been set. */
@@ -723,22 +746,22 @@ typedef GPB_ENUM(SpamBuff_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasTimestamp;
 @end
 
-#pragma mark - SpamBuff_UnknownTag2
+#pragma mark - SpamBuff_Soft
 
-typedef GPB_ENUM(SpamBuff_UnknownTag2_FieldNumber) {
-  SpamBuff_UnknownTag2_FieldNumber_Unknowntag1 = 1,
-  SpamBuff_UnknownTag2_FieldNumber_Unknowntag2 = 2,
+typedef GPB_ENUM(SpamBuff_Soft_FieldNumber) {
+  SpamBuff_Soft_FieldNumber_SoftData = 1,
+  SpamBuff_Soft_FieldNumber_SoftConfig = 2,
 };
 
-@interface SpamBuff_UnknownTag2 : GPBMessage
+@interface SpamBuff_Soft : GPBMessage
 
-@property(nonatomic, readwrite, copy, null_resettable) NSData *unknowntag1;
-/** Test to see if @c unknowntag1 has been set. */
-@property(nonatomic, readwrite) BOOL hasUnknowntag1;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *softData;
+/** Test to see if @c softData has been set. */
+@property(nonatomic, readwrite) BOOL hasSoftData;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSData *unknowntag2;
-/** Test to see if @c unknowntag2 has been set. */
-@property(nonatomic, readwrite) BOOL hasUnknowntag2;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *softConfig;
+/** Test to see if @c softConfig has been set. */
+@property(nonatomic, readwrite) BOOL hasSoftConfig;
 
 @end
 
@@ -788,6 +811,47 @@ typedef GPB_ENUM(DeviceToken_Token_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *devicetoken;
 /** Test to see if @c devicetoken has been set. */
 @property(nonatomic, readwrite) BOOL hasDevicetoken;
+
+@end
+
+#pragma mark - ClientSpamInfo_IOS
+
+typedef GPB_ENUM(ClientSpamInfo_IOS_FieldNumber) {
+  ClientSpamInfo_IOS_FieldNumber_Ccdcc = 1,
+  ClientSpamInfo_IOS_FieldNumber_Ccdts = 2,
+  ClientSpamInfo_IOS_FieldNumber_Content = 3,
+};
+
+@interface ClientSpamInfo_IOS : GPBMessage
+
+@property(nonatomic, readwrite) uint32_t ccdcc;
+
+@property(nonatomic, readwrite) BOOL hasCcdcc;
+@property(nonatomic, readwrite) uint32_t ccdts;
+
+@property(nonatomic, readwrite) BOOL hasCcdts;
+@property(nonatomic, readwrite, strong, null_resettable) ClientSpamInfo_IOS_Content *content;
+/** Test to see if @c content has been set. */
+@property(nonatomic, readwrite) BOOL hasContent;
+
+@end
+
+#pragma mark - ClientSpamInfo_IOS_Content
+
+typedef GPB_ENUM(ClientSpamInfo_IOS_Content_FieldNumber) {
+  ClientSpamInfo_IOS_Content_FieldNumber_Tag3 = 3,
+  ClientSpamInfo_IOS_Content_FieldNumber_Tag51 = 11,
+};
+
+@interface ClientSpamInfo_IOS_Content : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag3;
+/** Test to see if @c tag3 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag3;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag51;
+/** Test to see if @c tag51 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag51;
 
 @end
 

@@ -209,18 +209,21 @@ typedef struct InstalledPackageInfo__storage_ {
 @dynamic hasGoogleServiceState, googleServiceState;
 @dynamic hasTimeval1, timeval1;
 @dynamic hasSpamInfoVersionSeq, spamInfoVersionSeq;
-@dynamic hasInitialSeq, initialSeq;
-@dynamic hasPathMd51, pathMd51;
-@dynamic hasPathMd52, pathMd52;
-@dynamic hasPathMd53, pathMd53;
-@dynamic hasPathMd54, pathMd54;
-@dynamic hasSoteruid, soteruid;
+@dynamic hasTbVersionCrc, tbVersionCrc;
+@dynamic hasSystemFrameworkMd5, systemFrameworkMd5;
+@dynamic hasSystemFrameworkArmMd5, systemFrameworkArmMd5;
+@dynamic hasSystemFrameworkArm64Md5, systemFrameworkArm64Md5;
+@dynamic hasSystemBinMd5, systemBinMd5;
+@dynamic hasSoterUid, soterUid;
 @dynamic hasWidevineDeviceId, widevineDeviceId;
 @dynamic hasStorageId, storageId;
 @dynamic hasOaid, oaid;
-@dynamic hasUnkonwTag80, unkonwTag80;
-@dynamic hasTimeval2, timeval2;
-@dynamic hasFileModifiedInframework, fileModifiedInframework;
+@dynamic hasUnknownTag80, unknownTag80;
+@dynamic hasTimeVal2, timeVal2;
+@dynamic filesModifiedInFrameworkArray, filesModifiedInFrameworkArray_Count;
+@dynamic hasWeChatInstallTime, weChatInstallTime;
+@dynamic hasSoftConfig, softConfig;
+@dynamic hasSoftData, softData;
 
 typedef struct ST__storage_ {
   uint32_t _has_storage_[3];
@@ -245,9 +248,10 @@ typedef struct ST__storage_ {
   uint32_t googleServiceState;
   uint32_t timeval1;
   uint32_t spamInfoVersionSeq;
-  uint32_t initialSeq;
-  uint32_t unkonwTag80;
-  uint32_t timeval2;
+  uint32_t tbVersionCrc;
+  uint32_t unknownTag80;
+  uint32_t timeVal2;
+  uint32_t weChatInstallTime;
   NSString *pkgHash3;
   NSString *ratioFwVer;
   NSString *osRelVer;
@@ -296,15 +300,17 @@ typedef struct ST__storage_ {
   NSString *stid;
   NSString *kernelReleaseNumber;
   NSString *apkSignatureMd5;
-  NSString *pathMd51;
-  NSString *pathMd52;
-  NSString *pathMd53;
-  NSString *pathMd54;
-  NSString *soteruid;
+  NSString *systemFrameworkMd5;
+  NSString *systemFrameworkArmMd5;
+  NSString *systemFrameworkArm64Md5;
+  NSString *systemBinMd5;
+  NSString *soterUid;
   NSString *widevineDeviceId;
   NSString *storageId;
   NSString *oaid;
-  NSString *fileModifiedInframework;
+  NSMutableArray *filesModifiedInFrameworkArray;
+  NSData *softConfig;
+  NSData *softData;
 } ST__storage_;
 
 // This method is threadsafe because it is initially called
@@ -935,57 +941,57 @@ typedef struct ST__storage_ {
         .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "initialSeq",
+        .name = "tbVersionCrc",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_InitialSeq,
+        .number = ST_FieldNumber_TbVersionCrc,
         .hasIndex = 67,
-        .offset = (uint32_t)offsetof(ST__storage_, initialSeq),
+        .offset = (uint32_t)offsetof(ST__storage_, tbVersionCrc),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "pathMd51",
+        .name = "systemFrameworkMd5",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_PathMd51,
+        .number = ST_FieldNumber_SystemFrameworkMd5,
         .hasIndex = 68,
-        .offset = (uint32_t)offsetof(ST__storage_, pathMd51),
+        .offset = (uint32_t)offsetof(ST__storage_, systemFrameworkMd5),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "pathMd52",
+        .name = "systemFrameworkArmMd5",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_PathMd52,
+        .number = ST_FieldNumber_SystemFrameworkArmMd5,
         .hasIndex = 69,
-        .offset = (uint32_t)offsetof(ST__storage_, pathMd52),
+        .offset = (uint32_t)offsetof(ST__storage_, systemFrameworkArmMd5),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "pathMd53",
+        .name = "systemFrameworkArm64Md5",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_PathMd53,
+        .number = ST_FieldNumber_SystemFrameworkArm64Md5,
         .hasIndex = 70,
-        .offset = (uint32_t)offsetof(ST__storage_, pathMd53),
+        .offset = (uint32_t)offsetof(ST__storage_, systemFrameworkArm64Md5),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "pathMd54",
+        .name = "systemBinMd5",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_PathMd54,
+        .number = ST_FieldNumber_SystemBinMd5,
         .hasIndex = 71,
-        .offset = (uint32_t)offsetof(ST__storage_, pathMd54),
+        .offset = (uint32_t)offsetof(ST__storage_, systemBinMd5),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "soteruid",
+        .name = "soterUid",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_Soteruid,
+        .number = ST_FieldNumber_SoterUid,
         .hasIndex = 72,
-        .offset = (uint32_t)offsetof(ST__storage_, soteruid),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(ST__storage_, soterUid),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
@@ -1016,31 +1022,58 @@ typedef struct ST__storage_ {
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "unkonwTag80",
+        .name = "unknownTag80",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_UnkonwTag80,
+        .number = ST_FieldNumber_UnknownTag80,
         .hasIndex = 76,
-        .offset = (uint32_t)offsetof(ST__storage_, unkonwTag80),
+        .offset = (uint32_t)offsetof(ST__storage_, unknownTag80),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "timeval2",
+        .name = "timeVal2",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_Timeval2,
+        .number = ST_FieldNumber_TimeVal2,
         .hasIndex = 77,
-        .offset = (uint32_t)offsetof(ST__storage_, timeval2),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(ST__storage_, timeVal2),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "fileModifiedInframework",
+        .name = "filesModifiedInFrameworkArray",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_FileModifiedInframework,
-        .hasIndex = 78,
-        .offset = (uint32_t)offsetof(ST__storage_, fileModifiedInframework),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .number = ST_FieldNumber_FilesModifiedInFrameworkArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(ST__storage_, filesModifiedInFrameworkArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "weChatInstallTime",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_WeChatInstallTime,
+        .hasIndex = 78,
+        .offset = (uint32_t)offsetof(ST__storage_, weChatInstallTime),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "softConfig",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_SoftConfig,
+        .hasIndex = 79,
+        .offset = (uint32_t)offsetof(ST__storage_, softConfig),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "softData",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_SoftData,
+        .hasIndex = 80,
+        .offset = (uint32_t)offsetof(ST__storage_, softData),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -1053,14 +1086,15 @@ typedef struct ST__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "N\001M\000\002H\000\003N\000\004H\000\005J\000\006H\000\007d\000\010HA\000\tK\000\nJ\000\013L\000\014DA\000\r"
+        "S\001M\000\002H\000\003N\000\004H\000\005J\000\006H\000\007d\000\010HA\000\tK\000\nJ\000\013L\000\014DA\000\r"
         "K\000\016Eb\000\017d\000\020e\000\021F\000\022d\003\000\023FA\000\024J\000\025O\000\026J\000\027K\000\030FA\000\031"
         "L\000\032L\000\033H\000\034G\000\035I\000\036I\000\037M\000 G\000!G\000\"H\000#W\000$\000MMProc"
         "LoadedFiles\000%Q\000&G\000(\000InstalledPackageInfo"
         "s\000)W\000*d\007B\000+M\000,c\002\000-GA\000.H\000/K\0000O\0001Ie\003\0002J\0003S"
         "\0004S\0005Cc\014\0006Q\0007[\0008d\016\0009d\021\000:Cc\003\000;Cc\010\000<b\004\000=DE"
-        "\000>b\005\000\?b\005\000@d\000AS\000BH\000C\017\000D\022\000F\022\000G\n\000H\010\000I\010\000J\010\000K"
-        "\010\000MOA\000N\010A\000Od\000P\013\000R\027\000";
+        "\000>b\005\000\?b\005\000@d\000AS\000BH\000CO\000DR\000FR\000GL\000HPB\000ISB\000JU"
+        "B\000KJB\000LH\000MOA\000NHA\000Od\000PL\000QH\000R\000FilesModifie"
+        "dInFramework\000SQ\000TJ\000UH\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG
@@ -1151,10 +1185,10 @@ typedef struct ClientSpamInfo__storage_ {
 
 typedef struct WCSTF__storage_ {
   uint32_t _has_storage_[1];
-  uint32_t st;
   uint32_t et;
-  uint32_t cc;
-  GPBUInt32Array *ctArray;
+  GPBUInt64Array *ctArray;
+  uint64_t st;
+  uint64_t cc;
 } WCSTF__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1170,7 +1204,7 @@ typedef struct WCSTF__storage_ {
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(WCSTF__storage_, st),
         .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeUInt32,
+        .dataType = GPBDataTypeUInt64,
       },
       {
         .name = "et",
@@ -1188,7 +1222,7 @@ typedef struct WCSTF__storage_ {
         .hasIndex = 2,
         .offset = (uint32_t)offsetof(WCSTF__storage_, cc),
         .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeUInt32,
+        .dataType = GPBDataTypeUInt64,
       },
       {
         .name = "ctArray",
@@ -1197,7 +1231,7 @@ typedef struct WCSTF__storage_ {
         .hasIndex = GPBNoHasBit,
         .offset = (uint32_t)offsetof(WCSTF__storage_, ctArray),
         .flags = GPBFieldRepeated,
-        .dataType = GPBDataTypeUInt32,
+        .dataType = GPBDataTypeUInt64,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -1495,10 +1529,12 @@ typedef struct FPKeyVals__storage_ {
 @implementation FPDevice
 
 @dynamic hasKeyvals, keyvals;
+@dynamic hasUnknown2, unknown2;
 
 typedef struct FPDevice__storage_ {
   uint32_t _has_storage_[1];
   FPKeyVals *keyvals;
+  NSString *unknown2;
 } FPDevice__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1515,6 +1551,15 @@ typedef struct FPDevice__storage_ {
         .offset = (uint32_t)offsetof(FPDevice__storage_, keyvals),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "unknown2",
+        .dataTypeSpecific.className = NULL,
+        .number = FPDevice_FieldNumber_Unknown2,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(FPDevice__storage_, unknown2),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -1644,14 +1689,14 @@ typedef struct SpamInfoEncrypedResult__storage_ {
 
 @implementation SpamBuff
 
-@dynamic hasUnknowntag2, unknowntag2;
+@dynamic hasSoft, soft;
 @dynamic hasDevicetoken, devicetoken;
 @dynamic hasTimestamp, timestamp;
 
 typedef struct SpamBuff__storage_ {
   uint32_t _has_storage_[1];
   uint32_t timestamp;
-  SpamBuff_UnknownTag2 *unknowntag2;
+  SpamBuff_Soft *soft;
   NSString *devicetoken;
 } SpamBuff__storage_;
 
@@ -1662,11 +1707,11 @@ typedef struct SpamBuff__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "unknowntag2",
-        .dataTypeSpecific.className = GPBStringifySymbol(SpamBuff_UnknownTag2),
-        .number = SpamBuff_FieldNumber_Unknowntag2,
+        .name = "soft",
+        .dataTypeSpecific.className = GPBStringifySymbol(SpamBuff_Soft),
+        .number = SpamBuff_FieldNumber_Soft,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(SpamBuff__storage_, unknowntag2),
+        .offset = (uint32_t)offsetof(SpamBuff__storage_, soft),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
@@ -1707,18 +1752,18 @@ typedef struct SpamBuff__storage_ {
 
 @end
 
-#pragma mark - SpamBuff_UnknownTag2
+#pragma mark - SpamBuff_Soft
 
-@implementation SpamBuff_UnknownTag2
+@implementation SpamBuff_Soft
 
-@dynamic hasUnknowntag1, unknowntag1;
-@dynamic hasUnknowntag2, unknowntag2;
+@dynamic hasSoftData, softData;
+@dynamic hasSoftConfig, softConfig;
 
-typedef struct SpamBuff_UnknownTag2__storage_ {
+typedef struct SpamBuff_Soft__storage_ {
   uint32_t _has_storage_[1];
-  NSData *unknowntag1;
-  NSData *unknowntag2;
-} SpamBuff_UnknownTag2__storage_;
+  NSData *softData;
+  NSData *softConfig;
+} SpamBuff_Soft__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -1727,31 +1772,31 @@ typedef struct SpamBuff_UnknownTag2__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "unknowntag1",
+        .name = "softData",
         .dataTypeSpecific.className = NULL,
-        .number = SpamBuff_UnknownTag2_FieldNumber_Unknowntag1,
+        .number = SpamBuff_Soft_FieldNumber_SoftData,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(SpamBuff_UnknownTag2__storage_, unknowntag1),
+        .offset = (uint32_t)offsetof(SpamBuff_Soft__storage_, softData),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeBytes,
       },
       {
-        .name = "unknowntag2",
+        .name = "softConfig",
         .dataTypeSpecific.className = NULL,
-        .number = SpamBuff_UnknownTag2_FieldNumber_Unknowntag2,
+        .number = SpamBuff_Soft_FieldNumber_SoftConfig,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(SpamBuff_UnknownTag2__storage_, unknowntag2),
+        .offset = (uint32_t)offsetof(SpamBuff_Soft__storage_, softConfig),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeBytes,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[SpamBuff_UnknownTag2 class]
+        [GPBDescriptor allocDescriptorForClass:[SpamBuff_Soft class]
                                      rootClass:[SafeRoot class]
                                           file:SafeRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(SpamBuff_UnknownTag2__storage_)
+                                   storageSize:sizeof(SpamBuff_Soft__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(SpamBuff)];
     #if defined(DEBUG) && DEBUG
@@ -1900,6 +1945,130 @@ typedef struct DeviceToken_Token__storage_ {
                                    storageSize:sizeof(DeviceToken_Token__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(DeviceToken)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ClientSpamInfo_IOS
+
+@implementation ClientSpamInfo_IOS
+
+@dynamic hasCcdcc, ccdcc;
+@dynamic hasCcdts, ccdts;
+@dynamic hasContent, content;
+
+typedef struct ClientSpamInfo_IOS__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t ccdcc;
+  uint32_t ccdts;
+  ClientSpamInfo_IOS_Content *content;
+} ClientSpamInfo_IOS__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "ccdcc",
+        .dataTypeSpecific.className = NULL,
+        .number = ClientSpamInfo_IOS_FieldNumber_Ccdcc,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ClientSpamInfo_IOS__storage_, ccdcc),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "ccdts",
+        .dataTypeSpecific.className = NULL,
+        .number = ClientSpamInfo_IOS_FieldNumber_Ccdts,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ClientSpamInfo_IOS__storage_, ccdts),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "content",
+        .dataTypeSpecific.className = GPBStringifySymbol(ClientSpamInfo_IOS_Content),
+        .number = ClientSpamInfo_IOS_FieldNumber_Content,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ClientSpamInfo_IOS__storage_, content),
+        .flags = GPBFieldRequired,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ClientSpamInfo_IOS class]
+                                     rootClass:[SafeRoot class]
+                                          file:SafeRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ClientSpamInfo_IOS__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ClientSpamInfo_IOS_Content
+
+@implementation ClientSpamInfo_IOS_Content
+
+@dynamic hasTag3, tag3;
+@dynamic hasTag51, tag51;
+
+typedef struct ClientSpamInfo_IOS_Content__storage_ {
+  uint32_t _has_storage_[1];
+  NSData *tag3;
+  NSData *tag51;
+} ClientSpamInfo_IOS_Content__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "tag3",
+        .dataTypeSpecific.className = NULL,
+        .number = ClientSpamInfo_IOS_Content_FieldNumber_Tag3,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ClientSpamInfo_IOS_Content__storage_, tag3),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag51",
+        .dataTypeSpecific.className = NULL,
+        .number = ClientSpamInfo_IOS_Content_FieldNumber_Tag51,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ClientSpamInfo_IOS_Content__storage_, tag51),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ClientSpamInfo_IOS_Content class]
+                                     rootClass:[SafeRoot class]
+                                          file:SafeRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ClientSpamInfo_IOS_Content__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ClientSpamInfo_IOS)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");
     #endif  // DEBUG
