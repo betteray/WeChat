@@ -54,6 +54,8 @@
     [DBManager clearCookie];
     [DBManager clearAutoAuthKey];
     [DBManager clearSyncKey];
+    
+    [self showHUDWithText:@"Clear Suc! ✅"];
 }
 
 @end
