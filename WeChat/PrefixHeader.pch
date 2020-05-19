@@ -18,7 +18,9 @@
     #import <SDWebImage/UIImageView+WebCache.h>
     #import "NSObject+YYModel.h"
 
+    #import "Base.pbobjc.h"
     #import "MM.pbobjc.h"
+    #import "AndroidOnly.pbobjc.h"
     #import "Safe.pbobjc.h"
 
     #import "UIViewController+ProgressHUB.h"

@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+import "base.proto";
+
+message QueryMidRequest {
+    optional int32 tag1 = 1; // 1
+    optional string json = 2; //
+}
+
+message QueryMidResponse {
+    required  BaseResponse  baseResponse  = 1;
+}
