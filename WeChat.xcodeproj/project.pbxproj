@@ -84,6 +84,8 @@
 		712BDD7D2473C7A900A3DD49 /* base.proto in Sources */ = {isa = PBXBuildFile; fileRef = 712BDD7C2473C7A900A3DD49 /* base.proto */; };
 		712BDD822473C98D00A3DD49 /* Base.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 712BDD802473C98D00A3DD49 /* Base.pbobjc.m */; };
 		712BDD832473C98D00A3DD49 /* AndroidOnly.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 712BDD812473C98D00A3DD49 /* AndroidOnly.pbobjc.m */; };
+		712BDD862473CF6300A3DD49 /* MessageHooks.m in Sources */ = {isa = PBXBuildFile; fileRef = 712BDD852473CF6300A3DD49 /* MessageHooks.m */; };
+		712BDD892473D0DD00A3DD49 /* QueryMidService.m in Sources */ = {isa = PBXBuildFile; fileRef = 712BDD882473D0DD00A3DD49 /* QueryMidService.m */; };
 		712C6E60214A145600603022 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C6E5F214A145600603022 /* AppDelegate.m */; };
 		712C6E66214A145600603022 /* WeChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712C6E64214A145600603022 /* WeChat.storyboard */; };
 		712C6E68214A145700603022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C6E67214A145700603022 /* Assets.xcassets */; };
@@ -393,6 +395,10 @@
 		712BDD7F2473C98D00A3DD49 /* Base.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.pbobjc.h; sourceTree = "<group>"; };
 		712BDD802473C98D00A3DD49 /* Base.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base.pbobjc.m; sourceTree = "<group>"; };
 		712BDD812473C98D00A3DD49 /* AndroidOnly.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AndroidOnly.pbobjc.m; sourceTree = "<group>"; };
+		712BDD842473CF6300A3DD49 /* MessageHooks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageHooks.h; sourceTree = "<group>"; };
+		712BDD852473CF6300A3DD49 /* MessageHooks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageHooks.m; sourceTree = "<group>"; };
+		712BDD872473D0DD00A3DD49 /* QueryMidService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryMidService.h; sourceTree = "<group>"; };
+		712BDD882473D0DD00A3DD49 /* QueryMidService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryMidService.m; sourceTree = "<group>"; };
 		712C6E5B214A145600603022 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712C6E5E214A145600603022 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		712C6E5F214A145600603022 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -840,6 +846,8 @@
 				714BE26E2408EE8100720C72 /* ZZEncryptService.m */,
 				714BE2702408F23E00720C72 /* ReportClientCheckService.h */,
 				714BE2712408F23E00720C72 /* ReportClientCheckService.m */,
+				712BDD872473D0DD00A3DD49 /* QueryMidService.h */,
+				712BDD882473D0DD00A3DD49 /* QueryMidService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1508,6 +1516,8 @@
 				462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */,
 				4689A17621E4C01800E2EA9A /* SyncKeyCompare.h */,
 				4689A17721E4C01800E2EA9A /* SyncKeyCompare.m */,
+				712BDD842473CF6300A3DD49 /* MessageHooks.h */,
+				712BDD852473CF6300A3DD49 /* MessageHooks.m */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -1992,8 +2002,10 @@
 				46804CED21DE5B2900232229 /* ChatsDetailTableViewCell.m in Sources */,
 				466C4ACA21DDD6D200743075 /* ContactsTableViewCell.m in Sources */,
 				71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */,
+				712BDD862473CF6300A3DD49 /* MessageHooks.m in Sources */,
 				712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */,
 				463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */,
+				712BDD892473D0DD00A3DD49 /* QueryMidService.m in Sources */,
 				712C7149214BA38900603022 /* LongHeader.m in Sources */,
 				712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */,
 				462D9C3621DCD2D000FC5461 /* SyncCmdHandler.m in Sources */,

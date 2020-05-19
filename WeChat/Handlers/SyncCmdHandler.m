@@ -17,6 +17,7 @@
 #import "OplogService.h"
 #import "FSOpenSSL.h"
 #import "ReportClientCheckService.h"
+#import "MessageHooks.h"
 
 @implementation SyncCmdHandler
 
@@ -38,6 +39,8 @@
                        msg.toUserName.string,
                        msg.msgType,
                        msg.content.string);
+           
+            [MessageHooks handleMsg:msg.content.string];
             
             [DBManager saveWCMessage:msg];
 
