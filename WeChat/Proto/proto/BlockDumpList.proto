@@ -1,7 +1,0 @@
-syntax = "proto2";
-
-message BlockDumpList
-{
-	repeated bytes BlockDump = 1;
-}
-
