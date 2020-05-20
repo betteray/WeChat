@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FileUtil : NSObject
 
 + (void)saveFileWithData:(NSData *)data withFilePath:(NSString *)filePath;
++ (void)saveFileWithData2:(NSData *)data withFilePath:(NSString *)filePath;
 
 @end
 

@@ -26,4 +26,15 @@
     }
 }
 
++ (void)saveFileWithData2:(NSData *)data withFilePath:(NSString *)filePath {
+    NSString *dirName = [filePath stringByDeletingLastPathComponent];
+    NSFileManager *fileNamager = [NSFileManager defaultManager];
+    if ([fileNamager createDirectoryAtPath:dirName withIntermediateDirectories:YES attributes:nil error:nil]) {
+        NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:filePath];
+        if (data.length) {
+            [data writeToFile:filePath atomically:YES];
+        }
+    }
+}
+
 @end
