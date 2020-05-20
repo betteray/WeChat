@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FPService : NSObject
 
 + (void)initFP;
-+ (void)fpfresh;
++ (void)fpfresh:(BOOL)hasLogin;
 
 @end
 

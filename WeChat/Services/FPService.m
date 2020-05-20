@@ -56,8 +56,9 @@
 }
 
 
-+ (void)fpfresh {
++ (void)fpfresh:(BOOL)hasLogin {
     NSData *fpData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fpdevice-2" ofType:@"bin"]];
+//    NSData *fpData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mi4-fp" ofType:@"bin"]];
     FPDevice *fp = [FPDevice parseFromData:fpData error:nil];
     fp.unknown2 = [ZZEncryptService getFPMd5];
     NSData *encrypedData = [ZZEncryptService get003FromLocalServer:[fp data]];
@@ -74,25 +75,52 @@
     cgiWrap.cgi = 836;
     cgiWrap.cmdId = 0;
     cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/fpfresh";
-    
+    if (!hasLogin) {
+        cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/fpfreshnl";
+        cgiWrap.cgi = 3944;
+    }
     cgiWrap.request = request;
     cgiWrap.responseClass = [FPFreshResponse class];
     cgiWrap.needSetBaseRequest = YES;
     
-    [WeChatClient postRequest:cgiWrap success:^(FPFreshResponse * _Nullable response) {
-        LogVerbose(@"%@", response);
-        if (response.baseResponse.ret == 0) {
-            [self saveFPData:[SpamBuff parseFromData:response.spamBuff error:nil]];
-        }
-    } failure:^(NSError * _Nonnull error) {
+    if (!hasLogin) {
+        BaseRequest *base = [BaseRequest new];
+        NSData *sessionKey = [WeChatClient sharedClient].sessionKey;
+        [base setSessionKey:sessionKey];
+
+        AccountInfo *accountInfo = [DBManager accountInfo];
+        [base setUin:accountInfo.uin];
+        [base setScene:0]; // iMac 1
+        [base setClientVersion:CLIENT_VERSION];
+        [base setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].osType];
+        [base setDeviceId:[[DeviceManager sharedManager] getCurrentDevice].deviceID];
         
-    }];
+        request.baseRequest = base;
+        
+        [WeChatClient secAuth:cgiWrap success:^(FPFreshResponse * _Nullable response) {
+            LogVerbose(@"%@", response);
+            if (response.baseResponse.ret == 0) {
+                [self saveFPData:[SpamBuff parseFromData:response.spamBuff error:nil]];
+            }
+        } failure:^(NSError * _Nonnull error) {
+            
+        }];
+    } else {
+        [WeChatClient postRequest:cgiWrap success:^(FPFreshResponse * _Nullable response) {
+            LogVerbose(@"%@", response);
+            if (response.baseResponse.ret == 0) {
+                [self saveFPData:[SpamBuff parseFromData:response.spamBuff error:nil]];
+            }
+        } failure:^(NSError * _Nonnull error) {
+            
+        }];
+    }
 }
 
 + (void)saveFPData:(SpamBuff *)spambuff {
-    [FileUtil saveFileWithData:[spambuff.devicetoken dataUsingEncoding:NSUTF8StringEncoding] withFilePath:DEVICE_TOKEN_PATH];
-    [FileUtil saveFileWithData:spambuff.soft.softConfig withFilePath:DEVICE_CONFIG_PATH];
-    [FileUtil saveFileWithData:spambuff.soft.softData withFilePath:DEVICE_DATA_PATH];
+    [FileUtil saveFileWithData2:[spambuff.devicetoken dataUsingEncoding:NSUTF8StringEncoding] withFilePath:DEVICE_TOKEN_PATH];
+    [FileUtil saveFileWithData2:spambuff.soft.softConfig withFilePath:DEVICE_CONFIG_PATH];
+    [FileUtil saveFileWithData2:spambuff.soft.softData withFilePath:DEVICE_DATA_PATH];
     LogVerbose(@"SaveFPData: %@", spambuff);
 }
 
