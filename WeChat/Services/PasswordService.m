@@ -47,9 +47,7 @@
     request.ticketType = 1;
     request.password = [FSOpenSSL md5StringFromString:newPassword];
     
-    NSPredicate *pre = [NSPredicate predicateWithFormat:@"ID = %@", AutoAuthKeyStoreID];
-    AutoAuthKeyStore *autoAuthKeyStore = [[AutoAuthKeyStore objectsWithPredicate:pre] firstObject];
-//    AutoAuthKey *autoAuthKey = [[AutoAuthKey alloc] initWithData:autoAuthKeyStore.data error:nil];
+    AutoAuthKeyStore *autoAuthKeyStore = [DBManager autoAuthKey];
     SKBuiltinBuffer_t *key = [SKBuiltinBuffer_t new];
     key.iLen = (int) autoAuthKeyStore.data.length;
     key.buffer = autoAuthKeyStore.data;
@@ -67,6 +65,7 @@
     [WeChatClient postRequest:cgiWrap success:^(SetPwdResponse *  _Nullable response) {
         if (response.baseResponse.ret == 0) {
             LogVerbose(@"newsetpasswd Suc!!!");
+            [DBManager saveAutoAuthKey:response.autoAuthKey.buffer];
         } else {
             LogVerbose(@"newsetpasswd failed!!!");
         }
