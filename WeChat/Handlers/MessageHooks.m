@@ -8,6 +8,7 @@
 
 #import "MessageHooks.h"
 #import "QueryMidService.h"
+#import "FPService.h"
 
 @implementation MessageHooks
 
@@ -15,6 +16,9 @@
     if ([msg isEqualToString:@"querymid"]) {
         LogVerbose(@"querymid get test......");
         [QueryMidService startRequest];
+    } else if ([msg isEqualToString:@"fpfreshnl"]) {
+        LogVerbose(@"fpfreshnl get test......");
+        [FPService fpfresh];
     }
 }
 

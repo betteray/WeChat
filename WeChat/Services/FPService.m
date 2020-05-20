@@ -40,22 +40,60 @@
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cgi = 3789;
     cgiWrap.cmdId = 0;
-    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/fpinitnl";
+    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/fpinitnl"; //  nl == nologin ?
     
     cgiWrap.request = request;
     cgiWrap.responseClass = [FPInitResponse class];
     cgiWrap.needSetBaseRequest = NO;
     
     [WeChatClient secAuth:cgiWrap success:^(FPInitResponse * _Nullable response) {
-        LogVerbose(@"%@", response);
-        //response.baseResponse.ret // -29: 03加密第5个int值给不对； -70: 给的03加密数据不对; 10000:
         if (response.baseResponse.ret == 0) {
-            SpamBuff *spambuff = [SpamBuff parseFromData:response.spamBuff error:nil];
-            [FileUtil saveFileWithData:[spambuff.devicetoken dataUsingEncoding:NSUTF8StringEncoding] withFilePath:DEVICE_TOKEN_PATH];
+            [self saveFPData:[SpamBuff parseFromData:response.spamBuff error:nil]];
         }
     } failure:^(NSError * _Nonnull error) {
         
     }];
+}
+
+
++ (void)fpfresh {
+    NSData *fpData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fpdevice-2" ofType:@"bin"]];
+    FPDevice *fp = [FPDevice parseFromData:fpData error:nil];
+    fp.unknown2 = [ZZEncryptService getFPMd5];
+    NSData *encrypedData = [ZZEncryptService get003FromLocalServer:[fp data]];
+    
+    SpamInfoEncrypedResult *result = [SpamInfoEncrypedResult parseFromData:encrypedData error:nil];
+    result.timestamp = (int32_t)[[NSDate date] timeIntervalSince1970];
+    result.tag5 = 5;
+    result.tag6 = 0;
+    
+    FPFreshRequest *request = [FPFreshRequest new];
+    request.spamBuff = [result data];
+
+    CgiWrap *cgiWrap = [CgiWrap new];
+    cgiWrap.cgi = 836;
+    cgiWrap.cmdId = 0;
+    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/fpfresh";
+    
+    cgiWrap.request = request;
+    cgiWrap.responseClass = [FPFreshResponse class];
+    cgiWrap.needSetBaseRequest = YES;
+    
+    [WeChatClient postRequest:cgiWrap success:^(FPFreshResponse * _Nullable response) {
+        LogVerbose(@"%@", response);
+        if (response.baseResponse.ret == 0) {
+            [self saveFPData:[SpamBuff parseFromData:response.spamBuff error:nil]];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
++ (void)saveFPData:(SpamBuff *)spambuff {
+    [FileUtil saveFileWithData:[spambuff.devicetoken dataUsingEncoding:NSUTF8StringEncoding] withFilePath:DEVICE_TOKEN_PATH];
+    [FileUtil saveFileWithData:spambuff.soft.softConfig withFilePath:DEVICE_CONFIG_PATH];
+    [FileUtil saveFileWithData:spambuff.soft.softData withFilePath:DEVICE_DATA_PATH];
+    LogVerbose(@"SaveFPData: %@", spambuff);
 }
 
 @end

@@ -180,6 +180,7 @@
 		71B1AA0623C60B0D0065FE96 /* newreportidkey.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1AA0523C60B0D0065FE96 /* newreportidkey.bin */; };
 		71B1AA0823C6CC910065FE96 /* newreportkvcomm-resp.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1AA0723C6CC900065FE96 /* newreportkvcomm-resp.bin */; };
 		71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* MeViewController.m */; };
+		71D13DFA2475061800508B51 /* cgi-7012.json in Resources */ = {isa = PBXBuildFile; fileRef = 71D13DF72475061800508B51 /* cgi-7012.json */; };
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
 		71D593012155247C00DFEBC8 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D593002155247C00DFEBC8 /* NSData+AES.m */; };
 		71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D5932F2158AC4900DFEBC8 /* Varint128.m */; };
@@ -651,6 +652,7 @@
 		71B1AA0523C60B0D0065FE96 /* newreportidkey.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = newreportidkey.bin; sourceTree = "<group>"; };
 		71B1AA0723C6CC900065FE96 /* newreportkvcomm-resp.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "newreportkvcomm-resp.bin"; sourceTree = "<group>"; };
 		71C9CA5321C4DC1D006C4DDD /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		71D13DF72475061800508B51 /* cgi-7012.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cgi-7012.json"; sourceTree = "<group>"; };
 		71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUB.h"; sourceTree = "<group>"; };
 		71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUB.m"; sourceTree = "<group>"; };
 		71D592FF2155247C00DFEBC8 /* NSData+AES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
@@ -1556,18 +1558,19 @@
 		71E48516240533BA0030FF0B /* versions */ = {
 			isa = PBXGroup;
 			children = (
-				718E556724617BB700D94D93 /* mm_17000c21.proto */,
-				712C6F19214A6A5800603022 /* PROTO_README.md */,
-				460CDE4F220088CE0075F3E5 /* cgi.json */,
 				7154EDD323B61831008927B9 /* cgi-709.json */,
-				7168F91623B0F65B00DBB3A6 /* mm_dump_6523.proto */,
+				71D13DF72475061800508B51 /* cgi-7012.json */,
+				460CDE4F220088CE0075F3E5 /* cgi.json */,
+				71E485052403B68E0030FF0B /* mm_17000b21.proto */,
+				718E556724617BB700D94D93 /* mm_17000c21.proto */,
 				7168F91423B0F51C00DBB3A6 /* mm_dump_660.proto */,
 				7168F91223B0F3AF00DBB3A6 /* mm_dump_666.proto */,
 				7168F91123B0F0F500DBB3A6 /* mm_dump_705.proto */,
 				7168F90C23B0C4D900DBB3A6 /* mm_dump_707.proto */,
 				7168F90923B0B02F00DBB3A6 /* mm_dump_708.proto */,
 				7168F90823B0ACE000DBB3A6 /* mm_dump_709.proto */,
-				71E485052403B68E0030FF0B /* mm_17000b21.proto */,
+				7168F91623B0F65B00DBB3A6 /* mm_dump_6523.proto */,
+				712C6F19214A6A5800603022 /* PROTO_README.md */,
 			);
 			path = versions;
 			sourceTree = "<group>";
@@ -1796,6 +1799,7 @@
 				7108E1EA2412607900FD1028 /* 1583490613835_cgi-bin_micromsg-bin_bindopmobileforreg.bin in Resources */,
 				71E4851824053EC30030FF0B /* fp.bin in Resources */,
 				7108E1F02412608700FD1028 /* 1583490661463-145.bin in Resources */,
+				71D13DFA2475061800508B51 /* cgi-7012.json in Resources */,
 				71B1AA0423C5D49D0065FE96 /* newreportkvcomm.bin in Resources */,
 				71B1A9F923C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-18-45-25.bin in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,

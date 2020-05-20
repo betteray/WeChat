@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSData *)get003FromLocalServer:(id)protoOrXml;
 
++ (NSString *)getFPMd5;
+
 @end
 
 NS_ASSUME_NONNULL_END
