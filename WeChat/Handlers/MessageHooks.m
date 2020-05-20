@@ -18,7 +18,7 @@
         [QueryMidService startRequest];
     } else if ([msg isEqualToString:@"fpfreshnl"]) {
         LogVerbose(@"fpfreshnl get test......");
-        [FPService fpfresh];
+        [FPService fpfresh:YES];
     }
 }
 

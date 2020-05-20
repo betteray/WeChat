@@ -45,6 +45,7 @@
    
     
     [FPService initFP];
+//    [FPService fpfresh:NO];
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     [self autoAuthIfCould];
