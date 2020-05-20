@@ -154,6 +154,7 @@
 		716A93C2239A2CA200A0C9DC /* GetCDNDnsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93C1239A2CA200A0C9DC /* GetCDNDnsService.m */; };
 		716A93D4239AA2C200A0C9DC /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93D3239AA2C200A0C9DC /* DBManager.m */; };
 		716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */; };
+		71776AF5247558AC0069D616 /* PasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71776AF4247558AC0069D616 /* PasswordService.m */; };
 		717B97192436037B003171B9 /* 1586344962-st-1452.bin in Resources */ = {isa = PBXBuildFile; fileRef = 717B97162436037B003171B9 /* 1586344962-st-1452.bin */; };
 		71808C0A239DFCD0005C3BDE /* CdnSnsUploadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 71808C09239DFCD0005C3BDE /* CdnSnsUploadTask.m */; };
 		71808C0E239E0619005C3BDE /* pic_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71808C0B239E0619005C3BDE /* pic_3.jpg */; };
@@ -621,6 +622,8 @@
 		716A93D3239AA2C200A0C9DC /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		716AAE4D214FC8C5006BCFB2 /* NSData+CompressAndEncypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CompressAndEncypt.h"; sourceTree = "<group>"; };
 		716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CompressAndEncypt.m"; sourceTree = "<group>"; };
+		71776AF3247558AC0069D616 /* PasswordService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordService.h; sourceTree = "<group>"; };
+		71776AF4247558AC0069D616 /* PasswordService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordService.m; sourceTree = "<group>"; };
 		717B97162436037B003171B9 /* 1586344962-st-1452.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1586344962-st-1452.bin"; sourceTree = "<group>"; };
 		71808C08239DFCD0005C3BDE /* CdnSnsUploadTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnSnsUploadTask.h; sourceTree = "<group>"; };
 		71808C09239DFCD0005C3BDE /* CdnSnsUploadTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CdnSnsUploadTask.m; sourceTree = "<group>"; };
@@ -850,6 +853,8 @@
 				714BE2712408F23E00720C72 /* ReportClientCheckService.m */,
 				712BDD872473D0DD00A3DD49 /* QueryMidService.h */,
 				712BDD882473D0DD00A3DD49 /* QueryMidService.m */,
+				71776AF3247558AC0069D616 /* PasswordService.h */,
+				71776AF4247558AC0069D616 /* PasswordService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2017,6 +2022,7 @@
 				714E35F1235806CA0046F7D8 /* ReportUserInfo.m in Sources */,
 				71848F272150CABD00DB669E /* NSData+Compression.m in Sources */,
 				7154D5162196B721005064C4 /* HexDump.m in Sources */,
+				71776AF5247558AC0069D616 /* PasswordService.m in Sources */,
 				464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */,
 				46804CEA21DE5B1800232229 /* ChatsTableViewCell.m in Sources */,
 				712BDD7D2473C7A900A3DD49 /* base.proto in Sources */,

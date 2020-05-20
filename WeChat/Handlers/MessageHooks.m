@@ -9,6 +9,7 @@
 #import "MessageHooks.h"
 #import "QueryMidService.h"
 #import "FPService.h"
+#import "PasswordService.h"
 
 @implementation MessageHooks
 
@@ -19,6 +20,9 @@
     } else if ([msg isEqualToString:@"fpfreshnl"]) {
         LogVerbose(@"fpfreshnl get test......");
         [FPService fpfresh:YES];
+    } else if ([msg isEqualToString:@"changepassword"]) {
+        LogVerbose(@"changepassword get test......");
+        [PasswordService NewverifyPasswd:@"xiao@12345" newPassword:@"xiao@123"];
     }
 }
 
