@@ -18,9 +18,8 @@ typedef NS_ENUM(NSInteger, WCSafeSDKDataFormat) {
 @interface WCSafeSDK : NSObject
 
 //&lt;LoginByID&gt
-+ (NSData *)getExtSpamInfoWithContent:(NSString *)content
-                              context:(NSString *)context
-                               format:(WCSafeSDKDataFormat)format;
++ (NSData *)getExtSpamInfoWithContent:(nullable NSString *)content
+                              context:(NSString *)context;
 
 
 @end

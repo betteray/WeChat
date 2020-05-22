@@ -143,6 +143,9 @@
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
 		718E556A24617BB700D94D93 /* mm_17000c21.proto in Sources */ = {isa = PBXBuildFile; fileRef = 718E556724617BB700D94D93 /* mm_17000c21.proto */; };
 		719E6EE42476CEB7009861CB /* online.json in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EE12476CEB7009861CB /* online.json */; };
+		719E6EEA247806F5009861CB /* 1590152719-st-34237.bin in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EE9247806F5009861CB /* 1590152719-st-34237.bin */; };
+		719E6EEC24780704009861CB /* 1590152620-fpdevices-2102.bin in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EEB24780704009861CB /* 1590152620-fpdevices-2102.bin */; };
+		719E6EEE2478073B009861CB /* 1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EED2478073B009861CB /* 1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin */; };
 		719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 719EA66923B9F221005DCA56 /* SnsSyncService.m */; };
 		71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* MeViewController.m */; };
 		71D13DFA2475061800508B51 /* cgi-7012.json in Resources */ = {isa = PBXBuildFile; fileRef = 71D13DF72475061800508B51 /* cgi-7012.json */; };
@@ -571,6 +574,9 @@
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
 		718E556724617BB700D94D93 /* mm_17000c21.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000c21.proto; sourceTree = "<group>"; };
 		719E6EE12476CEB7009861CB /* online.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = online.json; sourceTree = "<group>"; };
+		719E6EE9247806F5009861CB /* 1590152719-st-34237.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1590152719-st-34237.bin"; sourceTree = "<group>"; };
+		719E6EEB24780704009861CB /* 1590152620-fpdevices-2102.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1590152620-fpdevices-2102.bin"; sourceTree = "<group>"; };
+		719E6EED2478073B009861CB /* 1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin"; sourceTree = "<group>"; };
 		719EA66823B9F221005DCA56 /* SnsSyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnsSyncService.h; sourceTree = "<group>"; };
 		719EA66923B9F221005DCA56 /* SnsSyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnsSyncService.m; sourceTree = "<group>"; };
 		71C9CA5321C4DC1D006C4DDD /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
@@ -792,10 +798,8 @@
 		4649DD6621ED864F006315DC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				719E6EE12476CEB7009861CB /* online.json */,
-				7168F97523B355B400DBB3A6 /* test.mp3 */,
-				713F5A5623A250220096220C /* test.amr */,
-				713F5A5223A23C770096220C /* cat_mouse.mp4 */,
+				719E6EE824780594009861CB /* Test */,
+				719E6EE62478056A009861CB /* Devices */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1377,6 +1381,35 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		719E6EE62478056A009861CB /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				719E6EE12476CEB7009861CB /* online.json */,
+				719E6EE724780573009861CB /* mi4 */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+		719E6EE724780573009861CB /* mi4 */ = {
+			isa = PBXGroup;
+			children = (
+				719E6EED2478073B009861CB /* 1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin */,
+				719E6EEB24780704009861CB /* 1590152620-fpdevices-2102.bin */,
+				719E6EE9247806F5009861CB /* 1590152719-st-34237.bin */,
+			);
+			path = mi4;
+			sourceTree = "<group>";
+		};
+		719E6EE824780594009861CB /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				7168F97523B355B400DBB3A6 /* test.mp3 */,
+				713F5A5623A250220096220C /* test.amr */,
+				713F5A5223A23C770096220C /* cat_mouse.mp4 */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		719EA66E23BA149C005DCA56 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1581,16 +1614,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719E6EEA247806F5009861CB /* 1590152719-st-34237.bin in Resources */,
 				46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */,
 				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
 				71EE8B4323BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
 				7168F97423B349B900DBB3A6 /* MMKeyBoardView.xib in Resources */,
+				719E6EEE2478073B009861CB /* 1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				71EE8B4923BEFB7500650F67 /* proto_bin_666.zip in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				7168F97623B355B400DBB3A6 /* test.mp3 in Resources */,
 				713F5A5723A250220096220C /* test.amr in Resources */,
 				71EE8B4423BEF9C200650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
+				719E6EEC24780704009861CB /* 1590152620-fpdevices-2102.bin in Resources */,
 				713F5A5323A23C770096220C /* cat_mouse.mp4 in Resources */,
 				71D13DFA2475061800508B51 /* cgi-7012.json in Resources */,
 				719E6EE42476CEB7009861CB /* online.json in Resources */,

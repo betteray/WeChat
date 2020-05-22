@@ -63,13 +63,11 @@
     request.mediaInfoCount = (uint32_t) [ma count];
     request.mediaInfoArray = ma;
     
-    if (CLIENT_VERSION > A703) {
-        NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:@"" context:@"&lt;SNSPost&gt" format:WCSafeSDKDataFormatXML];
-        SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
-        extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
-        extSpamInfo.buffer = extSpamInfoBuffer;
-        request.extSpamInfo = extSpamInfo;
-    }
+    NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:nil context:@"&lt;SNSPost&gt"];
+    SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
+    extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
+    extSpamInfo.buffer = extSpamInfoBuffer;
+    request.extSpamInfo = extSpamInfo;
     
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cmdId = 0;

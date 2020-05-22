@@ -12,20 +12,24 @@
 
 @implementation SpamInfoGenerator_Proto
 
-+ (NSData *)genST:(int)a {
++ (NSData *)getClientSpamInfoType:(ClientSpamInfoType)clientSpamInfoType {
     ClientSpamInfo *clientSpamInfo = [[DeviceManager sharedManager] getCurrentDevice].clientSpamInfo;
     clientSpamInfo.st.msgLevel = 0; // root
     clientSpamInfo.st.isAdbswitchEnabled = 0; //adb
     
-    //过滤包。
-    NSMutableArray *installedPackages = clientSpamInfo.st.installedPackageInfosArray;
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(InstalledPackageInfo *  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-        return ![evaluatedObject.packageName isEqualToString:@"com.topjohnwu.magisk"] &&
-            ![evaluatedObject.packageName isEqualToString:@"org.meowcat.edxposed.manager"] &&
-            ![evaluatedObject.packageName isEqualToString:@"com.llb.wechathooks"];
-    }];
-    NSMutableArray *filteredArray = [[installedPackages filteredArrayUsingPredicate:predicate] mutableCopy];
-    clientSpamInfo.st.installedPackageInfosArray = filteredArray;
+    if (clientSpamInfoType == ClientSpamInfoType_Login) {
+        clientSpamInfo.st.installedPackageInfosArray = [NSMutableArray array]; // 清除包列表
+    } else if (clientSpamInfoType == ClientSpamInfoType_Report) {
+        //过滤包。
+        NSMutableArray *installedPackages = clientSpamInfo.st.installedPackageInfosArray;
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(InstalledPackageInfo *  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+            return ![evaluatedObject.packageName isEqualToString:@"com.topjohnwu.magisk"] &&
+                ![evaluatedObject.packageName isEqualToString:@"org.meowcat.edxposed.manager"] &&
+                ![evaluatedObject.packageName isEqualToString:@"com.llb.wechathooks"];
+        }];
+        NSMutableArray *filteredArray = [[installedPackages filteredArrayUsingPredicate:predicate] mutableCopy];
+        clientSpamInfo.st.installedPackageInfosArray = filteredArray;
+    }
 
     //重新计算crc校验数据
     clientSpamInfo.ccdcc = [[clientSpamInfo.st data] crc32];

@@ -33,20 +33,26 @@
     if (self)
     {
         // 从dump出来的proto中恢复设备参数用以登录。
-        // ClientSpamInfo *clientSpamInfo = [ClientSpamInfo parseFromData:stProtoData error:nil];
-        // mi4.clientSpamInfo = clientSpamInfo;
-        // NSData *fpData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mi4-fp" ofType:@"bin"]];
-        // FPDevice *fp = [FPDevice parseFromData:fpData error:nil];
+        NSData *clientSpamInfoData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1590152719-st-34237" ofType:@"bin"]];
+        ClientSpamInfo *clientSpamInfo = [ClientSpamInfo parseFromData:clientSpamInfoData error:nil];
+
+        NSData *fpData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1590152620-fpdevices-2102" ofType:@"bin"]];
+        FPDevice *fp = [FPDevice parseFromData:fpData error:nil];
+       
+        NSData *manualAuthData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1590152662946_cgi-bin_micromsg-bin_secmanualauth" ofType:@"bin"]];
+        ManualAuthRequest *request = [ManualAuthRequest parseFromData:manualAuthData error:nil];
+        WCDevice *device = [WCDevice deviceWithManualAuth:request clientSpamInfo:clientSpamInfo fpDevice:fp];
+        _curDevice = device;
         
-        // 添加设备，从导出的json格式数据中恢复设备。
-        NSData *onlineDeviceJsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"online" ofType:@"json"]];
-        NSDictionary *onlineDeviceJson = [NSJSONSerialization JSONObjectWithData:onlineDeviceJsonData options:0 error:nil];
-        WCDevice *onlineDevice = [WCDevice deviceFromJson:onlineDeviceJson];
-        
-        _curDevice = onlineDevice;
-        if (![DBManager autoAuthKey].data.length) { // 如果数据库中没有autoauthkey，则导入数据，保证只导入一次。
-            [self importDBData:_curDevice]; //每个json文件只能导入一次，否则会覆盖数据库最新数据。
-        }
+//        // 添加设备，从导出的json格式数据中恢复设备。
+//        NSData *onlineDeviceJsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"online" ofType:@"json"]];
+//        NSDictionary *onlineDeviceJson = [NSJSONSerialization JSONObjectWithData:onlineDeviceJsonData options:0 error:nil];
+//        WCDevice *onlineDevice = [WCDevice deviceFromJson:onlineDeviceJson];
+//
+//        _curDevice = onlineDevice;
+//        if (![DBManager autoAuthKey].data.length) { // 如果数据库中没有autoauthkey，则导入数据，保证只导入一次。
+//            [self importDBData:_curDevice]; //每个json文件只能导入一次，否则会覆盖数据库最新数据。
+//        }
     }
 
     return self;

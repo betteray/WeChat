@@ -10,10 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, ClientSpamInfoType) {
+    ClientSpamInfoType_Login,
+    ClientSpamInfoType_Report
+};
+
 @interface SpamInfoGenerator_Proto : NSObject
 
-+ (NSData *)genST:(int)a;
-+ (NSData *)genBasicST;
++ (NSData *)getClientSpamInfoType:(ClientSpamInfoType)clientSpamInfoType;
+
 + (NSData *)genWCSTFWithAccount:(NSString *)account;
 + (NSData *)genWCSTEWithContext:(NSString *)context;
 

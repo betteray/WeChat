@@ -97,36 +97,13 @@
     aesReqData.timeZone = device.timeZone;
     aesReqData.channel = 10003;
 
-    if (CLIENT_VERSION == A706) {
-        AccountInfo *accoutInfo = [DBManager accountInfo];
-        NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:accoutInfo.userName context:@"auto" format:WCSafeSDKDataFormatXML];
+    NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:nil context:@"auto"];
 
-        SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
-        extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
-        extSpamInfo.buffer = extSpamInfoBuffer;
+    SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
+    extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
+    extSpamInfo.buffer = extSpamInfoBuffer;
+    aesReqData.extSpamInfo = extSpamInfo; // tag=24
 
-        aesReqData.extSpamInfo = extSpamInfo; // tag=24
-    }
-    
-    if (CLIENT_VERSION >= A7011) {
-        AccountInfo *accoutInfo = [DBManager accountInfo];
-        NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:accoutInfo.userName context:@"auto" format:WCSafeSDKDataFormatProto];
-
-        SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
-        extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
-        extSpamInfo.buffer = extSpamInfoBuffer;
-
-        aesReqData.extSpamInfo = extSpamInfo; // tag=24
-    }
-
-#if PROTOCOL_FOR_IOS
-    //    NSPredicate *clientCheckDataPre = [NSPredicate predicateWithFormat:@"ID = %@", ClientCheckDataID];
-    //    ClientCheckData *ccd = [[ClientCheckData objectsWithPredicate:clientCheckDataPre] firstObject];
-    //    SKBuiltinBuffer_t *clientCheckData = [SKBuiltinBuffer_t new];
-    //    clientCheckData.iLen = (int) [ccd.data length];
-    //    clientCheckData.buffer = ccd.data;
-    //    aesReqData.clientCheckData = clientCheckData;
-#endif
     AutoAuthRequest *authRequest = [AutoAuthRequest new];
     authRequest.aesReqData = aesReqData;
     authRequest.rsaReqData = rsaReqData;
@@ -238,17 +215,14 @@
     //    clientCheckData.buffer = ccd.data;
     //    aesReqData.clientCheckData = clientCheckData;
 #endif
+   
+    NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:userName context:@"&lt;LoginByID&gt"];
     
-    if (CLIENT_VERSION > A703) {
-        NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:userName context:@"&lt;LoginByID&gt" format:WCSafeSDKDataFormatXML];
-        
-        SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
-        extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
-        extSpamInfo.buffer = extSpamInfoBuffer;
-        
-        aesReqData.extSpamInfo = extSpamInfo; // tag=24
-    }
+    SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
+    extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
+    extSpamInfo.buffer = extSpamInfoBuffer;
     
+    aesReqData.extSpamInfo = extSpamInfo; // tag=24
     
     ManualAuthRequest *authRequest = [ManualAuthRequest new];
     authRequest.aesReqData = aesReqData;

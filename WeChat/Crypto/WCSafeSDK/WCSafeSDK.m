@@ -18,27 +18,25 @@
 
 @implementation WCSafeSDK
 
-+ (NSData *)getExtSpamInfoWithContent:(NSString *)content
-                              context:(NSString *)context
-                               format:(WCSafeSDKDataFormat)format {
-   BOOL isAutoAuth = [context containsString:@"auto"];
++ (NSData *)getExtSpamInfoWithContent:(nullable NSString *)content
+                              context:(NSString *)context {
+   BOOL needGenTouchData = content.length > 0;
    WCExtInfo *extInfo = [WCExtInfo new];
     
-    if (!isAutoAuth) {
-        
+    if (needGenTouchData) {
         NSData *WCSTFData = nil;
-         NSData *WCSTEData = nil;
-        if (format == WCSafeSDKDataFormatXML) {
-            NSString *WCSTF = [SpamInfoGenerator_XML genWCSTFWithAccount:content];
-            WCSTFData = [ZZEncryptService get003FromLocalServer:WCSTF];
-            
-            NSString *WCSTE = [SpamInfoGenerator_XML genWCSTEWithContext:context];
-            WCSTEData = [ZZEncryptService get003FromLocalServer:WCSTE];
-        } else {
+        NSData *WCSTEData = nil;
+        if (CLIENT_VERSION > A706) {
             NSData *WCSTF = [SpamInfoGenerator_Proto genWCSTFWithAccount:content];
             WCSTFData = [ZZEncryptService get003FromLocalServer:WCSTF];
             
             NSData *WCSTE = [SpamInfoGenerator_Proto genWCSTEWithContext:context];
+            WCSTEData = [ZZEncryptService get003FromLocalServer:WCSTE];
+        } else {
+            NSString *WCSTF = [SpamInfoGenerator_XML genWCSTFWithAccount:content];
+            WCSTFData = [ZZEncryptService get003FromLocalServer:WCSTF];
+            
+            NSString *WCSTE = [SpamInfoGenerator_XML genWCSTEWithContext:context];
             WCSTEData = [ZZEncryptService get003FromLocalServer:WCSTE];
         }
         SKBuiltinBuffer_t *wcstf = [SKBuiltinBuffer_t new];
@@ -54,11 +52,16 @@
     }
    
     NSData *STData = nil;
-    if (format == WCSafeSDKDataFormatXML) {
-        NSString *ST = [SpamInfoGenerator_XML genST:0]; // 0 登录用
+    if (CLIENT_VERSION > A706) {
+        ClientSpamInfoType type = ClientSpamInfoType_Login;
+        if ([context isEqualToString:@"report"]) {
+            type = ClientSpamInfoType_Report;
+        }
+        
+        NSData *ST = [SpamInfoGenerator_Proto getClientSpamInfoType:type]; // 0 登录用
         STData = [ZZEncryptService get003FromLocalServer:ST];
     } else {
-        NSData *ST = [SpamInfoGenerator_Proto genST:0]; // 0 登录用
+        NSString *ST = [SpamInfoGenerator_XML genST:0]; // 0 登录用
         STData = [ZZEncryptService get003FromLocalServer:ST];
     }
     

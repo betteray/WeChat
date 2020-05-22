@@ -9,20 +9,14 @@
 #import "ReportClientCheckService.h"
 #import "SpamInfoGenerator-XML.h"
 #import "ZZEncryptService.h"
+#import "WCSafeSDK.h"
 
 @implementation ReportClientCheckService
 
 + (void)reportClientCheckWithContext:(uint64_t)context basic:(BOOL)basic
 {
-    NSString *xml = nil;
-
-    if (basic) {
-        xml = [SpamInfoGenerator_XML genBasicST];
-    } else {
-        xml = [SpamInfoGenerator_XML genST:15];
-    }
-    
-    NSData *encrypedXMLBuffer = [ZZEncryptService get003FromLocalServer:xml];
+    NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:@"" context:@"report"];
+    NSData *encrypedXMLBuffer = [ZZEncryptService get003FromLocalServer:extSpamInfoBuffer];
     ReportClientCheckReq *req = [[ReportClientCheckReq alloc] init];
     req.encryptedXmlbuffer = encrypedXMLBuffer;
     req.reportContext = context;
