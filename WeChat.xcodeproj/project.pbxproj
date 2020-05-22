@@ -58,18 +58,9 @@
 		71008F3C21B6925100DE8DF8 /* ShortLinkWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F3B21B6925100DE8DF8 /* ShortLinkWithMMTLS.m */; };
 		71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */; };
 		71076B2621CCF10500570FB1 /* TestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71076B2521CCF10500570FB1 /* TestViewController.mm */; };
-		7108E1E82412607900FD1028 /* 1583490630098_cgi-bin_micromsg-bin_bindopmobileforreg.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7108E1E42412607900FD1028 /* 1583490630098_cgi-bin_micromsg-bin_bindopmobileforreg.bin */; };
-		7108E1E92412607900FD1028 /* 1583490662283_cgi-bin_micromsg-bin_newreg.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7108E1E52412607900FD1028 /* 1583490662283_cgi-bin_micromsg-bin_newreg.bin */; };
-		7108E1EA2412607900FD1028 /* 1583490613835_cgi-bin_micromsg-bin_bindopmobileforreg.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7108E1E62412607900FD1028 /* 1583490613835_cgi-bin_micromsg-bin_bindopmobileforreg.bin */; };
-		7108E1EB2412607900FD1028 /* 1583490661008_cgi-bin_micromsg-bin_bindopmobileforreg.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7108E1E72412607900FD1028 /* 1583490661008_cgi-bin_micromsg-bin_bindopmobileforreg.bin */; };
-		7108E1F02412608700FD1028 /* 1583490661463-145.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7108E1EC2412608700FD1028 /* 1583490661463-145.bin */; };
-		7108E1F12412608700FD1028 /* 1583490663313-126.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7108E1ED2412608700FD1028 /* 1583490663313-126.bin */; };
-		7108E1F22412608700FD1028 /* 1583490630533-145.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7108E1EE2412608700FD1028 /* 1583490630533-145.bin */; };
-		7108E1F32412608700FD1028 /* 1583490615140-145.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7108E1EF2412608700FD1028 /* 1583490615140-145.bin */; };
 		710F14FB2360343B0034FA65 /* NewSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 710F14FA2360343B0034FA65 /* NewSyncService.m */; };
 		7112117E23A77B0000A5DBCA /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112117D23A77B0000A5DBCA /* FileUtil.m */; };
 		7112118523A8C7C700A5DBCA /* SendMsgService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112118423A8C7C700A5DBCA /* SendMsgService.m */; };
-		7112118923A8E54E00A5DBCA /* 1106281122.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7112118823A8E54E00A5DBCA /* 1106281122.mp4 */; };
 		7112DBC223A334AD008CC5E1 /* GetMsgImgService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBC123A334AD008CC5E1 /* GetMsgImgService.m */; };
 		7112DBC723A34A10008CC5E1 /* DownloadVoiceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBC623A34A10008CC5E1 /* DownloadVoiceService.m */; };
 		7112DBCA23A37192008CC5E1 /* DownloadVideoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBC923A37192008CC5E1 /* DownloadVideoService.m */; };
@@ -77,7 +68,6 @@
 		7112DBD023A3CF58008CC5E1 /* CalRqtAlg.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112DBCF23A3CF58008CC5E1 /* CalRqtAlg.m */; };
 		711E9B3E23598D8200C5B655 /* RiskScanBufUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 711E9B3D23598D8200C5B655 /* RiskScanBufUtil.m */; };
 		711E9B4E2359EC0700C5B655 /* RiskScanBufReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 711E9B4D2359EC0700C5B655 /* RiskScanBufReq.m */; };
-		711FE4D5240901B500DC8431 /* mir-WCSTE.bin in Resources */ = {isa = PBXBuildFile; fileRef = 711FE4D2240901B500DC8431 /* mir-WCSTE.bin */; };
 		7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C35D21C3494300A3E900 /* LoginViewController.m */; };
 		7121C36521C3610000A3E900 /* ChatsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7121C36421C3610000A3E900 /* ChatsTableViewController.m */; };
 		712BDD7B2473C41400A3DD49 /* android_only.proto in Sources */ = {isa = PBXBuildFile; fileRef = 712BDD7A2473C41400A3DD49 /* android_only.proto */; };
@@ -109,11 +99,8 @@
 		712F960021D20A7800CFE3A0 /* ShortLinkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F95FF21D20A7800CFE3A0 /* ShortLinkClient.m */; };
 		712F960621D78F0B00CFE3A0 /* AutoAuthKeyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F960521D78F0B00CFE3A0 /* AutoAuthKeyStore.m */; };
 		712F960921D78F9300CFE3A0 /* SyncKeyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F960821D78F9300CFE3A0 /* SyncKeyStore.m */; };
-		713F5A4F23A2158A0096220C /* send.png in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A4C23A2158A0096220C /* send.png */; };
-		713F5A5123A231EC0096220C /* 1576139358368.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5023A231EC0096220C /* 1576139358368.jpg */; };
 		713F5A5323A23C770096220C /* cat_mouse.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5223A23C770096220C /* cat_mouse.mp4 */; };
 		713F5A5723A250220096220C /* test.amr in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5623A250220096220C /* test.amr */; };
-		713F5A5923A27F970096220C /* 1576159220872799.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5823A27F970096220C /* 1576159220872799.mp4 */; };
 		714513442390F6A40078D130 /* CdnLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 714513432390F6A40078D130 /* CdnLogic.m */; };
 		714B348523B5B78C00C5B442 /* SnsTimeLineService.m in Sources */ = {isa = PBXBuildFile; fileRef = 714B348423B5B78C00C5B442 /* SnsTimeLineService.m */; };
 		714B348A23B5B89C00C5B442 /* SnsPostService.m in Sources */ = {isa = PBXBuildFile; fileRef = 714B348923B5B89C00C5B442 /* SnsPostService.m */; };
@@ -136,16 +123,11 @@
 		7155BA5221902AB30002CE1D /* ClientHello.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5121902AB30002CE1D /* ClientHello.m */; };
 		7155BA5521902ABE0002CE1D /* ServerHello.m in Sources */ = {isa = PBXBuildFile; fileRef = 7155BA5421902ABE0002CE1D /* ServerHello.m */; };
 		715BD71823C0D9800050CBE7 /* Mm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 715BD71623C0D9800050CBE7 /* Mm.pbobjc.m */; };
-		715D8D512434743800BFCBD3 /* secautoauth.bin in Resources */ = {isa = PBXBuildFile; fileRef = 715D8D4E2434743800BFCBD3 /* secautoauth.bin */; };
 		7161984C21CB704F00A76F39 /* mmpack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984B21CB704F00A76F39 /* mmpack.m */; };
 		7161984F21CB712900A76F39 /* long_pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161984E21CB712900A76F39 /* long_pack.m */; };
 		7161985321CB863A00A76F39 /* LongLinkClientWithMMTLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161985221CB863A00A76F39 /* LongLinkClientWithMMTLS.m */; };
-		71622BA92431F3E100C41AD7 /* fpfresh.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71622BA62431F3E100C41AD7 /* fpfresh.bin */; };
-		71622BAB2431F50200C41AD7 /* fpdevice-2.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71622BAA2431F50200C41AD7 /* fpdevice-2.bin */; };
-		7168F90723B0A5F800DBB3A6 /* test2.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7168F90423B0A5F800DBB3A6 /* test2.bin */; };
 		7168F91523B0F51C00DBB3A6 /* mm_dump_660.proto in Sources */ = {isa = PBXBuildFile; fileRef = 7168F91423B0F51C00DBB3A6 /* mm_dump_660.proto */; };
 		7168F92423B1BF3000DBB3A6 /* OplogService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7168F92323B1BF3000DBB3A6 /* OplogService.m */; };
-		7168F92823B1F65300DBB3A6 /* classes_706.dex in Resources */ = {isa = PBXBuildFile; fileRef = 7168F92723B1F65300DBB3A6 /* classes_706.dex */; };
 		7168F92B23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7168F92A23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m */; };
 		7168F97023B349A100DBB3A6 /* MMKeyBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7168F96F23B349A100DBB3A6 /* MMKeyBoardView.m */; };
 		7168F97423B349B900DBB3A6 /* MMKeyBoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7168F97323B349B900DBB3A6 /* MMKeyBoardView.xib */; };
@@ -155,32 +137,13 @@
 		716A93D4239AA2C200A0C9DC /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93D3239AA2C200A0C9DC /* DBManager.m */; };
 		716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */; };
 		71776AF5247558AC0069D616 /* PasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71776AF4247558AC0069D616 /* PasswordService.m */; };
-		717B97192436037B003171B9 /* 1586344962-st-1452.bin in Resources */ = {isa = PBXBuildFile; fileRef = 717B97162436037B003171B9 /* 1586344962-st-1452.bin */; };
 		71808C0A239DFCD0005C3BDE /* CdnSnsUploadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 71808C09239DFCD0005C3BDE /* CdnSnsUploadTask.m */; };
-		71808C0E239E0619005C3BDE /* pic_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71808C0B239E0619005C3BDE /* pic_3.jpg */; };
-		71808C0F239E0619005C3BDE /* pic_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71808C0C239E0619005C3BDE /* pic_1.jpg */; };
-		71808C10239E0619005C3BDE /* pic_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71808C0D239E0619005C3BDE /* pic_2.jpg */; };
 		71808C1B239E2C4D005C3BDE /* CdnSendPictureTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 71808C1A239E2C4D005C3BDE /* CdnSendPictureTask.m */; };
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
 		718E556A24617BB700D94D93 /* mm_17000c21.proto in Sources */ = {isa = PBXBuildFile; fileRef = 718E556724617BB700D94D93 /* mm_17000c21.proto */; };
-		71984019243EFC2E00365ABC /* 1586932997-wcste-91.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71984016243EFC2E00365ABC /* 1586932997-wcste-91.bin */; };
-		7198401B243EFCAD00365ABC /* 1586932997-wcstf-93.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7198401A243EFCAC00365ABC /* 1586932997-wcstf-93.bin */; };
-		719D3FFB23CC5B6F00F9BBC3 /* newreportidkey-android.bin in Resources */ = {isa = PBXBuildFile; fileRef = 719D3FF823CC5B6F00F9BBC3 /* newreportidkey-android.bin */; };
 		719E6EE42476CEB7009861CB /* online.json in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EE12476CEB7009861CB /* online.json */; };
 		719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 719EA66923B9F221005DCA56 /* SnsSyncService.m */; };
-		71B1A9F923C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-18-45-25.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1A9F123C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-18-45-25.bin */; };
-		71B1A9FA23C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-19-44-51.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1A9F223C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-19-44-51.bin */; };
-		71B1A9FB23C5CABA0065FE96 /* getkvidkeystrategy-resp-18-45-54.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1A9F323C5CABA0065FE96 /* getkvidkeystrategy-resp-18-45-54.bin */; };
-		71B1A9FC23C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-20-44-58.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1A9F423C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-20-44-58.bin */; };
-		71B1A9FD23C5CABA0065FE96 /* getkvidkeystrategy-resp-19-45-53.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1A9F523C5CABA0065FE96 /* getkvidkeystrategy-resp-19-45-53.bin */; };
-		71B1A9FE23C5CABA0065FE96 /* getkvidkeystrategy-resp-20-45-57.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1A9F623C5CABA0065FE96 /* getkvidkeystrategy-resp-20-45-57.bin */; };
-		71B1A9FF23C5CABA0065FE96 /* getkvidkeystrategy-resp-17-48-21.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1A9F723C5CABA0065FE96 /* getkvidkeystrategy-resp-17-48-21.bin */; };
-		71B1AA0023C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-17-47-24.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1A9F823C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-17-47-24.bin */; };
-		71B1AA0223C5D3E00065FE96 /* getkvidkeystrategyrsa.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1AA0123C5D3E00065FE96 /* getkvidkeystrategyrsa.bin */; };
-		71B1AA0423C5D49D0065FE96 /* newreportkvcomm.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1AA0323C5D49D0065FE96 /* newreportkvcomm.bin */; };
-		71B1AA0623C60B0D0065FE96 /* newreportidkey.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1AA0523C60B0D0065FE96 /* newreportidkey.bin */; };
-		71B1AA0823C6CC910065FE96 /* newreportkvcomm-resp.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1AA0723C6CC900065FE96 /* newreportkvcomm-resp.bin */; };
 		71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* MeViewController.m */; };
 		71D13DFA2475061800508B51 /* cgi-7012.json in Resources */ = {isa = PBXBuildFile; fileRef = 71D13DF72475061800508B51 /* cgi-7012.json */; };
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
@@ -191,14 +154,8 @@
 		71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A421E1A12E00B77500 /* MomentsTableViewController.m */; };
 		71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A721E1A32100B77500 /* PeapleNearByTableViewController.m */; };
 		71E485082403B68E0030FF0B /* mm_17000b21.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71E485052403B68E0030FF0B /* mm_17000b21.proto */; };
-		71E4850E2404C4020030FF0B /* 03data.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71E4850B2404C4020030FF0B /* 03data.bin */; };
-		71E4851024050EC40030FF0B /* 706_plain_03.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71E4850F24050EC40030FF0B /* 706_plain_03.bin */; };
-		71E48512240510A10030FF0B /* 7011_plain_03.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71E48511240510A00030FF0B /* 7011_plain_03.bin */; };
 		71E4851524052E430030FF0B /* Safe.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E4851424052E430030FF0B /* Safe.pbobjc.m */; };
-		71E4851824053EC30030FF0B /* fp.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71E4851724053EC30030FF0B /* fp.bin */; };
 		71E4851B240541620030FF0B /* FPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E4851A240541620030FF0B /* FPService.m */; };
-		71E4851D24065EA20030FF0B /* mi4-fp.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71E4851C24065EA20030FF0B /* mi4-fp.bin */; };
-		71E4851F2407AA770030FF0B /* mi4-st-proto.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71E4851E2407AA770030FF0B /* mi4-st-proto.bin */; };
 		71E9EAC1234068FA00353DBD /* CalSpamAlg.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E9EAC0234068FA00353DBD /* CalSpamAlg.m */; };
 		71EE8B4323BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71EE8B4123BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin */; };
 		71EE8B4423BEF9C200650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71EE8B4223BEF9C100650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin */; };
@@ -206,8 +163,6 @@
 		71F9F5AA235459AD00C6C736 /* PersonalInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */; };
 		71F9F5C52355B8B500C6C736 /* WCSafeSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5C42355B8B500C6C736 /* WCSafeSDK.m */; };
 		71F9F5CC2355CB3D00C6C736 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9F5CB2355CB3D00C6C736 /* NSData+CRC32.m */; };
-		71F9F5CE2355CC8D00C6C736 /* st-6p-clientcheck.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71F9F5CD2355CC8D00C6C736 /* st-6p-clientcheck.bin */; };
-		71F9F5D023560E5A00C6C736 /* st-6p-login.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71F9F5CF23560E5A00C6C736 /* st-6p-login.bin */; };
 		71FD5D8D23B48A3200B70518 /* GetkvidkeyStrategyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FD5D8C23B48A3200B70518 /* GetkvidkeyStrategyService.m */; };
 		71FD5D9223B48CE000B70518 /* UIView+LoadFromXIB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FD5D9023B48CE000B70518 /* UIView+LoadFromXIB.m */; };
 		71FD5D9523B48E7B00B70518 /* NSData+AddData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FD5D9323B48E7A00B70518 /* NSData+AddData.m */; };
@@ -358,21 +313,12 @@
 		71008F4021B7A36200DE8DF8 /* MMTLSShortLinkResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMTLSShortLinkResponse.h; sourceTree = "<group>"; };
 		71008F4121B7A36200DE8DF8 /* MMTLSShortLinkResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMTLSShortLinkResponse.m; sourceTree = "<group>"; };
 		71076B2521CCF10500570FB1 /* TestViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestViewController.mm; sourceTree = "<group>"; };
-		7108E1E42412607900FD1028 /* 1583490630098_cgi-bin_micromsg-bin_bindopmobileforreg.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1583490630098_cgi-bin_micromsg-bin_bindopmobileforreg.bin"; sourceTree = "<group>"; };
-		7108E1E52412607900FD1028 /* 1583490662283_cgi-bin_micromsg-bin_newreg.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1583490662283_cgi-bin_micromsg-bin_newreg.bin"; sourceTree = "<group>"; };
-		7108E1E62412607900FD1028 /* 1583490613835_cgi-bin_micromsg-bin_bindopmobileforreg.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1583490613835_cgi-bin_micromsg-bin_bindopmobileforreg.bin"; sourceTree = "<group>"; };
-		7108E1E72412607900FD1028 /* 1583490661008_cgi-bin_micromsg-bin_bindopmobileforreg.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1583490661008_cgi-bin_micromsg-bin_bindopmobileforreg.bin"; sourceTree = "<group>"; };
-		7108E1EC2412608700FD1028 /* 1583490661463-145.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1583490661463-145.bin"; sourceTree = "<group>"; };
-		7108E1ED2412608700FD1028 /* 1583490663313-126.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1583490663313-126.bin"; sourceTree = "<group>"; };
-		7108E1EE2412608700FD1028 /* 1583490630533-145.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1583490630533-145.bin"; sourceTree = "<group>"; };
-		7108E1EF2412608700FD1028 /* 1583490615140-145.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1583490615140-145.bin"; sourceTree = "<group>"; };
 		710F14F92360343B0034FA65 /* NewSyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewSyncService.h; sourceTree = "<group>"; };
 		710F14FA2360343B0034FA65 /* NewSyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewSyncService.m; sourceTree = "<group>"; };
 		7112117C23A77B0000A5DBCA /* FileUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileUtil.h; sourceTree = "<group>"; };
 		7112117D23A77B0000A5DBCA /* FileUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileUtil.m; sourceTree = "<group>"; };
 		7112118323A8C7C700A5DBCA /* SendMsgService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgService.h; sourceTree = "<group>"; };
 		7112118423A8C7C700A5DBCA /* SendMsgService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgService.m; sourceTree = "<group>"; };
-		7112118823A8E54E00A5DBCA /* 1106281122.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1106281122.mp4; sourceTree = "<group>"; };
 		7112DBC023A334AD008CC5E1 /* GetMsgImgService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetMsgImgService.h; sourceTree = "<group>"; };
 		7112DBC123A334AD008CC5E1 /* GetMsgImgService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetMsgImgService.m; sourceTree = "<group>"; };
 		7112DBC523A34A10008CC5E1 /* DownloadVoiceService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadVoiceService.h; sourceTree = "<group>"; };
@@ -387,7 +333,6 @@
 		711E9B3D23598D8200C5B655 /* RiskScanBufUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RiskScanBufUtil.m; sourceTree = "<group>"; };
 		711E9B4C2359EC0700C5B655 /* RiskScanBufReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RiskScanBufReq.h; sourceTree = "<group>"; };
 		711E9B4D2359EC0700C5B655 /* RiskScanBufReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RiskScanBufReq.m; sourceTree = "<group>"; };
-		711FE4D2240901B500DC8431 /* mir-WCSTE.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "mir-WCSTE.bin"; sourceTree = "<group>"; };
 		7121C35C21C3494300A3E900 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7121C35D21C3494300A3E900 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7121C36321C3610000A3E900 /* ChatsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatsTableViewController.h; sourceTree = "<group>"; };
@@ -535,11 +480,8 @@
 		712F960521D78F0B00CFE3A0 /* AutoAuthKeyStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoAuthKeyStore.m; sourceTree = "<group>"; };
 		712F960721D78F9300CFE3A0 /* SyncKeyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncKeyStore.h; sourceTree = "<group>"; };
 		712F960821D78F9300CFE3A0 /* SyncKeyStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncKeyStore.m; sourceTree = "<group>"; };
-		713F5A4C23A2158A0096220C /* send.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = send.png; sourceTree = "<group>"; };
-		713F5A5023A231EC0096220C /* 1576139358368.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1576139358368.jpg; sourceTree = "<group>"; };
 		713F5A5223A23C770096220C /* cat_mouse.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat_mouse.mp4; sourceTree = "<group>"; };
 		713F5A5623A250220096220C /* test.amr */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.amr; sourceTree = "<group>"; };
-		713F5A5823A27F970096220C /* 1576159220872799.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1576159220872799.mp4; sourceTree = "<group>"; };
 		714513422390F6A40078D130 /* CdnLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnLogic.h; sourceTree = "<group>"; };
 		714513432390F6A40078D130 /* CdnLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CdnLogic.m; sourceTree = "<group>"; };
 		71456CA3233E1B0600986437 /* mm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm.proto; sourceTree = "<group>"; };
@@ -588,7 +530,6 @@
 		7155BA5421902ABE0002CE1D /* ServerHello.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServerHello.m; sourceTree = "<group>"; };
 		715BD71623C0D9800050CBE7 /* Mm.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mm.pbobjc.m; sourceTree = "<group>"; };
 		715BD71723C0D9800050CBE7 /* Mm.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mm.pbobjc.h; sourceTree = "<group>"; };
-		715D8D4E2434743800BFCBD3 /* secautoauth.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = secautoauth.bin; sourceTree = "<group>"; };
 		716197F821C7A36200A76F39 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		7161984A21CB704F00A76F39 /* mmpack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mmpack.h; sourceTree = "<group>"; };
 		7161984B21CB704F00A76F39 /* mmpack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mmpack.m; sourceTree = "<group>"; };
@@ -596,9 +537,6 @@
 		7161984E21CB712900A76F39 /* long_pack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = long_pack.m; sourceTree = "<group>"; };
 		7161985121CB863A00A76F39 /* LongLinkClientWithMMTLS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongLinkClientWithMMTLS.h; sourceTree = "<group>"; };
 		7161985221CB863A00A76F39 /* LongLinkClientWithMMTLS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LongLinkClientWithMMTLS.m; sourceTree = "<group>"; };
-		71622BA62431F3E100C41AD7 /* fpfresh.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = fpfresh.bin; sourceTree = "<group>"; };
-		71622BAA2431F50200C41AD7 /* fpdevice-2.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "fpdevice-2.bin"; sourceTree = "<group>"; };
-		7168F90423B0A5F800DBB3A6 /* test2.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = test2.bin; sourceTree = "<group>"; };
 		7168F90823B0ACE000DBB3A6 /* mm_dump_709.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mm_dump_709.proto; sourceTree = "<group>"; };
 		7168F90923B0B02F00DBB3A6 /* mm_dump_708.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mm_dump_708.proto; sourceTree = "<group>"; };
 		7168F90C23B0C4D900DBB3A6 /* mm_dump_707.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mm_dump_707.proto; sourceTree = "<group>"; };
@@ -608,7 +546,6 @@
 		7168F91623B0F65B00DBB3A6 /* mm_dump_6523.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = mm_dump_6523.proto; sourceTree = "<group>"; };
 		7168F92223B1BF3000DBB3A6 /* OplogService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OplogService.h; sourceTree = "<group>"; };
 		7168F92323B1BF3000DBB3A6 /* OplogService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OplogService.m; sourceTree = "<group>"; };
-		7168F92723B1F65300DBB3A6 /* classes_706.dex */ = {isa = PBXFileReference; lastKnownFileType = file; path = classes_706.dex; sourceTree = "<group>"; };
 		7168F92923B205ED00DBB3A6 /* ClientCheckConsistencyUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClientCheckConsistencyUtil.h; sourceTree = "<group>"; };
 		7168F92A23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckConsistencyUtil.m; sourceTree = "<group>"; };
 		7168F96E23B349A100DBB3A6 /* MMKeyBoardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMKeyBoardView.h; sourceTree = "<group>"; };
@@ -625,12 +562,8 @@
 		716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CompressAndEncypt.m"; sourceTree = "<group>"; };
 		71776AF3247558AC0069D616 /* PasswordService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordService.h; sourceTree = "<group>"; };
 		71776AF4247558AC0069D616 /* PasswordService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordService.m; sourceTree = "<group>"; };
-		717B97162436037B003171B9 /* 1586344962-st-1452.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1586344962-st-1452.bin"; sourceTree = "<group>"; };
 		71808C08239DFCD0005C3BDE /* CdnSnsUploadTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnSnsUploadTask.h; sourceTree = "<group>"; };
 		71808C09239DFCD0005C3BDE /* CdnSnsUploadTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CdnSnsUploadTask.m; sourceTree = "<group>"; };
-		71808C0B239E0619005C3BDE /* pic_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic_3.jpg; sourceTree = "<group>"; };
-		71808C0C239E0619005C3BDE /* pic_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic_1.jpg; sourceTree = "<group>"; };
-		71808C0D239E0619005C3BDE /* pic_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic_2.jpg; sourceTree = "<group>"; };
 		71808C19239E2C4D005C3BDE /* CdnSendPictureTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnSendPictureTask.h; sourceTree = "<group>"; };
 		71808C1A239E2C4D005C3BDE /* CdnSendPictureTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CdnSendPictureTask.m; sourceTree = "<group>"; };
 		71848F252150CABD00DB669E /* NSData+Compression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Compression.h"; sourceTree = "<group>"; };
@@ -638,24 +571,9 @@
 		71848F6621549C8100DB669E /* NSData+GenRandomData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+GenRandomData.h"; sourceTree = "<group>"; };
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
 		718E556724617BB700D94D93 /* mm_17000c21.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000c21.proto; sourceTree = "<group>"; };
-		71984016243EFC2E00365ABC /* 1586932997-wcste-91.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1586932997-wcste-91.bin"; sourceTree = "<group>"; };
-		7198401A243EFCAC00365ABC /* 1586932997-wcstf-93.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1586932997-wcstf-93.bin"; sourceTree = "<group>"; };
-		719D3FF823CC5B6F00F9BBC3 /* newreportidkey-android.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "newreportidkey-android.bin"; sourceTree = "<group>"; };
 		719E6EE12476CEB7009861CB /* online.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = online.json; sourceTree = "<group>"; };
 		719EA66823B9F221005DCA56 /* SnsSyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnsSyncService.h; sourceTree = "<group>"; };
 		719EA66923B9F221005DCA56 /* SnsSyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnsSyncService.m; sourceTree = "<group>"; };
-		71B1A9F123C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-18-45-25.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "getkvidkeystrategyrsa-resp-18-45-25.bin"; sourceTree = "<group>"; };
-		71B1A9F223C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-19-44-51.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "getkvidkeystrategyrsa-resp-19-44-51.bin"; sourceTree = "<group>"; };
-		71B1A9F323C5CABA0065FE96 /* getkvidkeystrategy-resp-18-45-54.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "getkvidkeystrategy-resp-18-45-54.bin"; sourceTree = "<group>"; };
-		71B1A9F423C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-20-44-58.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "getkvidkeystrategyrsa-resp-20-44-58.bin"; sourceTree = "<group>"; };
-		71B1A9F523C5CABA0065FE96 /* getkvidkeystrategy-resp-19-45-53.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "getkvidkeystrategy-resp-19-45-53.bin"; sourceTree = "<group>"; };
-		71B1A9F623C5CABA0065FE96 /* getkvidkeystrategy-resp-20-45-57.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "getkvidkeystrategy-resp-20-45-57.bin"; sourceTree = "<group>"; };
-		71B1A9F723C5CABA0065FE96 /* getkvidkeystrategy-resp-17-48-21.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "getkvidkeystrategy-resp-17-48-21.bin"; sourceTree = "<group>"; };
-		71B1A9F823C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-17-47-24.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "getkvidkeystrategyrsa-resp-17-47-24.bin"; sourceTree = "<group>"; };
-		71B1AA0123C5D3E00065FE96 /* getkvidkeystrategyrsa.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = getkvidkeystrategyrsa.bin; sourceTree = "<group>"; };
-		71B1AA0323C5D49D0065FE96 /* newreportkvcomm.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = newreportkvcomm.bin; sourceTree = "<group>"; };
-		71B1AA0523C60B0D0065FE96 /* newreportidkey.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = newreportidkey.bin; sourceTree = "<group>"; };
-		71B1AA0723C6CC900065FE96 /* newreportkvcomm-resp.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "newreportkvcomm-resp.bin"; sourceTree = "<group>"; };
 		71C9CA5321C4DC1D006C4DDD /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		71D13DF72475061800508B51 /* cgi-7012.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cgi-7012.json"; sourceTree = "<group>"; };
 		71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUB.h"; sourceTree = "<group>"; };
@@ -674,16 +592,10 @@
 		71DE10A721E1A32100B77500 /* PeapleNearByTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeapleNearByTableViewController.m; sourceTree = "<group>"; };
 		71E1C19C230657E900F5032A /* safe.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = safe.proto; sourceTree = "<group>"; };
 		71E485052403B68E0030FF0B /* mm_17000b21.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000b21.proto; sourceTree = "<group>"; };
-		71E4850B2404C4020030FF0B /* 03data.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = 03data.bin; sourceTree = "<group>"; };
-		71E4850F24050EC40030FF0B /* 706_plain_03.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = 706_plain_03.bin; sourceTree = "<group>"; };
-		71E48511240510A00030FF0B /* 7011_plain_03.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = 7011_plain_03.bin; sourceTree = "<group>"; };
 		71E4851324052E430030FF0B /* Safe.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Safe.pbobjc.h; sourceTree = "<group>"; };
 		71E4851424052E430030FF0B /* Safe.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Safe.pbobjc.m; sourceTree = "<group>"; };
-		71E4851724053EC30030FF0B /* fp.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = fp.bin; sourceTree = "<group>"; };
 		71E48519240541620030FF0B /* FPService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPService.h; sourceTree = "<group>"; };
 		71E4851A240541620030FF0B /* FPService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPService.m; sourceTree = "<group>"; };
-		71E4851C24065EA20030FF0B /* mi4-fp.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "mi4-fp.bin"; sourceTree = "<group>"; };
-		71E4851E2407AA770030FF0B /* mi4-st-proto.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "mi4-st-proto.bin"; sourceTree = "<group>"; };
 		71E9EABF234068FA00353DBD /* CalSpamAlg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalSpamAlg.h; sourceTree = "<group>"; };
 		71E9EAC0234068FA00353DBD /* CalSpamAlg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalSpamAlg.m; sourceTree = "<group>"; };
 		71EE8B3923BE077600650F67 /* st-706-verifyuserrequest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-verifyuserrequest.txt"; sourceTree = "<group>"; };
@@ -701,14 +613,10 @@
 		71EE8B4823BEFB7500650F67 /* proto_bin_666.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = proto_bin_666.zip; sourceTree = "<group>"; };
 		71F9F5A8235459AD00C6C736 /* PersonalInfoService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalInfoService.h; sourceTree = "<group>"; };
 		71F9F5A9235459AD00C6C736 /* PersonalInfoService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoService.m; sourceTree = "<group>"; };
-		71F9F5BA235576B500C6C736 /* mmregion4client_zh_CN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mmregion4client_zh_CN.txt; sourceTree = "<group>"; };
-		71F9F5BC2355774700C6C736 /* mmregion4client_en.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mmregion4client_en.txt; sourceTree = "<group>"; };
 		71F9F5C32355B8B500C6C736 /* WCSafeSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCSafeSDK.h; sourceTree = "<group>"; };
 		71F9F5C42355B8B500C6C736 /* WCSafeSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCSafeSDK.m; sourceTree = "<group>"; };
 		71F9F5CA2355CB3D00C6C736 /* NSData+CRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CRC32.h"; sourceTree = "<group>"; };
 		71F9F5CB2355CB3D00C6C736 /* NSData+CRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CRC32.m"; sourceTree = "<group>"; };
-		71F9F5CD2355CC8D00C6C736 /* st-6p-clientcheck.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "st-6p-clientcheck.bin"; sourceTree = "<group>"; };
-		71F9F5CF23560E5A00C6C736 /* st-6p-login.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "st-6p-login.bin"; sourceTree = "<group>"; };
 		71FD5D8B23B48A3200B70518 /* GetkvidkeyStrategyService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetkvidkeyStrategyService.h; sourceTree = "<group>"; };
 		71FD5D8C23B48A3200B70518 /* GetkvidkeyStrategyService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetkvidkeyStrategyService.m; sourceTree = "<group>"; };
 		71FD5D9023B48CE000B70518 /* UIView+LoadFromXIB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LoadFromXIB.m"; sourceTree = "<group>"; };
@@ -890,37 +798,15 @@
 			path = Store;
 			sourceTree = "<group>";
 		};
-		4649DD6621ED864F006315DC /* Res4test */ = {
+		4649DD6621ED864F006315DC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				719E6EE12476CEB7009861CB /* online.json */,
-				717B97162436037B003171B9 /* 1586344962-st-1452.bin */,
-				7108E1E12412604900FD1028 /* tmp */,
-				711FE4D2240901B500DC8431 /* mir-WCSTE.bin */,
-				71E4851C24065EA20030FF0B /* mi4-fp.bin */,
-				71E4851E2407AA770030FF0B /* mi4-st-proto.bin */,
-				715D8D4E2434743800BFCBD3 /* secautoauth.bin */,
-				71622BA62431F3E100C41AD7 /* fpfresh.bin */,
-				71984016243EFC2E00365ABC /* 1586932997-wcste-91.bin */,
-				7198401A243EFCAC00365ABC /* 1586932997-wcstf-93.bin */,
-				71622BAA2431F50200C41AD7 /* fpdevice-2.bin */,
-				71E4851724053EC30030FF0B /* fp.bin */,
-				71E4850F24050EC40030FF0B /* 706_plain_03.bin */,
-				71E48511240510A00030FF0B /* 7011_plain_03.bin */,
-				71E4850B2404C4020030FF0B /* 03data.bin */,
 				7168F97523B355B400DBB3A6 /* test.mp3 */,
-				7168F90423B0A5F800DBB3A6 /* test2.bin */,
-				7112118823A8E54E00A5DBCA /* 1106281122.mp4 */,
-				713F5A5823A27F970096220C /* 1576159220872799.mp4 */,
 				713F5A5623A250220096220C /* test.amr */,
 				713F5A5223A23C770096220C /* cat_mouse.mp4 */,
-				713F5A5023A231EC0096220C /* 1576139358368.jpg */,
-				71808C0C239E0619005C3BDE /* pic_1.jpg */,
-				71808C0D239E0619005C3BDE /* pic_2.jpg */,
-				71808C0B239E0619005C3BDE /* pic_3.jpg */,
-				713F5A4C23A2158A0096220C /* send.png */,
 			);
-			path = Res4test;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		466C4AC021DDBF8700743075 /* Views */ = {
@@ -1056,21 +942,6 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		7108E1E12412604900FD1028 /* tmp */ = {
-			isa = PBXGroup;
-			children = (
-				7108E1E62412607900FD1028 /* 1583490613835_cgi-bin_micromsg-bin_bindopmobileforreg.bin */,
-				7108E1E42412607900FD1028 /* 1583490630098_cgi-bin_micromsg-bin_bindopmobileforreg.bin */,
-				7108E1E72412607900FD1028 /* 1583490661008_cgi-bin_micromsg-bin_bindopmobileforreg.bin */,
-				7108E1E52412607900FD1028 /* 1583490662283_cgi-bin_micromsg-bin_newreg.bin */,
-				7108E1EF2412608700FD1028 /* 1583490615140-145.bin */,
-				7108E1EE2412608700FD1028 /* 1583490630533-145.bin */,
-				7108E1EC2412608700FD1028 /* 1583490661463-145.bin */,
-				7108E1ED2412608700FD1028 /* 1583490663313-126.bin */,
-			);
-			path = tmp;
-			sourceTree = "<group>";
-		};
 		7112117B23A77AF000A5DBCA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1157,9 +1028,8 @@
 				719EA66E23BA149C005DCA56 /* Handlers */,
 				7112117B23A77AF000A5DBCA /* Utils */,
 				711E9B3923598D4B00C5B655 /* Crypto */,
-				71F9F5B9235576AA00C6C736 /* mmres */,
 				460CDE4421FEAFC80075F3E5 /* IDACode */,
-				4649DD6621ED864F006315DC /* Res4test */,
+				4649DD6621ED864F006315DC /* Resources */,
 				466C4AC021DDBF8700743075 /* Views */,
 				462D9C3721DCD2DF00FC5461 /* Services */,
 				463BAD2B21D38EFA00847A8B /* Store */,
@@ -1532,26 +1402,6 @@
 			path = Handlers;
 			sourceTree = "<group>";
 		};
-		71B1A9EE23C5C0130065FE96 /* report_session */ = {
-			isa = PBXGroup;
-			children = (
-				719D3FF823CC5B6F00F9BBC3 /* newreportidkey-android.bin */,
-				71B1AA0723C6CC900065FE96 /* newreportkvcomm-resp.bin */,
-				71B1AA0523C60B0D0065FE96 /* newreportidkey.bin */,
-				71B1AA0323C5D49D0065FE96 /* newreportkvcomm.bin */,
-				71B1AA0123C5D3E00065FE96 /* getkvidkeystrategyrsa.bin */,
-				71B1A9F723C5CABA0065FE96 /* getkvidkeystrategy-resp-17-48-21.bin */,
-				71B1A9F323C5CABA0065FE96 /* getkvidkeystrategy-resp-18-45-54.bin */,
-				71B1A9F523C5CABA0065FE96 /* getkvidkeystrategy-resp-19-45-53.bin */,
-				71B1A9F623C5CABA0065FE96 /* getkvidkeystrategy-resp-20-45-57.bin */,
-				71B1A9F823C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-17-47-24.bin */,
-				71B1A9F123C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-18-45-25.bin */,
-				71B1A9F223C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-19-44-51.bin */,
-				71B1A9F423C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-20-44-58.bin */,
-			);
-			path = report_session;
-			sourceTree = "<group>";
-		};
 		71D3DAA921AEACD2002ACF1C /* ViewCat */ = {
 			isa = PBXGroup;
 			children = (
@@ -1608,19 +1458,6 @@
 				71EE8B4723BEFA2600650F67 /* 1578111411148_cgi-bin_micromsg-bin_mmsnspost.bin */,
 			);
 			path = "st-666";
-			sourceTree = "<group>";
-		};
-		71F9F5B9235576AA00C6C736 /* mmres */ = {
-			isa = PBXGroup;
-			children = (
-				71B1A9EE23C5C0130065FE96 /* report_session */,
-				7168F92723B1F65300DBB3A6 /* classes_706.dex */,
-				71F9F5CF23560E5A00C6C736 /* st-6p-login.bin */,
-				71F9F5CD2355CC8D00C6C736 /* st-6p-clientcheck.bin */,
-				71F9F5BC2355774700C6C736 /* mmregion4client_en.txt */,
-				71F9F5BA235576B500C6C736 /* mmregion4client_zh_CN.txt */,
-			);
-			path = mmres;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1754,65 +1591,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71E48512240510A10030FF0B /* 7011_plain_03.bin in Resources */,
-				715D8D512434743800BFCBD3 /* secautoauth.bin in Resources */,
 				46145FA0221E7AA9003DC115 /* UserScript3.js in Resources */,
 				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
-				7198401B243EFCAD00365ABC /* 1586932997-wcstf-93.bin in Resources */,
 				71EE8B4323BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
-				71808C0E239E0619005C3BDE /* pic_3.jpg in Resources */,
-				71B1AA0023C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-17-47-24.bin in Resources */,
-				71E4850E2404C4020030FF0B /* 03data.bin in Resources */,
-				71B1AA0623C60B0D0065FE96 /* newreportidkey.bin in Resources */,
-				7108E1EB2412607900FD1028 /* 1583490661008_cgi-bin_micromsg-bin_bindopmobileforreg.bin in Resources */,
-				717B97192436037B003171B9 /* 1586344962-st-1452.bin in Resources */,
-				71984019243EFC2E00365ABC /* 1586932997-wcste-91.bin in Resources */,
-				71E4851F2407AA770030FF0B /* mi4-st-proto.bin in Resources */,
-				71F9F5CE2355CC8D00C6C736 /* st-6p-clientcheck.bin in Resources */,
-				7108E1E82412607900FD1028 /* 1583490630098_cgi-bin_micromsg-bin_bindopmobileforreg.bin in Resources */,
-				713F5A4F23A2158A0096220C /* send.png in Resources */,
-				71622BAB2431F50200C41AD7 /* fpdevice-2.bin in Resources */,
-				71B1A9FE23C5CABA0065FE96 /* getkvidkeystrategy-resp-20-45-57.bin in Resources */,
-				71B1A9FD23C5CABA0065FE96 /* getkvidkeystrategy-resp-19-45-53.bin in Resources */,
 				7168F97423B349B900DBB3A6 /* MMKeyBoardView.xib in Resources */,
-				711FE4D5240901B500DC8431 /* mir-WCSTE.bin in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
-				7108E1F12412608700FD1028 /* 1583490663313-126.bin in Resources */,
-				71B1A9FA23C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-19-44-51.bin in Resources */,
-				7108E1F32412608700FD1028 /* 1583490615140-145.bin in Resources */,
 				71EE8B4923BEFB7500650F67 /* proto_bin_666.zip in Resources */,
-				7108E1F22412608700FD1028 /* 1583490630533-145.bin in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
-				71F9F5D023560E5A00C6C736 /* st-6p-login.bin in Resources */,
 				7168F97623B355B400DBB3A6 /* test.mp3 in Resources */,
-				71B1AA0223C5D3E00065FE96 /* getkvidkeystrategyrsa.bin in Resources */,
 				713F5A5723A250220096220C /* test.amr in Resources */,
-				7112118923A8E54E00A5DBCA /* 1106281122.mp4 in Resources */,
-				713F5A5123A231EC0096220C /* 1576139358368.jpg in Resources */,
 				71EE8B4423BEF9C200650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
-				7108E1E92412607900FD1028 /* 1583490662283_cgi-bin_micromsg-bin_newreg.bin in Resources */,
-				71B1A9FC23C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-20-44-58.bin in Resources */,
-				719D3FFB23CC5B6F00F9BBC3 /* newreportidkey-android.bin in Resources */,
-				71808C10239E0619005C3BDE /* pic_2.jpg in Resources */,
-				71B1A9FB23C5CABA0065FE96 /* getkvidkeystrategy-resp-18-45-54.bin in Resources */,
-				71622BA92431F3E100C41AD7 /* fpfresh.bin in Resources */,
-				7168F92823B1F65300DBB3A6 /* classes_706.dex in Resources */,
 				713F5A5323A23C770096220C /* cat_mouse.mp4 in Resources */,
-				71E4851024050EC40030FF0B /* 706_plain_03.bin in Resources */,
-				713F5A5923A27F970096220C /* 1576159220872799.mp4 in Resources */,
-				71808C0F239E0619005C3BDE /* pic_1.jpg in Resources */,
-				71B1A9FF23C5CABA0065FE96 /* getkvidkeystrategy-resp-17-48-21.bin in Resources */,
-				71B1AA0823C6CC910065FE96 /* newreportkvcomm-resp.bin in Resources */,
-				71E4851D24065EA20030FF0B /* mi4-fp.bin in Resources */,
-				7108E1EA2412607900FD1028 /* 1583490613835_cgi-bin_micromsg-bin_bindopmobileforreg.bin in Resources */,
-				71E4851824053EC30030FF0B /* fp.bin in Resources */,
-				7108E1F02412608700FD1028 /* 1583490661463-145.bin in Resources */,
 				71D13DFA2475061800508B51 /* cgi-7012.json in Resources */,
-				71B1AA0423C5D49D0065FE96 /* newreportkvcomm.bin in Resources */,
-				71B1A9F923C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-18-45-25.bin in Resources */,
 				719E6EE42476CEB7009861CB /* online.json in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
-				7168F90723B0A5F800DBB3A6 /* test2.bin in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
