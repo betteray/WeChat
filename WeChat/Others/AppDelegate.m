@@ -28,9 +28,6 @@
 {
     // Override point for customization after application launch.
 
-//    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
-//    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
-    
     // Configure CocoaLumberjack
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 
@@ -43,9 +40,14 @@
     [[WeChatClient sharedClient] start];
     [DNSFetcher fetchAndSaveToDB];
    
-    
-    [FPService initFP];
-//    [FPService fpfresh:NO];
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:DEVICE_TOKEN_PATH];
+    if (!isExist) {
+        [FPService initFP];
+    } else {
+        if ([DBManager autoAuthKey].data.length == 0) {
+            [FPService fpfresh:NO];
+        }
+    }
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     [self autoAuthIfCould];
