@@ -232,7 +232,6 @@
 		460429A722CF84DF00F9BB94 /* weixin_703_pack.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = weixin_703_pack.txt; sourceTree = "<group>"; };
 		460429A822D0911900F9BB94 /* MMProtocalJni.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMProtocalJni.h; sourceTree = "<group>"; };
 		460429A922D0911900F9BB94 /* MMProtocalJni.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMProtocalJni.m; sourceTree = "<group>"; };
-		460CDE4521FEB0710075F3E5 /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
 		460CDE4F220088CE0075F3E5 /* cgi.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cgi.json; sourceTree = "<group>"; };
 		46145F96221D9BF6003DC115 /* newwxjs-compiled.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "newwxjs-compiled.js"; sourceTree = "<group>"; };
 		46145F9F221E7AA9003DC115 /* UserScript3.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = UserScript3.js; sourceTree = "<group>"; };
@@ -714,14 +713,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		460CDE4421FEAFC80075F3E5 /* IDACode */ = {
-			isa = PBXGroup;
-			children = (
-				460CDE4521FEB0710075F3E5 /* defs.h */,
-			);
-			path = IDACode;
-			sourceTree = "<group>";
-		};
 		462D9C3721DCD2DF00FC5461 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -1028,7 +1019,6 @@
 				719EA66E23BA149C005DCA56 /* Handlers */,
 				7112117B23A77AF000A5DBCA /* Utils */,
 				711E9B3923598D4B00C5B655 /* Crypto */,
-				460CDE4421FEAFC80075F3E5 /* IDACode */,
 				4649DD6621ED864F006315DC /* Resources */,
 				466C4AC021DDBF8700743075 /* Views */,
 				462D9C3721DCD2DF00FC5461 /* Services */,
