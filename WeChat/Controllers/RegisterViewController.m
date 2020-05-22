@@ -41,115 +41,76 @@
     }
 
     [WeChatClient sharedClient].sessionKey = [FSOpenSSL random128BitAESKey];
-    
-//    NSData *result = [[CdnLogic new] packData];
-//    LogVerbose(@": %@.", result);
-    
-    unsigned int a = -288906094;
-    printf("%d", a);
 }
 
 - (IBAction)startRegister:(id)sender {
-    
-    [self newReg];
-    
-//    WCDevice *device = [[DeviceManager sharedManager] getCurrentDevice];
-//
-//    BaseRequest *baseRequest = [BaseRequest new];
-//    baseRequest.sessionKey = [NSData data];
-//    baseRequest.uin = 0;
-//    baseRequest.deviceId = device.deviceID;
-//    baseRequest.clientVersion = CLIENT_VERSION;
-//    baseRequest.deviceType = device.osType;
-//    baseRequest.scene = 0;
-//
-//    NSData *sessionKey = [FSOpenSSL random128BitAESKey];
-//    [WeChatClient sharedClient].sessionKey = sessionKey;
-//
-//    SKBuiltinBuffer_t *aesKey = [SKBuiltinBuffer_t new];
-//    aesKey.iLen = (int32_t)[sessionKey length];
-//    aesKey.buffer = sessionKey;
-//
-//    BindOpMobileRequest *request = [BindOpMobileRequest new];
-//    request.baseRequest = baseRequest;
-//    request.mobile = @"+8618810251616";
-//    request.opcode = 12;
-//    request.verifycode = @"";
-//    request.dialFlag = 0;
-//    request.dialLang = @"";
-//    request.forceReg = 0;
-//    request.safeDeviceName = @"Android设备";
-//    request.safeDeviceType = @"Xiaomi-MI 3W";
-//    request.randomEncryKey = aesKey;
-//    request.language = device.language;
-//    request.inputMobileRetrys = 0;
-//    request.adjustRet = 0;
-//    request.clientSeqId = device.clientSeq;
-//    request.mobileCheckType = 0;
-//
-//    CgiWrap *cgiWrap = [CgiWrap new];
-//    cgiWrap.cgi = 145;
-//    cgiWrap.cmdId = 0;
-//    cgiWrap.request = request;
-//    cgiWrap.needSetBaseRequest = NO;
-//    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/bindopmobileforreg";
-//    cgiWrap.responseClass = [BindOpMobileResponse class];
-//
-//    [WeChatClient android700manualAuth:cgiWrap success:^(BindOpMobileResponse * _Nullable response) {
-//        LogVerbose(@"%@", response);
-//
-//        if (response.baseResponse.ret == -355) {
-//
-//            NSString *regex = @"(https?|http)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]";
-//            NSString *url = [response.baseResponse.errMsg.string stringByMatching:regex];
-//            UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
-////            MMWebViewController *webViewController = [WeChatSB instantiateViewControllerWithIdentifier:@"MMWebViewController"];
-//            MMWKWebViewController *webViewController = [WeChatSB instantiateViewControllerWithIdentifier:@"MMWKWebViewController"];
-//            webViewController.url = [NSURL URLWithString:url];
-//            self.url = url;
-//            [self.navigationController pushViewController:webViewController animated:YES];
-//        }
-//    } failure:^(NSError * _Nonnull error) {
-//
-//    }];
-}
+    WCDevice *device = [[DeviceManager sharedManager] getCurrentDevice];
 
-- (IBAction)newReg {
+    BaseRequest *baseRequest = [BaseRequest new];
+    baseRequest.sessionKey = [NSData data];
+    baseRequest.uin = 0;
+    baseRequest.deviceId = device.deviceID;
+    baseRequest.clientVersion = CLIENT_VERSION;
+    baseRequest.deviceType = device.osType;
+    baseRequest.scene = 0;
+
     NSData *sessionKey = [FSOpenSSL random128BitAESKey];
     [WeChatClient sharedClient].sessionKey = sessionKey;
 
     SKBuiltinBuffer_t *aesKey = [SKBuiltinBuffer_t new];
-    aesKey.iLen = (int32_t) [sessionKey length];
+    aesKey.iLen = (int32_t)[sessionKey length];
     aesKey.buffer = sessionKey;
 
-    SKBuiltinBuffer_t *ecdhKey = [SKBuiltinBuffer_t new];
-    ecdhKey.iLen = (int32_t) [_pubKeyData length];
-    ecdhKey.buffer = _pubKeyData;
-
-    ECDHKey *cliPubEcdhkey = [ECDHKey new];
-    cliPubEcdhkey.nid = 713;
-    cliPubEcdhkey.key = ecdhKey;
-    
-    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"newreg" ofType:@"bin"]];
-    NewRegRequest *request = [[NewRegRequest alloc] initWithData:data error:nil];
-    
+    BindOpMobileRequest *request = [BindOpMobileRequest new];
+    request.baseRequest = baseRequest;
+    request.mobile = @"+8618810251616";
+    request.opcode = 1;
+    request.verifycode = @"";
+    request.dialFlag = 0;
+    request.dialLang = @"";
+    request.forceReg = 0;
+    request.safeDeviceName = @"Android设备";
+    request.safeDeviceType = @"Xiaomi-MI 3W";
     request.randomEncryKey = aesKey;
-    request.cliPubEcdhkey = cliPubEcdhkey;
-    
+    request.language = device.language;
+    request.inputMobileRetrys = 0;
+    request.adjustRet = 0;
+    request.clientSeqId = device.clientSeq;
+    request.mobileCheckType = 0;
+
     CgiWrap *cgiWrap = [CgiWrap new];
-    cgiWrap.cgi = 126;
+    cgiWrap.cgi = 145;
     cgiWrap.cmdId = 0;
     cgiWrap.request = request;
     cgiWrap.needSetBaseRequest = NO;
-    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/newreg";
-    cgiWrap.responseClass = [NewRegResponse class];
-    
+    cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/bindopmobileforreg";
+    cgiWrap.responseClass = [BindOpMobileResponse class];
+
     [WeChatClient secAuth:cgiWrap success:^(BindOpMobileResponse * _Nullable response) {
         LogVerbose(@"%@", response);
-    } failure:^(NSError * _Nonnull error) {
+
+        if (response.baseResponse.ret == -355) {
+
+            NSString *regex = @"(https?|http)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]";
+            NSString *url = [response.baseResponse.errMsg.string stringByMatching:regex];
+            UIStoryboard *WeChatSB = [UIStoryboard storyboardWithName:@"WeChat" bundle:nil];
+//            MMWebViewController *webViewController = [WeChatSB instantiateViewControllerWithIdentifier:@"MMWebViewController"];
+            MMWKWebViewController *webViewController = [WeChatSB instantiateViewControllerWithIdentifier:@"MMWKWebViewController"];
+            webViewController.url = [NSURL URLWithString:url];
+            self.url = url;
+            [self.navigationController pushViewController:webViewController animated:YES];
+        }
         
+        if (response.baseResponse.ret == -301) { //需要重定向
+            LogError(@"注册 -301， 重定向IP。。。");
+            [DBManager saveBuiltinIP:response.builtinIplist];
+            [DBManager clearCookie];
+            [[WeChatClient sharedClient] restart]; // restart
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+
     }];
-    
 }
 
 - (IBAction)reload:(id)sender {
@@ -158,16 +119,5 @@
     webViewController.url = [NSURL URLWithString:_url];
     [self.navigationController pushViewController:webViewController animated:YES];
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
