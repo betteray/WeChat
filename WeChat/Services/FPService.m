@@ -15,8 +15,7 @@
 @implementation FPService
 
 + (void)initFP {
-    NSData *fpData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mi4-fp" ofType:@"bin"]];
-    FPDevice *fp = [FPDevice parseFromData:fpData error:nil];
+    FPDevice *fp = [[DeviceManager sharedManager] getCurrentDevice].fpDevice;
     NSData *encrypedData = [ZZEncryptService get003FromLocalServer:[fp data]];
     
     SpamInfoEncrypedResult *result = [SpamInfoEncrypedResult parseFromData:encrypedData error:nil];
@@ -57,9 +56,11 @@
 
 
 + (void)fpfresh:(BOOL)hasLogin {
-    NSData *fpData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fpdevice-2" ofType:@"bin"]];
-//    NSData *fpData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mi4-fp" ofType:@"bin"]];
-    FPDevice *fp = [FPDevice parseFromData:fpData error:nil];
+//    NSData *fpData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fpdevice-2" ofType:@"bin"]];
+////    NSData *fpData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mi4-fp" ofType:@"bin"]];
+//    FPDevice *fp = [FPDevice parseFromData:fpData error:nil];
+    
+    FPDevice *fp = [[DeviceManager sharedManager] getCurrentDevice].fpDevice;
     fp.unknown2 = [ZZEncryptService getFPMd5];
     NSData *encrypedData = [ZZEncryptService get003FromLocalServer:[fp data]];
     

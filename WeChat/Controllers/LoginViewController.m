@@ -50,6 +50,10 @@
     [AuthService manualAuthWithViewController:self userName:self.userNameTextField.text password:self.pwdTextField.text];
 }
 
+- (void)AutoAuth {
+    [AuthService autoAuthWithRootViewController:(UINavigationController *) [UIApplication sharedApplication].keyWindow.rootViewController];
+}
+
 - (IBAction)clearLogin:(id)sender {
     [DBManager clearCookie];
     [DBManager clearAutoAuthKey];

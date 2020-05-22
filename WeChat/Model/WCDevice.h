@@ -28,22 +28,25 @@
 @property (nonatomic, readonly, copy) NSString *deviceModel;
 @property (nonatomic, readonly, strong) NSData *deviceID;
 
-- (instancetype)initWithImei:(NSString *)imei
-                    softType:(NSString *)softType
-                   clientSeq:(NSString *)clientSeq
-             clientSeqIdsign:(NSString *)clientSeqIdsign
-                  deviceName:(NSString *)deviceName
-                  deviceType:(NSString *)deviceType
-                    language:(NSString *)language
-                    timeZone:(NSString *)timeZone
-                 deviceBrand:(NSString *)deviceBrand
-                      chanel:(NSInteger)chanel
-                 realCountry:(NSString *)realCountry
-                    bundleID:(NSString *)bundleID
-                   iphoneVer:(NSString *)iphoneVer
-                      osType:(NSData *)osType
-                    adSource:(NSString *)adSource
-                 deviceModel:(NSString *)deviceModel
-                    deviceID:(NSData *)deviceID;
+// nullable
+@property (nonatomic, readonly, strong) NSString *autoAuthkeyHex;
+@property (nonatomic, readonly, strong) NSString *cookieHex;
+@property (nonatomic, readonly, strong) NSString *syncKeyHex;
+@property (nonatomic, readonly, assign) uint32_t uin;
+@property (nonatomic, readonly, copy) NSString *username;
+@property (nonatomic, readonly, strong) FPDevice *fpDevice;
+@property (nonatomic, readonly, strong) ClientSpamInfo *clientSpamInfo;
+
++ (instancetype)deviceWithManualAuth:(ManualAuthRequest *)manualAuthRequet
+                      clientSpamInfo:(ClientSpamInfo *)clientSpamInfo
+                            fpDevice:(FPDevice *)fpDevice;
+- (instancetype)initWithManualAuth:(ManualAuthRequest *)manualAuthRequet
+                    clientSpamInfo:(ClientSpamInfo *)clientSpamInfo
+                          fpDevice:(FPDevice *)fpDevice;
+
++ (instancetype)deviceFromJson:(NSDictionary *)jsonDict;
+- (instancetype)initWithJson:(NSDictionary *)jsonDict;
+
+- (NSDictionary *)toDictionary;
 
 @end

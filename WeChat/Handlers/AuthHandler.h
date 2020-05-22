@@ -10,9 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, LOGIN_TYPE) {
+    LOGIN_TYPE_MANUALAUTH,
+    LOGIN_TYPE_AUTOAUTH
+};
+
 @interface AuthHandler : NSObject
 
-+ (void)onLoginResponse:(UnifyAuthResponse *)resp from:(nullable UIViewController *)fromController;
++ (void)onLoginResponse:(UnifyAuthResponse *)resp from:(nullable UIViewController *)fromController loginType:(LOGIN_TYPE) loginType;
 
 @end
 

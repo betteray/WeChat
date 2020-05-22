@@ -18,7 +18,7 @@
 
 #pragma mark - AuthResponse
 
-+ (void)onLoginResponse:(UnifyAuthResponse *)resp from:(nullable UIViewController *)fromController {
++ (void)onLoginResponse:(UnifyAuthResponse *)resp from:(nullable UIViewController *)fromController loginType:(LOGIN_TYPE)loginType {
     switch (resp.baseResponse.ret) {
         case -106: {
             [DBManager clearCookie];
@@ -37,7 +37,11 @@
             [DBManager clearCookie];
             [[WeChatClient sharedClient] restart]; // restart
 
-            [fromController performSelector:@selector(ManualAuth)]; // 重新登录
+            if (loginType == LOGIN_TYPE_MANUALAUTH) {
+                [fromController performSelector:@selector(ManualAuth)]; // 重新登录
+            } else if(loginType == LOGIN_TYPE_AUTOAUTH) {
+                [fromController performSelector:@selector(AutoAuth)]; // 重新登录
+            }
         }
             break;
         case 0: {

@@ -68,7 +68,7 @@
     
     extInfo.ccData = ccData;
     
-    if (CLIENT_VERSION == A7011) {
+    if (CLIENT_VERSION >= A7011) {
         DeviceToken *dt = [DeviceToken new];
         dt.tag1 = @"";
         dt.tag2 = 1;

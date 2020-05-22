@@ -13,10 +13,7 @@
 @implementation SpamInfoGenerator_Proto
 
 + (NSData *)genST:(int)a {
-    NSData *stProtoData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mi4-st-proto" ofType:@"bin"]];
-    
-    //解析数据修改不合法数据。
-    ClientSpamInfo *clientSpamInfo = [ClientSpamInfo parseFromData:stProtoData error:nil];
+    ClientSpamInfo *clientSpamInfo = [[DeviceManager sharedManager] getCurrentDevice].clientSpamInfo;
     clientSpamInfo.st.msgLevel = 0; // root
     clientSpamInfo.st.isAdbswitchEnabled = 0; //adb
     
@@ -59,7 +56,7 @@ static inline int getRandomSpan() {
 
     WCSTF *wcstf = [WCSTF new];
     
-    GPBUInt32Array *array = [GPBUInt32Array new];
+    GPBUInt64Array *array = [GPBUInt64Array new];
     for (int i=0; i <= account.length; i++) {
        
         [array addValue:(uint32_t)st];

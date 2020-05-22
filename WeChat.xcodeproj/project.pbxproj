@@ -167,6 +167,7 @@
 		71984019243EFC2E00365ABC /* 1586932997-wcste-91.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71984016243EFC2E00365ABC /* 1586932997-wcste-91.bin */; };
 		7198401B243EFCAD00365ABC /* 1586932997-wcstf-93.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7198401A243EFCAC00365ABC /* 1586932997-wcstf-93.bin */; };
 		719D3FFB23CC5B6F00F9BBC3 /* newreportidkey-android.bin in Resources */ = {isa = PBXBuildFile; fileRef = 719D3FF823CC5B6F00F9BBC3 /* newreportidkey-android.bin */; };
+		719E6EE42476CEB7009861CB /* online.json in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EE12476CEB7009861CB /* online.json */; };
 		719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 719EA66923B9F221005DCA56 /* SnsSyncService.m */; };
 		71B1A9F923C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-18-45-25.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1A9F123C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-18-45-25.bin */; };
 		71B1A9FA23C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-19-44-51.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71B1A9F223C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-19-44-51.bin */; };
@@ -640,6 +641,7 @@
 		71984016243EFC2E00365ABC /* 1586932997-wcste-91.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1586932997-wcste-91.bin"; sourceTree = "<group>"; };
 		7198401A243EFCAC00365ABC /* 1586932997-wcstf-93.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1586932997-wcstf-93.bin"; sourceTree = "<group>"; };
 		719D3FF823CC5B6F00F9BBC3 /* newreportidkey-android.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "newreportidkey-android.bin"; sourceTree = "<group>"; };
+		719E6EE12476CEB7009861CB /* online.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = online.json; sourceTree = "<group>"; };
 		719EA66823B9F221005DCA56 /* SnsSyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnsSyncService.h; sourceTree = "<group>"; };
 		719EA66923B9F221005DCA56 /* SnsSyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnsSyncService.m; sourceTree = "<group>"; };
 		71B1A9F123C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-18-45-25.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "getkvidkeystrategyrsa-resp-18-45-25.bin"; sourceTree = "<group>"; };
@@ -891,6 +893,7 @@
 		4649DD6621ED864F006315DC /* Res4test */ = {
 			isa = PBXGroup;
 			children = (
+				719E6EE12476CEB7009861CB /* online.json */,
 				717B97162436037B003171B9 /* 1586344962-st-1452.bin */,
 				7108E1E12412604900FD1028 /* tmp */,
 				711FE4D2240901B500DC8431 /* mir-WCSTE.bin */,
@@ -1807,6 +1810,7 @@
 				71D13DFA2475061800508B51 /* cgi-7012.json in Resources */,
 				71B1AA0423C5D49D0065FE96 /* newreportkvcomm.bin in Resources */,
 				71B1A9F923C5CABA0065FE96 /* getkvidkeystrategyrsa-resp-18-45-25.bin in Resources */,
+				719E6EE42476CEB7009861CB /* online.json in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
 				7168F90723B0A5F800DBB3A6 /* test2.bin in Resources */,
 			);

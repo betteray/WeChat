@@ -108,7 +108,7 @@
         aesReqData.extSpamInfo = extSpamInfo; // tag=24
     }
     
-    if (CLIENT_VERSION == A7011) {
+    if (CLIENT_VERSION >= A7011) {
         AccountInfo *accoutInfo = [DBManager accountInfo];
         NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:accoutInfo.userName context:@"auto" format:WCSafeSDKDataFormatProto];
 
@@ -137,8 +137,8 @@
     [baseRequest setUin:accountInfo.uin];
     [baseRequest setScene:2];
     [baseRequest setClientVersion:CLIENT_VERSION];
-    [baseRequest setDeviceType:[[DeviceManager sharedManager] getCurrentDevice].osType];
-    [baseRequest setDeviceId:[[DeviceManager sharedManager] getCurrentDevice].deviceID];
+    [baseRequest setDeviceType:device.osType];
+    [baseRequest setDeviceId:device.deviceID];
 
     [aesReqData setBaseRequest:baseRequest];
 
@@ -159,7 +159,7 @@
 
     [WeChatClient secAuth:cgiWrap success:^(id _Nullable response) {
         UIViewController *topViewController = [rootViewController.viewControllers objectAtIndex:rootViewController.viewControllers.count-1];
-        [AuthHandler onLoginResponse:response from:topViewController];
+        [AuthHandler onLoginResponse:response from:topViewController loginType:LOGIN_TYPE_AUTOAUTH];
     }                          failure:^(NSError *_Nonnull error) {
 
     }];
@@ -283,7 +283,7 @@
     cgiWrap.needSetBaseRequest = NO;
     
     [WeChatClient secAuth:cgiWrap success:^(id _Nullable response) {
-        [AuthHandler onLoginResponse:response from:viewController];
+        [AuthHandler onLoginResponse:response from:viewController loginType:LOGIN_TYPE_MANUALAUTH];
     }                          failure:^(NSError *_Nonnull error) {
         
     }];
