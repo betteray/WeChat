@@ -147,6 +147,7 @@
 		719E6EEC24780704009861CB /* 1590152620-fpdevices-2102.bin in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EEB24780704009861CB /* 1590152620-fpdevices-2102.bin */; };
 		719E6EEE2478073B009861CB /* 1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EED2478073B009861CB /* 1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin */; };
 		719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 719EA66923B9F221005DCA56 /* SnsSyncService.m */; };
+		71B65F14247CF96A009D1DD3 /* CheckResUpdateServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B65F13247CF96A009D1DD3 /* CheckResUpdateServices.m */; };
 		71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* MeViewController.m */; };
 		71D13DFA2475061800508B51 /* cgi-7012.json in Resources */ = {isa = PBXBuildFile; fileRef = 71D13DF72475061800508B51 /* cgi-7012.json */; };
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
@@ -579,6 +580,8 @@
 		719E6EED2478073B009861CB /* 1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin"; sourceTree = "<group>"; };
 		719EA66823B9F221005DCA56 /* SnsSyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnsSyncService.h; sourceTree = "<group>"; };
 		719EA66923B9F221005DCA56 /* SnsSyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnsSyncService.m; sourceTree = "<group>"; };
+		71B65F12247CF96A009D1DD3 /* CheckResUpdateServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckResUpdateServices.h; sourceTree = "<group>"; };
+		71B65F13247CF96A009D1DD3 /* CheckResUpdateServices.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckResUpdateServices.m; sourceTree = "<group>"; };
 		71C9CA5321C4DC1D006C4DDD /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		71D13DF72475061800508B51 /* cgi-7012.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cgi-7012.json"; sourceTree = "<group>"; };
 		71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUB.h"; sourceTree = "<group>"; };
@@ -762,6 +765,8 @@
 				712BDD882473D0DD00A3DD49 /* QueryMidService.m */,
 				71776AF3247558AC0069D616 /* PasswordService.h */,
 				71776AF4247558AC0069D616 /* PasswordService.m */,
+				71B65F12247CF96A009D1DD3 /* CheckResUpdateServices.h */,
+				71B65F13247CF96A009D1DD3 /* CheckResUpdateServices.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1843,6 +1848,7 @@
 				718E556A24617BB700D94D93 /* mm_17000c21.proto in Sources */,
 				714E35F1235806CA0046F7D8 /* ReportUserInfo.m in Sources */,
 				71848F272150CABD00DB669E /* NSData+Compression.m in Sources */,
+				71B65F14247CF96A009D1DD3 /* CheckResUpdateServices.m in Sources */,
 				7154D5162196B721005064C4 /* HexDump.m in Sources */,
 				71776AF5247558AC0069D616 /* PasswordService.m in Sources */,
 				464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */,

@@ -38,13 +38,13 @@
 
         NSData *fpData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1590152620-fpdevices-2102" ofType:@"bin"]];
         FPDevice *fp = [FPDevice parseFromData:fpData error:nil];
-       
+
         NSData *manualAuthData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1590152662946_cgi-bin_micromsg-bin_secmanualauth" ofType:@"bin"]];
         ManualAuthRequest *request = [ManualAuthRequest parseFromData:manualAuthData error:nil];
         WCDevice *device = [WCDevice deviceWithManualAuth:request clientSpamInfo:clientSpamInfo fpDevice:fp];
         _curDevice = device;
         
-//        // 添加设备，从导出的json格式数据中恢复设备。
+        // 添加设备，从导出的json格式数据中恢复设备。
 //        NSData *onlineDeviceJsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"online" ofType:@"json"]];
 //        NSDictionary *onlineDeviceJson = [NSJSONSerialization JSONObjectWithData:onlineDeviceJsonData options:0 error:nil];
 //        WCDevice *onlineDevice = [WCDevice deviceFromJson:onlineDeviceJson];

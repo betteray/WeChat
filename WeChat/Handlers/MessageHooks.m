@@ -10,6 +10,7 @@
 #import "QueryMidService.h"
 #import "FPService.h"
 #import "PasswordService.h"
+#import "CheckResUpdateServices.h"
 
 @implementation MessageHooks
 
@@ -23,6 +24,9 @@
     } else if ([msg isEqualToString:@"changepassword"]) {
         LogVerbose(@"changepassword get test......");
         [PasswordService NewverifyPasswd:@"xiao@12345" newPassword:@"xiao@123"];
+    } else if([msg isEqualToString:@"checkresupdate"]) {
+        LogVerbose(@"checkresupdate get test......");
+        [CheckResUpdateServices checkUpdate];
     }
 }
 
