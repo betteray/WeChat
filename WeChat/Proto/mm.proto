@@ -18092,14 +18092,14 @@ message ResourceKey {
 }
 
 message ResourceMeta {
-    required  string  md5  = 1;
+    optional  string  md5  = 1;
     required  uint32  resVersion  = 2;
-    required  string  url  = 3;
-    required  uint32  fileFlag  = 4;
+    optional  string  url  = 3;
+    optional  uint32  fileFlag  = 4;
     repeated  SignatureInfo  eccmd5SignatureList  = 5;
     optional  bytes  data  = 6;
-    required  string  originalMd5  = 7;
-    required  uint32  fileSize  = 8;
+    optional  string  originalMd5  = 7;
+    optional  uint32  fileSize  = 8;
 }
 
 message ResourceReq {
