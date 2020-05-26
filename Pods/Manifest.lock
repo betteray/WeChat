@@ -22,7 +22,7 @@ PODS:
     - Protobuf
   - MBProgressHUD (1.1.0)
   - Ono (2.1.2)
-  - Protobuf (3.11.1)
+  - Protobuf (3.12.0)
   - Reachability (3.2)
   - Realm (4.1.1):
     - Realm/Headers (= 4.1.1)
@@ -82,7 +82,7 @@ SPEC CHECKSUMS:
   Json2pb: a93aa76bd1dc975923a812f2fb29c81804bc2712
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   Ono: 26a7c1fc4df13ece7747560a1d80655807a8a000
-  Protobuf: 20d79da7f20b5928b80043b05080b816e802659e
+  Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Realm: 25f0a8244cbb1c2271c922963ea8666fc2d8104d
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
