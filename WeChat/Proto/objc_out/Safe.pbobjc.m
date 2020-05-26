@@ -224,6 +224,8 @@ typedef struct InstalledPackageInfo__storage_ {
 @dynamic hasWeChatInstallTime, weChatInstallTime;
 @dynamic hasSoftConfig, softConfig;
 @dynamic hasSoftData, softData;
+@dynamic hasTag86, tag86;
+@dynamic hasNetWorkInterface, netWorkInterface;
 
 typedef struct ST__storage_ {
   uint32_t _has_storage_[3];
@@ -252,6 +254,7 @@ typedef struct ST__storage_ {
   uint32_t unknownTag80;
   uint32_t timeVal2;
   uint32_t weChatInstallTime;
+  uint32_t tag86;
   NSString *pkgHash3;
   NSString *ratioFwVer;
   NSString *osRelVer;
@@ -311,6 +314,7 @@ typedef struct ST__storage_ {
   NSMutableArray *filesModifiedInFrameworkArray;
   NSData *softConfig;
   NSData *softData;
+  NSString *netWorkInterface;
 } ST__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1075,6 +1079,24 @@ typedef struct ST__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
+      {
+        .name = "tag86",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag86,
+        .hasIndex = 81,
+        .offset = (uint32_t)offsetof(ST__storage_, tag86),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "netWorkInterface",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_NetWorkInterface,
+        .hasIndex = 82,
+        .offset = (uint32_t)offsetof(ST__storage_, netWorkInterface),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[ST class]
@@ -1086,7 +1108,7 @@ typedef struct ST__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "S\001M\000\002H\000\003N\000\004H\000\005J\000\006H\000\007d\000\010HA\000\tK\000\nJ\000\013L\000\014DA\000\r"
+        "U\001M\000\002H\000\003N\000\004H\000\005J\000\006H\000\007d\000\010HA\000\tK\000\nJ\000\013L\000\014DA\000\r"
         "K\000\016Eb\000\017d\000\020e\000\021F\000\022d\003\000\023FA\000\024J\000\025O\000\026J\000\027K\000\030FA\000\031"
         "L\000\032L\000\033H\000\034G\000\035I\000\036I\000\037M\000 G\000!G\000\"H\000#W\000$\000MMProc"
         "LoadedFiles\000%Q\000&G\000(\000InstalledPackageInfo"
@@ -1094,7 +1116,7 @@ typedef struct ST__storage_ {
         "\0004S\0005Cc\014\0006Q\0007[\0008d\016\0009d\021\000:Cc\003\000;Cc\010\000<b\004\000=DE"
         "\000>b\005\000\?b\005\000@d\000AS\000BH\000CO\000DR\000FR\000GL\000HPB\000ISB\000JU"
         "B\000KJB\000LH\000MOA\000NHA\000Od\000PL\000QH\000R\000FilesModifie"
-        "dInFramework\000SQ\000TJ\000UH\000";
+        "dInFramework\000SQ\000TJ\000UH\000VE\000WP\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG

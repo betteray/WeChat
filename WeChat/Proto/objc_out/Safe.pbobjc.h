@@ -171,6 +171,8 @@ typedef GPB_ENUM(ST_FieldNumber) {
   ST_FieldNumber_WeChatInstallTime = 83,
   ST_FieldNumber_SoftConfig = 84,
   ST_FieldNumber_SoftData = 85,
+  ST_FieldNumber_Tag86 = 86,
+  ST_FieldNumber_NetWorkInterface = 87,
 };
 
 @interface ST : GPBMessage
@@ -519,6 +521,14 @@ typedef GPB_ENUM(ST_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSData *softData;
 /** Test to see if @c softData has been set. */
 @property(nonatomic, readwrite) BOOL hasSoftData;
+
+/** 7014 开始 */
+@property(nonatomic, readwrite) uint32_t tag86;
+
+@property(nonatomic, readwrite) BOOL hasTag86;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *netWorkInterface;
+/** Test to see if @c netWorkInterface has been set. */
+@property(nonatomic, readwrite) BOOL hasNetWorkInterface;
 
 @end
 
