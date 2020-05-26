@@ -108,6 +108,8 @@ message ST {
     optional uint32 WeChatInstallTime = 83; // 微信安装时间。 // 7012到此
     optional bytes SoftConfig = 84; // 7013 开始
     optional bytes SoftData = 85;
+    optional uint32 Tag86 = 86; // 7014 开始
+    optional string NetWorkInterface = 87;
 }
 
 message ClientSpamInfo {
