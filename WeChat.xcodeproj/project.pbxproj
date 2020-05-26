@@ -148,6 +148,9 @@
 		719E6EEE2478073B009861CB /* 1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EED2478073B009861CB /* 1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin */; };
 		719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 719EA66923B9F221005DCA56 /* SnsSyncService.m */; };
 		71B65F14247CF96A009D1DD3 /* CheckResUpdateServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B65F13247CF96A009D1DD3 /* CheckResUpdateServices.m */; };
+		71B65F1E247D0F6A009D1DD3 /* pic_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71B65F19247D0F6A009D1DD3 /* pic_3.jpg */; };
+		71B65F1F247D0F6A009D1DD3 /* pic_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71B65F1A247D0F6A009D1DD3 /* pic_2.jpg */; };
+		71B65F20247D0F6A009D1DD3 /* pic_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71B65F1B247D0F6A009D1DD3 /* pic_1.jpg */; };
 		71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* MeViewController.m */; };
 		71D13DFA2475061800508B51 /* cgi-7012.json in Resources */ = {isa = PBXBuildFile; fileRef = 71D13DF72475061800508B51 /* cgi-7012.json */; };
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
@@ -582,6 +585,9 @@
 		719EA66923B9F221005DCA56 /* SnsSyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnsSyncService.m; sourceTree = "<group>"; };
 		71B65F12247CF96A009D1DD3 /* CheckResUpdateServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckResUpdateServices.h; sourceTree = "<group>"; };
 		71B65F13247CF96A009D1DD3 /* CheckResUpdateServices.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckResUpdateServices.m; sourceTree = "<group>"; };
+		71B65F19247D0F6A009D1DD3 /* pic_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic_3.jpg; sourceTree = "<group>"; };
+		71B65F1A247D0F6A009D1DD3 /* pic_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic_2.jpg; sourceTree = "<group>"; };
+		71B65F1B247D0F6A009D1DD3 /* pic_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic_1.jpg; sourceTree = "<group>"; };
 		71C9CA5321C4DC1D006C4DDD /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		71D13DF72475061800508B51 /* cgi-7012.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cgi-7012.json"; sourceTree = "<group>"; };
 		71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUB.h"; sourceTree = "<group>"; };
@@ -803,6 +809,7 @@
 		4649DD6621ED864F006315DC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				71B65F18247D0F6A009D1DD3 /* pics */,
 				719E6EE824780594009861CB /* Test */,
 				719E6EE62478056A009861CB /* Devices */,
 			);
@@ -1430,6 +1437,16 @@
 			path = Handlers;
 			sourceTree = "<group>";
 		};
+		71B65F18247D0F6A009D1DD3 /* pics */ = {
+			isa = PBXGroup;
+			children = (
+				71B65F19247D0F6A009D1DD3 /* pic_3.jpg */,
+				71B65F1A247D0F6A009D1DD3 /* pic_2.jpg */,
+				71B65F1B247D0F6A009D1DD3 /* pic_1.jpg */,
+			);
+			path = pics;
+			sourceTree = "<group>";
+		};
 		71D3DAA921AEACD2002ACF1C /* ViewCat */ = {
 			isa = PBXGroup;
 			children = (
@@ -1632,7 +1649,10 @@
 				713F5A5723A250220096220C /* test.amr in Resources */,
 				71EE8B4423BEF9C200650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
 				719E6EEC24780704009861CB /* 1590152620-fpdevices-2102.bin in Resources */,
+				71B65F1F247D0F6A009D1DD3 /* pic_2.jpg in Resources */,
 				713F5A5323A23C770096220C /* cat_mouse.mp4 in Resources */,
+				71B65F1E247D0F6A009D1DD3 /* pic_3.jpg in Resources */,
+				71B65F20247D0F6A009D1DD3 /* pic_1.jpg in Resources */,
 				71D13DFA2475061800508B51 /* cgi-7012.json in Resources */,
 				719E6EE42476CEB7009861CB /* online.json in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
