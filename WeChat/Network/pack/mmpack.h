@@ -23,7 +23,8 @@
                    uin:(uint32_t)uin
                 aesKey:(NSData *)aesKey
                 cookie:(NSData *)cookie
-             signature:(int)signature;
+             signature:(int)signature
+                  flag:(int)flag;
 
 + (ShortPackage *)DecodePack:(NSData *)body;
 

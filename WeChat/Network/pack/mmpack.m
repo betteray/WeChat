@@ -28,6 +28,7 @@
 
     NSMutableData *header = [NSMutableData data];
 
+    [header appendData:[NSData dataWithHexString:@"bf"]];   //固定
     [header appendData:[NSData dataWithHexString:@"00"]];   //包头长度及是否使用压缩，最后计算。
     int len = (0xc << 4) + (cookie != nil ? 0xf : 0x0);     //加密算法及是否使用cookie： 0xc=HybirdEcdhEncrypt
     [header appendData:[NSData dataWithHexString:[NSString stringWithFormat:@"%2x", len]]];
@@ -42,6 +43,9 @@
     [header appendData:[Varint128 dataWithUInt32:rsaVersion]];
 
     [header appendData:[NSData dataWithHexString:@"02"]];
+    
+    [header appendData:[NSData dataWithHexString:@"00"]];
+    [header appendData:[NSData dataWithHexString:@"fe"]];
 
     // cal rqt 
     int rqt = [CalRqtAlg calRqtData:hybridEncrypedData cmd:1 uin:1];
@@ -52,19 +56,22 @@
 
     NSData *headerLen = [NSData dataWithHexString:[NSString stringWithFormat:@"%2x", (int) ((
             [header length] << 2) + 0x2)]]; //0x2 !use_compress
-    [header replaceBytesInRange:NSMakeRange(0, 1) withBytes:[headerLen bytes]];
+    [header replaceBytesInRange:NSMakeRange(1, 1) withBytes:[headerLen bytes]];
 
     [header appendData:hybridEncrypedData];
 
     return [header copy];
 }
 
+// flag = 7 是前台
 + (NSData *)EncodePack:(int)cgi
          serilizedData:(NSData *)serilizedData
                    uin:(uint32_t)uin
                 aesKey:(NSData *)aesKey
                 cookie:(NSData *)cookie
-             signature:(int)signature {
+             signature:(int)signature
+                  flag:(int)flag
+{
     int bodyDataLen = (int) [serilizedData length];
     NSData *compressData = [serilizedData dataByDeflating];
     int compressedBodyDataLen = (int) [compressData length];
@@ -97,7 +104,13 @@
     [header appendData:[Varint128 dataWithUInt32:0]];
     [header appendData:[Varint128 dataWithUInt32:2]];
     [header appendData:[Varint128 dataWithUInt32:signature]];//checksum
-    [header appendData:[NSData dataWithHexString:@"fe"]]; //ios ff
+    if (flag == 6) {
+        [header appendData:[NSData dataWithHexString:@"fe"]]; //ios ff //flags=7时是前台(ff)，=6时是后台(fe)
+    } else if (flag == 7) {
+        [header appendData:[NSData dataWithHexString:@"ff"]]; //ios ff //flags=7时是前台(ff)，=6时是后台(fe)
+    } else {
+        [header appendData:[NSData dataWithHexString:@"ff"]]; //ios ff //flags=7时是前台(ff)，=6时是后台(fe)
+    }
 
     int rqt = [CalRqtAlg calRqtData:aesedData cmd:1 uin:1];
     NSData *rqtData = [Varint128 dataWithUInt32:rqt];

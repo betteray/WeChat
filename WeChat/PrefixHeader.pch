@@ -114,6 +114,7 @@
     #define A706  0x27000634
     #define A7011 0x27000B32
     #define A7012 0x27000C34
+    #define A7015 0x27000F12
 
     #define AVERSION A7012
 
