@@ -107,24 +107,21 @@
         
         _autoAuthkeyHex = jsonDict[@"auto_key"];
         NSData *autoAuthKeyData = [NSData dataWithHexString:_autoAuthkeyHex];
-        [DBManager saveAutoAuthKey:autoAuthKeyData];
-        
+
         _cookieHex = jsonDict[@"cookie"];
-        [DBManager saveCookie:[NSData dataWithHexString:_cookieHex]];
-        
+
         _syncKeyHex = jsonDict[@"sync_key"];
-        [DBManager saveSyncKey:[NSData dataWithHexString:_syncKeyHex]];
-       
+
         _uin = [jsonDict[@"uin"] intValue];
         _username = jsonDict[@"user"];
-        [DBManager saveAccountInfo:_uin userName:_username nickName:@"" alias:@""];
-        
+
         FPDevice *device = [self paraseFPDevice:jsonDict[@"fp"]];
         ClientSpamInfo *spamInfo = [self parseClientSpamInfo:jsonDict[@"st"]];
         
         _fpDevice = device;
         _clientSpamInfo = spamInfo;
-        
+       
+        _password = jsonDict[@"password"];
     }
 
     return self;

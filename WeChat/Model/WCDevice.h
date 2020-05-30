@@ -37,6 +37,9 @@
 @property (nonatomic, readonly, strong) FPDevice *fpDevice;
 @property (nonatomic, readonly, strong) ClientSpamInfo *clientSpamInfo;
 
+@property (nonatomic, readonly, copy) NSString *password;
+
+
 + (instancetype)deviceWithManualAuth:(ManualAuthRequest *)manualAuthRequet
                       clientSpamInfo:(ClientSpamInfo *)clientSpamInfo
                             fpDevice:(FPDevice *)fpDevice;
