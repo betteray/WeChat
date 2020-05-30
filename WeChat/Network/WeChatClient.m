@@ -205,7 +205,8 @@
                                           uin:_uin
                                        aesKey:[WeChatClient sharedClient].sessionKey
                                        cookie:cookie.data
-                                    signature:signature];
+                                    signature:signature
+                                         flag:7];
 
     NSData *sendData = [long_pack pack:_seq++ cmdId:cgiWrap.cmdId shortData:shortLinkBuf];
 
@@ -243,7 +244,8 @@
                                       uin:_uin
                                    aesKey:_sessionKey
                                    cookie:cookie.data
-                                signature:signature];
+                                signature:signature
+                                     flag:7]; // 7 是前台。6是后台。
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
 #if USE_MMTLS

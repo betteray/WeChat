@@ -16,7 +16,7 @@
 + (void)reportClientCheckWithContext:(uint64_t)context basic:(BOOL)basic
 {
     NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:@"" context:@"report"];
-    NSData *encrypedXMLBuffer = [ZZEncryptService get003FromLocalServer:extSpamInfoBuffer];
+    NSData *encrypedXMLBuffer = [ZZEncryptService get003FromLocal:extSpamInfoBuffer];
     ReportClientCheckReq *req = [[ReportClientCheckReq alloc] init];
     req.encryptedXmlbuffer = encrypedXMLBuffer;
     req.reportContext = context;

@@ -1606,8 +1606,8 @@ typedef struct FPDevice__storage_ {
 
 @implementation SpamInfoEncrypedResult
 
+@dynamic hasVersion, version;
 @dynamic hasType, type;
-@dynamic hasTag2, tag2;
 @dynamic hasEncrypedData, encrypedData;
 @dynamic hasTimestamp, timestamp;
 @dynamic hasTag5, tag5;
@@ -1615,11 +1615,11 @@ typedef struct FPDevice__storage_ {
 
 typedef struct SpamInfoEncrypedResult__storage_ {
   uint32_t _has_storage_[1];
-  uint32_t tag2;
+  uint32_t type;
   uint32_t timestamp;
   uint32_t tag5;
   uint32_t tag6;
-  NSString *type;
+  NSString *version;
   NSData *encrypedData;
 } SpamInfoEncrypedResult__storage_;
 
@@ -1630,20 +1630,20 @@ typedef struct SpamInfoEncrypedResult__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "type",
+        .name = "version",
         .dataTypeSpecific.className = NULL,
-        .number = SpamInfoEncrypedResult_FieldNumber_Type,
+        .number = SpamInfoEncrypedResult_FieldNumber_Version,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(SpamInfoEncrypedResult__storage_, type),
+        .offset = (uint32_t)offsetof(SpamInfoEncrypedResult__storage_, version),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "tag2",
+        .name = "type",
         .dataTypeSpecific.className = NULL,
-        .number = SpamInfoEncrypedResult_FieldNumber_Tag2,
+        .number = SpamInfoEncrypedResult_FieldNumber_Type,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(SpamInfoEncrypedResult__storage_, tag2),
+        .offset = (uint32_t)offsetof(SpamInfoEncrypedResult__storage_, type),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeUInt32,
       },
@@ -1695,6 +1695,111 @@ typedef struct SpamInfoEncrypedResult__storage_ {
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
         "\001\003\014\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - CryptoData
+
+@implementation CryptoData
+
+@dynamic hasVersion, version;
+@dynamic hasType, type;
+@dynamic hasEncryptData, encryptData;
+@dynamic hasTimestamp, timestamp;
+@dynamic hasUnknown5, unknown5;
+@dynamic hasUnknown6, unknown6;
+
+typedef struct CryptoData__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t type;
+  uint32_t timestamp;
+  uint32_t unknown5;
+  uint32_t unknown6;
+  NSData *version;
+  NSData *encryptData;
+} CryptoData__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "version",
+        .dataTypeSpecific.className = NULL,
+        .number = CryptoData_FieldNumber_Version,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(CryptoData__storage_, version),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "type",
+        .dataTypeSpecific.className = NULL,
+        .number = CryptoData_FieldNumber_Type,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(CryptoData__storage_, type),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "encryptData",
+        .dataTypeSpecific.className = NULL,
+        .number = CryptoData_FieldNumber_EncryptData,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(CryptoData__storage_, encryptData),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "timestamp",
+        .dataTypeSpecific.className = NULL,
+        .number = CryptoData_FieldNumber_Timestamp,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(CryptoData__storage_, timestamp),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "unknown5",
+        .dataTypeSpecific.className = NULL,
+        .number = CryptoData_FieldNumber_Unknown5,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(CryptoData__storage_, unknown5),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "unknown6",
+        .dataTypeSpecific.className = NULL,
+        .number = CryptoData_FieldNumber_Unknown6,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(CryptoData__storage_, unknown6),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[CryptoData class]
+                                     rootClass:[SafeRoot class]
+                                          file:SafeRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(CryptoData__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\003\013\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG
@@ -2091,6 +2196,320 @@ typedef struct ClientSpamInfo_IOS_Content__storage_ {
                                    storageSize:sizeof(ClientSpamInfo_IOS_Content__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ClientSpamInfo_IOS)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - wcaes
+
+@implementation wcaes
+
+@dynamic hasType, type;
+@dynamic hasIv, iv;
+@dynamic hasLen, len;
+@dynamic hasMztkey, mztkey;
+@dynamic hasMztkeyvalue, mztkeyvalue;
+@dynamic hasUnkown6, unkown6;
+@dynamic hasUnkown7, unkown7;
+@dynamic hasUnkown8, unkown8;
+@dynamic hasUnkown9, unkown9;
+@dynamic hasTablekey, tablekey;
+@dynamic hasUnkown11, unkown11;
+@dynamic hasTablevalue, tablevalue;
+@dynamic hasUnkown13, unkown13;
+@dynamic hasUnkown14, unkown14;
+@dynamic hasUnkown15, unkown15;
+@dynamic hasUnkown16, unkown16;
+@dynamic hasUnkown17, unkown17;
+@dynamic hasUnkown18, unkown18;
+@dynamic hasUnkown19, unkown19;
+@dynamic hasUnkown20, unkown20;
+@dynamic hasUnkown21, unkown21;
+@dynamic hasUnkown22, unkown22;
+@dynamic hasUnkown23, unkown23;
+@dynamic hasUnkown24, unkown24;
+@dynamic hasUnkown25, unkown25;
+
+typedef struct wcaes__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t len;
+  NSData *type;
+  NSData *iv;
+  NSData *mztkey;
+  NSData *mztkeyvalue;
+  NSData *unkown6;
+  NSData *unkown7;
+  NSData *unkown8;
+  NSData *unkown9;
+  NSData *tablekey;
+  NSData *unkown11;
+  NSData *tablevalue;
+  NSData *unkown13;
+  NSData *unkown14;
+  NSData *unkown15;
+  NSData *unkown16;
+  NSData *unkown17;
+  NSData *unkown18;
+  NSData *unkown19;
+  NSData *unkown20;
+  NSData *unkown21;
+  NSData *unkown22;
+  NSData *unkown23;
+  NSData *unkown24;
+  NSData *unkown25;
+} wcaes__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "type",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Type,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(wcaes__storage_, type),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "iv",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Iv,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(wcaes__storage_, iv),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "len",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Len,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(wcaes__storage_, len),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "mztkey",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Mztkey,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(wcaes__storage_, mztkey),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "mztkeyvalue",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Mztkeyvalue,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(wcaes__storage_, mztkeyvalue),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown6",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown6,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown6),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown7",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown7,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown7),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown8",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown8,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown8),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown9",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown9,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown9),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tablekey",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Tablekey,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(wcaes__storage_, tablekey),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown11",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown11,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown11),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tablevalue",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Tablevalue,
+        .hasIndex = 11,
+        .offset = (uint32_t)offsetof(wcaes__storage_, tablevalue),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown13",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown13,
+        .hasIndex = 12,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown13),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown14",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown14,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown14),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown15",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown15,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown15),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown16",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown16,
+        .hasIndex = 15,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown16),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown17",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown17,
+        .hasIndex = 16,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown17),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown18",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown18,
+        .hasIndex = 17,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown18),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown19",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown19,
+        .hasIndex = 18,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown19),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown20",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown20,
+        .hasIndex = 19,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown20),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown21",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown21,
+        .hasIndex = 20,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown21),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown22",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown22,
+        .hasIndex = 21,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown22),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown23",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown23,
+        .hasIndex = 22,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown23),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown24",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown24,
+        .hasIndex = 23,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown24),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "unkown25",
+        .dataTypeSpecific.className = NULL,
+        .number = wcaes_FieldNumber_Unkown25,
+        .hasIndex = 24,
+        .offset = (uint32_t)offsetof(wcaes__storage_, unkown25),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[wcaes class]
+                                     rootClass:[SafeRoot class]
+                                          file:SafeRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(wcaes__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\002b\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");
     #endif  // DEBUG

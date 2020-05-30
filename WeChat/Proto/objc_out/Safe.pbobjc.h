@@ -694,8 +694,8 @@ typedef GPB_ENUM(FPDevice_FieldNumber) {
 #pragma mark - SpamInfoEncrypedResult
 
 typedef GPB_ENUM(SpamInfoEncrypedResult_FieldNumber) {
-  SpamInfoEncrypedResult_FieldNumber_Type = 1,
-  SpamInfoEncrypedResult_FieldNumber_Tag2 = 2,
+  SpamInfoEncrypedResult_FieldNumber_Version = 1,
+  SpamInfoEncrypedResult_FieldNumber_Type = 2,
   SpamInfoEncrypedResult_FieldNumber_EncrypedData = 3,
   SpamInfoEncrypedResult_FieldNumber_Timestamp = 4,
   SpamInfoEncrypedResult_FieldNumber_Tag5 = 5,
@@ -707,13 +707,13 @@ typedef GPB_ENUM(SpamInfoEncrypedResult_FieldNumber) {
  **/
 @interface SpamInfoEncrypedResult : GPBMessage
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *type;
-/** Test to see if @c type has been set. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *version;
+/** Test to see if @c version has been set. */
+@property(nonatomic, readwrite) BOOL hasVersion;
+
+@property(nonatomic, readwrite) uint32_t type;
+
 @property(nonatomic, readwrite) BOOL hasType;
-
-@property(nonatomic, readwrite) uint32_t tag2;
-
-@property(nonatomic, readwrite) BOOL hasTag2;
 @property(nonatomic, readwrite, copy, null_resettable) NSData *encrypedData;
 /** Test to see if @c encrypedData has been set. */
 @property(nonatomic, readwrite) BOOL hasEncrypedData;
@@ -730,6 +730,41 @@ typedef GPB_ENUM(SpamInfoEncrypedResult_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t tag6;
 
 @property(nonatomic, readwrite) BOOL hasTag6;
+@end
+
+#pragma mark - CryptoData
+
+typedef GPB_ENUM(CryptoData_FieldNumber) {
+  CryptoData_FieldNumber_Version = 1,
+  CryptoData_FieldNumber_Type = 2,
+  CryptoData_FieldNumber_EncryptData = 3,
+  CryptoData_FieldNumber_Timestamp = 4,
+  CryptoData_FieldNumber_Unknown5 = 5,
+  CryptoData_FieldNumber_Unknown6 = 6,
+};
+
+@interface CryptoData : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *version;
+/** Test to see if @c version has been set. */
+@property(nonatomic, readwrite) BOOL hasVersion;
+
+@property(nonatomic, readwrite) uint32_t type;
+
+@property(nonatomic, readwrite) BOOL hasType;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *encryptData;
+/** Test to see if @c encryptData has been set. */
+@property(nonatomic, readwrite) BOOL hasEncryptData;
+
+@property(nonatomic, readwrite) uint32_t timestamp;
+
+@property(nonatomic, readwrite) BOOL hasTimestamp;
+@property(nonatomic, readwrite) uint32_t unknown5;
+
+@property(nonatomic, readwrite) BOOL hasUnknown5;
+@property(nonatomic, readwrite) uint32_t unknown6;
+
+@property(nonatomic, readwrite) BOOL hasUnknown6;
 @end
 
 #pragma mark - SpamBuff
@@ -862,6 +897,139 @@ typedef GPB_ENUM(ClientSpamInfo_IOS_Content_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSData *tag51;
 /** Test to see if @c tag51 has been set. */
 @property(nonatomic, readwrite) BOOL hasTag51;
+
+@end
+
+#pragma mark - wcaes
+
+typedef GPB_ENUM(wcaes_FieldNumber) {
+  wcaes_FieldNumber_Type = 1,
+  wcaes_FieldNumber_Iv = 2,
+  wcaes_FieldNumber_Len = 3,
+  wcaes_FieldNumber_Mztkey = 4,
+  wcaes_FieldNumber_Mztkeyvalue = 5,
+  wcaes_FieldNumber_Unkown6 = 6,
+  wcaes_FieldNumber_Unkown7 = 7,
+  wcaes_FieldNumber_Unkown8 = 8,
+  wcaes_FieldNumber_Unkown9 = 9,
+  wcaes_FieldNumber_Tablekey = 10,
+  wcaes_FieldNumber_Unkown11 = 11,
+  wcaes_FieldNumber_Tablevalue = 12,
+  wcaes_FieldNumber_Unkown13 = 13,
+  wcaes_FieldNumber_Unkown14 = 14,
+  wcaes_FieldNumber_Unkown15 = 15,
+  wcaes_FieldNumber_Unkown16 = 16,
+  wcaes_FieldNumber_Unkown17 = 17,
+  wcaes_FieldNumber_Unkown18 = 18,
+  wcaes_FieldNumber_Unkown19 = 19,
+  wcaes_FieldNumber_Unkown20 = 20,
+  wcaes_FieldNumber_Unkown21 = 21,
+  wcaes_FieldNumber_Unkown22 = 22,
+  wcaes_FieldNumber_Unkown23 = 23,
+  wcaes_FieldNumber_Unkown24 = 24,
+  wcaes_FieldNumber_Unkown25 = 25,
+};
+
+@interface wcaes : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *type;
+/** Test to see if @c type has been set. */
+@property(nonatomic, readwrite) BOOL hasType;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *iv;
+/** Test to see if @c iv has been set. */
+@property(nonatomic, readwrite) BOOL hasIv;
+
+@property(nonatomic, readwrite) int32_t len;
+
+@property(nonatomic, readwrite) BOOL hasLen;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *mztkey;
+/** Test to see if @c mztkey has been set. */
+@property(nonatomic, readwrite) BOOL hasMztkey;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *mztkeyvalue;
+/** Test to see if @c mztkeyvalue has been set. */
+@property(nonatomic, readwrite) BOOL hasMztkeyvalue;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown6;
+/** Test to see if @c unkown6 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown6;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown7;
+/** Test to see if @c unkown7 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown7;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown8;
+/** Test to see if @c unkown8 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown8;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown9;
+/** Test to see if @c unkown9 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown9;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tablekey;
+/** Test to see if @c tablekey has been set. */
+@property(nonatomic, readwrite) BOOL hasTablekey;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown11;
+/** Test to see if @c unkown11 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown11;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tablevalue;
+/** Test to see if @c tablevalue has been set. */
+@property(nonatomic, readwrite) BOOL hasTablevalue;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown13;
+/** Test to see if @c unkown13 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown13;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown14;
+/** Test to see if @c unkown14 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown14;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown15;
+/** Test to see if @c unkown15 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown15;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown16;
+/** Test to see if @c unkown16 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown16;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown17;
+/** Test to see if @c unkown17 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown17;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown18;
+/** Test to see if @c unkown18 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown18;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown19;
+/** Test to see if @c unkown19 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown19;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown20;
+/** Test to see if @c unkown20 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown20;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown21;
+/** Test to see if @c unkown21 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown21;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown22;
+/** Test to see if @c unkown22 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown22;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown23;
+/** Test to see if @c unkown23 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown23;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown24;
+/** Test to see if @c unkown24 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown24;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *unkown25;
+/** Test to see if @c unkown25 has been set. */
+@property(nonatomic, readwrite) BOOL hasUnkown25;
 
 @end
 

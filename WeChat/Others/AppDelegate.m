@@ -40,19 +40,25 @@
     [[WeChatClient sharedClient] start];
     [DNSFetcher fetchAndSaveToDB];
    
-    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:DEVICE_TOKEN_PATH];
-    if (!isExist) {
-        [FPService initFP];
-    } else {
-        if ([DBManager autoAuthKey].data.length == 0) {
-            [FPService fpfresh:NO];
-        }
-    }
-    
-    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+    [self tryFreshDeviceToken];
     [self autoAuthIfCould];
+
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     
     return YES;
+}
+
+- (void)tryFreshDeviceToken {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        BOOL isExist = [NSData dataWithContentsOfFile:DEVICE_TOKEN_PATH].length > 0;
+        if (!isExist) {
+            [FPService initFP];
+        } else {
+            if ([DBManager autoAuthKey].data.length == 0) {
+                [FPService fpfresh:NO];
+            }
+        }
+    });
 }
 
 - (void)autoAuthIfCould {

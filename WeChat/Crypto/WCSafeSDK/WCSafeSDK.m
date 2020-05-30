@@ -28,16 +28,16 @@
         NSData *WCSTEData = nil;
         if (CLIENT_VERSION > A706) {
             NSData *WCSTF = [SpamInfoGenerator_Proto genWCSTFWithAccount:content];
-            WCSTFData = [ZZEncryptService get003FromLocalServer:WCSTF];
+            WCSTFData = [ZZEncryptService get003FromLocal:WCSTF];
             
             NSData *WCSTE = [SpamInfoGenerator_Proto genWCSTEWithContext:context];
-            WCSTEData = [ZZEncryptService get003FromLocalServer:WCSTE];
+            WCSTEData = [ZZEncryptService get003FromLocal:WCSTE];
         } else {
             NSString *WCSTF = [SpamInfoGenerator_XML genWCSTFWithAccount:content];
-            WCSTFData = [ZZEncryptService get003FromLocalServer:WCSTF];
+            WCSTFData = [ZZEncryptService get003FromLocal:WCSTF];
             
             NSString *WCSTE = [SpamInfoGenerator_XML genWCSTEWithContext:context];
-            WCSTEData = [ZZEncryptService get003FromLocalServer:WCSTE];
+            WCSTEData = [ZZEncryptService get003FromLocal:WCSTE];
         }
         SKBuiltinBuffer_t *wcstf = [SKBuiltinBuffer_t new];
         wcstf.iLen = (int32_t) [WCSTFData length];
@@ -59,10 +59,10 @@
         }
         
         NSData *ST = [SpamInfoGenerator_Proto getClientSpamInfoType:type]; // 0 登录用
-        STData = [ZZEncryptService get003FromLocalServer:ST];
+        STData = [ZZEncryptService get003FromLocal:ST];
     } else {
         NSString *ST = [SpamInfoGenerator_XML genST:0]; // 0 登录用
-        STData = [ZZEncryptService get003FromLocalServer:ST];
+        STData = [ZZEncryptService get003FromLocal:ST];
     }
     
     SKBuiltinBuffer_t *ccData = [SKBuiltinBuffer_t new];

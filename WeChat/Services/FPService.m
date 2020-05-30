@@ -16,7 +16,7 @@
 
 + (void)initFP {
     FPDevice *fp = [[DeviceManager sharedManager] getCurrentDevice].fpDevice;
-    NSData *encrypedData = [ZZEncryptService get003FromLocalServer:[fp data]];
+    NSData *encrypedData = [ZZEncryptService get003FromLocal:[fp data]];
     
     SpamInfoEncrypedResult *result = [SpamInfoEncrypedResult parseFromData:encrypedData error:nil];
     result.timestamp = (int32_t)[[NSDate date] timeIntervalSince1970];
@@ -58,7 +58,7 @@
 + (void)fpfresh:(BOOL)hasLogin {
     FPDevice *fp = [[DeviceManager sharedManager] getCurrentDevice].fpDevice;
     fp.unknown2 = [ZZEncryptService getFPMd5];
-    NSData *encrypedData = [ZZEncryptService get003FromLocalServer:[fp data]];
+    NSData *encrypedData = [ZZEncryptService get003FromLocal:[fp data]];
     
     SpamInfoEncrypedResult *result = [SpamInfoEncrypedResult parseFromData:encrypedData error:nil];
     result.timestamp = (int32_t)[[NSDate date] timeIntervalSince1970];

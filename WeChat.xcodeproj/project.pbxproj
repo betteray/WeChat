@@ -142,6 +142,10 @@
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
 		718E556A24617BB700D94D93 /* mm_17000c21.proto in Sources */ = {isa = PBXBuildFile; fileRef = 718E556724617BB700D94D93 /* mm_17000c21.proto */; };
+		7196E96C24813E2200879C72 /* MMProtocalJni-7015.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */; };
+		7196E96E24814D7600879C72 /* MMProtocalJni-706.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96D24814D7600879C72 /* MMProtocalJni-706.json */; };
+		7196E97024814D9300879C72 /* MMProtocalJni-7012.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */; };
+		7196E9752482132500879C72 /* sae-zlib-compress.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7196E9722482132500879C72 /* sae-zlib-compress.bin */; };
 		719E6EE42476CEB7009861CB /* online.json in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EE12476CEB7009861CB /* online.json */; };
 		719E6EEA247806F5009861CB /* 1590152719-st-34237.bin in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EE9247806F5009861CB /* 1590152719-st-34237.bin */; };
 		719E6EEC24780704009861CB /* 1590152620-fpdevices-2102.bin in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EEB24780704009861CB /* 1590152620-fpdevices-2102.bin */; };
@@ -160,6 +164,9 @@
 		71DD025D23AE181B00EC8E04 /* AuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DD025C23AE181B00EC8E04 /* AuthService.m */; };
 		71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A421E1A12E00B77500 /* MomentsTableViewController.m */; };
 		71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A721E1A32100B77500 /* PeapleNearByTableViewController.m */; };
+		71DF5BBB247FC83D00B7E0B2 /* always-login.json in Resources */ = {isa = PBXBuildFile; fileRef = 71DF5BB8247FC83D00B7E0B2 /* always-login.json */; };
+		71DF5BBF247FF08D00B7E0B2 /* encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DF5BBE247FF08D00B7E0B2 /* encrypt.m */; };
+		71DF5BC62481375100B7E0B2 /* CheckPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DF5BC52481375100B7E0B2 /* CheckPack.m */; };
 		71E485082403B68E0030FF0B /* mm_17000b21.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71E485052403B68E0030FF0B /* mm_17000b21.proto */; };
 		71E4851524052E430030FF0B /* Safe.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E4851424052E430030FF0B /* Safe.pbobjc.m */; };
 		71E4851B240541620030FF0B /* FPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E4851A240541620030FF0B /* FPService.m */; };
@@ -577,6 +584,10 @@
 		71848F6621549C8100DB669E /* NSData+GenRandomData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+GenRandomData.h"; sourceTree = "<group>"; };
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
 		718E556724617BB700D94D93 /* mm_17000c21.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000c21.proto; sourceTree = "<group>"; };
+		7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7015.json"; sourceTree = "<group>"; };
+		7196E96D24814D7600879C72 /* MMProtocalJni-706.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-706.json"; sourceTree = "<group>"; };
+		7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7012.json"; sourceTree = "<group>"; };
+		7196E9722482132500879C72 /* sae-zlib-compress.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "sae-zlib-compress.bin"; sourceTree = "<group>"; };
 		719E6EE12476CEB7009861CB /* online.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = online.json; sourceTree = "<group>"; };
 		719E6EE9247806F5009861CB /* 1590152719-st-34237.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1590152719-st-34237.bin"; sourceTree = "<group>"; };
 		719E6EEB24780704009861CB /* 1590152620-fpdevices-2102.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "1590152620-fpdevices-2102.bin"; sourceTree = "<group>"; };
@@ -604,6 +615,11 @@
 		71DE10A421E1A12E00B77500 /* MomentsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MomentsTableViewController.m; sourceTree = "<group>"; };
 		71DE10A621E1A32100B77500 /* PeapleNearByTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeapleNearByTableViewController.h; sourceTree = "<group>"; };
 		71DE10A721E1A32100B77500 /* PeapleNearByTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeapleNearByTableViewController.m; sourceTree = "<group>"; };
+		71DF5BB8247FC83D00B7E0B2 /* always-login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "always-login.json"; sourceTree = "<group>"; };
+		71DF5BBD247FF08D00B7E0B2 /* encrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encrypt.h; sourceTree = "<group>"; };
+		71DF5BBE247FF08D00B7E0B2 /* encrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = encrypt.m; sourceTree = "<group>"; };
+		71DF5BC42481375100B7E0B2 /* CheckPack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckPack.h; sourceTree = "<group>"; };
+		71DF5BC52481375100B7E0B2 /* CheckPack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckPack.m; sourceTree = "<group>"; };
 		71E1C19C230657E900F5032A /* safe.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = safe.proto; sourceTree = "<group>"; };
 		71E485052403B68E0030FF0B /* mm_17000b21.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000b21.proto; sourceTree = "<group>"; };
 		71E4851324052E430030FF0B /* Safe.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Safe.pbobjc.h; sourceTree = "<group>"; };
@@ -809,6 +825,7 @@
 		4649DD6621ED864F006315DC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7196E96824813E1100879C72 /* FunctionCheckRes */,
 				71B65F18247D0F6A009D1DD3 /* pics */,
 				719E6EE824780594009861CB /* Test */,
 				719E6EE62478056A009861CB /* Devices */,
@@ -1032,6 +1049,7 @@
 		712C6E5D214A145600603022 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				71DF5BC12481373100B7E0B2 /* FunctionCheck */,
 				719EA66E23BA149C005DCA56 /* Handlers */,
 				7112117B23A77AF000A5DBCA /* Utils */,
 				711E9B3923598D4B00C5B655 /* Crypto */,
@@ -1267,6 +1285,7 @@
 		714BE26C2408ED1D00720C72 /* WCSafeSDK */ = {
 			isa = PBXGroup;
 			children = (
+				71DF5BBC247FF07600B7E0B2 /* 03 */,
 				71F9F5C32355B8B500C6C736 /* WCSafeSDK.h */,
 				71F9F5C42355B8B500C6C736 /* WCSafeSDK.m */,
 				714BE2642408ECF300720C72 /* SpamInfoGenerator-Proto.h */,
@@ -1393,9 +1412,20 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		7196E96824813E1100879C72 /* FunctionCheckRes */ = {
+			isa = PBXGroup;
+			children = (
+				7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */,
+				7196E96D24814D7600879C72 /* MMProtocalJni-706.json */,
+				7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */,
+			);
+			path = FunctionCheckRes;
+			sourceTree = "<group>";
+		};
 		719E6EE62478056A009861CB /* Devices */ = {
 			isa = PBXGroup;
 			children = (
+				71DF5BB8247FC83D00B7E0B2 /* always-login.json */,
 				719E6EE12476CEB7009861CB /* online.json */,
 				719E6EE724780573009861CB /* mi4 */,
 			);
@@ -1456,6 +1486,25 @@
 				71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */,
 			);
 			path = ViewCat;
+			sourceTree = "<group>";
+		};
+		71DF5BBC247FF07600B7E0B2 /* 03 */ = {
+			isa = PBXGroup;
+			children = (
+				7196E9722482132500879C72 /* sae-zlib-compress.bin */,
+				71DF5BBE247FF08D00B7E0B2 /* encrypt.m */,
+				71DF5BBD247FF08D00B7E0B2 /* encrypt.h */,
+			);
+			path = 03;
+			sourceTree = "<group>";
+		};
+		71DF5BC12481373100B7E0B2 /* FunctionCheck */ = {
+			isa = PBXGroup;
+			children = (
+				71DF5BC42481375100B7E0B2 /* CheckPack.h */,
+				71DF5BC52481375100B7E0B2 /* CheckPack.m */,
+			);
+			path = FunctionCheck;
 			sourceTree = "<group>";
 		};
 		71E48516240533BA0030FF0B /* versions */ = {
@@ -1641,10 +1690,13 @@
 				46145F97221D9BF6003DC115 /* newwxjs-compiled.js in Resources */,
 				71EE8B4323BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
 				7168F97423B349B900DBB3A6 /* MMKeyBoardView.xib in Resources */,
+				7196E96C24813E2200879C72 /* MMProtocalJni-7015.json in Resources */,
 				719E6EEE2478073B009861CB /* 1590152662946_cgi-bin_micromsg-bin_secmanualauth.bin in Resources */,
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				71EE8B4923BEFB7500650F67 /* proto_bin_666.zip in Resources */,
+				7196E97024814D9300879C72 /* MMProtocalJni-7012.json in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
+				7196E9752482132500879C72 /* sae-zlib-compress.bin in Resources */,
 				7168F97623B355B400DBB3A6 /* test.mp3 in Resources */,
 				713F5A5723A250220096220C /* test.amr in Resources */,
 				71EE8B4423BEF9C200650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
@@ -1655,7 +1707,9 @@
 				71B65F20247D0F6A009D1DD3 /* pic_1.jpg in Resources */,
 				71D13DFA2475061800508B51 /* cgi-7012.json in Resources */,
 				719E6EE42476CEB7009861CB /* online.json in Resources */,
+				7196E96E24814D7600879C72 /* MMProtocalJni-706.json in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
+				71DF5BBB247FC83D00B7E0B2 /* always-login.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1756,6 +1810,7 @@
 			files = (
 				462D9C0E21D4EC5700FC5461 /* WCBuiltinIP.m in Sources */,
 				71DD025823AE0C5400EC8E04 /* AuthHandler.m in Sources */,
+				71DF5BBF247FF08D00B7E0B2 /* encrypt.m in Sources */,
 				712C6E93214A1E8900603022 /* WeChatClient.m in Sources */,
 				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
 				712F95F221D0981B00CFE3A0 /* WCDevice.m in Sources */,
@@ -1854,6 +1909,7 @@
 				4689A17821E4C01800E2EA9A /* SyncKeyCompare.m in Sources */,
 				71008F4221B7A36200DE8DF8 /* MMTLSShortLinkResponse.m in Sources */,
 				714BE2722408F23E00720C72 /* ReportClientCheckService.m in Sources */,
+				71DF5BC62481375100B7E0B2 /* CheckPack.m in Sources */,
 				7112DBC223A334AD008CC5E1 /* GetMsgImgService.m in Sources */,
 				46804CED21DE5B2900232229 /* ChatsDetailTableViewCell.m in Sources */,
 				466C4ACA21DDD6D200743075 /* ContactsTableViewCell.m in Sources */,

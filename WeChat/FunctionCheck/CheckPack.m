@@ -29,7 +29,12 @@
                                          cookie:cookie
                                      rsaVersion:[test[@"RsaVer"] intValue]];
             
-            LogVerbose(@"test %@ => %@", method, [packedData isEqualToData:result] ? @"pass" : @"fail");
+            if ([packedData isEqualToData:result]) {
+                LogVerbose(@"test %@ => pass", method);
+            } else {
+                LogVerbose(@"test fail %@ => %@ : %@", method, [packedData toHexString], test);
+            }
+            
         } else if ([method isEqualToString:@"MMProtocalJni::pack"]) {
             
             NSData *aesKey = [NSData dataWithHexString:test[@"AesKey"]];
@@ -44,8 +49,12 @@
                                              cookie:cookie
                                           signature:[test[@"signature"] intValue]
                                                flag:[test[@"flag"] intValue]];
-            
-            LogVerbose(@"test %@ => %@", method, [packedData isEqualToData:result] ? @"pass" : @"fail");
+           
+            if ([packedData isEqualToData:result]) {
+                LogVerbose(@"test %@ => pass", method);
+            } else {
+                LogVerbose(@"test fail %@ => %@ : %@", method, [packedData toHexString], test);
+            }
         } else {
             LogError(@"test %@", method);
         }
@@ -53,7 +62,7 @@
 }
 
 + (NSArray *)loadCheckData {
-    NSData *jsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"MMProtocalJni" ofType:@"json"]];
+    NSData *jsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"MMProtocalJni-706" ofType:@"json"]];
     return [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
 }
 

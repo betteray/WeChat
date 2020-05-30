@@ -346,12 +346,21 @@ message FPDevice {
 
 //  用于加密完填充字端用。
 message SpamInfoEncrypedResult {
-    optional string type = 1;
-    optional uint32 tag2 = 2;
+    optional string version = 1;
+    optional uint32 type = 2;
     optional bytes encrypedData = 3;
     optional uint32 timestamp = 4; // 706没有 , 7011有
     optional uint32 tag5 = 5; // 5
     optional uint32 tag6 = 6; // 0
+}
+
+message CryptoData {
+    optional bytes version = 1;
+    optional uint32 type = 2;
+    optional bytes encryptData = 3;
+    optional uint32 timestamp = 4;
+    optional uint32 unknown5 = 5;
+    optional uint32 unknown6 = 6;
 }
 
 message SpamBuff {
@@ -386,4 +395,32 @@ message ClientSpamInfo_IOS {
         optional bytes tag51 = 11;
     }
     required Content content = 3;
+}
+
+message wcaes{
+    optional bytes type = 1;
+    optional bytes IV =2;
+    optional int32 len = 3;
+    optional bytes mztkey =4;
+    optional bytes mztkeyvalue =5;
+    optional bytes unkown6 =6;
+    optional bytes unkown7 =7;
+    optional bytes unkown8 =8;
+    optional bytes unkown9 =9;
+    optional bytes tablekey =10;
+    optional bytes unkown11 =11;
+    optional bytes tablevalue =12;
+    optional bytes unkown13 =13;
+    optional bytes unkown14 =14;
+    optional bytes unkown15 =15;
+    optional bytes unkown16 =16;
+    optional bytes unkown17 =17;
+    optional bytes unkown18 =18;
+    optional bytes unkown19 =19;
+    optional bytes unkown20 =20;
+    optional bytes unkown21 =21;
+    optional bytes unkown22 =22;
+    optional bytes unkown23 =23;
+    optional bytes unkown24 =24;
+    optional bytes unkown25 =25;
 }
