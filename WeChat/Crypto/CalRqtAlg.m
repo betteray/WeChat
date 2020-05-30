@@ -26,7 +26,7 @@
     
     [block appendData:[md5 dataUsingEncoding:NSUTF8StringEncoding]];
     
-    LogVerbose(@"%@", block);
+//    LogVerbose(@"%@", block);
    
     // ok ======== ^^^^^^^ ===========
     

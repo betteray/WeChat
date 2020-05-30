@@ -115,11 +115,11 @@
         long sent = [self.client sendBytes:[sendData bytes] count:[sendData length]];
         if (sent == sendData.length)
         {
-            LogDebug(@"FastSocket Send all the Data, Len: %ld", sent);
+//            LogDebug(@"FastSocket Send all the Data, Len: %ld", sent);
         }
         else
         {
-            LogError(@"FastSocket Send Only %ld Bytes.", sent);
+//            LogError(@"FastSocket Send Only %ld Bytes.", sent);
         }
     });
 }
