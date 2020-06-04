@@ -27,6 +27,7 @@
 #import "MMProtocalJni.h"
 #import "SyncService.h"
 #import "SnsSyncService.h"
+#import "CdnLogic.h"
 
 #define CMDID_NOOP_REQ 6
 #define CMDID_IDENTIFY_REQ 205
@@ -246,6 +247,26 @@
                                    cookie:cookie.data
                                 signature:signature
                                      flag:7]; // 7 是前台。6是后台。
+    
+    // 处理特殊请求，通过cdn上传图片并一起发送消息。
+    if ([cgiWrap.request isKindOfClass:[CDNUploadMsgImgPrepareRequest class]]) {
+        CDNUploadMsgImgPrepareRequest *request = (CDNUploadMsgImgPrepareRequest *)cgiWrap.request;
+        NSDictionary *pics = cgiWrap.userData;
+        [[CdnLogic sharedInstance] startSSUpload:pics
+                                      sessionbuf:sendData
+                                          aesKey:request.aeskey
+                                         fileKey:request.clientImgId
+                                          toUser:request.toUserName
+                                         success:^(NSDictionary *  _Nullable response)
+        {
+            NSData *sesstionBuf = [NSData dataWithHexString:response[@"skeybuf"]];
+            [self UnPack:sesstionBuf];
+        }
+                                         failure:failureBlock];
+        
+        return;
+    }
+    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
 #if USE_MMTLS

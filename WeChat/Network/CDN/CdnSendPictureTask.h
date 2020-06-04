@@ -7,12 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CdnTask.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CdnSendPictureTask : NSObject
+@interface CdnSendPictureTask : CdnTask
 
-- (void)packBody: (NSString *)picPath;
+@property (nonatomic, strong) NSData *sessionbuf;
+@property (nonatomic, copy) NSString *aesKey;
+@property (nonatomic, copy) NSString *fileKey;
+@property (nonatomic, strong) NSDictionary *pics;
+@property (nonatomic, copy) NSString *toUser;
 
 @end
 

@@ -141,6 +141,10 @@
 		71808C1B239E2C4D005C3BDE /* CdnSendPictureTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 71808C1A239E2C4D005C3BDE /* CdnSendPictureTask.m */; };
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
 		71848F6821549C8100DB669E /* NSData+GenRandomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F6721549C8100DB669E /* NSData+GenRandomData.m */; };
+		7185F8E024863BC400568CF0 /* CdnTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185F8DF24863BC400568CF0 /* CdnTask.m */; };
+		7185F8E524864D8300568CF0 /* CdnSendImgMsgService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185F8E424864D8300568CF0 /* CdnSendImgMsgService.m */; };
+		7185F8E824874E4400568CF0 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185F8E724874E4400568CF0 /* UIImage+Resize.m */; };
+		7185F8EC24889E1C00568CF0 /* UIImage+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185F8EB24889E1C00568CF0 /* UIImage+Random.m */; };
 		718E556A24617BB700D94D93 /* mm_17000c21.proto in Sources */ = {isa = PBXBuildFile; fileRef = 718E556724617BB700D94D93 /* mm_17000c21.proto */; };
 		7196E96C24813E2200879C72 /* MMProtocalJni-7015.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */; };
 		7196E96E24814D7600879C72 /* MMProtocalJni-706.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96D24814D7600879C72 /* MMProtocalJni-706.json */; };
@@ -583,6 +587,14 @@
 		71848F262150CABD00DB669E /* NSData+Compression.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Compression.m"; sourceTree = "<group>"; };
 		71848F6621549C8100DB669E /* NSData+GenRandomData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+GenRandomData.h"; sourceTree = "<group>"; };
 		71848F6721549C8100DB669E /* NSData+GenRandomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+GenRandomData.m"; sourceTree = "<group>"; };
+		7185F8DE24863BC400568CF0 /* CdnTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnTask.h; sourceTree = "<group>"; };
+		7185F8DF24863BC400568CF0 /* CdnTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CdnTask.m; sourceTree = "<group>"; };
+		7185F8E324864D8300568CF0 /* CdnSendImgMsgService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnSendImgMsgService.h; sourceTree = "<group>"; };
+		7185F8E424864D8300568CF0 /* CdnSendImgMsgService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CdnSendImgMsgService.m; sourceTree = "<group>"; };
+		7185F8E624874E4400568CF0 /* UIImage+Resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		7185F8E724874E4400568CF0 /* UIImage+Resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		7185F8EA24889E1C00568CF0 /* UIImage+Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Random.h"; sourceTree = "<group>"; };
+		7185F8EB24889E1C00568CF0 /* UIImage+Random.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Random.m"; sourceTree = "<group>"; };
 		718E556724617BB700D94D93 /* mm_17000c21.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000c21.proto; sourceTree = "<group>"; };
 		7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7015.json"; sourceTree = "<group>"; };
 		7196E96D24814D7600879C72 /* MMProtocalJni-706.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-706.json"; sourceTree = "<group>"; };
@@ -789,6 +801,8 @@
 				71776AF4247558AC0069D616 /* PasswordService.m */,
 				71B65F12247CF96A009D1DD3 /* CheckResUpdateServices.h */,
 				71B65F13247CF96A009D1DD3 /* CheckResUpdateServices.m */,
+				7185F8E324864D8300568CF0 /* CdnSendImgMsgService.h */,
+				7185F8E424864D8300568CF0 /* CdnSendImgMsgService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1274,6 +1288,8 @@
 			children = (
 				714513422390F6A40078D130 /* CdnLogic.h */,
 				714513432390F6A40078D130 /* CdnLogic.m */,
+				7185F8DE24863BC400568CF0 /* CdnTask.h */,
+				7185F8DF24863BC400568CF0 /* CdnTask.m */,
 				71808C08239DFCD0005C3BDE /* CdnSnsUploadTask.h */,
 				71808C09239DFCD0005C3BDE /* CdnSnsUploadTask.m */,
 				71808C19239E2C4D005C3BDE /* CdnSendPictureTask.h */,
@@ -1408,6 +1424,10 @@
 				464FB82921D4E8BD003E923F /* NSString+Regex.m */,
 				716A93BD2398F04B00A0C9DC /* AES_EVP.h */,
 				716A93BE2398F04B00A0C9DC /* AES_EVP.m */,
+				7185F8E624874E4400568CF0 /* UIImage+Resize.h */,
+				7185F8E724874E4400568CF0 /* UIImage+Resize.m */,
+				7185F8EA24889E1C00568CF0 /* UIImage+Random.h */,
+				7185F8EB24889E1C00568CF0 /* UIImage+Random.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1824,6 +1844,7 @@
 				710F14FB2360343B0034FA65 /* NewSyncService.m in Sources */,
 				466C4AC621DDD65900743075 /* ContactsTableViewController.m in Sources */,
 				463D13442212E4D5007C1DBD /* MMWKWebViewController.m in Sources */,
+				7185F8E524864D8300568CF0 /* CdnSendImgMsgService.m in Sources */,
 				71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */,
 				711E9B4E2359EC0700C5B655 /* RiskScanBufReq.m in Sources */,
 				714B348A23B5B89C00C5B442 /* SnsPostService.m in Sources */,
@@ -1833,6 +1854,7 @@
 				716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */,
 				714513442390F6A40078D130 /* CdnLogic.m in Sources */,
 				714B348523B5B78C00C5B442 /* SnsTimeLineService.m in Sources */,
+				7185F8EC24889E1C00568CF0 /* UIImage+Random.m in Sources */,
 				71008F3321B6750700DE8DF8 /* DNSFetcher.m in Sources */,
 				4681939722CB31D400839EB0 /* UtileJni.pbobjc.m in Sources */,
 				71FD5D9523B48E7B00B70518 /* NSData+AddData.m in Sources */,
@@ -1871,6 +1893,7 @@
 				7155BA5221902AB30002CE1D /* ClientHello.m in Sources */,
 				716A93C2239A2CA200A0C9DC /* GetCDNDnsService.m in Sources */,
 				712F95FA21D1E71600CFE3A0 /* LongLinkClient.m in Sources */,
+				7185F8E024863BC400568CF0 /* CdnTask.m in Sources */,
 				7121C35E21C3494300A3E900 /* LoginViewController.m in Sources */,
 				71FD5D8D23B48A3200B70518 /* GetkvidkeyStrategyService.m in Sources */,
 				712BDD832473C98D00A3DD49 /* AndroidOnly.pbobjc.m in Sources */,
@@ -1919,6 +1942,7 @@
 				463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */,
 				712BDD892473D0DD00A3DD49 /* QueryMidService.m in Sources */,
 				712C7149214BA38900603022 /* LongHeader.m in Sources */,
+				7185F8E824874E4400568CF0 /* UIImage+Resize.m in Sources */,
 				712C6E99214A2F9C00603022 /* NSData+Util.m in Sources */,
 				462D9C3621DCD2D000FC5461 /* SyncCmdHandler.m in Sources */,
 				718E556A24617BB700D94D93 /* mm_17000c21.proto in Sources */,

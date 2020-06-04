@@ -337,7 +337,7 @@
     appMsg.jsAppId = @"";
     appMsg.toUserName = toUser.userName;
     appMsg.fromUserName = [DBManager accountInfo].userName;
-    uint32_t stamp = (uint32_t) [CUtility GetTimeStamp];
+    uint32_t stamp = (uint32_t) [CUtility GetTimeStampInSecond];
     appMsg.clientMsgId = [NSString stringWithFormat:@"rowhongwei18_%d", stamp];
     appMsg.appId = @"";
     appMsg.shareURLOriginal = @"";

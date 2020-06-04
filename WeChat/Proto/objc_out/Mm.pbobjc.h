@@ -15691,6 +15691,10 @@ typedef GPB_ENUM(CDNUploadMsgImgPrepareRequest_FieldNumber) {
   CDNUploadMsgImgPrepareRequest_FieldNumber_Longitude = 9,
   CDNUploadMsgImgPrepareRequest_FieldNumber_Latitude = 10,
   CDNUploadMsgImgPrepareRequest_FieldNumber_AttachedContent = 11,
+  CDNUploadMsgImgPrepareRequest_FieldNumber_Tag12 = 12,
+  CDNUploadMsgImgPrepareRequest_FieldNumber_Tag13 = 13,
+  CDNUploadMsgImgPrepareRequest_FieldNumber_Tag14 = 14,
+  CDNUploadMsgImgPrepareRequest_FieldNumber_Tag15 = 15,
   CDNUploadMsgImgPrepareRequest_FieldNumber_Aeskey = 16,
   CDNUploadMsgImgPrepareRequest_FieldNumber_EncryVer = 17,
   CDNUploadMsgImgPrepareRequest_FieldNumber_Crc32 = 18,
@@ -15744,6 +15748,18 @@ typedef GPB_ENUM(CDNUploadMsgImgPrepareRequest_FieldNumber) {
 /** Test to see if @c attachedContent has been set. */
 @property(nonatomic, readwrite) BOOL hasAttachedContent;
 
+@property(nonatomic, readwrite) uint32_t tag12;
+
+@property(nonatomic, readwrite) BOOL hasTag12;
+@property(nonatomic, readwrite) uint32_t tag13;
+
+@property(nonatomic, readwrite) BOOL hasTag13;
+@property(nonatomic, readwrite) uint32_t tag14;
+
+@property(nonatomic, readwrite) BOOL hasTag14;
+@property(nonatomic, readwrite) uint32_t tag15;
+
+@property(nonatomic, readwrite) BOOL hasTag15;
 @property(nonatomic, readwrite, copy, null_resettable) NSString *aeskey;
 /** Test to see if @c aeskey has been set. */
 @property(nonatomic, readwrite) BOOL hasAeskey;

@@ -3599,6 +3599,10 @@ message CDNUploadMsgImgPrepareRequest {
     optional  float  longitude  = 9;
     optional  float  latitude  = 10;
     optional  string  attachedContent  = 11;
+    optional uint32 tag12 = 12;
+    optional uint32 tag13 = 13;
+    optional uint32 tag14 = 14;
+    optional uint32 tag15 = 15;
     optional  string  aeskey  = 16;
     optional  int32  encryVer  = 17;
     optional  uint32  crc32  = 18;

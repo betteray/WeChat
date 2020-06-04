@@ -13,6 +13,9 @@
 #import "SendMsgService.h"
 #import "MMKeyBoardView.h"
 #import "UIView+LoadFromXIB.h"
+#import "CdnSendImgMsgService.h"
+#import "UIImage+Resize.h"
+#import "UIImage+Random.h"
 
 @interface ChatDetailTableViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MMKeyBoardViewDelegate>
 
@@ -93,7 +96,22 @@
 }
 
 - (BOOL)onMMKeyBoardViewSendPic:(MMKeyBoardView *)keyboardView {
-    [SendMsgService sendImgMsg:[[NSBundle mainBundle] pathForResource:@"pic_1" ofType:@"jpg"] toUser:self.curUser];
+//    [SendMsgService sendImgMsg:[[NSBundle mainBundle] pathForResource:@"pic_1" ofType:@"jpg"] toUser:self.curUser]; //ok by shortlink
+    
+    UIImage *image = [UIImage randomImageWithSideLength:400 inset:20];
+    
+    UIImage *midImage = [image thumbnailWithMidSize];
+    UIImage *thumbImage = [image thumbnail];
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    NSData *midThumbData = UIImageJPEGRepresentation(midImage, 1);
+    NSData *thumbImageData = UIImageJPEGRepresentation(thumbImage, 1);
+
+    NSDictionary *dic = @{@"image" : imageData, @"mid": midThumbData, @"thumb": thumbImageData};
+    
+    AccountInfo *info = [DBManager accountInfo];
+    [CdnSendImgMsgService startSendImg:info.userName toUserName:self.curUser.userName pics:dic];
+    
     return YES;
 }
 

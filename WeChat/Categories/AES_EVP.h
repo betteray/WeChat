@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AES_EVP : NSObject
 
 + (NSData *)AES_ECB_128_Encrypt:(NSData *)plainText key:(NSData *)key;
++ (NSData *)AES_CBC_128_Encrypt:(NSData *)plainText key:(NSData *)key;
+
++ (NSString *)encrypedUserName:(NSString *)plainText WithKey:(NSString *)key;
 
 @end
 

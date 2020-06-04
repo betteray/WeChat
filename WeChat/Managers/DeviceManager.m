@@ -45,7 +45,7 @@
         _curDevice = device;
         
         // 添加设备，从导出的json格式数据中恢复设备。
-//        NSData *onlineDeviceJsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"online" ofType:@"json"]];
+//        NSData *onlineDeviceJsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"always-login" ofType:@"json"]];
 //        NSDictionary *onlineDeviceJson = [NSJSONSerialization JSONObjectWithData:onlineDeviceJsonData options:0 error:nil];
 //        WCDevice *onlineDevice = [WCDevice deviceFromJson:onlineDeviceJson];
 //

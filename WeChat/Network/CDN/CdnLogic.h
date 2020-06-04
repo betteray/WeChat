@@ -18,6 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
                success:(SuccessBlock)successBlock
                failure:(FailureBlock)failureBlock;
 
+- (void)startSSUpload:(NSDictionary *)pics
+           sessionbuf:(NSData *)sessionbuf
+               aesKey:(NSString *)aesKey
+              fileKey:(NSString *)fileKey
+               toUser:(NSString *)toUser
+              success:(SuccessBlock)successBlock
+              failure:(FailureBlock)failureBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

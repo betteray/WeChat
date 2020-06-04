@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class GPBMessage;
 
 @interface CgiWrap : NSObject
@@ -20,4 +22,8 @@
 @property (nonatomic, assign) BOOL needSetBaseRequest;
 @property (nonatomic, strong) Class responseClass;
 
+@property (nonatomic, nullable, strong) id userData;
+
 @end
+
+NS_ASSUME_NONNULL_END

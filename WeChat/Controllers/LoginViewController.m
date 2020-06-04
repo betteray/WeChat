@@ -15,6 +15,11 @@
 #import "GetkvidkeyStrategyService.h"
 #import "WCSafeSDK.h"
 
+#import "CdnSendPictureTask.h"
+#import "CheckPack.h"
+#import "ZZEncryptService.h"
+#import "AES_EVP.h"
+
 @interface LoginViewController ()
 
 @property(weak, nonatomic) IBOutlet UITextField *userNameTextField;
@@ -35,12 +40,13 @@
     _versionLabel.text = [NSString stringWithFormat:@"iOS (0x%x)", CLIENT_VERSION];
 #endif
 
-//    self.userNameTextField.text = @"dathsp06";
-//    self.pwdTextField.text = @"kqrjs496";
-
-//    CdnSendPictureTask *task = [CdnSendPictureTask new];
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"jpg"];
-//    [task packBody:path];
+    WCDevice *device = [[DeviceManager sharedManager] getCurrentDevice];
+    if (device.username.length > 0) {
+        self.userNameTextField.text = device.username;
+    }
+    if (device.password.length > 0) {
+        self.pwdTextField.text = device.password;
+    }
 }
  
 

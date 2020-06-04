@@ -78,7 +78,7 @@
         DeviceToken_Token *token = [DeviceToken_Token new];
         token.devicetoken = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:DEVICE_TOKEN_PATH] encoding:NSUTF8StringEncoding];
         dt.token = token;
-        dt.timestamp = (uint32_t) [CUtility GetTimeStamp];
+        dt.timestamp = (uint32_t) [CUtility GetTimeStampInSecond];
         
         SKBuiltinBuffer_t *deviceTokenBuffer = [SKBuiltinBuffer_t new];
         NSData *dtData = [dt data];

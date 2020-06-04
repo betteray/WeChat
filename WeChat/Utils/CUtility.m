@@ -40,10 +40,16 @@
     return [uuidNew stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@"49"];
 }
 
-+ (NSInteger)GetTimeStamp {
++ (NSInteger)GetTimeStampInSecond {
     struct timeval tp = {0};
     if (gettimeofday(&tp, NULL) != 0) LogVerbose(@"Error get time");
     return tp.tv_sec;
+}
+
++ (NSInteger)GetTimeInMilliSecond {
+    struct timeval tv = {0};
+    if (gettimeofday(&tv, NULL) != 0) LogVerbose(@"Error get time");
+    return (int64_t) tv.tv_sec*1000 + tv.tv_usec/1000;
 }
 
 @end

@@ -62,10 +62,12 @@
 }
 
 - (void)autoAuthIfCould {
-    AutoAuthKeyStore *autoAuthKeyStore = [DBManager autoAuthKey];
-    if ([autoAuthKeyStore.data length] > 0) {
-        [AuthService autoAuthWithRootViewController:(UINavigationController *)self.window.rootViewController];
-    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        AutoAuthKeyStore *autoAuthKeyStore = [DBManager autoAuthKey];
+        if ([autoAuthKeyStore.data length] > 0) {
+            [AuthService autoAuthWithRootViewController:(UINavigationController *)self.window.rootViewController];
+        }
+    });
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
