@@ -9,6 +9,7 @@
 #import "CdnLogic.h"
 #import "CdnSnsUploadTask.h"
 #import "CdnSendPictureTask.h"
+#import "CdnGetMsgImgTask.h"
 
 @interface CdnLogic()
 
@@ -72,4 +73,14 @@
     [task startCdnRequestSuccess:successBlock failure:failureBlock];
 }
 
+- (void)startC2CDownload:(NSString *)aesKey
+                  fileid:(NSString *)fileid
+                 success:(SuccessBlock)successBlock
+                 failure:(FailureBlock)failureBlock {
+    CdnGetMsgImgTask *task = [[CdnGetMsgImgTask alloc] initWithSeq:_seq++];
+    task.fileid = fileid;
+    task.aesKey = aesKey;
+    
+    [task startCdnRequestSuccess:successBlock failure:failureBlock];
+}
 @end

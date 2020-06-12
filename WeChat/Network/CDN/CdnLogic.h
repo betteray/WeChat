@@ -26,6 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
               success:(SuccessBlock)successBlock
               failure:(FailureBlock)failureBlock;
 
+- (void)startC2CDownload:(NSString *)aesKey
+                  fileid:(NSString *)fileid
+                 success:(SuccessBlock)successBlock
+                 failure:(FailureBlock)failureBlock;
 @end
 
 NS_ASSUME_NONNULL_END

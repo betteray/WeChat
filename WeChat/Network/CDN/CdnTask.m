@@ -63,8 +63,6 @@
     if ([client connect]) {
         _client = client;
         
-        [self readData];
-
         while (self.hasPacket) {
             NSData *data = [self packData];
             [self _sendData:data];
@@ -73,6 +71,7 @@
             self.body = [NSMutableData data];
         }
         
+        [self readData];
     }
 }
 
@@ -97,10 +96,10 @@
         while (1)
         {
             NSData *dataPackage = [self ReadCDNPacket];
-            if ([dataPackage toInt8ofRange:0] == 0xab) 
+            if ([dataPackage length] && [dataPackage toInt8ofRange:0] == 0xab)
             {
                 NSDictionary *response = [self parseResponseToDic:dataPackage];
-               LogVerbose(@"cdn recv response: %@", response);
+                LogVerbose(@"cdn recv response: %@", response);
 
                 // error
                 NSInteger retcode = [((NSNumber *)[response objectForKey:@"retcode"]) integerValue];
@@ -133,7 +132,7 @@
             }
             else
             {
-                //error ?
+                LogError(@"no data was read.");
             }
         }
     });
@@ -145,14 +144,14 @@
     long received = [_client receiveBytes:[header mutableBytes] count:5];
     if (received == 5)
     {
-        //LogInfo(@"Read 5 bytes Head.");
+        int32_t payloadLength = [header toInt16ofRange:NSMakeRange(3, 2) SwapBigToHost:YES];
+        NSData *payloadData = [self readPayload:payloadLength - 5];
+        [header appendData:payloadData];
+
+        return [header copy];
     }
 
-    int32_t payloadLength = [header toInt16ofRange:NSMakeRange(3, 2) SwapBigToHost:YES];
-    NSData *payloadData = [self readPayload:payloadLength - 5];
-    [header appendData:payloadData];
-
-    return [header copy];
+    return nil;
 }
 
 - (NSData *)readPayload:(NSInteger)payloadLength
@@ -205,7 +204,7 @@
     int pos = 25;
     while ([self readField:&key andValue:&value withReponse:cdnPacketData pos:&pos]) {
         [md setObject:value forKey:key];
-//        LogVerbose(@"key: %@, value: %@", key, value);
+        LogVerbose(@"key: %@, value: %@", key, value);
     };
     
     return [md copy];
