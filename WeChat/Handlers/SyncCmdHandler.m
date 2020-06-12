@@ -18,6 +18,7 @@
 #import "FSOpenSSL.h"
 #import "ReportClientCheckService.h"
 #import "MessageHooks.h"
+#import "CdnLogic.h"
 
 @implementation SyncCmdHandler
 
@@ -105,18 +106,33 @@
                     // <msg>
                     //     <img aeskey="b57168182ec2a5593635e41954a16701" encryver="0" cdnthumbaeskey="b57168182ec2a5593635e41954a16701" cdnthumburl="30580201000451304f020100020474e9584d02033d0af802047034feb602045df497b3042a777875706c6f61645f777869645f3330756864736b6b6c79636932323230305f313537363331303730340204010438010201000400" cdnthumblength="2874" cdnthumbheight="67" cdnthumbwidth="120" cdnmidheight="0" cdnmidwidth="0" cdnhdheight="0" cdnhdwidth="0" cdnmidimgurl="30580201000451304f020100020474e9584d02033d0af802047034feb602045df497b3042a777875706c6f61645f777869645f3330756864736b6b6c79636932323230305f313537363331303730340204010438010201000400" length="97574" cdnbigimgurl="30580201000451304f020100020474e9584d02033d0af802047034feb602045df497b3042a777875706c6f61645f777869645f3330756864736b6b6c79636932323230305f313537363331303730340204010438010201000400" hdlength="270545" md5="cc1e5bf7e089075b824a3ef5372ae10b" />
                     // </msg>
-                    NSString *from = msg.fromUserName.string;
-                    NSString *to = msg.toUserName.string;
-                    ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content.string encoding:NSUTF8StringEncoding error:nil];
-                    NSDictionary *attrs = [[document.rootElement firstChildWithTag:@"img"] attributes];
-                    NSNumber *thumbLength = [attrs objectForKey:@"length"];
-                    if (thumbLength) { // 缩略图应该都有吧。 控制位在请求上设置。
-                        [GetMsgImgService getMsgImg:msg.msgId startPos:0 from:from to:to dataTotalLen:[thumbLength intValue] original:NO];
+                    { // 原先的短链接下载cdn图片方法。
+//                        NSString *from = msg.fromUserName.string;
+//                        NSString *to = msg.toUserName.string;
+//                        ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content.string encoding:NSUTF8StringEncoding error:nil];
+//                        NSDictionary *attrs = [[document.rootElement firstChildWithTag:@"img"] attributes];
+//                        NSNumber *thumbLength = [attrs objectForKey:@"length"];
+//                        if (thumbLength) { // 缩略图应该都有吧。 控制位在请求上设置。
+//                            [GetMsgImgService getMsgImg:msg.msgId startPos:0 from:from to:to dataTotalLen:[thumbLength intValue] original:NO];
+//                        }
+//                        NSNumber *hdLength = [attrs objectForKey:@"hdlength"];
+//                        if (hdLength) { //需要判断有没有高清图，再获取高清图。
+//                            [GetMsgImgService getMsgImg:msg.msgId startPos:0 from:from to:to dataTotalLen:[hdLength intValue] original:YES];
+//                        }
                     }
-                    NSNumber *hdLength = [attrs objectForKey:@"hdlength"];
-                    if (hdLength) { //需要判断有没有高清图，再获取高清图。
-                        [GetMsgImgService getMsgImg:msg.msgId startPos:0 from:from to:to dataTotalLen:[hdLength intValue] original:YES];
+                    
+                    {
+//                        ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content.string encoding:NSUTF8StringEncoding error:nil];
+//                        NSDictionary *attrs = [[document.rootElement firstChildWithTag:@"img"] attributes];
+//                        NSString *cdnthumburl = [attrs objectForKey:@"cdnthumburl"];
+//                        NSString *cdnthumbaeskey = [attrs objectForKey:@"cdnthumbaeskey"];
+//                        [[CdnLogic sharedInstance] startC2CDownload:cdnthumbaeskey fileid:cdnthumburl success:^(id  _Nullable response) {
+//                            
+//                        } failure:^(NSError * _Nonnull error) {
+//                            
+//                        }];
                     }
+                    
                 }
                     break;
                 case 34: { //收 语音 x
