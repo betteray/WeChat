@@ -159,7 +159,7 @@
                             if (error) {
                                 LogError("%@", error);
                             }
-                            [SyncKeyCompare compaireOldSyncKey:oldSyncKey newSyncKey:newSyncKey];
+                            // [SyncKeyCompare compaireOldSyncKey:oldSyncKey newSyncKey:newSyncKey];
                             
                             // 存数据到数据库。
                             [DBManager saveSyncKey:[WeChatClient sharedClient].sync_key_cur];
