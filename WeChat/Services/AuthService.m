@@ -126,6 +126,7 @@
 #if (PROTOCOL_FOR_ANDROID)
     if (CLIENT_VERSION >= A700) {
         cgiWrap.cgi = 763;
+        cgiWrap.cmdId = 434;
         cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/secautoauth";
         aesReqData.channel = 0;
     }
