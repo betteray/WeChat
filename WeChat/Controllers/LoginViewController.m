@@ -19,6 +19,7 @@
 #import "CheckPack.h"
 #import "ZZEncryptService.h"
 #import "AES_EVP.h"
+#import "CUtility.h"
 
 @interface LoginViewController ()
 
@@ -35,9 +36,9 @@
     [super viewDidLoad];
 
 #if PROTOCOL_FOR_ANDROID
-    _versionLabel.text = [NSString stringWithFormat:@"Android (0x%x)", CLIENT_VERSION];
+    _versionLabel.text = [NSString stringWithFormat:@"Android %@ (0x%x)", [CUtility StringVersionOf:CLIENT_VERSION], CLIENT_VERSION];
 #elif PROTOCOL_FOR_IOS
-    _versionLabel.text = [NSString stringWithFormat:@"iOS (0x%x)", CLIENT_VERSION];
+    _versionLabel.text = [NSString stringWithFormat:@"iOS %@ (0x%x)", [CUtility StringVersionOf:CLIENT_VERSION], CLIENT_VERSION];
 #endif
 
     WCDevice *device = [[DeviceManager sharedManager] getCurrentDevice];
