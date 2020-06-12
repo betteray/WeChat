@@ -81,7 +81,7 @@
 
 + (instancetype)dataWithHexString:(NSString *)string
 {
-    return [[self alloc] initWithHexString:string];
+    return [[self alloc] initWithHexString:[string stringByReplacingOccurrencesOfString:@" " withString:@""]];
 }
 
 - (instancetype)initWithHexString:(NSString *)string
