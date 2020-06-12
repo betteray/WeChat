@@ -64,7 +64,7 @@
         _adSource = aesReqData.adSource;
         _deviceModel = aesReqData.deviceModel;
         _deviceID = aesReqData.baseRequest.deviceId;
-        
+
         _fpDevice = fpDevice;
         _clientSpamInfo = clientSpamInfo;
     }
@@ -116,12 +116,56 @@
         _username = jsonDict[@"user"];
 
         FPDevice *device = [self paraseFPDevice:jsonDict[@"fp"]];
+        
         ClientSpamInfo *spamInfo = [self parseClientSpamInfo:jsonDict[@"st"]];
         
         _fpDevice = device;
         _clientSpamInfo = spamInfo;
        
         _password = jsonDict[@"password"];
+    }
+
+    return self;
+}
+
++ (instancetype)deviceFromWNJson:(NSDictionary *)jsonDict fp:(FPDevice *)device {
+    return [[self alloc] initWithWNJson:jsonDict fp:(FPDevice *)device];
+}
+
+- (instancetype)initWithWNJson:(NSDictionary *)jsonDict fp:(FPDevice *)devicee {
+    self = [super init];
+    if (self) {
+        
+        NSString *guid = @"Afa3843737bbe4a2";
+        NSString *ts = [NSString stringWithFormat:@"%ld", (long) [[NSDate date] timeIntervalSince1970]];
+        NSString *clientSeqId = [NSString stringWithFormat:@"%@_%@", guid, ts];
+
+        _imei = jsonDict[@"imei"];
+        _softType = jsonDict[@"autosoftinfo"];
+        _clientSeq = clientSeqId;
+        _clientSeqIdsign = @"18c867f0717aa67b2ab7347505ba07ed";
+        _deviceName = jsonDict[@"model_name"];
+        _deviceType = jsonDict[@"device_info"];
+        _language = @"zh_CN";
+        _timeZone = @"8.00";
+        _deviceBrand = jsonDict[@"brand"];
+        _chanel = 0;
+        _realCountry = @"cn";
+        _bundleID = @"";
+        _iphoneVer = @"";
+        _osType = [jsonDict[@"android_version"] dataUsingEncoding:NSUTF8StringEncoding];
+        _adSource = @"";
+        _deviceModel = [NSString stringWithFormat:@"%@%@", _deviceName, @"arm64-v8a"];
+        _deviceID = [[NSString stringWithFormat:@"%@\0", [guid substringWithRange:NSMakeRange(0, 15)]] dataUsingEncoding:NSUTF8StringEncoding];
+
+        NSString *fpJsonString = jsonDict[@"fp"];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[fpJsonString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+        FPDevice *device = [self paraseFPDevice:dic];
+        
+        ClientSpamInfo *spamInfo = [self parseClientSpamInfo:jsonDict[@"st"]];
+        
+        _fpDevice = device;
+        _clientSpamInfo = spamInfo;
     }
 
     return self;

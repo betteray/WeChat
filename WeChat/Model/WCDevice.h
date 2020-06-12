@@ -47,6 +47,9 @@
                     clientSpamInfo:(ClientSpamInfo *)clientSpamInfo
                           fpDevice:(FPDevice *)fpDevice;
 
++ (instancetype)deviceFromWNJson:(NSDictionary *)jsonDict fp:(FPDevice *)device;
+- (instancetype)initWithWNJson:(NSDictionary *)jsonDict fp:(FPDevice *)device;
+
 + (instancetype)deviceFromJson:(NSDictionary *)jsonDict;
 - (instancetype)initWithJson:(NSDictionary *)jsonDict;
 
