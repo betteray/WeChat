@@ -26,6 +26,15 @@
     return (uint32_t) ((majorVersion << 24) | (minorVersion << 16) | (patchVersion << 8) | buildVersion | 0x10000000);
 }
 
++ (NSString *)StringVersionOf:(long)numberVersion {
+    NSString *buildVersion = [@(numberVersion & 0xFF) stringValue];
+    NSString *patchVersion = [@((numberVersion & 0xFF00) >> 8) stringValue];
+    NSString *minorVersion = [@((numberVersion & 0xFF0000) >> 16) stringValue];
+    NSString *majorVersion = [@((numberVersion & 0xF000000) >> 24) stringValue];
+    
+    return [NSString stringWithFormat:@"%@.%@.%@.%@", majorVersion, minorVersion, patchVersion, buildVersion];
+}
+
 + (NSString *)GetUUIDNew
 {
     NSUUID *uuid = [[UIDevice currentDevice] identifierForVendor];

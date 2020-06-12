@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (uint32_t)numberVersionOf:(NSString *)stringVersion;
 + (NSInteger)GetTimeStampInSecond;
 + (NSInteger)GetTimeInMilliSecond;
++ (NSString *)StringVersionOf:(long)numberVersion;
 
 @end
 
