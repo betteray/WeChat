@@ -158,6 +158,7 @@
 		7196E9752482132500879C72 /* sae-zlib-compress.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7196E9722482132500879C72 /* sae-zlib-compress.bin */; };
 		719E6EE42476CEB7009861CB /* online.json in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EE12476CEB7009861CB /* online.json */; };
 		719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 719EA66923B9F221005DCA56 /* SnsSyncService.m */; };
+		71AA2121249A0333008FCEC4 /* mm_17000d23.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71AA211E249A0333008FCEC4 /* mm_17000d23.proto */; };
 		71B65F14247CF96A009D1DD3 /* CheckResUpdateServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B65F13247CF96A009D1DD3 /* CheckResUpdateServices.m */; };
 		71B65F1E247D0F6A009D1DD3 /* pic_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71B65F19247D0F6A009D1DD3 /* pic_3.jpg */; };
 		71B65F1F247D0F6A009D1DD3 /* pic_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71B65F1A247D0F6A009D1DD3 /* pic_2.jpg */; };
@@ -614,6 +615,7 @@
 		719E6EE12476CEB7009861CB /* online.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = online.json; sourceTree = "<group>"; };
 		719EA66823B9F221005DCA56 /* SnsSyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnsSyncService.h; sourceTree = "<group>"; };
 		719EA66923B9F221005DCA56 /* SnsSyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnsSyncService.m; sourceTree = "<group>"; };
+		71AA211E249A0333008FCEC4 /* mm_17000d23.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000d23.proto; sourceTree = "<group>"; };
 		71B65F12247CF96A009D1DD3 /* CheckResUpdateServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckResUpdateServices.h; sourceTree = "<group>"; };
 		71B65F13247CF96A009D1DD3 /* CheckResUpdateServices.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckResUpdateServices.m; sourceTree = "<group>"; };
 		71B65F19247D0F6A009D1DD3 /* pic_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic_3.jpg; sourceTree = "<group>"; };
@@ -1548,6 +1550,7 @@
 				460CDE4F220088CE0075F3E5 /* cgi.json */,
 				71E485052403B68E0030FF0B /* mm_17000b21.proto */,
 				718E556724617BB700D94D93 /* mm_17000c21.proto */,
+				71AA211E249A0333008FCEC4 /* mm_17000d23.proto */,
 				7168F91423B0F51C00DBB3A6 /* mm_dump_660.proto */,
 				7168F91223B0F3AF00DBB3A6 /* mm_dump_666.proto */,
 				7168F91123B0F0F500DBB3A6 /* mm_dump_705.proto */,
@@ -1965,6 +1968,7 @@
 				71848F272150CABD00DB669E /* NSData+Compression.m in Sources */,
 				71B65F14247CF96A009D1DD3 /* CheckResUpdateServices.m in Sources */,
 				7154D5162196B721005064C4 /* HexDump.m in Sources */,
+				71AA2121249A0333008FCEC4 /* mm_17000d23.proto in Sources */,
 				71776AF5247558AC0069D616 /* PasswordService.m in Sources */,
 				464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */,
 				46804CEA21DE5B1800232229 /* ChatsTableViewCell.m in Sources */,
