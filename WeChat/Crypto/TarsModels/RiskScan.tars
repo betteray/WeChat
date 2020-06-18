@@ -26,7 +26,7 @@ struct UserInfo
     4 optional string BSW;  // 写死 "7AD75E27CD5842F6"
     5 optional string channelId; //BSX 写死 "105901"
     6 optional string model;  // BSY Build.MODEL
-    7 optional int networkType; //BSZ
+    7 optional int networkType; //BSZ wifi 是 2，不是 wifi 就是 1。
     8 optional int BTa; // 写死 82
     9 optional WxVersion wxVersion;
     10 optional string guid; // 没有赋值
