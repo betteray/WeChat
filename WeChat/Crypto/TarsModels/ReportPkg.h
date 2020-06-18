@@ -25,6 +25,6 @@
 @property (nonatomic, assign, JV2_PROP_GS_V2(BTI,setBTI:)) TarsBool JV2_PROP_NM(r,15,BTI);
 @property (nonatomic, assign, JV2_PROP_GS_V2(BTJ,setBTJ:)) TarsInt32 JV2_PROP_NM(o,16,BTJ);
 @property (nonatomic, assign, JV2_PROP_GS_V2(BTK,setBTK:)) TarsInt32 JV2_PROP_NM(r,17,BTK);
-@property (nonatomic, retain, JV2_PROP_GS_V2(extractPkgCertMd5s,setExtractPkgCertMd5s:)) NSData* JV2_PROP_NM(o,18,extractPkgCertMd5s);
+@property (nonatomic, retain, JV2_PROP_GS_V2(extractPkgCertMd5s,setExtractPkgCertMd5s:)) NSArray* JV2_PROP_EX(o,18,extractPkgCertMd5s,VONSData);
 
 @end

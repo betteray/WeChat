@@ -25,7 +25,7 @@
 @synthesize JV2_PROP_NM(r,15,BTI);
 @synthesize JV2_PROP_NM(o,16,BTJ);
 @synthesize JV2_PROP_NM(r,17,BTK);
-@synthesize JV2_PROP_NM(o,18,extractPkgCertMd5s);
+@synthesize JV2_PROP_EX(o,18,extractPkgCertMd5s,VONSData);
 
 + (void)initialize
 {
