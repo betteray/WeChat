@@ -159,7 +159,7 @@ struct Pkg {
     15 require bool BTI; // 写死 false
     16 optional int BTJ; // 写死 0
     17 require int BTK; // 写死 0
-    18 optional vector<vector<byte>> extractPkgCertMd5s;  //见上面代码
+    18 optional vector<vector<byte>> extractPkgCertMd5s;  //只有signatures的size大于1的时候这个字段才开始填充。
 };
 
 
