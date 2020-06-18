@@ -10,10 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class ReportUserInfo;
+@class ReportReq;
+@class ReportPhoneType;
+
 @interface RiskScanBufReq : NSObject
 
 + (void)test;
-+ (NSString *)getRiskScanBufReq;
++ (NSString *)getRiskScanBufReq:(ReportUserInfo *)userInfo req:(ReportReq *)req phoneType:(ReportPhoneType *)phoneType;
 
 @end
 
