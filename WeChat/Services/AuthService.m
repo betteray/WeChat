@@ -250,6 +250,7 @@
 #if (PROTOCOL_FOR_ANDROID)
     if (CLIENT_VERSION >= A700) {
         cgiWrap.cgi = 252;
+        cgiWrap.cmdId = 433;
         cgiWrap.cgiPath = @"/cgi-bin/micromsg-bin/secmanualauth";
     }
 #endif
