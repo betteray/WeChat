@@ -152,6 +152,7 @@
 		718DA1382488D85100F76A7F /* CdnGetMsgImgTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 718DA1372488D85100F76A7F /* CdnGetMsgImgTask.m */; };
 		718DA13E248A604200F76A7F /* SoftTypeUitl.m in Sources */ = {isa = PBXBuildFile; fileRef = 718DA13D248A604200F76A7F /* SoftTypeUitl.m */; };
 		718E556A24617BB700D94D93 /* mm_17000c21.proto in Sources */ = {isa = PBXBuildFile; fileRef = 718E556724617BB700D94D93 /* mm_17000c21.proto */; };
+		7194EDCB249CCD6500CED627 /* EnvBits.m in Sources */ = {isa = PBXBuildFile; fileRef = 7194EDCA249CCD6500CED627 /* EnvBits.m */; };
 		7196E96C24813E2200879C72 /* MMProtocalJni-7015.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */; };
 		7196E96E24814D7600879C72 /* MMProtocalJni-706.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96D24814D7600879C72 /* MMProtocalJni-706.json */; };
 		7196E97024814D9300879C72 /* MMProtocalJni-7012.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */; };
@@ -608,6 +609,8 @@
 		718DA13C248A604200F76A7F /* SoftTypeUitl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoftTypeUitl.h; sourceTree = "<group>"; };
 		718DA13D248A604200F76A7F /* SoftTypeUitl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SoftTypeUitl.m; sourceTree = "<group>"; };
 		718E556724617BB700D94D93 /* mm_17000c21.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000c21.proto; sourceTree = "<group>"; };
+		7194EDC9249CCD6500CED627 /* EnvBits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnvBits.h; sourceTree = "<group>"; };
+		7194EDCA249CCD6500CED627 /* EnvBits.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnvBits.m; sourceTree = "<group>"; };
 		7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7015.json"; sourceTree = "<group>"; };
 		7196E96D24814D7600879C72 /* MMProtocalJni-706.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-706.json"; sourceTree = "<group>"; };
 		7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7012.json"; sourceTree = "<group>"; };
@@ -1012,6 +1015,8 @@
 				711E9B3D23598D8200C5B655 /* RiskScanBufUtil.m */,
 				711E9B4C2359EC0700C5B655 /* RiskScanBufReq.h */,
 				711E9B4D2359EC0700C5B655 /* RiskScanBufReq.m */,
+				7194EDC9249CCD6500CED627 /* EnvBits.h */,
+				7194EDCA249CCD6500CED627 /* EnvBits.m */,
 				460429A822D0911900F9BB94 /* MMProtocalJni.h */,
 				460429A922D0911900F9BB94 /* MMProtocalJni.m */,
 				71E9EABF234068FA00353DBD /* CalSpamAlg.h */,
@@ -1940,6 +1945,7 @@
 				712C714F214BABA500603022 /* ShortPackage.m in Sources */,
 				462D9C3021DCAB6B00FC5461 /* Cookie.m in Sources */,
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
+				7194EDCB249CCD6500CED627 /* EnvBits.m in Sources */,
 				462D9C3A21DDA60F00FC5461 /* WCContact.m in Sources */,
 				462D9C3321DCC4FE00FC5461 /* SessionKeyStore.m in Sources */,
 				464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */,
