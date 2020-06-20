@@ -10,8 +10,6 @@
 #include <sys/time.h>
 #include <stdint.h>
 
-typedef char _BYTE;
-
 @implementation EnvBits
 
 + (int)GetEnvBits
