@@ -85,8 +85,8 @@ message ST {
     //       //com.google.android.gms         4
     //       //这四个包微信会去单独检测，如果存在则加上对应的数据， 测试miui11 （不包含com.google.android.gsf.login）为14  zui11也为14
     optional uint32 GoogleServiceState = 68; // 取设备包PackageManager里根据上述包进行计算。1？ + 2？ + 4？ + 8？ = ？
-    optional uint32 timeval1 = 69; //69: 954783 // 时间相关struct timeval*  中微秒数值      gettimeofday获取
-    optional uint32 SpamInfoVersionSeq = 70; // 708 、709 、【7010｜7011】 分别对应 123。 7012是4.
+    optional uint32 timeval1 = 69; //69: 954783 // struct timeval 中微秒数值, gettimeofday获取. 0xffffff -> 4294963711 4294963711 4294963711
+    optional uint32 SpamInfoVersionSeq = 70; // 708 、709 、【7010｜7011】 分别对应 123。 7012是4. 7015=6
     optional uint32 TbVersionCrc = 71; //71: 556011293 //   可能与资源下载有关，不做pm clear 数据不会变化 不清楚，需另看。？
     optional string SystemFrameworkMD5 = 72; //72: "a8de294f819234ee723148f6f3d003a6"//根据目录生成的md5 /system/framework/
     optional string SystemFrameworkArmMD5 = 73; //73: "a7cae61554b3c3596c073782ac5d69d1"//根据目录生成的md5 /system/framework/arm
@@ -103,14 +103,45 @@ message ST {
     optional string StorageID = 78;
     optional string OAID = 79; //79: ""// c14 ?    OAID
     optional uint32 UnknownTag80 = 80; //80: 0 // 一直为0 不知道是啥
-    optional uint32 TimeVal2 = 81; //81: 242379 // 时间相关struct timeval*  中微秒数值      gettimeofday获取
+    optional uint32 TimeVal2 = 81; //81: 242379 // struct timeval 中微秒数值, gettimeofday获取. 0xffffffff -> 4294966271 4294966271 4294966271 第二遍 4294967295
     repeated string FilesModifiedInFramework = 82; //82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断。不该有此值，只有非法时才设置。
     optional uint32 WeChatInstallTime = 83; // 微信安装时间。 // 7012到此
     optional bytes SoftConfig = 84; // 7013 开始
     optional bytes SoftData = 85;
-    optional uint32 Tag86 = 86; // 7014 开始
+    optional uint32 Tag86 = 86; // 7014 struct timeval 中微秒数值, gettimeofday获取. 开始 0xffffffff -> 4294966955 4294966955 4294966955
     optional string NetWorkInterface = 87;
 }
+
+//张 建, [Jun 5, 2020 at 6:45:55 PM]:
+//当获取时间函数被固定住为131071（前17位都为1）时， 69 81 86 字段分变为 127487 130047 130731
+//131071 == 0b11111111111111111
+
+//127487 == 0b11111000111111111
+//130047 == 0b11111101111111111
+//130731 == 0b11111111010101011
+
+//当获取时间函数被固定住为65536（前16位都为0）时， 69 81 86 字段均为65536
+
+//timeval1: 1074046068 -> 1074045044
+//0b1000000000001001010010001110100 ->
+//0b1000000000001001010000001110100
+//
+//TimeVal2: 17467813 -> 17467813
+//0b1000010101000100110100101
+//
+//86: 34246465 -> 34246145
+//0b10000010101000111101000001 ->
+//0b10000010101000111000000001
+//
+//
+//0xffffffff
+//timeval1:
+//0b11111111111111111111000111111111
+//TimeVal2:
+//0b11111111111111111111101111111111
+//0b11111111111111111111111111111111 //第二遍才会设置位。检测magisk
+//86:
+//0b11111111111111111111111010101011
 
 message ClientSpamInfo {
     required uint32 ccdcc = 1;
