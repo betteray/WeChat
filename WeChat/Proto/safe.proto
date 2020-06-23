@@ -59,7 +59,7 @@ message ST {
     optional string Language = 46;
     optional uint32 IsInCalling = 47;
     optional uint32 IsSetScreenLock = 48;
-    optional string NeighborBSSIDList = 49;
+    repeated string NeighborBSSIDList = 49;
     optional uint32 IsWifiOpen = 50;
     optional uint32 HasXposedStackTrace = 51;
     optional string XposedHookedMethods = 52;
