@@ -103,13 +103,45 @@ message ST {
     optional string StorageID = 78;
     optional string OAID = 79; //79: ""// c14 ?    OAID
     optional uint32 UnknownTag80 = 80; //80: 0 // 一直为0 不知道是啥
-    optional uint32 TimeVal2 = 81; //81: 242379 // struct timeval 中微秒数值, gettimeofday获取. 0xffffffff -> 4294966271 4294966271 4294966271 第二遍 4294967295
+    optional uint32 MagiskBitCheck = 81; //81: 242379 // struct timeval 中微秒数值, gettimeofday获取. 0xffffffff -> 4294966271 4294966271 4294966271 第二遍 4294967295
     repeated string FilesModifiedInFramework = 82; //82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断。不该有此值，只有非法时才设置。
     optional uint32 WeChatInstallTime = 83; // 微信安装时间。 // 7012到此
     optional bytes SoftConfig = 84; // 7013 开始
     optional bytes SoftData = 85;
     optional uint32 Tag86 = 86; // 7014 struct timeval 中微秒数值, gettimeofday获取. 开始 0xffffffff -> 4294966955 4294966955 4294966955
     optional string NetWorkInterface = 87;
+
+    optional uint32 Tag88 = 88;
+    optional uint32 Tag89 = 89;
+    optional uint32 Tag90 = 90;
+    optional string Tag91 = 91;
+    optional uint32 Tag92 = 92;
+    optional string Tag93 = 93;
+    optional uint32 Tag94 = 94;
+    optional string Tag95 = 95;
+    optional uint32 Tag96 = 96;
+    optional string Tag97 = 97;
+
+    optional uint32 Tag98 = 98;
+    optional bytes Tag99 = 99;
+    optional uint32 Tag100 = 100;
+    optional bytes Tag101 = 101;
+    optional uint32 Tag102 = 102;
+    optional bytes Tag103 = 103;
+    optional uint32 Tag104 = 104;
+    optional bytes Tag105 = 105;
+    optional uint32 Tag106 = 106;
+    optional bytes Tag107 = 107;
+    optional uint32 Tag108 = 108;
+    optional bytes Tag109 = 109;
+    optional uint32 Tag110 = 110;
+    optional bytes Tag111 = 111;
+    optional uint32 Tag112 = 112;
+    optional bytes Tag113 = 113;
+    optional uint32 Tag114 = 114;
+    optional uint32 Tag115 = 115;
+    optional uint32 Tag116 = 116;
+    optional uint32 Tag117 = 117;
 }
 
 //张 建, [Jun 5, 2020 at 6:45:55 PM]:
