@@ -105,12 +105,17 @@ message ST {
     optional uint32 UnknownTag80 = 80; //80: 0 // 一直为0 不知道是啥
     optional uint32 MagiskBitCheck = 81; //81: 242379 // struct timeval 中微秒数值, gettimeofday获取. 0xffffffff -> 4294966271 4294966271 4294966271 第二遍 4294967295
     repeated string FilesModifiedInFramework = 82; //82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断。不该有此值，只有非法时才设置。
-    optional uint32 WeChatInstallTime = 83; // 微信安装时间。 // 7012到此
-    optional bytes SoftConfig = 84; // 7013 开始
+    optional uint32 WeChatInstallTime = 83; // 微信安装时间.
+    
+    // ===================== 7015 ========================
+    
+    optional bytes SoftConfig = 84; // 7015 开始
     optional bytes SoftData = 85;
     optional uint32 Tag86 = 86; // 7014 struct timeval 中微秒数值, gettimeofday获取. 开始 0xffffffff -> 4294966955 4294966955 4294966955
     optional string NetWorkInterface = 87;
-
+    
+    // ===================== 7016 ========================
+    
     optional uint32 Tag88 = 88;
     optional uint32 Tag89 = 89;
     optional uint32 Tag90 = 90;
@@ -121,7 +126,6 @@ message ST {
     optional string Tag95 = 95;
     optional uint32 Tag96 = 96;
     optional bytes Tag97 = 97;
-
     optional uint32 Tag98 = 98;
     optional bytes Tag99 = 99;
     optional uint32 Tag100 = 100;
@@ -140,7 +144,7 @@ message ST {
     optional bytes Tag113 = 113;
     optional uint32 Tag114 = 114;
     optional uint32 Tag115 = 115;
-    optional uint32 Tag116 = 116;
+    optional uint32 uid = 116; // getuid32()
     optional uint32 Tag117 = 117;
 }
 
