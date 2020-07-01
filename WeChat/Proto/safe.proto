@@ -120,7 +120,7 @@ message ST {
     optional uint32 Tag94 = 94;
     optional string Tag95 = 95;
     optional uint32 Tag96 = 96;
-    optional string Tag97 = 97;
+    optional bytes Tag97 = 97;
 
     optional uint32 Tag98 = 98;
     optional bytes Tag99 = 99;
