@@ -141,6 +141,7 @@
 		716A93D4239AA2C200A0C9DC /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93D3239AA2C200A0C9DC /* DBManager.m */; };
 		716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */; };
 		71776AF5247558AC0069D616 /* PasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71776AF4247558AC0069D616 /* PasswordService.m */; };
+		717A5EB024AD7AC300D5D3FE /* mm_17000e20.proto in Sources */ = {isa = PBXBuildFile; fileRef = 717A5EAD24AD7AC300D5D3FE /* mm_17000e20.proto */; };
 		71808C0A239DFCD0005C3BDE /* CdnSnsUploadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 71808C09239DFCD0005C3BDE /* CdnSnsUploadTask.m */; };
 		71808C1B239E2C4D005C3BDE /* CdnSendPictureTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 71808C1A239E2C4D005C3BDE /* CdnSendPictureTask.m */; };
 		71848F272150CABD00DB669E /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 71848F262150CABD00DB669E /* NSData+Compression.m */; };
@@ -588,6 +589,7 @@
 		716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CompressAndEncypt.m"; sourceTree = "<group>"; };
 		71776AF3247558AC0069D616 /* PasswordService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordService.h; sourceTree = "<group>"; };
 		71776AF4247558AC0069D616 /* PasswordService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordService.m; sourceTree = "<group>"; };
+		717A5EAD24AD7AC300D5D3FE /* mm_17000e20.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000e20.proto; sourceTree = "<group>"; };
 		71808C08239DFCD0005C3BDE /* CdnSnsUploadTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnSnsUploadTask.h; sourceTree = "<group>"; };
 		71808C09239DFCD0005C3BDE /* CdnSnsUploadTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CdnSnsUploadTask.m; sourceTree = "<group>"; };
 		71808C19239E2C4D005C3BDE /* CdnSendPictureTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnSendPictureTask.h; sourceTree = "<group>"; };
@@ -1556,6 +1558,7 @@
 				71E485052403B68E0030FF0B /* mm_17000b21.proto */,
 				718E556724617BB700D94D93 /* mm_17000c21.proto */,
 				71AA211E249A0333008FCEC4 /* mm_17000d23.proto */,
+				717A5EAD24AD7AC300D5D3FE /* mm_17000e20.proto */,
 				7168F91423B0F51C00DBB3A6 /* mm_dump_660.proto */,
 				7168F91223B0F3AF00DBB3A6 /* mm_dump_666.proto */,
 				7168F91123B0F0F500DBB3A6 /* mm_dump_705.proto */,
@@ -1856,6 +1859,7 @@
 				712C6E93214A1E8900603022 /* WeChatClient.m in Sources */,
 				71D593332158AC4A00DFEBC8 /* Varint128.m in Sources */,
 				712F95F221D0981B00CFE3A0 /* WCDevice.m in Sources */,
+				717A5EB024AD7AC300D5D3FE /* mm_17000e20.proto in Sources */,
 				716A93BF2398F04B00A0C9DC /* AES_EVP.m in Sources */,
 				71DD025D23AE181B00EC8E04 /* AuthService.m in Sources */,
 				712F960021D20A7800CFE3A0 /* ShortLinkClient.m in Sources */,
