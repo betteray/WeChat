@@ -11,7 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EnvBits : NSObject
+
 + (int)GetEnvBits;
++ (BOOL)GetEnvBits2:(int)guess result:(int)res;
+
 @end
 
 NS_ASSUME_NONNULL_END
