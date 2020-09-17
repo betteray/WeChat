@@ -1,5 +1,10 @@
 syntax = "proto2";
 
+//option optimize_for = LITE_RUNTIME;
+//option optimize_for = CODE_SIZE;
+
+option java_package = "com.tencent.mm.normsg";
+
 message InstalledPackageInfo {
     optional string packageName = 1;
     optional string Label = 2;
@@ -47,9 +52,7 @@ message ST {
     repeated string MMProcLoadedFiles = 36;
     optional string RiskScanReqBuffer = 37;
     optional uint32 EnvBits = 38;
-
-    //EnabledAccessibilityServiceIds = 39
-
+    optional string EnabledAccessibilityServiceIds = 39;
     repeated InstalledPackageInfo InstalledPackageInfos = 40;
     optional uint32 AccessibilityClickCount = 41;
     optional string APKLeadingMD5 = 42; // APK 前 102400 字节MD5
@@ -116,36 +119,50 @@ message ST {
     
     // ===================== 7016 ========================
     
-    optional uint32 Tag88 = 88;
-    optional uint32 Tag89 = 89;
-    optional uint32 Tag90 = 90;
-    optional string Tag91 = 91;
-    optional uint32 Tag92 = 92;
-    optional string Tag93 = 93;
-    optional uint32 Tag94 = 94;
-    optional string Tag95 = 95;
-    optional uint32 Tag96 = 96;
-    optional bytes Tag97 = 97;
-    optional uint32 Tag98 = 98;
-    optional bytes Tag99 = 99;
-    optional uint32 Tag100 = 100;
-    optional bytes Tag101 = 101;
-    optional uint32 Tag102 = 102;
-    optional bytes Tag103 = 103;
-    optional uint32 Tag104 = 104;
-    optional bytes Tag105 = 105;
-    optional uint32 Tag106 = 106;
-    optional bytes Tag107 = 107;
-    optional uint32 Tag108 = 108;
-    optional bytes Tag109 = 109;
-    optional uint32 Tag110 = 110;
-    optional bytes Tag111 = 111;
-    optional uint32 Tag112 = 112;
-    optional bytes Tag113 = 113;
-    optional uint32 Tag114 = 114;
-    optional uint32 Tag115 = 115;
+    optional uint32 tv_sec_88 = 88; // key
+    optional uint32 tv_usec_89 = 89; //
+
+    optional uint32 Tag90 = 90; // unidbg: yes, 真机：no
+
+    optional bytes PkgHash3Encrypt = 91;
+    optional uint32 PkgHash3Crc = 92;
+    optional bytes EntranceClassLoaderNameEncrypt = 93;
+    optional uint32 EntranceClassLoaderNameCrc = 94;
+    optional bytes  APKLeadingMD5Encrypt = 95;
+    optional uint32 APKLeadingMD5Crc = 96;
+    optional bytes AppInstrumentationClassNameEncrypt = 97;
+    optional uint32 AppInstrumentationClassNameCrc = 98;
+    optional bytes AMSBinderClassNameEncrypt = 99;
+    optional uint32 AMSBinderClassNameCrc = 100;
+    optional bytes AMSSingletonClassNameEncrypt = 101;
+    optional uint32 AMSSingletonClassNameCrc = 102;
+    optional bytes ApkSignatureMd5Encrypt = 103;
+    optional uint32 ApkSignatureMd5Crc = 104;
+    optional bytes SystemFrameworkMD5Encrypt = 105;
+    optional uint32 SystemFrameworkMD5Crc = 106;
+    optional bytes SystemFrameworkArmMD5Encrypt = 107;
+    optional uint32 SystemFrameworkArmMD5Crc = 108;
+    optional bytes SystemFrameworkArm64MD5Encrypt = 109;
+    optional uint32 SystemFrameworkArm64MD5Crc = 110;
+    optional bytes SystemBinMD5Encrypt = 111;
+    optional uint32 SystemBinMD5Crc = 112;
+    optional bytes StorageIDEncrypt = 113;
+    optional uint32 StorageIDCrc = 114;
+
+    optional uint32 tv_usec_115 = 115;
     optional uint32 uid = 116; // getuid32()
-    optional uint32 Tag117 = 117;
+    optional uint32 Tag117 = 117; // 
+
+    // ===================== 7017 ========================
+
+    optional bytes SourceDirEncrypt = 118;
+    optional uint32 SourceDirCrc = 119;
+    optional bytes SourceDir2Encrypt = 120;
+    optional uint32 SourceDir2Crc = 121;
+
+    // ===================== 7018 ==========================
+    optional bytes IllegalLib = 122; // hook用的so（frigum.so），只用看怎么检测的，不用给值。应该是一个列表
+    optional uint32 IllegalLibCrc = 123; // 0
 }
 
 //张 建, [Jun 5, 2020 at 6:45:55 PM]:
@@ -412,10 +429,10 @@ message FPDevice {
 // **********************03加密结果***************************
 
 //  用于加密完填充字端用。
-message SpamInfoEncrypedResult {
+message SpamInfoEncryptResult {
     optional string version = 1;
     optional uint32 type = 2;
-    optional bytes encrypedData = 3;
+    optional bytes EncryptData = 3;
     optional uint32 timestamp = 4; // 706没有 , 7011有
     optional uint32 tag5 = 5; // 5
     optional uint32 tag6 = 6; // 0
