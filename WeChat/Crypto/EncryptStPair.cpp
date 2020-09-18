@@ -7,57 +7,7 @@
 //
 
 #include "EncryptStPair.hpp"
-
-
-#define __int64 long long
-#define __int16 short
-
-typedef unsigned char uint8;
-typedef unsigned short  uint16;
-
-#define _BYTE  uint8
-#define _WORD  uint16
-#define BYTEn(x, n)   (*((_BYTE*)&(x)+n))
-#define LOW_IND(x, part_type)   0
-#define LOBYTE(x)  BYTEn(x,LOW_IND(x,_BYTE))
-
-typedef unsigned int    uint32;
-#define _DWORD uint32
-
-#define BYTEn(x, n)   (*((_BYTE*)&(x)+n))
-#define WORDn(x, n)   (*((_WORD*)&(x)+n))
-#define DWORDn(x, n)  (*((_DWORD*)&(x)+n))
-
-#define LOBYTE(x)  BYTEn(x,LOW_IND(x,_BYTE))
-#define LOWORD(x)  WORDn(x,LOW_IND(x,_WORD))
-#define LODWORD(x) DWORDn(x,LOW_IND(x,_DWORD))
-#define HIBYTE(x)  BYTEn(x,HIGH_IND(x,_BYTE))
-#define HIWORD(x)  WORDn(x,HIGH_IND(x,_WORD))
-#define HIDWORD(x) DWORDn(x,HIGH_IND(x,_DWORD))
-#define BYTE1(x)   BYTEn(x,  1)         // byte 1 (counting from 0)
-#define BYTE2(x)   BYTEn(x,  2)
-#define BYTE3(x)   BYTEn(x,  3)
-#define BYTE4(x)   BYTEn(x,  4)
-#define BYTE5(x)   BYTEn(x,  5)
-#define BYTE6(x)   BYTEn(x,  6)
-#define BYTE7(x)   BYTEn(x,  7)
-#define BYTE8(x)   BYTEn(x,  8)
-#define BYTE9(x)   BYTEn(x,  9)
-#define BYTE10(x)  BYTEn(x, 10)
-#define BYTE11(x)  BYTEn(x, 11)
-#define BYTE12(x)  BYTEn(x, 12)
-#define BYTE13(x)  BYTEn(x, 13)
-#define BYTE14(x)  BYTEn(x, 14)
-#define BYTE15(x)  BYTEn(x, 15)
-#define WORD1(x)   WORDn(x,  1)
-#define WORD2(x)   WORDn(x,  2)         // third word of the object, unsigned
-#define WORD3(x)   WORDn(x,  3)
-#define WORD4(x)   WORDn(x,  4)
-#define WORD5(x)   WORDn(x,  5)
-#define WORD6(x)   WORDn(x,  6)
-#define WORD7(x)   WORDn(x,  7)
-
-///////////////////////////////////////////
+#include "defs.h"
 
 int  encrypt_tag86(unsigned int a1)
 {
