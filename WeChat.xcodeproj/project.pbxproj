@@ -150,6 +150,8 @@
 		7185F8E524864D8300568CF0 /* CdnSendImgMsgService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185F8E424864D8300568CF0 /* CdnSendImgMsgService.m */; };
 		7185F8E824874E4400568CF0 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185F8E724874E4400568CF0 /* UIImage+Resize.m */; };
 		7185F8EC24889E1C00568CF0 /* UIImage+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185F8EB24889E1C00568CF0 /* UIImage+Random.m */; };
+		7187ECED2501E94A00353BD8 /* EncryptStPair.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7187ECEB2501E94A00353BD8 /* EncryptStPair.cpp */; };
+		7187ECF22501EAD700353BD8 /* EncryptStPairTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7187ECF12501EAD700353BD8 /* EncryptStPairTest.mm */; };
 		718DA1382488D85100F76A7F /* CdnGetMsgImgTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 718DA1372488D85100F76A7F /* CdnGetMsgImgTask.m */; };
 		718DA13E248A604200F76A7F /* SoftTypeUitl.m in Sources */ = {isa = PBXBuildFile; fileRef = 718DA13D248A604200F76A7F /* SoftTypeUitl.m */; };
 		718E556A24617BB700D94D93 /* mm_17000c21.proto in Sources */ = {isa = PBXBuildFile; fileRef = 718E556724617BB700D94D93 /* mm_17000c21.proto */; };
@@ -157,14 +159,15 @@
 		7196E96C24813E2200879C72 /* MMProtocalJni-7015.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */; };
 		7196E96E24814D7600879C72 /* MMProtocalJni-706.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96D24814D7600879C72 /* MMProtocalJni-706.json */; };
 		7196E97024814D9300879C72 /* MMProtocalJni-7012.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */; };
-		7196E9752482132500879C72 /* sae-zlib-compress.bin in Resources */ = {isa = PBXBuildFile; fileRef = 7196E9722482132500879C72 /* sae-zlib-compress.bin */; };
 		719E6EE42476CEB7009861CB /* online.json in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EE12476CEB7009861CB /* online.json */; };
 		719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 719EA66923B9F221005DCA56 /* SnsSyncService.m */; };
 		71AA2121249A0333008FCEC4 /* mm_17000d23.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71AA211E249A0333008FCEC4 /* mm_17000d23.proto */; };
+		71AF135F24D425190078BC6A /* meta-manifest.dat in Resources */ = {isa = PBXBuildFile; fileRef = 71AF135E24D425190078BC6A /* meta-manifest.dat */; };
 		71B65F14247CF96A009D1DD3 /* CheckResUpdateServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B65F13247CF96A009D1DD3 /* CheckResUpdateServices.m */; };
 		71B65F1E247D0F6A009D1DD3 /* pic_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71B65F19247D0F6A009D1DD3 /* pic_3.jpg */; };
 		71B65F1F247D0F6A009D1DD3 /* pic_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71B65F1A247D0F6A009D1DD3 /* pic_2.jpg */; };
 		71B65F20247D0F6A009D1DD3 /* pic_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71B65F1B247D0F6A009D1DD3 /* pic_1.jpg */; };
+		71BABE1A24E7D44200066169 /* cgi-7015.json in Resources */ = {isa = PBXBuildFile; fileRef = 71BABE1724E7D44200066169 /* cgi-7015.json */; };
 		71C9CA5421C4DC1D006C4DDD /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9CA5321C4DC1D006C4DDD /* MeViewController.m */; };
 		71D13DFA2475061800508B51 /* cgi-7012.json in Resources */ = {isa = PBXBuildFile; fileRef = 71D13DF72475061800508B51 /* cgi-7012.json */; };
 		71D3DAAC21AEAD01002ACF1C /* UIViewController+ProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DAAB21AEAD01002ACF1C /* UIViewController+ProgressHUB.m */; };
@@ -606,6 +609,10 @@
 		7185F8E724874E4400568CF0 /* UIImage+Resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		7185F8EA24889E1C00568CF0 /* UIImage+Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Random.h"; sourceTree = "<group>"; };
 		7185F8EB24889E1C00568CF0 /* UIImage+Random.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Random.m"; sourceTree = "<group>"; };
+		7187ECEB2501E94A00353BD8 /* EncryptStPair.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EncryptStPair.cpp; sourceTree = "<group>"; };
+		7187ECEC2501E94A00353BD8 /* EncryptStPair.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EncryptStPair.hpp; sourceTree = "<group>"; };
+		7187ECF02501EAD700353BD8 /* EncryptStPairTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EncryptStPairTest.h; sourceTree = "<group>"; };
+		7187ECF12501EAD700353BD8 /* EncryptStPairTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = EncryptStPairTest.mm; sourceTree = "<group>"; };
 		718DA1362488D85100F76A7F /* CdnGetMsgImgTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnGetMsgImgTask.h; sourceTree = "<group>"; };
 		718DA1372488D85100F76A7F /* CdnGetMsgImgTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CdnGetMsgImgTask.m; sourceTree = "<group>"; };
 		718DA13C248A604200F76A7F /* SoftTypeUitl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoftTypeUitl.h; sourceTree = "<group>"; };
@@ -616,16 +623,18 @@
 		7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7015.json"; sourceTree = "<group>"; };
 		7196E96D24814D7600879C72 /* MMProtocalJni-706.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-706.json"; sourceTree = "<group>"; };
 		7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7012.json"; sourceTree = "<group>"; };
-		7196E9722482132500879C72 /* sae-zlib-compress.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "sae-zlib-compress.bin"; sourceTree = "<group>"; };
+		719D79EB24B367AD007C09D5 /* defs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
 		719E6EE12476CEB7009861CB /* online.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = online.json; sourceTree = "<group>"; };
 		719EA66823B9F221005DCA56 /* SnsSyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnsSyncService.h; sourceTree = "<group>"; };
 		719EA66923B9F221005DCA56 /* SnsSyncService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnsSyncService.m; sourceTree = "<group>"; };
 		71AA211E249A0333008FCEC4 /* mm_17000d23.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000d23.proto; sourceTree = "<group>"; };
+		71AF135E24D425190078BC6A /* meta-manifest.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = "meta-manifest.dat"; sourceTree = "<group>"; };
 		71B65F12247CF96A009D1DD3 /* CheckResUpdateServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckResUpdateServices.h; sourceTree = "<group>"; };
 		71B65F13247CF96A009D1DD3 /* CheckResUpdateServices.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckResUpdateServices.m; sourceTree = "<group>"; };
 		71B65F19247D0F6A009D1DD3 /* pic_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic_3.jpg; sourceTree = "<group>"; };
 		71B65F1A247D0F6A009D1DD3 /* pic_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic_2.jpg; sourceTree = "<group>"; };
 		71B65F1B247D0F6A009D1DD3 /* pic_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic_1.jpg; sourceTree = "<group>"; };
+		71BABE1724E7D44200066169 /* cgi-7015.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cgi-7015.json"; sourceTree = "<group>"; };
 		71C9CA5321C4DC1D006C4DDD /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		71D13DF72475061800508B51 /* cgi-7012.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cgi-7012.json"; sourceTree = "<group>"; };
 		71D3DAAA21AEAD01002ACF1C /* UIViewController+ProgressHUB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUB.h"; sourceTree = "<group>"; };
@@ -1029,6 +1038,10 @@
 				7168F92A23B205ED00DBB3A6 /* ClientCheckConsistencyUtil.m */,
 				718DA13C248A604200F76A7F /* SoftTypeUitl.h */,
 				718DA13D248A604200F76A7F /* SoftTypeUitl.m */,
+				7187ECEB2501E94A00353BD8 /* EncryptStPair.cpp */,
+				7187ECEC2501E94A00353BD8 /* EncryptStPair.hpp */,
+				7187ECF02501EAD700353BD8 /* EncryptStPairTest.h */,
+				7187ECF12501EAD700353BD8 /* EncryptStPairTest.mm */,
 			);
 			path = Crypto;
 			sourceTree = "<group>";
@@ -1272,6 +1285,7 @@
 		712C7159214CDA9100603022 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				719D79EB24B367AD007C09D5 /* defs.h */,
 				712C6E67214A145700603022 /* Assets.xcassets */,
 				712C6E69214A145700603022 /* LaunchScreen.storyboard */,
 				712C6E5E214A145600603022 /* AppDelegate.h */,
@@ -1533,7 +1547,7 @@
 		71DF5BBC247FF07600B7E0B2 /* 03 */ = {
 			isa = PBXGroup;
 			children = (
-				7196E9722482132500879C72 /* sae-zlib-compress.bin */,
+				71AF135E24D425190078BC6A /* meta-manifest.dat */,
 				71DF5BBE247FF08D00B7E0B2 /* encrypt.m */,
 				71DF5BBD247FF08D00B7E0B2 /* encrypt.h */,
 			);
@@ -1552,6 +1566,7 @@
 		71E48516240533BA0030FF0B /* versions */ = {
 			isa = PBXGroup;
 			children = (
+				71BABE1724E7D44200066169 /* cgi-7015.json */,
 				7154EDD323B61831008927B9 /* cgi-709.json */,
 				71D13DF72475061800508B51 /* cgi-7012.json */,
 				460CDE4F220088CE0075F3E5 /* cgi.json */,
@@ -1737,9 +1752,10 @@
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				71EE8B4923BEFB7500650F67 /* proto_bin_666.zip in Resources */,
 				7196E97024814D9300879C72 /* MMProtocalJni-7012.json in Resources */,
+				71BABE1A24E7D44200066169 /* cgi-7015.json in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
+				71AF135F24D425190078BC6A /* meta-manifest.dat in Resources */,
 				710C488E2492765200343B3C /* 1591885006-fpdevices-2236.bin in Resources */,
-				7196E9752482132500879C72 /* sae-zlib-compress.bin in Resources */,
 				7168F97623B355B400DBB3A6 /* test.mp3 in Resources */,
 				713F5A5723A250220096220C /* test.amr in Resources */,
 				71EE8B4423BEF9C200650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
@@ -1931,6 +1947,7 @@
 				714BE26B2408ED0B00720C72 /* SpamInfoGenerator-XML.m in Sources */,
 				7112118523A8C7C700A5DBCA /* SendMsgService.m in Sources */,
 				714E360B2358ADF90046F7D8 /* ReportRequestPacket.m in Sources */,
+				7187ECF22501EAD700353BD8 /* EncryptStPairTest.mm in Sources */,
 				719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */,
 				7161985321CB863A00A76F39 /* LongLinkClientWithMMTLS.m in Sources */,
 				714BE26F2408EE8100720C72 /* ZZEncryptService.m in Sources */,
@@ -1951,6 +1968,7 @@
 				712C7155214BF8A900603022 /* CgiWrap.m in Sources */,
 				7194EDCB249CCD6500CED627 /* EnvBits.m in Sources */,
 				462D9C3A21DDA60F00FC5461 /* WCContact.m in Sources */,
+				7187ECED2501E94A00353BD8 /* EncryptStPair.cpp in Sources */,
 				462D9C3321DCC4FE00FC5461 /* SessionKeyStore.m in Sources */,
 				464FB82A21D4E8BD003E923F /* NSString+Regex.m in Sources */,
 				71FD5D9223B48CE000B70518 /* UIView+LoadFromXIB.m in Sources */,
