@@ -187,7 +187,7 @@ typedef struct InstalledPackageInfo__storage_ {
 @dynamic hasLanguage, language;
 @dynamic hasIsInCalling, isInCalling;
 @dynamic hasIsSetScreenLock, isSetScreenLock;
-@dynamic hasNeighborBssidlist, neighborBssidlist;
+@dynamic neighborBssidlistArray, neighborBssidlistArray_Count;
 @dynamic hasIsWifiOpen, isWifiOpen;
 @dynamic hasHasXposedStackTrace, hasXposedStackTrace;
 @dynamic hasXposedHookedMethods, xposedHookedMethods;
@@ -219,16 +219,46 @@ typedef struct InstalledPackageInfo__storage_ {
 @dynamic hasStorageId, storageId;
 @dynamic hasOaid, oaid;
 @dynamic hasUnknownTag80, unknownTag80;
-@dynamic hasTimeVal2, timeVal2;
+@dynamic hasMagiskBitCheck, magiskBitCheck;
 @dynamic filesModifiedInFrameworkArray, filesModifiedInFrameworkArray_Count;
 @dynamic hasWeChatInstallTime, weChatInstallTime;
 @dynamic hasSoftConfig, softConfig;
 @dynamic hasSoftData, softData;
 @dynamic hasTag86, tag86;
 @dynamic hasNetWorkInterface, netWorkInterface;
+@dynamic hasTag88, tag88;
+@dynamic hasTag89, tag89;
+@dynamic hasTag90, tag90;
+@dynamic hasTag91, tag91;
+@dynamic hasTag92, tag92;
+@dynamic hasTag93, tag93;
+@dynamic hasTag94, tag94;
+@dynamic hasTag95, tag95;
+@dynamic hasTag96, tag96;
+@dynamic hasTag97, tag97;
+@dynamic hasTag98, tag98;
+@dynamic hasTag99, tag99;
+@dynamic hasTag100, tag100;
+@dynamic hasTag101, tag101;
+@dynamic hasTag102, tag102;
+@dynamic hasTag103, tag103;
+@dynamic hasTag104, tag104;
+@dynamic hasTag105, tag105;
+@dynamic hasTag106, tag106;
+@dynamic hasTag107, tag107;
+@dynamic hasTag108, tag108;
+@dynamic hasTag109, tag109;
+@dynamic hasTag110, tag110;
+@dynamic hasTag111, tag111;
+@dynamic hasTag112, tag112;
+@dynamic hasTag113, tag113;
+@dynamic hasTag114, tag114;
+@dynamic hasTag115, tag115;
+@dynamic hasUid, uid;
+@dynamic hasTag117, tag117;
 
 typedef struct ST__storage_ {
-  uint32_t _has_storage_[3];
+  uint32_t _has_storage_[4];
   uint32_t isMorkLocOpen;
   uint32_t msgLevel;
   uint32_t isDbgConnected;
@@ -252,9 +282,27 @@ typedef struct ST__storage_ {
   uint32_t spamInfoVersionSeq;
   uint32_t tbVersionCrc;
   uint32_t unknownTag80;
-  uint32_t timeVal2;
+  uint32_t magiskBitCheck;
   uint32_t weChatInstallTime;
   uint32_t tag86;
+  uint32_t tag88;
+  uint32_t tag89;
+  uint32_t tag90;
+  uint32_t tag92;
+  uint32_t tag94;
+  uint32_t tag96;
+  uint32_t tag98;
+  uint32_t tag100;
+  uint32_t tag102;
+  uint32_t tag104;
+  uint32_t tag106;
+  uint32_t tag108;
+  uint32_t tag110;
+  uint32_t tag112;
+  uint32_t tag114;
+  uint32_t tag115;
+  uint32_t uid;
+  uint32_t tag117;
   NSString *pkgHash3;
   NSString *ratioFwVer;
   NSString *osRelVer;
@@ -291,7 +339,7 @@ typedef struct ST__storage_ {
   NSString *wxtag;
   NSString *clientIp;
   NSString *language;
-  NSString *neighborBssidlist;
+  NSMutableArray *neighborBssidlistArray;
   NSString *xposedHookedMethods;
   NSString *appInstrumentationClassName;
   NSString *amsbinderClassName;
@@ -315,6 +363,18 @@ typedef struct ST__storage_ {
   NSData *softConfig;
   NSData *softData;
   NSString *netWorkInterface;
+  NSData *tag91;
+  NSData *tag93;
+  NSData *tag95;
+  NSData *tag97;
+  NSData *tag99;
+  NSData *tag101;
+  NSData *tag103;
+  NSData *tag105;
+  NSData *tag107;
+  NSData *tag109;
+  NSData *tag111;
+  NSData *tag113;
 } ST__storage_;
 
 // This method is threadsafe because it is initially called
@@ -747,19 +807,19 @@ typedef struct ST__storage_ {
         .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "neighborBssidlist",
+        .name = "neighborBssidlistArray",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_NeighborBssidlist,
-        .hasIndex = 45,
-        .offset = (uint32_t)offsetof(ST__storage_, neighborBssidlist),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .number = ST_FieldNumber_NeighborBssidlistArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(ST__storage_, neighborBssidlistArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "isWifiOpen",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_IsWifiOpen,
-        .hasIndex = 46,
+        .hasIndex = 45,
         .offset = (uint32_t)offsetof(ST__storage_, isWifiOpen),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -768,7 +828,7 @@ typedef struct ST__storage_ {
         .name = "hasXposedStackTrace",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_HasXposedStackTrace,
-        .hasIndex = 47,
+        .hasIndex = 46,
         .offset = (uint32_t)offsetof(ST__storage_, hasXposedStackTrace),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -777,7 +837,7 @@ typedef struct ST__storage_ {
         .name = "xposedHookedMethods",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_XposedHookedMethods,
-        .hasIndex = 48,
+        .hasIndex = 47,
         .offset = (uint32_t)offsetof(ST__storage_, xposedHookedMethods),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -786,7 +846,7 @@ typedef struct ST__storage_ {
         .name = "isAdbswitchEnabled",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_IsAdbswitchEnabled,
-        .hasIndex = 49,
+        .hasIndex = 48,
         .offset = (uint32_t)offsetof(ST__storage_, isAdbswitchEnabled),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -795,7 +855,7 @@ typedef struct ST__storage_ {
         .name = "isRunningByMonkey",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_IsRunningByMonkey,
-        .hasIndex = 50,
+        .hasIndex = 49,
         .offset = (uint32_t)offsetof(ST__storage_, isRunningByMonkey),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -804,7 +864,7 @@ typedef struct ST__storage_ {
         .name = "appInstrumentationClassName",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_AppInstrumentationClassName,
-        .hasIndex = 51,
+        .hasIndex = 50,
         .offset = (uint32_t)offsetof(ST__storage_, appInstrumentationClassName),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -813,7 +873,7 @@ typedef struct ST__storage_ {
         .name = "amsbinderClassName",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_AmsbinderClassName,
-        .hasIndex = 52,
+        .hasIndex = 51,
         .offset = (uint32_t)offsetof(ST__storage_, amsbinderClassName),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -822,7 +882,7 @@ typedef struct ST__storage_ {
         .name = "amssingletonClassName",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_AmssingletonClassName,
-        .hasIndex = 53,
+        .hasIndex = 52,
         .offset = (uint32_t)offsetof(ST__storage_, amssingletonClassName),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -831,7 +891,7 @@ typedef struct ST__storage_ {
         .name = "isVpnused",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_IsVpnused,
-        .hasIndex = 54,
+        .hasIndex = 53,
         .offset = (uint32_t)offsetof(ST__storage_, isVpnused),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -840,7 +900,7 @@ typedef struct ST__storage_ {
         .name = "isVpnconnected",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_IsVpnconnected,
-        .hasIndex = 55,
+        .hasIndex = 54,
         .offset = (uint32_t)offsetof(ST__storage_, isVpnconnected),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -849,7 +909,7 @@ typedef struct ST__storage_ {
         .name = "pcodes",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_Pcodes,
-        .hasIndex = 56,
+        .hasIndex = 55,
         .offset = (uint32_t)offsetof(ST__storage_, pcodes),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -858,7 +918,7 @@ typedef struct ST__storage_ {
         .name = "hasQcodes",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_HasQcodes,
-        .hasIndex = 57,
+        .hasIndex = 56,
         .offset = (uint32_t)offsetof(ST__storage_, hasQcodes),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -867,7 +927,7 @@ typedef struct ST__storage_ {
         .name = "rcodes0",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_Rcodes0,
-        .hasIndex = 58,
+        .hasIndex = 57,
         .offset = (uint32_t)offsetof(ST__storage_, rcodes0),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -876,7 +936,7 @@ typedef struct ST__storage_ {
         .name = "rcodes1",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_Rcodes1,
-        .hasIndex = 59,
+        .hasIndex = 58,
         .offset = (uint32_t)offsetof(ST__storage_, rcodes1),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -885,7 +945,7 @@ typedef struct ST__storage_ {
         .name = "stid",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_Stid,
-        .hasIndex = 60,
+        .hasIndex = 59,
         .offset = (uint32_t)offsetof(ST__storage_, stid),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -894,7 +954,7 @@ typedef struct ST__storage_ {
         .name = "kernelReleaseNumber",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_KernelReleaseNumber,
-        .hasIndex = 61,
+        .hasIndex = 60,
         .offset = (uint32_t)offsetof(ST__storage_, kernelReleaseNumber),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -903,7 +963,7 @@ typedef struct ST__storage_ {
         .name = "usbState",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_UsbState,
-        .hasIndex = 62,
+        .hasIndex = 61,
         .offset = (uint32_t)offsetof(ST__storage_, usbState),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -912,7 +972,7 @@ typedef struct ST__storage_ {
         .name = "apkSignatureMd5",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_ApkSignatureMd5,
-        .hasIndex = 63,
+        .hasIndex = 62,
         .offset = (uint32_t)offsetof(ST__storage_, apkSignatureMd5),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -921,7 +981,7 @@ typedef struct ST__storage_ {
         .name = "googleServiceState",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_GoogleServiceState,
-        .hasIndex = 64,
+        .hasIndex = 63,
         .offset = (uint32_t)offsetof(ST__storage_, googleServiceState),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -930,7 +990,7 @@ typedef struct ST__storage_ {
         .name = "timeval1",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_Timeval1,
-        .hasIndex = 65,
+        .hasIndex = 64,
         .offset = (uint32_t)offsetof(ST__storage_, timeval1),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeUInt32,
@@ -939,7 +999,7 @@ typedef struct ST__storage_ {
         .name = "spamInfoVersionSeq",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_SpamInfoVersionSeq,
-        .hasIndex = 66,
+        .hasIndex = 65,
         .offset = (uint32_t)offsetof(ST__storage_, spamInfoVersionSeq),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -948,7 +1008,7 @@ typedef struct ST__storage_ {
         .name = "tbVersionCrc",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_TbVersionCrc,
-        .hasIndex = 67,
+        .hasIndex = 66,
         .offset = (uint32_t)offsetof(ST__storage_, tbVersionCrc),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -957,7 +1017,7 @@ typedef struct ST__storage_ {
         .name = "systemFrameworkMd5",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_SystemFrameworkMd5,
-        .hasIndex = 68,
+        .hasIndex = 67,
         .offset = (uint32_t)offsetof(ST__storage_, systemFrameworkMd5),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -966,7 +1026,7 @@ typedef struct ST__storage_ {
         .name = "systemFrameworkArmMd5",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_SystemFrameworkArmMd5,
-        .hasIndex = 69,
+        .hasIndex = 68,
         .offset = (uint32_t)offsetof(ST__storage_, systemFrameworkArmMd5),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -975,7 +1035,7 @@ typedef struct ST__storage_ {
         .name = "systemFrameworkArm64Md5",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_SystemFrameworkArm64Md5,
-        .hasIndex = 70,
+        .hasIndex = 69,
         .offset = (uint32_t)offsetof(ST__storage_, systemFrameworkArm64Md5),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -984,7 +1044,7 @@ typedef struct ST__storage_ {
         .name = "systemBinMd5",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_SystemBinMd5,
-        .hasIndex = 71,
+        .hasIndex = 70,
         .offset = (uint32_t)offsetof(ST__storage_, systemBinMd5),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -993,7 +1053,7 @@ typedef struct ST__storage_ {
         .name = "soterUid",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_SoterUid,
-        .hasIndex = 72,
+        .hasIndex = 71,
         .offset = (uint32_t)offsetof(ST__storage_, soterUid),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -1002,7 +1062,7 @@ typedef struct ST__storage_ {
         .name = "widevineDeviceId",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_WidevineDeviceId,
-        .hasIndex = 73,
+        .hasIndex = 72,
         .offset = (uint32_t)offsetof(ST__storage_, widevineDeviceId),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -1011,7 +1071,7 @@ typedef struct ST__storage_ {
         .name = "storageId",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_StorageId,
-        .hasIndex = 74,
+        .hasIndex = 73,
         .offset = (uint32_t)offsetof(ST__storage_, storageId),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -1020,7 +1080,7 @@ typedef struct ST__storage_ {
         .name = "oaid",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_Oaid,
-        .hasIndex = 75,
+        .hasIndex = 74,
         .offset = (uint32_t)offsetof(ST__storage_, oaid),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -1029,17 +1089,17 @@ typedef struct ST__storage_ {
         .name = "unknownTag80",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_UnknownTag80,
-        .hasIndex = 76,
+        .hasIndex = 75,
         .offset = (uint32_t)offsetof(ST__storage_, unknownTag80),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "timeVal2",
+        .name = "magiskBitCheck",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_TimeVal2,
-        .hasIndex = 77,
-        .offset = (uint32_t)offsetof(ST__storage_, timeVal2),
+        .number = ST_FieldNumber_MagiskBitCheck,
+        .hasIndex = 76,
+        .offset = (uint32_t)offsetof(ST__storage_, magiskBitCheck),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
@@ -1056,7 +1116,7 @@ typedef struct ST__storage_ {
         .name = "weChatInstallTime",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_WeChatInstallTime,
-        .hasIndex = 78,
+        .hasIndex = 77,
         .offset = (uint32_t)offsetof(ST__storage_, weChatInstallTime),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -1065,7 +1125,7 @@ typedef struct ST__storage_ {
         .name = "softConfig",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_SoftConfig,
-        .hasIndex = 79,
+        .hasIndex = 78,
         .offset = (uint32_t)offsetof(ST__storage_, softConfig),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
@@ -1074,7 +1134,7 @@ typedef struct ST__storage_ {
         .name = "softData",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_SoftData,
-        .hasIndex = 80,
+        .hasIndex = 79,
         .offset = (uint32_t)offsetof(ST__storage_, softData),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
@@ -1083,7 +1143,7 @@ typedef struct ST__storage_ {
         .name = "tag86",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_Tag86,
-        .hasIndex = 81,
+        .hasIndex = 80,
         .offset = (uint32_t)offsetof(ST__storage_, tag86),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -1092,10 +1152,280 @@ typedef struct ST__storage_ {
         .name = "netWorkInterface",
         .dataTypeSpecific.className = NULL,
         .number = ST_FieldNumber_NetWorkInterface,
-        .hasIndex = 82,
+        .hasIndex = 81,
         .offset = (uint32_t)offsetof(ST__storage_, netWorkInterface),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "tag88",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag88,
+        .hasIndex = 82,
+        .offset = (uint32_t)offsetof(ST__storage_, tag88),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag89",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag89,
+        .hasIndex = 83,
+        .offset = (uint32_t)offsetof(ST__storage_, tag89),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag90",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag90,
+        .hasIndex = 84,
+        .offset = (uint32_t)offsetof(ST__storage_, tag90),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag91",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag91,
+        .hasIndex = 85,
+        .offset = (uint32_t)offsetof(ST__storage_, tag91),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag92",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag92,
+        .hasIndex = 86,
+        .offset = (uint32_t)offsetof(ST__storage_, tag92),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag93",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag93,
+        .hasIndex = 87,
+        .offset = (uint32_t)offsetof(ST__storage_, tag93),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag94",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag94,
+        .hasIndex = 88,
+        .offset = (uint32_t)offsetof(ST__storage_, tag94),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag95",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag95,
+        .hasIndex = 89,
+        .offset = (uint32_t)offsetof(ST__storage_, tag95),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag96",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag96,
+        .hasIndex = 90,
+        .offset = (uint32_t)offsetof(ST__storage_, tag96),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag97",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag97,
+        .hasIndex = 91,
+        .offset = (uint32_t)offsetof(ST__storage_, tag97),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag98",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag98,
+        .hasIndex = 92,
+        .offset = (uint32_t)offsetof(ST__storage_, tag98),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag99",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag99,
+        .hasIndex = 93,
+        .offset = (uint32_t)offsetof(ST__storage_, tag99),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag100",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag100,
+        .hasIndex = 94,
+        .offset = (uint32_t)offsetof(ST__storage_, tag100),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag101",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag101,
+        .hasIndex = 95,
+        .offset = (uint32_t)offsetof(ST__storage_, tag101),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag102",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag102,
+        .hasIndex = 96,
+        .offset = (uint32_t)offsetof(ST__storage_, tag102),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag103",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag103,
+        .hasIndex = 97,
+        .offset = (uint32_t)offsetof(ST__storage_, tag103),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag104",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag104,
+        .hasIndex = 98,
+        .offset = (uint32_t)offsetof(ST__storage_, tag104),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag105",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag105,
+        .hasIndex = 99,
+        .offset = (uint32_t)offsetof(ST__storage_, tag105),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag106",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag106,
+        .hasIndex = 100,
+        .offset = (uint32_t)offsetof(ST__storage_, tag106),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag107",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag107,
+        .hasIndex = 101,
+        .offset = (uint32_t)offsetof(ST__storage_, tag107),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag108",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag108,
+        .hasIndex = 102,
+        .offset = (uint32_t)offsetof(ST__storage_, tag108),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag109",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag109,
+        .hasIndex = 103,
+        .offset = (uint32_t)offsetof(ST__storage_, tag109),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag110",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag110,
+        .hasIndex = 104,
+        .offset = (uint32_t)offsetof(ST__storage_, tag110),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag111",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag111,
+        .hasIndex = 105,
+        .offset = (uint32_t)offsetof(ST__storage_, tag111),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag112",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag112,
+        .hasIndex = 106,
+        .offset = (uint32_t)offsetof(ST__storage_, tag112),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag113",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag113,
+        .hasIndex = 107,
+        .offset = (uint32_t)offsetof(ST__storage_, tag113),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "tag114",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag114,
+        .hasIndex = 108,
+        .offset = (uint32_t)offsetof(ST__storage_, tag114),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag115",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag115,
+        .hasIndex = 109,
+        .offset = (uint32_t)offsetof(ST__storage_, tag115),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "uid",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Uid,
+        .hasIndex = 110,
+        .offset = (uint32_t)offsetof(ST__storage_, uid),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "tag117",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Tag117,
+        .hasIndex = 111,
+        .offset = (uint32_t)offsetof(ST__storage_, tag117),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -1108,15 +1438,18 @@ typedef struct ST__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "U\001M\000\002H\000\003N\000\004H\000\005J\000\006H\000\007d\000\010HA\000\tK\000\nJ\000\013L\000\014DA\000\r"
+        "r\001M\000\002H\000\003N\000\004H\000\005J\000\006H\000\007d\000\010HA\000\tK\000\nJ\000\013L\000\014DA\000\r"
         "K\000\016Eb\000\017d\000\020e\000\021F\000\022d\003\000\023FA\000\024J\000\025O\000\026J\000\027K\000\030FA\000\031"
         "L\000\032L\000\033H\000\034G\000\035I\000\036I\000\037M\000 G\000!G\000\"H\000#W\000$\000MMProc"
         "LoadedFiles\000%Q\000&G\000(\000InstalledPackageInfo"
-        "s\000)W\000*d\007B\000+M\000,c\002\000-GA\000.H\000/K\0000O\0001Ie\003\0002J\0003S"
-        "\0004S\0005Cc\014\0006Q\0007[\0008d\016\0009d\021\000:Cc\003\000;Cc\010\000<b\004\000=DE"
-        "\000>b\005\000\?b\005\000@d\000AS\000BH\000CO\000DR\000FR\000GL\000HPB\000ISB\000JU"
-        "B\000KJB\000LH\000MOA\000NHA\000Od\000PL\000QH\000R\000FilesModifie"
-        "dInFramework\000SQ\000TJ\000UH\000VE\000WP\000";
+        "s\000)W\000*d\007B\000+M\000,c\002\000-GA\000.H\000/K\0000O\0001\000Neighbor"
+        "BSSIDList\0002J\0003S\0004S\0005Cc\014\0006Q\0007[\0008d\016\0009d\021\000:C"
+        "c\003\000;Cc\010\000<b\004\000=DE\000>b\005\000\?b\005\000@d\000AS\000BH\000CO\000DR\000F"
+        "R\000GL\000HPB\000ISB\000JUB\000KJB\000LH\000MOA\000NHA\000Od\000PL\000QN"
+        "\000R\000FilesModifiedInFramework\000SQ\000TJ\000UH\000VE\000"
+        "WP\000XE\000YE\000ZE\000[E\000\\E\000]E\000^E\000_E\000`E\000aE\000bE\000cE\000d"
+        "F\000eF\000fF\000gF\000hF\000iF\000jF\000kF\000lF\000mF\000nF\000oF\000pF\000qF"
+        "\000rF\000sF\000uF\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG

@@ -134,7 +134,7 @@ typedef GPB_ENUM(ST_FieldNumber) {
   ST_FieldNumber_Language = 46,
   ST_FieldNumber_IsInCalling = 47,
   ST_FieldNumber_IsSetScreenLock = 48,
-  ST_FieldNumber_NeighborBssidlist = 49,
+  ST_FieldNumber_NeighborBssidlistArray = 49,
   ST_FieldNumber_IsWifiOpen = 50,
   ST_FieldNumber_HasXposedStackTrace = 51,
   ST_FieldNumber_XposedHookedMethods = 52,
@@ -166,13 +166,43 @@ typedef GPB_ENUM(ST_FieldNumber) {
   ST_FieldNumber_StorageId = 78,
   ST_FieldNumber_Oaid = 79,
   ST_FieldNumber_UnknownTag80 = 80,
-  ST_FieldNumber_TimeVal2 = 81,
+  ST_FieldNumber_MagiskBitCheck = 81,
   ST_FieldNumber_FilesModifiedInFrameworkArray = 82,
   ST_FieldNumber_WeChatInstallTime = 83,
   ST_FieldNumber_SoftConfig = 84,
   ST_FieldNumber_SoftData = 85,
   ST_FieldNumber_Tag86 = 86,
   ST_FieldNumber_NetWorkInterface = 87,
+  ST_FieldNumber_Tag88 = 88,
+  ST_FieldNumber_Tag89 = 89,
+  ST_FieldNumber_Tag90 = 90,
+  ST_FieldNumber_Tag91 = 91,
+  ST_FieldNumber_Tag92 = 92,
+  ST_FieldNumber_Tag93 = 93,
+  ST_FieldNumber_Tag94 = 94,
+  ST_FieldNumber_Tag95 = 95,
+  ST_FieldNumber_Tag96 = 96,
+  ST_FieldNumber_Tag97 = 97,
+  ST_FieldNumber_Tag98 = 98,
+  ST_FieldNumber_Tag99 = 99,
+  ST_FieldNumber_Tag100 = 100,
+  ST_FieldNumber_Tag101 = 101,
+  ST_FieldNumber_Tag102 = 102,
+  ST_FieldNumber_Tag103 = 103,
+  ST_FieldNumber_Tag104 = 104,
+  ST_FieldNumber_Tag105 = 105,
+  ST_FieldNumber_Tag106 = 106,
+  ST_FieldNumber_Tag107 = 107,
+  ST_FieldNumber_Tag108 = 108,
+  ST_FieldNumber_Tag109 = 109,
+  ST_FieldNumber_Tag110 = 110,
+  ST_FieldNumber_Tag111 = 111,
+  ST_FieldNumber_Tag112 = 112,
+  ST_FieldNumber_Tag113 = 113,
+  ST_FieldNumber_Tag114 = 114,
+  ST_FieldNumber_Tag115 = 115,
+  ST_FieldNumber_Uid = 116,
+  ST_FieldNumber_Tag117 = 117,
 };
 
 @interface ST : GPBMessage
@@ -355,9 +385,9 @@ typedef GPB_ENUM(ST_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t isSetScreenLock;
 
 @property(nonatomic, readwrite) BOOL hasIsSetScreenLock;
-@property(nonatomic, readwrite, copy, null_resettable) NSString *neighborBssidlist;
-/** Test to see if @c neighborBssidlist has been set. */
-@property(nonatomic, readwrite) BOOL hasNeighborBssidlist;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *neighborBssidlistArray;
+/** The number of items in @c neighborBssidlistArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger neighborBssidlistArray_Count;
 
 @property(nonatomic, readwrite) uint32_t isWifiOpen;
 
@@ -437,11 +467,11 @@ typedef GPB_ENUM(ST_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t googleServiceState;
 
 @property(nonatomic, readwrite) BOOL hasGoogleServiceState;
-/** 69: 954783 // 时间相关struct timeval*  中微秒数值      gettimeofday获取 */
+/** 69: 954783 // struct timeval 中微秒数值, gettimeofday获取. 0xffffff -> 4294963711 4294963711 4294963711 */
 @property(nonatomic, readwrite) uint32_t timeval1;
 
 @property(nonatomic, readwrite) BOOL hasTimeval1;
-/** 708 、709 、【7010｜7011】 分别对应 123。 7012是4. */
+/** 708 、709 、【7010｜7011】 分别对应 123。 7012是4. 7015=6 */
 @property(nonatomic, readwrite) uint32_t spamInfoVersionSeq;
 
 @property(nonatomic, readwrite) BOOL hasSpamInfoVersionSeq;
@@ -500,20 +530,20 @@ typedef GPB_ENUM(ST_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t unknownTag80;
 
 @property(nonatomic, readwrite) BOOL hasUnknownTag80;
-/** 81: 242379 // 时间相关struct timeval*  中微秒数值      gettimeofday获取 */
-@property(nonatomic, readwrite) uint32_t timeVal2;
+/** 81: 242379 // struct timeval 中微秒数值, gettimeofday获取. 0xffffffff -> 4294966271 4294966271 4294966271 第二遍 4294967295 */
+@property(nonatomic, readwrite) uint32_t magiskBitCheck;
 
-@property(nonatomic, readwrite) BOOL hasTimeVal2;
+@property(nonatomic, readwrite) BOOL hasMagiskBitCheck;
 /** 82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断。不该有此值，只有非法时才设置。 */
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *filesModifiedInFrameworkArray;
 /** The number of items in @c filesModifiedInFrameworkArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger filesModifiedInFrameworkArray_Count;
 
-/** 微信安装时间。 // 7012到此 */
+/** 微信安装时间. */
 @property(nonatomic, readwrite) uint32_t weChatInstallTime;
 
 @property(nonatomic, readwrite) BOOL hasWeChatInstallTime;
-/** 7013 开始 */
+/** 7015 开始 */
 @property(nonatomic, readwrite, copy, null_resettable) NSData *softConfig;
 /** Test to see if @c softConfig has been set. */
 @property(nonatomic, readwrite) BOOL hasSoftConfig;
@@ -522,7 +552,7 @@ typedef GPB_ENUM(ST_FieldNumber) {
 /** Test to see if @c softData has been set. */
 @property(nonatomic, readwrite) BOOL hasSoftData;
 
-/** 7014 开始 */
+/** 7014 struct timeval 中微秒数值, gettimeofday获取. 开始 0xffffffff -> 4294966955 4294966955 4294966955 */
 @property(nonatomic, readwrite) uint32_t tag86;
 
 @property(nonatomic, readwrite) BOOL hasTag86;
@@ -530,6 +560,109 @@ typedef GPB_ENUM(ST_FieldNumber) {
 /** Test to see if @c netWorkInterface has been set. */
 @property(nonatomic, readwrite) BOOL hasNetWorkInterface;
 
+@property(nonatomic, readwrite) uint32_t tag88;
+
+@property(nonatomic, readwrite) BOOL hasTag88;
+@property(nonatomic, readwrite) uint32_t tag89;
+
+@property(nonatomic, readwrite) BOOL hasTag89;
+@property(nonatomic, readwrite) uint32_t tag90;
+
+@property(nonatomic, readwrite) BOOL hasTag90;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag91;
+/** Test to see if @c tag91 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag91;
+
+@property(nonatomic, readwrite) uint32_t tag92;
+
+@property(nonatomic, readwrite) BOOL hasTag92;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag93;
+/** Test to see if @c tag93 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag93;
+
+@property(nonatomic, readwrite) uint32_t tag94;
+
+@property(nonatomic, readwrite) BOOL hasTag94;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag95;
+/** Test to see if @c tag95 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag95;
+
+@property(nonatomic, readwrite) uint32_t tag96;
+
+@property(nonatomic, readwrite) BOOL hasTag96;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag97;
+/** Test to see if @c tag97 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag97;
+
+@property(nonatomic, readwrite) uint32_t tag98;
+
+@property(nonatomic, readwrite) BOOL hasTag98;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag99;
+/** Test to see if @c tag99 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag99;
+
+@property(nonatomic, readwrite) uint32_t tag100;
+
+@property(nonatomic, readwrite) BOOL hasTag100;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag101;
+/** Test to see if @c tag101 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag101;
+
+@property(nonatomic, readwrite) uint32_t tag102;
+
+@property(nonatomic, readwrite) BOOL hasTag102;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag103;
+/** Test to see if @c tag103 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag103;
+
+@property(nonatomic, readwrite) uint32_t tag104;
+
+@property(nonatomic, readwrite) BOOL hasTag104;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag105;
+/** Test to see if @c tag105 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag105;
+
+@property(nonatomic, readwrite) uint32_t tag106;
+
+@property(nonatomic, readwrite) BOOL hasTag106;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag107;
+/** Test to see if @c tag107 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag107;
+
+@property(nonatomic, readwrite) uint32_t tag108;
+
+@property(nonatomic, readwrite) BOOL hasTag108;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag109;
+/** Test to see if @c tag109 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag109;
+
+@property(nonatomic, readwrite) uint32_t tag110;
+
+@property(nonatomic, readwrite) BOOL hasTag110;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag111;
+/** Test to see if @c tag111 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag111;
+
+@property(nonatomic, readwrite) uint32_t tag112;
+
+@property(nonatomic, readwrite) BOOL hasTag112;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *tag113;
+/** Test to see if @c tag113 has been set. */
+@property(nonatomic, readwrite) BOOL hasTag113;
+
+@property(nonatomic, readwrite) uint32_t tag114;
+
+@property(nonatomic, readwrite) BOOL hasTag114;
+@property(nonatomic, readwrite) uint32_t tag115;
+
+@property(nonatomic, readwrite) BOOL hasTag115;
+/** getuid32() */
+@property(nonatomic, readwrite) uint32_t uid;
+
+@property(nonatomic, readwrite) BOOL hasUid;
+@property(nonatomic, readwrite) uint32_t tag117;
+
+@property(nonatomic, readwrite) BOOL hasTag117;
 @end
 
 #pragma mark - ClientSpamInfo

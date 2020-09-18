@@ -74,8 +74,7 @@
         postBody = [protoOrXml dataByDeflating];
     }
 
-    NSData *zlibCompressedSaeData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sae-zlib-compress" ofType:@"bin"]];
-    NSData *unCompressedSaeData = [zlibCompressedSaeData dataByInflatingWithError:nil];
+    NSData *unCompressedSaeData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"meta-manifest" ofType:@"dat"]];
     wcaes *aes = [wcaes parseFromData:unCompressedSaeData error:nil];
 
     NSData *saeIV = aes.iv;

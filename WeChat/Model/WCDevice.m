@@ -282,7 +282,7 @@
     st.systemBinMd5 = stDict[@"PathMd54"];
     st.widevineDeviceId = stDict[@"WidevineDeviceID"];
     st.storageId = stDict[@"StorageID"];
-    st.timeVal2 = [stDict[@"Timeval2"] intValue];
+    st.magiskBitCheck = [stDict[@"Timeval2"] intValue];
     st.weChatInstallTime = [stDict[@"Timestamp"] intValue];
     
     spamInfo.st = st;
