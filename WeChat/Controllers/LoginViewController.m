@@ -30,7 +30,6 @@
 
 #import "SoftTypeUitl.h"
 
-#import "NSData+CRC32.h"
 #import "EncryptStPairTest.h"
 
 void sub_3570()
@@ -102,6 +101,7 @@ void sub_3570()
         BOOL match = [EnvBits GetEnvBits2:i result:65898401];
         if (match) {
             LogVerbose(@"%d", i);
+            break;
         }
     }
     
@@ -109,13 +109,6 @@ void sub_3570()
     [SoftTypeUitl calculateK289];
     
     [EncryptStPairTest test];
-    
-//        NSData *ddd = [@"android.os.BinderProxy" dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *ddd = [@"2751892445d07da7582b3fcaa31184359ed8c99d65" dataUsingEncoding:NSUTF8StringEncoding];
-//        NSData *ddd = [@"37917110831593755076.864682156@7182cc1ce823bc61|7bb9decfd60c096098d358b6ca3be9c5@18f75bf9fb7a0f11|15a1e775c4d7903bdc5e538a1d263750" dataUsingEncoding:NSUTF8StringEncoding];
-        uint32_t crc32 = [ddd crc32];
-        AutoAuthRequest *re = [AutoAuthRequest parseFromData:[NSData dataWithContentsOfFile:@"/Users/ray/Desktop/wxlog-7_0_18/request/1598931412952_cgi-bin_micromsg-bin_secautoauth-763.bin"] error:nil];
-        NSLog(@"%@", re);
 }
 
 #pragma mark - Auth
