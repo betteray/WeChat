@@ -313,7 +313,7 @@ int  AMSSingletonClassNameEncryptWord(unsigned int key, unsigned int round, unsi
     v11 = 0xE1020567 >> v9;
     v12 = v4 & ~v11;
     v13 = (v4 | ~v4) & ~(~v11 | ~(-519961241 << v8)) | (v11 & ~v4 | v12) ^ ((-519961241 << v8) & ~v4 | v4 & ~(-519961241 << v8));
-    v14 = *(_DWORD *)(v12 + 1216);
+//    v14 = *(_DWORD *)(v12 + 1216);
     v15 = (~v10 & 0xF269CBD7 | v10 & 0xD963428) ^ (~v13 & 0xF269CBD7 | v13 & 0xD963428);
     v16 = plain << (++v7 & 0x1F);
     v17 = v5 & ~v16 | v16 & ~v5;
