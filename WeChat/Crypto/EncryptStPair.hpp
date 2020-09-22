@@ -12,6 +12,8 @@
 #include <stdio.h>
 int  encrypt_tag86(unsigned int a1);
 
+unsigned int encrypt_tag90(int usec, int sec);
+
 unsigned int  PkgHash3EncryptWord(unsigned int a1, int a2, unsigned int a3);
 
 unsigned int PkgHash3CrcPre(unsigned int a1);

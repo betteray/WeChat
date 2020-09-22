@@ -27,6 +27,17 @@ int  encrypt_tag86(unsigned int a1)
     return v2;
 }
 
+
+unsigned int encrypt_tag90(int a1, int a2)
+{
+  unsigned int v2; // r1
+  int v3; // r0
+
+  v2 = ~(~(a2 >> (32 - a1 % 32)) | ~(a2 << a1 % 32)) | ((a2 >> (32 - a1 % 32)) & 0xDD519909 | ~(a2 >> (32 - a1 % 32)) & 0x22AE66F6) ^ ((a2 << a1 % 32) & 0xDD519909 | ~(a2 << a1 % 32) & 0x22AE66F6);
+  v3 = a1 & ~v2 | v2 & ~a1;
+  return v3 & (v3 ^ 0x3C0) & 0x40 | (v3 & (v3 ^ 0x3C0) & 0x286CF5A9 | ~(v3 & (v3 ^ 0x3C0)) & 0xD7930A56) ^ 0xD7930A16;
+}
+
 unsigned int  PkgHash3EncryptWord(unsigned int a1, int a2, unsigned int a3)
 {
     unsigned int v3; // ST08_4

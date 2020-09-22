@@ -16,7 +16,7 @@
 //    unsigned int byte1_1 = encrypt_asm_tag86(551136); // 传入89 微妙数，得86。
 //    unsigned int byte1_1 = encrypt_asm_tag90(551136, 1597229284); // 传入 89, 88, 得 90 。
     
-    unsigned int byte1_1 = PkgHash3EncryptWord(1598862640, 0, 0x38633831);
+//    unsigned int byte1_1 = PkgHash3EncryptWord(1598862640, 0, 0x38633831);
     
 //    unsigned int byte1_1 = EntranceClassLoaderNameEncryptWord(0x5F33B2B1, 0, 0x766C6164);
 //    unsigned int byte1_1 = EntranceClassLoaderNameEncryptByte(0xb1, 0, 0x72);
@@ -75,10 +75,13 @@
 //    unsigned int byte1_1 = StorageIDCrcPre(257710);
 //    unsigned int byte1_1 = SourceDirCrcPre(888440);
 //    unsigned int byte1_1 = SourceDir2CrcPre(888440);
+    
+//    unsigned int byte1_1 = AMSSingletonClassNameEncryptWord(1598862640, 0, 1919184481);
+
+    unsigned int byte1_1 = encrypt_tag90(42868, 1599466024);
     char buf[1024] = {0};
     sprintf(buf, "%x", byte1_1);
     NSLog(@"%s", buf);
-    
     
 //    NSData *ddd = [@"android.os.BinderProxy" dataUsingEncoding:NSUTF8StringEncoding];
 //    NSData *ddd = [@"2751892445d07da7582b3fcaa31184359ed8c99d65" dataUsingEncoding:NSUTF8StringEncoding];
