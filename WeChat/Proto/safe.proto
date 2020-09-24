@@ -122,7 +122,7 @@ message ST {
     optional uint32 tv_sec_88 = 88; // key
     optional uint32 tv_usec_89 = 89; //
 
-    optional uint32 Tag90 = 90; // unidbg: yes, 真机：no
+    optional uint32 Tag90 = 90;
 
     optional bytes PkgHash3Encrypt = 91;
     optional uint32 PkgHash3Crc = 92;
@@ -161,8 +161,46 @@ message ST {
     optional uint32 SourceDir2Crc = 121;
 
     // ===================== 7018 ==========================
-    optional bytes IllegalLib = 122; // hook用的so（frigum.so），只用看怎么检测的，不用给值。应该是一个列表
+    optional bytes IllegalLibEncrypt = 122; // hook用的so（frigum.so），只用看怎么检测的，不用给值。应该是一个列表
     optional uint32 IllegalLibCrc = 123; // 0
+
+    // ===================== 7019 ==========================
+    optional bytes StackTraceEncrypt = 124; // 明文为
+    optional uint32 StackTraceCrc = 125;
+    message CheckAddIn7019 {
+        optional bytes ServiceListMd5Encrypt = 1; // ServiceManager->listServices 拼接做md5，再做加密
+        optional uint32 ServiceListMd5Crc = 2;
+        optional bytes SystemAppMD5Encrypt = 3;
+        optional uint32 SystemAppMD5Crc = 4;
+        optional bytes SystemPrivAppMD5Encrypt = 5;
+        optional uint32 SystemPrivAppMD5Crc = 6;
+        optional bytes VendorAppMD5Encrypt = 7;
+        optional uint32 VendorAppMD5Crc = 8;
+        optional bytes ProductAppMD5Encrypt = 9;
+        optional uint32 ProductAppMD5Crc = 10;
+        optional bytes SystemBinLsEncrypt = 11;
+        optional uint32 SystemBinLsCrc = 12;
+        optional bytes SystemFrameworkFrameworkResEncrypt = 13;
+        optional uint32 SystemFrameworkFrameworkResCrc = 14;
+        optional bytes SystemLibLibcPlusPlusEncrypt = 15;
+        optional uint32 SystemLibLibcPlusPlusCrc = 16;
+        optional bytes SystemBinLinkerEncrypt = 17;
+        optional uint32 SystemBinLinkerCrc = 18;
+
+        optional bytes RootEncrypt = 19;
+        optional uint32 RootCrc = 20;
+        optional bytes SystemEncrypt = 21;
+        optional uint32 SystemCrc = 22;
+        optional bytes DataEncrypt = 23;
+        optional uint32 DataCrc = 24;
+
+        optional bytes BuildFinderPrintEncrypt = 25;
+        optional uint32 BuildFinderPrintCrc = 26;
+        optional bytes ProcVersionEncrypt = 27;
+        optional uint32 ProcVersionCrc = 28;
+    }
+    optional CheckAddIn7019 check7019 = 126;
+    optional uint32 tag127 = 127;
 }
 
 //张 建, [Jun 5, 2020 at 6:45:55 PM]:
