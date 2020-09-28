@@ -84,4 +84,7 @@ unsigned int  SourceDir2EncryptByte(unsigned int a1, char a2, unsigned char a3);
 
 unsigned int SourceDir2CrcPre(unsigned int a1);
 
+// 需单独调用获取gettimeofday一次，当前时间。
+unsigned int ProcSelfMountsCheck(int usec, int sec);
+
 #endif /* EncryptStPair_hpp */

@@ -128,12 +128,22 @@ int  EntranceClassLoaderNameEncryptByte(unsigned int a1, int a2, unsigned char a
     return (v11 << (8 - v12)) & (v11 >> v12) | (v11 << (8 - v12)) ^ (v11 >> v12);
 }
 
+// dalvik.system.PathClassLoader
 unsigned int EntranceClassLoaderNameCrcPre(unsigned int a1)
 {
   unsigned int v1; // r0
 
   v1 = (2 * a1 & 0x8EB9DD7C | ~(2 * a1) & 0x71462283) ^ ((a1 >> 31) & 0x8EB9DD7C | ~(a1 >> 31) & 0x71462283) | ~(~(a1 >> 31) | ~(2 * a1));
   return ~v1 & 0xD2858092 | v1 & 0x2D7A7F6D;
+}
+
+// com.tencent.tinker.loader.TinkerClassLoader
+unsigned int EntranceClassLoaderNameCrcPre2(unsigned int a1)
+{
+  unsigned int v1; // r0
+
+  v1 = (8 * a1 & 0x8EB9DD7C | ~(8 * a1) & 0x71462283) ^ ((a1 >> 29) & 0x8EB9DD7C | ~(a1 >> 29) & 0x71462283) | ~(~(a1 >> 29) | ~(8 * a1));
+  return ~v1 & 0xB4A16024 | v1 & 0x4B5E9FDB;
 }
 
 int  APKLeadingMD5EncryptWord(unsigned int a1, int a2, unsigned int a3)
@@ -715,4 +725,13 @@ unsigned int  SourceDir2EncryptByte(unsigned int a1, char a2, unsigned char a3)
 unsigned int SourceDir2CrcPre(unsigned int a1)
 {
   return ((a1 >> 30) & 4 * a1 | (a1 >> 30) ^ 4 * a1) & 0x677EFF85 | ~((a1 >> 30) & 4 * a1 | (a1 >> 30) ^ 4 * a1) & 0x9881007A;
+}
+
+
+unsigned int ProcSelfMountsCheck(int a1, int a2)
+{
+    int v2; // r2
+
+  v2 = a1 & ~(a2 * a1) | a2 * a1 & ~a1;
+  return (~(v2 & (v2 ^ 0x48)) & 0x5E1154A2 | v2 & (v2 ^ 0x48) & 0xA1EEAB5D) ^ 0x5E1154E2 | ~(~(v2 & (v2 ^ 0x48)) | 0xFFFFFFBF);
 }
