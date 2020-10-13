@@ -75,10 +75,59 @@
 //    unsigned int byte1_1 = StorageIDCrcPre(257710);
 //    unsigned int byte1_1 = SourceDirCrcPre(888440);
 //    unsigned int byte1_1 = SourceDir2CrcPre(888440);
-    
 //    unsigned int byte1_1 = AMSSingletonClassNameEncryptWord(1598862640, 0, 1919184481);
 
-    unsigned int byte1_1 = encrypt_tag90(42868, 1599466024);
+//    unsigned int byte1_1 = encrypt_tag90(42868, 1599466024);
+    
+//     unsigned int byte1_1 = StackTraceEncrypt_Word(0x5F867CB8, 0, 0x2e6d6f63);
+//    unsigned int byte1_1 = StackTraceEncrypt_Byte(0xB8, 0, 0x61);
+//     unsigned int byte1_1 = StackTraceCrc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = ServiceListMd5Encrypt(0x5F867CB8, 0, 0x32353431);
+//     unsigned int byte1_1 = ServiceListMd5Crc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = SystemAppMD5Encrypt(0x5F867CB8, 0, 0x35386563);
+//     unsigned int byte1_1 = SystemAppMD5Crc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = SystemPrivAppMD5Encrypt(0x5F867CB8, 0, 0x64316566);
+//     unsigned int byte1_1 = SystemPrivAppMD5Crc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = VendorAppMD5Encrypt(0x5F867CB8, 0, 0x63626636);
+    // unsigned int byte1_1 = VendorAppMD5Encrypt(0x5F867CB8, 1, 0x33393762);
+//     unsigned int byte1_1 = VendorAppMD5Crc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = ProductAppMD5Encrypt(0x5F867CB8, 0, 0x30306335);
+     unsigned int byte1_1 = ProductAppMD5Crc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = SystemBinLsEncrypt(0x5F867CB8, 0, 0x30306335);
+//     unsigned int byte1_1 = SystemBinLsCrc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = SystemFrameworkFrameworkResEncrypt(0x5F867CB8, 0, 0x61383865);
+//     unsigned int byte1_1 = SystemFrameworkFrameworkResCrc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = SystemLibLibcPlusPlusEncrypt(0x5F867CB8, 0, 0x33376361);
+//     unsigned int byte1_1 = SystemLibLibcPlusPlusCrc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = SystemBinLinkerEncrypt(0x5F867CB8, 0, 0x64636438);
+//     unsigned int byte1_1 = SystemBinLinkerCrc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = RootEncrypt_Word(0x5F867CB8, 0, 0x37393531);
+//     unsigned int byte1_1 = RootEncrypt_Byte(0xB8, 0, 0x30);
+//     unsigned int byte1_1 = RootCrc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = SystemEncrypt_Word(0x5F867CB8, 0, 0x37393531);
+//     unsigned int byte1_1 = SystemEncrypt_Byte(0xB8, 0, 0x30);
+//     unsigned int byte1_1 = SystemCrc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = DataEncrypt_Word(0x5F867CB8, 0, 0x37393531);
+//     unsigned int byte1_1 = DataEncrypt_Byte(0xB8, 0, 0x30);
+//     unsigned int byte1_1 = DataCrc_Pre(0x881fa);
+
+//     unsigned int byte1_1 = BuildFinderPrintEncrypt_Word(0x5F867CB8, 0, 0x72646e61);
+//     unsigned int byte1_1 = BuildFinderPrintEncrypt_Byte(0xB8, 0, 0x54);
+    // unsigned int byte1_1 = BuildFinderPrintCrc_Pre(0x881fa, 0x20);
+    
+//    unsigned int byte1_1 = ProcSelfMountsCheck(293189, 1601214211);
     char buf[1024] = {0};
     sprintf(buf, "%x", byte1_1);
     NSLog(@"%s", buf);

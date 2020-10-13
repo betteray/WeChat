@@ -10,6 +10,8 @@
 #define EncryptStPair_hpp
 
 #include <stdio.h>
+#include "defs.h"
+
 int  encrypt_tag86(unsigned int a1);
 
 unsigned int encrypt_tag90(int usec, int sec);
@@ -83,6 +85,52 @@ int  SourceDir2EncryptWord(unsigned int a1, int a2, unsigned int a3);
 unsigned int  SourceDir2EncryptByte(unsigned int a1, char a2, unsigned char a3);
 
 unsigned int SourceDir2CrcPre(unsigned int a1);
+
+unsigned int StackTraceEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
+unsigned int StackTraceEncrypt_Byte(unsigned int a1, int a2, unsigned __int8 a3);
+unsigned int StackTraceCrc_Pre(unsigned int a1);
+
+unsigned int  ServiceListMd5Encrypt(unsigned int a1, int a2, unsigned int a3);
+unsigned int ServiceListMd5Crc_Pre(unsigned int a1);
+
+unsigned int SystemAppMD5Encrypt(unsigned int a1, int a2, unsigned int a3);
+unsigned int SystemAppMD5Crc_Pre(unsigned int a1);
+
+unsigned int SystemPrivAppMD5Encrypt(unsigned int a1, char a2, unsigned int a3);
+unsigned int SystemPrivAppMD5Crc_Pre(unsigned int a1);
+
+unsigned int VendorAppMD5Encrypt(unsigned int a1, char a2, unsigned int a3);
+unsigned int VendorAppMD5Crc_Pre(unsigned int a1);
+
+unsigned int ProductAppMD5Encrypt(unsigned int a1, int a2, unsigned int a3);
+unsigned int ProductAppMD5Crc_Pre(unsigned int a1);
+
+unsigned int SystemBinLsEncrypt(unsigned int a1, int a2, unsigned int a3);
+unsigned int SystemBinLsCrc_Pre(int a1);
+
+unsigned int SystemFrameworkFrameworkResEncrypt(unsigned int a1, int a2, unsigned int a3);
+unsigned int SystemFrameworkFrameworkResCrc_Pre(unsigned int a1);
+
+unsigned int SystemLibLibcPlusPlusEncrypt(unsigned int a1, int a2, unsigned int a3);
+unsigned int SystemLibLibcPlusPlusCrc_Pre(unsigned int a1);
+
+unsigned int SystemBinLinkerEncrypt(unsigned int a1, int a2, unsigned int a3);
+unsigned int SystemBinLinkerCrc_Pre(int a1);
+
+unsigned int RootEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
+unsigned int RootEncrypt_Byte(unsigned int a1, int a2, unsigned int a3);
+unsigned int RootCrc_Pre(unsigned int a1);
+
+unsigned int SystemEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
+unsigned int SystemEncrypt_Byte(unsigned int a1, int a2, unsigned int a3);
+unsigned int SystemCrc_Pre(unsigned int a1);
+
+unsigned int DataEncrypt_Word(unsigned int a1, char a2, unsigned int a3);
+unsigned int DataEncrypt_Byte(unsigned int a1, int a2, unsigned int a3);
+unsigned int DataCrc_Pre(unsigned int a1);
+
+unsigned int BuildFinderPrintEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
+unsigned int BuildFinderPrintEncrypt_Byte(unsigned int a1, char a2, unsigned int a3);
 
 // 需单独调用获取gettimeofday一次，当前时间。
 unsigned int ProcSelfMountsCheck(int usec, int sec);
