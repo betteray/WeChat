@@ -193,6 +193,8 @@
 		71FD5D8D23B48A3200B70518 /* GetkvidkeyStrategyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FD5D8C23B48A3200B70518 /* GetkvidkeyStrategyService.m */; };
 		71FD5D9223B48CE000B70518 /* UIView+LoadFromXIB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FD5D9023B48CE000B70518 /* UIView+LoadFromXIB.m */; };
 		71FD5D9523B48E7B00B70518 /* NSData+AddData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FD5D9323B48E7A00B70518 /* NSData+AddData.m */; };
+		71FF2E7A2536D383003A5696 /* MMProtocalJni-7019.json in Resources */ = {isa = PBXBuildFile; fileRef = 71FF2E772536D383003A5696 /* MMProtocalJni-7019.json */; };
+		71FF2E7C2536D9BD003A5696 /* MMProtocalJni-7018.json in Resources */ = {isa = PBXBuildFile; fileRef = 71FF2E7B2536D9BD003A5696 /* MMProtocalJni-7018.json */; };
 		8A6B7E6AD0B44DCDF3A4DADB /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD18BBDEB2F4000E11CEB5B0 /* libPods-WeChatTests.a */; };
 		A171A24009C24E78AD226EE0 /* libPods-WeChatUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB43DD6C2AA522C9401323 /* libPods-WeChatUITests.a */; };
 		B29AF48CDFF2BFFF255F71A2 /* libPods-WeChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 814381742B1C4841306B49D3 /* libPods-WeChatTests.a */; };
@@ -689,6 +691,8 @@
 		71FD5D9123B48CE000B70518 /* UIView+LoadFromXIB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LoadFromXIB.h"; sourceTree = "<group>"; };
 		71FD5D9323B48E7A00B70518 /* NSData+AddData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AddData.m"; sourceTree = "<group>"; };
 		71FD5D9423B48E7A00B70518 /* NSData+AddData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AddData.h"; sourceTree = "<group>"; };
+		71FF2E772536D383003A5696 /* MMProtocalJni-7019.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7019.json"; sourceTree = "<group>"; };
+		71FF2E7B2536D9BD003A5696 /* MMProtocalJni-7018.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7018.json"; sourceTree = "<group>"; };
 		814381742B1C4841306B49D3 /* libPods-WeChatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8435ACA679E3636C36C7D47C /* Pods-WeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChat/Pods-WeChat.debug.xcconfig"; sourceTree = "<group>"; };
 		A8AE4D42890ED7488CA924E7 /* Pods-WeChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatUITests/Pods-WeChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1473,6 +1477,8 @@
 				7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */,
 				7196E96D24814D7600879C72 /* MMProtocalJni-706.json */,
 				7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */,
+				71FF2E772536D383003A5696 /* MMProtocalJni-7019.json */,
+				71FF2E7B2536D9BD003A5696 /* MMProtocalJni-7018.json */,
 			);
 			path = FunctionCheckRes;
 			sourceTree = "<group>";
@@ -1752,6 +1758,7 @@
 				712C6E6B214A145700603022 /* LaunchScreen.storyboard in Resources */,
 				71EE8B4923BEFB7500650F67 /* proto_bin_666.zip in Resources */,
 				7196E97024814D9300879C72 /* MMProtocalJni-7012.json in Resources */,
+				71FF2E7C2536D9BD003A5696 /* MMProtocalJni-7018.json in Resources */,
 				71BABE1A24E7D44200066169 /* cgi-7015.json in Resources */,
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				71AF135F24D425190078BC6A /* meta-manifest.dat in Resources */,
@@ -1760,6 +1767,7 @@
 				713F5A5723A250220096220C /* test.amr in Resources */,
 				71EE8B4423BEF9C200650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
 				71B65F1F247D0F6A009D1DD3 /* pic_2.jpg in Resources */,
+				71FF2E7A2536D383003A5696 /* MMProtocalJni-7019.json in Resources */,
 				713F5A5323A23C770096220C /* cat_mouse.mp4 in Resources */,
 				71B65F1E247D0F6A009D1DD3 /* pic_3.jpg in Resources */,
 				710C488C2492765200343B3C /* 1591885044611_cgi-bin_micromsg-bin_secmanualauth.bin in Resources */,

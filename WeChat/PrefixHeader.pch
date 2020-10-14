@@ -117,7 +117,10 @@
     #define A7015 0x27000F12
     #define A70152 0x27000F36
 
-    #define AVERSION A70152
+    #define A7018 0x27001234
+    #define A7019 0x27001334
+
+    #define AVERSION A7018
 
     #if PROTOCOL_FOR_IOS
         #define CLIENT_VERSION [CUtility numberVersionOf:IVERSION]
