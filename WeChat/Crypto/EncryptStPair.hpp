@@ -131,6 +131,7 @@ unsigned int DataCrc_Pre(unsigned int a1);
 
 unsigned int BuildFinderPrintEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
 unsigned int BuildFinderPrintEncrypt_Byte(unsigned int a1, char a2, unsigned int a3);
+unsigned int BuildFinderPrintCrc_Pre(unsigned int key, int len);
 
 // 需单独调用获取gettimeofday一次，当前时间。
 unsigned int ProcSelfMountsCheck(int usec, int sec);

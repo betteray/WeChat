@@ -1313,6 +1313,20 @@ unsigned int BuildFinderPrintEncrypt_Byte(unsigned int a1, char a2, unsigned int
   return ((unsigned __int8)v10 << (8 - (~v6 & 7))) & ((unsigned __int8)v10 >> (~v6 & 7)) | ((unsigned __int8)v10 << (8 - (~v6 & 7))) ^ ((unsigned __int8)v10 >> (~v6 & 7));
 }
 
+unsigned int BuildFinderPrintCrc_Pre(unsigned int a1, int a2)
+{
+  unsigned int v2; // ST08_4
+  unsigned int v3; // r0
+  char v4; // r1
+  unsigned int v5; // r2
+
+  v2 = a1;
+  v3 = (a2 ^ 0xFFFFFFFC) & a2;
+  v4 = 32 - v3;
+  v5 = (0x380412BFu >> v3) & (939791039 << v4) | (939791039 << v4) ^ (0x380412BFu >> v3);
+  return ((v2 << v3) & (v2 >> v4) | (v2 >> v4) ^ (v2 << v3)) & ~v5 | v5 & ~((v2 << v3) & (v2 >> v4) | (v2 >> v4) ^ (v2 << v3));
+}
+
 unsigned int ProcSelfMountsCheck(int a1, int a2)
 {
     int v2; // r2
