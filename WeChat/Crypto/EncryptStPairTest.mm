@@ -34,6 +34,7 @@
 //    unsigned int byte1_1 = ApkSignatureMd5EncryptWord(0x5F33B2B1, 0, 0x38633831);
     
 //    unsigned int byte1_1 = SystemFrameworkMD5EncryptWord(0x5f33b2b1, 0, 0x64313464);
+//    unsigned int byte1_1 = SystemFrameworkMD5EncryptWord(1602771011, 0, 0x36363235);
 //    unsigned int byte1_1 = SystemFrameworkMD5EncryptWord(0x5f33b2b1, 1, 0x39646338);
 //
 //    unsigned int byte1_1 = SystemFrameworkArmMD5Word(0x5f33b2b1, 0, 0x64313464);
@@ -97,7 +98,7 @@
 //     unsigned int byte1_1 = VendorAppMD5Crc_Pre(0x881fa);
 
 //     unsigned int byte1_1 = ProductAppMD5Encrypt(0x5F867CB8, 0, 0x30306335);
-     unsigned int byte1_1 = ProductAppMD5Crc_Pre(0x881fa);
+//     unsigned int byte1_1 = ProductAppMD5Crc_Pre(0x881fa);
 
 //     unsigned int byte1_1 = SystemBinLsEncrypt(0x5F867CB8, 0, 0x30306335);
 //     unsigned int byte1_1 = SystemBinLsCrc_Pre(0x881fa);
@@ -113,19 +114,19 @@
 
 //     unsigned int byte1_1 = RootEncrypt_Word(0x5F867CB8, 0, 0x37393531);
 //     unsigned int byte1_1 = RootEncrypt_Byte(0xB8, 0, 0x30);
-//     unsigned int byte1_1 = RootCrc_Pre(0x881fa);
+//     unsigned int byte1_1 = RootCrc_Pre(888441, 0x3);
 
 //     unsigned int byte1_1 = SystemEncrypt_Word(0x5F867CB8, 0, 0x37393531);
 //     unsigned int byte1_1 = SystemEncrypt_Byte(0xB8, 0, 0x30);
-//     unsigned int byte1_1 = SystemCrc_Pre(0x881fa);
+//     unsigned int byte1_1 = SystemCrc_Pre(888441, 0x3);
 
 //     unsigned int byte1_1 = DataEncrypt_Word(0x5F867CB8, 0, 0x37393531);
 //     unsigned int byte1_1 = DataEncrypt_Byte(0xB8, 0, 0x30);
-//     unsigned int byte1_1 = DataCrc_Pre(0x881fa);
+     unsigned int byte1_1 = DataCrc_Pre(888441, 0x11);
 
 //     unsigned int byte1_1 = BuildFinderPrintEncrypt_Word(0x5F867CB8, 0, 0x72646e61);
 //     unsigned int byte1_1 = BuildFinderPrintEncrypt_Byte(0xB8, 0, 0x54);
-    // unsigned int byte1_1 = BuildFinderPrintCrc_Pre(0x881fa, 0x20);
+//     unsigned int byte1_1 = BuildFinderPrintCrc_Pre(0xD8E78, 0x21);
     
 //    unsigned int byte1_1 = ProcSelfMountsCheck(293189, 1601214211);
     char buf[1024] = {0};

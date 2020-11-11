@@ -1127,12 +1127,16 @@ unsigned int RootEncrypt_Byte(unsigned int a1, int a2, unsigned int a3)
   return ~(~((unsigned __int8)v10 << (8 - v12)) | ~((unsigned int)(unsigned __int8)v10 >> v12)) | (((unsigned __int8)v10 << (8 - v12)) & 0x9193DAB3 | ~((unsigned __int8)v10 << (8 - v12)) & 0x6E6C254C) ^ (((unsigned int)(unsigned __int8)v10 >> v12) & 0x9193DAB3 | ~((unsigned int)(unsigned __int8)v10 >> v12) & 0x6E6C254C);
 }
 
-unsigned int RootCrc_Pre(unsigned int a1)
+unsigned int RootCrc_Pre(unsigned int a1, char a2)
 {
-  int v1; // r0
+  unsigned int v2; // ST08_4
+  char v3; // r0
+  signed int v4; // r3
 
-  v1 = 2 * a1 & (a1 >> 31) | (a1 >> 31) ^ 2 * a1;
-  return (~v1 & 0xFE9C9FD5 | v1 & 0x163602A) ^ 0x889F9696;
+  v2 = a1;
+  v3 = (a2 ^ 0xFC) & a2;
+  v4 = -335146362 << (32 - v3);
+  return (~((0xEC061286 >> v3) & v4 | v4 ^ (0xEC061286 >> v3)) & 0xFE9C9FD5 | ((0xEC061286 >> v3) & v4 | v4 ^ (0xEC061286 >> v3)) & 0x163602A) ^ (~((v2 << v3) & (v2 >> (32 - v3)) | (v2 >> (32 - v3)) ^ (v2 << v3)) & 0xFE9C9FD5 | ((v2 << v3) & (v2 >> (32 - v3)) | (v2 >> (32 - v3)) ^ (v2 << v3)) & 0x163602A);
 }
 
 unsigned int SystemEncrypt_Word(unsigned int a1, int a2, unsigned int a3)
@@ -1185,12 +1189,16 @@ unsigned int SystemEncrypt_Byte(unsigned int a1, int a2, unsigned int a3)
   return (v12 << (8 - v11)) & (v12 >> v11) | (v12 << (8 - v11)) ^ (v12 >> v11);
 }
 
-unsigned int SystemCrc_Pre(unsigned int a1)
+unsigned int SystemCrc_Pre(unsigned int a1, char a2)
 {
-  int v1; // r1
+  unsigned int v2; // r3
+  char v3; // r2
+  unsigned int v4; // r0
 
-  v1 = 2 * a1 & (a1 >> 31) | (a1 >> 31) ^ 2 * a1;
-  return ~v1 & 0xB3878D4D | v1 & 0x4C7872B2;
+  v2 = a1;
+  v3 = 32 - (a2 & 3);
+  v4 = ((0x670F1A9Bu >> (a2 & 3)) & 0xDA877EC4 | ~(0x670F1A9Bu >> (a2 & 3)) & 0x2578813B) ^ ((1729043099 << v3) & 0xDA877EC4 | ~(1729043099 << v3) & 0x2578813B) | ~(~(1729043099 << v3) | ~(0x670F1A9Bu >> (a2 & 3)));
+  return v4 & ~((v2 << (a2 & 3)) & (v2 >> v3) | (v2 >> v3) ^ (v2 << (a2 & 3))) | ((v2 << (a2 & 3)) & (v2 >> v3) | (v2 >> v3) ^ (v2 << (a2 & 3))) & ~v4;
 }
 
 unsigned int DataEncrypt_Word(unsigned int a1, char a2, unsigned int a3)
@@ -1251,12 +1259,22 @@ unsigned int DataEncrypt_Byte(unsigned int a1, int a2, unsigned int a3)
   return ~(~(v12 << (8 - v13)) | ~(v12 >> v13)) | ((v12 << (8 - v13)) & 0x6650C5EA | ~(v12 << (8 - v13)) & 0x99AF3A15) ^ ((v12 >> v13) & 0x6650C5EA | ~(v12 >> v13) & 0x99AF3A15);
 }
 
-unsigned int DataCrc_Pre(unsigned int a1)
+unsigned int DataCrc_Pre(unsigned int a1, char a2)
 {
-  unsigned int v1; // r0
+  unsigned int v2; // ST04_4
+  char v3; // r0
+  signed int v4; // r3
+  unsigned int v5; // r5
+  unsigned int v6; // r1
+  unsigned int v7; // r0
 
-  v1 = ((a1 >> 31) | ~(a1 >> 31) & 0xA3E6EB72) ^ (2 * a1 & 0x5C19148D | ~(2 * a1) & 0xA3E6EB72) | ~(~(a1 >> 31) | ~(2 * a1));
-  return (~v1 & 0x5B6806C5 | v1 & 0xA497F93A) ^ 0x7AED8A93;
+  v2 = a1;
+  v3 = (a2 ^ 0xFC) & a2;
+  v4 = 1124800684 << (32 - v3);
+  v5 = v4 ^ (0x430B18ACu >> v3);
+  v6 = (0x430B18ACu >> v3) & v4;
+  v7 = ((v2 >> (32 - v3)) & 0x5C19148D | ~(v2 >> (32 - v3)) & 0xA3E6EB72) ^ ((v2 << v3) & 0x5C19148D | ~(v2 << v3) & 0xA3E6EB72) | ~(~(v2 >> (32 - v3)) | ~(v2 << v3));
+  return (~v7 & 0x5B6806C5 | v7 & 0xA497F93A) ^ (~(v6 | v5) & 0x5B6806C5 | (v6 | v5) & 0xA497F93A);
 }
 
 unsigned int BuildFinderPrintEncrypt_Word(unsigned int a1, int a2, unsigned int a3)

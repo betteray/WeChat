@@ -119,15 +119,15 @@ unsigned int SystemBinLinkerCrc_Pre(int a1);
 
 unsigned int RootEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
 unsigned int RootEncrypt_Byte(unsigned int a1, int a2, unsigned int a3);
-unsigned int RootCrc_Pre(unsigned int a1);
+unsigned int RootCrc_Pre(unsigned int key, char len);
 
 unsigned int SystemEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
 unsigned int SystemEncrypt_Byte(unsigned int a1, int a2, unsigned int a3);
-unsigned int SystemCrc_Pre(unsigned int a1);
+unsigned int SystemCrc_Pre(unsigned int key, char len);
 
 unsigned int DataEncrypt_Word(unsigned int a1, char a2, unsigned int a3);
 unsigned int DataEncrypt_Byte(unsigned int a1, int a2, unsigned int a3);
-unsigned int DataCrc_Pre(unsigned int a1);
+unsigned int DataCrc_Pre(unsigned int key, char len);
 
 unsigned int BuildFinderPrintEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
 unsigned int BuildFinderPrintEncrypt_Byte(unsigned int a1, char a2, unsigned int a3);
