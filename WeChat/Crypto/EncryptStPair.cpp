@@ -971,9 +971,18 @@ unsigned int SystemBinLsEncrypt(unsigned int a1, int a2, unsigned int a3)
   return ~(~(v10 << (32 - v11)) | ~(v10 >> v11)) | ((v10 << (32 - v11)) & 0xE22CDF6E | ~(v10 << (32 - v11)) & 0x1DD32091) ^ (~(v10 >> v11) & 0x1DD32091 | (v10 >> v11) & 0xE22CDF6E);
 }
 
-unsigned int SystemBinLsCrc_Pre(int a1)
+unsigned int SystemBinLsCrc_Pre(int a1, int a2)
 {
-  return (~a1 & 0xB545E5D8 | a1 & 0x4ABA1A27) ^ 0x3649F4AD;
+  unsigned int v2; // ST08_4
+  char v3; // r0
+  unsigned int v4; // r3
+  unsigned int v5; // r0
+
+  v2 = a1;
+  v3 = a2 & 3;
+  v4 = v2 >> (32 - (a2 & 3));
+  v5 = ((0x250A1954u >> v3) & 0x4A08977B | ~(0x250A1954u >> v3) & 0xB5F76884) ^ ((621418836 << (32 - v3)) & 0x4A08977B | ~(621418836 << (32 - v3)) & 0xB5F76884) | ~(~(621418836 << (32 - v3)) | ~(0x250A1954u >> v3));
+  return (~((v2 << (a2 & 3)) & v4 | v4 ^ (v2 << (a2 & 3))) & 0x873993EF | ((v2 << (a2 & 3)) & v4 | v4 ^ (v2 << (a2 & 3))) & 0x78C66C10) ^ (~v5 & 0x873993EF | v5 & 0x78C66C10);
 }
 
 unsigned int SystemFrameworkFrameworkResEncrypt(unsigned int a1, int a2, unsigned int a3)

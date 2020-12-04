@@ -106,7 +106,7 @@ unsigned int ProductAppMD5Encrypt(unsigned int a1, int a2, unsigned int a3);
 unsigned int ProductAppMD5Crc_Pre(unsigned int a1);
 
 unsigned int SystemBinLsEncrypt(unsigned int a1, int a2, unsigned int a3);
-unsigned int SystemBinLsCrc_Pre(int a1);
+unsigned int SystemBinLsCrc_Pre(int usec, int len);
 
 unsigned int SystemFrameworkFrameworkResEncrypt(unsigned int a1, int a2, unsigned int a3);
 unsigned int SystemFrameworkFrameworkResCrc_Pre(unsigned int a1);
