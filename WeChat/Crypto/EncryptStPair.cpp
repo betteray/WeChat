@@ -918,8 +918,8 @@ unsigned int VendorAppMD5Crc_Pre(unsigned int a1)
 
 unsigned int ProductAppMD5Encrypt(unsigned int a1, int a2, unsigned int a3)
 {
-  int v3; // r10
-  unsigned int v4; // ST08_4
+  unsigned int v3; // ST08_4
+  char v4; // r10
   unsigned int v5; // r0
   unsigned int v6; // r1
   int v7; // r3
@@ -927,12 +927,13 @@ unsigned int ProductAppMD5Encrypt(unsigned int a1, int a2, unsigned int a3)
   int v9; // r2
   unsigned int v10; // r2
 
-  v4 = a1;
-  v5 = (v3 ^ 0xFFFFFFE0) & v3;
+  v3 = a1;
+  v4 = a2;
+  v5 = (a2 ^ 0xFFFFFFE0) & a2;
   v6 = (604772434 << v5) & (0x240C1852u >> (32 - v5)) | (0x240C1852u >> (32 - v5)) ^ (604772434 << v5);
-  v7 = (v4 >> v5) & (v4 << (32 - v5)) | (v4 << (32 - v5)) ^ (v4 >> v5);
+  v7 = (v3 >> v5) & (v3 << (32 - v5)) | (v3 << (32 - v5)) ^ (v3 >> v5);
   v8 = v6 & ~v7 | v7 & ~v6;
-  v9 = (a3 >> (32 - (((v3 + 1) ^ 0xE0) & (v3 + 1)))) & (a3 << (((v3 + 1) ^ 0xE0) & (v3 + 1))) | (a3 >> (32 - (((v3 + 1) ^ 0xE0) & (v3 + 1)))) ^ (a3 << (((v3 + 1) ^ 0xE0) & (v3 + 1)));
+  v9 = (a3 >> (32 - (((v4 + 1) ^ 0xE0) & (v4 + 1)))) & (a3 << (((v4 + 1) ^ 0xE0) & (v4 + 1))) | (a3 >> (32 - (((v4 + 1) ^ 0xE0) & (v4 + 1)))) ^ (a3 << (((v4 + 1) ^ 0xE0) & (v4 + 1)));
   v10 = (~v9 & 0xEDD2A081 | v9 & 0x122D5F7E) ^ (~v8 & 0xEDD2A081 | v8 & 0x122D5F7E);
   LOBYTE(v5) = (~(_BYTE)v5 & 0x4B | v5 & 0xB4) ^ 0x54;
   return (v10 << (32 - v5)) & (v10 >> v5) | (v10 << (32 - v5)) ^ (v10 >> v5);
