@@ -918,26 +918,24 @@ unsigned int VendorAppMD5Crc_Pre(unsigned int a1)
 
 unsigned int ProductAppMD5Encrypt(unsigned int a1, int a2, unsigned int a3)
 {
-  int v3; // r11
-  char v4; // r9
-  int v5; // r1
-  unsigned int v6; // r12
-  unsigned int v7; // r1
-  unsigned int v8; // r1
-  char v9; // r0
-  unsigned int v10; // r1
-  int v11; // r2
+  int v3; // r10
+  unsigned int v4; // ST08_4
+  unsigned int v5; // r0
+  unsigned int v6; // r1
+  int v7; // r3
+  int v8; // r1
+  int v9; // r2
+  unsigned int v10; // r2
 
-  v3 = a2;
-  v4 = 32 - (a2 & 0x1F);
-  v5 = (a1 << v4) & (a1 >> (v3 & 0x1F)) | (a1 << v4) ^ (a1 >> (v3 & 0x1F));
-  v6 = ~v5 & 0x138811A5 | v5 & 0xEC77EE5A;
-  v7 = (~(0x250A1954u >> v4) & 0xE60EB3C0 | (0x250A1954u >> v4) & 0x19F14C3F) ^ ((621418836 << (v3 & 0x1F)) & 0x19F14C3F | ~(621418836 << (v3 & 0x1F)) & 0xE60EB3C0) | ~(~(0x250A1954u >> v4) | ~(621418836 << (v3 & 0x1F)));
-  v8 = (~v7 & 0x138811A5 | v7 & 0xEC77EE5A) ^ v6;
-  v9 = v3 + 1;
-  v10 = (~v8 & 0xAB286562 | v8 & 0x54D79A9D) ^ (~((a3 >> (32 - (v9 & 0x1F))) & (a3 << (v9 & 0x1F)) | (a3 >> (32 - (v9 & 0x1F))) ^ (a3 << (v9 & 0x1F))) & 0xAB286562 | ((a3 >> (32 - (v9 & 0x1F))) & (a3 << (v9 & 0x1F)) | (a3 >> (32 - (v9 & 0x1F))) ^ (a3 << (v9 & 0x1F))) & 0x54D79A9D);
-  v11 = ~v3 & 0x1F;
-  return ~(~(v10 << (32 - v11)) | ~(v10 >> v11)) | ((v10 << (32 - v11)) & 0xE22CDF6E | ~(v10 << (32 - v11)) & 0x1DD32091) ^ (~(v10 >> v11) & 0x1DD32091 | (v10 >> v11) & 0xE22CDF6E);
+  v4 = a1;
+  v5 = (v3 ^ 0xFFFFFFE0) & v3;
+  v6 = (604772434 << v5) & (0x240C1852u >> (32 - v5)) | (0x240C1852u >> (32 - v5)) ^ (604772434 << v5);
+  v7 = (v4 >> v5) & (v4 << (32 - v5)) | (v4 << (32 - v5)) ^ (v4 >> v5);
+  v8 = v6 & ~v7 | v7 & ~v6;
+  v9 = (a3 >> (32 - (((v3 + 1) ^ 0xE0) & (v3 + 1)))) & (a3 << (((v3 + 1) ^ 0xE0) & (v3 + 1))) | (a3 >> (32 - (((v3 + 1) ^ 0xE0) & (v3 + 1)))) ^ (a3 << (((v3 + 1) ^ 0xE0) & (v3 + 1)));
+  v10 = (~v9 & 0xEDD2A081 | v9 & 0x122D5F7E) ^ (~v8 & 0xEDD2A081 | v8 & 0x122D5F7E);
+  LOBYTE(v5) = (~(_BYTE)v5 & 0x4B | v5 & 0xB4) ^ 0x54;
+  return (v10 << (32 - v5)) & (v10 >> v5) | (v10 << (32 - v5)) ^ (v10 >> v5);
 }
 
 unsigned int ProductAppMD5Crc_Pre(unsigned int a1)
@@ -1351,4 +1349,30 @@ unsigned int ProcSelfMountsCheck(int a1, int a2)
 
   v2 = a1 & ~(a2 * a1) | a2 * a1 & ~a1;
   return (~(v2 & (v2 ^ 0x48)) & 0x5E1154A2 | v2 & (v2 ^ 0x48) & 0xA1EEAB5D) ^ 0x5E1154E2 | ~(~(v2 & (v2 ^ 0x48)) | 0xFFFFFFBF);
+}
+
+
+unsigned int timeval117(unsigned int a1)
+{
+  int v1; // r9
+  int v2; // r1
+  signed int v3; // r2
+  unsigned int v4; // r6
+  unsigned int v5; // r3
+
+  v2 = 0;
+  v3 = -1;
+  v4 = 0x1000000;
+  do
+  {
+    if ( ((v2 & ~v1 | v3 & v1) ^ (v1 & 0xFFFFFFEF | 16 * (((unsigned int)~v1 >> 4) & 1)) | (v1 | ~v1) & ~v3 & 0x10) != 24 )
+    {
+      v5 = ((a1 >> v2) & ((a1 >> v2) ^ 0xFFFFFFFE)) << v2;
+      v4 = (~v4 & 0x85ABCEFB | v4 & 0x7A543104) ^ (v5 & 0x7A543104 | ~v5 & 0x85ABCEFB) | ~(~v5 | ~v4);
+    }
+    ++v2;
+    --v3;
+  }
+  while ( v2 != 32 );
+  return v4;
 }
