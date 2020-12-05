@@ -1353,6 +1353,53 @@ unsigned int BuildFinderPrintCrc_Pre(unsigned int a1, int a2)
   return ((v2 << v3) & (v2 >> v4) | (v2 >> v4) ^ (v2 << v3)) & ~v5 | v5 & ~((v2 << v3) & (v2 >> v4) | (v2 >> v4) ^ (v2 << v3));
 }
 
+unsigned int AllPkgNameMD5Encrypt_Word(unsigned int a1, int a2, unsigned int a3)
+{
+  int v3; // r8
+  int v4; // r9
+  int v5; // r10
+  unsigned int v6; // ST08_4
+  int v7; // r4
+  unsigned int v8; // r0
+  unsigned int v9; // r1
+  unsigned int v10; // r12
+  int v11; // r1
+  unsigned int v12; // r1
+  int v13; // r2
+  unsigned int v14; // r1
+  int v15; // r0
+
+  v6 = a1;
+  v7 = a2;
+  v8 = (v7 ^ 0xFFFFFFE0) & v7;
+  v9 = (v5 | ~v5) & ~(~(0x890519D2 >> (32 - v8)) | ~(-1996154414 << v8)) | ((-1996154414 << v8) & ~v5 | v5 & ~(-1996154414 << v8)) ^ ((0x890519D2 >> (32 - v8)) & ~v5 | v5 & ~(0x890519D2 >> (32 - v8)));
+  v10 = ~v9 & 0x69142601 | v9 & 0x96EBD9FE;
+  v11 = (v4 & ~(v6 << (32 - v8)) | (v6 << (32 - v8)) & ~v4) ^ ((v6 >> v8) & ~v4 | v4 & ~(v6 >> v8)) | (v4 | ~v4) & ~(~(v6 << (32 - v8)) | ~(v6 >> v8));
+  v12 = (~v11 & 0x69142601 | v11 & 0x96EBD9FE) ^ v10;
+  v13 = (a3 >> (32 - ((v7 + 1) & 0x1F))) & (a3 << ((v7 + 1) & 0x1F)) | (a3 >> (32 - ((v7 + 1) & 0x1F))) ^ (a3 << ((v7 + 1) & 0x1F));
+  v14 = v13 & ~v12 | v12 & ~v13;
+  v15 = ~(_BYTE)v8 & 0x1F | 32 * (v8 >> 5);
+  return (v3 | ~v3) & ~(~(v14 << (32 - v15)) | ~(v14 >> v15)) | ((v14 << (32 - v15)) & ~v3 | v3 & ~(v14 << (32 - v15))) ^ ((v14 >> v15) & ~v3 | v3 & ~(v14 >> v15));
+}
+
+unsigned int AllPkgNameMD5EncryptCrc_Pre(unsigned int a1, int a2)
+{
+  unsigned int v2; // r9
+  char v3; // r0
+  unsigned int v4; // r1
+  char v5; // r3
+  unsigned int v6; // r2
+  unsigned int v7; // r0
+
+  v2 = a1;
+  v3 = a2 & 3;
+  v4 = 0x890519D2 >> (a2 & 3);
+  v5 = 32 - v3;
+  v6 = (v4 & 0x588832C1 | ~v4 & 0xA777CD3E) ^ ((-1996154414 << v5) & 0x588832C1 | ~(-1996154414 << v5) & 0xA777CD3E);
+  v7 = ((v2 << v3) & 0xDAFED21E | ~(v2 << v3) & 0x25012DE1) ^ ((v2 >> v5) & 0xDAFED21E | ~(v2 >> v5) & 0x25012DE1) | ~(~(v2 >> v5) | ~(v2 << v3));
+  return (v6 | ~(~(-1996154414 << v5) | ~v4)) & ~v7 | v7 & ~(v6 | ~(~(-1996154414 << v5) | ~v4));
+}
+
 unsigned int ProcSelfMountsCheck(int a1, int a2)
 {
     int v2; // r2
