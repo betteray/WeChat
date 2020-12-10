@@ -3,7 +3,9 @@ syntax = "proto2";
 //option optimize_for = LITE_RUNTIME;
 //option optimize_for = CODE_SIZE;
 
-option java_package = "com.tencent.mm.normsg";
+option java_package = "com.tencent.mm.normsg.proto";
+
+import "base.proto";
 
 message InstalledPackageInfo {
     optional string packageName = 1;
@@ -78,7 +80,10 @@ message ST {
     optional string RCodes0 = 62;
     optional string RCodes1 = 63;
     optional string STID = 64;
-    
+
+    // 707 之前是xml格式，之后是protobuf格式
+    // ===================== 707 ========================
+
     optional string KernelReleaseNumber = 65; // uname -r //65: "4.4.153-perf+"  // uname获取   和/proc/version 数据有关联
     optional uint32 UsbState = 66; //66: 0 //sys/class/android_usb/android0/state  usb连上为2，未连接为1, c8方法false时为0。 【0：啥都没连，1是充电。可选择0、1都算比较真实。】
     optional string ApkSignatureMd5 = 67; //67: "18c867f0717aa67b2ab7347505ba07ed"    //签名md5
@@ -109,16 +114,16 @@ message ST {
     optional uint32 MagiskBitCheck = 81; //81: 242379 // struct timeval 中微秒数值, gettimeofday获取. 0xffffffff -> 4294966271 4294966271 4294966271 第二遍 4294967295
     repeated string FilesModifiedInFramework = 82; //82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断。不该有此值，只有非法时才设置。
     optional uint32 WeChatInstallTime = 83; // 微信安装时间.
-    
+
     // ===================== 7015 ========================
-    
+
     optional bytes SoftConfig = 84; // 7015 开始
     optional bytes SoftData = 85;
     optional uint32 Tag86 = 86; // 7014 struct timeval 中微秒数值, gettimeofday获取. 开始 0xffffffff -> 4294966955 4294966955 4294966955
     optional string NetWorkInterface = 87;
-    
+
     // ===================== 7016 ========================
-    
+
     optional uint32 tv_sec_88 = 88; // key
     optional uint32 tv_usec_89 = 89; //
 
@@ -161,7 +166,7 @@ message ST {
     optional uint32 SourceDir2Crc = 121;
 
     // ===================== 7018 ==========================
-    optional bytes IllegalLibEncrypt = 122; // hook用的so（frigum.so），只用看怎么检测的，不用给值。应该是一个列表
+    repeated bytes IllegalLibEncrypt = 122; // hook用的so（frigum.so），只用看怎么检测的，不用给值。应该是一个列表
     optional uint32 IllegalLibCrc = 123; // 0
 
     // ===================== 7019 ==========================
@@ -198,41 +203,18 @@ message ST {
         optional uint32 BuildFinderPrintCrc = 26;
         optional bytes ProcVersionEncrypt = 27;
         optional uint32 ProcVersionCrc = 28;
+
+        // add in 7.0.21
+        optional bytes AllPkgNameMD5Encrypt = 29; // md5("com.tencent.mm" + "com.tencent.qq" + "" + ...) -> enc;
+        optional uint32 AllPkgNameMD5Crc = 30;
     }
     optional CheckAddIn7019 check7019 = 126;
-    optional uint32 tag127 = 127;
+    optional uint32 ProcSelfMountsCheck = 127;
+    optional uint32 tag128 = 128;
+    repeated bytes InlineHookingLibsEncrypt = 129; // /proc/self/maps  带rwxp的so  /apex/com.android.runtime/bin/linker, /apex/com.android.runtime/lib/bionic/libc.so, /apex/com.android.runtime/lib/libart.so, /data/app/com.tencent.mm-9wf3arIby_cU-KqdRQ2LOQ==/lib/arm/libwechatnormsg.so, /system/lib/libandroid_runtime.so
+    optional uint32 InlineHookingLibsCrc = 130;
+
 }
-
-//张 建, [Jun 5, 2020 at 6:45:55 PM]:
-//当获取时间函数被固定住为131071（前17位都为1）时， 69 81 86 字段分变为 127487 130047 130731
-//131071 == 0b11111111111111111
-
-//127487 == 0b11111000111111111
-//130047 == 0b11111101111111111
-//130731 == 0b11111111010101011
-
-//当获取时间函数被固定住为65536（前16位都为0）时， 69 81 86 字段均为65536
-
-//timeval1: 1074046068 -> 1074045044
-//0b1000000000001001010010001110100 ->
-//0b1000000000001001010000001110100
-//
-//TimeVal2: 17467813 -> 17467813
-//0b1000010101000100110100101
-//
-//86: 34246465 -> 34246145
-//0b10000010101000111101000001 ->
-//0b10000010101000111000000001
-//
-//
-//0xffffffff
-//timeval1:
-//0b11111111111111111111000111111111
-//TimeVal2:
-//0b11111111111111111111101111111111
-//0b11111111111111111111111111111111 //第二遍才会设置位。检测magisk
-//86:
-//0b11111111111111111111111010101011
 
 message ClientSpamInfo {
     required uint32 ccdcc = 1;
@@ -242,7 +224,7 @@ message ClientSpamInfo {
 
 message WCSTF {
     optional uint64 st = 1;
-    optional uint32 et = 2;
+    optional uint64 et = 2;
     optional uint64 cc = 3;
     repeated uint64 ct = 4;
 }
@@ -262,192 +244,33 @@ message WCSTE {
     optional uint64 sz = 12;
 }
 
+// 传感器数据结构, reportclientcheck 接口，分别与 登陆注册加好友时上报
+
+message SensorData {
+    message SensorEvent {
+        optional float value1 = 1;
+        optional float value2 = 2;
+        optional float value3 = 3;
+        optional uint32 timestamp = 4;
+    }
+
+    message GroupItem {
+        optional uint32 sensorType = 1; // 1->1, 4->2, 9->3, 10->4, 11->5. | {1, 4, 9, 10, 11};  TYPE_ACCELEROMETER, TYPE_GYROSCOPE, TYPE_GRAVITY, TYPE_LINEAR_ACCELERATION ,TYPE_ROTATION_VECTOR
+        repeated SensorEvent events = 2;
+    }
+
+    optional uint32 where = 1; // com.tencent.mm.normsg.c$p::fa(Login_f5f5be2e-e287-4338-af84-945236c6fa58,2,200) 第二个参数：//reg:1, login:2, sayhi:3
+    optional string context = 2; // Login_a10c3d0e-25ab-4a4e-b038-c170b5e818f7 为 Login_ + uuid.
+    optional uint32 count = 3;  // 固定 200。 com.tencent.mm.normsg.c$p::fa(Login_f5f5be2e-e287-4338-af84-945236c6fa58,2,200) 第三个参数，代码里写死的 200。 //每组收集的个数？
+    optional uint64 startTime = 4; // tv.sec * 1000 + tv.usec / 1000
+    optional uint64 endTime = 5; // tv.sec * 1000 + tv.usec / 1000
+    optional uint64 collectTime = 6; // tv.sec * 1000 + tv.usec / 1000
+    optional uint32 tag7 = 7;
+    repeated GroupItem groupItems = 10;
+    optional uint32 tag11 = 11;
+}
 
 // *********************** FP ********************
-/*
- 
- 1 {
-   1 {
-     1: "IMEI"
-     2: "1234567890ABCDEF" =//getDeviceId
-   }
-
-  1 {
-       1: "AndroidID" //ANDROID_ID
-       2: "11b6c9b0371bdbad"
-     }
-   1 {
-     1: "PhoneSerial" //android/os/Build  getSerial # 没有权限获取
-     2: ""
-   }
-   1 {
-     1: "cid"
-     2: ""     ///sys/block/mmcblk0/device/cid  # 9.0 空
-   }
-   1 {
-     1: "WidevineDeviceID" //java/util/UUID     mediaDrm  getPropertyByteArray    传值不同
-     2: "724e71447778476168424252754756424a616e4772576d636a53665155654c00"
-   }
-   1 {
-     1: "WidevineProvisionID"//java/util/UUID     mediaDrm  getPropertyByteArray   传值不同
-     2: "becc9ada6df7c9d7eb9729ab2ff1e8a2"
-   }
-   1 {
-     1: "GSFID" //   google service framework ID           parse("content://com.google.android.gsf.gservices")    测试zui11 为空，含有谷歌服务的手机不为空
-     2: ""
-   }
-
-
- private static String getGsfAndroidId(Context context)
- {
-     Uri URI = Uri.parse("content://com.google.android.gsf.gservices");
-     String ID_KEY = "android_id";
-     String params[] = {ID_KEY};
-     Cursor c = context.getContentResolver().query(URI, null, null, params, null);
-     if (c != null && (!c.moveToFirst() || c.getColumnCount() < 2)){
-         if(!c.isClosed())
-             c.close();
-         return null;
-     }
-
-     try {
-         if (c != null) {
-             String result = Long.toHexString(Long.parseLong(c.getString(1)));
-             if(!c.isClosed())
-                 c.close();
-             return result;
-         }else {
-             return null;
-         }
-     } catch (NumberFormatException e) {
-         if(!c.isClosed())
-             c.close();
-         return null;
-     }
- }
-
-
-   1 {
-     1: "SoterID"
-     2: ""     // SoterID          // c7      无法生成 ，不知道生成规则  暂时为空，不作处理
-   }
-   1 {
-     1: "SoterUid"              // SoterUid           //c9  无法生成 ，不知道生成规则   暂时为空，不作处理
-     2: ""
-   }
-   1 {
-     1: "FSID"
-     2: "1565145651|1578921026@8c829c5f2697bfed|0dfa3fd5117241943a578c1d610e48cf@d3609fe804970d6b|3b8097466edef8b4a6e3fc29728f61e3"               // stat -c "%X|%Y" /storage/emulated
-                                                                          // stat -f -c "%i" /system/etc
-                                                                          // stat -f -c "%i %b %f %a %c %d" /system/etc  => md5
-                                                                          // stat -f -c "%i" /storage/emulated
-                                                                          // stat -f -c "%i %b %f %a %c %d" /storage/emulated  => md5  以@和|连接
-                                                                          // # 随机生成
-   }                    
-   1 {
-     1: "BootID"
-     2: "06476842-2823-492e-8221-3333b81cf8d3"                       //    /proc/sys/kernel/random/boot_id
-   }
-   1 {
-     1: "IMSI"                   //  getSubscriberId
-     2: ""
-   }
-   1 {
-     1: "PhoneNum"    //getLine1Number
-     2: ""
-   }
-   1 {
-     1: "WeChatInstallTime"     //getPackageInfo   firstInstallTime
-     2: "1579160423"
-   }
-   1 {
-     1: "PhoneModel"        //通过libc   property_get ro.product.model
-     2: "MI 4LTE"
-   }
-   1 {
-     1: "BuildBoard"         //通过libc   property_get ro.product.board
-     2: "MSM8974"
-   }
-   1 {
-     1: "BuildBootloader"       //通过libc   property_get ro.bootloader
-     2: "unknown"
-   }
-   1 {
-     1: "SystemBuildDate"    //通过libc   property_get  ro.build.date
-     2: "Tue Jan  7 07:11:39 CST 2020"
-   }
-   1 {
-     1: "SystemBuildDateUTC"     //通过libc   property_get  ro.build.date.utc
-     2: "1578352299"
-   }
-   1 {
-     1: "BuildFP"                     //通过libc   property_get  ro.build.fingerprint
-     2: "Xiaomi/cancro/cancro:6.0.1/MMB29M/V8.1.6.0.MXDMIDI:user/release-keys"
-   }
-   1 {
-     1: "BuildID"                    //通过libc   property_get  ro.build.id
-     2: "OPM7.181205.001"
-   }
-   1 {
-     1: "BuildBrand"                    //通过libc   property_get  ro.product.brand
-     2: "Xiaomi"
-   }
-   1 {
-     1: "BuildDevice"                    //通过libc   property_get ro.product.device
-     2: "cancro"
-   }
-   1 {
-     1: "BuildProduct"                    //通过libc   property_get  ro.product.name
-     2: "cancro"
-   }
-   1 {
-     1: "Manufacturer"                    //通过libc   property_get  ro.product.manufacturer
-     2: "Xiaomi"
-   }
-   1 {
-     1: "RadioVersion"                    //    getRadioVersion   ? 通过libc   property_get  gsm.version.baseband  (和系统版本有关)
-     2: "MPSS.DI.4.0-eaa9d90"
-   }
-   1 {
-     1: "AndroidVersion"                    //通过libc   property_get  ro.build.version.release
-     2: "8.1.0"
-   }
-   1 {
-     1: "SdkIntVersion"      //通过libc   property_get  ro.build.version.sdk
-     2: "27"
-   }
-   1 {
-     1: "ScreenWidth"       // getDisplayMetrics   widthPixels
-     2: "1080"
-   }
-   1 {
-     1: "ScreenHeight"       // getDisplayMetrics   heightPixels
-     2: "1920"
-   }
-   1 {
-     1: "SensorList"                         //getSensorList     getName   getVendor  getResolution getVersion 
-     2: "Accelerometer#STMicroelectronics#0.001190#1,Magnetometer#AKM#0.149536#1,Magnetometer Uncalibrated#AKM#0.149536#1,Gyroscope#STMicroelectronics#0.000153#1,Gyroscope Uncalibrated#STMicroelectronics#0.000153#1,Proximity Sensor#TAOS#5.000305#1,Ambient Light Sensor#TAOS#0.199997#1,Barometer Sensor#BOSCH#0.009995#1,Temperature Sensor#BOSCH#0.009995#1,Gravity#Qualcomm#0.001190#1,Linear Acceleration#Qualcomm#0.001190#1,Rotation Vector#Qualcomm#0.000000#1,Step Detector#Qualcomm#1.000000#1,Step Counter#Qualcomm#1.000000#1,Significant Motion Detector#Qualcomm#1.000000#1,Game Rotation Vector#Qualcomm#0.000000#1,Geomagnetic Rotation Vector#Qualcomm#0.000000#1,Orientation#Qualcomm#0.100000#1,AMD#Qualcomm#1.000000#1,RMD#Qualcomm#1.000000#1,VMD#Qualcomm#1.000000#1,Basic Gestures#Qualcomm#1.000000#1,Facing#Qualcomm#1.000000#1,Tilt#Qualcomm#0.100000#1,Gyro Tap#Qualcomm#1.000000#1,Pedometer#Qualcomm#1.000000#1,PEDESTRIAN-ACTIVITY-MONITOR#Qualcomm#1.000000#1,Motion Accel#Qualcomm#0.001190#1,Coarse Motion Classifier#Qualcomm#1.000000#1"
-   }
-   1 {
-     1: "DefaultInputMethod"                  //   android/provider/Settings$Secure   DEFAULT_INPUT_METHOD  # Settings.json
-     2: "com.google.android.inputmethod.latin"
-   }
-   1 {
-     1: "InputMethodList"                     //getInputMethodList # Settings.json
-     2: "Gboard#com.google.android.inputmethod.latin"
-   }
-   1 {
-     1: "DeviceID"               //c10      com.tencent.mm.compatible.deviceinfo.q$12    A16
-     2: "Af1762d2e5da437a"
-   }
-   1 {
-     1: "OAID"               //c14       OAID  com.tencent.mm.plugin.normsg.b.getOAID    目前看zui11 该值为空，小米华为oppo vivo高版本系统应该不为空，未测试 # 空
-     2: ""
-   }
- }
-
- 
- */
 
 message FPKeyVal {
     optional string key = 1;
@@ -463,26 +286,16 @@ message FPDevice {
     optional string unknown2 = 2; // 未知
 }
 
-
 // **********************03加密结果***************************
 
 //  用于加密完填充字端用。
-message SpamInfoEncryptResult {
+message ClientCheckData {
     optional string version = 1;
     optional uint32 type = 2;
-    optional bytes EncryptData = 3;
-    optional uint32 timestamp = 4; // 706没有 , 7011有
-    optional uint32 tag5 = 5; // 5
-    optional uint32 tag6 = 6; // 0
-}
-
-message CryptoData {
-    optional bytes version = 1;
-    optional uint32 type = 2;
-    optional bytes encryptData = 3;
-    optional uint32 timestamp = 4;
-    optional uint32 unknown5 = 5;
-    optional uint32 unknown6 = 6;
+    optional bytes clientCheckData = 3;
+    optional uint64 timeStamp = 4; // 706没有 , 7011有 System.currentTimeMillis() / 1000L;
+    optional uint32 dataType = 5;
+    optional uint32 status = 6; // 0 = 成功， 1 = 失败 定位字符串：ae.d("MicroMsg.SecInfoReporterImpl", "compressed and base64 result is still too large with length " + v0_3.length);
 }
 
 message SpamBuff {
@@ -495,20 +308,6 @@ message SpamBuff {
     optional uint32 timestamp = 4;
 }
 
-message DeviceToken {
-    optional string tag1 = 1;
-    optional uint32 tag2 = 2;
-    
-    message Token {
-        optional string devicetoken = 1;
-    }
-    
-    optional Token token = 3;
-    optional uint32 timestamp = 4;
-    optional uint32 tag5 = 5;
-    optional uint32 tag6 = 6;
-}
-
 message ClientSpamInfo_IOS {
     required uint32 ccdcc = 1;
     required uint32 ccdts = 2;
@@ -519,7 +318,7 @@ message ClientSpamInfo_IOS {
     required Content content = 3;
 }
 
-message wcaes{
+message wcaes {
     optional bytes type = 1;
     optional bytes IV =2;
     optional int32 len = 3;
@@ -546,3 +345,106 @@ message wcaes{
     optional bytes unkown24 =24;
     optional bytes unkown25 =25;
 }
+
+//
+
+message RegUserAttrInfo {
+    optional  string  nickName  = 1;
+    optional  string  pwdHash  = 2;
+    optional  string  headImgMd5  = 3;
+    optional  string  phoneNumber  = 4;
+    optional  string  timeZone  = 5;
+    optional  string  timeZoneName  = 6;
+}
+
+message WCExtInfo {
+    optional  SKBuiltinBuffer_t  wcstf  = 1;
+    optional  SKBuiltinBuffer_t  wcste  = 2;
+    optional  SKBuiltinBuffer_t  ccData  = 3; // buffer = 003 clientCheckData, ReportContext：manualauth 时为 0x203F0000 ,autoauth 时为 0， 注册时为： 0x203F0001
+    optional  SKBuiltinBuffer_t  regInfo  = 4; // RegUserAttrInfo
+    optional  SKBuiltinBuffer_t  acgiDeviceInfo  = 5; // buffer = 非 003 加密方式 ClientCheckData. ReportContext = 18446744071562067970 = 0x80000002, lib 列表压缩等, DataType = 4
+    optional  SKBuiltinBuffer_t  acgiTuring  = 6; // buffer = ClientCheckData
+    optional  SKBuiltinBuffer_t  deviceToken  = 7; // buffer = ClientCheckData
+    optional  SKBuiltinBuffer_t  sensorDataContext = 8; // buffer = "Login_0feff24c-f695-44ad-8369-93729225c2c5" | ReportContext = 540999687
+    optional  SKBuiltinBuffer_t  sensorData = 9; // buffer = ClientCheckData ClientCheckData = devicetoken.getBytes()
+    optional  SKBuiltinBuffer_t  turingOwner = 10; //
+
+    optional  SKBuiltinBuffer_t  iosturingHuman  = 101;
+    optional  SKBuiltinBuffer_t  iosturingOwner  = 102;
+}
+
+message ReportClientCheckReq
+{
+    required BaseRequest baseRequest = 1;
+    required bytes clientCheckData = 2; //后边版本均为"".getBytes(), 之前是 buffer = 003("<st><IsMorkLocOpen>0</IsMorkLocOpen><MsgLevel>1</MsgLevel><IsDbgConnected>0</IsDbgConnected><PkgHash3>18c867f0717aa67b2ab7347505ba07ed</PkgHash3><RatioFwVer>angler-03.87</RatioFwVer><OsRelVer>8.1.0</OsRelVer><IMEI>867979021665986</IMEI><AndroidID>0f2e799e321a92a0</AndroidID><PhoneSerial>8XV7N16125001121</PhoneSerial><PhoneModel>Nexus&#32;6P</PhoneModel><CpuCoreCount>8</CpuCoreCount><CpuHW>Qualcomm&#32;Technologies,&#32;Inc&#32;MSM8994</CpuHW><CpuFeatures>half&#32;thumb&#32;fastmult&#32;vfp&#32;edsp&#32;neon&#32;vfpv3&#32;tls&#32;vfpv4&#32;idiva&#32;idivt&#32;evtstrm&#32;aes&#32;pmull&#32;sha1&#32;sha2&#32;crc32</CpuFeatures><SelfMAC>dc:ee:06:fe:8e:93</SelfMAC><SSID>&lt;unknown&#32;ssid&gt;</SSID><BSSID>02:00:00:00:00:00</BSSID><SpInfo></SpInfo><APNInfo>&quot;ray&#8217;s&#32;Mac&#32;Pro&quot;</APNInfo><BuildFP>google/angler/angler:8.1.0/OPM7.181205.001/5080180:user/release-keys</BuildFP><BuildBoard>angler</BuildBoard><BuildBootloader>angler-03.79</BuildBootloader><BuildBrand>google</BuildBrand><BuildDevice>angler</BuildDevice><BuildHW>angler</BuildHW><BuildProduct>angler</BuildProduct><Manufacturer>Huawei</Manufacturer><PhoneNum></PhoneNum><NetType>wifi</NetType><IsQemuEnv>0</IsQemuEnv><HasDupPkg>0</HasDupPkg><HasQikuShadow>0</HasQikuShadow><PkgName>com.tencent.mm</PkgName><AppName>&#24494;&#20449;</AppName><DataRoot>/data/user/0/com.tencent.mm</DataRoot><EntranceClassLoaderName>dalvik.system.PathClassLoader</EntranceClassLoaderName><MMProcLoadedFiles>/system/framework/arm/boot.oat,/system/framework/arm/boot-core-libart.oat,/system/framework/arm/boot-conscrypt.oat,/system/framework/arm/boot-okhttp.oat,/system/framework/arm/boot-bouncycastle.oat,/system/framework/arm/boot-apache-xml.oat,/system/framework/arm/boot-legacy-test.oat,/system/framework/arm/boot-ext.oat,/system/framework/arm/boot-framework.oat,/system/framework/arm/boot-telephony-common.oat,/system/framework/arm/boot-voip-common.oat,/system/framework/arm/boot-ims-common.oat,/system/framework/arm/boot-org.apache.http.legacy.boot.oat,/system/framework/arm/boot-android.hidl.base-V1.0-java.oat,/system/framework/arm/boot-android.hidl.manager-V1.0-java.oat,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libvoipCodec.so,/system/bin/app_process32,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libdynamicBg.so,/data/dalvik-cache/arm/system@app@webview@webview.apk@classes.dex,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libaudio_common.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libNLog.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libmmimgcodec.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libtenpay_utils.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libpitu_tools.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libalgo_youtu_jni.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libnnpack.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libYTFaceTrackPro.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libformat_convert.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libimage_filter_gpu.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatvoicesilk_v7a.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libimage_filter_common.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libYTCommon.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libvoipChannel.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libvoipMain.so,/data/local/tmp/re.frida.server/frida-agent-32.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libvoipComm.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libkinda_android.so,/system/lib/libmemalloc.so,/system/lib/libqservice.so,/vendor/lib/hw/gralloc.msm8994.so,/system/lib/libqdMetaData.so,/system/lib/libqdutils.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatzstd.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatsight_v7a.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libtxmapengine.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatpack.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libFFmpeg.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libMMProtocalJni.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatcommon.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libcommonimgdec.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatnormsg.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libhardcoder.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatmm.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libio-canary.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libSqliteLint-lib.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwcdb.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libmatrixmrs.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatCrashForJni.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/oat/arm/base.odex,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libappbrandcommon.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libtencentloc.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libc++_shared.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libstlport_shared.so,/dev/ashmem/dalvik-jit-code-cache,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatvoicereco.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatxlog.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libmmkv.so,/system/app/webview/webview.apk,/vendor/lib/egl/libGLESv2_adreno.so,/vendor/lib/libllvm-glnext.so,/data/app/com.llb.wechathooks-bA4onxSecezu3uBx2YWzOA==/oat/arm/base.odex,/system/lib/libsandhook.edxp.so,/system/lib/libwebviewchromium_loader.so,/system/lib/libcompiler_rt.so,/vendor/lib/egl/eglSubDriverAndroid.so,/vendor/lib/egl/libGLESv1_CM_adreno.so,/vendor/lib/egl/libEGL_adreno.so,/vendor/lib/libgsl.so,/vendor/lib/libadreno_utils.so,/system/lib/hw/android.hardware.graphics.mapper@2.0-impl.so,/vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl.so,/system/lib/libjavacrypto.so,/system/lib/libsoundpool.so,/data/dalvik-cache/arm/system@framework@edxp.jar@classes.dex,/system/lib/libvixl-arm.so,/system/lib/libart-dexlayout.so,/system/lib/libart-compiler.so,/system/lib/libvixl-arm64.so,/system/lib/libopenjdk.so,/system/lib/libopenjdkjvm.so,/system/lib/libssl.so,/system/lib/libjavacore.so,/system/lib/libwebviewchromium_plat_support.so,/system/lib/libRS.so,/system/lib/android.hardware.renderscript@1.0.so,/system/lib/libOpenSLES.so,/system/lib/libOpenMAXAL.so,/system/lib/android.hardware.neuralnetworks@1.0.so,/system/lib/libtextclassifier_hash.so,/system/lib/libneuralnetworks.so,/system/lib/libjnigraphics.so,/system/lib/libGLESv3.so,/system/lib/libmedia_jni.so,/system/lib/libcamera2ndk.so,/system/lib/libmtp.so,/system/lib/libexif.so,/system/lib/libmediandk.so,/system/lib/libmidi.so,/system/lib/libaaudio.so,/system/lib/libandroid.so,/system/lib/libmemtrack_real.so,/system/lib/libtombstoned_client.so,/system/lib/libart.so,/system/lib/libsigchain.so,/system/lib/liblz4.so,/system/lib/android.hardware.memtrack@1.0.so,/system/lib/libriru_edxp.so,/system/lib/android.hardware.configstore@1.0.so,/system/lib/libusbhost.so,/system/lib/libaudiomanager.so,/system/lib/libstagefright_http_support.so,/system/lib/libnetd_client.so,/system/lib/libhwbinder.so,/system/lib/libmediautils.so,/system/lib/libminikin.so,/system/lib/libmemtrack.so,/system/lib/libsync.so,/system/lib/libdng_sdk.so,/system/lib/libstagefright_flacdec.so,/system/lib/libstagefright_xmlparser.so,/system/lib/android.hardware.media@1.0.so,/system/lib/android.hardware.graphics.allocator@2.0.so,/system/lib/libnativehelper.so,/system/lib/libsensor.so,/system/lib/android.hardware.graphics.bufferqueue@1.0.so,/system/lib/libharfbuzz_ng.so,/system/lib/libhwui.so,/system/lib/libcamera_client.so,/system/lib/libimg_utils.so,/system/lib/libGLESv1_CM.so,/system/lib/android.hardware.media.omx@1.0.so,/system/lib/libbacktrace.so,/system/lib/android.hardware.cas.native@1.0.so,/system/lib/android.hardware.graphics.common@1.0.so,/system/lib/libdl.so,/system/lib/libz.so,/system/lib/libEGL.so,/system/lib/libhardware.so,/system/lib/libpcre2.so,/system/lib/libui.so,/system/lib/libsonivox.so,/system/lib/libvorbisidec.so,/system/lib/android.hidl.memory@1.0.so,/system/lib/libsoundtrigger.so,/system/lib/libstdc++.so,/system/lib/libicui18n.so,/system/lib/liblzma.so,/system/lib/libtinyxml2.so,/system/lib/libmediametrics.so,/system/lib/android.hardware.cas@1.0.so,/system/lib/libvndksupport.so,/system/lib/libvulkan.so,/system/lib/libcutils.so,/system/lib/libETC1.so,/system/lib/libheif.so,/system/lib/libprocessgroup.so,/system/lib/libGLESv2.so,/system/lib/libaudioclient.so,/system/lib/libprotobuf-cpp-lite.so,/system/lib/libdebuggerd_client.so,/system/lib/libvintf.so,/system/lib/libc.so,/system/lib/libexpat.so,/system/lib/liblog.so,/system/lib/libandroid_runtime.so,/system/lib/libpackagelistparser.so,/system/lib/libskia.so,/system/lib/libpdfium.so,/system/lib/libjpeg.so,/system/lib/android.hidl.token@1.0-utils.so,/system/lib/libappfuse.so,/system/lib/libmediadrm.so,/system/lib/libnativebridge.so,/system/lib/libhidlmemory.so,/system/lib/libstagefright.so,/system/lib/libdrmframework.so,/system/lib/libselinux.so,/system/lib/libunwind.so,/system/lib/libicuuc.so,/system/lib/libstagefright_omx_utils.so,/system/lib/libnativewindow.so,/system/lib/libhardware_legacy.so,/system/lib/android.hardware.drm@1.0.so,/system/lib/libmedia_omx.so,/system/lib/libsqlite.so,/system/lib/libmedia.so,/system/lib/libspeexresampler.so,/system/lib/libm.so,/system/lib/libRScpp.so,/system/lib/libft2.so,/system/lib/libutils.so,/system/lib/libc++.so,/system
+    optional uint64 reportContext = 3; // from sysmsg -> ReportContext
+    optional SKBuiltinBuffer_t extSpamInfo = 4; // buffer = WCExtInfo
+}
+
+message ReportClientCheckResp {
+    required BaseResponse baseResponse = 1;
+}
+
+/*
+    static void access$000(PluginSecInfoReport pluginSecInfoReport) {
+AppMethodBeat.i(89163);
+    pluginSecInfoReport.TrustIdRequestAsync();
+    AppMethodBeat.o(89163);
+    }
+
+static void access$100(PluginSecInfoReport pluginSecInfoReport, int i2) {
+AppMethodBeat.i(89164);
+    pluginSecInfoReport.reportSecurityInfoAsync(i2);
+    AppMethodBeat.o(89164);
+    }
+
+static void access$200(PluginSecInfoReport pluginSecInfoReport) {
+AppMethodBeat.i(89165);
+    pluginSecInfoReport.asyncReportPaySecurityInfoThroughCgi();
+    AppMethodBeat.o(89165);
+    }
+
+static void access$300(PluginSecInfoReport pluginSecInfoReport, int i2) {
+AppMethodBeat.i(227356);
+    pluginSecInfoReport.asyncReportFinderSecurityInfoThroughCgi(i2);
+    AppMethodBeat.o(227356);
+    }
+
+static void access$400(PluginSecInfoReport pluginSecInfoReport, String str, byte[] bArr) {
+AppMethodBeat.i(227357);
+    pluginSecInfoReport.asyncReportSensorSceneInfoThroughCgi(str, bArr);
+    AppMethodBeat.o(227357);
+    }
+
+static void access$500(PluginSecInfoReport pluginSecInfoReport, byte[] bArr) {
+AppMethodBeat.i(227358);
+    pluginSecInfoReport.asyncReportTuringOwnerThroughCgi(bArr);
+    AppMethodBeat.o(227358);
+    }
+
+PluginSecInfoReport:
+### pluginSecInfoReport.TrustIdRequestAsync();
+- onAppForeground (条件判断）
+
+### pluginSecInfoReport.reportSecurityInfoAsync(i2); DisableRiskScanSdkProb | DisableInstalledPkgInfoReportProb
+- addHandleAuthResponse
+    1. manualauth
+    2. autoauth
+    3. reg
+- 138 完之后 (会是sysmsg的动态下发吗138响应 <sysmsg type="ClientCheckGetExtInfo"><ClientCheckGetExtInfo><ReportContext>539033600</ReportContext><Basic>0</Basic></ClientCheckGetExtInfo></sysmsg>)
+- 进入到后台
+
+### pluginSecInfoReport.asyncReportPaySecurityInfoThroughCgi();
+### pluginSecInfoReport.asyncReportFinderSecurityInfoThroughCgi(i2);
+
+
+### pluginSecInfoReport.asyncReportSensorSceneInfoThroughCgi(str, bArr);
+- addHandleAuthResponse
+    1. manualauth
+    x. autoauth
+    3. reg
+- NormsgSensorEngine stop 时触发
+
+### pluginSecInfoReport.asyncReportTuringOwnerThroughCgi(bArr);
+ */
+

@@ -1,5 +1,7 @@
 syntax = "proto2";
 
+option java_package = "com.tencent.mm.normsg.proto";
+
 message SKBuiltinBuffer_t {
     required  uint32  iLen  = 1;
     optional  bytes  buffer  = 2;
