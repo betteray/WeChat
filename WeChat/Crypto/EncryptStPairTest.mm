@@ -131,10 +131,12 @@
     
 //    unsigned int byte1_1 = AllPkgNameMD5Encrypt_Word(0x5fc8cc05, 0, 0x65393130);
 //    unsigned int byte1_1 = AllPkgNameMD5Encrypt_Word(0x5fc8cc05, 1, 0x63653436);
-    unsigned int byte1_1 = AllPkgNameMD5EncryptCrc_Pre(0xd92c, 0x20);
+//    unsigned int byte1_1 = AllPkgNameMD5EncryptCrc_Pre(0xd92c, 0x20);
 
-    //    unsigned int byte1_1 = ProcSelfMountsCheck(293189, 1601214211);
+//    unsigned int byte1_1 = ProcSelfMountsCheck(1606994949, 55596);
     
+    unsigned int byte1_1 = tag128(0xdbc0c, 0x5fd2045c);
+
 //    for (unsigned long i=1; i<0x7FFFFFFF; i++) {
 //        unsigned int byte1_1 = timeval117(i);
 //        if (((byte1_1 & 0x1000000) >> 24) && (((byte1_1 & 0x100) >> 8) == 0)) {

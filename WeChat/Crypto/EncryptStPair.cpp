@@ -1433,3 +1433,12 @@ unsigned int timeval117(unsigned int a1)
   while ( v2 != 32 );
   return v4;
 }
+
+unsigned int tag128(int a1, int a2)
+{
+  unsigned int v2; // r0
+
+  v2 = ~(~((~a1 & 0x8E7686EA | a1 & 0x71897915) ^ (~(a2 * a1) & 0x8E7686EA | a2 * a1 & 0x71897915)) | 0x12452);
+  return ~(~v2 | 0xFFFFFBFF) | (v2 & 0xEDA7A372 | ~v2 & 0x12585C8D) ^ 0x1258588D;
+}
+
