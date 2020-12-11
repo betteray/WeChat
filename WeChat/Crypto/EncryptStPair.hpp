@@ -69,8 +69,8 @@ int  SystemBinMD5EncryptWord(unsigned int a1, int a2, unsigned int a3);
 unsigned int SystemBinMD5CrcPre(unsigned int a1);
 
 int  StorageIDEncryptWord(unsigned int key, int round, unsigned int plain);
-
-unsigned int StorageIDCrcPre(unsigned int a1);
+unsigned int StorageIDEncryptByte(unsigned int a1, int a2, unsigned __int8 a3);
+unsigned int StorageIDCrcPre(unsigned int usec, int len);
 
 int  encrypt_tag117(unsigned int a1);
 

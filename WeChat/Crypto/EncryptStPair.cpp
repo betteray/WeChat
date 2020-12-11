@@ -578,13 +578,43 @@ int  StorageIDEncryptWord(unsigned int key, int round, unsigned int plain)
     return (v12 << (32 - v7)) & (v12 >> v7) | (v12 << (32 - v7)) ^ (v12 >> v7);
 }
 
-
-unsigned int StorageIDCrcPre(unsigned int a1)
+unsigned int StorageIDEncryptByte(unsigned int a1, int a2, unsigned __int8 a3)
 {
-  unsigned int v1; // r0
+  unsigned int v3; // ST0C_4
+  int v4; // ST10_4
+  char v5; // r10
+  char v6; // r4
+  unsigned int v7; // r0
+  unsigned int v8; // r1
+  unsigned int v9; // r0
+  unsigned int v10; // r1
+  unsigned int v11; // r0
+  unsigned int v12; // r0
+  int v13; // r1
 
-  v1 = (a1 & 0x3F430E84 | ~a1 & 0xC0BCF17B) ^ ((a1 >> 32) & 0x3F430E84 | ~(a1 >> 32) & 0xC0BCF17B) | ~(~(a1 >> 32) | ~a1);
-  return ~v1 & 0xE20305C5 | v1 & 0x1DFCFA3A;
+  v3 = a1;
+  v4 = a2;
+  v5 = a2;
+  v6 = a2 & 7;
+  v7 = (~(0xC5u >> (8 - v6)) & 0x3D6E705 | (0xC5u >> (8 - v6)) & 0xFC2918FA) ^ (~(197 << (a2 & 7)) & 0x3D6E705 | (197 << (a2 & 7)) & 0xFC2918FA) | ~(~(0xC5u >> (8 - v6)) | ~(197 << (a2 & 7)));
+  v8 = ~(~(v3 << (8 - v6)) | ~(v3 >> v6)) | ((v3 >> v6) & 0x1A8218FA | ~(v3 >> v6) & 0xE57DE705) ^ ((v3 << (8 - v6)) & 0x1A8218FA | ~(v3 << (8 - v6)) & 0xE57DE705);
+  v9 = ~(v7 & ~v8 | v8 & ~v7) & 0x52B19E90 | (v7 & ~v8 | v8 & ~v7) & 0xAD4E616F;
+  LOBYTE(v8) = ((v5 + 1) ^ 0xF8) & (v5 + 1);
+  v10 = ~(~(a3 >> (8 - v8)) | ~(a3 << v8)) | ((a3 << v8) & 0xE6269AF7 | ~(a3 << v8) & 0x19D96508) ^ ((a3 >> (8 - v8)) & 0xE6269AF7 | ~(a3 >> (8 - v8)) & 0x19D96508);
+  v11 = v9 ^ (~v10 & 0x52B19E90 | v10 & 0xAD4E616F);
+  v12 = v11 & (v11 ^ 0xFFFFFF00);
+  v13 = ~v4 & 7;
+  return ~(~(v12 << (8 - v13)) | ~(v12 >> v13)) | ((v12 << (8 - v13)) & 0x4DEC7D03 | ~(v12 << (8 - v13)) & 0xB21382FC) ^ ((v12 >> v13) & 0x4DEC7D03 | ~(v12 >> v13) & 0xB21382FC);
+}
+
+unsigned int StorageIDCrcPre(unsigned int a1, int a2)
+{
+  unsigned int v2; // r1
+  unsigned int v3; // r2
+
+  v2 = (a2 ^ 0xFFFFFFFC) & a2;
+  v3 = (-503118395 << (32 - v2)) & (0xE20305C5 >> v2) | (-503118395 << (32 - v2)) ^ (0xE20305C5 >> v2);
+  return (~((a1 >> (32 - v2)) & (a1 << v2) | (a1 >> (32 - v2)) ^ (a1 << v2)) & 0x35664E71 | ((a1 >> (32 - v2)) & (a1 << v2) | (a1 >> (32 - v2)) ^ (a1 << v2)) & 0xCA99B18E) ^ (~v3 & 0x35664E71 | v3 & 0xCA99B18E);
 }
 
 int  encrypt_tag117(unsigned int a1)

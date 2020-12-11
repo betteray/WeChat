@@ -46,7 +46,9 @@
 //    unsigned int byte1_1 = SystemBinMD5EncryptWord(0x5f33b2b1, 0, 0x64313464);
 //    unsigned int byte1_1 = SystemBinMD5EncryptWord(0x5f33b2b1, 1, 0x39646338);
 //
-//    unsigned int byte1_1 = StorageIDEncryptWord(0x5f33b2b1, 0, 0x7c407c40);
+//    unsigned int byte1_1 = StorageIDEncryptWord(1606994949, 0, 0x40302e30);
+//    unsigned int byte1_1 = StorageIDEncryptByte(0x5, 1, 0x30);
+
 //    unsigned int byte1_1 = StorageIDEncryptWord(1597223601, 0, 0x36393531);
 //
 //    unsigned int byte1_1 = encrypt_asm_tag117(0xdd599);
@@ -73,7 +75,7 @@
 //    unsigned int byte1_1 = SystemFrameworkArmMD5CrcPre(888440);
 //    unsigned int byte1_1 = SystemFrameworkArm64MD5CrcPre(888440);
 //    unsigned int byte1_1 = SystemBinMD5CrcPre(888440);
-//    unsigned int byte1_1 = StorageIDCrcPre(257710);
+    unsigned int byte1_1 = StorageIDCrcPre(0xd92c, 0x67);
 //    unsigned int byte1_1 = SourceDirCrcPre(888440);
 //    unsigned int byte1_1 = SourceDir2CrcPre(888440);
 //    unsigned int byte1_1 = AMSSingletonClassNameEncryptWord(1598862640, 0, 1919184481);
@@ -135,7 +137,7 @@
 
 //    unsigned int byte1_1 = ProcSelfMountsCheck(1606994949, 55596);
     
-    unsigned int byte1_1 = tag128(0xdbc0c, 0x5fd2045c);
+//    unsigned int byte1_1 = tag128(0xdbc0c, 0x5fd2045c);
 
 //    for (unsigned long i=1; i<0x7FFFFFFF; i++) {
 //        unsigned int byte1_1 = timeval117(i);
