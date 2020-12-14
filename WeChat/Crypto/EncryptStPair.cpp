@@ -1430,7 +1430,13 @@ unsigned int AllPkgNameMD5EncryptCrc_Pre(unsigned int a1, int a2)
   return (v6 | ~(~(-1996154414 << v5) | ~v4)) & ~v7 | v7 & ~(v6 | ~(~(-1996154414 << v5) | ~v4));
 }
 
-unsigned int ProcSelfMountsCheck(int a1, int a2)
+unsigned int ProcSelfMountsCheck(unsigned int a1,unsigned int a2)
+{
+    unsigned int v2 = a1 ^ (a2 * a1);
+    return (0x5E1154A2 ^ v2 & (v2 ^ 0x48))  ^   0x5E1154E2 | ((v2 & (v2 ^ 0x48)) & 0x40);
+}
+
+unsigned int ProcSelfMountsCheck_simtest(int a1, int a2)
 {
     int v2; // r2
 
@@ -1464,7 +1470,7 @@ unsigned int timeval117(unsigned int a1)
   return v4;
 }
 
-unsigned int tag128(int a1, int a2)
+unsigned int tag128_obf(int a1, int a2)
 {
   unsigned int v2; // r0
 
@@ -1472,3 +1478,26 @@ unsigned int tag128(int a1, int a2)
   return ~(~v2 | 0xFFFFFBFF) | (v2 & 0xEDA7A372 | ~v2 & 0x12585C8D) ^ 0x1258588D;
 }
 
+
+// ~(~a | ~b) = a & b
+// (~a & b) | (a & ~b) = a ^ b
+
+unsigned int tag128_simplefiy(int a1, int a2)
+{
+//    unsigned int b = 0x12585c8d;
+
+//    unsigned int v2 = ~(~(a1 ^ (a2 * a1)) | 0x12452);
+    unsigned int v2 = (a1 ^ (a2 * a1)) & 0xfffedbad;
+    
+//    return ~ (~v2 | ~0x400) | (v2 ^ 0x400);
+//    return  (v2 & 0x400) | (v2 ^ 0x400);
+//    return  (v2 & 0x400) | (v2 ^ 0x400);
+    return  v2 | 0x400;
+}
+
+// final
+unsigned int tag128(int a1, int a2)
+{
+    unsigned int v2 = (a1 ^ (a2 * a1)) & 0xfffedbad;
+    return  v2;
+}
