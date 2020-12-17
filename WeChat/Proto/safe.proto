@@ -294,7 +294,7 @@ message ClientCheckData {
     optional uint32 type = 2;
     optional bytes clientCheckData = 3;
     optional uint64 timeStamp = 4; // 706没有 , 7011有 System.currentTimeMillis() / 1000L;
-    optional uint32 dataType = 5;
+    optional uint32 dataType = 5; // dataType=5: 003加密； dataType=4: 经过压缩的数据，不用设置version；dataType=2: 有时候为空，但devicetoken会用此格式，可能是proto明文数据。
     optional uint32 status = 6; // 0 = 成功， 1 = 失败 定位字符串：ae.d("MicroMsg.SecInfoReporterImpl", "compressed and base64 result is still too large with length " + v0_3.length);
 }
 
@@ -346,8 +346,6 @@ message wcaes {
     optional bytes unkown25 =25;
 }
 
-//
-
 message RegUserAttrInfo {
     optional  string  nickName  = 1;
     optional  string  pwdHash  = 2;
@@ -357,12 +355,22 @@ message RegUserAttrInfo {
     optional  string  timeZoneName  = 6;
 }
 
+message ACgiDeviceInfo {
+    optional  string  Manufacturer = 1;
+    optional  string  Model = 2;
+    optional  string  VersionRelease = 3;
+    optional  string  VersionIncremental = 4;
+    optional  string  Display = 5;
+    optional  string  FingerPrint = 6;
+    optional  string  NDM = 7;
+}
+
 message WCExtInfo {
     optional  SKBuiltinBuffer_t  wcstf  = 1;
     optional  SKBuiltinBuffer_t  wcste  = 2;
     optional  SKBuiltinBuffer_t  ccData  = 3; // buffer = 003 clientCheckData, ReportContext：manualauth 时为 0x203F0000 ,autoauth 时为 0， 注册时为： 0x203F0001
     optional  SKBuiltinBuffer_t  regInfo  = 4; // RegUserAttrInfo
-    optional  SKBuiltinBuffer_t  acgiDeviceInfo  = 5; // buffer = 非 003 加密方式 ClientCheckData. ReportContext = 18446744071562067970 = 0x80000002, lib 列表压缩等, DataType = 4
+    optional  SKBuiltinBuffer_t  acgiDeviceInfo  = 5; // buffer = ClientCheckData. DataType = 4, ReportContext = 18446744071562067970 = 0x80000002, ACgiDeviceInfo
     optional  SKBuiltinBuffer_t  acgiTuring  = 6; // buffer = ClientCheckData
     optional  SKBuiltinBuffer_t  deviceToken  = 7; // buffer = ClientCheckData
     optional  SKBuiltinBuffer_t  sensorDataContext = 8; // buffer = "Login_0feff24c-f695-44ad-8369-93729225c2c5" | ReportContext = 540999687
@@ -373,17 +381,6 @@ message WCExtInfo {
     optional  SKBuiltinBuffer_t  iosturingOwner  = 102;
 }
 
-message ReportClientCheckReq
-{
-    required BaseRequest baseRequest = 1;
-    required bytes clientCheckData = 2; //后边版本均为"".getBytes(), 之前是 buffer = 003("<st><IsMorkLocOpen>0</IsMorkLocOpen><MsgLevel>1</MsgLevel><IsDbgConnected>0</IsDbgConnected><PkgHash3>18c867f0717aa67b2ab7347505ba07ed</PkgHash3><RatioFwVer>angler-03.87</RatioFwVer><OsRelVer>8.1.0</OsRelVer><IMEI>867979021665986</IMEI><AndroidID>0f2e799e321a92a0</AndroidID><PhoneSerial>8XV7N16125001121</PhoneSerial><PhoneModel>Nexus&#32;6P</PhoneModel><CpuCoreCount>8</CpuCoreCount><CpuHW>Qualcomm&#32;Technologies,&#32;Inc&#32;MSM8994</CpuHW><CpuFeatures>half&#32;thumb&#32;fastmult&#32;vfp&#32;edsp&#32;neon&#32;vfpv3&#32;tls&#32;vfpv4&#32;idiva&#32;idivt&#32;evtstrm&#32;aes&#32;pmull&#32;sha1&#32;sha2&#32;crc32</CpuFeatures><SelfMAC>dc:ee:06:fe:8e:93</SelfMAC><SSID>&lt;unknown&#32;ssid&gt;</SSID><BSSID>02:00:00:00:00:00</BSSID><SpInfo></SpInfo><APNInfo>&quot;ray&#8217;s&#32;Mac&#32;Pro&quot;</APNInfo><BuildFP>google/angler/angler:8.1.0/OPM7.181205.001/5080180:user/release-keys</BuildFP><BuildBoard>angler</BuildBoard><BuildBootloader>angler-03.79</BuildBootloader><BuildBrand>google</BuildBrand><BuildDevice>angler</BuildDevice><BuildHW>angler</BuildHW><BuildProduct>angler</BuildProduct><Manufacturer>Huawei</Manufacturer><PhoneNum></PhoneNum><NetType>wifi</NetType><IsQemuEnv>0</IsQemuEnv><HasDupPkg>0</HasDupPkg><HasQikuShadow>0</HasQikuShadow><PkgName>com.tencent.mm</PkgName><AppName>&#24494;&#20449;</AppName><DataRoot>/data/user/0/com.tencent.mm</DataRoot><EntranceClassLoaderName>dalvik.system.PathClassLoader</EntranceClassLoaderName><MMProcLoadedFiles>/system/framework/arm/boot.oat,/system/framework/arm/boot-core-libart.oat,/system/framework/arm/boot-conscrypt.oat,/system/framework/arm/boot-okhttp.oat,/system/framework/arm/boot-bouncycastle.oat,/system/framework/arm/boot-apache-xml.oat,/system/framework/arm/boot-legacy-test.oat,/system/framework/arm/boot-ext.oat,/system/framework/arm/boot-framework.oat,/system/framework/arm/boot-telephony-common.oat,/system/framework/arm/boot-voip-common.oat,/system/framework/arm/boot-ims-common.oat,/system/framework/arm/boot-org.apache.http.legacy.boot.oat,/system/framework/arm/boot-android.hidl.base-V1.0-java.oat,/system/framework/arm/boot-android.hidl.manager-V1.0-java.oat,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libvoipCodec.so,/system/bin/app_process32,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libdynamicBg.so,/data/dalvik-cache/arm/system@app@webview@webview.apk@classes.dex,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libaudio_common.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libNLog.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libmmimgcodec.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libtenpay_utils.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libpitu_tools.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libalgo_youtu_jni.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libnnpack.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libYTFaceTrackPro.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libformat_convert.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libimage_filter_gpu.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatvoicesilk_v7a.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libimage_filter_common.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libYTCommon.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libvoipChannel.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libvoipMain.so,/data/local/tmp/re.frida.server/frida-agent-32.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libvoipComm.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libkinda_android.so,/system/lib/libmemalloc.so,/system/lib/libqservice.so,/vendor/lib/hw/gralloc.msm8994.so,/system/lib/libqdMetaData.so,/system/lib/libqdutils.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatzstd.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatsight_v7a.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libtxmapengine.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatpack.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libFFmpeg.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libMMProtocalJni.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatcommon.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libcommonimgdec.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatnormsg.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libhardcoder.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatmm.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libio-canary.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libSqliteLint-lib.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwcdb.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libmatrixmrs.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatCrashForJni.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/oat/arm/base.odex,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libappbrandcommon.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libtencentloc.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libc++_shared.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libstlport_shared.so,/dev/ashmem/dalvik-jit-code-cache,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatvoicereco.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libwechatxlog.so,/data/app/com.tencent.mm-K01YL1D0BBSmN1t3ThubLw==/lib/arm/libmmkv.so,/system/app/webview/webview.apk,/vendor/lib/egl/libGLESv2_adreno.so,/vendor/lib/libllvm-glnext.so,/data/app/com.llb.wechathooks-bA4onxSecezu3uBx2YWzOA==/oat/arm/base.odex,/system/lib/libsandhook.edxp.so,/system/lib/libwebviewchromium_loader.so,/system/lib/libcompiler_rt.so,/vendor/lib/egl/eglSubDriverAndroid.so,/vendor/lib/egl/libGLESv1_CM_adreno.so,/vendor/lib/egl/libEGL_adreno.so,/vendor/lib/libgsl.so,/vendor/lib/libadreno_utils.so,/system/lib/hw/android.hardware.graphics.mapper@2.0-impl.so,/vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl.so,/system/lib/libjavacrypto.so,/system/lib/libsoundpool.so,/data/dalvik-cache/arm/system@framework@edxp.jar@classes.dex,/system/lib/libvixl-arm.so,/system/lib/libart-dexlayout.so,/system/lib/libart-compiler.so,/system/lib/libvixl-arm64.so,/system/lib/libopenjdk.so,/system/lib/libopenjdkjvm.so,/system/lib/libssl.so,/system/lib/libjavacore.so,/system/lib/libwebviewchromium_plat_support.so,/system/lib/libRS.so,/system/lib/android.hardware.renderscript@1.0.so,/system/lib/libOpenSLES.so,/system/lib/libOpenMAXAL.so,/system/lib/android.hardware.neuralnetworks@1.0.so,/system/lib/libtextclassifier_hash.so,/system/lib/libneuralnetworks.so,/system/lib/libjnigraphics.so,/system/lib/libGLESv3.so,/system/lib/libmedia_jni.so,/system/lib/libcamera2ndk.so,/system/lib/libmtp.so,/system/lib/libexif.so,/system/lib/libmediandk.so,/system/lib/libmidi.so,/system/lib/libaaudio.so,/system/lib/libandroid.so,/system/lib/libmemtrack_real.so,/system/lib/libtombstoned_client.so,/system/lib/libart.so,/system/lib/libsigchain.so,/system/lib/liblz4.so,/system/lib/android.hardware.memtrack@1.0.so,/system/lib/libriru_edxp.so,/system/lib/android.hardware.configstore@1.0.so,/system/lib/libusbhost.so,/system/lib/libaudiomanager.so,/system/lib/libstagefright_http_support.so,/system/lib/libnetd_client.so,/system/lib/libhwbinder.so,/system/lib/libmediautils.so,/system/lib/libminikin.so,/system/lib/libmemtrack.so,/system/lib/libsync.so,/system/lib/libdng_sdk.so,/system/lib/libstagefright_flacdec.so,/system/lib/libstagefright_xmlparser.so,/system/lib/android.hardware.media@1.0.so,/system/lib/android.hardware.graphics.allocator@2.0.so,/system/lib/libnativehelper.so,/system/lib/libsensor.so,/system/lib/android.hardware.graphics.bufferqueue@1.0.so,/system/lib/libharfbuzz_ng.so,/system/lib/libhwui.so,/system/lib/libcamera_client.so,/system/lib/libimg_utils.so,/system/lib/libGLESv1_CM.so,/system/lib/android.hardware.media.omx@1.0.so,/system/lib/libbacktrace.so,/system/lib/android.hardware.cas.native@1.0.so,/system/lib/android.hardware.graphics.common@1.0.so,/system/lib/libdl.so,/system/lib/libz.so,/system/lib/libEGL.so,/system/lib/libhardware.so,/system/lib/libpcre2.so,/system/lib/libui.so,/system/lib/libsonivox.so,/system/lib/libvorbisidec.so,/system/lib/android.hidl.memory@1.0.so,/system/lib/libsoundtrigger.so,/system/lib/libstdc++.so,/system/lib/libicui18n.so,/system/lib/liblzma.so,/system/lib/libtinyxml2.so,/system/lib/libmediametrics.so,/system/lib/android.hardware.cas@1.0.so,/system/lib/libvndksupport.so,/system/lib/libvulkan.so,/system/lib/libcutils.so,/system/lib/libETC1.so,/system/lib/libheif.so,/system/lib/libprocessgroup.so,/system/lib/libGLESv2.so,/system/lib/libaudioclient.so,/system/lib/libprotobuf-cpp-lite.so,/system/lib/libdebuggerd_client.so,/system/lib/libvintf.so,/system/lib/libc.so,/system/lib/libexpat.so,/system/lib/liblog.so,/system/lib/libandroid_runtime.so,/system/lib/libpackagelistparser.so,/system/lib/libskia.so,/system/lib/libpdfium.so,/system/lib/libjpeg.so,/system/lib/android.hidl.token@1.0-utils.so,/system/lib/libappfuse.so,/system/lib/libmediadrm.so,/system/lib/libnativebridge.so,/system/lib/libhidlmemory.so,/system/lib/libstagefright.so,/system/lib/libdrmframework.so,/system/lib/libselinux.so,/system/lib/libunwind.so,/system/lib/libicuuc.so,/system/lib/libstagefright_omx_utils.so,/system/lib/libnativewindow.so,/system/lib/libhardware_legacy.so,/system/lib/android.hardware.drm@1.0.so,/system/lib/libmedia_omx.so,/system/lib/libsqlite.so,/system/lib/libmedia.so,/system/lib/libspeexresampler.so,/system/lib/libm.so,/system/lib/libRScpp.so,/system/lib/libft2.so,/system/lib/libutils.so,/system/lib/libc++.so,/system
-    optional uint64 reportContext = 3; // from sysmsg -> ReportContext
-    optional SKBuiltinBuffer_t extSpamInfo = 4; // buffer = WCExtInfo
-}
-
-message ReportClientCheckResp {
-    required BaseResponse baseResponse = 1;
-}
 
 /*
     static void access$000(PluginSecInfoReport pluginSecInfoReport) {
@@ -447,4 +444,3 @@ PluginSecInfoReport:
 
 ### pluginSecInfoReport.asyncReportTuringOwnerThroughCgi(bArr);
  */
-
