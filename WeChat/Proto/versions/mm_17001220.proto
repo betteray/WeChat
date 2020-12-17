@@ -2639,7 +2639,7 @@ message BindOpMobileRequest {
     optional  uint32  mobileCheckType  = 17;
     optional  string  regSessionId  = 18;
     optional  SKBuiltinBuffer_t  spamBuffer  = 19;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 20;
+    optional  SKBuiltinBuffer_t  i  = 20;
     optional  string  thirdAppAuthTicket  = 21;
     optional  SmsUpCheckExtInfo  smsUpCheckExtInfo  = 22;
 }
