@@ -7,11 +7,31 @@ import "safe.proto";
 
 message ReportClientCheckReq
 {
-  required BaseRequest baseRequest = 1;
-  required bytes clientCheckData = 2; // "".getBytes()
-  optional uint32 reportContext = 3; // from sysmsg -> ReportContext
-  optional SKBuiltinBuffer_t extSpamInfo = 4; // buffer = WCExtInfo
-  optional uint64 timestamp = 5;
+    required BaseRequest baseRequest = 1;
+    required bytes clientCheckData = 2; // "".getBytes()
+    
+    // 一天 (86400000 ms) 至多上报一次。 if(SecInfoReporter.secInfoReporter.isTimeToReport(2, 86400000L))
+    // enum ReportContext {
+    //     CONTEXT_DEFAULT = 0;
+    //
+    //     CONTEXT_INTERCEPTED_TEXTVIEW = 0x80000000;
+    //     CONTEXT_MIUI_ISSUE = 0x80000001;
+    //     CONTEXT_OCR_FOUND = 0x80000002; // lib 列表
+    //
+    //     CONTEXT_AUTO_AUTH = 0;
+    //     CONTEXT_MANUAL_AUTH = 0x203F0000;
+    //     CONTEXT_REG_AUTH = 0x203F0001;
+    //     CONTEXT_CLICK_INFO = 0x203F0002;
+    //     CONTEXT_PAY = 0x203F0003;
+    //     CONTEXT_FINDER_FINDER_TIMELINEUI = 0x203F0004;  // enterFinderTimelineUI
+    //     CONTEXT_FINDER_FINDERUI = 0x203F0005;           // enterFinderUI
+    //     CONTEXT_FINDER_FINDER_PROFILEUI = 0x203F0006;   // enterFinderProfileUI
+    //     CONTEXT_SENSOR_DATA = 0x203F0007;
+    // }
+    
+    optional uint32 reportContext = 3; // from sysmsg -> ReportContext
+    optional SKBuiltinBuffer_t extSpamInfo = 4; // buffer = WCExtInfo
+    optional uint64 timestamp = 5;
 }
 
 message ReportClientCheckResp {

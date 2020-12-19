@@ -15,6 +15,16 @@ message InstalledPackageInfo {
     optional uint32 applicationFlag = 5;
 }
 
+//enum EXTRA_INFO_BIT {
+//    EXTRA_INFO_BIT_ALL = 7;
+//    EXTRA_INFO_BIT_PKGINFO = 2;
+//    EXTRA_INFO_BIT_PKGINFO_SYS_APP = 2;
+//    EXTRA_INFO_BIT_PKGINFO_UPDATED_SYS_APP = 4;
+//    EXTRA_INFO_BIT_PKGINFO_USER_APP = 8;
+//    EXTRA_INFO_BIT_RISKSCAN = 1;
+//    EXTRA_INFO_BIT_PROCMAPS = 4;
+//}
+
 message ST {
     optional uint32 IsMorkLocOpen = 1;
     optional uint32 MsgLevel = 2;
@@ -294,9 +304,40 @@ message ClientCheckData {
     optional uint32 type = 2;
     optional bytes clientCheckData = 3;
     optional uint64 timeStamp = 4; // 706没有 , 7011有 System.currentTimeMillis() / 1000L;
-    optional uint32 dataType = 5; // dataType=5: 003加密； dataType=4: 经过压缩的数据，不用设置version；dataType=2: 有时候为空，但devicetoken会用此格式，可能是proto明文数据。
-    optional uint32 status = 6; // 0 = 成功， 1 = 失败 定位字符串：ae.d("MicroMsg.SecInfoReporterImpl", "compressed and base64 result is still too large with length " + v0_3.length);
+    
+    enum DataType {
+        CCData_XML = 0;         // xml 格式
+        CCData_TEXT = 1;        // 文本 格式
+        CCData_BINARY = 2;      // 二进制
+        CCData_PB_RAW = 3;      // PB
+        CCData_PB_ZIP = 4;      // PB => ZIP
+        CCData_PB_ZIP_WB = 5;   // PB => ZIP => WhiteBoxAes(003)
+        CCData_PB_WB = 6;       // PB => WhiteBoxAes(003)
+    }
+    
+    optional DataType dataType = 5; // dataType=5: 003加密； dataType=4: 经过压缩的数据，不用设置version；dataType=2: 有时候为空，但devicetoken会用此格式，可能是proto明文数据。
+    
+    enum Status {
+        CCData_SUCCESS = 0;
+        CCData_FAIL = 1;
+    }
+    
+    optional Status status = 6; // 0 = 成功， 1 = 失败 定位字符串：ae.d("MicroMsg.SecInfoReporterImpl", "compressed and base64 result is still too large with length " + v0_3.length);
 }
+
+
+//public static final int CCData_SUCCESS = 0;
+//public static final int CCData_FAIL = 1;
+
+//public static final int CCData_XML = 0;
+//public static final int CCData_TEXT = 1;
+//public static final int CCData_BINARY = 2;
+//public static final int CCData_PB_RAW = 3;
+//public static final int CCData_PB_ZIP = 4;
+//public static final int CCData_PB_ZIP_WB = 5;
+//public static final int CCData_PB_WB = 6;
+
+
 
 message SpamBuff {
     message Soft {
