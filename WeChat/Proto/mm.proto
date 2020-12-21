@@ -261,3 +261,17 @@ message FPFreshRequest {
   optional  bytes  randomkey  = 2;
   optional  ClientCheckData  spamBuff  = 3;
 }
+
+message CmdItem {
+    required  int32  cmdId  = 1;
+    required  SKBuiltinBuffer_t  cmdBuf  = 2;
+}
+
+message CmdList {
+    required  uint32  count  = 1;
+    repeated  CmdItem  list  = 2;
+}
+
+message OplogRequest {
+    required  CmdList  oplog  = 1;
+}
