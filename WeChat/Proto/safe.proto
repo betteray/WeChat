@@ -220,7 +220,7 @@ message ST {
     }
     optional CheckAddIn7019 check7019 = 126;
     optional uint32 ProcSelfMountsCheck = 127;
-    optional uint32 tag128 = 128;
+    optional uint32 InlineHookingLibsBits = 128;
     repeated bytes InlineHookingLibsEncrypt = 129; // /proc/self/maps  带rwxp的so  /apex/com.android.runtime/bin/linker, /apex/com.android.runtime/lib/bionic/libc.so, /apex/com.android.runtime/lib/libart.so, /data/app/com.tencent.mm-9wf3arIby_cU-KqdRQ2LOQ==/lib/arm/libwechatnormsg.so, /system/lib/libandroid_runtime.so
     optional uint32 InlineHookingLibsCrc = 130;
 
