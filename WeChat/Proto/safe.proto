@@ -256,7 +256,7 @@ message WCSTE {
 
 // 传感器数据结构, reportclientcheck 接口，分别与 登陆注册加好友时上报
 
-message SensorData {
+message SensorData2 {
     message SensorEvent {
         optional float value1 = 1;
         optional float value2 = 2;
@@ -385,15 +385,6 @@ message wcaes {
     optional bytes unkown23 =23;
     optional bytes unkown24 =24;
     optional bytes unkown25 =25;
-}
-
-message RegUserAttrInfo {
-    optional  string  nickName  = 1;
-    optional  string  pwdHash  = 2;
-    optional  string  headImgMd5  = 3;
-    optional  string  phoneNumber  = 4;
-    optional  string  timeZone  = 5;
-    optional  string  timeZoneName  = 6;
 }
 
 message ACgiDeviceInfo {
