@@ -664,7 +664,7 @@
 		71DF5BBE247FF08D00B7E0B2 /* encrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = encrypt.m; sourceTree = "<group>"; };
 		71DF5BC42481375100B7E0B2 /* CheckPack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckPack.h; sourceTree = "<group>"; };
 		71DF5BC52481375100B7E0B2 /* CheckPack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckPack.m; sourceTree = "<group>"; };
-		71E1C19C230657E900F5032A /* safe.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = safe.proto; sourceTree = "<group>"; };
+		71E1C19C230657E900F5032A /* security.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = security.proto; sourceTree = "<group>"; };
 		71E485052403B68E0030FF0B /* mm_17000b21.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000b21.proto; sourceTree = "<group>"; };
 		71E4851324052E430030FF0B /* Safe.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Safe.pbobjc.h; sourceTree = "<group>"; };
 		71E4851424052E430030FF0B /* Safe.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Safe.pbobjc.m; sourceTree = "<group>"; };
@@ -1154,7 +1154,7 @@
 			isa = PBXGroup;
 			children = (
 				7176CDD32591F982002BA47C /* mm.proto */,
-				71E1C19C230657E900F5032A /* safe.proto */,
+				71E1C19C230657E900F5032A /* security.proto */,
 				712BDD7C2473C7A900A3DD49 /* base.proto */,
 				46D2CA322239F1CE0053C4A6 /* objc_out */,
 				71E48516240533BA0030FF0B /* versions */,
