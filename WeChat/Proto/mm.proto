@@ -1,9 +1,9 @@
-// Proto Dump From WeChat iOS 7.0.18.32.
+// Proto Dump From WeChat iOS 7.0.20.34.
 
 syntax = "proto2";
 
 import "base.proto";
-import "safe.proto";
+import "security.proto";
 
 option java_package = "com.tencent.mm.normsg.proto";
 
@@ -465,9 +465,22 @@ message AccepterItem {
     optional  string  accepterHeadimgUrl  = 4;
 }
 
+message AccountExtraSettingConfig {
+    repeated  AcctConfig  configs  = 1;
+}
+
 message AccountStatusItem {
     optional  string  title  = 1;
     optional  uint32  openStatus  = 2;
+}
+
+message AcctConfig {
+    optional  string  miniappUsername  = 1;
+    optional  string  miniappPath  = 2;
+    optional  string  cellName  = 3;
+    optional  uint32  actionType  = 4;
+    optional  string  webUrl  = 5;
+    optional  uint32  miniappScene  = 6;
 }
 
 message AcctSectResp {
@@ -495,6 +508,7 @@ message AcctSectResp {
 message AcctTransferConfig {
     optional  string  acctTransferMiniappUsername  = 1;
     optional  string  acctTransferMiniappPath  = 2;
+    optional  string  cellName  = 3;
 }
 
 message AcctTypeResource {
@@ -633,6 +647,24 @@ message AdDataReportResponse {
     required  BaseResponse  baseResponse  = 1;
     optional  int32  ret  = 2;
     optional  string  msg  = 3;
+}
+
+message AdDynamicUpdateItem {
+    required  uint32  actionType  = 1;
+    optional  string  data  = 2;
+}
+
+message AdDynamicUpdateReq {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  snsId  = 2;
+    optional  string  uxinfo  = 3;
+    repeated  AdDynamicUpdateItem  reqDataList  = 4;
+}
+
+message AdDynamicUpdateResp {
+    required  BaseResponse  baseResponse  = 1;
+    optional  string  snsId  = 2;
+    repeated  AdDynamicUpdateItem  respDataList  = 3;
 }
 
 message AdExposureInfo {
@@ -1638,6 +1670,7 @@ message AutoAuthAesReqData {
     optional  WCExtInfo2  extSpamInfo  = 15;
     optional  string  bundleId  = 16;
     optional  string  androidPackageName  = 17;
+    optional  PubKeyInfo  pubKey  = 18;
 }
 
 message AutoAuthKey {
@@ -2389,6 +2422,16 @@ message BatchGetShakeTranImgResponse {
     repeated  ShakeTranImgGetItem  imgUrlList  = 3;
 }
 
+message BatchGetSnsObjectDetailRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    repeated  uint64  feedIdList  = 2;
+}
+
+message BatchGetSnsObjectDetailResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  SnsObject  objectList  = 2;
+}
+
 message BatchGetUrlInfoReq {
     required  BaseRequest  baseRequest  = 1;
     optional  uint32  batchCount  = 2;
@@ -2630,9 +2673,10 @@ message BindOpMobileRequest {
     optional  uint32  mobileCheckType  = 17;
     optional  string  regSessionId  = 18;
     optional  SKBuiltinBuffer_t  spamBuffer  = 19;
-    optional  SKBuiltinBuffer_t  i  = 20;
+    optional  WCExtInfo2  extSpamInfo  = 20;
     optional  string  thirdAppAuthTicket  = 21;
     optional  SmsUpCheckExtInfo  smsUpCheckExtInfo  = 22;
+    optional  string  extRegUrl  = 24;
 }
 
 message BindOpMobileResponse {
@@ -2899,6 +2943,21 @@ message BizAppMsgDetailInfo {
     optional  uint32  picCount  = 28;
     optional  uint32  isPaySubscribe  = 29;
     optional  uint32  isPaid  = 30;
+    optional  BizAppMsgDetailInfo_PicUrlsMsg  picUrls  = 31;
+    optional  string  coverImgUrl169  = 32;
+    optional  string  coverImgUrl169640  = 33;
+}
+
+message BizAppMsgDetailInfo_PicUrlsMsg {
+    repeated  BizAppMsgDetailInfo_PicUrlsMsg_PicInfo  picInfoList  = 1;
+    repeated  string  picUrlV1  = 2;
+    repeated  string  picUrlV1Preload  = 3;
+}
+
+message BizAppMsgDetailInfo_PicUrlsMsg_PicInfo {
+    optional  string  picUrl  = 1;
+    optional  uint32  width  = 2;
+    optional  uint32  height  = 3;
 }
 
 message BizAppMsgInfo {
@@ -2917,6 +2976,7 @@ message BizAppMsgRelatedInfoReq_AppMsgUrlInfo {
     optional  string  url  = 2;
     optional  uint32  reqType  = 3;
     optional  uint32  itemShowType  = 4;
+    optional  uint64  commentTopicId  = 5;
 }
 
 message BizAppMsgRelatedInfoResp {
@@ -2943,6 +3003,7 @@ message BizAppMsgRelatedInfoResp_AppMsgRelatedInfo {
     optional  string  friendReadCountStr  = 3;
     optional  BizAppMsgRelatedInfoResp_AppMsgPayInfo  payInfo  = 4;
     optional  BizAppMsgRelatedInfoResp_AppMsgFriendInfo  friendInfo  = 5;
+    optional  string  wordingReportInfo  = 6;
 }
 
 message BizAppMsgStat {
@@ -3120,6 +3181,8 @@ message BizFeedbackReq {
     optional  BizFeedbackReq_BizFeedbackMsg  bizFeedbackInfo  = 9;
     optional  BizFeedbackReq_AppMsgFeedbackMsg  appMsgFeedbackInfo  = 10;
     optional  string  expType  = 11;
+    optional  string  extraData  = 12;
+    repeated  RecycleCard  list  = 13;
 }
 
 message BizFeedbackReq_AppMsgFeedbackMsg {
@@ -3149,6 +3212,8 @@ message BizFeedbackReq_NegativeFeedbackInfo {
 
 message BizFeedbackResp {
     required  BaseResponse  baseResponse  = 1;
+    repeated  RecycleCard  list  = 2;
+    optional  uint32  maxMsgCount  = 3;
 }
 
 message BizGetActionInfoRequest {
@@ -3235,6 +3300,8 @@ message BizListShowInfo {
     optional  uint32  isAutoPlay  = 47;
     optional  uint32  autoPlayTime  = 48;
     optional  string  cardTitle  = 49;
+    optional  string  wordingReportInfo  = 50;
+    optional  uint64  exposeTimestampMs  = 51;
 }
 
 message BizMessage {
@@ -3262,6 +3329,10 @@ message BizMsgItem {
     optional  uint32  digestExposureCnt  = 8;
     optional  uint32  digestExposurePeriod  = 9;
     optional  uint32  digestExposurePos  = 10;
+    optional  uint32  itemShowType  = 12;
+    optional  uint32  cardType  = 13;
+    repeated  string  urls  = 14;
+    repeated  string  recInfo  = 19;
 }
 
 message BizMsgReSortReq {
@@ -3280,6 +3351,11 @@ message BizMsgReSortResp {
     optional  uint32  maxMsgCount  = 6;
     repeated  BizMsgItem  updateMsg  = 7;
     optional  string  rankSessionid  = 9;
+    repeated  BizMsgReSortResp_RecommendArticleInfo  recommendArticleInfo  = 12;
+}
+
+message BizMsgReSortResp_RecommendArticleInfo {
+    optional  string  xml  = 1;
 }
 
 message BizOcrImageRequest {
@@ -3322,35 +3398,14 @@ message BizProfileV2Resp {
     optional  BizServiceInfo  serviceInfo  = 7;
     optional  uint32  funcFlag  = 8;
     repeated  BizProfileV2Resp_FuncFlagDesc  funcFlagWording  = 9;
-    optional  BizProfileV2Resp_ProfileNotifyInfo  videochannelNotifyInfo  = 11;
+    optional  uint32  preLoad  = 10;
     optional  string  searchGuideInfo  = 12;
+    optional  BizTopicList  topicList  = 13;
 }
 
 message BizProfileV2Resp_FuncFlagDesc {
     optional  uint32  funcFlag  = 1;
     optional  string  wording  = 2;
-}
-
-message BizProfileV2Resp_ProfileNotifyInfo {
-    repeated  BizProfileV2Resp_ProfileNotifyInfo_NotifyVideoInfo  notifyList  = 1;
-    optional  string  wording  = 2;
-    optional  string  entryTitle  = 3;
-    optional  string  jumpUrl  = 4;
-    optional  bool  isEntryOpen  = 5;
-}
-
-message BizProfileV2Resp_ProfileNotifyInfo_NotifyVideoInfo {
-    optional  string  coverUrl  = 1;
-    optional  uint32  duration  = 2;
-    optional  string  bizUsername  = 3;
-    optional  string  bizNickname  = 4;
-    optional  string  title  = 5;
-    optional  string  digest  = 6;
-    optional  uint32  publishTime  = 7;
-    optional  uint32  width  = 8;
-    optional  uint32  height  = 9;
-    optional  string  pageUrl  = 10;
-    optional  string  vid  = 11;
 }
 
 message BizRecArtCardAppMsg {
@@ -3402,6 +3457,7 @@ message BizRecArticleCardLite {
     repeated  BizRecArticleCardLite_BizCardInfo  cardInfo  = 2;
     optional  uint32  style  = 3;
     optional  string  event  = 4;
+    optional  string  extraData  = 5;
 }
 
 message BizRecArticleCardLite_BizCardInfo {
@@ -3441,12 +3497,20 @@ message BizScanBarcodeRequest {
     required  uint32  type  = 2;
     optional  string  barcode  = 3;
     optional  uint32  scene  = 4;
+    optional  uint32  mode  = 5;
+    optional  BizScanTabBarInfo  tabBarInfo  = 6;
 }
 
 message BizScanBarcodeResponse {
     required  BaseResponse  baseResponse  = 1;
     required  uint32  type  = 2;
     optional  string  descXml  = 3;
+    repeated  BizScanBarcodeWordingItem  wordingList  = 4;
+}
+
+message BizScanBarcodeWordingItem {
+    optional  string  key  = 1;
+    optional  string  value  = 2;
 }
 
 message BizScanImageRequest {
@@ -3505,6 +3569,11 @@ message BizScanProductReportResp {
     required  BaseResponse  baseResponse  = 1;
 }
 
+message BizScanTabBarInfo {
+    optional  bool  hasTabBar  = 1;
+    repeated  uint32  tabBarTypeList  = 2;
+}
+
 message BizScopeInfo {
     optional  string  scope  = 1;
     required  uint32  scopeStatus  = 2;
@@ -3558,6 +3627,18 @@ message BizStrategyResp {
 
 message BizTextMsgInfo {
     optional  string  content  = 1;
+}
+
+message BizTopic {
+    optional  string  topicName  = 1;
+    optional  string  topicDesc  = 2;
+    optional  string  topicUrl  = 3;
+    optional  uint64  topicId  = 4;
+}
+
+message BizTopicList {
+    optional  string  title  = 1;
+    repeated  BizTopic  topic  = 2;
 }
 
 message BizTransferReq {
@@ -3981,6 +4062,13 @@ message BusinessSnsItem {
     required  string  objectDesc  = 2;
 }
 
+message ButtomJumpInfo {
+    optional  uint32  action  = 1;
+    optional  string  url  = 2;
+    optional  string  appUsername  = 3;
+    optional  string  wording  = 4;
+}
+
 message ButtonInfo {
     optional  uint32  type  = 1;
     optional  string  btnText  = 2;
@@ -4041,6 +4129,32 @@ message BypGetMsgByChatResponse {
     optional  uint32  maxSeq  = 4;
 }
 
+message BypMsgEmoji {
+    required  string  md5  = 1;
+    required  uint32  len  = 2;
+    optional  string  productid  = 3;
+    optional  uint32  type  = 4;
+    optional  string  extxml  = 5;
+    optional  string  cdnurl  = 6;
+    optional  uint32  newxmlflag  = 7;
+    optional  string  designerid  = 8;
+    optional  string  thumburl  = 9;
+    optional  string  encrypturl  = 10;
+    optional  string  aeskey  = 11;
+    optional  uint32  width  = 12;
+    optional  uint32  height  = 13;
+    optional  string  externurl  = 14;
+    optional  string  externmd5  = 15;
+    optional  string  activityid  = 16;
+    optional  string  tpurl  = 17;
+    optional  string  authkey  = 18;
+    optional  string  attachedtext  = 19;
+    optional  string  attachedtextcolor  = 20;
+    optional  string  lensid  = 21;
+    optional  bool  isCharge  = 22;
+    optional  string  emojiattr  = 23;
+}
+
 message BypMsgImage {
     optional  string  aeskey  = 1;
     optional  uint32  cryptVer  = 2;
@@ -4071,6 +4185,7 @@ message BypMsgPack {
     optional  BypMsgText  bypText  = 101;
     optional  BypMsgImage  bypImage  = 102;
     optional  BypMsgVideo  bypVideo  = 103;
+    optional  BypMsgEmoji  bypEmoji  = 107;
 }
 
 message BypMsgText {
@@ -4309,6 +4424,15 @@ message CancelQRPayResponse {
     required  BaseResponse  baseResponse  = 1;
 }
 
+message CancelWecoinRechargeRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  billNo  = 2;
+}
+
+message CancelWecoinRechargeResponse {
+    required  BaseResponse  baseResponse  = 1;
+}
+
 message CanvasInfo {
     optional  string  dataBuffer  = 1;
 }
@@ -4342,6 +4466,7 @@ message CardElementCouponList {
     optional  string  cardElementJumpUrl  = 17;
     optional  CardMiniAppInfo  cardElementMiniAppInfo  = 18;
     optional  string  cardElementNativeUrl  = 19;
+    optional  string  cardSubLabel  = 20;
 }
 
 message CardElementMchLabel {
@@ -4379,6 +4504,7 @@ message CardHomePageFAQItem {
     optional  int32  faqOpType  = 2;
     optional  string  faqJumpUrl  = 3;
     optional  CardMiniAppInfo  faqMiniAppInfo  = 4;
+    optional  string  faqNativeUrl  = 5;
 }
 
 message CardHomePageRecentlyUsedCell {
@@ -4551,6 +4677,7 @@ message CdnTransInfo {
     optional  uint32  qualityTag  = 3;
     optional  string  tagName  = 4;
     optional  uint32  rate  = 5;
+    optional  uint32  videoTagType  = 6;
 }
 
 message CgiBindQueryRecord {
@@ -4934,6 +5061,15 @@ message ChatConfig {
 
 message ChatContact {
     optional  string  userName  = 1;
+}
+
+message ChatReportRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  UnreadMsgReport  unreadMsgReport  = 2;
+}
+
+message ChatReportResponse {
+    optional  BaseResponse  baseResponse  = 1;
 }
 
 message ChatRoomInfo {
@@ -5387,6 +5523,22 @@ message CheckResUpdateResponse {
     optional  uint32  nextTime  = 4;
 }
 
+message CheckShortLinkReq {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  shortLink  = 2;
+    optional  uint32  fromBusinessType  = 3;
+}
+
+message CheckShortLinkResp {
+    required  BaseResponse  baseResponse  = 1;
+    optional  bytes  wxaAppid  = 2;
+    optional  bytes  wxaPath  = 3;
+    optional  bytes  pageTitle  = 4;
+    optional  uint32  version  = 5;
+    optional  uint32  versionType  = 6;
+    optional  bytes  wxaNickName  = 7;
+}
+
 message CheckSmsCanAddCardReq {
     required  BaseRequest  baseRequest  = 1;
     optional  string  encryStr  = 3;
@@ -5409,6 +5561,7 @@ message CheckTmplVerReq_TypeInfo {
     optional  int32  type  = 1;
     repeated  string  fullVersions  = 2;
     optional  string  fullVersionInUse  = 3;
+    optional  uint64  controlFlag  = 4;
 }
 
 message CheckTmplVerResp {
@@ -5754,6 +5907,11 @@ message CoLikeInfo {
     optional  uint32  status  = 2;
 }
 
+message CoinBanner {
+    optional  string  content  = 1;
+    optional  string  url  = 2;
+}
+
 message ColikeAppInfo {
     optional  string  appId  = 1;
     optional  string  appName  = 2;
@@ -5801,6 +5959,7 @@ message CommMsgBaseInfo {
     optional  uint32  dateTime  = 3;
     optional  uint32  status  = 4;
     optional  uint32  funcFlag  = 5;
+    optional  string  uniqueId  = 6;
 }
 
 message CommentExposure {
@@ -5856,6 +6015,14 @@ message CommitBindXmailResponse {
     optional  int32  mailRetCode  = 3;
 }
 
+message ComonPromptInfo {
+    optional  string  promptText  = 1;
+    optional  string  jumpText  = 2;
+    optional  uint32  jumpType  = 3;
+    optional  string  jumpUrl  = 4;
+    optional  string  tinyappUsername  = 5;
+}
+
 message ComposeSendRequest {
     required  BaseRequest  baseRequest  = 1;
     optional  string  clientId  = 2;
@@ -5875,11 +6042,15 @@ message ComposeSendResponse {
     optional  string  clientId  = 4;
 }
 
+message ConfAVMember {
+    optional  uint32  memberid  = 1;
+    optional  uint32  avStatus  = 2;
+}
+
 message ConfAVMemberList {
     optional  uint64  imroomid  = 1;
     optional  uint64  roomid  = 2;
-    repeated  uint32  audioMemberList  = 3;
-    repeated  uint32  videoMemberList  = 4;
+    repeated  ConfAVMember  memberList  = 3;
 }
 
 message ConfDeviceParam {
@@ -5915,13 +6086,12 @@ message ConfEnvInfo {
     optional  uint32  outLog  = 8;
     optional  uint32  logLevel  = 9;
     optional  uint32  audioFlag  = 10;
-    optional  uint32  defCloseAv  = 11;
-    optional  uint32  videoRatio  = 12;
-    optional  uint32  defVideoLength  = 13;
-    optional  uint32  videoWidth  = 14;
-    optional  uint32  videoHeight  = 15;
-    optional  uint32  videoFlag  = 16;
-    optional  uint32  isImunion  = 17;
+    optional  uint32  videoRatio  = 11;
+    optional  uint32  defVideoLength  = 12;
+    optional  uint32  videoWidth  = 13;
+    optional  uint32  videoHeight  = 14;
+    optional  uint32  videoFlag  = 15;
+    optional  uint32  isImunion  = 16;
     optional  uint32  cpuCore  = 20;
     optional  uint32  cpuFreq  = 21;
     optional  uint32  cpuFlag  = 22;
@@ -5939,7 +6109,6 @@ message ConfEnvInfoILinkIm {
     optional  string  appSubid  = 2;
     optional  string  workDir  = 3;
     optional  uint32  audioFlag  = 4;
-    optional  uint32  defCloseAv  = 5;
     optional  uint32  videoRatio  = 10;
     optional  uint32  defVideoLength  = 11;
     optional  uint32  videoWidth  = 12;
@@ -5957,29 +6126,11 @@ message ConfEnvInfoILinkIm {
     optional  string  osVersion  = 31;
 }
 
-message ConfEnvInfoSvr {
-    optional  string  appId  = 1;
-    optional  string  appSecret  = 2;
-    optional  string  accessToken  = 3;
-    optional  string  deviceId  = 4;
-    optional  string  workDir  = 5;
-    optional  uint32  debugSvr  = 6;
-    optional  uint32  outLog  = 7;
-    optional  uint32  logLevel  = 8;
-    optional  uint32  audioFlag  = 9;
-    optional  uint32  cpuCore  = 10;
-    optional  uint32  cpuFreq  = 11;
-    optional  uint32  cpuFlag  = 12;
-    optional  string  deviceManufacturer  = 15;
-    optional  string  deviceModel  = 16;
-    optional  string  deviceRelease  = 17;
-    optional  string  osVersion  = 19;
-}
-
 message ConfInviteInfo {
     repeated  string  calleeList  = 1;
     optional  uint32  roomType  = 2;
-    optional  uint32  netType  = 3;
+    optional  bool  muteVideo  = 3;
+    optional  uint32  netType  = 4;
 }
 
 message ConfInviteItem {
@@ -5992,6 +6143,15 @@ message ConfInviteRoomInfo {
     optional  string  groupid  = 2;
     optional  uint32  selfMemberid  = 3;
     repeated  ConfInviteItem  inviteItems  = 4;
+}
+
+message ConfJoinInfo {
+    optional  uint64  imroomid  = 1;
+    optional  string  groupid  = 2;
+    optional  uint32  roomType  = 3;
+    optional  bool  muteAudio  = 4;
+    optional  bool  muteVideo  = 5;
+    optional  uint32  netType  = 6;
 }
 
 message ConfMemberInfo {
@@ -6081,6 +6241,19 @@ message ConnectedRouterResp {
     required  BaseResponse  baseResponse  = 1;
 }
 
+message ConsumeWecoinRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  bytes  ctxBuff  = 2;
+    optional  bytes  sign  = 3;
+    optional  string  reportSessionId  = 101;
+}
+
+message ConsumeWecoinResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  int64  wecoinBalance  = 2;
+    optional  RetryInfo  retryInfo  = 100;
+}
+
 message ContactProfile {
     optional  string  userName  = 1;
     optional  string  nickName  = 2;
@@ -6157,6 +6330,11 @@ message ConvertBizChatResp {
 message Coordinate {
     optional  double  x  = 1;
     optional  double  y  = 2;
+}
+
+message CouponAndGiftList {
+    optional  string  listTitleWording  = 1;
+    repeated  CardElementCouponList  items  = 2;
 }
 
 message CouponItemViewData {
@@ -6546,6 +6724,17 @@ message DeleteCardInTicketListRequest {
 }
 
 message DeleteCardInTicketListResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  uint32  retCode  = 2;
+    optional  string  retMsg  = 3;
+}
+
+message DeleteCouponRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  userCardId  = 2;
+}
+
+message DeleteCouponResponse {
     required  BaseResponse  baseResponse  = 1;
     optional  uint32  retCode  = 2;
     optional  string  retMsg  = 3;
@@ -7072,6 +7261,25 @@ message EmotionSummary {
     optional  string  exptDesc  = 20;
 }
 
+message EncashIncomeRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  bytes  ctxBuff  = 2;
+    optional  bytes  sign  = 3;
+    optional  string  token  = 4;
+    optional  string  reportSessionId  = 101;
+}
+
+message EncashIncomeResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  EncashResultPageInfo  resultPageInfo  = 2;
+    optional  RetryInfo  retryInfo  = 100;
+}
+
+message EncashResultPageInfo {
+    optional  uint64  expectedArrivalTime  = 1;
+    optional  string  arrivalWording  = 2;
+}
+
 message EncryptCheckResUpdateAesReqData {
     required  BaseRequest  baseRequest  = 1;
     required  CheckResUpdateRequest  checkResUpdateReq  = 2;
@@ -7423,6 +7631,28 @@ message ExtDeviceLoginConfirmOKRet {
 message ExtItem {
     optional  string  key  = 1;
     optional  ItemType  value  = 2;
+}
+
+message ExtRegRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  nickName  = 2;
+    optional  string  bindMobile  = 3;
+    optional  uint32  regMode  = 4;
+    optional  uint32  hasHeadImg  = 5;
+    optional  string  regSessionId  = 6;
+    optional  string  privacyPolicyCountry  = 7;
+    optional  string  extRegUrl  = 8;
+    optional  string  headImgFileId  = 9;
+    optional  string  headImgAesKey  = 10;
+}
+
+message ExtRegResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  uint32  uin  = 2;
+    optional  string  userName  = 3;
+    optional  uint32  status  = 4;
+    optional  uint32  serverTime  = 5;
+    optional  string  openId  = 6;
 }
 
 message ExtSession {
@@ -7922,6 +8152,7 @@ message FillFinderContactOption {
     optional  bool  forceCalcRepostCount  = 4;
     optional  bool  isTeenagerMode  = 5;
     optional  uint32  teenagerSetting  = 6;
+    optional  bool  hideLiveFlag  = 7;
 }
 
 message FinancialInfo {
@@ -7957,6 +8188,18 @@ message FinderAcceptLiveMicRequest {
 
 message FinderAcceptLiveMicResponse {
     optional  BaseResponse  baseResponse  = 1;
+}
+
+message FinderAdLiveNoticeRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  string  noticeId  = 2;
+    optional  string  finderUsername  = 3;
+}
+
+message FinderAdLiveNoticeResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  FinderLiveNoticeInfo  liveNoticeInfo  = 2;
+    optional  uint32  refreshInterval  = 3;
 }
 
 message FinderAdUserPageRequest {
@@ -8054,6 +8297,7 @@ message FinderAuthInfo {
     optional  string  appName  = 6;
     optional  string  authIconUrl  = 7;
     optional  uint32  customerType  = 8;
+    optional  uint32  authVerifyIdentity  = 9;
 }
 
 message FinderBanLiveCommentRequest {
@@ -8078,6 +8322,32 @@ message FinderBaseRequest {
     optional  uint32  exptFlag  = 4;
     optional  ClientContextInfo  ctxInfo  = 5;
     optional  uint64  requestId  = 6;
+}
+
+message FinderBatchGetLiveInfoReq {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    repeated  uint64  objectIds  = 3;
+    optional  float  longitude  = 4;
+    optional  float  latitude  = 5;
+}
+
+message FinderBatchGetLiveInfoResp {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  FinderObject  object  = 2;
+    optional  uint32  refreshInterval  = 3;
+}
+
+message FinderBatchGetObjectAsyncLoadInfoRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    repeated  FinderObjectUidUnit  objectUidList  = 3;
+}
+
+message FinderBatchGetObjectAsyncLoadInfoResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  FinderObjectAsyncLoadInfo  objectAsyncInfoMap  = 2;
+    repeated  FinderContactAsyncLoadInfo  contactAsyncInfoMap  = 3;
 }
 
 message FinderCategoryInfo {
@@ -8129,7 +8399,8 @@ message FinderCloseLiveReq {
     optional  uint64  liveId  = 2;
     optional  string  finderUsername  = 3;
     optional  uint64  objectId  = 4;
-    optional  string  objcetNonceId  = 5;
+    optional  string  objectNonceId  = 5;
+    optional  uint32  scene  = 6;
 }
 
 message FinderCloseLiveResp {
@@ -8247,6 +8518,16 @@ message FinderContact {
     optional  FinderContactMsgInfo  msgInfo  = 16;
     optional  uint32  originalEntranceFlag  = 17;
     optional  string  liveCoverImgUrl  = 18;
+    optional  uint32  foreignUserFlag  = 19;
+    optional  FinderLiveNoticeInfo  liveNoticeInfo  = 20;
+    optional  string  loggingoutWording  = 21;
+    optional  FinderContactLiveInfo  liveInfo  = 22;
+    optional  uint32  friendFollowCount  = 23;
+}
+
+message FinderContactAsyncLoadInfo {
+    optional  string  finderUsername  = 1;
+    optional  FinderLiveNoticeInfo  noticeInfo  = 2;
 }
 
 message FinderContactCommentInfo {
@@ -8267,6 +8548,11 @@ message FinderContactExtInfo {
 
 message FinderContactFansInfo {
     optional  string  fansId  = 1;
+}
+
+message FinderContactLiveInfo {
+    optional  uint64  anchorStatusFlag  = 1;
+    optional  uint32  switchFlag  = 2;
 }
 
 message FinderContactMsgInfo {
@@ -8294,6 +8580,20 @@ message FinderContactTagOptionReq {
 
 message FinderContactTagOptionResp {
     optional  BaseResponse  baseResponse  = 1;
+}
+
+message FinderCreateGameLivePrepareRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  string  finderUsername  = 3;
+    optional  FinderMedia  coverImg  = 4;
+    optional  string  description  = 5;
+    optional  FinderLocation  location  = 6;
+}
+
+message FinderCreateGameLivePrepareResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  string  gameLivePrepareBuff  = 2;
 }
 
 message FinderCreateLiveNoticeRequest {
@@ -8328,6 +8628,8 @@ message FinderCreateLivePrepareResponse {
     optional  uint32  liveGlobalFlag  = 5;
     optional  FinderRecoverLiveInfo  recoverLiveInfo  = 6;
     optional  FinderObject  recoverLiveObject  = 7;
+    repeated  FinderLiveTagInfo  fullTagInfo  = 8;
+    optional  FinderLiveTagInfo  lastTagInfo  = 9;
 }
 
 message FinderCreateLiveReq {
@@ -8341,12 +8643,14 @@ message FinderCreateLiveReq {
     optional  uint32  scene  = 8;
     optional  bytes  ticket  = 9;
     repeated  FinderTopicSearchInfo  topicInfoList  = 10;
+    optional  FinderLiveTagInfo  tagInfo  = 11;
 }
 
 message FinderCreateLiveResp {
     optional  BaseResponse  baseResponse  = 1;
     optional  FinderObject  liveObject  = 2;
     optional  string  realnameUrl  = 3;
+    optional  FinderLiveErrorPage  errorPage  = 4;
 }
 
 message FinderCreateUserRequest {
@@ -8360,6 +8664,7 @@ message FinderCreateUserRequest {
     optional  uint32  notShowLocationSwitch  = 8;
     optional  uint32  notShowSexSwitch  = 9;
     optional  FinderContactExtInfo  registerInfo  = 10;
+    optional  uint32  showFinderInWx  = 11;
 }
 
 message FinderCreateUserResponse {
@@ -8403,6 +8708,37 @@ message FinderDownloadInfo {
     optional  string  svrIp  = 19;
     optional  uint32  svrPort  = 20;
     optional  string  fileFormat  = 21;
+    optional  uint64  megaVideoId  = 22;
+}
+
+message FinderEventInfo {
+    optional  uint64  eventTopicId  = 1;
+    optional  FinderContact  contact  = 2;
+    optional  string  eventName  = 3;
+    optional  string  description  = 4;
+    optional  uint32  participantCount  = 5;
+    optional  string  coverImgUrl  = 6;
+    optional  uint64  fromObjectId  = 7;
+    optional  uint32  feedCount  = 8;
+    optional  uint32  maxTopCount  = 9;
+}
+
+message FinderEventUserPageCtx {
+    optional  uint64  lastRecordId  = 1;
+}
+
+message FinderEventUserPageRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  string  posterUsername  = 3;
+    optional  bytes  lastBuffer  = 4;
+}
+
+message FinderEventUserPageResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  FinderEventInfo  eventList  = 2;
+    optional  bytes  lastBuffer  = 3;
+    optional  uint32  continueFlag  = 4;
 }
 
 message FinderExtStatsReportRequest {
@@ -8420,6 +8756,7 @@ message FinderExtStatsReportResponse {
 message FinderExtendedReading {
     optional  string  link  = 1;
     optional  string  title  = 2;
+    optional  uint32  type  = 3;
 }
 
 message FinderFansContact {
@@ -8470,6 +8807,22 @@ message FinderFeedbackRequest {
 message FinderFeedbackResponse {
     required  BaseResponse  baseResponse  = 1;
     optional  string  finderUsername  = 2;
+}
+
+message FinderFileDumpRequest {
+    optional  string  posterUsername  = 1;
+    optional  string  clientId  = 2;
+    optional  string  url  = 3;
+    optional  string  fromApp  = 4;
+    optional  string  paramJson  = 5;
+    optional  BaseRequest  baserequest  = 6;
+}
+
+message FinderFileDumpResponse {
+    optional  string  url  = 1;
+    optional  string  thumbUrl  = 2;
+    optional  uint32  waitType  = 3;
+    required  BaseResponse  baseResponse  = 4;
 }
 
 message FinderFoldedLayout {
@@ -8532,6 +8885,7 @@ message FinderFromAppInfo {
     optional  string  icon  = 2;
     optional  string  title  = 3;
     optional  string  link  = 4;
+    optional  uint64  uiStyle  = 5;
 }
 
 message FinderFunctionSpamObject {
@@ -8564,6 +8918,10 @@ message FinderFusionRequest_InnerCgiReqCtx {
 message FinderFusionResponse {
     required  BaseResponse  baseResponse  = 1;
     optional  string  innerCgiRespJson  = 2;
+}
+
+message FinderGameLivePrepareBuffer {
+    optional  string  ticketKey  = 1;
 }
 
 message FinderGetBlackListRequest {
@@ -8639,6 +8997,8 @@ message FinderGetCommentDetailRequest {
     optional  uint32  identityScene  = 14;
     optional  uint32  pullScene  = 15;
     optional  bytes  likeBuffer  = 16;
+    optional  uint32  platformScene  = 17;
+    optional  uint32  needSelection  = 18;
 }
 
 message FinderGetCommentDetailResponse {
@@ -8724,6 +9084,7 @@ message FinderGetFavListRequest {
     optional  string  finderUsername  = 3;
     optional  bytes  lastBuffer  = 4;
     optional  uint32  tabType  = 5;
+    optional  FinderClientStatus  status  = 6;
 }
 
 message FinderGetFavListResponse {
@@ -8734,6 +9095,7 @@ message FinderGetFavListResponse {
     optional  uint32  totalCount  = 5;
     optional  uint32  megavideoTotalCount  = 6;
     optional  uint32  finderTotalCount  = 7;
+    optional  FinderPreloadInfo  preloadInfo  = 8;
 }
 
 message FinderGetFeedFavListCtx {
@@ -8881,6 +9243,7 @@ message FinderGetLikedListRequest {
     optional  FinderBaseRequest  finderBasereq  = 5;
     optional  string  targetUsername  = 6;
     optional  uint32  tabType  = 7;
+    optional  FinderClientStatus  status  = 8;
 }
 
 message FinderGetLikedListResponse {
@@ -8892,6 +9255,7 @@ message FinderGetLikedListResponse {
     optional  string  noMoreWording  = 6;
     optional  uint32  megavideoTotalCount  = 7;
     optional  uint32  finderTotalCount  = 8;
+    optional  FinderPreloadInfo  preloadInfo  = 9;
 }
 
 message FinderGetLiveContactListReq {
@@ -8965,6 +9329,8 @@ message FinderGetLiveMsgResp {
     optional  uint32  liveExtFlag  = 12;
     optional  FinderLivePreloadInfo  livePreloadInfo  = 13;
     optional  uint32  curParticipantCount  = 14;
+    repeated  FinderLiveAppMsg  appMsgList  = 15;
+    repeated  FinderLiveTemplateInfo  templateInfoList  = 16;
 }
 
 message FinderGetLiveNoticeRequest {
@@ -8995,6 +9361,77 @@ message FinderGetLiveOnlineMemberResp {
     optional  BaseResponse  baseResponse  = 1;
     repeated  FinderLiveContact  liveContacts  = 2;
     optional  uint64  liveId  = 3;
+    repeated  FinderLiveContact  offlineContacts  = 4;
+    optional  uint64  rewardTotalAmountInHeat  = 5;
+    optional  uint32  onlineMemberCount  = 6;
+    optional  uint32  offlineMemberCount  = 7;
+}
+
+message FinderGetLiveRelatedListRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  bytes  lastBuffer  = 3;
+    optional  uint64  objectId  = 4;
+    optional  string  objectNonceId  = 5;
+    optional  float  longitude  = 6;
+    optional  float  latitude  = 7;
+    optional  uint32  scene  = 8;
+    optional  FinderClientStatus  status  = 9;
+    optional  FinderLiveClientStatus  liveStatus  = 10;
+}
+
+message FinderGetLiveRelatedListResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  FinderObject  object  = 2;
+    optional  bytes  lastBuffer  = 3;
+    optional  uint32  continueFlag  = 4;
+    optional  FinderLivePreloadInfo  livePreloadInfo  = 5;
+}
+
+message FinderGetLiveRewardGainsBuff {
+    optional  uint64  sortId  = 1;
+}
+
+message FinderGetLiveRewardGainsRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  uint64  liveId  = 3;
+    optional  string  finderUsername  = 4;
+    optional  uint64  objectId  = 5;
+    optional  string  objectNonceId  = 6;
+    optional  bytes  lastBuffer  = 7;
+}
+
+message FinderGetLiveRewardGainsResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  uint32  totalNum  = 2;
+    optional  float  totalValue  = 3;
+    optional  bytes  lastBuffer  = 4;
+    optional  uint32  continueFlag  = 5;
+    repeated  FinderLiveRewardGainsInfo  infoList  = 6;
+    optional  uint64  rewardTotalAmountInWecoin  = 7;
+}
+
+message FinderGetLiveRewardGiftListBuff {
+    optional  uint64  sortId  = 1;
+}
+
+message FinderGetLiveRewardGiftListRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  uint64  liveId  = 3;
+    optional  uint64  objectId  = 4;
+    optional  string  objectNonceId  = 5;
+    optional  string  username  = 6;
+    optional  bytes  lastBuffer  = 7;
+}
+
+message FinderGetLiveRewardGiftListResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  FinderLiveGift  giftList  = 2;
+    optional  bytes  lastBuffer  = 3;
+    optional  uint32  comboBatchSize  = 4;
+    optional  uint32  comboBatchTimeoutMs  = 5;
 }
 
 message FinderGetMentionBuff {
@@ -9035,6 +9472,7 @@ message FinderGetMentionSystemBuff {
 
 message FinderGetMentionedListCtx {
     optional  uint64  lastSeq  = 1;
+    optional  uint32  feedFlag  = 2;
 }
 
 message FinderGetMentionedListRequest {
@@ -9060,6 +9498,8 @@ message FinderGetMsgSessionIdRequest {
     optional  string  toFansId  = 5;
     optional  uint64  toObjectId  = 6;
     optional  uint64  toCommentId  = 7;
+    optional  string  toLotteryId  = 8;
+    optional  uint32  sourceType  = 9;
 }
 
 message FinderGetMsgSessionIdResponse {
@@ -9088,7 +9528,8 @@ message FinderGetMsgSessionResponse {
 }
 
 message FinderGetNearbyListCtx {
-    optional  uint32  nextSectionNum  = 1;
+    repeated  uint64  recievedFeedIds  = 1;
+    repeated  string  recievedSectionIds  = 2;
 }
 
 message FinderGetNearbyListRequest {
@@ -9121,6 +9562,8 @@ message FinderGetRelatedListCtx {
     optional  uint32  src  = 5;
     optional  uint64  topicId  = 6;
     repeated  uint32  recType  = 7;
+    optional  uint32  recSys  = 8;
+    optional  bytes  ccardInfo  = 9;
 }
 
 message FinderGetRelatedListReq {
@@ -9134,7 +9577,7 @@ message FinderGetRelatedListReq {
     optional  string  objectNonceId  = 8;
     optional  string  firstObjectReason  = 9;
     optional  uint32  scene  = 10;
-    optional  string  reserve  = 11;
+    optional  string  source  = 11;
     optional  FinderSectionInfo  sectionInfo  = 12;
     optional  FinderCategoryInfo  catetoryFilter  = 13;
     optional  bytes  streamLastBuffer  = 14;
@@ -9174,6 +9617,7 @@ message FinderGetRelatedListResp {
     repeated  FinderStreamCard  card  = 8;
     repeated  FinderStreamTxtCard  txtCard  = 9;
     optional  FinderLivePreloadInfo  livePreloadInfo  = 10;
+    optional  FinderStreamLayoutInfo  layoutInfo  = 11;
 }
 
 message FinderGetTagContactReq {
@@ -9201,6 +9645,10 @@ message FinderGetTopicListRequest {
     optional  FinderSectionInfo  sectionInfo  = 11;
     optional  uint32  fromType  = 12;
     optional  FinderClientStatus  status  = 13;
+    optional  uint64  topicId  = 14;
+    optional  bytes  topicBuffer  = 15;
+    optional  string  encryptedTopicid  = 16;
+    optional  uint32  innerTabType  = 17;
 }
 
 message FinderGetTopicListResponse {
@@ -9226,6 +9674,24 @@ message FinderGetUserRequest {
 message FinderGetUserResponse {
     optional  BaseResponse  baseResponse  = 1;
     repeated  FinderContact  contactList  = 2;
+}
+
+message FinderHalfRect {
+    optional  float  left  = 1;
+    optional  float  top  = 2;
+    optional  float  right  = 3;
+    optional  float  bottom  = 4;
+}
+
+message FinderHlsMediaSpec {
+    optional  string  fileFormat  = 1;
+    optional  uint32  firstLoadBytes  = 2;
+    optional  uint32  bitRate  = 3;
+    optional  string  codingFormat  = 4;
+}
+
+message FinderHlsMediaSpecList {
+    repeated  FinderHlsMediaSpec  hlsList  = 1;
 }
 
 message FinderHotTabTitle {
@@ -9271,10 +9737,31 @@ message FinderJoinLiveResp {
     optional  FinderLiveShopWindowProductItem  promotingProduct  = 7;
     optional  FinderLiveContact  selfContact  = 8;
     optional  FinderJoinLiveTips  tips  = 9;
+    repeated  FinderLiveTemplateInfo  templateInfoList  = 10;
 }
 
 message FinderJoinLiveTips {
     optional  string  lawTips  = 1;
+}
+
+message FinderLbsLiveStreamRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  bytes  lastBuffer  = 3;
+    optional  float  longitude  = 4;
+    optional  float  latitude  = 5;
+    optional  FinderClientStatus  status  = 6;
+    optional  FinderLiveClientStatus  liveStatus  = 7;
+    optional  uint32  pullType  = 8;
+    optional  FinderSwitch  finderSwitch  = 9;
+}
+
+message FinderLbsLiveStreamResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  FinderObject  object  = 2;
+    optional  bytes  lastBuffer  = 3;
+    optional  uint32  continueFlag  = 4;
+    optional  FinderLivePreloadInfo  livePreloadInfo  = 5;
 }
 
 message FinderLikeInfo {
@@ -9305,6 +9792,7 @@ message FinderLikeLiveReq {
 
 message FinderLikeLiveResp {
     optional  BaseResponse  baseResponse  = 1;
+    optional  uint32  statusFlag  = 2;
 }
 
 message FinderLikeRequest {
@@ -9321,6 +9809,8 @@ message FinderLikeRequest {
     optional  string  sessionBuffer  = 11;
     optional  string  likeUsername  = 12;
     optional  uint32  isPrivate  = 13;
+    optional  uint32  visibilityMode  = 14;
+    repeated  uint32  visibilityLabelIdList  = 15;
 }
 
 message FinderLikeResponse {
@@ -9341,6 +9831,124 @@ message FinderLikedListCtxLikeInfo {
     optional  uint32  unreadFlag  = 3;
 }
 
+message FinderLiveAcceptMicWithAudienceRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  bytes  liveCookies  = 3;
+    optional  FinderLiveAppMsg  msg  = 4;
+    optional  uint64  liveId  = 5;
+    optional  uint64  objectId  = 6;
+    optional  string  objectNonceId  = 7;
+    optional  uint32  scene  = 8;
+    optional  string  finderUsername  = 9;
+}
+
+message FinderLiveAcceptMicWithAudienceResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  string  realnameUrl  = 2;
+    optional  uint64  serverMsgId  = 3;
+    optional  string  sessionId  = 4;
+}
+
+message FinderLiveAppMsg {
+    optional  FinderLiveContact  toUserContact  = 1;
+    optional  uint32  msgType  = 2;
+    optional  string  clientMsgId  = 3;
+    optional  uint64  quotedMsgSeq  = 4;
+    optional  bytes  payload  = 5;
+    optional  FinderLiveAppMsgOption  option  = 6;
+    repeated  FinderLiveContact  recipientContactList  = 7;
+    optional  string  sessionId  = 51;
+    optional  uint64  seq  = 101;
+    optional  FinderLiveContact  fromUserContact  = 102;
+    optional  string  localClientMsgId  = 103;
+}
+
+message FinderLiveAppMsgAcceptMicInfo {
+    optional  string  micSdkUserId  = 1;
+    optional  int32  micType  = 51;
+    optional  LiveSdkInfo  liveSdkInfo  = 101;
+    optional  FinderLiveContact  micContact  = 102;
+    optional  uint64  expiredTime  = 103;
+    optional  uint64  seq  = 104;
+}
+
+message FinderLiveAppMsgAlertInfo {
+    optional  FinderLiveMsgBoxInfo  msgBox  = 1;
+}
+
+message FinderLiveAppMsgApplyMicInfo {
+    optional  int32  micType  = 1;
+    optional  uint32  confirmTtl  = 102;
+    optional  string  micSdkUserId  = 103;
+}
+
+message FinderLiveAppMsgCloseMicInfo {
+    optional  string  micSdkUserId  = 1;
+    optional  int32  scene  = 2;
+}
+
+message FinderLiveAppMsgHighlightCheerUserInfo {
+}
+
+message FinderLiveAppMsgLiveRewardInfo {
+    optional  string  rewardProductId  = 1;
+    optional  uint32  rewardProductCount  = 2;
+    optional  uint32  rewardAmountInWecoin  = 3;
+    optional  FinderLiveGift  rewardGift  = 4;
+    optional  string  content  = 5;
+    optional  uint32  comboProductCount  = 6;
+    optional  string  comboId  = 7;
+}
+
+message FinderLiveAppMsgLotteryDrawInfo {
+    optional  string  lotteryId  = 1;
+    optional  uint32  remainTime  = 2;
+    optional  uint32  lotteryStatus  = 3;
+    optional  uint32  uin  = 4;
+}
+
+message FinderLiveAppMsgOption {
+    optional  FinderLiveAppMsgOption_VersionControlInfo  versionControlInfo  = 1;
+}
+
+message FinderLiveAppMsgOption_VersionControlInfo {
+    optional  bool  compatibleVisible  = 1;
+    optional  string  compatibleText  = 2;
+    optional  string  compatibleUrl  = 3;
+}
+
+message FinderLiveAppMsgReplyCommentInfo {
+    optional  string  content  = 1;
+}
+
+message FinderLiveAppMsgTickleInfo {
+    optional  string  toUserPatSuffix  = 1;
+}
+
+message FinderLiveAppMsgToastInfo {
+    optional  FinderLiveMsgBoxInfo  msgBox  = 1;
+}
+
+message FinderLiveApplyMicWithAudienceRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  bytes  liveCookies  = 3;
+    optional  FinderLiveAppMsg  msg  = 4;
+    optional  uint64  liveId  = 5;
+    optional  uint64  objectId  = 6;
+    optional  string  objectNonceId  = 7;
+    optional  uint32  scene  = 8;
+    optional  string  finderUsername  = 9;
+}
+
+message FinderLiveApplyMicWithAudienceResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  string  realnameUrl  = 2;
+    optional  uint64  serverMsgId  = 3;
+    optional  string  sessionId  = 4;
+}
+
 message FinderLiveCdnTransInfo {
     optional  CdnTransInfo  cdnTransInfo  = 1;
     optional  uint32  bitRate  = 2;
@@ -9359,18 +9967,82 @@ message FinderLiveClientStatus {
     repeated  FinderLiveQoSInfo  lastLiveQosInfo  = 9;
 }
 
+message FinderLiveCloseMicWithAudienceRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  bytes  liveCookies  = 3;
+    optional  FinderLiveAppMsg  msg  = 4;
+    optional  uint64  liveId  = 5;
+    optional  uint64  objectId  = 6;
+    optional  string  objectNonceId  = 7;
+    optional  uint32  scene  = 8;
+    optional  string  finderUsername  = 9;
+}
+
+message FinderLiveCloseMicWithAudienceResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  string  realnameUrl  = 2;
+    optional  uint64  serverMsgId  = 3;
+    optional  string  sessionId  = 4;
+}
+
 message FinderLiveContact {
     optional  FinderContact  contact  = 1;
     optional  uint32  enableComment  = 2;
     optional  uint32  disableComment  = 3;
+    optional  uint32  rewardAmountInHeat  = 4;
+    optional  uint32  liveContactFlag  = 5;
+}
+
+message FinderLiveCreateLotteryRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  uint64  liveId  = 3;
+    optional  uint64  objectId  = 4;
+    optional  uint64  objectNonceId  = 5;
+    optional  uint32  lotteryDuration  = 6;
+    optional  string  lotteryDescription  = 7;
+    optional  FinderLiveLotteryAttendMethod  method  = 8;
+    optional  uint32  lotteryWinnerCnt  = 9;
+    optional  uint32  opType  = 10;
+    optional  string  nonceId  = 11;
+}
+
+message FinderLiveCreateLotteryResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  FinderLiveLotteryInfo  lotteryInfo  = 2;
+    optional  FinderLiveErrorPage  errorPage  = 3;
 }
 
 message FinderLiveDesc {
     optional  string  liveCoverUrl  = 1;
+    optional  string  liveFrameUrl  = 2;
+}
+
+message FinderLiveErrorPage {
+    optional  uint32  type  = 1;
+    optional  string  wording  = 2;
+    optional  string  title  = 3;
+    optional  string  jumpUrl  = 4;
+    optional  string  urlWording  = 5;
 }
 
 message FinderLiveExtInfo {
     optional  bytes  anchorStatusBuffer  = 1;
+}
+
+message FinderLiveGetAuthorizationRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  string  finderUsername  = 3;
+    optional  bytes  deviceId  = 4;
+    optional  string  ticket  = 5;
+    optional  string  appId  = 6;
+    optional  uint32  scene  = 7;
+}
+
+message FinderLiveGetAuthorizationResponse {
+    optional  BaseResponse  baseResponse  = 1;
 }
 
 message FinderLiveGetContactRequest {
@@ -9388,6 +10060,71 @@ message FinderLiveGetContactResponse {
     optional  FinderLiveContact  contact  = 2;
 }
 
+message FinderLiveGetLotteryHistoryCtx {
+    optional  uint64  maxId  = 1;
+}
+
+message FinderLiveGetLotteryHistoryRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  string  finderUsername  = 3;
+    optional  uint32  scene  = 4;
+    optional  uint64  liveId  = 5;
+    optional  uint64  objectId  = 6;
+    optional  string  objectNonceId  = 7;
+    optional  bytes  lastBuffer  = 8;
+}
+
+message FinderLiveGetLotteryHistoryResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  FinderLotteryLiveRecordList  liveList  = 2;
+    optional  bytes  lastBuffer  = 3;
+    optional  uint32  continueFlag  = 4;
+    optional  uint64  liveId  = 5;
+}
+
+message FinderLiveGetLotteryRecordCtx {
+    optional  uint32  pagenum  = 1;
+}
+
+message FinderLiveGetLotteryRecordRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  string  finderUsername  = 3;
+    optional  uint64  liveId  = 4;
+    optional  uint64  objectId  = 5;
+    optional  uint64  objectNonceId  = 6;
+    optional  string  lotteryId  = 7;
+    optional  bytes  lastBuffer  = 8;
+    optional  string  nonceId  = 9;
+}
+
+message FinderLiveGetLotteryRecordResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  FinderLiveLotteryInfo  lotteryInfo  = 2;
+    optional  bytes  lastBuffer  = 3;
+    optional  uint32  continueFlag  = 4;
+    optional  FinderLiveLotteryWinnerInfo  winnerInfo  = 5;
+    optional  uint64  liveId  = 6;
+    optional  uint32  personalmsgCloseSwitch  = 7;
+}
+
+message FinderLiveGetShopProductDetailRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  uint64  objectId  = 3;
+    optional  uint64  liveId  = 4;
+    optional  string  objectNonceId  = 5;
+    optional  uint64  productId  = 6;
+    optional  string  shopRequestId  = 7;
+}
+
+message FinderLiveGetShopProductDetailResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  FinderLiveShopWindowProductItem  productItem  = 2;
+    optional  string  shopRequestId  = 3;
+}
+
 message FinderLiveGetShopWindowProductCtxInfo {
     optional  uint64  pageOffset  = 1;
 }
@@ -9401,6 +10138,7 @@ message FinderLiveGetShopWindowProductRequest {
     optional  string  finderUsername  = 6;
     optional  uint32  scene  = 7;
     optional  string  objectNonceId  = 8;
+    optional  string  shopRequestId  = 9;
 }
 
 message FinderLiveGetShopWindowProductResponse {
@@ -9423,6 +10161,57 @@ message FinderLiveGetShopWindowProductResponse {
     optional  string  prerenderPagePath  = 17;
     optional  string  shopAppUsername  = 18;
     optional  string  shopAddProductAppusername  = 19;
+    optional  string  shopRequestId  = 20;
+}
+
+message FinderLiveGetUserGameConfigRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  string  finderUsername  = 3;
+}
+
+message FinderLiveGetUserGameConfigResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  FinderLiveGetUserGameConfigResponse_GameUserInfo  gameUserInfoList  = 2;
+}
+
+message FinderLiveGetUserGameConfigResponse_GameAppInfo {
+    optional  string  appId  = 1;
+    optional  string  appName  = 2;
+    optional  string  iconUrl  = 3;
+    optional  string  downloadUrl  = 4;
+    optional  string  packageName  = 5;
+    optional  uint64  packageSize  = 6;
+    optional  string  packageMd5  = 7;
+    optional  uint32  versionCode  = 8;
+    optional  uint32  appStatus  = 9;
+    optional  string  defaultLiveCoverUrl  = 10;
+}
+
+message FinderLiveGetUserGameConfigResponse_GameUserInfo {
+    optional  FinderLiveGetUserGameConfigResponse_UserStat  userStat  = 1;
+    optional  FinderLiveGetUserGameConfigResponse_GameAppInfo  appInfo  = 2;
+    optional  string  errorMsg  = 3;
+}
+
+message FinderLiveGetUserGameConfigResponse_UserStat {
+    optional  uint32  anchorWxUin  = 1;
+    optional  uint32  playingStatus  = 2;
+    optional  uint32  liveStatus  = 3;
+}
+
+message FinderLiveGift {
+    optional  string  rewardProductId  = 1;
+    optional  uint32  businessType  = 2;
+    optional  string  thumbnailFileUrl  = 3;
+    optional  string  previewPagUrl  = 4;
+    optional  string  animationPagUrl  = 5;
+    optional  string  thumbnailFileMd5  = 6;
+    optional  string  previewPagMd5  = 7;
+    optional  string  animationPagMd5  = 8;
+    optional  string  name  = 9;
+    optional  float  price  = 10;
+    optional  uint32  giftType  = 11;
 }
 
 message FinderLiveInfo {
@@ -9436,10 +10225,55 @@ message FinderLiveInfo {
     optional  FinderLiveExtInfo  liveExtInfo  = 8;
     optional  FinderLiveMediaSpec  liveSpec  = 9;
     optional  FinderLiveSdkChannelInfo  liveSdkChannelInfo  = 10;
+    optional  uint32  participantCount  = 11;
+    optional  uint64  rewardTotalAmountInWecoin  = 12;
+    optional  uint32  sourceType  = 13;
+    optional  uint32  extFlag  = 14;
+    optional  uint64  rewardTotalAmountInHeat  = 15;
+}
+
+message FinderLiveLotteryAttendMethod {
+    optional  uint32  lotteryAttendType  = 1;
+    optional  string  attendWording  = 2;
+}
+
+message FinderLiveLotteryContact {
+    optional  string  username  = 1;
+    optional  string  nickname  = 2;
+    optional  string  headImgUrl  = 3;
+}
+
+message FinderLiveLotteryInfo {
+    optional  string  id  = 1;
+    optional  uint32  beginTime  = 2;
+    optional  uint32  endTime  = 3;
+    optional  uint32  remainTime  = 4;
+    optional  string  description  = 5;
+    optional  FinderLiveLotteryAttendMethod  method  = 6;
+    optional  uint32  winnerCnt  = 7;
+    optional  uint32  participateCount  = 8;
+    optional  uint32  lotteryStatus  = 9;
+    optional  uint32  extFlag  = 10;
+    optional  uint32  realWinnerCnt  = 11;
+}
+
+message FinderLiveLotteryWinnerInfo {
+    repeated  FinderLiveLotteryContact  winnerList  = 1;
 }
 
 message FinderLiveMediaSpec {
     repeated  FinderLiveCdnTransInfo  cdnTransInfo  = 1;
+    optional  LiveSdkVideoParams  anchorVideoParams  = 2;
+    optional  uint32  audienceCdnQualityCfg  = 3;
+    optional  string  audienceCdnUrl  = 4;
+}
+
+message FinderLiveMicAudienceInfo {
+    optional  FinderLiveContact  micContact  = 1;
+    optional  int32  micType  = 2;
+    optional  string  micSdkUserId  = 3;
+    optional  string  liveMicId  = 4;
+    optional  uint64  micSeq  = 5;
 }
 
 message FinderLiveMicInfo {
@@ -9449,6 +10283,7 @@ message FinderLiveMicInfo {
     optional  FinderLiveContact  acceptLiveContact  = 4;
     optional  uint32  status  = 5;
     optional  FinderLiveRoomData  micLiveRoomData  = 6;
+    repeated  FinderLiveMicAudienceInfo  micAudienceList  = 7;
 }
 
 message FinderLiveModShopWindowProductRequest {
@@ -9478,6 +10313,15 @@ message FinderLiveMsg {
     optional  uint32  likeCnt  = 8;
     optional  FinderLiveContact  finderLiveContact  = 9;
     optional  string  localClientMsgId  = 10;
+    optional  bytes  extInfo  = 11;
+}
+
+message FinderLiveMsgBoxInfo {
+    optional  int32  type  = 1;
+    optional  string  iconName  = 2;
+    optional  string  title  = 3;
+    optional  string  content  = 4;
+    optional  string  buttonTitle  = 5;
 }
 
 message FinderLiveMsgStat {
@@ -9544,6 +10388,57 @@ message FinderLiveQoSInfo {
     optional  uint32  cdnSvrPort  = 26;
     optional  float  cpuUsageProcess  = 27;
     optional  float  cpuUsageDevice  = 28;
+    optional  float  trtcUpLoss  = 29;
+    optional  float  trtcDownLoss  = 30;
+}
+
+message FinderLiveRefreshMicWithAudienceRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  bytes  liveCookies  = 3;
+    optional  uint64  liveId  = 5;
+    optional  uint64  objectId  = 6;
+    optional  string  objectNonceId  = 7;
+    optional  uint32  scene  = 8;
+    optional  string  finderUsername  = 9;
+    optional  string  micSdkUserId  = 10;
+}
+
+message FinderLiveRefreshMicWithAudienceResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  LiveSdkInfo  liveSdkInfo  = 2;
+}
+
+message FinderLiveRewardGainsInfo {
+    optional  FinderLiveContact  contact  = 1;
+    optional  uint64  rewardTime  = 2;
+    optional  uint32  rewardTotalAmountInWecoin  = 3;
+}
+
+message FinderLiveRewardMsgExtInfo {
+    optional  string  rewardProductId  = 1;
+    optional  uint32  rewardProductCount  = 2;
+    optional  uint32  rewardAmountInWecoin  = 3;
+}
+
+message FinderLiveRewardRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  string  finderUsername  = 3;
+    optional  uint64  objectId  = 4;
+    optional  uint64  liveId  = 5;
+    optional  string  rewardProductId  = 6;
+    optional  uint32  rewardProductCount  = 7;
+    optional  uint32  rewardAmountInWecoin  = 8;
+    optional  string  requestId  = 9;
+    optional  string  comboId  = 10;
+}
+
+message FinderLiveRewardResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  string  billNo  = 2;
+    optional  bytes  respBuff  = 3;
+    optional  FinderLiveErrorPage  errorPage  = 4;
 }
 
 message FinderLiveRoomData {
@@ -9615,6 +10510,20 @@ message FinderLiveStreamResponse {
     optional  FinderLivePreloadInfo  livePreloadInfo  = 5;
 }
 
+message FinderLiveTagInfo {
+    optional  uint32  tagId  = 1;
+    optional  string  tagName  = 2;
+    repeated  FinderLiveTagInfo  subTagList  = 3;
+    optional  FinderLiveTagInfo  chosenSubTag  = 4;
+}
+
+message FinderLiveTemplateInfo {
+    optional  uint32  infoType  = 1;
+    optional  bytes  infoBuffer  = 2;
+    optional  string  versionWording  = 3;
+    optional  uint32  seq  = 4;
+}
+
 message FinderLiveTopCommentRequest {
     optional  BaseRequest  baseRequest  = 1;
     optional  FinderBaseRequest  finderBasereq  = 2;
@@ -9626,6 +10535,7 @@ message FinderLiveTopCommentRequest {
     optional  string  clientMsgId  = 8;
     optional  uint64  objectNonceId  = 9;
     optional  string  finderUsername  = 10;
+    optional  string  nonceId  = 11;
 }
 
 message FinderLiveTopCommentResponse {
@@ -9674,6 +10584,37 @@ message FinderLongVideoDesc {
     optional  string  description  = 3;
 }
 
+message FinderLotteryLiveRecordList {
+    repeated  FinderLotteryLiveRecordList_FinderLiveLotteryRecord  lotteryRecordList  = 1;
+}
+
+message FinderLotteryLiveRecordList_FinderLiveLotteryRecord {
+    optional  uint32  liveStartTime  = 1;
+    repeated  FinderLiveLotteryInfo  lotteryInfo  = 2;
+    optional  uint64  liveId  = 3;
+    optional  uint64  objectId  = 4;
+    optional  string  objectNonceId  = 5;
+    optional  int32  retCode  = 6;
+    optional  uint32  continueFlag  = 7;
+    optional  bytes  lastBuffer  = 8;
+}
+
+message FinderManualCloseLiveReq {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  uint64  liveId  = 2;
+    optional  string  finderUsername  = 3;
+    optional  uint64  objectId  = 4;
+    optional  string  objectNonceId  = 5;
+}
+
+message FinderManualCloseLiveResp {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  uint32  liveDurationSeconds  = 2;
+    optional  uint32  liveAudiencesNum  = 3;
+    optional  uint32  liveBeLikedNum  = 4;
+    optional  uint32  liveNewFansNum  = 5;
+}
+
 message FinderMarkReadRequest {
     optional  BaseRequest  baserequest  = 1;
     optional  FinderBaseRequest  finderBasereq  = 2;
@@ -9702,6 +10643,17 @@ message FinderMedia {
     optional  string  coverUrlToken  = 15;
     optional  FinderMediaCodecInfo  codecInfo  = 16;
     optional  FinderLiveMediaSpec  liveSpec  = 17;
+    optional  FinderHlsMediaSpecList  hlsSpec  = 18;
+    optional  uint32  hotFlag  = 19;
+    optional  FinderHalfRect  halfRect  = 20;
+    optional  string  fullThumbUrl  = 21;
+    optional  string  fullThumbUrlToken  = 22;
+    optional  string  fullUrl  = 23;
+    optional  float  fullWidth  = 24;
+    optional  float  fullHeight  = 25;
+    optional  string  fullMd5Sum  = 26;
+    optional  uint32  fullFileSize  = 27;
+    optional  int32  fullBitrate  = 28;
 }
 
 message FinderMediaCodecInfo {
@@ -9722,6 +10674,10 @@ message FinderMediaSpec {
     optional  uint32  firstLoadBytes  = 2;
     optional  uint32  bitRate  = 3;
     optional  string  codingFormat  = 4;
+}
+
+message FinderMediaSpecList {
+    repeated  FinderMediaSpec  specList  = 1;
 }
 
 message FinderMegaVideo {
@@ -9784,6 +10740,8 @@ message FinderMentionCount {
     optional  uint32  normalCount  = 9;
     optional  uint32  systemCount  = 10;
     optional  uint32  newFollowCount  = 11;
+    optional  string  latestNotificationBriefing  = 12;
+    optional  uint64  latestNotificationTime  = 13;
 }
 
 message FinderMentionList {
@@ -9825,6 +10783,19 @@ message FinderModBlackList {
 message FinderModBlockPosterSetting {
     optional  string  finderUsername  = 1;
     optional  uint32  optype  = 2;
+}
+
+message FinderModEventRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  uint64  eventTopicId  = 3;
+    optional  uint32  scene  = 4;
+    optional  uint64  objectId  = 5;
+    optional  string  finderUsername  = 6;
+}
+
+message FinderModEventResponse {
+    optional  BaseResponse  baseResponse  = 1;
 }
 
 message FinderModFeedReproduction {
@@ -9896,6 +10867,7 @@ message FinderModUserInfo {
     optional  uint32  privateSwitch  = 16;
     optional  uint32  mentionedSwitch  = 17;
     optional  FinderContactExtInfo  registerInfo  = 18;
+    optional  uint32  showFinderInWxSwitch  = 19;
 }
 
 message FinderModUserInfoResp {
@@ -10033,6 +11005,12 @@ message FinderObject {
     optional  FinderAttachmentList  attachmentList  = 56;
     optional  uint32  objectType  = 57;
     optional  FinderSnsShareInfo  snsShareInfo  = 58;
+    optional  FinderObjectWebInfo  webInfo  = 59;
+    optional  uint32  followFeedCount  = 60;
+}
+
+message FinderObjectAsyncLoadInfo {
+    optional  uint64  objectId  = 1;
 }
 
 message FinderObjectBGMInfo {
@@ -10058,6 +11036,13 @@ message FinderObjectDesc {
     optional  FinderObjectBGMInfo  followPostInfo  = 14;
     optional  FinderFromAppInfo  fromApp  = 15;
     optional  FinderTemplateInfo  tmplInfo  = 16;
+    optional  FinderObjectEventDesc  event  = 17;
+}
+
+message FinderObjectEventDesc {
+    optional  uint64  eventTopicId  = 1;
+    optional  string  eventName  = 2;
+    optional  string  eventCreatorNickname  = 3;
 }
 
 message FinderObjectExtInfo {
@@ -10074,6 +11059,8 @@ message FinderObjectExtInfo {
     optional  string  iconOutlinedLightUrl  = 11;
     optional  string  wordingIcon  = 12;
     optional  string  iconFilledGroupUrl  = 13;
+    optional  string  iconFilledLightUrlFullpage  = 14;
+    optional  string  iconFilledDarkUrlFullpage  = 15;
 }
 
 message FinderObjectExtInfoList {
@@ -10084,6 +11071,13 @@ message FinderObjectHotTopic {
     optional  uint64  topicId  = 1;
     optional  string  topicName  = 2;
     optional  uint32  topicType  = 3;
+    optional  uint32  jumpFlag  = 4;
+    optional  bytes  topicBuffer  = 5;
+}
+
+message FinderObjectHotTopicBuffer {
+    optional  string  internalWording  = 1;
+    optional  uint32  recommendSystem  = 2;
 }
 
 message FinderObjectHotTopicList {
@@ -10092,6 +11086,15 @@ message FinderObjectHotTopicList {
 
 message FinderObjectList {
     repeated  FinderObject  objectList  = 1;
+}
+
+message FinderObjectUidUnit {
+    optional  uint64  objectId  = 1;
+    optional  string  objectNonceId  = 2;
+}
+
+message FinderObjectWebInfo {
+    optional  string  url  = 1;
 }
 
 message FinderOplogRequest {
@@ -10141,6 +11144,68 @@ message FinderPersonalMsgExtInfo {
     optional  uint32  action  = 2;
 }
 
+message FinderPoiRedirectRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  string  poi  = 3;
+    optional  uint64  fromObjectId  = 4;
+    optional  uint32  fromType  = 5;
+    optional  float  longitude  = 6;
+    optional  float  latitude  = 7;
+}
+
+message FinderPoiRedirectResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  uint32  redirectType  = 2;
+    optional  string  profileUsername  = 3;
+}
+
+message FinderPoiStreamCtx {
+    optional  uint64  lastId  = 1;
+    repeated  uint64  recievedIds  = 2;
+    optional  uint32  pageNum  = 3;
+    optional  uint64  sessionId  = 4;
+    optional  uint32  continueFlag  = 5;
+}
+
+message FinderPoiStreamRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  bytes  lastBuffer  = 3;
+    optional  float  longitude  = 4;
+    optional  float  latitude  = 5;
+    optional  FinderClientStatus  status  = 6;
+    optional  string  poi  = 7;
+    optional  uint64  fromObjectId  = 8;
+    optional  uint32  fromType  = 9;
+}
+
+message FinderPoiStreamResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  FinderObject  object  = 2;
+    optional  bytes  lastBuffer  = 3;
+    optional  uint32  continueFlag  = 4;
+}
+
+message FinderPostLiveAppMsgRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  bytes  liveCookies  = 3;
+    optional  FinderLiveAppMsg  msg  = 4;
+    optional  uint64  liveId  = 5;
+    optional  uint64  objectId  = 6;
+    optional  string  objectNonceId  = 7;
+    optional  uint32  scene  = 8;
+    optional  string  finderUsername  = 9;
+}
+
+message FinderPostLiveAppMsgResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  string  realnameUrl  = 2;
+    optional  uint64  serverMsgId  = 3;
+    optional  string  sessionId  = 4;
+}
+
 message FinderPostLiveMsgReq {
     optional  BaseRequest  baseRequest  = 1;
     optional  FinderBaseRequest  finderBasereq  = 2;
@@ -10155,6 +11220,7 @@ message FinderPostLiveMsgReq {
 message FinderPostLiveMsgResp {
     optional  BaseResponse  baseResponse  = 1;
     optional  string  realnameUrl  = 2;
+    optional  uint32  statusFlag  = 3;
 }
 
 message FinderPostRequest {
@@ -10181,12 +11247,28 @@ message FinderPostRequest {
     optional  string  groupBgmUrl  = 21;
     optional  uint32  groupPostType  = 22;
     optional  uint32  objectType  = 23;
+    optional  uint64  eventTopicId  = 24;
+    optional  uint32  waitType  = 25;
 }
 
 message FinderPostResponse {
     required  BaseResponse  baseResponse  = 1;
     optional  FinderObject  object  = 2;
     optional  FinderContact  selfContact  = 3;
+}
+
+message FinderPreCreateEventRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  string  username  = 3;
+    optional  string  eventName  = 4;
+    optional  string  eventDescription  = 5;
+    optional  string  eventCoverImgUrl  = 6;
+}
+
+message FinderPreCreateEventResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  uint64  eventTopicId  = 2;
 }
 
 message FinderPreFetch {
@@ -10202,12 +11284,20 @@ message FinderPreloadGlobalInfo {
     optional  float  preloadFileSizePercent  = 4;
     optional  uint32  preloadFileMinBytes  = 5;
     optional  uint32  preloadMaxConcurrentCount  = 6;
+    optional  uint32  preConcurrentCount  = 7;
+    optional  uint32  playConcurrentCount  = 8;
+    optional  float  startPreloadPercent  = 9;
+    optional  uint32  startPreloadSecs  = 10;
+    optional  uint32  megavideoMaxBitRate  = 11;
+    optional  uint32  megavideoPrevCount  = 12;
+    optional  uint32  megavideoNextCount  = 13;
 }
 
 message FinderPreloadInfo {
     optional  uint64  preloadStrategyId  = 1;
     optional  FinderPreloadGlobalInfo  globalInfo  = 2;
     repeated  FinderPreloadObjectInfo  objectInfo  = 3;
+    repeated  MegaVideoFinderPreloadObjectInfo  megavideoInfo  = 4;
 }
 
 message FinderPreloadObjectInfo {
@@ -10265,6 +11355,28 @@ message FinderRecognizeMusicResponse {
     optional  bytes  lastBuff  = 4;
 }
 
+message FinderRecommendEventRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  bytes  lastBuffer  = 3;
+}
+
+message FinderRecommendEventResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  FinderEventInfo  eventList  = 2;
+    optional  bytes  lastBuffer  = 3;
+    optional  uint32  continueFlag  = 4;
+}
+
+message FinderRecommendNicknameRequest {
+    optional  BaseRequest  baseRequest  = 1;
+}
+
+message FinderRecommendNicknameResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  string  nickName  = 2;
+}
+
 message FinderRecommendRequest {
     optional  BaseRequest  baserequest  = 1;
     optional  uint64  objectid  = 2;
@@ -10285,6 +11397,7 @@ message FinderRecoverLiveInfo {
 message FinderRedDot {
     optional  uint32  showReddot  = 1;
     optional  FinderRedDotCtrlInfo  ctrlInfo  = 2;
+    repeated  FinderRedDotCtrlInfo  ctrlInfoList  = 3;
 }
 
 message FinderRedDotCtrlInfo {
@@ -10301,10 +11414,12 @@ message FinderRedDotExtInfo {
     optional  string  username  = 2;
     optional  uint32  deliveryTime  = 3;
     optional  uint64  objectId  = 4;
-    optional  uint32  uin  = 5;
+    optional  uint32  uinDelete  = 5;
     optional  uint32  updateTime  = 6;
-    optional  uint64  finderUin  = 7;
+    optional  uint64  finderUinDelete  = 7;
     optional  bytes  tabTipsByPassInfo  = 8;
+    optional  string  objectNonceId  = 9;
+    optional  uint32  displayTabType  = 10;
 }
 
 message FinderRefreshLiveMicRequest {
@@ -10320,6 +11435,10 @@ message FinderRefreshLiveMicRequest {
 message FinderRefreshLiveMicResponse {
     optional  BaseResponse  baseResponse  = 1;
     optional  LiveSdkInfo  liveSdkInfo  = 2;
+}
+
+message FinderRemoveFansSetting {
+    optional  string  fansid  = 1;
 }
 
 message FinderRevokePathRedDot {
@@ -10350,6 +11469,44 @@ message FinderSearchBuff {
     optional  uint32  lastObjectPageNum  = 6;
 }
 
+message FinderSearchFansLastBuff {
+    optional  uint32  pageNum  = 1;
+    optional  uint32  continueFlag  = 2;
+}
+
+message FinderSearchFansRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  bytes  lastBuff  = 3;
+    optional  string  query  = 4;
+    optional  string  finderUsername  = 5;
+}
+
+message FinderSearchFansResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  uint32  continueFlag  = 2;
+    optional  bytes  lastBuff  = 3;
+    repeated  FinderFansContact  fansContactList  = 4;
+}
+
+message FinderSearchGetHotWordListRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+}
+
+message FinderSearchGetHotWordListResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  FinderSearchHotWord  hotWord  = 2;
+}
+
+message FinderSearchHotWord {
+    optional  string  hotwordText  = 1;
+    optional  uint32  actionType  = 2;
+    optional  string  link  = 3;
+    optional  string  appid  = 4;
+    optional  bytes  sessionBuffer  = 5;
+}
+
 message FinderSearchInfo {
     optional  FinderContact  contact  = 1;
     optional  string  highlightNickname  = 2;
@@ -10367,6 +11524,7 @@ message FinderSearchRequest {
     optional  uint32  scene  = 5;
     optional  string  requestId  = 6;
     optional  FinderBaseRequest  finderBasereq  = 7;
+    optional  bytes  hotwordSessionBuffer  = 8;
 }
 
 message FinderSearchResponse {
@@ -10382,6 +11540,22 @@ message FinderSearchResponse {
     optional  uint32  topicContinueFlag  = 10;
     repeated  FinderMusicSearchInfo  musicInfoList  = 11;
     optional  uint32  musicContinueFlag  = 12;
+}
+
+message FinderSearchSuggestRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  string  query  = 3;
+    optional  uint32  offset  = 4;
+}
+
+message FinderSearchSuggestResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  FinderSearchSuggestResponse_Suggestion  suggest  = 2;
+}
+
+message FinderSearchSuggestResponse_Suggestion {
+    optional  string  suggest  = 1;
 }
 
 message FinderSectionInfo {
@@ -10417,7 +11591,7 @@ message FinderSessionInfo {
     optional  uint64  relatedFeedId  = 14;
     optional  uint64  deliveryTime  = 15;
     optional  string  relatedFeedIdStr  = 16;
-    optional  uint64  streamSessionId  = 17;
+    optional  uint64  setConditionFlag  = 17;
     optional  string  msgId  = 18;
     optional  SessionFriendCommentInfo  friendCommentInfo  = 19;
     optional  string  rootFeedIdStr  = 20;
@@ -10464,13 +11638,18 @@ message FinderSessionInfo {
     optional  uint32  ccardIcp  = 64;
     optional  uint32  ccardIic  = 65;
     optional  uint32  ccardEi  = 66;
-    optional  uint32  ccardEid  = 67;
+    optional  uint32  extFlag  = 67;
+    optional  uint32  commentScene  = 68;
+    optional  uint64  ccardEid  = 69;
+    optional  uint64  objectId  = 70;
+    optional  uint64  finderUin  = 71;
 }
 
 message FinderSessionRecallInfo {
     optional  uint32  recallType  = 1;
     optional  float  recallScore  = 2;
     optional  uint32  recallIndex  = 3;
+    optional  string  reportInfo  = 4;
 }
 
 message FinderSessionSecreteInfo {
@@ -10556,8 +11735,20 @@ message FinderSingleCtx {
 
 message FinderSnsGetLiveObjectListCtx {
     optional  uint32  pageNum  = 1;
-    repeated  uint64  cacheId  = 2;
-    repeated  uint32  cacheIdSharedCount  = 3;
+    repeated  uint64  cacheSnsShareId  = 2;
+    repeated  uint32  cacheSnsShareIdShareCount  = 3;
+    repeated  uint32  cacheSnsShareIdShareTime  = 4;
+    optional  uint64  sessionId  = 5;
+    optional  uint32  lastShareType  = 6;
+    repeated  uint64  cacheFriendWatchingId  = 7;
+    repeated  uint32  cacheFriendWatchingIdWatchCount  = 8;
+    optional  uint32  cacheSnsShareIdSrc  = 9;
+    optional  uint32  cacheFriendWatchingIdSrc  = 10;
+    repeated  FinderSnsGetLiveObjectListCtx_UsernameList  cacheSnsShareIdShareFriend  = 11;
+}
+
+message FinderSnsGetLiveObjectListCtx_UsernameList {
+    repeated  string  username  = 1;
 }
 
 message FinderSnsGetLiveObjectListDivider {
@@ -10573,6 +11764,7 @@ message FinderSnsGetLiveObjectListRequest {
     optional  BaseRequest  baserequest  = 1;
     optional  FinderBaseRequest  finderBasereq  = 2;
     optional  bytes  lastBuffer  = 3;
+    repeated  Stats  stats  = 4;
 }
 
 message FinderSnsGetLiveObjectListResponse {
@@ -10582,12 +11774,14 @@ message FinderSnsGetLiveObjectListResponse {
     optional  uint32  continueFlag  = 4;
     optional  FinderSnsGetLiveObjectListLayoutInfo  layoutInfo  = 5;
     repeated  FinderSnsGetLiveObjectListDivider  divider  = 6;
+    optional  bool  enableSetting  = 7;
 }
 
 message FinderSnsShareInfo {
     optional  uint32  type  = 1;
     optional  uint32  shareCount  = 2;
     optional  uint32  watchingCount  = 3;
+    repeated  FinderContact  shareList  = 4;
 }
 
 message FinderSpamObject {
@@ -10611,6 +11805,14 @@ message FinderStatsReportRequest {
 
 message FinderStatsReportResponse {
     required  BaseResponse  baseResponse  = 1;
+}
+
+message FinderStreamBaseCtx {
+    optional  uint64  lastId  = 1;
+    repeated  uint64  recievedIds  = 2;
+    optional  uint32  pageNum  = 3;
+    optional  uint64  sessionId  = 4;
+    optional  uint32  continueFlag  = 5;
 }
 
 message FinderStreamCard {
@@ -10693,6 +11895,11 @@ message FinderStreamCtx {
     repeated  bytes  columnCardFeedReportItem  = 44;
     repeated  uint32  columnCardFeedRecType  = 45;
     optional  uint64  columnCardTopicIdForHotTab  = 46;
+    optional  uint64  columnCardRequestId  = 47;
+    optional  uint32  columnCardRecSys  = 48;
+    optional  bool  isFriendLikeFeedFew  = 49;
+    optional  uint32  friendTabInsertExtObjectEveryFeedCount  = 50;
+    optional  bytes  customReportInfo  = 51;
 }
 
 message FinderStreamCtx_UserContact {
@@ -10756,6 +11963,8 @@ message FinderStreamRequest {
     optional  string  tabTipsUsername  = 21;
     optional  bytes  tabTipsByPassInfo  = 22;
     optional  FinderLiveClientStatus  liveStatus  = 23;
+    optional  string  tabTipsPath  = 24;
+    optional  uint32  requestSource  = 25;
 }
 
 message FinderStreamResponse {
@@ -10780,6 +11989,7 @@ message FinderStreamResponse {
     optional  FinderStreamLayoutInfo  layoutInfo  = 19;
     optional  string  oob  = 20;
     optional  FinderLivePreloadInfo  livePreloadInfo  = 21;
+    optional  bytes  debugMessage  = 22;
 }
 
 message FinderStreamTxtCard {
@@ -10806,6 +12016,10 @@ message FinderSuggestion {
     optional  uint32  type  = 2;
     optional  uint64  hot  = 3;
     optional  string  highlightSuggest  = 4;
+}
+
+message FinderSwitch {
+    optional  uint32  debugId  = 1;
 }
 
 message FinderSyncRequest {
@@ -10844,6 +12058,11 @@ message FinderTabTips {
 
 message FinderTabTipsByPassInfo {
     optional  uint32  tabTipsObjectIdType  = 1;
+    optional  uint64  topicId  = 2;
+    optional  uint32  position  = 3;
+    optional  string  wording  = 4;
+    optional  bytes  byPassCustomInfo  = 5;
+    optional  bytes  innerExpInfo  = 6;
 }
 
 message FinderTabTipsInfo {
@@ -10903,6 +12122,12 @@ message FinderTipsReportExtInfo {
     optional  string  wordingKey  = 2;
     optional  uint32  friendCount  = 3;
     optional  string  columnTopicId  = 4;
+    optional  uint32  style  = 5;
+    optional  string  scene  = 6;
+    optional  uint64  reddotFlag  = 7;
+    optional  uint32  type  = 8;
+    optional  string  remark  = 9;
+    optional  string  topicId  = 10;
 }
 
 message FinderTipsShowEntranceExtInfo {
@@ -10961,6 +12186,7 @@ message FinderTopicInfo {
     optional  uint32  feedFollowPermissionFlag  = 14;
     optional  FinderTemplateInfo  tmplInfo  = 15;
     optional  uint32  disabledFlag  = 16;
+    optional  FinderEventInfo  event  = 17;
 }
 
 message FinderTopicListCtx {
@@ -10969,6 +12195,7 @@ message FinderTopicListCtx {
     optional  uint32  pageNum  = 3;
     optional  uint32  recommendState  = 4;
     optional  uint32  recommendSimilarFlag  = 5;
+    optional  uint64  firstFeedId  = 6;
 }
 
 message FinderTopicRecommend {
@@ -11023,6 +12250,21 @@ message FinderUserInfo {
     optional  FinderAuthInfo  authInfo  = 4;
 }
 
+message FinderUserPagePreviewRequest {
+    optional  BaseRequest  baserequest  = 1;
+    optional  FinderBaseRequest  finderBasereq  = 2;
+    optional  string  wxUsername  = 3;
+}
+
+message FinderUserPagePreviewResponse {
+    optional  BaseResponse  baseresponse  = 1;
+    optional  FinderContact  contact  = 2;
+    optional  uint32  forbiddenFlag  = 3;
+    repeated  FinderObject  object  = 4;
+    optional  uint32  nextDuration  = 5;
+    optional  uint32  showRecentLikedListEntrance  = 6;
+}
+
 message FinderUserPageRequest {
     optional  BaseRequest  baserequest  = 1;
     optional  string  username  = 2;
@@ -11034,6 +12276,7 @@ message FinderUserPageRequest {
     optional  bytes  lastBuffer  = 8;
     optional  uint32  enterType  = 9;
     optional  FinderClientStatus  status  = 10;
+    optional  uint64  topicId  = 11;
     optional  uint32  tabType  = 12;
 }
 
@@ -11057,6 +12300,11 @@ message FinderUserPageResponse {
     optional  uint32  privateLock  = 17;
     optional  FinderWxAppInfo  wxaShopInfo  = 18;
     optional  FinderLiveNoticeInfo  liveNoticeInfo  = 19;
+    repeated  FinderTopicInfo  usualTopics  = 20;
+    optional  uint32  liveDurationHours  = 21;
+    optional  uint32  logoutLock  = 22;
+    optional  string  acctDetailEntrance  = 23;
+    optional  string  loggingoutWording  = 24;
 }
 
 message FinderUserPrepareRequest {
@@ -11089,7 +12337,11 @@ message FinderUserPrepareResponse {
     optional  uint32  liveGlobalFlag  = 19;
     optional  AcctTransferConfig  acctTransferConf  = 20;
     optional  PostActionSheetList  actionList  = 21;
-    optional  uint32  liveEnabled  = 22;
+    optional  uint32  livePrivilegesFlag  = 22;
+    optional  string  creatorCentorUrl  = 23;
+    optional  uint32  foreignUserFlag  = 24;
+    optional  string  acctDetailUrl  = 25;
+    optional  AccountExtraSettingConfig  acctExtSettingConfig  = 26;
 }
 
 message FinderUserpageCtx {
@@ -11226,6 +12478,7 @@ message FinderWxMentionCount {
     optional  uint32  friendObjectlikeLikeCount  = 7;
     optional  uint32  friendObjectrecommendLikeCount  = 8;
     optional  uint32  followAcceptedCount  = 9;
+    optional  uint32  updateTime  = 10;
 }
 
 message FlowDataRechargePreinQueryRequest {
@@ -11642,6 +12895,17 @@ message GameCenterTabSettingControl_TabStyleSetting {
     required  GameCenterTabSettingControl_TabConfiguration  tab  = 3;
 }
 
+message GameCommunityControl {
+    repeated  GameCommunityControl_AlbumInfo  albumInfoList  = 1;
+}
+
+message GameCommunityControl_AlbumInfo {
+    optional  string  appId  = 1;
+    optional  string  gameName  = 2;
+    optional  string  albumName  = 3;
+    optional  string  defaultTitle  = 4;
+}
+
 message GameCreateChatRoomRequest {
     required  BaseRequest  baseRequest  = 1;
     required  string  appId  = 2;
@@ -12022,12 +13286,54 @@ message GameLifeJumpInfo {
     optional  string  jumpUrl  = 2;
 }
 
+message GameLifeMsgExtInfo {
+    optional  uint64  disabledStaticPanelIdFlag  = 1;
+    optional  uint64  disabledAppPanelIdFlag  = 2;
+    optional  MsgReport  msgReport  = 3;
+}
+
 message GameLifeSettingControl {
     optional  GameLifeSettingControl_EntranceControl  entrance  = 1;
     optional  GameLifeSettingControl_HistoryChatControl  historyChat  = 2;
     optional  GameLifeSettingControl_ProfileControl  profile  = 3;
     optional  bool  disableApi  = 4;
     optional  GameLifeSettingControl_GiftControl  gift  = 5;
+    optional  GameLifeSettingControl_AttachBarControl  attachBar  = 6;
+    optional  GameLifeSettingControl_EmotionBoardControl  emotionBoard  = 7;
+}
+
+message GameLifeSettingControl_AppPanel {
+    optional  uint32  panelType  = 1;
+    optional  string  enterId  = 2;
+    optional  bool  showRedDot  = 3;
+    optional  uint32  jumpType  = 4;
+    optional  GameLifeSettingControl_JumpWeappInfo  jumpWeapp  = 5;
+    optional  string  jumpUrl  = 6;
+    repeated  GameLifeSettingControl_EnterWord  enterWordList  = 7;
+    optional  string  iconUrl  = 8;
+    optional  string  darkModeIconUrl  = 9;
+    repeated  GameLifeSettingControl_DisableWord  disableWordList  = 10;
+    optional  uint32  halfScreenHeight  = 11;
+}
+
+message GameLifeSettingControl_AttachBarControl {
+    repeated  GameLifeSettingControl_AppPanel  appPanelList  = 1;
+    repeated  GameLifeSettingControl_StaticPanel  staticPanelList  = 2;
+}
+
+message GameLifeSettingControl_DisableWord {
+    optional  string  language  = 1;
+    optional  string  wording  = 2;
+}
+
+message GameLifeSettingControl_EmotionBoardControl {
+    optional  bool  enabled  = 1;
+}
+
+message GameLifeSettingControl_EnterWord {
+    optional  string  title  = 1;
+    optional  string  desc  = 2;
+    optional  string  language  = 3;
 }
 
 message GameLifeSettingControl_EntranceControl {
@@ -12043,21 +13349,26 @@ message GameLifeSettingControl_GiftControl {
 message GameLifeSettingControl_GiftEntranceControl {
     optional  uint32  type  = 1;
     optional  string  jumpUrl  = 2;
-    optional  GameLifeSettingControl_GiftEntranceControl_JumpWeappInfo  jumpWeapp  = 3;
-}
-
-message GameLifeSettingControl_GiftEntranceControl_JumpWeappInfo {
-    required  string  appId  = 1;
-    optional  string  path  = 2;
-    optional  uint32  openType  = 3;
+    optional  GameLifeSettingControl_JumpWeappInfo  jumpWeapp  = 3;
 }
 
 message GameLifeSettingControl_HistoryChatControl {
     optional  string  entranceUrl  = 1;
 }
 
+message GameLifeSettingControl_JumpWeappInfo {
+    required  string  appId  = 1;
+    optional  string  path  = 2;
+    optional  uint32  openType  = 3;
+}
+
 message GameLifeSettingControl_ProfileControl {
     optional  string  entranceUrl  = 1;
+}
+
+message GameLifeSettingControl_StaticPanel {
+    optional  uint32  panelType  = 1;
+    repeated  GameLifeSettingControl_DisableWord  disableWordList  = 2;
 }
 
 message GameLifeSettingControl_WordingControl {
@@ -12190,6 +13501,16 @@ message GenPrepayResponse {
 
 message GeneralControlBitSet {
     required  uint32  bitValue  = 1;
+}
+
+message GeneralJumpInfoControl {
+    repeated  GeneralJumpInfoControl_Item  itemList  = 1;
+}
+
+message GeneralJumpInfoControl_Item {
+    optional  uint32  businessType  = 1;
+    optional  uint32  jumpType  = 2;
+    optional  string  jumpUrl  = 3;
 }
 
 message GeneralSetRequest {
@@ -13077,6 +14398,7 @@ message GetChatSessionIdRequest {
 message GetChatSessionIdResponse {
     optional  BaseResponse  baseResponse  = 1;
     optional  string  sessionId  = 2;
+    optional  GameLifeMsgExtInfo  msgExtInfo  = 3;
 }
 
 message GetChatUserInfoRequest {
@@ -13223,6 +14545,43 @@ message GetContactResponse {
     repeated  int32  ret  = 4[packed=true];
     repeated  VerifyUserValidTicket  verifyUserValidTicketList  = 5;
     repeated  SendMsgTicket  sendMsgTicketList  = 6;
+}
+
+message GetCouponAndGiftHistoryRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  uint64  pageNum  = 2;
+    optional  uint64  pageSize  = 3;
+    optional  uint32  scene  = 4;
+}
+
+message GetCouponAndGiftHistoryResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  uint64  retCode  = 2;
+    optional  string  retMsg  = 3;
+    optional  bool  isAll  = 4;
+    optional  uint64  nextPageNum  = 5;
+    optional  string  title  = 6;
+    repeated  CardHomePageFAQItem  getMoreList  = 7;
+    optional  CouponAndGiftList  itemsList  = 8;
+}
+
+message GetCouponAndGiftListRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  uint64  pageNum  = 2;
+    optional  uint64  pageSize  = 3;
+    optional  uint32  scene  = 4;
+}
+
+message GetCouponAndGiftListResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  uint64  retCode  = 2;
+    optional  string  retMsg  = 3;
+    optional  bool  isAll  = 4;
+    optional  uint64  nextPageNum  = 5;
+    optional  string  title  = 6;
+    repeated  CardHomePageFAQItem  getMoreList  = 7;
+    optional  CouponAndGiftList  giftItemsList  = 8;
+    optional  CouponAndGiftList  couponItemsList  = 9;
 }
 
 message GetCouponHomePageRequest {
@@ -13718,6 +15077,7 @@ message GetGameCenterGlobalSettingRequest {
     optional  uint32  releaseChannel  = 4;
     optional  AndroidDeviceInfo  androidDeviceInfo  = 5;
     optional  IosDeviceInfo  iosDeviceInfo  = 6;
+    optional  uint32  scene  = 7;
 }
 
 message GetGameCenterGlobalSettingResponse {
@@ -13738,6 +15098,8 @@ message GetGameCenterGlobalSettingResponse {
     optional  AutoRunTaskSettingControl  autoRunTaskSetting  = 17;
     optional  GameCenterTabSettingControl  gameCenterTabSetting  = 18;
     optional  GameLifeSettingControl  gameLifeSetting  = 19;
+    optional  GeneralJumpInfoControl  generalJumpInfo  = 20;
+    optional  GameCommunityControl  gameCommunityInfo  = 21;
 }
 
 message GetGameDetailRequest_V2 {
@@ -14050,6 +15412,30 @@ message GetImUnreadMsgCountResponse {
     optional  string  displayMsg  = 2;
     optional  string  qqscheme  = 3;
     optional  string  downloadUrl  = 4;
+}
+
+message GetIncomeBalanceRequest {
+    required  BaseRequest  baseRequest  = 1;
+}
+
+message GetIncomeBalanceResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  int64  balance  = 2;
+}
+
+message GetIncomePageInfoRequest {
+    required  BaseRequest  baseRequest  = 1;
+}
+
+message GetIncomePageInfoResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  int64  incomeBalance  = 2;
+    optional  string  incomeBillUrl  = 3;
+    optional  string  qaUrl  = 4;
+    optional  CoinBanner  banner  = 5;
+    optional  RealNameAuthInfo  authInfo  = 6;
+    optional  string  encashLimitWording  = 7;
+    optional  bool  encashButtonValid  = 8;
 }
 
 message GetInitDataReq {
@@ -14384,6 +15770,23 @@ message GetMFriendResponse {
     optional  string  md5  = 4;
 }
 
+message GetMemberCardHistoryRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  uint64  pageNum  = 2;
+    optional  uint64  pageSize  = 3;
+}
+
+message GetMemberCardHistoryResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  uint64  retCode  = 2;
+    optional  string  retMsg  = 3;
+    optional  bool  isAll  = 4;
+    optional  uint64  nextPageNum  = 5;
+    optional  string  title  = 6;
+    repeated  CardHomePageFAQItem  getMoreList  = 7;
+    repeated  CardElementCouponList  items  = 8;
+}
+
 message GetMemberCardHomePageRequest {
     required  BaseRequest  baseRequest  = 1;
     optional  uint32  offset  = 2;
@@ -14408,6 +15811,16 @@ message GetMemberCardHomePageResponse {
     optional  CardMiniAppInfo  phoneMembercardMiniAppInfo  = 12;
     optional  string  phoneMembercardEntranceNameWording  = 13;
     optional  string  bubbleEntranceNameWording  = 14;
+    repeated  CardHomePageFAQItem  getMoreList  = 15;
+}
+
+message GetMidasSdkInfoRequest {
+    required  BaseRequest  baseRequest  = 1;
+}
+
+message GetMidasSdkInfoResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  MidasSdkInfo  sdkInfo  = 2;
 }
 
 message GetMktCardHomePageRequest {
@@ -14863,6 +16276,15 @@ message GetPlayUrlResp {
     optional  string  playurl  = 2;
     optional  uint32  block  = 3;
     optional  string  errorWording  = 4;
+}
+
+message GetPluginSwitchReq {
+    optional  BaseRequest  baseRequest  = 1;
+}
+
+message GetPluginSwitchResp {
+    optional  BaseResponse  baseResponse  = 1;
+    optional  PluginSwitchInfoList  switchList  = 2;
 }
 
 message GetPoiCityRequest {
@@ -15445,6 +16867,20 @@ message GetShowSourceResp {
     optional  uint64  lastOptainTime  = 10;
 }
 
+message GetSnsAdCouponCardReq {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  appid  = 2;
+    optional  string  stockid  = 3;
+    optional  string  uxinfo  = 4;
+    optional  string  compid  = 5;
+}
+
+message GetSnsAdCouponCardResp {
+    required  BaseResponse  baseResponse  = 1;
+    optional  uint32  ret  = 2;
+    optional  string  msg  = 3;
+}
+
 message GetSnsAdMetricReq {
     required  BaseRequest  baseRequest  = 1;
     optional  uint32  actionType  = 2;
@@ -15461,6 +16897,17 @@ message GetSnsAdMetricResp {
     optional  string  extSnsInfo  = 4;
 }
 
+message GetSnsTimelineBriefListRequest {
+    optional  BaseRequest  baseRequest  = 1;
+    optional  uint64  minFeedId  = 2;
+    optional  uint32  needCnt  = 3;
+}
+
+message GetSnsTimelineBriefListResponse {
+    optional  BaseResponse  baseResponse  = 1;
+    repeated  SnsTimelineBrief  briefList  = 2;
+}
+
 message GetSportDeviceListRequest {
     required  BaseRequest  baseRequest  = 1;
 }
@@ -15469,6 +16916,7 @@ message GetSportDeviceListResponse {
     required  BaseResponse  baseResponse  = 1;
     repeated  UserSportDevice  deviceList  = 2;
     optional  string  dataSourceFaqUrl  = 3;
+    optional  string  watchDataSourceFaqUrl  = 4;
 }
 
 message GetStepListRequest {
@@ -15589,6 +17037,21 @@ message GetTrustedFriendsResp {
     required  BaseResponse  baseResponse  = 1;
     repeated  TrustedFriendContactInfo  contacts  = 2;
     optional  uint32  trustedFriendMaxCnt  = 3;
+}
+
+message GetTwistAdCardIdReq {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  uxInfo  = 2;
+    optional  uint32  scene  = 3;
+    optional  string  snsId  = 4;
+    optional  string  canvasId  = 5;
+    optional  string  extInfo  = 6;
+}
+
+message GetTwistAdCardIdResp {
+    required  BaseResponse  baseResponse  = 1;
+    optional  string  cardId  = 2;
+    optional  string  snsId  = 3;
 }
 
 message GetUpListRequest {
@@ -15960,6 +17423,18 @@ message GetWCOProductListResponse {
     optional  string  alertDesc  = 9;
 }
 
+message GetWXUserNameReq {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  uxinfo  = 2;
+    optional  string  wxGroupInfo  = 3;
+}
+
+message GetWXUserNameResp {
+    required  BaseResponse  baseResponse  = 1;
+    optional  string  username  = 2;
+    optional  string  aliasname  = 3;
+}
+
 message GetWeChatOutCouponsRequest {
     required  BaseRequest  baseRequest  = 1;
     optional  uint32  scene  = 2;
@@ -16042,6 +17517,42 @@ message GetWeappListByLocationResp_BusinessWeappInfo {
     optional  uint32  versionType  = 5;
     optional  string  pageUrl  = 6;
     optional  uint32  version  = 7;
+}
+
+message GetWecoinBalanceRequest {
+    required  BaseRequest  baseRequest  = 1;
+}
+
+message GetWecoinBalanceResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  int64  balance  = 2;
+}
+
+message GetWecoinPageInfoRequest {
+    required  BaseRequest  baseRequest  = 1;
+}
+
+message GetWecoinPageInfoResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  int64  wecoinBalance  = 2;
+    optional  int64  incomeBalance  = 3;
+    optional  string  wecoinBillUrl  = 4;
+    optional  string  incomeBillUrl  = 5;
+    optional  bool  showIncome  = 6;
+    optional  string  qaUrl  = 7;
+    optional  CoinBanner  banner  = 8;
+}
+
+message GetWecoinPriceListRequest {
+    required  BaseRequest  baseRequest  = 1;
+}
+
+message GetWecoinPriceListResponse {
+    required  BaseResponse  baseResponse  = 1;
+    repeated  WecoinPriceInfo  priceInfos  = 2;
+    optional  string  agreementUrl  = 3;
+    optional  int32  agreementStatus  = 4;
+    optional  uint32  agreementVersion  = 5;
 }
 
 message GetWidgetAppVersionInfoReq {
@@ -16420,6 +17931,7 @@ message HBBusinessCallbackReq {
     optional  string  sendId  = 2;
     optional  string  transId  = 3;
     optional  string  idSign  = 4;
+    optional  uint32  unionSource  = 5;
 }
 
 message HBBusinessCallbackResp {
@@ -17026,6 +18538,11 @@ message ImgPair {
     required  SKBuiltinString_t  username  = 2;
 }
 
+message IncomeEncashCtx {
+    optional  string  billNo  = 1;
+    optional  uint64  amount  = 2;
+}
+
 message IndexGift {
     optional  string  giftUrl  = 1;
     optional  string  giftName  = 2;
@@ -17134,6 +18651,13 @@ message InstalledMore {
     required  string  iconUrl  = 1;
     optional  string  title  = 2;
     optional  string  webUrl  = 3;
+}
+
+message InterceptPopUp {
+    optional  string  wording  = 1;
+    optional  PopUpJumpInfo  leftButton  = 2;
+    optional  PopUpJumpInfo  rightButton  = 3;
+    optional  uint32  popUpType  = 4;
 }
 
 message InterceptWin {
@@ -17311,6 +18835,7 @@ message JSAPIPreVerifyRequest {
     optional  uint32  scene  = 9;
     optional  string  sourceAppid  = 10;
     repeated  string  tagnameList  = 11;
+    optional  uint32  entryScene  = 13;
 }
 
 message JSAPIPreVerifyResponse {
@@ -17830,6 +19355,7 @@ message KidsWatchLoginConfirmGetResponse {
     optional  BaseResponse  baseResponse  = 1;
     repeated  KidsAcctInfo  kidsList  = 2;
     optional  uint32  enableRegButton  = 3;
+    optional  uint32  reqSessionLimit  = 4;
 }
 
 message KvDataItem {
@@ -17991,6 +19517,7 @@ message LaunchWxaAppRequest {
     optional  bool  isParallelRequest  = 13;
     optional  bool  isSdkPrefetch  = 14;
     optional  WxaPushMsgInfo  wxaPushMsgInfo  = 15;
+    optional  string  shortLink  = 17;
 }
 
 message LaunchWxaAppResponse {
@@ -18182,9 +19709,33 @@ message LbsRoomResponse {
     optional  string  roomNickName  = 3;
 }
 
+message LctOperationFirstEntryInfo {
+    optional  string  title  = 1;
+    optional  string  content  = 2;
+}
+
 message LctOperationInfo {
     optional  uint32  showEntry  = 1;
     optional  NewDocumentItem  docItem  = 2;
+    optional  LctOperationShowInfoWithProduct  showInfoWithProduct  = 3;
+}
+
+message LctOperationProductInfo {
+    optional  string  name  = 1;
+    optional  string  desc  = 2;
+    optional  string  profit  = 3;
+    optional  string  profitDesc  = 4;
+    optional  UrlJumpInfo  url  = 5;
+    optional  string  spid  = 6;
+    optional  string  fundCode  = 7;
+    optional  string  productCode  = 8;
+    optional  string  unionId  = 9;
+}
+
+message LctOperationShowInfoWithProduct {
+    optional  NewDocumentItem  titleItem  = 1;
+    repeated  LctOperationProductInfo  productList  = 2;
+    optional  LctOperationFirstEntryInfo  firstEntryInfo  = 3;
 }
 
 message LensCtx {
@@ -18355,6 +19906,9 @@ message LiveSdkChannelParams {
     optional  string  rtmpPushUrl  = 10;
     optional  uint32  cdnQualitySvrcfg  = 11;
     optional  uint32  cdnQualityH265Backcfg  = 12;
+    optional  uint32  supportScreenRotate  = 13;
+    optional  uint32  qosReportSwitch  = 14;
+    optional  uint32  qosControlSwitch  = 15;
 }
 
 message LiveSdkInfo {
@@ -18505,6 +20059,9 @@ message LqtBindQueryInfo {
     optional  string  balanceWording  = 8;
     optional  int32  funcAfterWording  = 9;
     optional  TipsItem  balanceSecondLineTips  = 10;
+    optional  ComonPromptInfo  purchaseFromLqWording  = 11;
+    optional  string  selectAccountTitle  = 12;
+    optional  string  selectAccountPrompt  = 13;
 }
 
 message MEmail {
@@ -18705,6 +20262,16 @@ message MMDBPerformanceSQLInTransaction {
     optional  uint32  count  = 2;
 }
 
+message MMPayCgiHeader {
+    repeated  MMPayCgiHeaderItem  items  = 1;
+    optional  uint32  itemsCrc  = 2;
+}
+
+message MMPayCgiHeaderItem {
+    optional  string  itemKey  = 1;
+    optional  bytes  itemValue  = 2;
+}
+
 message MakeSureButton {
     optional  string  wording  = 1;
     optional  string  leftButtonWording  = 2;
@@ -18748,6 +20315,8 @@ message ManualAuthAesReqData {
     required  uint32  inputType  = 22;
     optional  SKBuiltinBuffer_t  clientCheckData  = 23;
     optional  WCExtInfo2  extSpamInfo  = 24;
+    optional  string  androidPackageName  = 25;
+    optional  PubKeyInfo  pubKey  = 26;
 }
 
 message ManualAuthRequest {
@@ -19028,6 +20597,11 @@ message MegaVideoFinderBusiness {
     optional  string  objectNonceId  = 2;
 }
 
+message MegaVideoFinderPreloadObjectInfo {
+    optional  uint64  feedId  = 1;
+    optional  float  interestFactor  = 2;
+}
+
 message MegaVideoFluencyInfo {
     optional  int32  scene  = 1;
     optional  int32  hot  = 2;
@@ -19175,6 +20749,12 @@ message MegaVideoMedia {
     optional  string  thumbUrlToken  = 14;
     optional  string  coverUrlToken  = 15;
     repeated  MegaVideoMediaSpec  spec  = 16;
+    optional  FinderHlsMediaSpecList  hlsSpec  = 17;
+    optional  FinderMediaSpecList  mediaSpec  = 18;
+    optional  uint32  hotFlag  = 19;
+    optional  FinderHalfRect  halfRect  = 20;
+    optional  string  fullThumbUrl  = 21;
+    optional  string  fullThumbUrlToken  = 22;
 }
 
 message MegaVideoMediaSpec {
@@ -19207,7 +20787,6 @@ message MegaVideoPostRequest {
 message MegaVideoPostResponse {
     required  BaseResponse  baseResponse  = 1;
     optional  MegaVideo  video  = 2;
-    optional  FinderContact  contact  = 3;
 }
 
 message MegaVideoPreloadGlobalInfo {
@@ -19323,6 +20902,16 @@ message MicroMsgResponseNew {
     required  uint32  type  = 7;
     optional  uint64  newMsgId  = 8;
     optional  string  msgSource  = 9;
+}
+
+message MidasSdkInfo {
+    optional  string  offerId  = 1;
+    optional  string  openId  = 2;
+    optional  string  openKey  = 3;
+    optional  string  sessionId  = 4;
+    optional  string  sessionType  = 5;
+    optional  string  pf  = 6;
+    optional  string  pfKey  = 7;
 }
 
 message MiniAppInfo {
@@ -19832,6 +21421,11 @@ message MsgRemindExtInfo {
     optional  string  chatName  = 5;
 }
 
+message MsgReport {
+    optional  int32  msgType  = 1;
+    optional  string  externInfo  = 2;
+}
+
 message MulMediaInfo {
     optional  uint64  mediaid  = 1;
     optional  int32  mtype  = 2;
@@ -20086,6 +21680,7 @@ message NewRegRequest {
     optional  string  thirdAppAuthTicket  = 47;
     optional  WCExtInfo2  extSpamInfo  = 48;
     optional  string  appleIdTicket  = 49;
+    optional  PubKeyInfo  pubKey  = 52;
 }
 
 message NewRegResponse {
@@ -20340,6 +21935,7 @@ message OftenReadBarReportRequest {
     optional  uint32  sessionid  = 3;
     repeated  OftenReadBarShow  showList  = 4;
     repeated  OftenReadBarClick  clickList  = 5;
+    optional  uint32  source  = 6;
 }
 
 message OftenReadBarReportResponse {
@@ -20390,6 +21986,7 @@ message OnClickPurchaseRes {
     optional  string  bottomWording  = 9;
     optional  string  realNameInfo  = 10;
     optional  FaultControlInfo  faultControlInfo  = 11;
+    optional  string  daeAuthorizationPromptWording  = 12;
     optional  string  traceInfo  = 100;
 }
 
@@ -20416,6 +22013,12 @@ message OnClickRedeemRes {
     optional  string  realNameInfo  = 14;
     optional  FaultControlInfo  faultControlInfo  = 15;
     optional  uint32  fastRedeemFeeLimit  = 16;
+    optional  string  redeemToBankWording  = 17;
+    optional  PopUpWithHalfDialog  redeemToLqExceedGuide  = 18;
+    optional  PopUpWithHalfDialog  redeemToLqExceedDetail  = 19;
+    optional  string  redeemToBankExceedWording  = 20;
+    optional  ComonPromptInfo  redeemToBankExceedSecondLineMsg  = 21;
+    optional  PopUpWithHalfDialog  redeemToBankExceedDetail  = 22;
     optional  string  traceInfo  = 100;
 }
 
@@ -21496,6 +23099,8 @@ message PayIBGJsGetTransactionResp {
     optional  PayIBGBizInfo  bizInfo  = 5;
     repeated  PayIBGActivityInfo  activityInfo  = 6;
     optional  int32  isUseNewPage  = 7;
+    repeated  ShowInfo  showInfo  = 8;
+    optional  int32  isUseShowInfo  = 9;
 }
 
 message PayIBGQuickGetOverseaWalletReq {
@@ -21644,6 +23249,11 @@ message PersonalDesigner {
     optional  string  headUrl  = 3;
 }
 
+message PfmTestInfo {
+    optional  uint32  sceneType  = 1;
+    optional  bytes  checkData  = 2;
+}
+
 message PhoneNumItem {
     optional  string  phoneNum  = 1;
 }
@@ -21723,6 +23333,15 @@ message PluginKeyList {
     repeated  PluginKey  list  = 2;
 }
 
+message PluginSwitchInfo {
+    optional  int32  pluginSwitchId  = 1;
+    optional  bool  switchValue  = 2;
+}
+
+message PluginSwitchInfoList {
+    repeated  PluginSwitchInfo  list  = 1;
+}
+
 message PoiCtrlInfo {
     optional  string  poiId  = 1;
     optional  string  country  = 2;
@@ -21756,11 +23375,28 @@ message PopItem {
     optional  uint32  actionCode  = 5;
 }
 
+message PopUpJumpInfo {
+    optional  string  wording  = 1;
+    optional  uint32  action  = 2;
+    optional  string  url  = 3;
+    optional  string  username  = 4;
+    optional  string  pagepath  = 5;
+}
+
 message PopUpWindowInfo {
     optional  string  popUpTitle  = 1;
     optional  string  popUpText  = 2;
     optional  string  popUpImageUrl  = 3;
     optional  string  popUpButtonText  = 4;
+}
+
+message PopUpWithHalfDialog {
+    optional  string  title  = 1;
+    optional  string  desc  = 2;
+    optional  uint32  iconType  = 3;
+    optional  ComonPromptInfo  content  = 4;
+    optional  ButtomJumpInfo  firstButton  = 5;
+    optional  ButtomJumpInfo  secondButton  = 6;
 }
 
 message PopUpsItem {
@@ -21832,6 +23468,12 @@ message PostActionSheet {
     optional  string  desc  = 3;
     optional  uint32  type  = 4;
     optional  string  value  = 5;
+    optional  string  universalLink  = 6;
+    optional  string  appstoreScheme  = 7;
+    optional  string  androidUniversalLink  = 8;
+    optional  string  androidAppstoreScheme  = 9;
+    optional  string  androidPackage  = 10;
+    optional  string  androidAppPublicKey  = 11;
 }
 
 message PostActionSheetList {
@@ -22020,6 +23662,20 @@ message PrepareBindXmailResponse {
     optional  string  wxHeadUrl  = 5;
 }
 
+message PrepareIncomeEncashRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  requestId  = 2;
+    optional  uint64  amount  = 3;
+    optional  string  reportSessionId  = 101;
+}
+
+message PrepareIncomeEncashResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  bytes  ctxBuff  = 2;
+    optional  WxPayUserTokenParams  tokenParams  = 3;
+    optional  InterceptPopUp  interceptInfo  = 100;
+}
+
 message PreparePurchaseRequest {
     required  BaseRequest  baseRequest  = 1;
     optional  string  productId  = 2;
@@ -22036,6 +23692,41 @@ message PreparePurchaseResponse {
     optional  string  tradeToken4TenPay  = 3;
     optional  string  partner4TenPay  = 4;
     optional  string  sign4TenPay  = 5;
+}
+
+message PrepareWecoinConsumeRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  requestId  = 2;
+    optional  int32  businessId  = 3;
+    optional  string  toUsername  = 4;
+    optional  string  consumeProductId  = 5;
+    optional  uint32  count  = 6;
+    optional  bytes  extReq  = 7;
+    optional  string  reportSessionId  = 101;
+}
+
+message PrepareWecoinConsumeResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  bytes  ctxBuff  = 2;
+    optional  InterceptPopUp  interceptInfo  = 100;
+}
+
+message PrepareWecoinRechargeRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  requestId  = 2;
+    optional  string  rechargeProductId  = 3;
+    optional  uint32  agreementVersion  = 4;
+    optional  uint32  scene  = 100;
+    optional  string  reportSessionId  = 101;
+}
+
+message PrepareWecoinRechargeResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  MidasSdkInfo  sdkInfo  = 2;
+    optional  string  billNo  = 3;
+    optional  string  urlParams  = 4;
+    optional  string  saveValue  = 5;
+    optional  InterceptPopUp  interceptInfo  = 100;
 }
 
 message PriceAndFavorViewData {
@@ -22302,6 +23993,11 @@ message PstnUserStatus {
     optional  string  errTitle  = 7;
 }
 
+message PubKeyInfo {
+    required  int32  nid  = 1;
+    required  SKBuiltinBuffer_t  key  = 2;
+}
+
 message PublicLibUpdateInfo {
     optional  bool  needUpdate  = 1;
     optional  string  url  = 2;
@@ -22377,6 +24073,10 @@ message PurchaseFundReq {
     optional  string  spid  = 5;
     optional  string  operateId  = 7;
     optional  uint32  entranceType  = 8;
+    optional  string  bankType  = 9;
+    optional  string  bankSerial  = 10;
+    optional  uint32  supportCrossPlatformCashier  = 11;
+    optional  uint32  supportJointCashier  = 12;
     optional  string  traceInfo  = 100;
 }
 
@@ -22387,6 +24087,7 @@ message PurchaseFundRes {
     optional  string  prepayid  = 4;
     optional  string  outTradeNo  = 5;
     optional  int32  payScene  = 6;
+    optional  uint32  cashierType  = 7;
     optional  string  traceInfo  = 100;
 }
 
@@ -22677,6 +24378,7 @@ message QryPurchaseResultReq {
     optional  uint32  accountType  = 5;
     optional  string  operateId  = 6;
     optional  uint32  entranceType  = 7;
+    optional  uint32  payChannel  = 8;
     optional  string  traceInfo  = 100;
 }
 
@@ -22761,6 +24463,7 @@ message QryUsrFundDetailRes {
     optional  string  realnameGuideInfo  = 42;
     optional  string  balanceUrl  = 43;
     optional  LctOperationInfo  lctOperationInfo  = 45;
+    optional  NewDocumentItem  subtitleBanner  = 46;
     optional  string  traceInfo  = 100;
 }
 
@@ -23175,6 +24878,15 @@ message ReadItLaterResponse {
     optional  BaseResponse  baseResponse  = 1;
 }
 
+message RealNameAuthInfo {
+    optional  string  appid  = 1;
+    repeated  uint32  categoryId  = 2;
+    optional  int32  authType  = 3;
+    optional  string  applyInfo  = 4;
+    optional  string  protocolUrl  = 5;
+    optional  uint32  status  = 100;
+}
+
 message RealNameInfo {
     optional  uint32  guideFlag  = 1;
     optional  string  guideWording  = 2;
@@ -23491,6 +25203,42 @@ message RecommendedMusicLyricInfo {
     optional  string  lyricsContent  = 2;
 }
 
+message RecycleCard {
+    optional  string  extraData  = 1;
+    optional  uint64  clientmsgid  = 2;
+    optional  uint32  flag  = 3;
+    optional  string  reportData  = 4;
+}
+
+message RecycleCardReport {
+    optional  string  extraData  = 1;
+    optional  uint64  clientmsgid  = 2;
+    optional  uint32  satus  = 3;
+    optional  string  reportData  = 4;
+}
+
+message RecycleCardReportReq {
+    optional  BaseRequest  baseRequest  = 1;
+    repeated  RecycleCardReport  list  = 2;
+}
+
+message RecycleCardReportResp {
+    required  BaseResponse  baseResponse  = 1;
+}
+
+message RecycleCardReq {
+    optional  BaseRequest  baseRequest  = 1;
+    repeated  RecycleCard  list  = 2;
+    optional  uint32  scene  = 3;
+}
+
+message RecycleCardResp {
+    required  BaseResponse  baseResponse  = 1;
+    repeated  RecycleCard  list  = 2;
+    optional  uint64  nextReqTime  = 3;
+    optional  uint32  maxMsgCount  = 4;
+}
+
 message RedDot {
     optional  int32  type  = 1;
     optional  string  redDotId  = 2;
@@ -23524,6 +25272,7 @@ message RedPacketStoryInfo {
     optional  string  packetId  = 15;
     optional  CoverInfoDetail  coverInfo  = 16;
     optional  string  actionButtonText  = 17;
+    optional  uint32  actionEmotionDesignerUin  = 18;
 }
 
 message RedPacketStoryInfo_StoryDetail {
@@ -23744,6 +25493,17 @@ message RemoveCardInRecentlyUsedListResponse {
     optional  string  retMsg  = 3;
 }
 
+message RemoveCouponRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  userCardId  = 2;
+}
+
+message RemoveCouponResponse {
+    required  BaseResponse  baseResponse  = 1;
+    optional  uint32  retCode  = 2;
+    optional  string  retMsg  = 3;
+}
+
 message RemoveTrustedFriendsResp {
     required  BaseResponse  baseResponse  = 1;
 }
@@ -23789,6 +25549,7 @@ message ReportBizListShowInfoRequest {
     optional  uint32  enterPos  = 3;
     optional  uint32  exitPos  = 4;
     optional  uint32  sessionid  = 5;
+    optional  uint64  enterTimestampMs  = 6;
 }
 
 message ReportBizListShowInfoResponse {
@@ -24214,6 +25975,8 @@ message ResourceMeta {
     optional  bytes  data  = 6;
     required  string  originalMd5  = 7;
     required  uint32  fileSize  = 8;
+    optional  string  desc  = 9;
+    optional  string  originalSha1  = 10;
 }
 
 message ResourceReq {
@@ -24239,6 +26002,10 @@ message ResultCommContent {
     optional  string  desc  = 3;
     optional  string  iconUrl  = 4;
     optional  string  source  = 5;
+}
+
+message RetryInfo {
+    optional  uint32  delayMs  = 1;
 }
 
 message RetryStrategy {
@@ -25856,6 +27623,14 @@ message ShowAuthorizeUserIDResp {
     optional  AuthorizeInfoWithPhone  authorizeInfo  = 19;
 }
 
+message ShowInfo {
+    optional  string  name  = 1;
+    optional  string  value  = 2;
+    optional  ValueAttr  valueAttr  = 3;
+    optional  string  nameColor  = 4;
+    optional  string  valueColor  = 5;
+}
+
 message ShowMessage {
     optional  string  leftButtonWording  = 1;
     optional  string  rightButtonWording  = 2;
@@ -26200,6 +27975,7 @@ message SnsObjectOpRequest {
     required  BaseRequest  baseRequest  = 1;
     required  uint32  opCount  = 2;
     repeated  SnsObjectOp  opList  = 3;
+    optional  WCExtInfo2  extSpamInfo  = 4;
 }
 
 message SnsObjectOpResponse {
@@ -26380,6 +28156,9 @@ message SnsTimeLineRequest {
     optional  uint32  pullType  = 14;
     optional  uint64  minIdForGetPrePage  = 15;
     optional  uint64  minIdForCheckUnread  = 16;
+    optional  uint64  nearbyFoldId  = 17;
+    optional  uint32  foldSectionSize  = 18;
+    optional  uint64  getTimeLineIdxMinId  = 19;
 }
 
 message SnsTimeLineResponse {
@@ -26401,6 +28180,7 @@ message SnsTimeLineResponse {
     optional  uint32  countForCheckUnread  = 16;
     repeated  uint64  idListForCheckUnread  = 17[packed=true];
     repeated  uint32  idFlagListForCheckUnread  = 18[packed=true];
+    optional  SKBuiltinBuffer_t  weiShangInfo  = 19;
 }
 
 message SnsTimeLineWithTypeRequest {
@@ -26412,6 +28192,13 @@ message SnsTimeLineWithTypeResponse {
     required  BaseResponse  baseResponse  = 1;
     required  uint32  objectCount  = 2;
     repeated  SnsObject  objectList  = 3;
+}
+
+message SnsTimelineBrief {
+    optional  uint64  feedId  = 1;
+    optional  string  username  = 2;
+    optional  uint32  weishangFlag  = 3;
+    optional  uint32  createtime  = 4;
 }
 
 message SnsUploadRequest {
@@ -26586,6 +28373,17 @@ message SportRecord {
     optional  string  sportUrl  = 7;
 }
 
+message SportRecordUpload {
+    optional  uint32  sportTypeId  = 1;
+    optional  uint32  sportTime  = 2;
+    optional  uint32  sportDistance  = 3;
+    optional  uint32  sportNumber  = 4;
+    optional  uint32  sportCalorie  = 5;
+    optional  string  sportUrl  = 6;
+    optional  uint32  startTime  = 7;
+    optional  uint32  duration  = 8;
+}
+
 message StatReportResponse {
     required  BaseResponse  baseResponse  = 1;
     required  uint32  nextReportTime  = 2;
@@ -26637,6 +28435,7 @@ message Stats {
     optional  uint64  megavideoId  = 15;
     optional  string  megavideoNonceId  = 16;
     optional  uint64  exposeStartTimeMs  = 17;
+    optional  uint32  uin  = 18;
 }
 
 message StatusBarStyleControl {
@@ -27172,6 +28971,16 @@ message SubscribeNewGameResponse_V2 {
     optional  ChatRoomInfo  chatRoomInfo  = 5;
 }
 
+message SubscribeVideoInfo {
+    repeated  SubscribeVideoItem  videoList  = 1;
+    repeated  SubscribeVideoItem  screenList  = 2;
+}
+
+message SubscribeVideoItem {
+    required  uint32  memberid  = 1;
+    required  uint32  videoLength  = 2;
+}
+
 message SugResult {
     repeated  SugResult_SugItem  items  = 1;
 }
@@ -27299,8 +29108,6 @@ message TLRecArticleWrapper {
     optional  BizRecArticleCard  articleCard  = 5;
     optional  string  cardId  = 20;
     optional  string  exptType  = 21;
-    optional  string  recRk  = 22;
-    optional  string  recInfo  = 23;
 }
 
 message TLRecCard {
@@ -27358,7 +29165,7 @@ message TLRecCardUserInfo_FeedbackInfoMsg {
 
 message TLRecCardWrapper {
     optional  TLRecCard  recCard  = 1;
-    optional  uint32  pos  = 2;
+    optional  int32  pos  = 2;
     optional  int32  weight  = 3;
     optional  bool  hasWeight  = 4;
     optional  uint64  msgSvrId  = 5;
@@ -27366,6 +29173,10 @@ message TLRecCardWrapper {
     optional  uint64  recId  = 7;
     optional  int32  style  = 8;
     optional  TLRecArticleWrapper  articleCardWrapper  = 9;
+    optional  TLRecCardUserInfo_FeedbackInfoMsg  feedbackInfo  = 10;
+    optional  int32  redDotFlag  = 11;
+    optional  bool  isUseServerTime  = 12;
+    optional  string  extraData  = 13;
 }
 
 message TableCellViewData {
@@ -27600,6 +29411,10 @@ message TimelineGetOftenReadBizResp_BizInfo {
     optional  string  bizusername  = 1;
     optional  string  logoUrl  = 2;
     optional  uint32  weight  = 3;
+}
+
+message TimelineIdx {
+    optional  uint64  feedId  = 1;
 }
 
 message TimelineNotifyInfo {
@@ -28071,6 +29886,12 @@ message TransferRecord {
     optional  string  explain  = 7;
 }
 
+message TransferReq {
+    optional  uint32  magic  = 1;
+    optional  bytes  header  = 2;
+    optional  bytes  body  = 3;
+}
+
 message TransferRsaEncryptData {
     required  SKBuiltinBuffer_t  randomEncryptKey  = 1;
 }
@@ -28262,6 +30083,12 @@ message UnifyAuthResponse {
     optional  AcctSectResp  acctSectResp  = 4;
     optional  NetworkSectResp  networkSectResp  = 5;
     optional  AxAuthSecRespList  axAuthSecRespList  = 6;
+}
+
+message UnreadMsgReport {
+    optional  string  deviceUniqueId  = 1;
+    optional  uint64  seq  = 2;
+    optional  bool  hasUnreadMsg  = 3;
 }
 
 message UpFriendRequest {
@@ -28623,6 +30450,7 @@ message UploadHDHeadImgRequest {
     required  SKBuiltinBuffer_t  data  = 5;
     optional  string  imgHash  = 6;
     optional  string  userName  = 7;
+    optional  WCExtInfo2  extSpamInfo  = 8;
 }
 
 message UploadHDHeadImgResponse {
@@ -28756,6 +30584,16 @@ message UploadSoterAuthkeyResp {
     required  BaseResponse  baseResponse  = 1;
 }
 
+message UploadSportRecordReq {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  appid  = 2;
+    repeated  SportRecordUpload  sportRecordList  = 3;
+}
+
+message UploadSportRecordResp {
+    required  BaseResponse  baseResponse  = 1;
+}
+
 message UploadUserLocationInfoRequest {
     required  BaseRequest  baseRequest  = 1;
     optional  double  latitude  = 2;
@@ -28884,6 +30722,12 @@ message UploadVoiceResponse {
     optional  uint32  cancelFlag  = 11;
     optional  uint64  newMsgId  = 12;
     optional  uint32  actionFlag  = 13;
+}
+
+message UrlJumpInfo {
+    optional  string  url  = 1;
+    optional  uint32  urlType  = 2;
+    optional  string  appUsername  = 3;
 }
 
 message UrlPreloadControl {
@@ -29026,6 +30870,14 @@ message ValFeature {
     optional  uint32  autoPlay  = 11;
 }
 
+message ValueAttr {
+    optional  uint32  linkType  = 1;
+    optional  string  linkWeapp  = 2;
+    optional  string  linkAddr  = 3;
+    optional  string  linkUrl  = 4;
+    optional  uint32  textAttr  = 5;
+}
+
 message VerifyBeaconJSPermissionRequest {
     required  BaseRequest  baseRequest  = 1;
     optional  string  url  = 2;
@@ -29128,6 +30980,16 @@ message VerifyPurchaseResponse {
     optional  string  seriesId  = 2;
     required  uint32  bizType  = 3;
     optional  int32  isDeleteReceipt  = 4;
+}
+
+message VerifySignatureTestRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  bytes  signData  = 2;
+    optional  bytes  sign  = 3;
+}
+
+message VerifySignatureTestResponse {
+    required  BaseResponse  baseResponse  = 1;
 }
 
 message VerifySmsCodeReq {
@@ -29305,6 +31167,13 @@ message VideoChannelTopBarInfo {
     optional  uint32  intervalTl  = 11;
     optional  uint32  controlBits  = 12;
     optional  string  defaultTitle  = 13;
+    optional  uint32  showGreenDot  = 15;
+    optional  string  informMsgCnt  = 16;
+    optional  uint32  showSmallIcon  = 17;
+    optional  string  smallIconUrl  = 18;
+    optional  string  appPath  = 21;
+    optional  string  dmLogoUrl  = 22;
+    optional  string  dmDefaultLogoUrl  = 23;
 }
 
 message VideoChannelTopBarReqInfo {
@@ -29312,11 +31181,6 @@ message VideoChannelTopBarReqInfo {
     optional  string  bizUsername  = 2;
     optional  string  detailPageUrl  = 3;
     optional  uint32  scene  = 4;
-}
-
-message VideoMemberResolution {
-    required  uint32  memberid  = 1;
-    required  uint32  videoLength  = 2;
 }
 
 message VideoPlayErrorInfo {
@@ -29335,11 +31199,6 @@ message VideoPlayerConfig_iOSConfig {
     optional  float  downloadGrading  = 4;
     optional  float  preloadSec  = 5;
     repeated  uint32  arrBufferTime  = 6;
-}
-
-message VideoResolution {
-    required  uint32  defVideoLength  = 1;
-    repeated  VideoMemberResolution  members  = 2;
 }
 
 message VideoUrlInfo {
@@ -30507,6 +32366,14 @@ message WCPayJumpActionItem {
     optional  string  actionUrl  = 2;
     optional  string  actionAppUsername  = 13;
     optional  string  actionAppNickname  = 14;
+    optional  uint32  designerUin  = 15;
+}
+
+message WSGroup {
+    optional  uint64  groupId  = 1;
+    optional  uint32  groupTime  = 2;
+    optional  SnsObject  topObject  = 3;
+    repeated  uint64  feedIdList  = 4;
 }
 
 message WSReportInfo {
@@ -31349,6 +33216,16 @@ message WeappResult {
     optional  string  userName  = 2;
 }
 
+message WebCommPrefetchReq {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  reqStr  = 2;
+}
+
+message WebCommPrefetchResp {
+    required  BaseResponse  baseResponse  = 1;
+    optional  string  respStr  = 2;
+}
+
 message WebCommRequest {
     optional  string  commReq  = 1;
     optional  string  requestId  = 2;
@@ -31488,6 +33365,33 @@ message WebViewClipboardInfo {
 
 message WebViewControl {
     optional  uint32  uinKeyExpireTime  = 1;
+}
+
+message WecoinConsumeCtx {
+    optional  string  billNo  = 1;
+    optional  uint64  amount  = 2;
+    optional  string  urlParams  = 3;
+}
+
+message WecoinPriceInfo {
+    optional  string  productId  = 1;
+    optional  uint32  wecoinCount  = 2;
+    optional  uint32  price  = 3;
+}
+
+message WecoinRealNameAuthRequest {
+    required  BaseRequest  baseRequest  = 1;
+    optional  string  requestId  = 2;
+    optional  string  token  = 3;
+}
+
+message WecoinRealNameAuthResponse {
+    required  BaseResponse  baseResponse  = 1;
+}
+
+message WeiShangInfo {
+    repeated  WSGroup  groups  = 1;
+    repeated  TimelineIdx  timelineIdx  = 2;
 }
 
 message WepkgBigPackage {
@@ -31644,6 +33548,15 @@ message WxBannerVoiceInfo {
 message WxPageDataResponse {
     required  BaseResponse  baseResponse  = 1;
     optional  bytes  data  = 2;
+}
+
+message WxPayUserTokenParams {
+    optional  string  appid  = 1;
+    optional  string  payPackage  = 2;
+    optional  string  signType  = 3;
+    optional  string  timestamp  = 4;
+    optional  string  paySign  = 5;
+    optional  string  nonceStr  = 6;
 }
 
 message WxVerifyCodeReqInfo {
@@ -32217,6 +34130,13 @@ message WxaWidgetSetting {
     optional  bool  drawLock  = 3;
 }
 
+message WxpayTestEnvInfo {
+    optional  int32  environmentId  = 1;
+    optional  int32  sceneId  = 2;
+    optional  int32  callstackId  = 3;
+    optional  string  extensionData  = 4;
+}
+
 message XAgreementDmSetting {
     required  uint32  count  = 1;
     repeated  DmItem  items  = 2;
@@ -32488,3 +34408,4 @@ message ReportClientCheckReq
     optional WCExtInfo2 extSpamInfo = 4; // buffer = WCExtInfo
     optional uint64 timestamp = 5;
 }
+
