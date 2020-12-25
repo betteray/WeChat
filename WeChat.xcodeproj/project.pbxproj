@@ -102,6 +102,7 @@
 		712F960021D20A7800CFE3A0 /* ShortLinkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F95FF21D20A7800CFE3A0 /* ShortLinkClient.m */; };
 		712F960621D78F0B00CFE3A0 /* AutoAuthKeyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F960521D78F0B00CFE3A0 /* AutoAuthKeyStore.m */; };
 		712F960921D78F9300CFE3A0 /* SyncKeyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F960821D78F9300CFE3A0 /* SyncKeyStore.m */; };
+		713A78B32595ED16005D48E2 /* cgi-7020.json in Resources */ = {isa = PBXBuildFile; fileRef = 713A78B02595ED16005D48E2 /* cgi-7020.json */; };
 		713F5A5323A23C770096220C /* cat_mouse.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5223A23C770096220C /* cat_mouse.mp4 */; };
 		713F5A5723A250220096220C /* test.amr in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5623A250220096220C /* test.amr */; };
 		714513442390F6A40078D130 /* CdnLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 714513432390F6A40078D130 /* CdnLogic.m */; };
@@ -139,7 +140,6 @@
 		716A93C2239A2CA200A0C9DC /* GetCDNDnsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93C1239A2CA200A0C9DC /* GetCDNDnsService.m */; };
 		716A93D4239AA2C200A0C9DC /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A93D3239AA2C200A0C9DC /* DBManager.m */; };
 		716AAE4F214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */; };
-		7176CDD62591F982002BA47C /* mm.proto in Sources */ = {isa = PBXBuildFile; fileRef = 7176CDD32591F982002BA47C /* mm.proto */; };
 		71776AF5247558AC0069D616 /* PasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71776AF4247558AC0069D616 /* PasswordService.m */; };
 		717A5EB024AD7AC300D5D3FE /* mm_17000e20.proto in Sources */ = {isa = PBXBuildFile; fileRef = 717A5EAD24AD7AC300D5D3FE /* mm_17000e20.proto */; };
 		71808C0A239DFCD0005C3BDE /* CdnSnsUploadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 71808C09239DFCD0005C3BDE /* CdnSnsUploadTask.m */; };
@@ -188,6 +188,7 @@
 		71E4851B240541620030FF0B /* FPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E4851A240541620030FF0B /* FPService.m */; };
 		71E6061F259470FE00F6C725 /* mm_17001422.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71E6061C259470FE00F6C725 /* mm_17001422.proto */; };
 		71E9EAC1234068FA00353DBD /* CalSpamAlg.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E9EAC0234068FA00353DBD /* CalSpamAlg.m */; };
+		71EAB3182595B8B9006B6B2C /* mm.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71EAB3152595B8B9006B6B2C /* mm.proto */; };
 		71EE8B4323BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71EE8B4123BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin */; };
 		71EE8B4423BEF9C200650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71EE8B4223BEF9C100650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin */; };
 		71EE8B4923BEFB7500650F67 /* proto_bin_666.zip in Resources */ = {isa = PBXBuildFile; fileRef = 71EE8B4823BEFB7500650F67 /* proto_bin_666.zip */; };
@@ -515,6 +516,7 @@
 		712F960521D78F0B00CFE3A0 /* AutoAuthKeyStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoAuthKeyStore.m; sourceTree = "<group>"; };
 		712F960721D78F9300CFE3A0 /* SyncKeyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncKeyStore.h; sourceTree = "<group>"; };
 		712F960821D78F9300CFE3A0 /* SyncKeyStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncKeyStore.m; sourceTree = "<group>"; };
+		713A78B02595ED16005D48E2 /* cgi-7020.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cgi-7020.json"; sourceTree = "<group>"; };
 		713F5A5223A23C770096220C /* cat_mouse.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat_mouse.mp4; sourceTree = "<group>"; };
 		713F5A5623A250220096220C /* test.amr */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.amr; sourceTree = "<group>"; };
 		714513422390F6A40078D130 /* CdnLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnLogic.h; sourceTree = "<group>"; };
@@ -594,7 +596,6 @@
 		716A93D3239AA2C200A0C9DC /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		716AAE4D214FC8C5006BCFB2 /* NSData+CompressAndEncypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CompressAndEncypt.h"; sourceTree = "<group>"; };
 		716AAE4E214FC8C5006BCFB2 /* NSData+CompressAndEncypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CompressAndEncypt.m"; sourceTree = "<group>"; };
-		7176CDD32591F982002BA47C /* mm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm.proto; sourceTree = "<group>"; };
 		71776AF3247558AC0069D616 /* PasswordService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordService.h; sourceTree = "<group>"; };
 		71776AF4247558AC0069D616 /* PasswordService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordService.m; sourceTree = "<group>"; };
 		717A5EAD24AD7AC300D5D3FE /* mm_17000e20.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000e20.proto; sourceTree = "<group>"; };
@@ -673,6 +674,7 @@
 		71E6061C259470FE00F6C725 /* mm_17001422.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17001422.proto; sourceTree = "<group>"; };
 		71E9EABF234068FA00353DBD /* CalSpamAlg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalSpamAlg.h; sourceTree = "<group>"; };
 		71E9EAC0234068FA00353DBD /* CalSpamAlg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalSpamAlg.m; sourceTree = "<group>"; };
+		71EAB3152595B8B9006B6B2C /* mm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm.proto; sourceTree = "<group>"; };
 		71EE8B3923BE077600650F67 /* st-706-verifyuserrequest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-verifyuserrequest.txt"; sourceTree = "<group>"; };
 		71EE8B3A23BE077600650F67 /* st-706-login.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-login.txt"; sourceTree = "<group>"; };
 		71EE8B3B23BE077600650F67 /* st-706-reportclientcheck-15.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "st-706-reportclientcheck-15.txt"; sourceTree = "<group>"; };
@@ -1153,7 +1155,7 @@
 		712C6F18214A6A5800603022 /* Proto */ = {
 			isa = PBXGroup;
 			children = (
-				7176CDD32591F982002BA47C /* mm.proto */,
+				71EAB3152595B8B9006B6B2C /* mm.proto */,
 				71E1C19C230657E900F5032A /* security.proto */,
 				712BDD7C2473C7A900A3DD49 /* base.proto */,
 				46D2CA322239F1CE0053C4A6 /* objc_out */,
@@ -1581,6 +1583,7 @@
 				7154EDD323B61831008927B9 /* cgi-709.json */,
 				71D13DF72475061800508B51 /* cgi-7012.json */,
 				71BABE1724E7D44200066169 /* cgi-7015.json */,
+				713A78B02595ED16005D48E2 /* cgi-7020.json */,
 				460CDE4F220088CE0075F3E5 /* cgi.json */,
 				71E485052403B68E0030FF0B /* mm_17000b21.proto */,
 				718E556724617BB700D94D93 /* mm_17000c21.proto */,
@@ -1786,6 +1789,7 @@
 				71D13DFA2475061800508B51 /* cgi-7012.json in Resources */,
 				719E6EE42476CEB7009861CB /* online.json in Resources */,
 				7196E96E24814D7600879C72 /* MMProtocalJni-706.json in Resources */,
+				713A78B32595ED16005D48E2 /* cgi-7020.json in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
 				710C488D2492765200343B3C /* 1591885083-st-34847.bin in Resources */,
 				71DF5BBB247FC83D00B7E0B2 /* always-login.json in Resources */,
@@ -1966,6 +1970,7 @@
 				711E9B3E23598D8200C5B655 /* RiskScanBufUtil.m in Sources */,
 				714BE26B2408ED0B00720C72 /* SpamInfoGenerator-XML.m in Sources */,
 				7112118523A8C7C700A5DBCA /* SendMsgService.m in Sources */,
+				71EAB3182595B8B9006B6B2C /* mm.proto in Sources */,
 				714E360B2358ADF90046F7D8 /* ReportRequestPacket.m in Sources */,
 				7187ECF22501EAD700353BD8 /* EncryptStPairTest.mm in Sources */,
 				719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */,
@@ -2017,7 +2022,6 @@
 				7154D5162196B721005064C4 /* HexDump.m in Sources */,
 				71AA2121249A0333008FCEC4 /* mm_17000d23.proto in Sources */,
 				71A3F597254BBB9E0057AB8A /* mm_17000f21.proto in Sources */,
-				7176CDD62591F982002BA47C /* mm.proto in Sources */,
 				71776AF5247558AC0069D616 /* PasswordService.m in Sources */,
 				464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */,
 				46804CEA21DE5B1800232229 /* ChatsTableViewCell.m in Sources */,
