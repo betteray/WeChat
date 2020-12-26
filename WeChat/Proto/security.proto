@@ -269,8 +269,8 @@ message SensorData2 {
         repeated SensorEvent events = 2;
     }
 
-    optional uint32 where = 1; // com.tencent.mm.normsg.c$p::fa(Login_f5f5be2e-e287-4338-af84-945236c6fa58,2,200) 第二个参数：//reg:1, login:2, sayhi:3
-    optional string context = 2; // Login_a10c3d0e-25ab-4a4e-b038-c170b5e818f7 为 Login_ + uuid.
+    optional uint32 where = 1; // com.tencent.mm.normsg.c$p::fa(Login_f5f5be2e-e287-4338-af84-945236c6fa58,2,200) 第二个参数：//Register:1, Login:2, VerifyUser:3, Unknown:defualt
+    optional string context = 2; // Login_a10c3d0e-25ab-4a4e-b038-c170b5e818f7 为 "Login" + "_" + uuid.
     optional uint32 count = 3;  // 固定 200。 com.tencent.mm.normsg.c$p::fa(Login_f5f5be2e-e287-4338-af84-945236c6fa58,2,200) 第三个参数，代码里写死的 200。 //每组收集的个数？
     optional uint64 startTime = 4; // tv.sec * 1000 + tv.usec / 1000
     optional uint64 endTime = 5; // tv.sec * 1000 + tv.usec / 1000
