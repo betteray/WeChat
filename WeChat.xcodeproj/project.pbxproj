@@ -156,6 +156,7 @@
 		718DA13E248A604200F76A7F /* SoftTypeUitl.m in Sources */ = {isa = PBXBuildFile; fileRef = 718DA13D248A604200F76A7F /* SoftTypeUitl.m */; };
 		718E556A24617BB700D94D93 /* mm_17000c21.proto in Sources */ = {isa = PBXBuildFile; fileRef = 718E556724617BB700D94D93 /* mm_17000c21.proto */; };
 		7194EDCB249CCD6500CED627 /* EnvBits.m in Sources */ = {isa = PBXBuildFile; fileRef = 7194EDCA249CCD6500CED627 /* EnvBits.m */; };
+		7195345D25A6FAC100757E67 /* mm_17001520.proto in Sources */ = {isa = PBXBuildFile; fileRef = 7195345A25A6FAC100757E67 /* mm_17001520.proto */; };
 		7196E96C24813E2200879C72 /* MMProtocalJni-7015.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */; };
 		7196E96E24814D7600879C72 /* MMProtocalJni-706.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96D24814D7600879C72 /* MMProtocalJni-706.json */; };
 		7196E97024814D9300879C72 /* MMProtocalJni-7012.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */; };
@@ -626,6 +627,7 @@
 		718E556724617BB700D94D93 /* mm_17000c21.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000c21.proto; sourceTree = "<group>"; };
 		7194EDC9249CCD6500CED627 /* EnvBits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnvBits.h; sourceTree = "<group>"; };
 		7194EDCA249CCD6500CED627 /* EnvBits.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnvBits.m; sourceTree = "<group>"; };
+		7195345A25A6FAC100757E67 /* mm_17001520.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17001520.proto; sourceTree = "<group>"; };
 		7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7015.json"; sourceTree = "<group>"; };
 		7196E96D24814D7600879C72 /* MMProtocalJni-706.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-706.json"; sourceTree = "<group>"; };
 		7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7012.json"; sourceTree = "<group>"; };
@@ -1593,6 +1595,7 @@
 				71A3F595254BBB9E0057AB8A /* mm_17001120.proto */,
 				71A3F593254BBB9E0057AB8A /* mm_17001220.proto */,
 				71E6061C259470FE00F6C725 /* mm_17001422.proto */,
+				7195345A25A6FAC100757E67 /* mm_17001520.proto */,
 				7168F91423B0F51C00DBB3A6 /* mm_dump_660.proto */,
 				7168F91223B0F3AF00DBB3A6 /* mm_dump_666.proto */,
 				7168F91123B0F0F500DBB3A6 /* mm_dump_705.proto */,
@@ -1967,6 +1970,7 @@
 				7161984C21CB704F00A76F39 /* mmpack.m in Sources */,
 				718DA1382488D85100F76A7F /* CdnGetMsgImgTask.m in Sources */,
 				712F95F521D0B91F00CFE3A0 /* DeviceManager.m in Sources */,
+				7195345D25A6FAC100757E67 /* mm_17001520.proto in Sources */,
 				711E9B3E23598D8200C5B655 /* RiskScanBufUtil.m in Sources */,
 				714BE26B2408ED0B00720C72 /* SpamInfoGenerator-XML.m in Sources */,
 				7112118523A8C7C700A5DBCA /* SendMsgService.m in Sources */,
