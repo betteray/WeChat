@@ -74,13 +74,21 @@
         postBody = [protoOrXml dataByDeflating];
     }
 
-    NSData *unCompressedSaeData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"meta-manifest" ofType:@"dat"]];
+//    NSData *unCompressedSaeData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"meta-manifest" ofType:@"dat"]];
+    NSData *unCompressedSaeData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"key.bin" ofType:@""]];
     wcaes *aes = [wcaes parseFromData:unCompressedSaeData error:nil];
 
+    NSData *tbkey = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sectable.bin" ofType:@""]];
+    NSData *tbvalue = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sectablevalue.bin" ofType:@""]];
+
+    
     NSData *saeIV = aes.iv;
     NSData *tableKey = aes.tablekey;
     NSData *tableValue = aes.tablevalue;
     NSData *tableFinal = aes.unkown18;
+
+    tableKey = tbkey;
+    tableValue = tbvalue;
 
     char outbuff[postBody.length * 2];
     unsigned int  outlen = 0;
@@ -91,14 +99,14 @@
                    (char *) tableKey.bytes, (unsigned int) tableKey.length,
                    (char *) tableValue.bytes, (unsigned int) tableValue.length,
                    (char *) tableFinal.bytes, (unsigned int) tableFinal.length,
-                   0x3060,
+                   aes.len,
                    outbuff, &outlen];
     
     if (ret == 1) {
         NSData *data = [NSData dataWithBytes:outbuff length:outlen];
         SpamInfoEncrypedResult *result = [SpamInfoEncrypedResult new];
-        result.type = 1;
-        result.version = @"00000003\000";
+        result.type = 2;
+        result.version = @"00000001\000";
         result.encrypedData = data;
         result.timestamp = (int32_t)[[NSDate date] timeIntervalSince1970];
         result.tag5 = 5;

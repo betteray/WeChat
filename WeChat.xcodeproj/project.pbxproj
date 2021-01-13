@@ -103,6 +103,8 @@
 		712F960621D78F0B00CFE3A0 /* AutoAuthKeyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F960521D78F0B00CFE3A0 /* AutoAuthKeyStore.m */; };
 		712F960921D78F9300CFE3A0 /* SyncKeyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 712F960821D78F9300CFE3A0 /* SyncKeyStore.m */; };
 		713A78B32595ED16005D48E2 /* cgi-7020.json in Resources */ = {isa = PBXBuildFile; fileRef = 713A78B02595ED16005D48E2 /* cgi-7020.json */; };
+		713E03F125ADA66500C40F45 /* sectable.bin in Resources */ = {isa = PBXBuildFile; fileRef = 713E03EE25ADA66500C40F45 /* sectable.bin */; };
+		713E03F625ADEC9A00C40F45 /* sectablevalue.bin in Resources */ = {isa = PBXBuildFile; fileRef = 713E03F525ADEC9A00C40F45 /* sectablevalue.bin */; };
 		713F5A5323A23C770096220C /* cat_mouse.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5223A23C770096220C /* cat_mouse.mp4 */; };
 		713F5A5723A250220096220C /* test.amr in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5623A250220096220C /* test.amr */; };
 		714513442390F6A40078D130 /* CdnLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 714513432390F6A40078D130 /* CdnLogic.m */; };
@@ -188,6 +190,7 @@
 		71E4851524052E430030FF0B /* Safe.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E4851424052E430030FF0B /* Safe.pbobjc.m */; };
 		71E4851B240541620030FF0B /* FPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E4851A240541620030FF0B /* FPService.m */; };
 		71E6061F259470FE00F6C725 /* mm_17001422.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71E6061C259470FE00F6C725 /* mm_17001422.proto */; };
+		71E62B1525A72919001B50CC /* key.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71E62B1225A72919001B50CC /* key.bin */; };
 		71E9EAC1234068FA00353DBD /* CalSpamAlg.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E9EAC0234068FA00353DBD /* CalSpamAlg.m */; };
 		71EAB3182595B8B9006B6B2C /* mm.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71EAB3152595B8B9006B6B2C /* mm.proto */; };
 		71EE8B4323BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71EE8B4123BEF9C100650F67 /* 1578111445585_cgi-bin_micromsg-bin_verifyuser.bin */; };
@@ -518,6 +521,8 @@
 		712F960721D78F9300CFE3A0 /* SyncKeyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncKeyStore.h; sourceTree = "<group>"; };
 		712F960821D78F9300CFE3A0 /* SyncKeyStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncKeyStore.m; sourceTree = "<group>"; };
 		713A78B02595ED16005D48E2 /* cgi-7020.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cgi-7020.json"; sourceTree = "<group>"; };
+		713E03EE25ADA66500C40F45 /* sectable.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = sectable.bin; sourceTree = "<group>"; };
+		713E03F525ADEC9A00C40F45 /* sectablevalue.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = sectablevalue.bin; sourceTree = "<group>"; };
 		713F5A5223A23C770096220C /* cat_mouse.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat_mouse.mp4; sourceTree = "<group>"; };
 		713F5A5623A250220096220C /* test.amr */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.amr; sourceTree = "<group>"; };
 		714513422390F6A40078D130 /* CdnLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnLogic.h; sourceTree = "<group>"; };
@@ -674,6 +679,7 @@
 		71E48519240541620030FF0B /* FPService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPService.h; sourceTree = "<group>"; };
 		71E4851A240541620030FF0B /* FPService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPService.m; sourceTree = "<group>"; };
 		71E6061C259470FE00F6C725 /* mm_17001422.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17001422.proto; sourceTree = "<group>"; };
+		71E62B1225A72919001B50CC /* key.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = key.bin; sourceTree = "<group>"; };
 		71E9EABF234068FA00353DBD /* CalSpamAlg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalSpamAlg.h; sourceTree = "<group>"; };
 		71E9EAC0234068FA00353DBD /* CalSpamAlg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalSpamAlg.m; sourceTree = "<group>"; };
 		71EAB3152595B8B9006B6B2C /* mm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm.proto; sourceTree = "<group>"; };
@@ -1563,6 +1569,9 @@
 		71DF5BBC247FF07600B7E0B2 /* 03 */ = {
 			isa = PBXGroup;
 			children = (
+				713E03F525ADEC9A00C40F45 /* sectablevalue.bin */,
+				713E03EE25ADA66500C40F45 /* sectable.bin */,
+				71E62B1225A72919001B50CC /* key.bin */,
 				71AF135E24D425190078BC6A /* meta-manifest.dat */,
 				71DF5BBE247FF08D00B7E0B2 /* encrypt.m */,
 				71DF5BBD247FF08D00B7E0B2 /* encrypt.h */,
@@ -1779,6 +1788,7 @@
 				712C6E68214A145700603022 /* Assets.xcassets in Resources */,
 				71AF135F24D425190078BC6A /* meta-manifest.dat in Resources */,
 				710C488E2492765200343B3C /* 1591885006-fpdevices-2236.bin in Resources */,
+				713E03F625ADEC9A00C40F45 /* sectablevalue.bin in Resources */,
 				7168F97623B355B400DBB3A6 /* test.mp3 in Resources */,
 				713F5A5723A250220096220C /* test.amr in Resources */,
 				71EE8B4423BEF9C200650F67 /* 1578111436705_cgi-bin_micromsg-bin_verifyuser.bin in Resources */,
@@ -1788,11 +1798,13 @@
 				71B65F1E247D0F6A009D1DD3 /* pic_3.jpg in Resources */,
 				710C488C2492765200343B3C /* 1591885044611_cgi-bin_micromsg-bin_secmanualauth.bin in Resources */,
 				71B65F20247D0F6A009D1DD3 /* pic_1.jpg in Resources */,
+				713E03F125ADA66500C40F45 /* sectable.bin in Resources */,
 				710EE281248FC10F007F663E /* device7012.txt in Resources */,
 				71D13DFA2475061800508B51 /* cgi-7012.json in Resources */,
 				719E6EE42476CEB7009861CB /* online.json in Resources */,
 				7196E96E24814D7600879C72 /* MMProtocalJni-706.json in Resources */,
 				713A78B32595ED16005D48E2 /* cgi-7020.json in Resources */,
+				71E62B1525A72919001B50CC /* key.bin in Resources */,
 				712C6E66214A145600603022 /* WeChat.storyboard in Resources */,
 				710C488D2492765200343B3C /* 1591885083-st-34847.bin in Resources */,
 				71DF5BBB247FC83D00B7E0B2 /* always-login.json in Resources */,
