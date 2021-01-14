@@ -8,12 +8,12 @@
 
 #import "SoftTypeUitl.h"
 
-static unsigned int uin = 1419215301;
+static unsigned int uin = 2263357049;
 
 @implementation SoftTypeUitl
 
 + (void)calculateK25 {
-    NSData *data = [NSData dataWithHexString:@"7614a08db685d5beaffc33ab72a13cb4"]; // k25 结果
+    NSData *data = [NSData dataWithHexString:@"3f1cacfadf3f75ec4629692a119c02b5"]; // k25 结果
    
     NSMutableData *r = [NSMutableData data];
     
@@ -31,7 +31,7 @@ static unsigned int uin = 1419215301;
 }
 
 + (void)calculateK289 {
-    NSData *data = [NSData dataWithHexString:@"e81f227c 100484b1"]; // k28 k29四字节
+    NSData *data = [NSData dataWithHexString:@"9bdfa98f edbf6109"]; // k28 k29四字节
    
     NSMutableData *r = [NSMutableData data];
     

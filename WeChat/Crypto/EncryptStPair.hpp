@@ -132,13 +132,14 @@ unsigned int DataCrc_Pre(unsigned int key, char len);
 unsigned int BuildFinderPrintEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
 unsigned int BuildFinderPrintEncrypt_Byte(unsigned int a1, char a2, unsigned int a3);
 unsigned int BuildFinderPrintCrc_Pre(unsigned int key, int len);
+unsigned int BuildFinderPrintCrc_Pre2(unsigned int a1, unsigned int a2);
 
 unsigned int AllPkgNameMD5Encrypt_Word(unsigned int a1, int a2, unsigned int a3);
 unsigned int AllPkgNameMD5EncryptCrc_Pre(unsigned int usec, int len);
-
+unsigned int AllPkgNameMD5EncryptCrc_Pre2(unsigned int a1, int a2);
 
 // 需单独调用获取gettimeofday一次，当前时间。
-unsigned int ProcSelfMountsCheck(int usec, int sec);
+unsigned int ProcSelfMountsCheck(unsigned int usec,unsigned int sec);
 
 unsigned int timeval117(unsigned int a1);
 

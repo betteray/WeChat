@@ -315,14 +315,14 @@ message ClientCheckData {
         CCData_PB_WB = 6;       // PB => WhiteBoxAes(003)
     }
     
-    optional DataType dataType = 5; // dataType=5: 003加密； dataType=4: 经过压缩的数据，不用设置version；dataType=2: 有时候为空，但devicetoken会用此格式，可能是proto明文数据。
+    optional uint32 dataType = 5; // dataType=5: 003加密； dataType=4: 经过压缩的数据，不用设置version；dataType=2: 有时候为空，但devicetoken会用此格式，可能是proto明文数据。
     
     enum Status {
         CCData_SUCCESS = 0;
         CCData_FAIL = 1;
     }
     
-    optional Status status = 6; // 0 = 成功， 1 = 失败 定位字符串：ae.d("MicroMsg.SecInfoReporterImpl", "compressed and base64 result is still too large with length " + v0_3.length);
+    optional uint32 status = 6; // 0 = 成功， 1 = 失败 定位字符串：ae.d("MicroMsg.SecInfoReporterImpl", "compressed and base64 result is still too large with length " + v0_3.length);
 }
 
 

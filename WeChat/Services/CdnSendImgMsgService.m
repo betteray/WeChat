@@ -26,10 +26,10 @@
     request.longitude = -1000;
     request.latitude = -1000;
     //    request.attachedContent =
-    request.tag12 = 0;
-    request.tag13 = 0;
-    request.tag14 = 0;
-    request.tag15 = 0;
+//    request.tag12 = 0;
+//    request.tag13 = 0;
+//    request.tag14 = 0;
+//    request.tag15 = 0;
     request.aeskey = [[[FSOpenSSL random128BitAESKey] toHexString] lowercaseString];
     request.encryVer = 0;
    

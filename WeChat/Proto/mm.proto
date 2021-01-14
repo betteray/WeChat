@@ -7809,7 +7809,7 @@ message FFHBRequestResp {
 message FPFreshRequest {
     required  BaseRequest  baseRequest  = 1;
     optional  bytes  randomkey  = 2;
-    optional  bytes  spamBuff  = 3;
+    optional  ClientCheckData  spamBuff  = 3;
 }
 
 message FPFreshResponse {
@@ -7820,7 +7820,7 @@ message FPFreshResponse {
 message FPGetRequest {
     required  BaseRequest  baseRequest  = 1;
     optional  bytes  randomkey  = 2;
-    optional  bytes  spamBuff  = 3;
+    optional  ClientCheckData  spamBuff  = 3;
 }
 
 message FPGetResponse {
@@ -7831,7 +7831,7 @@ message FPGetResponse {
 message FPInitRequest {
     required  BaseRequest  baseRequest  = 1;
     optional  bytes  randomkey  = 2;
-    optional  bytes  spamBuff  = 3;
+    optional  ClientCheckData  spamBuff  = 3;
 }
 
 message FPInitResponse {
@@ -29167,7 +29167,7 @@ message TLRecCardWrapper {
     optional  TLRecCard  recCard  = 1;
     optional  int32  pos  = 2;
     optional  int32  weight  = 3;
-    optional  bool  hasWeight  = 4;
+    optional  bool  hassWeight  = 4;
     optional  uint64  msgSvrId  = 5;
     optional  uint32  createTime  = 6;
     optional  uint64  recId  = 7;

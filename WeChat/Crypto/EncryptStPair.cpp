@@ -1371,6 +1371,21 @@ unsigned int BuildFinderPrintEncrypt_Byte(unsigned int a1, char a2, unsigned int
 
 unsigned int BuildFinderPrintCrc_Pre(unsigned int a1, int a2)
 {
+    unsigned int v2; // ST08_4
+    unsigned int v3; // r0
+    char v4; // r1
+    unsigned int v5; // r2
+
+    v2 = a1;
+    v3 = (a2 ^ 0xFFFFFFFC) & a2;
+    v4 = 32 - v3;
+    unsigned int v50 = (0x380412BFu >> v3) & (939791039 << v4) ;
+    v5 = v50 | (939791039 << v4) ^ (0x380412BFu >> v3);
+    return ((v2 << v3) & (v2 >> v4) | (v2 >> v4) ^ (v2 << v3)) & ~v5 | v5 & ~((v2 << v3) & (v2 >> v4) | (v2 >> v4) ^ (v2 << v3));
+}
+
+unsigned int BuildFinderPrintCrc_Pre_old(unsigned int a1, int a2)
+{
   unsigned int v2; // ST08_4
   unsigned int v3; // r0
   char v4; // r1
@@ -1381,6 +1396,10 @@ unsigned int BuildFinderPrintCrc_Pre(unsigned int a1, int a2)
   v4 = 32 - v3;
   v5 = (0x380412BFu >> v3) & (939791039 << v4) | (939791039 << v4) ^ (0x380412BFu >> v3);
   return ((v2 << v3) & (v2 >> v4) | (v2 >> v4) ^ (v2 << v3)) & ~v5 | v5 & ~((v2 << v3) & (v2 >> v4) | (v2 >> v4) ^ (v2 << v3));
+}
+
+unsigned int BuildFinderPrintCrc_Pre2(unsigned int a1, unsigned int a2) {
+    return ((a1 << (a2 & (a2 ^ 0xFFFFFFFC))) | (a1 >> (-(a2 & (a2 ^ 0xFFFFFFFC)) + 0x20))) ^ ((0x380412BF << (-(a2 & (a2 ^ 0xFFFFFFFC)) + 0x20)) | (0x380412BF >> (a2 & (a2 ^ 0xFFFFFFFC))));
 }
 
 unsigned int AllPkgNameMD5Encrypt_Word(unsigned int a1, int a2, unsigned int a3)
@@ -1428,6 +1447,10 @@ unsigned int AllPkgNameMD5EncryptCrc_Pre(unsigned int a1, int a2)
   v6 = (v4 & 0x588832C1 | ~v4 & 0xA777CD3E) ^ ((-1996154414 << v5) & 0x588832C1 | ~(-1996154414 << v5) & 0xA777CD3E);
   v7 = ((v2 << v3) & 0xDAFED21E | ~(v2 << v3) & 0x25012DE1) ^ ((v2 >> v5) & 0xDAFED21E | ~(v2 >> v5) & 0x25012DE1) | ~(~(v2 >> v5) | ~(v2 << v3));
   return (v6 | ~(~(-1996154414 << v5) | ~v4)) & ~v7 | v7 & ~(v6 | ~(~(-1996154414 << v5) | ~v4));
+}
+
+unsigned int AllPkgNameMD5EncryptCrc_Pre2(unsigned int a1, int a2) {
+    return (a1 << (a2 & 0x3)) ^ (0x890519D2 << (-(a2 & 0x3) + 0x20));
 }
 
 unsigned int ProcSelfMountsCheck(unsigned int a1,unsigned int a2)

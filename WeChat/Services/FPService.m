@@ -18,10 +18,10 @@
     FPDevice *fp = [[DeviceManager sharedManager] getCurrentDevice].fpDevice;
     NSData *encrypedData = [ZZEncryptService get003FromLocal:[fp data]];
     
-    SpamInfoEncrypedResult *result = [SpamInfoEncrypedResult parseFromData:encrypedData error:nil];
-    result.timestamp = (int32_t)[[NSDate date] timeIntervalSince1970];
-    result.tag5 = 5;
-    result.tag6 = 0;
+    ClientCheckData *result = [ClientCheckData parseFromData:encrypedData error:nil];
+    result.timeStamp = (int32_t)[[NSDate date] timeIntervalSince1970];
+    result.dataType = ClientCheckData_DataType_CcdataPbZipWb;
+    result.status = ClientCheckData_Status_CcdataSuccess;
     
     FPInitRequest *request = [FPInitRequest new];
     request.spamBuff = [result data];
@@ -60,13 +60,8 @@
     fp.unknown2 = [ZZEncryptService getFPMd5];
     NSData *encrypedData = [ZZEncryptService get003FromLocal:[fp data]];
     
-    SpamInfoEncrypedResult *result = [SpamInfoEncrypedResult parseFromData:encrypedData error:nil];
-    result.timestamp = (int32_t)[[NSDate date] timeIntervalSince1970];
-    result.tag5 = 5;
-    result.tag6 = 0;
-    
     FPFreshRequest *request = [FPFreshRequest new];
-    request.spamBuff = [result data];
+    request.spamBuff = encrypedData;
 
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cgi = 836;

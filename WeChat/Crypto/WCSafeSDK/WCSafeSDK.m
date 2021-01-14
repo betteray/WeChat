@@ -72,13 +72,13 @@
     extInfo.ccData = ccData;
     
     if (CLIENT_VERSION >= A7011) {
-        DeviceToken *dt = [DeviceToken new];
-        dt.tag1 = @"";
-        dt.tag2 = 1;
-        DeviceToken_Token *token = [DeviceToken_Token new];
-        token.devicetoken = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:DEVICE_TOKEN_PATH] encoding:NSUTF8StringEncoding];
-        dt.token = token;
-        dt.timestamp = (uint32_t) [CUtility GetTimeStampInSecond];
+        ClientCheckData *dt = [ClientCheckData new];
+        dt.version = @"";
+        dt.type = 1;
+        dt.clientCheckData = [[[NSString alloc] initWithData:[NSData dataWithContentsOfFile:DEVICE_TOKEN_PATH] encoding:NSUTF8StringEncoding] dataUsingEncoding:NSUTF8StringEncoding];
+        dt.timeStamp = (uint32_t) [CUtility GetTimeStampInSecond];
+        dt.dataType = ClientCheckData_DataType_CcdataText;
+        dt.status = ClientCheckData_Status_CcdataSuccess;
         
         SKBuiltinBuffer_t *deviceTokenBuffer = [SKBuiltinBuffer_t new];
         NSData *dtData = [dt data];

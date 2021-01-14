@@ -75,7 +75,7 @@
 //    unsigned int byte1_1 = SystemFrameworkArmMD5CrcPre(888440);
 //    unsigned int byte1_1 = SystemFrameworkArm64MD5CrcPre(888440);
 //    unsigned int byte1_1 = SystemBinMD5CrcPre(888440);
-    unsigned int byte1_1 = StorageIDCrcPre(0xd92c, 0x67);
+//    unsigned int byte1_1 = StorageIDCrcPre(0xd92c, 0x67);
 //    unsigned int byte1_1 = SourceDirCrcPre(888440);
 //    unsigned int byte1_1 = SourceDir2CrcPre(888440);
 //    unsigned int byte1_1 = AMSSingletonClassNameEncryptWord(1598862640, 0, 1919184481);
@@ -129,15 +129,17 @@
 
 //     unsigned int byte1_1 = BuildFinderPrintEncrypt_Word(0x5F867CB8, 0, 0x72646e61);
 //     unsigned int byte1_1 = BuildFinderPrintEncrypt_Byte(0xB8, 0, 0x54);
-//     unsigned int byte1_1 = BuildFinderPrintCrc_Pre(0xD8E78, 0x21);
-    
+         unsigned int byte1_1 = BuildFinderPrintCrc_Pre(0xD8378, 0x72);
+         unsigned int byte1_12 = BuildFinderPrintCrc_Pre2(0xD8378, 0x72);
+
 //    unsigned int byte1_1 = AllPkgNameMD5Encrypt_Word(0x5fc8cc05, 0, 0x65393130);
 //    unsigned int byte1_1 = AllPkgNameMD5Encrypt_Word(0x5fc8cc05, 1, 0x63653436);
-//    unsigned int byte1_1 = AllPkgNameMD5EncryptCrc_Pre(0xd92c, 0x20);
+//        unsigned int byte1_1 = AllPkgNameMD5EncryptCrc_Pre(0xd06d, 0x20);
+//        unsigned int byte1_12 = AllPkgNameMD5EncryptCrc_Pre2(0xd06d, 0x20);
 
-//    unsigned int byte1_1 = ProcSelfMountsCheck(1606994949, 55596);
+//    unsigned int byte1_1 = ProcSelfMountsCheck(1, 0xffffffff);
     
-//    unsigned int byte1_1 = tag128(0xdbc0c, 0x5fd2045c);
+//    unsigned int byte1_1 = tag128(287797, 1607768935);
 
 //    for (unsigned long i=1; i<0x7FFFFFFF; i++) {
 //        unsigned int byte1_1 = timeval117(i);

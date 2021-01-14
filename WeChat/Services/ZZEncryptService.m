@@ -104,13 +104,13 @@
     
     if (ret == 1) {
         NSData *data = [NSData dataWithBytes:outbuff length:outlen];
-        SpamInfoEncrypedResult *result = [SpamInfoEncrypedResult new];
+        ClientCheckData *result = [ClientCheckData new];
         result.type = 2;
         result.version = @"00000001\000";
-        result.encrypedData = data;
-        result.timestamp = (int32_t)[[NSDate date] timeIntervalSince1970];
-        result.tag5 = 5;
-        result.tag6 = 0;
+        result.clientCheckData = data;
+        result.timeStamp = (int32_t)[[NSDate date] timeIntervalSince1970];
+        result.dataType = ClientCheckData_DataType_CcdataPbZipWb;
+        result.status = ClientCheckData_Status_CcdataSuccess;
         
         return [result data];
     }

@@ -62,7 +62,7 @@
 }
 
 + (NSArray *)loadCheckData {
-    NSData *jsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"MMProtocalJni-7018" ofType:@"json"]];
+    NSData *jsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"MMProtocalJni-7019" ofType:@"json"]];
     return [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
 }
 

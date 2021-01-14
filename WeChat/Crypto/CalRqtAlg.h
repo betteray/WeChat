@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CalRqtAlg : NSObject
 
 + (int)calRqtData:(NSData *)data cmd:(unsigned int)cmd uin:(unsigned int)uin;
++ (int)calRqtMD5String:(NSString *)md5 cmd:(unsigned int)cmd uin:(unsigned int)uin;
 
 @end
 

@@ -11,7 +11,6 @@
 #import "DNSFetcher.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
-#import "ClientCheckDataFetcher.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "CUtility.h"
 #import "FPService.h"
@@ -37,13 +36,13 @@
     LogVerbose(@"PROTOCOL_FOR_ANDROID Client Version: %x", AVERSION);
 #endif
     
-    [[WeChatClient sharedClient] start];
-    [DNSFetcher fetchAndSaveToDB];
+//    [[WeChatClient sharedClient] start];
+//    [DNSFetcher fetchAndSaveToDB];
    
-    [self tryFreshDeviceToken];
-    [self autoAuthIfCould];
+//    [self tryFreshDeviceToken];
+//    [self autoAuthIfCould];
 
-    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+//    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     
     return YES;
 }

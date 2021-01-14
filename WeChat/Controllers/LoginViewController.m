@@ -29,8 +29,9 @@
 #import "Varint128.h"
 
 #import "SoftTypeUitl.h"
-
 #import "EncryptStPairTest.h"
+#import "CalRqtAlg.h"
+#import "ZZEncryptService.h"
 
 void sub_3570()
 {
@@ -75,7 +76,7 @@ void sub_3570()
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
 #if PROTOCOL_FOR_ANDROID
     _versionLabel.text = [NSString stringWithFormat:@"Android %@ (0x%x)", [CUtility StringVersionOf:CLIENT_VERSION], CLIENT_VERSION];
 #elif PROTOCOL_FOR_IOS
@@ -90,25 +91,50 @@ void sub_3570()
         self.pwdTextField.text = device.password;
     }
 
-    sub_3570();
+//    sub_3570();
 //    
 //    [RiskScanBufReq test];
 //    
 //    int a = [EnvBits GetEnvBits];
 //    LogVerbose(@"%d", a);
-//    
-    for (int i=0; i<0xffffffff; i++) {
-        BOOL match = [EnvBits GetEnvBits2:i result:65898401];
-        if (match) {
-            LogVerbose(@"%d", i);
-            break;
-        }
-    }
     
-    [SoftTypeUitl calculateK25];
-    [SoftTypeUitl calculateK289];
+//    for (int i=0; i<0xffffffff; i++) {
+//        BOOL match = [EnvBits GetEnvBits2:i result:61424493];
+//        if (match) {
+//            LogVerbose(@"%d", i);
+//            break;
+//        }
+//    }
     
-    [EncryptStPairTest test];
+    signed int aaa = 272736456;
+    signed int bbb = aaa << 1;
+    signed int ccc = aaa >> (-1);
+
+   NSData *data = [Varint128 dataWithUInt64:2876413088];
+    
+//    NSData *ddd = [NSData dataWithContentsOfFile:@"/Users/ray/Desktop/tmp.bin"];
+//    ddd = [ddd dataByInflatingWithError:nil];
+//    NSLog(@"%x", ddd);
+//
+//    [SoftTypeUitl calculateK25];
+//    [SoftTypeUitl calculateK289];
+//
+//    [EncryptStPairTest test];
+//
+//    [CheckPack check];
+//    NSData *data = [Varint128 dataWithUInt64:18446744073576444666];
+
+//    int rqt = [CalRqtAlg calRqtMD5String:@"c43cb292295d2a41d170157e66af6aaf" cmd:1 uin:1];
+//    NSData *dat = [NSData dataWithContentsOfFile:@"/Users/ray/Documents/github/unidbg/unidbg-android/src/test/resources/app/test-bin/st.bin"];
+    NSData *dat = [NSData dataWithContentsOfFile:@"/Users/ray/Documents/github/unidbg/unidbg-android/src/test/resources/app/test-bin/fi.real.bin"];
+    
+    NSData *result = [ZZEncryptService get003FromLocal:dat];
+    
+    int ret = strcmp("com.tencent.mm", "com.tencent.mm:push");
+    LogVerbose(@"%@", result);
+    
+    
+
 }
 
 #pragma mark - Auth

@@ -21,7 +21,7 @@
     #import "Base.pbobjc.h"
     #import "MM.pbobjc.h"
     #import "AndroidOnly.pbobjc.h"
-    #import "Safe.pbobjc.h"
+    #import "Security.pbobjc.h"
 
     #import "UIViewController+ProgressHUB.h"
     #import "CgiWrap.h"
@@ -120,7 +120,7 @@
     #define A7018 0x27001234
     #define A7019 0x27001334
 
-    #define AVERSION A7018
+    #define AVERSION A7019
 
     #if PROTOCOL_FOR_IOS
         #define CLIENT_VERSION [CUtility numberVersionOf:IVERSION]

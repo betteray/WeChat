@@ -23,13 +23,11 @@
 		46206F6021E9EA1E00BF0B82 /* CUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 46206F5F21E9EA1E00BF0B82 /* CUtility.m */; };
 		4625AE952296CDDB00284F22 /* RAYContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4625AE942296CDDB00284F22 /* RAYContactManager.m */; };
 		462D9C0E21D4EC5700FC5461 /* WCBuiltinIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C0D21D4EC5700FC5461 /* WCBuiltinIP.m */; };
-		462D9C1521D509FC00FC5461 /* ClientCheckDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C1421D509FC00FC5461 /* ClientCheckDataFetcher.m */; };
 		462D9C2D21DC98E300FC5461 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C2C21DC98E300FC5461 /* AccountInfo.m */; };
 		462D9C3021DCAB6B00FC5461 /* Cookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C2F21DCAB6B00FC5461 /* Cookie.m */; };
 		462D9C3321DCC4FE00FC5461 /* SessionKeyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C3221DCC4FE00FC5461 /* SessionKeyStore.m */; };
 		462D9C3621DCD2D000FC5461 /* SyncCmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */; };
 		462D9C3A21DDA60F00FC5461 /* WCContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D9C3921DDA60F00FC5461 /* WCContact.m */; };
-		463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */ = {isa = PBXBuildFile; fileRef = 463BAD2D21D38F1700847A8B /* ClientCheckData.m */; };
 		463D13442212E4D5007C1DBD /* MMWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D13432212E4D5007C1DBD /* MMWKWebViewController.m */; };
 		464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82321D4B681003E923F /* DefaultLongIp.m */; };
 		464FB82721D4B9DD003E923F /* DefaultShortIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 464FB82621D4B9DD003E923F /* DefaultShortIp.m */; };
@@ -152,7 +150,7 @@
 		7185F8E524864D8300568CF0 /* CdnSendImgMsgService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185F8E424864D8300568CF0 /* CdnSendImgMsgService.m */; };
 		7185F8E824874E4400568CF0 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185F8E724874E4400568CF0 /* UIImage+Resize.m */; };
 		7185F8EC24889E1C00568CF0 /* UIImage+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185F8EB24889E1C00568CF0 /* UIImage+Random.m */; };
-		7187ECED2501E94A00353BD8 /* EncryptStPair.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7187ECEB2501E94A00353BD8 /* EncryptStPair.cpp */; };
+		7187ECED2501E94A00353BD8 /* EncryptStPair.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7187ECEB2501E94A00353BD8 /* EncryptStPair.cpp */; settings = {COMPILER_FLAGS = "-w"; }; };
 		7187ECF22501EAD700353BD8 /* EncryptStPairTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7187ECF12501EAD700353BD8 /* EncryptStPairTest.mm */; };
 		718DA1382488D85100F76A7F /* CdnGetMsgImgTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 718DA1372488D85100F76A7F /* CdnGetMsgImgTask.m */; };
 		718DA13E248A604200F76A7F /* SoftTypeUitl.m in Sources */ = {isa = PBXBuildFile; fileRef = 718DA13D248A604200F76A7F /* SoftTypeUitl.m */; };
@@ -162,6 +160,7 @@
 		7196E96C24813E2200879C72 /* MMProtocalJni-7015.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */; };
 		7196E96E24814D7600879C72 /* MMProtocalJni-706.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96D24814D7600879C72 /* MMProtocalJni-706.json */; };
 		7196E97024814D9300879C72 /* MMProtocalJni-7012.json in Resources */ = {isa = PBXBuildFile; fileRef = 7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */; };
+		7199CBB225B01E2600ADF4BD /* Security.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 7199CBB125B01E2600ADF4BD /* Security.pbobjc.m */; };
 		719E6EE42476CEB7009861CB /* online.json in Resources */ = {isa = PBXBuildFile; fileRef = 719E6EE12476CEB7009861CB /* online.json */; };
 		719EA66A23B9F221005DCA56 /* SnsSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = 719EA66923B9F221005DCA56 /* SnsSyncService.m */; };
 		71A3F596254BBB9E0057AB8A /* mm_17001220.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71A3F593254BBB9E0057AB8A /* mm_17001220.proto */; };
@@ -184,10 +183,9 @@
 		71DE10A521E1A12E00B77500 /* MomentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A421E1A12E00B77500 /* MomentsTableViewController.m */; };
 		71DE10A821E1A32100B77500 /* PeapleNearByTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DE10A721E1A32100B77500 /* PeapleNearByTableViewController.m */; };
 		71DF5BBB247FC83D00B7E0B2 /* always-login.json in Resources */ = {isa = PBXBuildFile; fileRef = 71DF5BB8247FC83D00B7E0B2 /* always-login.json */; };
-		71DF5BBF247FF08D00B7E0B2 /* encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DF5BBE247FF08D00B7E0B2 /* encrypt.m */; };
+		71DF5BBF247FF08D00B7E0B2 /* encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DF5BBE247FF08D00B7E0B2 /* encrypt.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		71DF5BC62481375100B7E0B2 /* CheckPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DF5BC52481375100B7E0B2 /* CheckPack.m */; };
 		71E485082403B68E0030FF0B /* mm_17000b21.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71E485052403B68E0030FF0B /* mm_17000b21.proto */; };
-		71E4851524052E430030FF0B /* Safe.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E4851424052E430030FF0B /* Safe.pbobjc.m */; };
 		71E4851B240541620030FF0B /* FPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E4851A240541620030FF0B /* FPService.m */; };
 		71E6061F259470FE00F6C725 /* mm_17001422.proto in Sources */ = {isa = PBXBuildFile; fileRef = 71E6061C259470FE00F6C725 /* mm_17001422.proto */; };
 		71E62B1525A72919001B50CC /* key.bin in Resources */ = {isa = PBXBuildFile; fileRef = 71E62B1225A72919001B50CC /* key.bin */; };
@@ -280,8 +278,6 @@
 		462D9C0C21D4EC5700FC5461 /* WCBuiltinIP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCBuiltinIP.h; sourceTree = "<group>"; };
 		462D9C0D21D4EC5700FC5461 /* WCBuiltinIP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCBuiltinIP.m; sourceTree = "<group>"; };
 		462D9C1221D5096400FC5461 /* DNSFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSFetcher.h; sourceTree = "<group>"; };
-		462D9C1321D509FC00FC5461 /* ClientCheckDataFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClientCheckDataFetcher.h; sourceTree = "<group>"; };
-		462D9C1421D509FC00FC5461 /* ClientCheckDataFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckDataFetcher.m; sourceTree = "<group>"; };
 		462D9C2B21DC98E300FC5461 /* AccountInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfo.h; sourceTree = "<group>"; };
 		462D9C2C21DC98E300FC5461 /* AccountInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
 		462D9C2E21DCAB6B00FC5461 /* Cookie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cookie.h; sourceTree = "<group>"; };
@@ -292,7 +288,6 @@
 		462D9C3521DCD2D000FC5461 /* SyncCmdHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncCmdHandler.m; sourceTree = "<group>"; };
 		462D9C3821DDA60F00FC5461 /* WCContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCContact.h; sourceTree = "<group>"; };
 		462D9C3921DDA60F00FC5461 /* WCContact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCContact.m; sourceTree = "<group>"; };
-		463BAD2D21D38F1700847A8B /* ClientCheckData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientCheckData.m; sourceTree = "<group>"; };
 		463D13422212E4D5007C1DBD /* MMWKWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMWKWebViewController.h; sourceTree = "<group>"; };
 		463D13432212E4D5007C1DBD /* MMWKWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMWKWebViewController.m; sourceTree = "<group>"; };
 		464FB82221D4B681003E923F /* DefaultLongIp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultLongIp.h; sourceTree = "<group>"; };
@@ -311,7 +306,6 @@
 		466C4AC521DDD65900743075 /* ContactsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 		466C4AC821DDD6D200743075 /* ContactsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewCell.h; sourceTree = "<group>"; };
 		466C4AC921DDD6D200743075 /* ContactsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewCell.m; sourceTree = "<group>"; };
-		466CAB8021D4ACED00AF8D2E /* ClientCheckData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientCheckData.h; sourceTree = "<group>"; };
 		46804CDB21DE13B300232229 /* WCMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMessage.h; sourceTree = "<group>"; };
 		46804CDC21DE13B300232229 /* WCMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCMessage.m; sourceTree = "<group>"; };
 		46804CE221DE280900232229 /* DiscoveryTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoveryTableViewController.h; sourceTree = "<group>"; };
@@ -636,6 +630,8 @@
 		7196E96B24813E2200879C72 /* MMProtocalJni-7015.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7015.json"; sourceTree = "<group>"; };
 		7196E96D24814D7600879C72 /* MMProtocalJni-706.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-706.json"; sourceTree = "<group>"; };
 		7196E96F24814D9300879C72 /* MMProtocalJni-7012.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MMProtocalJni-7012.json"; sourceTree = "<group>"; };
+		7199CBAE25B01E2600ADF4BD /* Security.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Security.pbobjc.h; sourceTree = "<group>"; };
+		7199CBB125B01E2600ADF4BD /* Security.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Security.pbobjc.m; sourceTree = "<group>"; };
 		719D79EB24B367AD007C09D5 /* defs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
 		719E6EE12476CEB7009861CB /* online.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = online.json; sourceTree = "<group>"; };
 		719EA66823B9F221005DCA56 /* SnsSyncService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnsSyncService.h; sourceTree = "<group>"; };
@@ -674,8 +670,6 @@
 		71DF5BC52481375100B7E0B2 /* CheckPack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckPack.m; sourceTree = "<group>"; };
 		71E1C19C230657E900F5032A /* security.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = security.proto; sourceTree = "<group>"; };
 		71E485052403B68E0030FF0B /* mm_17000b21.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17000b21.proto; sourceTree = "<group>"; };
-		71E4851324052E430030FF0B /* Safe.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Safe.pbobjc.h; sourceTree = "<group>"; };
-		71E4851424052E430030FF0B /* Safe.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Safe.pbobjc.m; sourceTree = "<group>"; };
 		71E48519240541620030FF0B /* FPService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPService.h; sourceTree = "<group>"; };
 		71E4851A240541620030FF0B /* FPService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPService.m; sourceTree = "<group>"; };
 		71E6061C259470FE00F6C725 /* mm_17001422.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_17001422.proto; sourceTree = "<group>"; };
@@ -855,8 +849,6 @@
 		463BAD2B21D38EFA00847A8B /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				466CAB8021D4ACED00AF8D2E /* ClientCheckData.h */,
-				463BAD2D21D38F1700847A8B /* ClientCheckData.m */,
 				464FB82221D4B681003E923F /* DefaultLongIp.h */,
 				464FB82321D4B681003E923F /* DefaultLongIp.m */,
 				464FB82521D4B9DD003E923F /* DefaultShortIp.h */,
@@ -982,12 +974,12 @@
 		46D2CA322239F1CE0053C4A6 /* objc_out */ = {
 			isa = PBXGroup;
 			children = (
+				7199CBAE25B01E2600ADF4BD /* Security.pbobjc.h */,
+				7199CBB125B01E2600ADF4BD /* Security.pbobjc.m */,
 				712BDD7E2473C98D00A3DD49 /* AndroidOnly.pbobjc.h */,
 				712BDD812473C98D00A3DD49 /* AndroidOnly.pbobjc.m */,
 				712BDD7F2473C98D00A3DD49 /* Base.pbobjc.h */,
 				712BDD802473C98D00A3DD49 /* Base.pbobjc.m */,
-				71E4851324052E430030FF0B /* Safe.pbobjc.h */,
-				71E4851424052E430030FF0B /* Safe.pbobjc.m */,
 				715BD71723C0D9800050CBE7 /* Mm.pbobjc.h */,
 				715BD71623C0D9800050CBE7 /* Mm.pbobjc.m */,
 			);
@@ -1015,8 +1007,6 @@
 				71008F3221B6750700DE8DF8 /* DNSFetcher.m */,
 				712F95F321D0B91F00CFE3A0 /* DeviceManager.h */,
 				712F95F421D0B91F00CFE3A0 /* DeviceManager.m */,
-				462D9C1321D509FC00FC5461 /* ClientCheckDataFetcher.h */,
-				462D9C1421D509FC00FC5461 /* ClientCheckDataFetcher.m */,
 				4625AE932296CDDB00284F22 /* RAYContactManager.h */,
 				4625AE942296CDDB00284F22 /* RAYContactManager.m */,
 				716A93D2239AA2C200A0C9DC /* DBManager.h */,
@@ -1941,7 +1931,6 @@
 				71FD5D9523B48E7B00B70518 /* NSData+AddData.m in Sources */,
 				712C6E6E214A145700603022 /* main.m in Sources */,
 				7112DBCA23A37192008CC5E1 /* DownloadVideoService.m in Sources */,
-				462D9C1521D509FC00FC5461 /* ClientCheckDataFetcher.m in Sources */,
 				712C7158214BFB1600603022 /* Task.m in Sources */,
 				4625AE952296CDDB00284F22 /* RAYContactManager.m in Sources */,
 				46206F6021E9EA1E00BF0B82 /* CUtility.m in Sources */,
@@ -1983,6 +1972,7 @@
 				718DA1382488D85100F76A7F /* CdnGetMsgImgTask.m in Sources */,
 				712F95F521D0B91F00CFE3A0 /* DeviceManager.m in Sources */,
 				7195345D25A6FAC100757E67 /* mm_17001520.proto in Sources */,
+				7199CBB225B01E2600ADF4BD /* Security.pbobjc.m in Sources */,
 				711E9B3E23598D8200C5B655 /* RiskScanBufUtil.m in Sources */,
 				714BE26B2408ED0B00720C72 /* SpamInfoGenerator-XML.m in Sources */,
 				7112118523A8C7C700A5DBCA /* SendMsgService.m in Sources */,
@@ -2001,7 +1991,6 @@
 				466C4AC321DDBFA800743075 /* WCButton.m in Sources */,
 				714E36052358173D0046F7D8 /* ReportReq.m in Sources */,
 				715BD71823C0D9800050CBE7 /* Mm.pbobjc.m in Sources */,
-				71E4851524052E430030FF0B /* Safe.pbobjc.m in Sources */,
 				46804CE421DE280900232229 /* DiscoveryTableViewController.m in Sources */,
 				712C714F214BABA500603022 /* ShortPackage.m in Sources */,
 				462D9C3021DCAB6B00FC5461 /* Cookie.m in Sources */,
@@ -2025,7 +2014,6 @@
 				71008F3621B678F500DE8DF8 /* ShortLinkClientWithMMTLS.m in Sources */,
 				712BDD862473CF6300A3DD49 /* MessageHooks.m in Sources */,
 				712C6F00214A5D8200603022 /* FSOpenSSL.m in Sources */,
-				463BAD2E21D38F1700847A8B /* ClientCheckData.m in Sources */,
 				712BDD892473D0DD00A3DD49 /* QueryMidService.m in Sources */,
 				712C7149214BA38900603022 /* LongHeader.m in Sources */,
 				7185F8E824874E4400568CF0 /* UIImage+Resize.m in Sources */,
