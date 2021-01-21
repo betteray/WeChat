@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B82A33D83B0F4D11AB8B6AA /* mm_18000022.proto in Sources */ = {isa = PBXBuildFile; fileRef = 1B82AE434411A4A09E75A959 /* mm_18000022.proto */; };
 		1D48E4CAB057574BBEBA804D /* WC_Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48E11FAE9E92337BD8C13B /* WC_Hex.m */; };
 		1D48E6EDD6760DEA4DD7B382 /* WC_HKDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48EA0E9D7BCBB456FBA85D /* WC_HKDF.m */; };
 		1D48E6F0446FD84F950B71E2 /* KeyPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48E1503C8555663742C661 /* KeyPair.m */; };
@@ -248,6 +249,7 @@
 
 /* Begin PBXFileReference section */
 		127BAC7036D39AFEE4EAF228 /* Pods-WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChat/Pods-WeChat.release.xcconfig"; sourceTree = "<group>"; };
+		1B82AE434411A4A09E75A959 /* mm_18000022.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_18000022.proto; sourceTree = "<group>"; };
 		1D48E04D3FFC34C933132630 /* WC_HKDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WC_HKDF.h; sourceTree = "<group>"; };
 		1D48E09F9DF9023432BE98A9 /* WC_AesGcm128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WC_AesGcm128.h; sourceTree = "<group>"; };
 		1D48E11FAE9E92337BD8C13B /* WC_Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WC_Hex.m; sourceTree = "<group>"; };
@@ -1603,6 +1605,7 @@
 				7168F90823B0ACE000DBB3A6 /* mm_dump_709.proto */,
 				7168F91623B0F65B00DBB3A6 /* mm_dump_6523.proto */,
 				712C6F19214A6A5800603022 /* PROTO_README.md */,
+				1B82AE434411A4A09E75A959 /* mm_18000022.proto */,
 			);
 			path = versions;
 			sourceTree = "<group>";
@@ -2048,6 +2051,7 @@
 				71808C0A239DFCD0005C3BDE /* CdnSnsUploadTask.m in Sources */,
 				1D48E82BF0AADB88925F440F /* ShortLinkKey.m in Sources */,
 				1D48E6F0446FD84F950B71E2 /* KeyPair.m in Sources */,
+				1B82A33D83B0F4D11AB8B6AA /* mm_18000022.proto in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
