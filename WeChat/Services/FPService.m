@@ -24,7 +24,7 @@
     result.status = ClientCheckData_Status_CcdataSuccess;
     
     FPInitRequest *request = [FPInitRequest new];
-    request.spamBuff = [result data];
+    request.spamBuff = result;
     request.randomkey = [WeChatClient sharedClient].sessionKey;
    
     BaseRequest *base = [BaseRequest new];
