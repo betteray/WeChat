@@ -61,7 +61,7 @@
     NSData *encrypedData = [ZZEncryptService get003FromLocal:[fp data]];
     
     FPFreshRequest *request = [FPFreshRequest new];
-    request.spamBuff = encrypedData;
+    request.spamBuff = [[ClientCheckData alloc] initWithData:encrypedData error:nil];
 
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cgi = 836;
