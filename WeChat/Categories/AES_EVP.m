@@ -87,6 +87,14 @@ static NSData * aes_128_cbc_encrypt(unsigned char* plaintext, int plaintext_len,
                                   (unsigned char*)[key bytes]);
 }
 
++ (NSData *)AES_ECB_128_Decrypt:(NSData *)chiperText key:(NSData *)key {
+    NSMutableData *outData = [NSMutableData dataWithLength:[chiperText length]];
+    int ret = decrypt_aes_128_ecb((unsigned char*) [chiperText bytes],
+                                  (unsigned int) [chiperText length],
+                                  (unsigned char*)[outData bytes], (unsigned int)[outData length], [key bytes], 0);
+    return outData;
+}
+
 + (NSData *)AES_CBC_128_Encrypt:(NSData *)plainText key:(NSData *)key {
     
     return  aes_128_cbc_encrypt((unsigned char*) [plainText bytes],

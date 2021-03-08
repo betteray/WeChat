@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSData *)AES_ECB_128_Encrypt:(NSData *)plainText key:(NSData *)key;
 + (NSData *)AES_CBC_128_Encrypt:(NSData *)plainText key:(NSData *)key;
 
++ (NSData *)AES_ECB_128_Decrypt:(NSData *)chiperText key:(NSData *)key;
+
 + (NSString *)encrypedUserName:(NSString *)plainText WithKey:(NSString *)key;
 
 @end
