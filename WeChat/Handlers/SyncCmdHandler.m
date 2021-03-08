@@ -122,15 +122,15 @@
                     }
                     
                     {
-//                        ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content.string encoding:NSUTF8StringEncoding error:nil];
-//                        NSDictionary *attrs = [[document.rootElement firstChildWithTag:@"img"] attributes];
-//                        NSString *cdnthumburl = [attrs objectForKey:@"cdnthumburl"];
-//                        NSString *cdnthumbaeskey = [attrs objectForKey:@"cdnthumbaeskey"];
-//                        [[CdnLogic sharedInstance] startC2CDownload:cdnthumbaeskey fileid:cdnthumburl success:^(id  _Nullable response) {
-//                            
-//                        } failure:^(NSError * _Nonnull error) {
-//                            
-//                        }];
+                        ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content.string encoding:NSUTF8StringEncoding error:nil];
+                        NSDictionary *attrs = [[document.rootElement firstChildWithTag:@"img"] attributes];
+                        NSString *cdnthumburl = [attrs objectForKey:@"cdnthumburl"];
+                        NSString *cdnthumbaeskey = [attrs objectForKey:@"cdnthumbaeskey"];
+                        [[CdnLogic sharedInstance] startC2CDownload:cdnthumbaeskey fileid:cdnthumburl success:^(id  _Nullable response) {
+                            LogVerbose(@"CDN Download msg pic suc: %@", response);
+                        } failure:^(NSError * _Nonnull error) {
+                            LogError(@"CDN Download msg pic fail: %@", error);
+                        }];
                     }
                     
                 }

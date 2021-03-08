@@ -221,8 +221,8 @@
     index = index + 4 + keyLen;
     
     // read value
-    int32_t vLen = [responseData toInt32ofRange:NSMakeRange(index, 4) SwapBigToHost:YES];
-    NSData *valueData = [responseData subdataWithRange:NSMakeRange(index + 4, vLen)];
+    int32_t vLen = [responseData toInt32ofRange:NSMakeRange(index, 4) SwapBigToHost:YES] & 0xFFFF;
+    NSData *valueData = [responseData subdataWithRange:NSMakeRange(index + 4, vLen)]; // 长度有效为低16bit
     NSString *vString = [[NSString alloc] initWithData:valueData encoding:NSUTF8StringEncoding];
     
     if ([vString length])

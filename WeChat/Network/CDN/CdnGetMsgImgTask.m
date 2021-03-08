@@ -52,7 +52,7 @@
     [self writeField:@"cli-quic-flag" WithValue:@"0"]; //
     [self writeField:@"wxmsgflag" WithValue:@""]; // 值的长度为0，给""字串吧
     [self writeField:@"wxautostart" WithValue:@"1"]; //
-    [self writeField:@"downpicformat" WithValue:@"2"]; //
+    [self writeField:@"downpicformat" WithValue:@"1"]; //
     [self writeField:@"offset" WithValue:@"0"]; //
     [self writeField:@"largesvideo" WithValue:@"0"]; //
     [self writeField:@"sourceflag" WithValue:@"0"]; //
@@ -63,7 +63,13 @@
 - (void)packHead {
     [self.head appendData:[NSData dataWithHexString:@"AB"]];   //固定
     [self.head appendData:[NSData packInt32:(int) (self.body.length + 25) flip:YES]]; // 包长 + 包头长
-    [self.head appendData:[NSData dataWithHexString:@"234e207916e886000000000000000000"]];   //固定
+    
+    [self.head appendData:[NSData dataWithHexString:@"4E20"]];   //固定cdn type? 图片 视频 上传 下载
+    CDNDnsInfo *dnsInfo = [self getDnsInfo];
+    NSData *uin = [NSData packInt32:dnsInfo.uin flip:NO];
+    [self.head appendData:uin];   //uin data
+    [self.head appendData:[NSData dataWithHexString:@"00000000000000000000"]];   //固定
+
     [self.head appendData:[NSData packInt32:(int) self.body.length flip:YES]]; // 包长
     
     self.hasPacket = NO;
