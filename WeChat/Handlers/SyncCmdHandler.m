@@ -19,6 +19,7 @@
 #import "ReportClientCheckService.h"
 #import "MessageHooks.h"
 #import "CdnLogic.h"
+#import "AES_EVP.h"
 
 @implementation SyncCmdHandler
 
@@ -124,10 +125,15 @@
                     {
                         ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithString:msg.content.string encoding:NSUTF8StringEncoding error:nil];
                         NSDictionary *attrs = [[document.rootElement firstChildWithTag:@"img"] attributes];
-                        NSString *cdnthumburl = [attrs objectForKey:@"cdnthumburl"];
+                        NSString *cdnthumburl = [attrs objectForKey:@"cdnbigimgurl"];
                         NSString *cdnthumbaeskey = [attrs objectForKey:@"cdnthumbaeskey"];
-                        [[CdnLogic sharedInstance] startC2CDownload:cdnthumbaeskey fileid:cdnthumburl success:^(id  _Nullable response) {
+                        [[CdnLogic sharedInstance] startC2CDownload:cdnthumbaeskey fileid:cdnthumburl success:^(NSDictionary* _Nullable response) {
                             LogVerbose(@"CDN Download msg pic suc: %@", response);
+                            NSString *filedatahex = [response objectForKey:@"filedata"];
+                            NSData *filedata = [NSData dataWithHexString:filedatahex];
+                            NSData *aeskey = [NSData dataWithHexString:cdnthumbaeskey];
+                            NSData *imgData = [AES_EVP AES_ECB_128_Decrypt:filedata key:aeskey];
+                            LogVerbose(@"Img Data: %@", imgData);
                         } failure:^(NSError * _Nonnull error) {
                             LogError(@"CDN Download msg pic fail: %@", error);
                         }];

@@ -129,6 +129,15 @@
                     [self.client close];
                     break;
                 }
+                
+                // download
+                if ([response objectForKey:@"filedata"] && self.successBlock) {
+                    LogVerbose(@"cdn recv response: %@", response);
+
+                    self.successBlock(response);
+                    [self.client close];
+                    break;
+                }
             }
             else
             {
