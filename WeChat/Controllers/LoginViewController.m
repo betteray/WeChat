@@ -32,36 +32,7 @@
 #import "EncryptStPairTest.h"
 #import "CalRqtAlg.h"
 #import "ZZEncryptService.h"
-
-void sub_3570()
-{
-    char byte_48F004[] = {0x7A, 0x6B, 0x37, 0x14, 0x53, 0x77, 0xAE, 0x25, 0xB0, 0xD1, 0x5E, 0x26, 0x85, 0xD7, 0x5E, 0x9A, 0x8A, 0xD2, 0x35, 0x92, 0x17, 0x48};
-    //    char off_47DC00[] = {0x68, 0x41, 0x70, 0x50, 0x59, 0x77, 0x45, 0x63, 0x48, 0x61, 0x74, 0x32, 0x30, 0x6C, 0x6C};
-    char *off = "hApPYwEcHat20ll";
-
-    unsigned int v0; // r0
-    unsigned int v1; // r3
-    int v2; // r2
-    unsigned char v3; // r1
-
-    v0 = 0;
-    v1 = 0;
-    do
-    {
-        v2 = 14 - v0;
-        if ( 14 - v0 >= 0xF )
-            abort();
-        ++v0;
-
-        char tmp = off[v2]; //off_47DC00
-        v3 = byte_48F004[v1] ^ tmp;
-        byte_48F004[v1++] = (v3 >> 4) | 16 * v3;
-        if ( v0 > 0xE )
-            v0 = 0;
-    }
-    while ( v1 < 0x16 );
-    NSLog(@"");
-}
+#import "CdnGetMsgImgTask.h"
 
 @interface LoginViewController ()
 
@@ -91,13 +62,11 @@ void sub_3570()
         self.pwdTextField.text = device.password;
     }
 
-//    sub_3570();
-//    
+
 //    [RiskScanBufReq test];
 //    
 //    int a = [EnvBits GetEnvBits];
 //    LogVerbose(@"%d", a);
-    
 //    for (int i=0; i<0xffffffff; i++) {
 //        BOOL match = [EnvBits GetEnvBits2:i result:61424493];
 //        if (match) {
@@ -106,16 +75,7 @@ void sub_3570()
 //        }
 //    }
     
-    signed int aaa = 272736456;
-    signed int bbb = aaa << 1;
-    signed int ccc = aaa >> (-1);
 
-   NSData *data = [Varint128 dataWithUInt64:2876413088];
-    
-//    NSData *ddd = [NSData dataWithContentsOfFile:@"/Users/ray/Desktop/tmp.bin"];
-//    ddd = [ddd dataByInflatingWithError:nil];
-//    NSLog(@"%x", ddd);
-//
 //    [SoftTypeUitl calculateK25];
 //    [SoftTypeUitl calculateK289];
 //
@@ -123,17 +83,7 @@ void sub_3570()
 //
 //    [CheckPack check];
 //    NSData *data = [Varint128 dataWithUInt64:18446744073576444666];
-
 //    int rqt = [CalRqtAlg calRqtMD5String:@"c43cb292295d2a41d170157e66af6aaf" cmd:1 uin:1];
-//    NSData *dat = [NSData dataWithContentsOfFile:@"/Users/ray/Documents/github/unidbg/unidbg-android/src/test/resources/app/test-bin/st.bin"];
-    NSData *dat = [NSData dataWithContentsOfFile:@"/Users/ray/Documents/github/unidbg/unidbg-android/src/test/resources/app/test-bin/fi.real.bin"];
-    
-    NSData *result = [ZZEncryptService get003FromLocal:dat];
-    
-    int ret = strcmp("com.tencent.mm", "com.tencent.mm:push");
-    LogVerbose(@"%@", result);
-    
-    
 
 }
 
