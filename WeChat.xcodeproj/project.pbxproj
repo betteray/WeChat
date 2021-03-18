@@ -104,6 +104,7 @@
 		713A78B32595ED16005D48E2 /* cgi-7020.json in Resources */ = {isa = PBXBuildFile; fileRef = 713A78B02595ED16005D48E2 /* cgi-7020.json */; };
 		713E03F125ADA66500C40F45 /* sectable.bin in Resources */ = {isa = PBXBuildFile; fileRef = 713E03EE25ADA66500C40F45 /* sectable.bin */; };
 		713E03F625ADEC9A00C40F45 /* sectablevalue.bin in Resources */ = {isa = PBXBuildFile; fileRef = 713E03F525ADEC9A00C40F45 /* sectablevalue.bin */; };
+		713EF9BA26034E320035BC83 /* mm_18000315.proto in Sources */ = {isa = PBXBuildFile; fileRef = 713EF9B726034E320035BC83 /* mm_18000315.proto */; };
 		713F5A5323A23C770096220C /* cat_mouse.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5223A23C770096220C /* cat_mouse.mp4 */; };
 		713F5A5723A250220096220C /* test.amr in Resources */ = {isa = PBXBuildFile; fileRef = 713F5A5623A250220096220C /* test.amr */; };
 		714513442390F6A40078D130 /* CdnLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 714513432390F6A40078D130 /* CdnLogic.m */; };
@@ -519,6 +520,7 @@
 		713A78B02595ED16005D48E2 /* cgi-7020.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cgi-7020.json"; sourceTree = "<group>"; };
 		713E03EE25ADA66500C40F45 /* sectable.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = sectable.bin; sourceTree = "<group>"; };
 		713E03F525ADEC9A00C40F45 /* sectablevalue.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = sectablevalue.bin; sourceTree = "<group>"; };
+		713EF9B726034E320035BC83 /* mm_18000315.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = mm_18000315.proto; sourceTree = "<group>"; };
 		713F5A5223A23C770096220C /* cat_mouse.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat_mouse.mp4; sourceTree = "<group>"; };
 		713F5A5623A250220096220C /* test.amr */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.amr; sourceTree = "<group>"; };
 		714513422390F6A40078D130 /* CdnLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdnLogic.h; sourceTree = "<group>"; };
@@ -1583,6 +1585,7 @@
 		71E48516240533BA0030FF0B /* versions */ = {
 			isa = PBXGroup;
 			children = (
+				713EF9B726034E320035BC83 /* mm_18000315.proto */,
 				7154EDD323B61831008927B9 /* cgi-709.json */,
 				71D13DF72475061800508B51 /* cgi-7012.json */,
 				71BABE1724E7D44200066169 /* cgi-7015.json */,
@@ -2029,6 +2032,7 @@
 				7154D5162196B721005064C4 /* HexDump.m in Sources */,
 				71AA2121249A0333008FCEC4 /* mm_17000d23.proto in Sources */,
 				71A3F597254BBB9E0057AB8A /* mm_17000f21.proto in Sources */,
+				713EF9BA26034E320035BC83 /* mm_18000315.proto in Sources */,
 				71776AF5247558AC0069D616 /* PasswordService.m in Sources */,
 				464FB82421D4B681003E923F /* DefaultLongIp.m in Sources */,
 				46804CEA21DE5B1800232229 /* ChatsTableViewCell.m in Sources */,
