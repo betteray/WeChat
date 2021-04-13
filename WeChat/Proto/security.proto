@@ -217,6 +217,19 @@ message ST {
         // add in 7.0.21
         optional bytes AllPkgNameMD5Encrypt = 29; // md5("com.tencent.mm" + "com.tencent.qq" + "" + ...) -> enc;
         optional uint32 AllPkgNameMD5Crc = 30;
+        
+        // add in 8.0.2
+        optional bytes BuildDisplayIdEncrypt = 31;
+        optional uint32 BuildDisplayIdCrc = 32;
+        
+        optional bytes BuildFlavorEncrypt = 33;
+        optional uint32 BuildFlavorCrc = 34;
+        
+        optional bytes SystemLibLibandroidRuntimeEncrypt = 35; // /system/lib/libandroid_runtime.so
+        optional uint32 SystemLibLibandroidRuntimeCrc = 36;
+        
+        optional bytes SystemLibLibcameraserviceEncrypt = 37;  // /system/lib/libcameraservice.so
+        optional uint32 SystemLibLibcameraserviceCrc = 38;
     }
     optional CheckAddIn7019 check7019 = 126;
     optional uint32 ProcSelfMountsCheck = 127;
@@ -224,6 +237,8 @@ message ST {
     repeated bytes InlineHookingLibsEncrypt = 129; // /proc/self/maps  带rwxp的so  /apex/com.android.runtime/bin/linker, /apex/com.android.runtime/lib/bionic/libc.so, /apex/com.android.runtime/lib/libart.so, /data/app/com.tencent.mm-9wf3arIby_cU-KqdRQ2LOQ==/lib/arm/libwechatnormsg.so, /system/lib/libandroid_runtime.so
     optional uint32 InlineHookingLibsCrc = 130;
 
+    // add in 8.0.2
+    repeated bytes AllLibs = 131;
 }
 
 message ClientSpamInfo {
