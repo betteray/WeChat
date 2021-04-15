@@ -129,14 +129,32 @@
 
 //     unsigned int byte1_1 = BuildFinderPrintEncrypt_Word(0x5F867CB8, 0, 0x72646e61);
 //     unsigned int byte1_1 = BuildFinderPrintEncrypt_Byte(0xB8, 0, 0x54);
-         unsigned int byte1_1 = BuildFinderPrintCrc_Pre(0xD8378, 0x72);
-         unsigned int byte1_12 = BuildFinderPrintCrc_Pre2(0xD8378, 0x72);
+//         unsigned int byte1_1 = BuildFinderPrintCrc_Pre(0xD8378, 0x72);
+//         unsigned int byte1_12 = BuildFinderPrintCrc_Pre2(0xD8378, 0x72);
 
 //    unsigned int byte1_1 = AllPkgNameMD5Encrypt_Word(0x5fc8cc05, 0, 0x65393130);
 //    unsigned int byte1_1 = AllPkgNameMD5Encrypt_Word(0x5fc8cc05, 1, 0x63653436);
 //        unsigned int byte1_1 = AllPkgNameMD5EncryptCrc_Pre(0xd06d, 0x20);
 //        unsigned int byte1_12 = AllPkgNameMD5EncryptCrc_Pre2(0xd06d, 0x20);
 
+    unsigned int BuildDisplayIdEncrypt_Word1 = BuildDisplayIdEncrypt_Word(0x5fc8cc05, 0, 0x3841444d);
+    unsigned int BuildDisplayIdEncrypt_Byte1 = BuildDisplayIdEncrypt_Byte(0x05, 0, 0x39);
+    // unsigned int byte1_1 = BuildDisplayIdEncrypt_Byte(0x05, 1, 0x45);
+    unsigned int BuildDisplayIdEncrypt_Pre1 = BuildDisplayIdEncrypt_Pre(0xd92c, 6);
+
+    unsigned int BuildFlavorEncrypt_Word1 = BuildFlavorEncrypt_Word(0x5fc8cc05, 0, 0x6c6c7562);
+    unsigned int BuildFlavorEncrypt_Byte1 = BuildFlavorEncrypt_Byte(0x05, 0, 0x72);
+    unsigned int BuildFlavorEncrypt_Pre1 = BuildFlavorEncrypt_Pre(0xd92c, 13);
+
+    unsigned int SystemLibLibandroidRuntimeEncrypt_Word1 = SystemLibLibandroidRuntimeEncrypt_Word(0x5fc8cc05, 0, 0x33383430);
+    // unsigned int byte1_1 = SystemLibLibandroidRuntimeEncrypt_Word(0x5fc8cc05, 1, 0x62613364);
+    unsigned int SystemLibLibandroidRuntimeEncrypt_Crc1 = SystemLibLibandroidRuntimeEncrypt_Crc(0xd92c);
+
+
+    unsigned int SystemLibLibcameraserviceEncrypt_Word1 = SystemLibLibcameraserviceEncrypt_Word(0x5fc8cc05, 0, 0x35343666);
+    unsigned int SystemLibLibcameraservice_Crc1 = SystemLibLibcameraservice_Crc(0xd92c);
+    
+    
 //    unsigned int byte1_1 = ProcSelfMountsCheck(1, 0xffffffff);
     
 //    unsigned int byte1_1 = tag128(287797, 1607768935);
@@ -151,13 +169,13 @@
 //    }
     
     char buf[1024] = {0};
-    sprintf(buf, "%x", byte1_1);
+    sprintf(buf, "%x", SystemLibLibcameraservice_Crc1);
     NSLog(@"%s", buf);
     
 //    NSData *ddd = [@"android.os.BinderProxy" dataUsingEncoding:NSUTF8StringEncoding];
 //    NSData *ddd = [@"2751892445d07da7582b3fcaa31184359ed8c99d65" dataUsingEncoding:NSUTF8StringEncoding];
     // 3791711083 + storageid
-    NSData *ddd = [@"6214616249e69a94b074e367b39e6a0002a5cdcac" dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *ddd = [@"1250144244MDA89E" dataUsingEncoding:NSUTF8StringEncoding];
     uint32_t crc32 = [ddd crc32];
     NSLog(@"%d", crc32);
 }

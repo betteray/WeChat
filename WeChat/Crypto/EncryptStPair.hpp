@@ -10,6 +10,7 @@
 #define EncryptStPair_hpp
 
 #include <stdio.h>
+#include <stdint.h>
 #include "defs.h"
 
 int  encrypt_tag86(unsigned int a1);
@@ -137,6 +138,22 @@ unsigned int BuildFinderPrintCrc_Pre2(unsigned int a1, unsigned int a2);
 unsigned int AllPkgNameMD5Encrypt_Word(unsigned int a1, int a2, unsigned int a3);
 unsigned int AllPkgNameMD5EncryptCrc_Pre(unsigned int usec, int len);
 unsigned int AllPkgNameMD5EncryptCrc_Pre2(unsigned int a1, int a2);
+
+unsigned int BuildDisplayIdEncrypt_Word(unsigned int key, int round, unsigned int plain);
+unsigned int BuildDisplayIdEncrypt_Byte(unsigned int key, char round, unsigned __int8 plain);
+unsigned int BuildDisplayIdEncrypt_Pre(unsigned int key, int len);
+
+unsigned int BuildFlavorEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
+unsigned int BuildFlavorEncrypt_Byte(unsigned int a1, int a2, unsigned __int8 a3);
+unsigned int BuildFlavorEncrypt_Pre(unsigned int a1, char a2);
+
+unsigned int SystemLibLibandroidRuntimeEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
+unsigned int SystemLibLibandroidRuntimeEncrypt_Crc(unsigned int a1);
+
+unsigned int SystemLibLibcameraserviceEncrypt_Word(unsigned int a1, int a2, unsigned int a3);
+unsigned int SystemLibLibcameraservice_Crc(unsigned int a1);
+
+
 
 // 需单独调用获取gettimeofday一次，当前时间。
 unsigned int ProcSelfMountsCheck(unsigned int usec,unsigned int sec);

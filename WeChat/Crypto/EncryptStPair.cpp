@@ -1453,6 +1453,222 @@ unsigned int AllPkgNameMD5EncryptCrc_Pre2(unsigned int a1, int a2) {
     return (a1 << (a2 & 0x3)) ^ (0x890519D2 << (-(a2 & 0x3) + 0x20));
 }
 
+unsigned int BuildDisplayIdEncrypt_Word(unsigned int a1, int a2, unsigned int a3)
+{
+  int v3; // r8
+  int v4; // r9
+  int v5; // r11
+  char v6; // r1
+  int v7; // r0
+  unsigned int v8; // r1
+  int v9; // r0
+  int v10; // r1
+  unsigned int v11; // r0
+  int v12; // r1
+
+  v5 = a2;
+  v6 = a2 & 0x1F;
+  v7 = (a1 << (32 - v6)) ^ (a1 >> v6) | (a1 >> v6) & (a1 << (32 - v6));
+  v8 = ~(~(0x2A032D11u >> (32 - v6)) | ~(704851217 << v6)) | ((704851217 << v6) & 0xF600AA62 | ~(704851217 << v6) & 0x9FF559D) ^ ((0x2A032D11u >> (32 - v6)) & 0xF600AA62 | ~(0x2A032D11u >> (32 - v6)) & 0x9FF559D);
+  v9 = v8 & ~v7 | v7 & ~v8;
+  v10 = (a3 >> (32 - (((v5 + 1) ^ 0xE0) & (v5 + 1)))) & (a3 << (((v5 + 1) ^ 0xE0) & (v5 + 1))) | (a3 >> (32 - (((v5 + 1) ^ 0xE0) & (v5 + 1)))) ^ (a3 << (((v5 + 1) ^ 0xE0) & (v5 + 1)));
+  v11 = (v3 & ~v9 | v9 & ~v3) ^ (v3 & ~v10 | v10 & ~v3);
+  v12 = ~v5 & 0x1F;
+  return (v4 | ~v4) & ~(~(v11 << (32 - v12)) | ~(v11 >> v12)) | ((v11 << (32 - v12)) & ~v4 | v4 & ~(v11 << (32 - v12))) ^ ((v11 >> v12) & ~v4 | v4 & ~(v11 >> v12));
+}
+
+unsigned int BuildDisplayIdEncrypt_Byte(unsigned int a1, char a2, unsigned __int8 a3)
+{
+  int v3; // r11
+  int v4; // lr
+  unsigned __int8 v5; // ST10_1
+  char v6; // r6
+  unsigned int v7; // r8
+  char v8; // r9
+  signed int v9; // r1
+  char v10; // r2
+  unsigned int v11; // r5
+  unsigned int v12; // r0
+  int v13; // r1
+  int v14; // r0
+  unsigned int v15; // r1
+  int v16; // r2
+  int v17; // r0
+
+  v5 = a3;
+  v6 = a2;
+  v7 = a1;
+  v8 = a2;
+  v9 = 17 << (a2 & 7);
+  v10 = 8 - (v8 & 7);
+  v11 = (0x11u >> v10) ^ v9;
+  v12 = (0x11u >> v10) & v9;
+  v13 = (v4 | ~v4) & ~(~(v7 << v10) | ~(v7 >> (v8 & 7))) | (v4 & ~(v7 << v10) | (v7 << v10) & ~v4) ^ ((v7 >> (v8 & 7)) & ~v4 | v4 & ~(v7 >> (v8 & 7)));
+  v14 = (v12 | v11) & ~v13 | v13 & ~(v12 | v11);
+  LOBYTE(v13) = ((v6 + 1) ^ 0xF8) & (v6 + 1);
+  v15 = (v3 | ~v3) & ~(~((unsigned int)v5 >> (8 - v13)) | ~(v5 << v13)) | ((v5 << v13) & ~v3 | v3 & ~(v5 << v13)) ^ (((unsigned int)v5 >> (8 - v13)) & ~v3 | v3 & ~((unsigned int)v5 >> (8 - v13)));
+  v16 = v14 & ~v15;
+  v17 = v15 & ~v14;
+  return ((unsigned __int8)(v17 | v16) << (8 - (~v8 & 7))) & ((unsigned __int8)(v17 | v16) >> (~v8 & 7)) | ((unsigned __int8)(v17 | v16) << (8 - (~v8 & 7))) ^ ((unsigned __int8)(v17 | v16) >> (~v8 & 7));
+}
+
+unsigned int BuildDisplayIdEncrypt_Pre(unsigned int a1, int a2)
+{
+  int v2; // r4
+  unsigned int v3; // r8
+  unsigned int v4; // r0
+  unsigned int v5; // r1
+  unsigned int v6; // r2
+  unsigned int v7; // r0
+
+  v3 = a1;
+  v4 = (a2 ^ 0xFFFFFFFC) & a2;
+  v5 = ~(704851217 << (32 - v4)) | ~(0x2A032D11u >> v4);
+  v6 = ((0x2A032D11u >> v4) & ~v2 | v2 & ~(0x2A032D11u >> v4)) ^ ((704851217 << (32 - v4)) & ~v2 | v2 & ~(704851217 << (32 - v4)));
+  v7 = ((v3 << v4) & 0xF5B3CB42 | ~(v3 << v4) & 0xA4C34BD) ^ ((v3 >> (32 - v4)) & 0xF5B3CB42 | ~(v3 >> (32 - v4)) & 0xA4C34BD) | ~(~(v3 >> (32 - v4)) | ~(v3 << v4));
+  return (~(v6 | ~v5) & 0x50890C5D | (v6 | ~v5) & 0xAF76F3A2) ^ (~v7 & 0x50890C5D | v7 & 0xAF76F3A2);
+}
+
+
+unsigned int BuildFlavorEncrypt_Word(unsigned int a1, int a2, unsigned int a3)
+{
+  unsigned int v3; // ST08_4
+  int v4; // r9
+  unsigned int v5; // r0
+  unsigned int v6; // r1
+  unsigned int v7; // r12
+  unsigned int v8; // r1
+  unsigned int v9; // r1
+  int v10; // r2
+  unsigned int v11; // r1
+
+  v3 = a1;
+  v4 = a2;
+  v5 = (v4 ^ 0xFFFFFFE0) & v4;
+  v6 = ~(~(0x1C042D23u >> (32 - v5)) | ~(470035747 << v5)) | ((470035747 << v5) & 0x2B7CD708 | ~(470035747 << v5) & 0xD48328F7) ^ ((0x1C042D23u >> (32 - v5)) & 0x2B7CD708 | ~(0x1C042D23u >> (32 - v5)) & 0xD48328F7);
+  v7 = ~v6 & 0x38F20F94 | v6 & 0xC70DF06B;
+  v8 = (~(v3 << (32 - v5)) & 0x79E430AE | (v3 << (32 - v5)) & 0x861BCF51) ^ ((v3 >> v5) & 0x861BCF51 | ~(v3 >> v5) & 0x79E430AE) | ~(~(v3 << (32 - v5)) | ~(v3 >> v5));
+  v9 = (~v8 & 0x38F20F94 | v8 & 0xC70DF06B) ^ v7;
+  v10 = (a3 >> (32 - ((v4 + 1) & ((v4 + 1) ^ 0xE0)))) & (a3 << ((v4 + 1) & ((v4 + 1) ^ 0xE0))) | (a3 >> (32 - ((v4 + 1) & ((v4 + 1) ^ 0xE0)))) ^ (a3 << ((v4 + 1) & ((v4 + 1) ^ 0xE0)));
+  v11 = v10 & ~v9 | v9 & ~v10;
+  LOBYTE(v5) = (~(_BYTE)v5 & 0x86 | v5 & 0x79) ^ 0x99;
+  return ~(~(v11 << (32 - v5)) | ~(v11 >> v5)) | ((v11 << (32 - v5)) & 0x96AA156B | ~(v11 << (32 - v5)) & 0x6955EA94) ^ ((v11 >> v5) & 0x96AA156B | ~(v11 >> v5) & 0x6955EA94);
+}
+
+
+unsigned int BuildFlavorEncrypt_Byte(unsigned int a1, int a2, unsigned __int8 a3)
+{
+  int v3; // r8
+  unsigned __int8 v4; // ST10_1
+  char v5; // r6
+  unsigned int v6; // r9
+  unsigned int v7; // r5
+  unsigned int v8; // r0
+  int v9; // r1
+  int v10; // r0
+  int v11; // r2
+  int v12; // r2
+
+  v4 = a3;
+  v5 = a2;
+  v6 = a1;
+  v7 = (a2 ^ 0xFFFFFFF8) & a2;
+  v8 = (0x23u >> (8 - v7)) ^ (35 << v7) | (35 << v7) & (0x23u >> (8 - v7));
+  v9 = (v6 >> v7) & (v6 << (8 - v7)) | (v6 << (8 - v7)) ^ (v6 >> v7);
+  v10 = (v3 & ~v8 | v8 & ~v3) ^ (v3 & ~v9 | v9 & ~v3);
+  LOBYTE(v9) = (v5 + 1) & ((v5 + 1) ^ 0xF8);
+  v11 = a3 << v9;
+  LOBYTE(v10) = (((unsigned int)v4 >> (8 - v9)) & v11 | ((unsigned int)v4 >> (8 - v9)) ^ v11) & ~(_BYTE)v10 | v10 & ~(((unsigned int)v4 >> (8 - v9)) & v11 | ((unsigned int)v4 >> (8 - v9)) ^ v11);
+  v12 = ~(_BYTE)v7 & 7 | 8 * (v7 >> 3);
+  return ((unsigned __int8)v10 << (8 - v12)) & ((unsigned int)(unsigned __int8)v10 >> v12) | ((unsigned __int8)v10 << (8 - v12)) ^ ((unsigned int)(unsigned __int8)v10 >> v12);
+}
+
+unsigned int BuildFlavorEncrypt_Pre(unsigned int a1, char a2)
+{
+  int v2; // r4
+  unsigned int v3; // ST08_4
+  char v4; // r0
+  char v5; // r3
+  unsigned int v6; // r1
+  unsigned int v7; // r0
+
+  v3 = a1;
+  v4 = a2 & 3;
+  v5 = 32 - (a2 & 3);
+  v6 = ((0x1C042D23u >> v4) & ~v2 | v2 & ~(0x1C042D23u >> v4)) ^ ((470035747 << (32 - v4)) & ~v2 | v2 & ~(470035747 << (32 - v4))) | ~(~(470035747 << (32 - v4)) | ~(0x1C042D23u >> v4));
+  v7 = ((v3 << v4) & 0x341967E4 | ~(v3 << v4) & 0xCBE6981B) ^ ((v3 >> v5) & 0x341967E4 | ~(v3 >> v5) & 0xCBE6981B) | ~(~(v3 >> v5) | ~(v3 << v4));
+  return v6 & ~v7 | v7 & ~v6;
+}
+
+unsigned int SystemLibLibandroidRuntimeEncrypt_Word(unsigned int a1, int a2, unsigned int a3)
+{
+  int v3; // r11
+  char v4; // r1
+  int v5; // r0
+  unsigned int v6; // r1
+  int v7; // r0
+  unsigned int v8; // r1
+  unsigned int v9; // r0
+  int v10; // r1
+
+  v3 = a2;
+  v4 = a2 & 0x1F;
+  v5 = (a1 << (32 - v4)) ^ (a1 >> v4) | (a1 >> v4) & (a1 << (32 - v4));
+  v6 = ~(~(0x420A254Au >> (32 - v4)) | ~(1107961162 << v4)) | ((1107961162 << v4) & 0xA2A6E815 | ~(1107961162 << v4) & 0x5D5917EA) ^ ((0x420A254Au >> (32 - v4)) & 0xA2A6E815 | ~(0x420A254Au >> (32 - v4)) & 0x5D5917EA);
+  v7 = v6 & ~v5 | v5 & ~v6;
+  LOBYTE(v6) = (v3 + 1) & 0x1F;
+  v8 = ~(~(a3 >> (32 - v6)) | ~(a3 << v6)) | ((a3 << v6) & 0x5CB4565F | ~(a3 << v6) & 0xA34BA9A0) ^ ((a3 >> (32 - v6)) & 0x5CB4565F | ~(a3 >> (32 - v6)) & 0xA34BA9A0);
+  v9 = v8 & ~v7 | v7 & ~v8;
+  v10 = ~v3 & 0x1F;
+  return ~(~(v9 << (32 - v10)) | ~(v9 >> v10)) | ((v9 << (32 - v10)) & 0x1E200FF6 | ~(v9 << (32 - v10)) & 0xE1DFF009) ^ ((v9 >> v10) & 0x1E200FF6 | ~(v9 >> v10) & 0xE1DFF009);
+}
+
+unsigned int SystemLibLibandroidRuntimeEncrypt_Crc(unsigned int a1)
+{
+  unsigned int v1; // r0
+
+  v1 = ((a1 >> 32) & 0x169D336C | ~(a1 >> 32) & 0xE962CC93) ^ (a1 & 0x169D336C | ~a1 & 0xE962CC93) | ~(~(a1 >> 32) | ~a1);
+  return (~v1 & 0x5A81E126 | v1 & 0xA57E1ED9) ^ 0x4188CC23;
+}
+
+unsigned int SystemLibLibcameraserviceEncrypt_Word(unsigned int a1, int a2, unsigned int a3)
+{
+  int v3; // r8
+  unsigned int v4; // ST08_4
+  unsigned int v5; // r0
+  unsigned int v6; // lr
+  char v7; // r4
+  unsigned int v8; // r2
+  int v9; // r3
+  int v10; // r2
+  unsigned int v11; // r1
+  unsigned int v12; // r1
+  int v13; // r0
+
+  v4 = a1;
+  v5 = (a2 ^ 0xFFFFFFE0) & a2;
+  v6 = a3;
+  v7 = a2 + 1;
+  v8 = (-1325061271 << v5) & (0xB1052B69 >> (32 - v5)) | (0xB1052B69 >> (32 - v5)) ^ (-1325061271 << v5);
+  v9 = (v4 << (32 - v5)) & (v4 >> v5) | (v4 << (32 - v5)) ^ (v4 >> v5);
+  v10 = (v3 & ~v8 | v8 & ~v3) ^ (v3 & ~v9 | v9 & ~v3);
+  v11 = ~(~(v6 >> (32 - (v7 & 0x1F))) | ~(v6 << (v7 & 0x1F))) | ((v6 >> (32 - (v7 & 0x1F))) & 0xC8554309 | ~(v6 >> (32 - (v7 & 0x1F))) & 0x37AABCF6) ^ (~(v6 << (v7 & 0x1F)) & 0x37AABCF6 | (v6 << (v7 & 0x1F)) & 0xC8554309);
+  v12 = v11 & ~v10 | v10 & ~v11;
+  v13 = ~(_BYTE)v5 & 0x1F | 32 * (v5 >> 5);
+  return (v12 << (32 - v13)) & (v12 >> v13) | (v12 << (32 - v13)) ^ (v12 >> v13);
+}
+
+unsigned int SystemLibLibcameraservice_Crc(unsigned int a1)
+{
+  int v1; // r4
+  unsigned int v2; // r1
+  unsigned int v3; // r0
+
+  v2 = (~v1 & 0x6202587 | v1 & 0xF9DFDA78) ^ (~v1 & 0x20000000 | v1 & 0xDFFFFFFF);
+  v3 = (8 * a1 & 0x30A6F5FC | ~(8 * a1) & 0xCF590A03) ^ ((a1 >> 29) & 0x30A6F5FC | ~(a1 >> 29) & 0xCF590A03) | ~(~(a1 >> 29) | ~(8 * a1));
+  return v2 & ~v3 | v3 & ~v2;
+}
+
 unsigned int ProcSelfMountsCheck(unsigned int a1,unsigned int a2)
 {
     unsigned int v2 = a1 ^ (a2 * a1);
