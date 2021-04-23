@@ -98,11 +98,7 @@
     aesReqData.channel = 10003;
 
     NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:nil context:@"auto"];
-
-    SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
-    extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
-    extSpamInfo.buffer = extSpamInfoBuffer;
-    aesReqData.extSpamInfo = extSpamInfo; // tag=24
+    aesReqData.extSpamInfo = [WCExtInfo2 parseFromData:extSpamInfoBuffer error:nil]; // tag=24
 
     AutoAuthRequest *authRequest = [AutoAuthRequest new];
     authRequest.aesReqData = aesReqData;
@@ -218,12 +214,7 @@
 #endif
    
     NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:userName context:@"&lt;LoginByID&gt"];
-    
-    SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
-    extSpamInfo.iLen = (int32_t) [extSpamInfoBuffer length];
-    extSpamInfo.buffer = extSpamInfoBuffer;
-    
-    aesReqData.extSpamInfo = extSpamInfo; // tag=24
+    aesReqData.extSpamInfo = [WCExtInfo2 parseFromData:extSpamInfoBuffer error:nil]; // tag=24
     
     ManualAuthRequest *authRequest = [ManualAuthRequest new];
     authRequest.aesReqData = aesReqData;

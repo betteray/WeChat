@@ -88,7 +88,13 @@
         extInfo.deviceToken = deviceTokenBuffer;
     }
     
-    return [extInfo data];
+    NSData *extSpmInfoBuffer = [extInfo data];
+    
+    SKBuiltinBuffer_t *extSpamInfo = [SKBuiltinBuffer_t new];
+    extSpamInfo.iLen = (int32_t) [extSpmInfoBuffer length];
+    extSpamInfo.buffer = extSpmInfoBuffer;
+    
+    return [extSpamInfo data];
 }
 
 @end

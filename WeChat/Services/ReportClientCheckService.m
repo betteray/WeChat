@@ -16,10 +16,9 @@
 + (void)reportClientCheckWithContext:(uint64_t)context basic:(BOOL)basic
 {
     NSData *extSpamInfoBuffer = [WCSafeSDK getExtSpamInfoWithContent:@"" context:@"report"];
-    NSData *encrypedXMLBuffer = [ZZEncryptService get003FromLocal:extSpamInfoBuffer];
     ReportClientCheckReq *req = [[ReportClientCheckReq alloc] init];
-    req.clientCheckData = encrypedXMLBuffer;
-    req.reportContext = context;
+    req.extSpamInfo = [WCExtInfo2 parseFromData:extSpamInfoBuffer error:nil];
+    req.reportContext = (uint32_t)context;
     
     CgiWrap *cgiWrap = [CgiWrap new];
     cgiWrap.cgi = 771;
