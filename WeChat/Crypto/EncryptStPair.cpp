@@ -1740,3 +1740,9 @@ unsigned int tag128(int a1, int a2)
     unsigned int v2 = (a1 ^ (a2 * a1)) & 0xfffedbad;
     return  v2;
 }
+
+
+unsigned int timeval133(int a1, int a2)
+{
+  return ~(~((~a2 & 0x84A4465C | a2 & 0x7B5BB9A3) ^ (~(a1 * a2) & 0x84A4465C | a1 * a2 & 0x7B5BB9A3)) | 0x1E079FE);
+}

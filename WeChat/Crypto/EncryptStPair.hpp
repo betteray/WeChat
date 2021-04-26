@@ -163,4 +163,7 @@ unsigned int timeval117(unsigned int a1);
 // 需单独调用获取gettimeofday一次，当前时间。
 unsigned int tag128(int time_usec, int time_sec);
 
+// 需单独调用获取gettimeofday一次，当前时间。
+unsigned int timeval133(int time_sec, int time_usec);
+
 #endif /* EncryptStPair_hpp */
