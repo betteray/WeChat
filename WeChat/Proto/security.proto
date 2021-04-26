@@ -238,7 +238,9 @@ message ST {
     optional uint32 InlineHookingLibsCrc = 130;
 
     // add in 8.0.2
-    repeated bytes AllLibs = 131;
+    repeated bytes AllLibsEncrypt = 131;
+    optional uint32 AllLibsCrc = 132;
+    optional uint32 timeval133 = 133;
 }
 
 message ClientSpamInfo {
