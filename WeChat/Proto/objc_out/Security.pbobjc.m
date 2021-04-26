@@ -273,6 +273,9 @@ typedef struct InstalledPackageInfo__storage_ {
 @dynamic hasInlineHookingLibsBits, inlineHookingLibsBits;
 @dynamic inlineHookingLibsEncryptArray, inlineHookingLibsEncryptArray_Count;
 @dynamic hasInlineHookingLibsCrc, inlineHookingLibsCrc;
+@dynamic allLibsEncryptArray, allLibsEncryptArray_Count;
+@dynamic hasAllLibsCrc, allLibsCrc;
+@dynamic hasTimeval133, timeval133;
 
 typedef struct ST__storage_ {
   uint32_t _has_storage_[4];
@@ -327,6 +330,8 @@ typedef struct ST__storage_ {
   uint32_t procSelfMountsCheck;
   uint32_t inlineHookingLibsBits;
   uint32_t inlineHookingLibsCrc;
+  uint32_t allLibsCrc;
+  uint32_t timeval133;
   NSString *pkgHash3;
   NSString *ratioFwVer;
   NSString *osRelVer;
@@ -406,6 +411,7 @@ typedef struct ST__storage_ {
   NSData *stackTraceEncrypt;
   ST_CheckAddIn7019 *check7019;
   NSMutableArray *inlineHookingLibsEncryptArray;
+  NSMutableArray *allLibsEncryptArray;
 } ST__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1584,6 +1590,33 @@ typedef struct ST__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
+      {
+        .name = "allLibsEncryptArray",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_AllLibsEncryptArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(ST__storage_, allLibsEncryptArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "allLibsCrc",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_AllLibsCrc,
+        .hasIndex = 124,
+        .offset = (uint32_t)offsetof(ST__storage_, allLibsCrc),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "timeval133",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_FieldNumber_Timeval133,
+        .hasIndex = 125,
+        .offset = (uint32_t)offsetof(ST__storage_, timeval133),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[ST class]
@@ -1595,20 +1628,21 @@ typedef struct ST__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\177\001M\000\002H\000\003N\000\004H\000\005J\000\006H\000\007d\000\010HA\000\tK\000\nJ\000\013L\000\014DA\000\r"
-        "K\000\016Eb\000\017d\000\020e\000\021F\000\022d\003\000\023FA\000\024J\000\025O\000\026J\000\027K\000\030FA\000\031"
-        "L\000\032L\000\033H\000\034G\000\035I\000\036I\000\037M\000 G\000!G\000\"H\000#W\000$\000MMProc"
-        "LoadedFiles\000%Q\000&G\000\'^\000(\000InstalledPackageI"
-        "nfos\000)W\000*d\007B\000+M\000,c\002\000-GA\000.H\000/K\0000O\0001\000Neigh"
-        "borBSSIDList\0002J\0003S\0004S\0005Cc\014\0006Q\0007[\0008d\016\0009d\021"
-        "\000:Cc\003\000;Cc\010\000<b\004\000=DE\000>b\005\000\?b\005\000@d\000AS\000BH\000CO\000D"
-        "R\000FR\000GL\000HPB\000ISB\000JUB\000KJB\000LH\000MOA\000NHA\000Od\000PL"
-        "\000QN\000R\000FilesModifiedInFramework\000SQ\000TJ\000UH\000"
-        "VE\000WP\000X\002\243\202\000Y\002\244\202\000ZE\000[O\000\\K\000]^\000^Z\000_d\007I\000`d\007E"
-        "\000a_\003\000b^\000cd\025\000dd\021\000ed\030\000fd\024\000gV\000hR\000iPI\000jPE\000kS"
-        "I\000lSE\000mUI\000nUE\000oJI\000pJE\000qHb\006\000rHb\002\000s\002\244\203\000uF\000"
-        "vP\000wL\000xQ\000yM\000z\000IllegalLibEncrypt\000{M\000|Q\000}M"
-        "\000\177S\000\200\001U\000\201\001\000InlineHookingLibsEncrypt\000\202\001T\000";
+        "\201\001\001M\000\002H\000\003N\000\004H\000\005J\000\006H\000\007d\000\010HA\000\tK\000\nJ\000\013L\000\014DA\000"
+        "\rK\000\016Eb\000\017d\000\020e\000\021F\000\022d\003\000\023FA\000\024J\000\025O\000\026J\000\027K\000\030FA\000"
+        "\031L\000\032L\000\033H\000\034G\000\035I\000\036I\000\037M\000 G\000!G\000\"H\000#W\000$\000MMPro"
+        "cLoadedFiles\000%Q\000&G\000\'^\000(\000InstalledPackage"
+        "Infos\000)W\000*d\007B\000+M\000,c\002\000-GA\000.H\000/K\0000O\0001\000Neig"
+        "hborBSSIDList\0002J\0003S\0004S\0005Cc\014\0006Q\0007[\0008d\016\0009d"
+        "\021\000:Cc\003\000;Cc\010\000<b\004\000=DE\000>b\005\000\?b\005\000@d\000AS\000BH\000CO\000"
+        "DR\000FR\000GL\000HPB\000ISB\000JUB\000KJB\000LH\000MOA\000NHA\000Od\000P"
+        "L\000QN\000R\000FilesModifiedInFramework\000SQ\000TJ\000UH"
+        "\000VE\000WP\000X\002\243\202\000Y\002\244\202\000ZE\000[O\000\\K\000]^\000^Z\000_d\007I\000`d\007"
+        "E\000a_\003\000b^\000cd\025\000dd\021\000ed\030\000fd\024\000gV\000hR\000iPI\000jPE\000k"
+        "SI\000lSE\000mUI\000nUE\000oJI\000pJE\000qHb\006\000rHb\002\000s\002\244\203\000uF"
+        "\000vP\000wL\000xQ\000yM\000z\000IllegalLibEncrypt\000{M\000|Q\000}"
+        "M\000\177S\000\200\001U\000\201\001\000InlineHookingLibsEncrypt\000\202\001T"
+        "\000\203\001\000AllLibsEncrypt\000\204\001J\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG
@@ -1655,9 +1689,17 @@ typedef struct ST__storage_ {
 @dynamic hasProcVersionCrc, procVersionCrc;
 @dynamic hasAllPkgNameMd5Encrypt, allPkgNameMd5Encrypt;
 @dynamic hasAllPkgNameMd5Crc, allPkgNameMd5Crc;
+@dynamic hasBuildDisplayIdEncrypt, buildDisplayIdEncrypt;
+@dynamic hasBuildDisplayIdCrc, buildDisplayIdCrc;
+@dynamic hasBuildFlavorEncrypt, buildFlavorEncrypt;
+@dynamic hasBuildFlavorCrc, buildFlavorCrc;
+@dynamic hasSystemLibLibandroidRuntimeEncrypt, systemLibLibandroidRuntimeEncrypt;
+@dynamic hasSystemLibLibandroidRuntimeCrc, systemLibLibandroidRuntimeCrc;
+@dynamic hasSystemLibLibcameraserviceEncrypt, systemLibLibcameraserviceEncrypt;
+@dynamic hasSystemLibLibcameraserviceCrc, systemLibLibcameraserviceCrc;
 
 typedef struct ST_CheckAddIn7019__storage_ {
-  uint32_t _has_storage_[1];
+  uint32_t _has_storage_[2];
   uint32_t serviceListMd5Crc;
   uint32_t systemAppMd5Crc;
   uint32_t systemPrivAppMd5Crc;
@@ -1673,6 +1715,10 @@ typedef struct ST_CheckAddIn7019__storage_ {
   uint32_t buildFinderPrintCrc;
   uint32_t procVersionCrc;
   uint32_t allPkgNameMd5Crc;
+  uint32_t buildDisplayIdCrc;
+  uint32_t buildFlavorCrc;
+  uint32_t systemLibLibandroidRuntimeCrc;
+  uint32_t systemLibLibcameraserviceCrc;
   NSData *serviceListMd5Encrypt;
   NSData *systemAppMd5Encrypt;
   NSData *systemPrivAppMd5Encrypt;
@@ -1688,6 +1734,10 @@ typedef struct ST_CheckAddIn7019__storage_ {
   NSData *buildFinderPrintEncrypt;
   NSData *procVersionEncrypt;
   NSData *allPkgNameMd5Encrypt;
+  NSData *buildDisplayIdEncrypt;
+  NSData *buildFlavorEncrypt;
+  NSData *systemLibLibandroidRuntimeEncrypt;
+  NSData *systemLibLibcameraserviceEncrypt;
 } ST_CheckAddIn7019__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1966,6 +2016,78 @@ typedef struct ST_CheckAddIn7019__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
+      {
+        .name = "buildDisplayIdEncrypt",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_CheckAddIn7019_FieldNumber_BuildDisplayIdEncrypt,
+        .hasIndex = 30,
+        .offset = (uint32_t)offsetof(ST_CheckAddIn7019__storage_, buildDisplayIdEncrypt),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "buildDisplayIdCrc",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_CheckAddIn7019_FieldNumber_BuildDisplayIdCrc,
+        .hasIndex = 31,
+        .offset = (uint32_t)offsetof(ST_CheckAddIn7019__storage_, buildDisplayIdCrc),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "buildFlavorEncrypt",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_CheckAddIn7019_FieldNumber_BuildFlavorEncrypt,
+        .hasIndex = 32,
+        .offset = (uint32_t)offsetof(ST_CheckAddIn7019__storage_, buildFlavorEncrypt),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "buildFlavorCrc",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_CheckAddIn7019_FieldNumber_BuildFlavorCrc,
+        .hasIndex = 33,
+        .offset = (uint32_t)offsetof(ST_CheckAddIn7019__storage_, buildFlavorCrc),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "systemLibLibandroidRuntimeEncrypt",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_CheckAddIn7019_FieldNumber_SystemLibLibandroidRuntimeEncrypt,
+        .hasIndex = 34,
+        .offset = (uint32_t)offsetof(ST_CheckAddIn7019__storage_, systemLibLibandroidRuntimeEncrypt),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "systemLibLibandroidRuntimeCrc",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_CheckAddIn7019_FieldNumber_SystemLibLibandroidRuntimeCrc,
+        .hasIndex = 35,
+        .offset = (uint32_t)offsetof(ST_CheckAddIn7019__storage_, systemLibLibandroidRuntimeCrc),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "systemLibLibcameraserviceEncrypt",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_CheckAddIn7019_FieldNumber_SystemLibLibcameraserviceEncrypt,
+        .hasIndex = 36,
+        .offset = (uint32_t)offsetof(ST_CheckAddIn7019__storage_, systemLibLibcameraserviceEncrypt),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "systemLibLibcameraserviceCrc",
+        .dataTypeSpecific.className = NULL,
+        .number = ST_CheckAddIn7019_FieldNumber_SystemLibLibcameraserviceCrc,
+        .hasIndex = 37,
+        .offset = (uint32_t)offsetof(ST_CheckAddIn7019__storage_, systemLibLibcameraserviceCrc),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[ST_CheckAddIn7019 class]
@@ -1977,9 +2099,10 @@ typedef struct ST_CheckAddIn7019__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\036\001U\000\002Q\000\003JI\000\004JE\000\005NI\000\006NE\000\007JI\000\010JE\000\tKI\000\nKE\000\013"
+        "&\001U\000\002Q\000\003JI\000\004JE\000\005NI\000\006NE\000\007JI\000\010JE\000\tKI\000\nKE\000\013"
         "R\000\014N\000\r_\003\000\016^\000\017\\\000\020X\000\021V\000\022R\000\023K\000\024G\000\025M\000\026I\000\027K\000\030"
-        "G\000\031W\000\032S\000\033R\000\034N\000\035KI\000\036KE\000";
+        "G\000\031W\000\032S\000\033R\000\034N\000\035KI\000\036KE\000\037U\000 Q\000!R\000\"N\000#_\002\000$]"
+        "\000%_\001\000&\\\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(ST)];
@@ -2878,7 +3001,7 @@ GPBEnumDescriptor *ClientCheckData_DataType_EnumDescriptor(void) {
                               extraTextFormatInfo:extraTextFormatInfo];
     GPBEnumDescriptor *expected = nil;
     if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
-//      [worker release];
+      [worker release];
     }
   }
   return descriptor;
@@ -2920,7 +3043,7 @@ GPBEnumDescriptor *ClientCheckData_Status_EnumDescriptor(void) {
                               extraTextFormatInfo:extraTextFormatInfo];
     GPBEnumDescriptor *expected = nil;
     if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
-//      [worker release];
+      [worker release];
     }
   }
   return descriptor;

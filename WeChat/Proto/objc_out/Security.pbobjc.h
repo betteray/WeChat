@@ -268,6 +268,9 @@ typedef GPB_ENUM(ST_FieldNumber) {
   ST_FieldNumber_InlineHookingLibsBits = 128,
   ST_FieldNumber_InlineHookingLibsEncryptArray = 129,
   ST_FieldNumber_InlineHookingLibsCrc = 130,
+  ST_FieldNumber_AllLibsEncryptArray = 131,
+  ST_FieldNumber_AllLibsCrc = 132,
+  ST_FieldNumber_Timeval133 = 133,
 };
 
 @interface ST : GPBMessage
@@ -783,6 +786,17 @@ typedef GPB_ENUM(ST_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t inlineHookingLibsCrc;
 
 @property(nonatomic, readwrite) BOOL hasInlineHookingLibsCrc;
+/** add in 8.0.2 */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSData*> *allLibsEncryptArray;
+/** The number of items in @c allLibsEncryptArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger allLibsEncryptArray_Count;
+
+@property(nonatomic, readwrite) uint32_t allLibsCrc;
+
+@property(nonatomic, readwrite) BOOL hasAllLibsCrc;
+@property(nonatomic, readwrite) uint32_t timeval133;
+
+@property(nonatomic, readwrite) BOOL hasTimeval133;
 @end
 
 #pragma mark - ST_CheckAddIn7019
@@ -818,6 +832,14 @@ typedef GPB_ENUM(ST_CheckAddIn7019_FieldNumber) {
   ST_CheckAddIn7019_FieldNumber_ProcVersionCrc = 28,
   ST_CheckAddIn7019_FieldNumber_AllPkgNameMd5Encrypt = 29,
   ST_CheckAddIn7019_FieldNumber_AllPkgNameMd5Crc = 30,
+  ST_CheckAddIn7019_FieldNumber_BuildDisplayIdEncrypt = 31,
+  ST_CheckAddIn7019_FieldNumber_BuildDisplayIdCrc = 32,
+  ST_CheckAddIn7019_FieldNumber_BuildFlavorEncrypt = 33,
+  ST_CheckAddIn7019_FieldNumber_BuildFlavorCrc = 34,
+  ST_CheckAddIn7019_FieldNumber_SystemLibLibandroidRuntimeEncrypt = 35,
+  ST_CheckAddIn7019_FieldNumber_SystemLibLibandroidRuntimeCrc = 36,
+  ST_CheckAddIn7019_FieldNumber_SystemLibLibcameraserviceEncrypt = 37,
+  ST_CheckAddIn7019_FieldNumber_SystemLibLibcameraserviceCrc = 38,
 };
 
 @interface ST_CheckAddIn7019 : GPBMessage
@@ -929,6 +951,37 @@ typedef GPB_ENUM(ST_CheckAddIn7019_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t allPkgNameMd5Crc;
 
 @property(nonatomic, readwrite) BOOL hasAllPkgNameMd5Crc;
+/** add in 8.0.2 */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *buildDisplayIdEncrypt;
+/** Test to see if @c buildDisplayIdEncrypt has been set. */
+@property(nonatomic, readwrite) BOOL hasBuildDisplayIdEncrypt;
+
+@property(nonatomic, readwrite) uint32_t buildDisplayIdCrc;
+
+@property(nonatomic, readwrite) BOOL hasBuildDisplayIdCrc;
+@property(nonatomic, readwrite, copy, null_resettable) NSData *buildFlavorEncrypt;
+/** Test to see if @c buildFlavorEncrypt has been set. */
+@property(nonatomic, readwrite) BOOL hasBuildFlavorEncrypt;
+
+@property(nonatomic, readwrite) uint32_t buildFlavorCrc;
+
+@property(nonatomic, readwrite) BOOL hasBuildFlavorCrc;
+/** /system/lib/libandroid_runtime.so */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *systemLibLibandroidRuntimeEncrypt;
+/** Test to see if @c systemLibLibandroidRuntimeEncrypt has been set. */
+@property(nonatomic, readwrite) BOOL hasSystemLibLibandroidRuntimeEncrypt;
+
+@property(nonatomic, readwrite) uint32_t systemLibLibandroidRuntimeCrc;
+
+@property(nonatomic, readwrite) BOOL hasSystemLibLibandroidRuntimeCrc;
+/** /system/lib/libcameraservice.so */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *systemLibLibcameraserviceEncrypt;
+/** Test to see if @c systemLibLibcameraserviceEncrypt has been set. */
+@property(nonatomic, readwrite) BOOL hasSystemLibLibcameraserviceEncrypt;
+
+@property(nonatomic, readwrite) uint32_t systemLibLibcameraserviceCrc;
+
+@property(nonatomic, readwrite) BOOL hasSystemLibLibcameraserviceCrc;
 @end
 
 #pragma mark - ClientSpamInfo
