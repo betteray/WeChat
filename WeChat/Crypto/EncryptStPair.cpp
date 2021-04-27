@@ -1744,5 +1744,7 @@ unsigned int tag128(int a1, int a2)
 
 unsigned int timeval133(int a1, int a2)
 {
-  return ~(~((~a2 & 0x84A4465C | a2 & 0x7B5BB9A3) ^ (~(a1 * a2) & 0x84A4465C | a1 * a2 & 0x7B5BB9A3)) | 0x1E079FE);
+//    return ~(~((~a2 & 0x84A4465C | a2 & 0x7B5BB9A3) ^ (~(a1 * a2) & 0x84A4465C | a1 * a2 & 0x7B5BB9A3)) | 0x1E079FE); //(~a & b) | (a & ~b) = a ^ b
+//    return ~(~((a2 ^ 0x84A4465C) ^ ((a1 * a2) ^ 0x84A4465C)) | 0x1E079FE); // ~(~a | ~b) = a & b
+    return ((a2 ^ 0x84A4465C) ^ ((a1 * a2) ^ 0x84A4465C)) & (~0x1E079FE); //
 }

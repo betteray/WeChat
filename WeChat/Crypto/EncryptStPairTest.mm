@@ -154,7 +154,8 @@
     unsigned int SystemLibLibcameraserviceEncrypt_Word1 = SystemLibLibcameraserviceEncrypt_Word(0x5fc8cc05, 0, 0x35343666);
     unsigned int SystemLibLibcameraservice_Crc1 = SystemLibLibcameraservice_Crc(0xd92c);
     
-    unsigned int byte1_1 = timeval133(0x5fc8cc05, 0xd92c);
+//    unsigned int byte1_1 = timeval133(0x5fc8cc05, 0xd92c);
+    unsigned int byte1_1 = timeval133(2147483647, 65535);
 //    unsigned int byte1_1 = ProcSelfMountsCheck(1, 0xffffffff);
     
 //    unsigned int byte1_1 = tag128(287797, 1607768935);
