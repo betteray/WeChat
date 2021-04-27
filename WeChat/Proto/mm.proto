@@ -1740,7 +1740,7 @@ message AutoAuthAesReqData {
     optional  string  timeZone  = 12;
     optional  int32  channel  = 13;
     optional  SKBuiltinBuffer_t  clientCheckData  = 14;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 15;
+    optional WCExtInfo2 extSpamInfo  = 15;
     optional  string  bundleId  = 16;
     optional  string  androidPackageName  = 17;
     optional  PubKeyInfo  pubKey  = 18;
@@ -1783,7 +1783,7 @@ message AxAuthRequest {
     optional  string  language  = 9;
     optional  string  timeZone  = 10;
     optional  int32  channel  = 11;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 12;
+    optional WCExtInfo2 extSpamInfo  = 12;
 }
 
 message AxAuthResponse {
@@ -2748,7 +2748,7 @@ message BindOpMobileRequest {
     optional  uint32  mobileCheckType  = 17;
     optional  string  regSessionId  = 18;
     optional  SKBuiltinBuffer_t  spamBuffer  = 19;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 20;
+    optional WCExtInfo2 extSpamInfo  = 20;
     optional  string  thirdAppAuthTicket  = 21;
     optional  SmsUpCheckExtInfo  smsUpCheckExtInfo  = 22;
     optional  string  extRegUrl  = 24;
@@ -20903,7 +20903,7 @@ message LbsRequest {
     optional  string  cellId  = 7;
     optional  int32  gpssource  = 8;
     optional  SKBuiltinBuffer_t  clientCheckData  = 9;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 10;
+    optional WCExtInfo2 extSpamInfo  = 10;
 }
 
 message LbsResponse {
@@ -21598,7 +21598,7 @@ message ManualAuthAesReqData {
     optional  string  iphoneVer  = 21;
     required  uint32  inputType  = 22;
     optional  SKBuiltinBuffer_t  clientCheckData  = 23;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 24;
+    optional WCExtInfo2 extSpamInfo  = 24;
     optional  string  androidPackageName  = 25;
     optional  PubKeyInfo  pubKey  = 26;
 }
@@ -23411,7 +23411,7 @@ message NewRegRequest {
     optional  string  regSessionId  = 45;
     optional  string  privacyPolicyCountry  = 46;
     optional  string  thirdAppAuthTicket  = 47;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 48;
+    optional WCExtInfo2 extSpamInfo  = 48;
     optional  string  appleIdTicket  = 49;
     optional  PubKeyInfo  pubKey  = 52;
 }
@@ -29371,7 +29371,7 @@ message ShakeGetRequest {
     required  SKBuiltinBuffer_t  buffer  = 2;
     optional  int32  isNewVerson  = 3;
     optional  SKBuiltinBuffer_t  clientCheckData  = 4;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 5;
+    optional WCExtInfo2 extSpamInfo  = 5;
 }
 
 message ShakeGetResponse {
@@ -29442,7 +29442,7 @@ message ShakeReportRequest {
     required  uint32  times  = 9;
     optional  int32  gpssource  = 10;
     optional  SKBuiltinBuffer_t  clientCheckData  = 11;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 12;
+    optional WCExtInfo2 extSpamInfo  = 12;
 }
 
 message ShakeReportResponse {
@@ -29970,7 +29970,7 @@ message SnsObjectOpRequest {
     required  BaseRequest  baseRequest  = 1;
     required  uint32  opCount  = 2;
     repeated  SnsObjectOp  opList  = 3;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 4;
+    optional WCExtInfo2 extSpamInfo  = 4;
 }
 
 message SnsObjectOpResponse {
@@ -30039,7 +30039,7 @@ message SnsPostRequest {
     repeated  MediaInfo  mediaInfo  = 25;
     optional  SnsWeAppInfo  weAppInfo  = 26;
     optional  SKBuiltinBuffer_t  clientCheckData  = 27;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 28;
+    optional WCExtInfo2 extSpamInfo  = 28;
 }
 
 message SnsPostResponse {
@@ -32670,7 +32670,7 @@ message UploadHDHeadImgRequest {
     required  SKBuiltinBuffer_t  data  = 5;
     optional  string  imgHash  = 6;
     optional  string  userName  = 7;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 8;
+    optional WCExtInfo2 extSpamInfo  = 8;
 }
 
 message UploadHDHeadImgResponse {
@@ -33274,7 +33274,7 @@ message VerifyUserRequest {
     optional  uint32  verifyInfoListCount  = 8;
     repeated  VerifyUserInfo  verifyInfoList  = 9;
     optional  SKBuiltinBuffer_t  clientCheckData  = 10;
-    optional  SKBuiltinBuffer_t  extSpamInfo  = 11;
+    optional WCExtInfo2 extSpamInfo  = 11;
     optional  uint32  needConfirm  = 12;
 }
 
