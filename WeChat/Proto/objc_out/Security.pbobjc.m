@@ -275,7 +275,7 @@ typedef struct InstalledPackageInfo__storage_ {
 @dynamic hasInlineHookingLibsCrc, inlineHookingLibsCrc;
 @dynamic allLibsEncryptArray, allLibsEncryptArray_Count;
 @dynamic hasAllLibsCrc, allLibsCrc;
-@dynamic hasTimeval133, timeval133;
+@dynamic hasVirtualCamPropBits, virtualCamPropBits;
 
 typedef struct ST__storage_ {
   uint32_t _has_storage_[4];
@@ -331,7 +331,7 @@ typedef struct ST__storage_ {
   uint32_t inlineHookingLibsBits;
   uint32_t inlineHookingLibsCrc;
   uint32_t allLibsCrc;
-  uint32_t timeval133;
+  uint32_t virtualCamPropBits;
   NSString *pkgHash3;
   NSString *ratioFwVer;
   NSString *osRelVer;
@@ -1609,12 +1609,12 @@ typedef struct ST__storage_ {
         .dataType = GPBDataTypeUInt32,
       },
       {
-        .name = "timeval133",
+        .name = "virtualCamPropBits",
         .dataTypeSpecific.className = NULL,
-        .number = ST_FieldNumber_Timeval133,
+        .number = ST_FieldNumber_VirtualCamPropBits,
         .hasIndex = 125,
-        .offset = (uint32_t)offsetof(ST__storage_, timeval133),
-        .flags = GPBFieldOptional,
+        .offset = (uint32_t)offsetof(ST__storage_, virtualCamPropBits),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
     };
@@ -1628,7 +1628,7 @@ typedef struct ST__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\201\001\001M\000\002H\000\003N\000\004H\000\005J\000\006H\000\007d\000\010HA\000\tK\000\nJ\000\013L\000\014DA\000"
+        "\202\001\001M\000\002H\000\003N\000\004H\000\005J\000\006H\000\007d\000\010HA\000\tK\000\nJ\000\013L\000\014DA\000"
         "\rK\000\016Eb\000\017d\000\020e\000\021F\000\022d\003\000\023FA\000\024J\000\025O\000\026J\000\027K\000\030FA\000"
         "\031L\000\032L\000\033H\000\034G\000\035I\000\036I\000\037M\000 G\000!G\000\"H\000#W\000$\000MMPro"
         "cLoadedFiles\000%Q\000&G\000\'^\000(\000InstalledPackage"
@@ -1642,7 +1642,7 @@ typedef struct ST__storage_ {
         "SI\000lSE\000mUI\000nUE\000oJI\000pJE\000qHb\006\000rHb\002\000s\002\244\203\000uF"
         "\000vP\000wL\000xQ\000yM\000z\000IllegalLibEncrypt\000{M\000|Q\000}"
         "M\000\177S\000\200\001U\000\201\001\000InlineHookingLibsEncrypt\000\202\001T"
-        "\000\203\001\000AllLibsEncrypt\000\204\001J\000";
+        "\000\203\001\000AllLibsEncrypt\000\204\001J\000\205\001R\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG

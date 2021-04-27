@@ -270,7 +270,7 @@ typedef GPB_ENUM(ST_FieldNumber) {
   ST_FieldNumber_InlineHookingLibsCrc = 130,
   ST_FieldNumber_AllLibsEncryptArray = 131,
   ST_FieldNumber_AllLibsCrc = 132,
-  ST_FieldNumber_Timeval133 = 133,
+  ST_FieldNumber_VirtualCamPropBits = 133,
 };
 
 @interface ST : GPBMessage
@@ -794,9 +794,10 @@ typedef GPB_ENUM(ST_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t allLibsCrc;
 
 @property(nonatomic, readwrite) BOOL hasAllLibsCrc;
-@property(nonatomic, readwrite) uint32_t timeval133;
+/** persist.sys.virtualcam.enabled | persist.sys.virtualcam.faudio | persist.sys.virtualcam.picpos | persist.sys.virtualcam.policy 。计算出来的数据后8bit都为0，如果上列属性有值，则将相应bit置1。没有这些属性是正常。 */
+@property(nonatomic, readwrite) uint32_t virtualCamPropBits;
 
-@property(nonatomic, readwrite) BOOL hasTimeval133;
+@property(nonatomic, readwrite) BOOL hasVirtualCamPropBits;
 @end
 
 #pragma mark - ST_CheckAddIn7019
