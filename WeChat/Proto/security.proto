@@ -332,7 +332,7 @@ message ClientCheckData {
         CCData_PB_WB = 6;       // PB => WhiteBoxAes(003)
     }
     
-    optional uint32 dataType = 5; // dataType=5: 003加密； dataType=4: 经过压缩的数据，不用设置version；dataType=2: 有时候为空，但devicetoken会用此格式，可能是proto明文数据。
+    optional DataType dataType = 5; // dataType=5: 003加密； dataType=4: 经过压缩的数据，不用设置version；dataType=2: 有时候为空，但devicetoken会用此格式，可能是proto明文数据。
     
     enum Status {
         CCData_SUCCESS = 0;

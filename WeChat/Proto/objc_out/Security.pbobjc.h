@@ -1273,7 +1273,7 @@ typedef GPB_ENUM(ClientCheckData_FieldNumber) {
 
 @property(nonatomic, readwrite) BOOL hasTimeStamp;
 /** dataType=5: 003加密； dataType=4: 经过压缩的数据，不用设置version；dataType=2: 有时候为空，但devicetoken会用此格式，可能是proto明文数据。 */
-@property(nonatomic, readwrite) uint32_t dataType;
+@property(nonatomic, readwrite) ClientCheckData_DataType dataType;
 
 @property(nonatomic, readwrite) BOOL hasDataType;
 /** 0 = 成功， 1 = 失败 定位字符串：ae.d("MicroMsg.SecInfoReporterImpl", "compressed and base64 result is still too large with length " + v0_3.length); */

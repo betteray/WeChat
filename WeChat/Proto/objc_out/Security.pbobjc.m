@@ -2882,7 +2882,7 @@ typedef struct FPDevice__storage_ {
 typedef struct ClientCheckData__storage_ {
   uint32_t _has_storage_[1];
   uint32_t type;
-  uint32_t dataType;
+  ClientCheckData_DataType dataType;
   uint32_t status;
   NSString *version;
   NSData *clientCheckData;
@@ -2933,12 +2933,12 @@ typedef struct ClientCheckData__storage_ {
       },
       {
         .name = "dataType",
-        .dataTypeSpecific.className = NULL,
+        .dataTypeSpecific.enumDescFunc = ClientCheckData_DataType_EnumDescriptor,
         .number = ClientCheckData_FieldNumber_DataType,
         .hasIndex = 4,
         .offset = (uint32_t)offsetof(ClientCheckData__storage_, dataType),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeUInt32,
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
       },
       {
         .name = "status",
