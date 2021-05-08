@@ -103,9 +103,9 @@ message ST {
     //       //com.google.android.gms         4
     //       //这四个包微信会去单独检测，如果存在则加上对应的数据， 测试miui11 （不包含com.google.android.gsf.login）为14  zui11也为14
     optional uint32 GoogleServiceState = 68; // 取设备包PackageManager里根据上述包进行计算。1？ + 2？ + 4？ + 8？ = ？
-    optional uint32 timeval1 = 69; //69: 954783 // struct timeval 中微秒数值, gettimeofday获取. 0xffffff -> 4294963711 4294963711 4294963711
-    optional uint32 SpamInfoVersionSeq = 70; // 708 、709 、【7010｜7011】 分别对应 123。 7012是4. 7015=6
-    optional uint32 TbVersionCrc = 71; //71: 556011293 //   可能与资源下载有关，不做pm clear 数据不会变化 不清楚，需另看。？
+    optional uint32 AccessFlags = 69; //69: 954783 // struct timeval 中微秒数值, gettimeofday获取. 0xffffff -> 4294963711 4294963711 4294963711 | microseconds1 & 0xFFFFFFFFFFFFF1FFL) | 0x200L
+    optional uint32 SpamInfoVersion = 70; // 708 、709 、【7010｜7011】 分别对应 123。 7012是4. 7015=6 | PbVersion
+    optional uint32 WxTagRqt = 71; //71: 556011293 //   可能与资源下载有关，不做pm clear 数据不会变化 不清楚，需另看。？
     optional string SystemFrameworkMD5 = 72; //72: "a8de294f819234ee723148f6f3d003a6"//根据目录生成的md5 /system/framework/
     optional string SystemFrameworkArmMD5 = 73; //73: "a7cae61554b3c3596c073782ac5d69d1"//根据目录生成的md5 /system/framework/arm
     optional string SystemFrameworkArm64MD5 = 74; //74: "0d922e4d36ecfdce95da6257798320ab"//根据目录生成的md5 /system/framework/arm64
@@ -120,8 +120,8 @@ message ST {
     // stat -f -c "%i %b %f %a %c %d" /storage/emulated  => md5  以@和|连接
     optional string StorageID = 78;
     optional string OAID = 79; //79: ""// c14 ?    OAID
-    optional uint32 UnknownTag80 = 80; //80: 0 // 一直为0 不知道是啥
-    optional uint32 MagiskBitCheck = 81; //81: 242379 // struct timeval 中微秒数值, gettimeofday获取. 0xffffffff -> 4294966271 4294966271 4294966271 第二遍 4294967295
+    optional uint32 IsDebugging = 80; //80: 0 // 一直为0 不知道是啥
+    optional uint32 MagiskFlags = 81; //81: 242379 // struct timeval 中微秒数值, gettimeofday获取. 0xffffffff -> 4294966271 4294966271 4294966271 第二遍 4294967295
     repeated string FilesModifiedInFramework = 82; //82: 检测framework中文件修改时间是否有变化   fstatat64获取修改时间判断。不该有此值，只有非法时才设置。
     optional uint32 WeChatInstallTime = 83; // 微信安装时间.
 
@@ -129,7 +129,7 @@ message ST {
 
     optional bytes SoftConfig = 84; // 7015 开始
     optional bytes SoftData = 85;
-    optional uint32 Tag86 = 86; // 7014 struct timeval 中微秒数值, gettimeofday获取. 开始 0xffffffff -> 4294966955 4294966955 4294966955
+    optional uint32 DebugFlags = 86; // 7014 struct timeval 中微秒数值, gettimeofday获取. 开始 0xffffffff -> 4294966955 4294966955 4294966955
     optional string NetWorkInterface = 87;
 
     // ===================== 7016 ========================
@@ -137,7 +137,7 @@ message ST {
     optional uint32 tv_sec_88 = 88; // key
     optional uint32 tv_usec_89 = 89; //
 
-    optional uint32 Tag90 = 90;
+    optional uint32 TvCheck = 90;
 
     optional bytes PkgHash3Encrypt = 91;
     optional uint32 PkgHash3Crc = 92;
@@ -164,9 +164,9 @@ message ST {
     optional bytes StorageIDEncrypt = 113;
     optional uint32 StorageIDCrc = 114;
 
-    optional uint32 tv_usec_115 = 115;
+    optional uint32 RootFlags = 115;
     optional uint32 uid = 116; // getuid32()
-    optional uint32 Tag117 = 117; // 
+    optional uint32 DebuggerFlags = 117; //
 
     // ===================== 7017 ========================
 
