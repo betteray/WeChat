@@ -241,6 +241,8 @@ message ST {
     repeated bytes AllLibsEncrypt = 131;
     optional uint32 AllLibsCrc = 132;
     optional uint32 VirtualCamPropBits = 133; // persist.sys.virtualcam.enabled | persist.sys.virtualcam.faudio | persist.sys.virtualcam.picpos | persist.sys.virtualcam.policy 。计算出来的数据后8bit都为0，如果上列属性有值，则将相应bit置1。没有这些属性是正常。
+    repeated bytes EnabledListenerPackagesEncrypt = 134; // android/support/v4/app/NotificationManagerCompat->getEnabledListenerPackages(Landroid/content/Context;)Ljava/util/Set;
+    optional uint32 EnabledListenerPackagesCrc = 135;
 }
 
 message ClientSpamInfo {
