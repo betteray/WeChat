@@ -280,7 +280,7 @@ message SensorData2 {
         optional float value1 = 1;
         optional float value2 = 2;
         optional float value3 = 3;
-        optional uint32 timestamp = 4;
+        optional uint32 timestamp = 4; // https://developer.android.com/reference/android/hardware/SensorEvent#timestamp
     }
 
     message GroupItem {
