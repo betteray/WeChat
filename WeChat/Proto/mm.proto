@@ -6,6 +6,7 @@ import "base.proto";
 import "security.proto";
 
 option java_package = "com.tencent.mm.normsg.proto";
+option go_package = "../wxpb";
 
 message A8KeyControl {
     repeated  A8KeyControl_QueryStringTransferCookie  queryStringTransferCookieList  = 1;

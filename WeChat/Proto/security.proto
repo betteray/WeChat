@@ -4,6 +4,7 @@ syntax = "proto2";
 //option optimize_for = CODE_SIZE;
 
 option java_package = "com.tencent.mm.normsg.proto";
+option go_package = "../wxpb";
 
 import "base.proto";
 
