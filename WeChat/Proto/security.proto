@@ -65,7 +65,7 @@ message ST {
     repeated string MMProcLoadedFiles = 36;
     optional string RiskScanReqBuffer = 37;
     optional uint32 EnvBits = 38;
-    optional string EnabledAccessibilityServiceIds = 39;
+    repeated string EnabledAccessibilityServiceIds = 39;
     repeated InstalledPackageInfo InstalledPackageInfos = 40;
     optional uint32 AccessibilityClickCount = 41;
     optional string APKLeadingMD5 = 42; // APK 前 102400 字节MD5
@@ -78,7 +78,7 @@ message ST {
     repeated string NeighborBSSIDList = 49;
     optional uint32 IsWifiOpen = 50;
     optional uint32 HasXposedStackTrace = 51;
-    optional string XposedHookedMethods = 52;
+    repeated string XposedHookedMethods = 52;
     optional uint32 IsADBSwitchEnabled = 53;
     optional uint32 IsRunningByMonkey = 54;
     optional string AppInstrumentationClassName = 55;
