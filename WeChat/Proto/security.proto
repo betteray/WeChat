@@ -131,7 +131,7 @@ message ST {
     optional bytes SoftConfig = 84; // 7015 开始
     optional bytes SoftData = 85;
     optional uint32 DebugFlags = 86; // 7014 struct timeval 中微秒数值, gettimeofday获取. 开始 0xffffffff -> 4294966955 4294966955 4294966955
-    optional string NetWorkInterface = 87;
+    repeated string NetWorkInterface = 87;
 
     // ===================== 7016 ========================
 
